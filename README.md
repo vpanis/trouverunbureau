@@ -1,3 +1,6 @@
+[![Code Climate](https://codeclimate.com/repos/548f346ce30ba05437006cb3/badges/8fcb0e8dd0a815db2bf9/gpa.svg)](https://codeclimate.com/repos/548f346ce30ba05437006cb3/feed)
+[![Test Coverage](https://codeclimate.com/repos/548f346ce30ba05437006cb3/badges/8fcb0e8dd0a815db2bf9/coverage.svg)](https://codeclimate.com/repos/548f346ce30ba05437006cb3/feed)
+
 Rails Bootstrap
 ===============
 

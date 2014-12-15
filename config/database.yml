@@ -17,10 +17,10 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: rails-bootstrap_development
+  database: deskspotting_api_development
   pool: 5
-  username: rails-bootstrap
-  password: rails-bootstrap
+  username: deskspotting_api
+  password: deskspotting_api
   host: localhost
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -47,10 +47,10 @@ development:
 test: &test
   adapter: postgresql
   encoding: unicode
-  database: rails-bootstrap_test
+  database: deskspotting_api_test
   pool: 5
-  username: rails-bootstrap
-  password: rails-bootstrap
+  username: deskspotting_api
+  password: deskspotting_api
   host: localhost
 
 staging:

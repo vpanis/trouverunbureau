@@ -4,7 +4,7 @@ rvm:
 
 addons:
   code_climate:
-    repo_token:
+    repo_token: ffeccb6ea109dc567c232e1a717b0a41a194f89ad40eea599c6f3309bf8017ee
 
 env:
   global:
@@ -18,9 +18,9 @@ services:
 
 before_script:
   - cp config/database.travis.yml config/database.yml
-  - psql -c "CREATE USER rails-bootstrap WITH PASSWORD 'rails-bootstrap';" -U postgres
-  - psql -c "DROP DATABASE IF EXISTS rails-bootstrap_test;" -U postgres
-  - psql -c "CREATE DATABASE rails-bootstrap_test ENCODING 'utf8';" -U postgres
+  - psql -c "CREATE USER deskspotting_api WITH PASSWORD 'deskspotting_api';" -U postgres
+  - psql -c "DROP DATABASE IF EXISTS deskspotting_api_test;" -U postgres
+  - psql -c "CREATE DATABASE deskspotting_api_test ENCODING 'utf8';" -U postgres
   - bundle exec rake db:migrate test:prepare
 
 script:
@@ -31,7 +31,7 @@ script:
 notifications:
   email:
     recipients:
-      - rails-bootstrap-dev@wolox.com.ar
+      - deskspotting_api-dev@wolox.com.ar
 
 cache:
   bundler: true
