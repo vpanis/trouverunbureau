@@ -18,9 +18,9 @@ services:
 
 before_script:
   - cp config/database.travis.yml config/database.yml
-  - psql -c "CREATE USER deskspotting_api WITH PASSWORD 'deskspotting_api';" -U postgres
-  - psql -c "DROP DATABASE IF EXISTS deskspotting_api_test;" -U postgres
-  - psql -c "CREATE DATABASE deskspotting_api_test ENCODING 'utf8';" -U postgres
+  - psql -c "CREATE USER deskspotting WITH PASSWORD 'deskspotting';" -U postgres
+  - psql -c "DROP DATABASE IF EXISTS deskspotting_test;" -U postgres
+  - psql -c "CREATE DATABASE deskspotting_test ENCODING 'utf8';" -U postgres
   - bundle exec rake db:migrate test:prepare
 
 script:
@@ -31,7 +31,7 @@ script:
 notifications:
   email:
     recipients:
-      - deskspotting_api-dev@wolox.com.ar
+      - deskspotting-dev@wolox.com.ar
 
 cache:
   bundler: true

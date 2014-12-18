@@ -17,10 +17,10 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: deskspotting_api_development
+  database: deskspotting_development
   pool: 5
-  username: deskspotting_api
-  password: deskspotting_api
+  username: deskspotting
+  password: deskspotting
   host: localhost
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -47,10 +47,10 @@ development:
 test: &test
   adapter: postgresql
   encoding: unicode
-  database: deskspotting_api_test
+  database: deskspotting_test
   pool: 5
-  username: deskspotting_api
-  password: deskspotting_api
+  username: deskspotting
+  password: deskspotting
   host: localhost
 
 staging:

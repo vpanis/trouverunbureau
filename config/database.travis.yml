@@ -1,7 +1,7 @@
 test: &test
   adapter: postgresql
   encoding: utf8
-  database: deskspotting_api_test
+  database: deskspotting_test
   username: postgres
 
 cucumber:

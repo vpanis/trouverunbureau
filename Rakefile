@@ -3,5 +3,5 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-DeskspottingApi::Application.load_tasks
+Deskspotting::Application.load_tasks
 
