@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141219171201) do
+ActiveRecord::Schema.define(version: 20141219172420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,8 @@ ActiveRecord::Schema.define(version: 20141219171201) do
     t.string   "language"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "rating"
+    t.integer  "quantity_reviews"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -144,10 +146,12 @@ ActiveRecord::Schema.define(version: 20141219171201) do
     t.integer  "rooms"
     t.integer  "desks"
     t.float    "vat_tax_rate"
-    t.text     "amenities",    default: [], array: true
+    t.text     "amenities",        default: [], array: true
     t.integer  "owner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "rating"
+    t.integer  "quantity_reviews"
   end
 
 end
