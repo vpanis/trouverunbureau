@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141219002121) do
+ActiveRecord::Schema.define(version: 20141219142328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,17 @@ ActiveRecord::Schema.define(version: 20141219002121) do
 
   add_index "users_favorites", ["space_id"], name: "index_users_favorites_on_space_id", using: :btree
   add_index "users_favorites", ["user_id"], name: "index_users_favorites_on_user_id", using: :btree
+
+  create_table "venue_hours", force: true do |t|
+    t.integer  "weekday"
+    t.time     "from"
+    t.time     "to"
+    t.integer  "venue_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "venue_hours", ["venue_id"], name: "index_venue_hours_on_venue_id", using: :btree
 
   create_table "venue_workers", force: true do |t|
     t.integer  "user_id"
