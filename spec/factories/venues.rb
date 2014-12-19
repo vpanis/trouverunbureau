@@ -13,7 +13,6 @@ FactoryGirl.define do
     name { Faker::Name.name }
     description { Faker::Lorem.sentence }
     currency :ars
-    logo "MyString"
     v_type { Venue::TYPES.sample }
     space 1.5
     space_unit { Venue::SPACE_UNIT_TYPES.sample }

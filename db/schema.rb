@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141219161344) do
+ActiveRecord::Schema.define(version: 20141219171201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,8 +64,10 @@ ActiveRecord::Schema.define(version: 20141219161344) do
     t.integer  "venue_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "photo_id"
   end
 
+  add_index "spaces", ["photo_id"], name: "index_spaces_on_photo_id", using: :btree
   add_index "spaces", ["venue_id"], name: "index_spaces_on_venue_id", using: :btree
 
   create_table "users", force: true do |t|
@@ -101,6 +103,15 @@ ActiveRecord::Schema.define(version: 20141219161344) do
   end
 
   add_index "venue_hours", ["venue_id"], name: "index_venue_hours_on_venue_id", using: :btree
+
+  create_table "venue_photos", force: true do |t|
+    t.integer  "venue_id"
+    t.string   "photo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "venue_photos", ["venue_id"], name: "index_venue_photos_on_venue_id", using: :btree
 
   create_table "venue_workers", force: true do |t|
     t.integer  "user_id"

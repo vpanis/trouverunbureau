@@ -8,6 +8,11 @@ class Venue < ActiveRecord::Base
 
 	has_many :day_hours, class_name: "VenueHour", dependent: :destroy
 
+	has_many :photos, class_name: "VenuePhoto", dependent: :destroy
+
+  	mount_uploader :logo, LogoUploader
+
+
 	TYPES = [:startup_office, :studio, :corporate_office, :bussines_center, :hotel]
 
 	SPACE_UNIT_TYPES = [:square_mts, :square_foots]
@@ -18,10 +23,15 @@ class Venue < ActiveRecord::Base
 		:wheelchair_accessible]
 
 	after_create :add_owner_to_venue_workers
+  	before_destroy :erase_logo
 
 	private
 		def add_owner_to_venue_workers
 			self.venue_workers.create(user: owner, role: :owner)
 		end
+	
+	  	def erase_logo
+	  		self.remove_logo!
+	  	end
 
 end
