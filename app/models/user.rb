@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
 
 	# Favorited spaces
 	has_many :spaces, through: :users_favorites
+
+	has_many :bookings
 end
