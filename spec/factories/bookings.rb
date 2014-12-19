@@ -3,8 +3,8 @@
 FactoryGirl.define do
   factory :booking do
     state :pending_authorization
-    from Time.now.at_beginning_of_hour.advance(hour: 1)
-    to Time.now.at_beginning_of_hour.advance(hour: 2)
+    from { Time.now.at_beginning_of_hour.advance(hour: 1) }
+    to { Time.now.at_beginning_of_hour.advance(hour: 2) }
     b_type :hour
     quantity 1
 

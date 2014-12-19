@@ -11,10 +11,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141219142328) do
+ActiveRecord::Schema.define(version: 20141219161344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "space_id"
+    t.string   "state"
+    t.datetime "from"
+    t.datetime "to"
+    t.string   "b_type"
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bookings", ["space_id"], name: "index_bookings_on_space_id", using: :btree
+  add_index "bookings", ["user_id"], name: "index_bookings_on_user_id", using: :btree
+
+  create_table "review_users", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "from_user_id"
+    t.text     "message"
+    t.integer  "stars"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "review_users", ["from_user_id"], name: "index_review_users_on_from_user_id", using: :btree
+  add_index "review_users", ["user_id"], name: "index_review_users_on_user_id", using: :btree
+
+  create_table "review_venues", force: true do |t|
+    t.integer  "venue_id"
+    t.text     "message"
+    t.integer  "stars"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "review_venues", ["venue_id"], name: "index_review_venues_on_venue_id", using: :btree
 
   create_table "spaces", force: true do |t|
     t.string   "s_type"
