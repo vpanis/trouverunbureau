@@ -1,7 +1,34 @@
 class Booking < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :space
+	# Relations
+	belongs_to :user
 
-  TYPES = [:hour, :day, :week, :month]
-  STATES = [:pending_authorization, :pending_payment, :paid, :canceled, :denied]
+	belongs_to :space
+
+	# Constants/Enums
+	TYPES = [:hour, :day, :week, :month]
+
+	STATES = [:pending_authorization, :pending_payment, :paid, 
+  		:canceled, :denied, :already_taken]
+
+  	# Callbacks
+  	before_validation :default_state
+
+  	# Validations	
+  	validates :user, :space, :state, :b_type, :quantity, :from, presence: true
+
+  	validates :quantity, numericality: { 
+		only_integer: true,
+		greater_than_or_equal_to: 1
+	}
+
+	validates :state, inclusion: { in: STATES }
+
+	validates :b_type, inclusion: { in: TYPES }
+
+
+	private
+		def default_state
+			self.state = :pending_authorization if state.nil?
+		end
+
 end
