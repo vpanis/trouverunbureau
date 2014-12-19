@@ -14,7 +14,7 @@ FactoryGirl.define do
     description Faker::Lorem.sentence
     currency :ars
     logo "MyString"
-    type Venue::TYPES.sample
+    v_type Venue::TYPES.sample
     space 1.5
     space_unit Venue::SPACE_UNIT_TYPES.sample
     floors 1
@@ -22,6 +22,10 @@ FactoryGirl.define do
     desks 40
     vat_tax_rate 1.5
     amenities Venue::AMENITY_TYPES.sample(3)
-    owner FactoryGirl.build(:user)
+    owner { FactoryGirl.build(:user) }
+
+    trait :with_spaces do
+        spaces { FactoryGirl.build_list(:space, rand(3) + 1) }
+    end
   end
 end

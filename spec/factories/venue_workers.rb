@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :venue_worker do
-    user nil
-    venue nil
-    role "MyString"
+    user { FactoryGirl.build(:user) }
+    venue { FactoryGirl.build(:venue) }
+    role ""
   end
 end

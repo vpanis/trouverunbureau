@@ -13,7 +13,7 @@ class CreateVenues < ActiveRecord::Migration
       t.text :description
       t.string :currency
       t.string :logo
-      t.string :type
+      t.string :v_type
       t.float :space
       t.string :space_unit
       t.integer :floors
