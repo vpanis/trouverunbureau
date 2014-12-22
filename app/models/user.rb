@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
 		greater_than_or_equal_to: 0 
 	}
 
-	validates :rating, {
+	validates :rating, numericality: {
 		greater_than_or_equal_to: 1,
 		less_than_or_equal_to: 5
 	}
