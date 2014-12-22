@@ -1,9 +1,14 @@
 class VenuePhoto < ActiveRecord::Base
+	# Relations
 	belongs_to :venue
 
 	mount_uploader :photo, PhotoUploader
 
+	# Callbacks
 	before_destroy :erase_photo
+
+	# Validations
+	validates :venue, :photo, presence: true
 
 	private
   		def erase_photo

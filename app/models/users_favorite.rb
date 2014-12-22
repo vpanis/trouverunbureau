@@ -1,4 +1,8 @@
 class UsersFavorite < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :space
+	# Relations
+	belongs_to :user
+	belongs_to :space
+
+	# Validations
+	validates :user, :space, presence: true
 end

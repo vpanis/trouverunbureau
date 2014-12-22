@@ -1,6 +1,12 @@
 class VenueWorker < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :venue
+	# Relations
+	belongs_to :user
+	belongs_to :venue
 
-  ROLES = [:owner, :admin]
+	# Constants/Enums
+	ROLES = [:owner, :admin]
+
+	# Validations
+	validates :user, :venue, presence: true
+	validates :role, inclusion: { in: ROLES }
 end
