@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20141219211202) do
 
   create_table "review_venues", force: true do |t|
     t.integer  "venue_id"
+    t.integer  "from_user_id"
     t.text     "message"
     t.integer  "stars"
     t.boolean  "active"
@@ -53,6 +54,7 @@ ActiveRecord::Schema.define(version: 20141219211202) do
     t.datetime "updated_at"
   end
 
+  add_index "review_venues", ["from_user_id"], name: "index_review_venues_on_from_user_id", using: :btree
   add_index "review_venues", ["venue_id"], name: "index_review_venues_on_venue_id", using: :btree
 
   create_table "spaces", force: true do |t|

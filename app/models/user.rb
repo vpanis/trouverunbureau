@@ -11,6 +11,9 @@ class User < ActiveRecord::Base
 
 	has_many :bookings
 
+	# Callbacks
+	before_validation :default_rating_values, unless: :created_at
+
 	# Validations
 	validates :first_name, :email, presence: true
 	validates :email, format: { 
@@ -26,7 +29,15 @@ class User < ActiveRecord::Base
 	}
 
 	validates :rating, numericality: {
-		greater_than_or_equal_to: 1,
+		greater_than_or_equal_to: 0,
 		less_than_or_equal_to: 5
 	}
+
+
+	private
+		def default_rating_values
+			self.quantity_reviews ||= 0
+			self.reviews_sum ||= 0
+			self.rating ||= 0
+		end
 end

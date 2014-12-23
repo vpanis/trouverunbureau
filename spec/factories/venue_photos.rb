@@ -2,7 +2,8 @@
 
 FactoryGirl.define do
   factory :venue_photo do
-    venue nil
     photo "MyString"
+    
+    venue { FactoryGirl.build(:venue) }
   end
 end

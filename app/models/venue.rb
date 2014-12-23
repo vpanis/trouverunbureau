@@ -25,6 +25,7 @@ class Venue < ActiveRecord::Base
 		:wheelchair_accessible]
 
 	# Callbacks
+	before_validation :default_rating_values, unless: :created_at
 	after_create :add_owner_to_venue_workers
   	before_destroy :erase_logo
 
@@ -44,7 +45,7 @@ class Venue < ActiveRecord::Base
 	}
 
 	validates :longitude, numericality: {
-		greater_than_or_equal_to: 0,
+		greater_than_or_equal_to: -180,
 		less_than_or_equal_to: 180
 	}
 
@@ -57,7 +58,7 @@ class Venue < ActiveRecord::Base
 		greater_than_or_equal_to: 0 
 	}
 
-	validates :space_unit, inclusion: {
+	validates :v_type, inclusion: {
 		in: TYPES
 	}
 
@@ -70,13 +71,19 @@ class Venue < ActiveRecord::Base
 	}
 
 	validates :rating, numericality: {
-		greater_than_or_equal_to: 1,
+		greater_than_or_equal_to: 0,
 		less_than_or_equal_to: 5
 	}
 
 	validate :each_amenity_inclusion
 
 	private
+		def default_rating_values
+			self.quantity_reviews ||= 0
+			self.reviews_sum ||= 0
+			self.rating ||= 0
+		end
+
 		def add_owner_to_venue_workers
 			self.venue_workers.create(user: owner, role: :owner)
 		end

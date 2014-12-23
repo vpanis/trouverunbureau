@@ -6,8 +6,6 @@ FactoryGirl.define do
     from { Time.now.advance(hours: -4) }
     to { Time.now.advance(hours: 4) }
 
-    trait :with_new_venue do
-    	venue { FactoryGirl.build(:venue) }
-    end
+    venue { FactoryGirl.build(:venue) }
   end
 end

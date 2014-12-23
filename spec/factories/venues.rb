@@ -22,9 +22,7 @@ FactoryGirl.define do
     vat_tax_rate 1.5
     amenities { Venue::AMENITY_TYPES.sample(3) }
     
-    trait :with_new_owner do
-        owner { FactoryGirl.build(:user) }
-    end
+    owner { FactoryGirl.build(:user) }
 
     trait :with_spaces do
         spaces { FactoryGirl.build_list(:space, rand(3) + 1) }

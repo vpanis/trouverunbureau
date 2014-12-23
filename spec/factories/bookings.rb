@@ -8,12 +8,7 @@ FactoryGirl.define do
     b_type :hour
     quantity 1
 
-    trait :with_new_user do
-    	user { FactoryGirl.build(:user) }
-    end
-
-    trait :with_new_space do
-    	user { FactoryGirl.build(:space, :with_new_space) }
-    end    
+    user { FactoryGirl.build(:user) }
+    space { FactoryGirl.build(:space) }    
   end
 end

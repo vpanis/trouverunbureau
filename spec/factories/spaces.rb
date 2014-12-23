@@ -7,8 +7,7 @@ FactoryGirl.define do
   	capacity 1
   	quantity 4
   	description { Faker::Lorem.sentence }
-  	trait :with_new_venue do
-  		venue { FactoryGirl.build(:venue) }
-  	end
+  	
+    venue { FactoryGirl.build(:venue) }
   end
 end
