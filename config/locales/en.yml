@@ -20,4 +20,13 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  session:
+    email: 'Email address'
+    password: 'Password'
+    login: 'Log in'
+    fb_login: 'Log in with Facebook'
+    keep_session: 'Keep me logged in'
+    forgot_password: 'Forgot password?'
+    not_registered: 'Not registered?'
+    sign_up_here: 'Sign up here'
+    or: or
