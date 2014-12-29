@@ -1,0 +1,12 @@
+doctype html
+html
+  head
+    title Deskspotting
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  body
+    .row.login-page
+      .col-xs-12.col-sm-6.col-md-5.col-lg-3.col-sm-offset-3.col-md-offset-4.col-lg-offeset-4
+        h1.icon
+        = yield

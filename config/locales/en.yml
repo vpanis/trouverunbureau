@@ -20,4 +20,25 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  session:
+    email: 'Email address'
+    password: 'Password'
+    login: 'Log in'
+    fb_login: 'Log in with Facebook'
+    keep_session: 'Keep me logged in'
+    forgot_password: 'Forgot password?'
+    not_registered: 'Not registered?'
+    already_registered: 'Already registered?'
+    sign_up_here: 'Sign up here'
+    login_here: 'Log in here'
+    or: or
+    signup: 'Sign up'
+    full_name: 'First and Last name'
+    choose_password: 'Choose Password'
+    user_type: 'Select user type'
+    user_type_1: 'User'
+    user_type_2: 'Venue Owner'
+    user_type_3: 'Venue Manager'
+    reset_password: 'Reset password'
+    reset_password_help: 'Enter the e-mail address associated with your account.'
+

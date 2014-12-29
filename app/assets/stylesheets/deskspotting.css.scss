@@ -1,0 +1,269 @@
+$desk-black: #414042;
+$yellow: #ffe111;
+$dark-yellow: #f3d708;
+$light-yellow: rgba(255,255,17,0.3);
+$aqua: #00cca5;
+$dark-aqua: #05b496;
+$red: #ff5a5f;
+$dark-red: #d2505a;
+$black: #000000;
+$light-black: #222222;
+$dark-gray: #808184;
+$gray: #cccccc;
+$light-gray: #efefef;
+$dark-white: #f8f8f8;
+
+$fb-blue: #3b5998;
+
+@import url(https://fonts.googleapis.com/css?family=Varela+Round);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700);
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+body{
+  color: $desk-black;
+  font-family: "Open Sans", sans-serif;
+}
+
+.yellow{
+  color: $yellow;
+}
+
+.aqua{
+  color: $aqua;
+}
+
+.uppercase{
+  text-transform: uppercase;
+}
+
+.left{
+  float: left;
+}
+
+.right{
+  float: right;
+}
+
+@mixin section-text{
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+  color: black;
+}
+
+@mixin dark-gray-regular-text{
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: $dark-gray;
+}
+
+/* ---- login section ---- */
+.small-italic{
+  @include dark-gray-regular-text;
+  font-style: italic;
+  vertical-align: top;
+  line-height: 25px;
+}
+
+.dark-gray-regular{
+  @include dark-gray-regular-text;
+}
+
+.aqua-bold{
+  color: $aqua;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+.login-page{
+  width: 98%;
+  margin-right: auto;
+  margin-left: auto;
+  h1, h2{
+    text-align: center;
+  }
+  h1{
+    font-size: 23px;
+    letter-spacing: 0.24rem;
+    font-family: "Varela Round", sans-serif;
+  }
+  h1.icon{
+      background-image: image-url('deskspotting-logo.png');
+      background-size: 205px 35px;
+      background-repeat: no-repeat;
+      background-position: center;
+      display: inline-block;
+      width: 100%;
+      height: 35px;
+  }
+
+  a, a:hover{
+    text-decoration: none;
+  }
+
+  .section-header h2{
+    @include section-text;
+    margin-top: 2px;
+    span{
+      line-height: 28px;
+      padding-bottom: 7px;
+      border-bottom: 2px solid $yellow;
+    }
+  }
+
+  .fb-login-button{
+    background: $fb-blue;
+    background-image: image-url('facebook.png');
+    background-size: 16px 24px;
+    background-repeat: no-repeat;
+    background-position-x: 16px;
+    background-position-y: 12px;
+    height: 46px;
+    margin: 25px 0px;
+    @include border-radius(5px);
+    a, a:hover{
+      color: white;
+    }
+    .fb-button-text{
+      height: 19px;
+      border-left: 1px solid white;
+      margin-left: 55px;
+      position: relative;
+      top: 13px;
+      text-align: center;
+      letter-spacing: 0.08rem;
+    }
+  }
+  .section-separator{
+    @include section-text;
+    width: 100%;
+    height: 10px;
+    border-bottom: solid 2px $yellow;
+    margin-bottom: 23px;
+    .separator-text{
+      float: right;
+      background-color: white;
+      margin-right: 44%;
+      padding: 0 10px;
+    }
+
+  }
+  .help{
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: $dark-gray;
+  }
+  #login-form, #sigunp-form, #reset-password-form{
+    color: $dark-gray;
+  }
+  .rounded-button{
+    width: 100%;
+  }
+  .form-footer{
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 22px;
+    .left{
+      text-align: right;
+      width: 50%;
+      padding-right: 5px;
+    }
+    .right{
+      text-align: left;
+      width: 50%;
+      padding-left: 5px;
+    }
+  }
+}
+
+/* --- FORM --- */
+.rounded-button{
+  font-family: "Open Sans", sans-serif; font-size: 0.875rem;
+  font-weight: 700;
+  text-align: center;
+  @include border-radius(2em);
+  border: 2px solid $yellow;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 11px 0 7px 0;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: black;
+  margin-top: 20px;
+}
+
+.form-group{
+  margin-bottom: 11px;
+}
+
+.form-control{
+  height: 40px;
+  border: 1px solid $gray;
+  color: $gray;
+}
+
+.checkbox-label{
+  display: inline-block;
+}
+
+label{
+  padding-left: 6px;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: $dark-gray;
+}
+
+.form-control:focus, input[type="checkbox"]:focus{
+  -webkit-appearance: none;
+  -moz-appearance:none;
+  -o-appearance:none;
+  border: 1px solid $gray;
+}
+
+input[type='submit']:focus{
+  outline: 0px none;
+  background-color: $light-yellow;
+}
+
+/* checkbox */
+input[type="checkbox"]{
+  height: 12px;
+  width: 12px;
+  margin-bottom: 0px;
+  margin-right: 5px;
+  margin-top: 7px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance:none;
+  -o-appearance:none;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  background-color: white;
+  border: 1px solid $gray !important;
+  padding: 5px;
+  display: inline-block;
+  position: relative;
+}
+
+input[type="checkbox"]:checked:after {
+  content: '\2714';
+  position: absolute;
+  bottom: 0.1em;
+  left: 0.3em;
+  color: $gray;
+  font-size: 0.5em;
+}
+
