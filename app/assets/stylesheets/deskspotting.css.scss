@@ -13,8 +13,7 @@ $gray: #cccccc;
 $light-gray: #efefef;
 $dark-white: #f8f8f8;
 
-$fb-blue: #627aad;
-
+$fb-blue: #3b5998;
 
 @import url(https://fonts.googleapis.com/css?family=Varela+Round);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,700);
@@ -26,7 +25,6 @@ $fb-blue: #627aad;
   -ms-border-radius: $radius;
   border-radius: $radius;
 }
-
 
 body{
   color: $desk-black;
@@ -99,6 +97,15 @@ body{
     letter-spacing: 0.24rem;
     font-family: "Varela Round", sans-serif;
   }
+  h1.icon{
+      background-image: image-url('deskspotting-logo.png');
+      background-size: 205px 35px;
+      background-repeat: no-repeat;
+      background-position: center;
+      display: inline-block;
+      width: 100%;
+      height: 35px;
+  }
 
   a, a:hover{
     text-decoration: none;
@@ -106,7 +113,7 @@ body{
 
   .section-header h2{
     @include section-text;
-    margin-top: 16px;
+    margin-top: 2px;
     span{
       line-height: 28px;
       padding-bottom: 7px;
@@ -116,6 +123,11 @@ body{
 
   .fb-login-button{
     background: $fb-blue;
+    background-image: image-url('facebook.png');
+    background-size: 16px 24px;
+    background-repeat: no-repeat;
+    background-position-x: 16px;
+    background-position-y: 12px;
     height: 46px;
     margin: 25px 0px;
     @include border-radius(5px);
