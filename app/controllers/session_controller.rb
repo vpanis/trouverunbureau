@@ -8,4 +8,8 @@ class SessionController < ApplicationController
   def signup
     render layout: 'session'
   end
+
+  def reset_password
+    render layout: 'session'
+  end
 end

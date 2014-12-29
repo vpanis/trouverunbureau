@@ -39,4 +39,6 @@ en:
     user_type_1: 'User'
     user_type_2: 'Venue Owner'
     user_type_3: 'Venue Manager'
+    reset_password: 'Reset password'
+    reset_password_help: 'Enter the e-mail address associated with your account.'
 

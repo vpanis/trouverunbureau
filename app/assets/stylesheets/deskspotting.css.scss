@@ -158,7 +158,13 @@ body{
     }
 
   }
-  #login-form{
+  .help{
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: $dark-gray;
+  }
+  #login-form, #sigunp-form, #reset-password-form{
     color: $dark-gray;
   }
   .rounded-button{
