@@ -32,7 +32,7 @@ class Venue < ActiveRecord::Base
   	# Validations
   	validates :town, :street, :postal_code, :email, :latitude, :longitude, 
   		:name, :description, :currency, :v_type, :vat_tax_rate, :owner,
-  		presence: true
+  		:rating, :quantity_reviews, :reviews_sum, presence: true
 
 	validates :email, format: { 
 		with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, 

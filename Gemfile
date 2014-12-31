@@ -98,6 +98,8 @@ group :test, :development do
 
   # Save and open page cucumber
   gem 'launchy'
+
+  gem 'shoulda-matchers'
 end
 
 group :production, :staging do
