@@ -8,5 +8,5 @@ class VenueWorker < ActiveRecord::Base
 
 	# Validations
 	validates :user, :venue, presence: true
-	validates :role, inclusion: { in: ROLES }
+	validates :role, inclusion: { in: ROLES.map(&:to_s) }
 end

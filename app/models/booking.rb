@@ -21,9 +21,9 @@ class Booking < ActiveRecord::Base
 		greater_than_or_equal_to: 1
 	}
 
-	validates :state, inclusion: { in: STATES }
+	validates :state, inclusion: { in: STATES.map(&:to_s) }
 
-	validates :b_type, inclusion: { in: TYPES }
+	validates :b_type, inclusion: { in: TYPES.map(&:to_s) }
 
 
 	private

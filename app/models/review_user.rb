@@ -5,8 +5,8 @@ class ReviewUser < ActiveRecord::Base
 
 	# Callbacks
 	before_validation :default_active, unless: :created_at
-	after_create :increase_ratings 
-	after_destroy :decrease_ratings
+	after_create :increase_ratings, if: :active
+	after_destroy :decrease_ratings, if: :active
 
 	# Validations
 	validates :user, :from_user, :stars, presence: true

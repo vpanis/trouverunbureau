@@ -11,7 +11,7 @@ class Space < ActiveRecord::Base
 	# Validations
 	validates :s_type, :name, :capacity, :quantity, :venue, presence: true
 
-	validates :s_type, inclusion: { in: TYPES }
+	validates :s_type, inclusion: { in: TYPES.map(&:to_s) }
 
 	validates :capacity, :quantity, numericality: { 
 		only_integer: true,

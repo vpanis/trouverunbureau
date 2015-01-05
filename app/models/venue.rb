@@ -59,11 +59,11 @@ class Venue < ActiveRecord::Base
 	}
 
 	validates :v_type, inclusion: {
-		in: TYPES
+		in: TYPES.map(&:to_s)
 	}
 
 	validates :space_unit, inclusion: {
-		in: SPACE_UNIT_TYPES
+		in: SPACE_UNIT_TYPES.map(&:to_s)
 	}
 
 	validates :day_hours, length: {
@@ -93,7 +93,7 @@ class Venue < ActiveRecord::Base
 	  	end
 
 	  	def each_amenity_inclusion
-			if (invalid_amenities = (amenities - AMENITY_TYPES))
+			if (invalid_amenities = (amenities - AMENITY_TYPES.map(&:to_s)))
 				invalid_amenities.each do |amenity|
 					errors.add(:amenity_list, amenity + " is not a valid amenity")
 				end

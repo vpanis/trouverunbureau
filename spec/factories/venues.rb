@@ -13,14 +13,14 @@ FactoryGirl.define do
     name { Faker::Name.name }
     description { Faker::Lorem.sentence }
     currency :ars
-    v_type { Venue::TYPES.sample }
+    v_type { Venue::TYPES.sample.to_s }
     space 1.5
-    space_unit { Venue::SPACE_UNIT_TYPES.sample }
+    space_unit { Venue::SPACE_UNIT_TYPES.sample.to_s }
     floors 1
     rooms 5
     desks 40
     vat_tax_rate 1.5
-    amenities { Venue::AMENITY_TYPES.sample(3) }
+    amenities { Venue::AMENITY_TYPES.sample(3).map(&:to_s) }
     
     owner { FactoryGirl.build(:user) }
 

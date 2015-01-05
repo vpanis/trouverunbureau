@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :venue_worker do
-    role :owner
+    role :owner.to_s
 
     user { FactoryGirl.build(:user) }
     venue { FactoryGirl.build(:venue) }
