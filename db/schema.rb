@@ -11,13 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150105130130) do
+ActiveRecord::Schema.define(version: 20150105171321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bookings", force: true do |t|
-    t.integer  "user_id"
     t.integer  "space_id"
     t.string   "state"
     t.datetime "from"
@@ -26,10 +25,32 @@ ActiveRecord::Schema.define(version: 20150105130130) do
     t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "owner_id"
+    t.string   "owner_type"
   end
 
+  add_index "bookings", ["owner_id", "owner_type"], name: "index_bookings_on_owner_id_and_owner_type", using: :btree
   add_index "bookings", ["space_id"], name: "index_bookings_on_space_id", using: :btree
-  add_index "bookings", ["user_id"], name: "index_bookings_on_user_id", using: :btree
+
+  create_table "organization_users", force: true do |t|
+    t.integer  "user_id"
+    t.string   "role"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "organization_id"
+  end
+
+  add_index "organization_users", ["user_id"], name: "index_organization_users_on_user_id", using: :btree
+
+  create_table "organizations", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "organizations", ["email"], name: "index_organizations_on_email", unique: true, using: :btree
 
   create_table "review_users", force: true do |t|
     t.integer  "user_id"
@@ -118,17 +139,6 @@ ActiveRecord::Schema.define(version: 20150105130130) do
   add_index "venue_photos", ["space_id"], name: "index_venue_photos_on_space_id", using: :btree
   add_index "venue_photos", ["venue_id"], name: "index_venue_photos_on_venue_id", using: :btree
 
-  create_table "venue_workers", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "venue_id"
-    t.string   "role"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "venue_workers", ["user_id"], name: "index_venue_workers_on_user_id", using: :btree
-  add_index "venue_workers", ["venue_id"], name: "index_venue_workers_on_venue_id", using: :btree
-
   create_table "venues", force: true do |t|
     t.string   "town"
     t.string   "street"
@@ -150,12 +160,15 @@ ActiveRecord::Schema.define(version: 20150105130130) do
     t.integer  "desks"
     t.float    "vat_tax_rate"
     t.text     "amenities",        default: [], array: true
-    t.integer  "owner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.decimal  "rating"
     t.integer  "quantity_reviews"
     t.integer  "reviews_sum"
+    t.integer  "owner_id"
+    t.string   "owner_type"
   end
+
+  add_index "venues", ["owner_id", "owner_type"], name: "index_venues_on_owner_id_and_owner_type", using: :btree
 
 end

@@ -4,11 +4,11 @@ RSpec.describe Booking, :type => :model do
 	subject { FactoryGirl.create(:booking) }
 
 	# Relations
-	it { should belong_to(:user) }
+	it { should belong_to(:owner) }
 	it { should belong_to(:space) }
 
 	# Presence
-	it { should validate_presence_of(:user) }
+	it { should validate_presence_of(:owner) }
 	it { should validate_presence_of(:space) }
 	it { should validate_presence_of(:b_type) }
 	it { should validate_presence_of(:quantity) }

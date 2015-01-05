@@ -8,7 +8,7 @@ FactoryGirl.define do
     b_type :hour.to_s
     quantity 1
 
-    user { FactoryGirl.build(:user) }
+    owner { FactoryGirl.build(:user) }
     space { FactoryGirl.build(:space) }    
   end
 end

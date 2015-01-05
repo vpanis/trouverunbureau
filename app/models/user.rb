@@ -1,15 +1,20 @@
 class User < ActiveRecord::Base
 	# Relations
-	# Needed to get the venues where this user has permissions but it isn't the owner
-	has_many :venue_workers
-	has_many :venues, through: :venue_workers
+	has_many :venues, as: :owner
+	# Organizations that the user have
+	has_many :organization_users
+
+	has_many :organizations, through: :organization_users
+	# All the venues of the different organizations that the user belongs
+	has_many :organization_venues, :through => :organizations, :source => :venues
+
+	has_many :bookings, as: :owner
 
 	has_many :users_favorites
 
 	# Favorited spaces
 	has_many :spaces, through: :users_favorites
 
-	has_many :bookings
 
 	# Callbacks
 	before_validation :default_rating_values, unless: :created_at

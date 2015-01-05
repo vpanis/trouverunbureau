@@ -1,6 +1,6 @@
 class Venue < ActiveRecord::Base
 	# Relations
-	belongs_to :owner, class_name: "User"
+	belongs_to :owner, polymorphic: true
 	
 	has_many :spaces, dependent: :destroy
 

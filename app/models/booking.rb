@@ -1,6 +1,6 @@
 class Booking < ActiveRecord::Base
 	# Relations
-	belongs_to :user
+	belongs_to :owner, polymorphic: true
 
 	belongs_to :space
 
@@ -14,7 +14,7 @@ class Booking < ActiveRecord::Base
   	before_validation :default_state
 
   	# Validations	
-  	validates :user, :space, :b_type, :quantity, :from, presence: true
+  	validates :owner, :space, :b_type, :quantity, :from, presence: true
 
   	validates :quantity, numericality: { 
 		only_integer: true,

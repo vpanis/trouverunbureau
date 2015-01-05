@@ -1,12 +1,12 @@
-class VenueWorker < ActiveRecord::Base
+class OrganizationUser < ActiveRecord::Base
 	# Relations
 	belongs_to :user
-	belongs_to :venue
+	belongs_to :organization
 
 	# Constants/Enums
 	ROLES = [:owner, :admin]
 
 	# Validations
-	validates :user, :venue, presence: true
+	validates :user, :organization, presence: true
 	validates :role, inclusion: { in: ROLES.map(&:to_s) }
 end
