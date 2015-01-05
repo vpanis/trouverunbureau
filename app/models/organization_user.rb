@@ -7,6 +7,6 @@ class OrganizationUser < ActiveRecord::Base
 	ROLES = [:owner, :admin]
 
 	# Validations
-	validates :user, :organization, presence: true
+	validates :user, :organization, :role, presence: true
 	validates :role, inclusion: { in: ROLES.map(&:to_s) }
 end
