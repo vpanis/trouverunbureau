@@ -14,7 +14,7 @@ class Booking < ActiveRecord::Base
   	before_validation :default_state
 
   	# Validations	
-  	validates :user, :space, :state, :b_type, :quantity, :from, presence: true
+  	validates :user, :space, :b_type, :quantity, :from, presence: true
 
   	validates :quantity, numericality: { 
 		only_integer: true,
@@ -28,7 +28,7 @@ class Booking < ActiveRecord::Base
 
 	private
 		def default_state
-			self.state = :pending_authorization if state.nil?
+			self.state = :pending_authorization.to_s if state.nil?
 		end
 
 end
