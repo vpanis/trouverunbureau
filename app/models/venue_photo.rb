@@ -1,6 +1,8 @@
 class VenuePhoto < ActiveRecord::Base
 	# Relations
 	belongs_to :venue
+	# Optional
+	belongs_to :space
 
 	mount_uploader :photo, PhotoUploader
 
