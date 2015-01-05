@@ -11,9 +11,22 @@ class ReviewUser < ActiveRecord::Base
 	# Validations
 	validates :user, :from_user, :stars, presence: true
 	validates :stars, numericality: {
+		only_integer: true,
 		greater_than_or_equal_to: 1,
 		less_than_or_equal_to: 5
 	}
+
+	def deactivate!
+		self.active = false
+		self.save
+		decrease_ratings
+	end
+
+	def activate!
+		self.active = true
+		self.save
+		increase_ratings
+	end
 
 	private
 		# starts active
@@ -24,14 +37,18 @@ class ReviewUser < ActiveRecord::Base
 		def increase_ratings
 			user.quantity_reviews = user.quantity_reviews + 1
 			user.reviews_sum = user.reviews_sum + stars
-			user.rating = user.reviews_sum / user.quantity_reviews
+			user.rating = user.reviews_sum / (user.quantity_reviews * 1.0)
 			user.save
 		end
 
 		def decrease_ratings
 			user.quantity_reviews = user.quantity_reviews - 1
 			user.reviews_sum = user.reviews_sum - stars
-			user.rating = user.reviews_sum / user.quantity_reviews
+			if user.quantity_reviews != 0
+				user.rating = user.reviews_sum / (user.quantity_reviews * 1.0)
+			else 
+				user.rating = 0
+			end
 			user.save
 		end
 end
