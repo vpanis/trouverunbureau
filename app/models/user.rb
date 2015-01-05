@@ -15,7 +15,9 @@ class User < ActiveRecord::Base
 	before_validation :default_rating_values, unless: :created_at
 
 	# Validations
-	validates :first_name, :email, presence: true
+	validates :first_name, :email, :quantity_reviews, :reviews_sum, :rating, 
+		presence: true
+	
 	validates :email, format: { 
 		with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, 
 		on: :create 
