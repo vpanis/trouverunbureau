@@ -1,14 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe ReviewUser, :type => :model do
-	subject { FactoryGirl.create(:review_user) }
+RSpec.describe ClientReview, :type => :model do
+	subject { FactoryGirl.create(:client_review) }
 
 	# Relations
-	it { should belong_to(:user) }
+	it { should belong_to(:client) }
 	it { should belong_to(:from_user) }
 
 	# Presence
-	it { should validate_presence_of(:user) }
+	it { should validate_presence_of(:client) }
 	it { should validate_presence_of(:from_user) }
 	it { should validate_presence_of(:stars) }
 
@@ -26,14 +26,14 @@ RSpec.describe ReviewUser, :type => :model do
 
 		it "increments the quantity when created" do
 			quantity_reviews = @user.quantity_reviews
-			r = FactoryGirl.create(:review_user, user: @user)
+			r = FactoryGirl.create(:client_review, client: @user)
 			@user.reload
 			expect(@user.quantity_reviews).to eq(quantity_reviews+1)
 		end
 
 		it "increments the sum when created" do
 			reviews_sum = @user.reviews_sum
-			r = FactoryGirl.create(:review_user, user: @user)
+			r = FactoryGirl.create(:client_review, client: @user)
 			@user.reload
 			expect(@user.reviews_sum).to eq(reviews_sum + r.stars)
 		end
@@ -41,7 +41,7 @@ RSpec.describe ReviewUser, :type => :model do
 		it "changes rating when created" do
 			quantity_reviews = @user.quantity_reviews
 			reviews_sum = @user.reviews_sum
-			r = FactoryGirl.create(:review_user, user: @user)
+			r = FactoryGirl.create(:client_review, client: @user)
 			@user.reload
 			expect(@user.rating).to eq((reviews_sum + r.stars) / ((quantity_reviews + 1) * 1.0))
 		end
@@ -49,7 +49,7 @@ RSpec.describe ReviewUser, :type => :model do
 		describe "deactivate an active review" do
 
 			before(:each) do
-				@review = FactoryGirl.create(:review_user, user: @user)
+				@review = FactoryGirl.create(:client_review, client: @user)
 				@user.reload
 			end
 

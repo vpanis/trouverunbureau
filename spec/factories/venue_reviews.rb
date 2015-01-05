@@ -1,12 +1,12 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :review_user do
+  factory :venue_review do
     message { Faker::Lorem.sentence }
     stars { rand(5) + 1 }
     active true
 
-    user { FactoryGirl.build(:user) }
+    venue { FactoryGirl.build(:venue) }
     from_user { FactoryGirl.build(:user) }
   end
 end

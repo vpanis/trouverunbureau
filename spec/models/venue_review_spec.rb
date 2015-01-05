@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe ReviewVenue, :type => :model do
-	subject { FactoryGirl.create(:review_venue) }
+RSpec.describe VenueReview, :type => :model do
+	subject { FactoryGirl.create(:venue_review) }
 
 	# Relations
 	it { should belong_to(:venue) }
@@ -26,14 +26,14 @@ RSpec.describe ReviewVenue, :type => :model do
 
 		it "increments the quantity when created" do
 			quantity_reviews = @venue.quantity_reviews
-			r = FactoryGirl.create(:review_venue, venue: @venue)
+			r = FactoryGirl.create(:venue_review, venue: @venue)
 			@venue.reload
 			expect(@venue.quantity_reviews).to eq(quantity_reviews+1)
 		end
 
 		it "increments the sum when created" do
 			reviews_sum = @venue.reviews_sum
-			r = FactoryGirl.create(:review_venue, venue: @venue)
+			r = FactoryGirl.create(:venue_review, venue: @venue)
 			@venue.reload
 			expect(@venue.reviews_sum).to eq(reviews_sum + r.stars)
 		end
@@ -41,7 +41,7 @@ RSpec.describe ReviewVenue, :type => :model do
 		it "changes rating when created" do
 			quantity_reviews = @venue.quantity_reviews
 			reviews_sum = @venue.reviews_sum
-			r = FactoryGirl.create(:review_venue, venue: @venue)
+			r = FactoryGirl.create(:venue_review, venue: @venue)
 			@venue.reload
 			expect(@venue.rating).to eq((reviews_sum + r.stars) / ((quantity_reviews + 1) * 1.0))
 		end
@@ -49,7 +49,7 @@ RSpec.describe ReviewVenue, :type => :model do
 		describe "deactivate an active review" do
 
 			before(:each) do
-				@review = FactoryGirl.create(:review_venue, venue: @venue)
+				@review = FactoryGirl.create(:venue_review, venue: @venue)
 				@venue.reload
 			end
 

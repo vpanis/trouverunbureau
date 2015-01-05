@@ -1,6 +1,6 @@
-class ReviewUser < ActiveRecord::Base
+class VenueReview < ActiveRecord::Base
 	# Relations
-	belongs_to :user
+	belongs_to :venue
 	belongs_to :from_user, class_name: "User"
 
 	# Callbacks
@@ -9,12 +9,12 @@ class ReviewUser < ActiveRecord::Base
 	after_destroy :decrease_ratings, if: :active
 
 	# Validations
-	validates :user, :from_user, :stars, presence: true
+	validates :venue, :from_user, :stars, presence: true
 	validates :stars, numericality: {
 		only_integer: true,
 		greater_than_or_equal_to: 1,
 		less_than_or_equal_to: 5
-	}
+	}	
 
 	def deactivate!
 		self.active = false
@@ -35,20 +35,20 @@ class ReviewUser < ActiveRecord::Base
 		end
 
 		def increase_ratings
-			user.quantity_reviews = user.quantity_reviews + 1
-			user.reviews_sum = user.reviews_sum + stars
-			user.rating = user.reviews_sum / (user.quantity_reviews * 1.0)
-			user.save
+			venue.quantity_reviews = venue.quantity_reviews + 1
+			venue.reviews_sum = venue.reviews_sum + stars
+			venue.rating = venue.reviews_sum / (venue.quantity_reviews * 1.0)
+			venue.save
 		end
 
 		def decrease_ratings
-			user.quantity_reviews = user.quantity_reviews - 1
-			user.reviews_sum = user.reviews_sum - stars
-			if user.quantity_reviews != 0
-				user.rating = user.reviews_sum / (user.quantity_reviews * 1.0)
+			venue.quantity_reviews = venue.quantity_reviews - 1
+			venue.reviews_sum = venue.reviews_sum - stars
+			if venue.quantity_reviews != 0
+				venue.rating = venue.reviews_sum / (venue.quantity_reviews * 1.0)
 			else 
-				user.rating = 0
+				venue.rating = 0
 			end
-			user.save
+			venue.save
 		end
 end
