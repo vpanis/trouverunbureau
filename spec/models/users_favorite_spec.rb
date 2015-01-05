@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe UsersFavorite, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+	subject { FactoryGirl.create(:users_favorite) }
+
+	# Relations
+	it { should belong_to(:user) }
+	it { should belong_to(:space) }
 end
