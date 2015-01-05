@@ -32,8 +32,8 @@ RSpec.describe Venue, :type => :model do
 	it { should_not validate_presence_of(:desks) }
 
 	# Inclusion
-	it { should validate_inclusion_of(:v_type).in_array(Venue::TYPES) }
-	it { should validate_inclusion_of(:space_unit).in_array(Venue::SPACE_UNIT_TYPES) }
+	it { should validate_inclusion_of(:v_type).in_array(Venue::TYPES.map(&:to_s)) }
+	it { should validate_inclusion_of(:space_unit).in_array(Venue::SPACE_UNIT_TYPES.map(&:to_s)) }
 
 	# Numericality
 	it { should validate_numericality_of(:rating).
@@ -59,4 +59,10 @@ RSpec.describe Venue, :type => :model do
 		only_integer.is_greater_than_or_equal_to(0) }
 	it { should validate_numericality_of(:reviews_sum).
 		only_integer.is_greater_than_or_equal_to(0) }
+
+	it "shouldn't accept invalid amenities" do
+		venue = FactoryGirl.create(:venue)
+		venue.amenities = ["not_existing_amenity"]
+		should venue.valid? be false
+	end
 end
