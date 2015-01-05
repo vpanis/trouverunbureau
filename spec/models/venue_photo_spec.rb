@@ -1,5 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe VenuePhoto, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+	subject { FactoryGirl.create(:venue_photo) }
+
+	# Relations
+	it { should belong_to(:venue) }
+	it { should belong_to(:space) }
+
+	# Presence
+	it { should validate_presence_of(:venue) }
 end

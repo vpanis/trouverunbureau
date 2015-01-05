@@ -21,7 +21,8 @@ FactoryGirl.define do
     desks 40
     vat_tax_rate 1.5
     amenities { Venue::AMENITY_TYPES.sample(3).map(&:to_s) }
-    
+    logo Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/dropkick.png')))
+
     owner { FactoryGirl.build(:user) }
 
     trait :with_spaces do

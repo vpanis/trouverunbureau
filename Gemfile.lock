@@ -248,6 +248,7 @@ GEM
     ref (1.0.5)
     responders (1.0.0)
       railties (>= 3.2, < 5)
+    rmagick (2.13.4)
     rspec-core (3.1.4)
       rspec-support (~> 3.1.0)
     rspec-expectations (3.1.1)
@@ -381,6 +382,7 @@ DEPENDENCIES
   rails (= 4.1.8)
   rails_12factor
   ransack
+  rmagick
   rspec-rails
   rubocop
   sass-rails

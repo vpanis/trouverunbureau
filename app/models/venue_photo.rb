@@ -14,6 +14,6 @@ class VenuePhoto < ActiveRecord::Base
 
 	private
   		def erase_photo
-  			self.remove_photo!
+  			self.remove_photo! if photo
   		end
 end

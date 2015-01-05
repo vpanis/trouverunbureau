@@ -37,6 +37,8 @@ gem 'inherited_resources'
 
 gem 'carrierwave'
 
+gem 'rmagick'
+
 gem 'turbolinks'
 
 gem 'jquery-turbolinks'
