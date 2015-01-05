@@ -4,9 +4,6 @@ class Venue < ActiveRecord::Base
 	
 	has_many :spaces, dependent: :destroy
 
-	has_many :venue_workers, dependent: :destroy
-	has_many :users, through: :venue_workers
-
 	has_many :day_hours, class_name: "VenueHour", dependent: :destroy
 
 	has_many :photos, class_name: "VenuePhoto", dependent: :destroy
@@ -26,7 +23,6 @@ class Venue < ActiveRecord::Base
 
 	# Callbacks
 	before_validation :default_rating_values, unless: :created_at
-	after_create :add_owner_to_venue_workers
   	before_destroy :erase_logo
 
   	# Validations
@@ -82,10 +78,6 @@ class Venue < ActiveRecord::Base
 			self.quantity_reviews ||= 0
 			self.reviews_sum ||= 0
 			self.rating ||= 0
-		end
-
-		def add_owner_to_venue_workers
-			self.venue_workers.create(user: owner, role: :owner)
 		end
 	
 	  	def erase_logo

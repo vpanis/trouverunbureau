@@ -11,9 +11,22 @@ class ReviewVenue < ActiveRecord::Base
 	# Validations
 	validates :venue, :from_user, :stars, presence: true
 	validates :stars, numericality: {
+		only_integer: true,
 		greater_than_or_equal_to: 1,
 		less_than_or_equal_to: 5
 	}	
+
+	def deactivate!
+		self.active = false
+		self.save
+		decrease_ratings
+	end
+
+	def activate!
+		self.active = true
+		self.save
+		increase_ratings
+	end
 
 	private
 		# starts active
@@ -24,14 +37,18 @@ class ReviewVenue < ActiveRecord::Base
 		def increase_ratings
 			venue.quantity_reviews = venue.quantity_reviews + 1
 			venue.reviews_sum = venue.reviews_sum + stars
-			venue.rating = venue.reviews_sum / venue.quantity_reviews
+			venue.rating = venue.reviews_sum / (venue.quantity_reviews * 1.0)
 			venue.save
 		end
 
 		def decrease_ratings
 			venue.quantity_reviews = venue.quantity_reviews - 1
 			venue.reviews_sum = venue.reviews_sum - stars
-			venue.rating = venue.reviews_sum / venue.quantity_reviews
+			if venue.quantity_reviews != 0
+				venue.rating = venue.reviews_sum / (venue.quantity_reviews * 1.0)
+			else 
+				venue.rating = 0
+			end
 			venue.save
 		end
 end
