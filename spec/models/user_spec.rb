@@ -5,6 +5,8 @@ RSpec.describe User, :type => :model do
 
 	# Relations
 	it { should have_many(:venues) }
+	it { should have_many(:organizations) }
+	it { should have_many(:organization_venues) }
 	it { should have_many(:spaces) }
 	it { should have_many(:bookings) }
 
