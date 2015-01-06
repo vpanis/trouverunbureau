@@ -9,6 +9,6 @@ FactoryGirl.define do
     quantity 1
 
     owner { FactoryGirl.build(:user) }
-    space { FactoryGirl.build(:space) }    
+    space { FactoryGirl.build(:space) }
   end
 end

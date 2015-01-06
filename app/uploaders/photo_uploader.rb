@@ -2,7 +2,7 @@
 
 class PhotoUploader < BaseUploader
   # Process files as they are uploaded:
-  process :resize_to_fit => [400, 500]
+  process resize_to_fit: [400, 500]
   #
   # def scale(width, height)
   #   # do something
