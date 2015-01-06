@@ -4,7 +4,7 @@ class VenueReview < ActiveRecord::Base
   belongs_to :from_user, class_name: 'User'
 
   # Callbacks
-  before_validation :default_active, unless: :created_at
+  after_initialize :initialize_fields
   after_create :increase_ratings, if: :active
   after_destroy :decrease_ratings, if: :active
 
@@ -31,7 +31,7 @@ class VenueReview < ActiveRecord::Base
   private
 
   # starts active
-  def default_active
+  def initialize_fields
     self.active ||= true
   end
 

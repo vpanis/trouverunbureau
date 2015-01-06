@@ -9,15 +9,14 @@ class Organization < ActiveRecord::Base
   has_many :bookings, as: :owner
 
   # Callbacks
-  before_validation :default_rating_values, unless: :created_at
+  after_initialize :initialize_fields
   after_create :assign_user
 
   # Validations
   # Only for the creation stage, it needs a user
   validate :require_user, unless: :created_at
 
-  validates :name, :email, :phone, :quantity_reviews, :reviews_sum, :rating,
-            presence: true
+  validates :name, :email, :phone, presence: true
 
   validates :email, format: {
     with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,
@@ -36,7 +35,7 @@ class Organization < ActiveRecord::Base
 
   private
 
-  def default_rating_values
+  def initialize_fields
     self.quantity_reviews ||= 0
     self.reviews_sum ||= 0
     self.rating ||= 0
@@ -62,9 +61,9 @@ class Organization < ActiveRecord::Base
 
   def assign_user
     if !user.nil?
-      organization_users.create(user_id: user.id, role: 'owner')
+      organization_users.create(user_id: user.id, role: OrganizationUser.roles[:owner])
     elsif !user_id.nil?
-      organization_users.create(user_id: user_id, role: 'owner')
+      organization_users.create(user_id: user_id, role: OrganizationUser.roles[:owner])
     end
   end
 end

@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :space do
-    s_type :desk.to_s
+    s_type Space.s_types[:desk]
     name { Faker::Lorem.word }
     capacity 1
     quantity 4

@@ -13,9 +13,9 @@ FactoryGirl.define do
     name { Faker::Name.name }
     description { Faker::Lorem.sentence }
     currency :ars
-    v_type { Venue::TYPES.sample.to_s }
+    v_type { Venue.v_types.values.sample }
     space 1.5
-    space_unit { Venue::SPACE_UNIT_TYPES.sample.to_s }
+    space_unit { Venue.space_units.values.sample }
     floors 1
     rooms 5
     desks 40

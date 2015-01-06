@@ -13,6 +13,4 @@ class VenueHour < ActiveRecord::Base
     less_than: 7
   }
 
-  # Only one row for an specific day and venue
-  validates :venue_id, uniqueness: { scope: :weekday }
 end

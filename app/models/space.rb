@@ -6,12 +6,10 @@ class Space < ActiveRecord::Base
   has_one :photo, class_name: 'VenuePhoto'
 
   # Constants/Enums
-  TYPES = [:conference_room, :meeting_room, :office, :desk]
+  enum s_type: [:conference_room, :meeting_room, :office, :desk]
 
   # Validations
   validates :s_type, :name, :capacity, :quantity, :venue, presence: true
-
-  validates :s_type, inclusion: { in: TYPES.map(&:to_s) }
 
   validates :capacity, :quantity, numericality: {
     only_integer: true,

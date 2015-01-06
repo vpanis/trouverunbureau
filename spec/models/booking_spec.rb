@@ -14,9 +14,9 @@ RSpec.describe Booking, type: :model do
   it { should validate_presence_of(:quantity) }
   it { should validate_presence_of(:from) }
 
-  # Inclusion
-  it { should validate_inclusion_of(:b_type).in_array(Booking::TYPES.map(&:to_s)) }
-  it { should validate_inclusion_of(:state).in_array(Booking::STATES.map(&:to_s)) }
+  # Enums
+  it { should define_enum_for(:b_types) }
+  it { should define_enum_for(:states) }
 
   # Numericality
   it do

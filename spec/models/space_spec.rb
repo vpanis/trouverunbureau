@@ -15,8 +15,8 @@ RSpec.describe Space, type: :model do
   it { should validate_presence_of(:quantity) }
   it { should validate_presence_of(:venue) }
 
-  # Inclusion
-  it { should validate_inclusion_of(:s_type).in_array(Space::TYPES.map(&:to_s)) }
+  # Enums
+  it { should define_enum_for(:s_types) }
 
   # Numericality
   it do

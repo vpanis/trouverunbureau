@@ -19,11 +19,4 @@ RSpec.describe VenueHour, type: :model do
     .is_less_than(7)
     .is_greater_than_or_equal_to(0)
   end
-
-  it 'should raise exception for repeated days for the same venue' do
-    venue_hours = FactoryGirl.create(:venue_hour)
-    expect do
-      FactoryGirl.create(:venue_hour, venue: venue_hours.venue, weekday: venue_hours.weekday)
-    end.to raise_exception
-  end
 end

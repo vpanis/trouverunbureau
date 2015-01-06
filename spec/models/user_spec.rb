@@ -13,9 +13,6 @@ RSpec.describe User, type: :model do
   # Presence
   it { should validate_presence_of(:first_name) }
   it { should validate_presence_of(:email) }
-  it { should validate_presence_of(:rating) }
-  it { should validate_presence_of(:quantity_reviews) }
-  it { should validate_presence_of(:reviews_sum) }
 
   # Numericality
   it do

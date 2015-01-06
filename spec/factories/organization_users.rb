@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :organization_user do
-    role :owner.to_s
+    role OrganizationUser.roles[:owner]
 
     user { FactoryGirl.build(:user) }
     organization { FactoryGirl.build(:organization) }

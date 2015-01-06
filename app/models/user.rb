@@ -16,11 +16,10 @@ class User < ActiveRecord::Base
   has_many :spaces, through: :users_favorites
 
   # Callbacks
-  before_validation :default_rating_values, unless: :created_at
+  after_initialize :initialize_fields
 
   # Validations
-  validates :first_name, :email, :quantity_reviews, :reviews_sum, :rating,
-            presence: true
+  validates :first_name, :email, presence: true
 
   validates :email, format: {
     with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,
@@ -41,7 +40,7 @@ class User < ActiveRecord::Base
 
   private
 
-  def default_rating_values
+  def initialize_fields
     self.quantity_reviews ||= 0
     self.reviews_sum ||= 0
     self.rating ||= 0

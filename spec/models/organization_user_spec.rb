@@ -11,4 +11,7 @@ RSpec.describe OrganizationUser, type: :model do
   it { should validate_presence_of(:user) }
   it { should validate_presence_of(:organization) }
   it { should validate_presence_of(:role) }
+
+  # Enums
+  it { should define_enum_for(:roles) }
 end

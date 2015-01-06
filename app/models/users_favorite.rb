@@ -5,4 +5,5 @@ class UsersFavorite < ActiveRecord::Base
 
   # Validations
   validates :user, :space, presence: true
+  validates :space, uniqueness: { scope: :user }
 end

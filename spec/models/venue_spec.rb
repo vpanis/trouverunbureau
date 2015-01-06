@@ -24,17 +24,13 @@ RSpec.describe Venue, type: :model do
   it { should validate_presence_of(:vat_tax_rate) }
   it { should validate_presence_of(:owner) }
 
-  it { should validate_presence_of(:rating) }
-  it { should validate_presence_of(:quantity_reviews) }
-  it { should validate_presence_of(:reviews_sum) }
-
   it { should_not validate_presence_of(:floors) }
   it { should_not validate_presence_of(:rooms) }
   it { should_not validate_presence_of(:desks) }
 
-  # Inclusion
-  it { should validate_inclusion_of(:v_type).in_array(Venue::TYPES.map(&:to_s)) }
-  it { should validate_inclusion_of(:space_unit).in_array(Venue::SPACE_UNIT_TYPES.map(&:to_s)) }
+  # Enums
+  it { should define_enum_for(:v_types) }
+  it { should define_enum_for(:space_units) }
 
   # Numericality
   it do

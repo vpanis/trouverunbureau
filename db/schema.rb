@@ -11,17 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150105194503) do
+ActiveRecord::Schema.define(version: 20150106230051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bookings", force: true do |t|
     t.integer  "space_id"
-    t.string   "state"
+    t.integer  "state"
     t.datetime "from"
     t.datetime "to"
-    t.string   "b_type"
+    t.integer  "b_type"
     t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20150105194503) do
 
   create_table "organization_users", force: true do |t|
     t.integer  "user_id"
-    t.string   "role"
+    t.integer  "role"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "organization_id"
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20150105194503) do
   add_index "organizations", ["email"], name: "index_organizations_on_email", unique: true, using: :btree
 
   create_table "spaces", force: true do |t|
-    t.string   "s_type"
+    t.integer  "s_type"
     t.string   "name"
     t.integer  "capacity"
     t.integer  "quantity"
@@ -156,9 +156,9 @@ ActiveRecord::Schema.define(version: 20150105194503) do
     t.text     "description"
     t.string   "currency"
     t.string   "logo"
-    t.string   "v_type"
+    t.integer  "v_type"
     t.float    "space"
-    t.string   "space_unit"
+    t.integer  "space_unit"
     t.integer  "floors"
     t.integer  "rooms"
     t.integer  "desks"
