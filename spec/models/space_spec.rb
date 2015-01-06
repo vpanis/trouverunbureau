@@ -21,12 +21,12 @@ RSpec.describe Space, type: :model do
   # Numericality
   it do
     should validate_numericality_of(:capacity)
-    only_integer.is_greater_than_or_equal_to(0)
+    .only_integer.is_greater_than_or_equal_to(0)
   end
 
   it do
     should validate_numericality_of(:quantity)
-    only_integer.is_greater_than_or_equal_to(0)
+    .only_integer.is_greater_than_or_equal_to(0)
   end
 
 end

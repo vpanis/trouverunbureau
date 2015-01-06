@@ -15,9 +15,9 @@ RSpec.describe ClientReview, type: :model do
   # Numericality
   it do
     should validate_numericality_of(:stars)
-    only_integer
-    is_less_than_or_equal_to(5)
-    is_greater_than_or_equal_to(1)
+    .only_integer
+    .is_less_than_or_equal_to(5)
+    .is_greater_than_or_equal_to(1)
   end
 
   describe 'the user\'s review changes' do
