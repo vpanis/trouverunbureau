@@ -37,6 +37,8 @@ gem 'inherited_resources'
 
 gem 'carrierwave'
 
+gem 'rmagick'
+
 gem 'turbolinks'
 
 gem 'jquery-turbolinks'
@@ -98,6 +100,8 @@ group :test, :development do
 
   # Save and open page cucumber
   gem 'launchy'
+
+  gem 'shoulda-matchers'
 end
 
 group :production, :staging do
