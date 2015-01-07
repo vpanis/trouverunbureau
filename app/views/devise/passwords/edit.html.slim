@@ -1,0 +1,22 @@
+div.section-header
+  h2
+    span #{t('session.change_your_password')}
+div
+  .fb-login-button
+    a href='#'
+      p.fb-button-text #{t('session.fb_login')}
+  .section-separator
+    .separator-text
+      p.uppercase #{t('session.or')}
+  #reset-password-form
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+      = f.hidden_field :reset_password_token
+      .form-group
+        label #{t('session.password')}
+        = f.password_field :password, autofocus: true, class: 'form-control'
+      .form-group
+        label #{t('session.password_confirmation')}
+        = f.password_field :password_confirmation, class: 'form-control'
+      -if flash[:alert].present?
+        span.field-error-message #{flash[:alert]}
+      = f.submit t('session.change_password'), id: 'reset-password-form-submit', class: 'rounded-button'
