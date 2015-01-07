@@ -267,3 +267,6 @@ input[type="checkbox"]:checked:after {
   font-size: 0.5em;
 }
 
+.field-error-message {
+  color: $red;  
+}

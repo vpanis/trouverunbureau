@@ -58,5 +58,11 @@ module Deskspotting
 
     # For Heroku deployments
     config.assets.initialize_on_precompile = true
+
+    config.to_prepare do
+      Devise::SessionsController.layout "session"
+      Devise::RegistrationsController.layout "session"
+      Devise::PasswordsController.layout "session"
+    end
   end
 end

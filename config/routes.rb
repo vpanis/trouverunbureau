@@ -1,11 +1,5 @@
 Deskspotting::Application.routes.draw do
-  resources :session, only: [] do
-    collection do
-      get :login
-      get :signup
-      get :reset_password
-    end
+  devise_for :users
 
-  end
-
+  root to: "home#index"
 end
