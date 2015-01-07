@@ -5,8 +5,8 @@ class ClientReview < ActiveRecord::Base
 
   # Callbacks
   before_validation :default_active, unless: :created_at
-  after_create :increase_ratings, if: :active
-  after_destroy :decrease_ratings, if: :active
+  after_create :update_ratings, if: :active
+  after_destroy :update_ratings, if: :active
 
   # Validations
   validates :client, :from_user, :stars, presence: true
@@ -19,13 +19,13 @@ class ClientReview < ActiveRecord::Base
   def deactivate!
     self.active = false
     save
-    decrease_ratings
+    update_ratings
   end
 
   def activate!
     self.active = true
     save
-    increase_ratings
+    update_ratings
   end
 
   private
@@ -35,16 +35,9 @@ class ClientReview < ActiveRecord::Base
     self.active ||= true
   end
 
-  def increase_ratings
-    client.quantity_reviews = client.quantity_reviews + 1
-    client.reviews_sum = client.reviews_sum + stars
-    client.rating = client.reviews_sum / (client.quantity_reviews * 1.0)
-    client.save
-  end
-
-  def decrease_ratings
-    client.quantity_reviews = client.quantity_reviews - 1
-    client.reviews_sum = client.reviews_sum - stars
+  def update_ratings
+    client.quantity_reviews = ClientReview.where(client_id: client.id).where(active: true).size
+    client.reviews_sum = ClientReview.where(client_id: client.id).where(active: true).sum(:stars)
     if client.quantity_reviews != 0
       client.rating = client.reviews_sum / (client.quantity_reviews * 1.0)
     else

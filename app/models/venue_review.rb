@@ -5,8 +5,8 @@ class VenueReview < ActiveRecord::Base
 
   # Callbacks
   after_initialize :initialize_fields
-  after_create :increase_ratings, if: :active
-  after_destroy :decrease_ratings, if: :active
+  after_create :update_ratings, if: :active
+  after_destroy :update_ratings, if: :active
 
   # Validations
   validates :venue, :from_user, :stars, presence: true
@@ -19,13 +19,13 @@ class VenueReview < ActiveRecord::Base
   def deactivate!
     self.active = false
     save
-    decrease_ratings
+    update_ratings
   end
 
   def activate!
     self.active = true
     save
-    increase_ratings
+    update_ratings
   end
 
   private
@@ -35,16 +35,9 @@ class VenueReview < ActiveRecord::Base
     self.active ||= true
   end
 
-  def increase_ratings
-    venue.quantity_reviews = venue.quantity_reviews + 1
-    venue.reviews_sum = venue.reviews_sum + stars
-    venue.rating = venue.reviews_sum / (venue.quantity_reviews * 1.0)
-    venue.save
-  end
-
-  def decrease_ratings
-    venue.quantity_reviews = venue.quantity_reviews - 1
-    venue.reviews_sum = venue.reviews_sum - stars
+  def update_ratings
+    venue.quantity_reviews = VenueReview.where(venue_id: venue.id).where(active: true).size
+    venue.reviews_sum = VenueReview.where(venue_id: venue.id).where(active: true).sum(:stars)
     if venue.quantity_reviews != 0
       venue.rating = venue.reviews_sum / (venue.quantity_reviews * 1.0)
     else
