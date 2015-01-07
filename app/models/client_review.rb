@@ -4,7 +4,7 @@ class ClientReview < ActiveRecord::Base
   belongs_to :from_user, class_name: 'User'
 
   # Callbacks
-  before_validation :default_active, unless: :created_at
+  after_initialize :initialize_fields
   after_create :update_ratings, if: :active
   after_destroy :update_ratings, if: :active
 
@@ -31,13 +31,13 @@ class ClientReview < ActiveRecord::Base
   private
 
   # starts active
-  def default_active
+  def initialize_fields
     self.active ||= true
   end
 
   def update_ratings
-    client.quantity_reviews = ClientReview.where(client_id: client.id).where(active: true).size
-    client.reviews_sum = ClientReview.where(client_id: client.id).where(active: true).sum(:stars)
+    client.quantity_reviews = ClientReview.where(client_id: client.id, active: true).size
+    client.reviews_sum = ClientReview.where(client_id: client.id, active: true).sum(:stars)
     if client.quantity_reviews != 0
       client.rating = client.reviews_sum / (client.quantity_reviews * 1.0)
     else

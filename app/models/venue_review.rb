@@ -36,8 +36,8 @@ class VenueReview < ActiveRecord::Base
   end
 
   def update_ratings
-    venue.quantity_reviews = VenueReview.where(venue_id: venue.id).where(active: true).size
-    venue.reviews_sum = VenueReview.where(venue_id: venue.id).where(active: true).sum(:stars)
+    venue.quantity_reviews = VenueReview.where(venue_id: venue.id, active: true).size
+    venue.reviews_sum = VenueReview.where(venue_id: venue.id, active: true).sum(:stars)
     if venue.quantity_reviews != 0
       venue.rating = venue.reviews_sum / (venue.quantity_reviews * 1.0)
     else

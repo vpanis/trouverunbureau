@@ -50,9 +50,9 @@ class Organization < ActiveRecord::Base
   end
 
   def user_exists?
-    if !user.nil?
+    if user.present?
       User.find(user.id)
-    elsif !user_id.nil?
+    elsif user_id.present?
       User.find(user_id)
     end
   rescue
@@ -60,9 +60,9 @@ class Organization < ActiveRecord::Base
   end
 
   def assign_user
-    if !user.nil?
+    if user.present?
       organization_users.create(user_id: user.id, role: OrganizationUser.roles[:owner])
-    elsif !user_id.nil?
+    elsif user_id.present?
       organization_users.create(user_id: user_id, role: OrganizationUser.roles[:owner])
     end
   end
