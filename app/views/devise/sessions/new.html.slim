@@ -24,7 +24,7 @@ div
         = link_to new_password_path(resource_name)
           p.small-italic #{t('session.forgot_password')}
       = f.submit t('session.login'), id: 'login-form-submit', class: 'rounded-button'
-      -if flash[:alert].present?
+      -if flash[:alert].present? && flash[:message_type] == :invalid
         span.field-error-message #{flash[:alert]}
   div.form-footer
     div.left

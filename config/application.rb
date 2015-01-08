@@ -59,6 +59,7 @@ module Deskspotting
     # For Heroku deployments
     config.assets.initialize_on_precompile = true
 
+    config.autoload_paths += %W(#{config.root}/lib)
     config.to_prepare do
       Devise::SessionsController.layout "session"
       Devise::RegistrationsController.layout "session"
