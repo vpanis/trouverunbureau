@@ -6,6 +6,7 @@ FactoryGirl.define do
     last_name { Faker::Name.last_name }
     email { Faker::Internet.safe_email }
     phone { Faker::PhoneNumber.phone_number }
+    password { Faker::Internet.password }
     language :en
 
     trait :with_venues do

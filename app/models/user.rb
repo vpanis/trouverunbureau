@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   after_initialize :initialize_fields
 
   # Validations
-  validates :first_name, :email, presence: true
+  validates :first_name, :email, :password, presence: true
 
   validates :email, format: {
     with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,
