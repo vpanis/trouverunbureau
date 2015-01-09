@@ -31,11 +31,13 @@ Deskspotting::Application.configure do
   config.action_mailer.perform_deliveries = true # Set it to false to disable the email in dev mode
   config.action_mailer.delivery_method = :smtp
 
+  mail = AppConfiguration.for(:mail)
+
   ActionMailer::Base.smtp_settings = {
-    :address        => "smtp.gmail.com",
+    :address        => mail.smtp_address,
     :port           => 587,
     :authentication => :plain,
-    :user_name      => ENV["DESKSPOTTING_EMAIL"],
-    :password       => ENV["DESKSPOTTING_EMAIL_PASSWORD"]
+    :user_name      => mail.sender,
+    :password       => mail.password
   }
 end
