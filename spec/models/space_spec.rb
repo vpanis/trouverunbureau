@@ -29,4 +29,33 @@ RSpec.describe Space, type: :model do
     .only_integer.is_greater_than_or_equal_to(0)
   end
 
+  it do
+    should validate_numericality_of(:hour_price)
+    .is_greater_than(0).allow_nil
+  end
+
+  it do
+    should validate_numericality_of(:day_price)
+    .is_greater_than(0).allow_nil
+  end
+
+  it do
+    should validate_numericality_of(:week_price)
+    .is_greater_than(0).allow_nil
+  end
+
+  it do
+    should validate_numericality_of(:month_price)
+    .is_greater_than(0).allow_nil
+  end
+
+  it 'should have at least one price' do
+    space = FactoryGirl.build(:space,
+                              hour_price: nil,
+                              day_price: nil,
+                              week_price: nil,
+                              month_price: nil)
+    should space.valid? be false
+  end
+
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150108174607) do
+ActiveRecord::Schema.define(version: 20150109210136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,10 @@ ActiveRecord::Schema.define(version: 20150108174607) do
     t.integer  "venue_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "hour_price"
+    t.float    "day_price"
+    t.float    "week_price"
+    t.float    "month_price"
   end
 
   add_index "spaces", ["venue_id"], name: "index_spaces_on_venue_id", using: :btree

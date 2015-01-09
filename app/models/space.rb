@@ -15,4 +15,19 @@ class Space < ActiveRecord::Base
     only_integer: true,
     greater_than_or_equal_to: 0
   }
+
+  validates :hour_price, :day_price, :week_price, :month_price, numericality: {
+    greater_than: 0
+  }, allow_nil: true
+
+  validate :at_least_one_price
+
+  private
+
+  def at_least_one_price
+    return unless hour_price.present? ||
+      day_price.present? || week_price.present? || month_price.present?
+    errors.add(:price, 'Needs at least one price')
+  end
+
 end
