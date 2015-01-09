@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :omniauthable,
+         :recoverable, :rememberable, :trackable, :validatable,
+         omniauth_providers: [:facebook]
   # Relations
   has_many :venues, as: :owner
   # Organizations that the user have
@@ -41,6 +42,26 @@ class User < ActiveRecord::Base
     greater_than_or_equal_to: 0,
     less_than_or_equal_to: 5
   }
+
+  class << self
+    
+    def from_omniauth(auth)
+      
+      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+        user.email = auth.info.email
+        user.password = Devise.friendly_token[0,20]
+        user.first_name = auth.info.first_name
+        user.last_name = auth.info.last_name
+      end
+    
+    end
+  end
+
+  def name
+    name = first_name
+    name = name + ' ' + last_name if last_name.present?
+    name
+  end
 
   private
 

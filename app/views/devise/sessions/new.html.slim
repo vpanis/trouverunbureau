@@ -3,7 +3,7 @@ div.section-header
     span #{t('session.login')}
 div
   .fb-login-button
-    a href='#'
+    = link_to user_omniauth_authorize_path(:facebook)
       p.fb-button-text #{t('session.fb_login')}
   .section-separator
     .separator-text

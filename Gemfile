@@ -44,6 +44,7 @@ gem 'turbolinks'
 gem 'jquery-turbolinks'
 
 gem 'devise'
+gem 'omniauth-facebook'
 
 # CodeClimate Reporter
 gem 'codeclimate-test-reporter', group: :test, require: nil
