@@ -30,12 +30,6 @@ div
         = f.password_field :password, class: 'form-control'
         -if resource.errors.present? && resource.errors[:password].present?
           span.field-error-message #{t('session.password')} #{resource.errors[:password][0]}
-      /.form-group
-        label #{t('session.user_type')}
-        select class="form-control"
-          option #{t('session.user_type_1')}
-          option #{t('session.user_type_2')}
-          option #{t('session.user_type_3')}
       div.left
         p
           = check_box_tag :remember_me
