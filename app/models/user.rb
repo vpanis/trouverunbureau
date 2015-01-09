@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
   # Relations
   has_many :venues, as: :owner
   # Organizations that the user have
@@ -19,7 +23,7 @@ class User < ActiveRecord::Base
   after_initialize :initialize_fields
 
   # Validations
-  validates :first_name, :email, presence: true
+  validates :first_name, :email, :password, presence: true
 
   validates :email, format: {
     with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,

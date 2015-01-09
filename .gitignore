@@ -27,6 +27,7 @@ coverage/*
 
 # Configuration
 .security.yml
+.mail.yml
 
 # Vagrant
 .vagrant/

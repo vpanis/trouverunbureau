@@ -9,26 +9,28 @@ div
     .separator-text
       p.uppercase #{t('session.or')}
   #login-form
-    = form_tag
+    = form_for resource, as: resource_name, url: session_path(resource_name) do |f|
       .form-group
         label #{t('session.email')}
-        = text_field_tag :email, nil, class: 'form-control'
+        = f.text_field :email, autofocus: true, class: 'form-control'
       .form-group
         label #{t('session.password')}
-        = password_field_tag :password, nil, class: 'form-control'
+        = f.password_field :password, class: 'form-control'
       div.left
         p
-          = check_box_tag :keep_session
+          = f.check_box :remember_me
           span.small-italic #{t('session.keep_session')}
       div.right
-        a href='#'
+        = link_to new_password_path(resource_name)
           p.small-italic #{t('session.forgot_password')}
-      = submit_tag t('session.login'), id: 'login-form-submit', class: 'rounded-button'
+      = f.submit t('session.login'), id: 'login-form-submit', class: 'rounded-button'
+      -if flash[:alert].present? && flash[:message_type] == :invalid
+        span.field-error-message #{flash[:alert]}
   div.form-footer
     div.left
       p
         span.dark-gray-regular #{t('session.not_registered')}
     div.right
-      a href='#'
+      = link_to new_registration_path(resource_name)
         p
           span.aqua-bold #{t('session.sign_up_here')}

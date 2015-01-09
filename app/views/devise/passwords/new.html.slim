@@ -9,18 +9,18 @@ div
     .separator-text
       p.uppercase #{t('session.or')}
   #reset-password-form
-    = form_tag
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
       p.help #{t('session.reset_password_help')}
       .form-group
         label #{t('session.email')}
-        = text_field_tag :email, nil, class: 'form-control'
+        = f.text_field :email, class: 'form-control'
       = submit_tag t('session.reset_password'), id: 'reset-password-form-submit', class: 'rounded-button'
   div.form-footer
     div.left
       p
         span.dark-gray-regular #{t('session.already_registered')}
     div.right
-      a href='#'
+      = link_to new_session_path(resource_name)
         p
           span.aqua-bold #{t('session.login_here')}
 
