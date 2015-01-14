@@ -4,10 +4,12 @@ RSpec.describe ClientReview, type: :model do
   subject { FactoryGirl.create(:client_review) }
 
   # Relations
+  it { should belong_to(:booking) }
   it { should belong_to(:client) }
   it { should belong_to(:from_user) }
 
   # Presence
+  it { should validate_presence_of(:booking) }
   it { should validate_presence_of(:client) }
   it { should validate_presence_of(:from_user) }
   it { should validate_presence_of(:stars) }

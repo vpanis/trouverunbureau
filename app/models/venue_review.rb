@@ -1,5 +1,6 @@
 class VenueReview < ActiveRecord::Base
   # Relations
+  belongs_to :booking
   belongs_to :venue
   belongs_to :from_user, class_name: 'User'
 
@@ -9,7 +10,7 @@ class VenueReview < ActiveRecord::Base
   after_destroy :update_ratings, if: :active
 
   # Validations
-  validates :venue, :from_user, :stars, presence: true
+  validates :venue, :from_user, :stars, :booking, presence: true
   validates :stars, numericality: {
     only_integer: true,
     greater_than_or_equal_to: 1,

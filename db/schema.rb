@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150109210136) do
+ActiveRecord::Schema.define(version: 20150114142742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,8 +41,10 @@ ActiveRecord::Schema.define(version: 20150109210136) do
     t.datetime "updated_at"
     t.integer  "client_id"
     t.string   "client_type"
+    t.integer  "booking_id"
   end
 
+  add_index "client_reviews", ["booking_id"], name: "index_client_reviews_on_booking_id", using: :btree
   add_index "client_reviews", ["client_id", "client_type"], name: "index_client_reviews_on_client_id_and_client_type", using: :btree
   add_index "client_reviews", ["from_user_id"], name: "index_client_reviews_on_from_user_id", using: :btree
 
@@ -154,8 +156,10 @@ ActiveRecord::Schema.define(version: 20150109210136) do
     t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "booking_id"
   end
 
+  add_index "venue_reviews", ["booking_id"], name: "index_venue_reviews_on_booking_id", using: :btree
   add_index "venue_reviews", ["from_user_id"], name: "index_venue_reviews_on_from_user_id", using: :btree
   add_index "venue_reviews", ["venue_id"], name: "index_venue_reviews_on_venue_id", using: :btree
 
