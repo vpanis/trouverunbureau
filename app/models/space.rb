@@ -25,7 +25,7 @@ class Space < ActiveRecord::Base
   private
 
   def at_least_one_price
-    return unless hour_price.present? ||
+    return if hour_price.present? ||
       day_price.present? || week_price.present? || month_price.present?
     errors.add(:price, 'Needs at least one price')
   end
