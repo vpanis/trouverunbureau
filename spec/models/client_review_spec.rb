@@ -5,13 +5,9 @@ RSpec.describe ClientReview, type: :model do
 
   # Relations
   it { should belong_to(:booking) }
-  it { should belong_to(:client) }
-  it { should belong_to(:from_user) }
 
   # Presence
   it { should validate_presence_of(:booking) }
-  it { should validate_presence_of(:client) }
-  it { should validate_presence_of(:from_user) }
   it { should validate_presence_of(:stars) }
 
   # Numericality
@@ -25,19 +21,20 @@ RSpec.describe ClientReview, type: :model do
   describe 'the user\'s review changes' do
 
     before(:each) do
-      @user = FactoryGirl.create(:user)
+      @booking = FactoryGirl.create(:booking)
+      @user = @booking.owner
     end
 
     it 'increments the quantity when created' do
       quantity_reviews = @user.quantity_reviews
-      FactoryGirl.create(:client_review, client: @user)
+      FactoryGirl.create(:client_review, booking: @booking)
       @user.reload
       expect(@user.quantity_reviews).to eq(quantity_reviews + 1)
     end
 
     it 'increments the sum when created' do
       reviews_sum = @user.reviews_sum
-      r = FactoryGirl.create(:client_review, client: @user)
+      r = FactoryGirl.create(:client_review, booking: @booking)
       @user.reload
       expect(@user.reviews_sum).to eq(reviews_sum + r.stars)
     end
@@ -45,7 +42,7 @@ RSpec.describe ClientReview, type: :model do
     it 'changes rating when created' do
       quantity_reviews = @user.quantity_reviews
       reviews_sum = @user.reviews_sum
-      r = FactoryGirl.create(:client_review, client: @user)
+      r = FactoryGirl.create(:client_review, booking: @booking)
       @user.reload
       expect(@user.rating).to eq((reviews_sum + r.stars) / ((quantity_reviews + 1) * 1.0))
     end
@@ -53,7 +50,7 @@ RSpec.describe ClientReview, type: :model do
     describe 'deactivate an active review' do
 
       before(:each) do
-        @review = FactoryGirl.create(:client_review, client: @user)
+        @review = FactoryGirl.create(:client_review, booking: @booking)
         @user.reload
       end
 
