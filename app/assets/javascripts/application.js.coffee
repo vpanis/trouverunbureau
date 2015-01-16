@@ -6,5 +6,10 @@
 #
 #= require jquery
 #= require jquery_ujs
+#= require loadjs
+#= require jquery.turbolinks
 #= require twitter/bootstrap
-#= require_tree .
+#= require retina
+#= require_directory .
+#= require_tree ./landing/
+

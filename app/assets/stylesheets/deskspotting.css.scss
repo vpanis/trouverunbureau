@@ -1,7 +1,8 @@
 $desk-black: #414042;
 $yellow: #ffe111;
 $dark-yellow: #f3d708;
-$light-yellow: rgba(255,255,17,0.3);
+$light-yellow: #ffe342;
+$transparent-yellow: rgba(255,225,17,0.9);
 $aqua: #00cca5;
 $dark-aqua: #05b496;
 $red: #ff5a5f;
@@ -26,9 +27,38 @@ $fb-blue: #3b5998;
   border-radius: $radius;
 }
 
+@mixin rounded-left($radius){
+  -webkit-border-top-left-radius: $radius;
+  -webkit-border-bottom-left-radius: $radius;
+  -moz-border-radius-topleft: $radius;
+  -moz-border-radius-bottomleft: $radius;
+  border-top-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+}
+
+@mixin rounded-right($radius){
+  -webkit-border-top-right-radius: $radius;
+  -webkit-border-bottom-right-radius: $radius;
+  -moz-border-radius-topright: $radius;
+  -moz-border-radius-bottomright: $radius;
+  border-top-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+}
+
+@mixin at2x($image_name, $w: auto, $h: auto, $extention: '.png') {
+  background-image: image_url($image_name + $extention);
+  $x2img : $image_name + '@2x' + $extention;
+
+  @media all and (-webkit-min-device-pixel-ratio : 1.5) {
+    background-image: image_url($x2img);
+    background-size: $w $h;
+  }
+}
+
 body{
   color: $desk-black;
   font-family: "Open Sans", sans-serif;
+  margin: 0;
 }
 
 .yellow{
@@ -98,13 +128,12 @@ body{
     font-family: "Varela Round", sans-serif;
   }
   h1.icon{
-      background-image: image-url('deskspotting-logo.png');
-      background-size: 205px 35px;
-      background-repeat: no-repeat;
-      background-position: center;
-      display: inline-block;
-      width: 100%;
-      height: 35px;
+    @include at2x('isologotipo-login', 205px, 35px);
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 100%;
+    height: 35px;
   }
 
   a, a:hover{
@@ -189,7 +218,8 @@ body{
 
 /* --- FORM --- */
 .rounded-button{
-  font-family: "Open Sans", sans-serif; font-size: 0.875rem;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.875rem;
   font-weight: 700;
   text-align: center;
   @include border-radius(2em);
@@ -268,5 +298,631 @@ input[type="checkbox"]:checked:after {
 }
 
 .field-error-message {
-  color: $red;  
+  color: $red;
+}
+/* ====== LANDING ====== */
+.orange{
+  background-color: orange;
+}
+.cyan{
+ background-color: cyan;
+}
+.green{
+  background-color: green;
+}
+.violet{
+  background-color: violet;
+}
+.separator{
+  border-top: 2px solid $yellow;
+  margin: 40px auto 68px;
+  width: 10%;
+}
+.landing-page{
+  .rounded-right{
+    @include rounded-right(3px);
+    @include rounded-left(0px);
+  }
+  .rounded-left{
+    @include rounded-left(3px);
+    @include rounded-right(0px);
+  }
+  .icon{
+    @include at2x('isologo-top-bar', 205px, 35px);
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 205px;
+    height: 35px;
+    margin-left: 14px;
+    margin-top: 12px;
+  }
+  #header{
+    background: gray;
+    background-image: image-url('parallax1.jpg');
+    background-size: cover;
+    height: 100%;
+    h1{
+      font-size: 20px;
+      text-align: center;
+      color: white;
+      letter-spacing: 0.65rem;
+      font-size: 46px;
+      margin-top: 120px;
+    }
+    h4{
+      color: white;
+      font-weight: 300;
+      text-align: center;
+      margin-top: 26px;
+      letter-spacing: 0.09rem;
+      font-size: 17px;
+    }
+    .search-form{
+      margin-right: auto;
+      margin-left: auto;
+      text-align: center;
+      padding: 8px;
+      .form-group{
+        padding: 0;
+      }
+      .form-control{
+        height: 50px;
+        width: 100%;
+        border: solid 0px;
+        box-shadow: none;
+      }
+      .styled-search{
+        background-color: white;
+        @include at2x('loupe', 26px, 26px);
+        background-repeat: no-repeat;
+        background-position-x: 12px;
+        background-position-y: 14px;
+        height: 50px;
+        border-right: 1px solid $gray;
+      }
+      .styled-select{
+        background-color: white;
+        @include at2x('arrow-dropdown', 14px, 10px);
+        background-repeat: no-repeat;
+        background-position-x: 93%;
+        background-position-y: 22px;
+        height: 50px;
+      }
+      select{
+        @include border-radius(0px !important);
+        border: 0;
+        background: transparent;
+        -webkit-appearance: none;
+        font-size: 14px;
+        letter-spacing: 0.08rem;
+        font-weight: 200;
+        padding-bottom: 2px;
+        color: $dark-gray;
+      }
+      input[type='text'].form-control{
+        background-color: transparent;
+        padding-left: 48px;
+        font-size: 14px;
+        letter-spacing: 0.08rem;
+        font-weight: 200;
+        padding-bottom: 2px;
+      }
+      *::-webkit-input-placeholder{
+        color: $dark-gray;
+      }
+      *:-moz-placeholder{
+        color: $dark-gray;
+      }
+      *::-moz-placeholder{
+        color: $dark-gray;
+      }
+      *:-ms-input-placeholder{
+        color: $dark-gray;
+      }
+      #landing-form-submit{
+        height: 50px;
+        background-color: $yellow;
+        border: 0;
+        @include rounded-right(3px);
+        font-size: 16px;
+        letter-spacing: 0.15rem;
+        color: black;
+      }
+      #landing-form-submit:hover{
+        background-color: $light-yellow;
+      }
+    }
+  }
+  .arrow-separator{
+    margin: 87px auto 38px;
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    @include at2x('arrows-circle-down', 80px, 40px);
+  }
+  .arrow-separator:hover{
+    background-position: -40px 0px;
+  }
+  .topbar{
+    width: 100%;
+  }
+  a{
+    color: white;
+    text-decoration: none;
+  }
+   .nav-btn{
+    display: inline-block;
+    margin-right: 20px;
+    font-weight: 300;
+    letter-spacing: 0.05rem;
+  }
+  .nav-btn:hover{
+    color: $yellow;
+  }
+  a.ds-btn{
+    @include border-radius(2em);
+    border: 2px solid $yellow;
+    color: $yellow;
+    display: inline-block;
+    font-family: "Varela Round", sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.15rem;
+    text-align: center;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 10px 28px 0px;
+    font-size: 13px;
+  }
+  a.ds-btn:hover{
+    color: $black;
+    background-color: $yellow;
+  }
+  .topbar .logo{
+    width: 250px;
+    height: 60px;
+    margin-left: 20px;
+  }
+  .right-topbar-content{
+    right: 18px;
+    top: 10px;
+    position: absolute;
+    display: inline-block;
+    padding: 0;
+  }
+  .section-title{
+    text-align: center;
+    padding-top: 85px;
+    h3{
+      margin: 0;
+      color: $yellow;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.25rem;
+      font-weight: 600;
+    }
+    .small-separator{
+      border-top: 2px solid $yellow;
+      margin: 18px auto 20px;
+      width: 5%;
+    }
+    h4{
+      margin: 0;
+      font-weight: 300;
+      font-size: 30px;
+      letter-spacing: 0.1rem;
+      padding: 1px;
+    }
+  }
+  .description{
+    width: 70%;
+    margin: 26px auto;
+    p{
+      font-size: 17px;
+      font-weight: 300;
+      color: $dark-gray;
+      letter-spacing: 0.09rem;
+      line-height: 30px;
+      text-align: center;
+    }
+  }
+  #features{
+    background: $dark-white;
+    padding-bottom: 76px;
+    .features-content-box{
+      padding: 70px 28px;
+      text-align: center;
+      height: 28em;
+      .features-box-image{
+        width: 100%;
+        height: 98px;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .features-box-image#ft-flexibility{
+        @include at2x('feature-1', 98px, 98px);
+      }
+      .features-box-image#ft-networking{
+        @include at2x('feature-2', 98px, 98px);
+      }
+      .features-box-image#ft-easy{
+        @include at2x('feature-3', 98px, 98px);
+      }
+      .features-box-image#ft-fees{
+        @include at2x('feature-4', 98px, 98px);
+      }
+      h5{
+        text-transform: uppercase;
+        font-size: 17px;
+        margin-top: 20px;
+        letter-spacing: 0.13rem;
+        font-weight: 300;
+      }
+      p{
+        font-weight: 300;
+        margin-top: 25px;
+        letter-spacing: 0.07rem;
+        line-height: 25px;
+      }
+    }
+  }
+  #your-space{
+    background: white;
+    .space-btn-wrapper{
+      text-align: center;
+      margin-top: 50px;
+      a.space-btn{
+        color: black;
+        padding: 10px 10px 11px;
+        margin: 0px 15px;
+        text-transform: uppercase;
+        letter-spacing: 0.04rem;
+      }
+    }
+    .active{
+      a{
+        font-weight: 700;
+        letter-spacing: 0.06rem;
+      }
+      .small-separator{
+        border-top: 2px solid $yellow;
+        margin: 0px auto;
+        width: 40%;
+      }
+    }
+    ul{
+      border: none;
+    }
+    .nav-tabs > li{
+      float: none;
+      display: inline-block;
+    }
+    .nav-tabs > li.active > a, .nav-tabs > li > a, .nav-tabs > li > a:hover{
+      border: none;
+      background: none;
+    }
+    .tab-content{
+      margin-top: 30px;
+    }
+    .tab-pane{
+      margin: 0px auto;
+      text-align: center;
+      .row{
+        width: 99%;
+        margin-right: auto;
+        margin-left: auto;
+      }
+      .space-image-wrapper{
+        padding: 15px 15px 10px;
+        .space-image-box{
+          width: 100%;
+          height: 232px;
+          background-size: cover;
+          background-position-y: center;
+          img{
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .space-image-box-over{
+          opacity: 0;
+          position: relative;
+          width: 100%;
+          .space-image-info{
+            position: absolute;
+            width: 100%;
+            height: 232px;
+            background-color: $transparent-yellow;
+            bottom: 100%;
+            .city-name{
+              text-transform: uppercase;
+              font-size: 18px;
+              margin-top: 25px;
+              letter-spacing: 0.1rem;
+              font-weight: 300;
+              padding: 0 20px;
+              p{
+                margin-bottom: 8px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+            }
+            .separator{
+              border-top: 2px solid white;
+              width: 30px;
+              margin: 0px auto;
+            }
+            .price, .amount{
+              font-weight: 700;
+              font-size: 32px;
+              letter-spacing: 0.25rem;
+              padding-top: 24px;
+              p{
+                margin: 0;
+              }
+            }
+            .desk.amount{
+              margin-top: 45px;
+            }
+            .time, .amount-decription{
+              font-weight: 300;
+              font-size: 12px;
+              letter-spacing: 0.15rem;
+            }
+            .currency{
+              text-transform: uppercase;
+            }
+            .footer, .currency{
+              margin-top: 45px;
+              font-style: italic;
+              font-weight: 100;
+            }
+          }
+        }
+        .space-image-box-over:hover{
+          opacity: 1;
+        }
+      }
+    }
+  }
+  #list-your-space{
+    .row{
+      width: 95%;
+      margin: 12px auto;
+    }
+    .space-description{
+      background-color: $yellow;
+      padding: 37px 30px 35px 50px;
+      text-align: center;
+      height: 56rem;
+      h2{
+        letter-spacing: 0.2rem;
+        font-size: 28px;
+        font-weight: 200;
+        text-align: left;
+      }
+      .separator{
+        border-top: 2px solid white;
+        width: 50px;
+        margin: 18px 0px;
+      }
+      p{
+        padding: 6px;
+        letter-spacing: 0.14rem;
+        font-weight: 200;
+        font-size: 16px;
+        line-height: 36px;
+        margin-bottom: 45px;
+        text-align: left;
+      }
+      a.add-space-btn{
+        @include border-radius(2em);
+        border: 2px solid white;
+        font-family: "Varela Round", sans-serif;
+        font-weight: 400;
+        letter-spacing: 0.15rem;
+        text-align: center;
+        background-color: transparent;
+        cursor: pointer;
+        padding: 10px 25%;
+        font-size: 13px;
+        color: black;
+      }
+      a.add-space-btn:hover{
+        background-color: white;
+      }
+    }
+    .space-image{
+      background-image: image-url('stub-2.png');
+      background-size: cover;
+      height: 56rem;
+    }
+  }
+  #quotes{
+    #quotes-carousel{
+      width: 80%;
+      margin: 5px auto;
+      text-align: center;
+      .item{
+        padding-bottom: 50px;
+      }
+      .avatar{
+        margin: 15px auto 8px;
+        img{
+          @include border-radius(100%);
+          @include at2x('default-avatar', 112px, 112px);
+          width: 112px;
+          height: 112px;
+        }
+        p{
+          margin: 10px auto 8px;
+          font-weight: 200;
+          font-size: 12px;
+          letter-spacing: 0.2rem;
+          span.bold{
+            font-weight: 700;
+          }
+        }
+      }
+      .quote-content{
+        width: 60%;
+        margin: 0px auto;
+        p{
+          font-size: 18px;
+          line-height: 30px;
+          font-weight: 200;
+          letter-spacing: 0.025rem;
+          padding-bottom: 50px;
+        }
+      }
+      .left-carousel-arrow, .right-carousel-arrow{
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position-y: center;
+      }
+      .left-carousel-arrow{
+        @include at2x('arrow-quotes-left', 20px, 50px);
+        background-position-x: left;
+      }
+      .right-carousel-arrow{
+        @include at2x('arrow-quotes-right', 20px, 50px);
+        background-position-x: right;
+      }
+      .carousel-control.left, .carousel-control.right{
+        background-image: none;
+        opacity: 1;
+      }
+      .carousel-indicators{
+        li{
+          background-color: $light-gray;
+          height: 12px;
+          width: 12px;
+          margin: 1px 4px;
+        }
+        .active{
+          background-color: $yellow;
+        }
+      }
+    }
+  }
+  #footer{
+    .info{
+      width: 90%;
+      margin-right: auto;
+      margin-left: auto;
+    }
+    background: $light-black;
+    .icon{
+      width: 100%;
+      height: 200px;
+      background-position-y: 70%;
+    }
+    .company{
+      padding-left: 20%;
+      a{
+        display: block;
+        font-weight: 300;
+        letter-spacing: 0.06rem;
+        line-height: 25px;
+      }
+      a:hover{
+        color: $yellow;
+      }
+    }
+    .company, .find-us{
+      h4{
+        color: $yellow;
+        text-transform: uppercase;
+        margin-top: 42px;
+        font-size: 11px;
+        letter-spacing: 0.35rem;
+        font-weight: 700;
+      }
+      .separator{
+        width: 50px;
+        margin: 11px 0px;
+      }
+    }
+    .find-us{
+      padding-left: 20%;
+      .social-icons{
+        height: 100px;
+        padding: 28px 0px;
+        min-width: 216px;
+        .social-icon{
+          width: 40px;
+          height: 40px;
+          display: inline-block;
+          margin-right: 14px;
+          @include at2x('social-icons-sprite', 170px, 80px);
+        }
+        .twitter{
+          background-position: -1px 0px;
+        }
+        .twitter:hover{
+          background-position: -1px 40px;
+        }
+        .facebook{
+          background-position: -44px 0px;
+        }
+        .facebook:hover{
+          background-position: -44px 40px;
+        }
+        .linkedin{
+          background-position: -87px 0px;
+        }
+        .linkedin:hover{
+          background-position: -87px 40px;
+        }
+        .instagram{
+          background-position: -130px 0px;
+        }
+        .instagram:hover{
+          background-position: -130px 40px;
+        }
+      }
+      .language{
+        margin-top: 5px;
+        border-bottom: solid 1px white;
+        p{
+          text-transform: uppercase;
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: 0.1rem;
+          display: inline-block;
+          width: 90%;
+          text-align: left;
+        }
+        p.arrow{
+          text-align: right;
+          width: 14px;
+          color: white;
+        }
+      }
+    }
+    .rights{
+      text-align: center;
+      color: white;
+      font-weight: 300;
+      padding: 24px;
+      font-size: 11px;
+      letter-spacing: 0.08rem;
+      a{
+        color: $dark-gray;
+      }
+    }
+  }
+}
+
+/* small devices */
+@media screen and (min-width: 0px) and (max-width: 768px) {
+  .company, .find-us{
+    padding-left: 0px !important;
+    text-align: center;
+    .separator{
+      margin: 11px auto !important;
+    }
+  }
 }

@@ -40,4 +40,64 @@ en:
     reset_password_help: 'Enter the e-mail address associated with your account.'
     change_your_password: 'Change your Password'
     change_password: 'Change Password'
-
+  home:
+    sign_in: 'Sign in'
+    list_your_space: 'List your space'
+    header:
+      title: 'Everyone needs a workspace'
+      subtitle: 'Rent unique offices or meeting rooms where and when you need them.'
+      search_text: 'Where do you want your Desk?'
+      type_of_desk_all: 'All workspaces'
+      type_of_desk_1: 'Hot Desk'
+      type_of_desk_2: 'Dedicated Desk'
+      type_of_desk_3: 'Private Office'
+      type_of_desk_4: 'Meeting Room'
+      type_of_desk_5: 'Conference Room'
+      type_of_desk_6: 'Communal Space'
+      find: 'Find'
+    features:
+      title: 'features'
+      subtitle: 'Why DeskSpotting'
+      flexibility:
+        title: 'Flexibility'
+        text: 'Wherever, whenever book individual workspace, entire offices or meeting rooms for a couple of hours, a day, a month or more.'
+      networking:
+        title: 'Networking'
+        text: 'DeskSpotting helps you find inspiring workplaces based on your professional interests.'
+      easy:
+        title: 'It’s Easy'
+        text: 'With one click book your workspace using your credit card. No more contract negotiations, wiring funds and paying deposits directly to landlords.'
+      no_fees:
+        title: 'No fees'
+        text: 'Find your workspace, book it and get on with your business.'
+    your_space:
+      title: 'find your space'
+      subtitle: 'Everyone should have an inspiring workspace'
+      description: 'Looking for a cool place to work for you or your team in your home city? Need a place to work or meet with clients when traveling? Let DeskSpotting help you find great workplaces that meet your needs - whenever, wherever.'
+      tabs:
+        featured: 'featured'
+        workspaces: 'workspaces'
+        trending: 'trending cities'
+      workspaces: 'workspaces'
+      see_all: 'See all'
+    list_space:
+      title: 'List your space!'
+      content: 'Have extra workspace or want to sublet your office? List on DeskSpotting and let your space earn you money, meet interesting people and reduce your fixed costs. You decide when and to whom you rent. There is no obligation and no fee to list.'
+      learn_more: 'Learn More'
+    quotes:
+      title: 'quotes'
+      subtitle: 'Lorem ipsum dolor sit amet'
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+    footer:
+      company: 'Company'
+      find_us: 'Find us'
+      about_us: 'About us'
+      our_terms: 'Our Terms'
+      how_it_works: 'How it works'
+      faq: 'F.A.Q.'
+      contact: 'Contact'
+      language:
+        en: 'eng'
+      reserved_rights: ' 2014 DeskSpotting. All rights reserved.'
+      terms_of_service: 'Terms of service'
+      privacy_policy: 'Privacy policy'
