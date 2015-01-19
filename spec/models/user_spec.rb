@@ -33,4 +33,14 @@ RSpec.describe User, type: :model do
     .only_integer
     .is_greater_than_or_equal_to(0)
   end
+
+  it 'should accept a nil email if the provider is present' do
+    user = User.create(first_name: 'test', password: 'testtest', provider: 'test')
+    expect(user.valid?).to be(true)
+  end
+
+  it 'shouldn\'t accept a nil email if the provider is nil' do
+    user = User.create(first_name: 'test', password: 'testtest')
+    expect(user.valid?).to be(false)
+  end
 end

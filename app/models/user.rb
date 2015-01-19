@@ -24,14 +24,14 @@ class User < ActiveRecord::Base
   after_initialize :initialize_fields
 
   # Validations
-  validates :first_name, :email, :password, presence: true
+  validates :first_name, :password, presence: true
 
   validates :email, format: {
     with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,
     on: :create
   }, uniqueness: {
     case_sensitive: false
-  }
+  }, allow_nil: true
 
   validates :quantity_reviews, :reviews_sum, numericality: {
     only_integer: true,
@@ -46,14 +46,31 @@ class User < ActiveRecord::Base
   class << self
 
     def from_omniauth(auth)
-
-      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-        user.email = auth.info.email
-        user.password = Devise.friendly_token[0, 20]
-        user.first_name = auth.info.first_name
-        user.last_name = auth.info.last_name
+      user_found = where('email = :email OR provider = :provider AND uid = :uid',
+                         email: auth.info.email, provider: auth.provider, uid: auth.uid).first
+      if user_found.nil?
+        create_provider_user(auth)
+      else
+        add_provider_if_necessary(user_found, auth)
       end
+    end
 
+    private
+
+    def create_provider_user(auth)
+      create(provider: auth.provider, uid: auth.id, email: auth.info.email,
+             password: Devise.friendly_token[0, 20], first_name: auth.info.first_name,
+             last_name: auth.info.last_name)
+    end
+
+    def add_provider_if_necessary(user, auth)
+      return user unless user.provider != auth.provider || user.uid != auth.uid
+
+      # add the provider and uid if necessary
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.save
+      user
     end
   end
 
@@ -61,6 +78,10 @@ class User < ActiveRecord::Base
     name = first_name
     name = name + ' ' + last_name if last_name.present?
     name
+  end
+
+  def email_required?
+    provider.nil?
   end
 
   private

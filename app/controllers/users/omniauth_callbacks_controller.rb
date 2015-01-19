@@ -1,4 +1,4 @@
-module User
+module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     def facebook
