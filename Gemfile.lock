@@ -357,7 +357,7 @@ DEPENDENCIES
   byebug
   carrierwave
   codeclimate-test-reporter
-  coffee-rails
+  coffee-rails (~> 4.0.0)
   cucumber-rails
   database_cleaner!
   devise
@@ -385,7 +385,7 @@ DEPENDENCIES
   rmagick
   rspec-rails
   rubocop
-  sass-rails
+  sass-rails (~> 4.0.0)
   shoulda-matchers
   sidekiq
   simplecov
@@ -396,5 +396,5 @@ DEPENDENCIES
   timecop
   turbolinks
   twitter-bootstrap-rails
-  uglifier
+  uglifier (>= 1.0.3)
   unicorn

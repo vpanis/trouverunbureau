@@ -1,0 +1,49 @@
+.section-title
+  h3 · #{t('home.your_space.title')} ·
+  .small-separator
+  h4 #{t('home.your_space.subtitle')}
+.description
+  p #{t('home.your_space.description')}
+div role="tabpanel"
+  ul.nav.nav-tabs.space-btn-wrapper role="tablist"
+    li.active role="presentation"
+      .small-separator
+      a.space-btn#features-tab href="#features-content" aria-controls="features-content" role="tab" data-togle="tab" #{t('home.your_space.tabs.featured')}
+      .small-separator
+    li role="presentation"
+      .small-separator
+      a.space-btn#workspaces-tab href="#workspaces-content" aria-controls="workspaces-content" role="tab" data-togle="tab" #{t('home.your_space.tabs.workspaces')}
+      .small-separator
+    li role="presentation"
+      .small-separator
+      a.space-btn#trending-tab href="#trending-content" aria-controls="trending-content" role="tab" data-togle="tab" #{t('home.your_space.tabs.trending')}
+      .small-separator
+  .tab-content
+    .tab-pane.fade.in.active#features-content role="tabpanel" aria-labelledby="features-tab"
+      .row
+        = render 'featured_item', img_file_name: 'stub-1.png', city: 'california', price: '$100', time: '1 hour', currency: 'u$d', offset: 'col-xs-offset-1 col-sm-offset-1 col-md-offset-0'
+        = render 'featured_item', img_file_name: 'stub-2.png', city: 'San fernando del valle de catamarca', price: '$250', time: '1 hour', currency: 'ars', offset: 'col-xs-offset-1 col-sm-offset-0 col-md-offset-0'
+        = render 'featured_item', img_file_name: 'stub-3.png', city: 'NYC', price: '$750', time: '1 hour', currency: 'u$d', offset: 'col-xs-offset-1 col-sm-offset-1 col-md-offset-0'
+        = render 'featured_item', img_file_name: 'stub-4.png', city: 'Madrid', price: '$130', time: '1 day', currency: 'euro', offset: 'col-xs-offset-1 col-sm-offset-0 col-md-offset-0'
+        = render 'featured_item', img_file_name: 'stub-5.png', city: 'Berlin', price: '$550', time: '1 day', currency: 'euro', offset: 'col-xs-offset-1 col-sm-offset-1 col-md-offset-0'
+        = render 'featured_item', img_file_name: 'stub-6.png', city: 'London', price: '$1250', time: '1 day', currency: 'pounds', offset: 'col-xs-offset-1 col-sm-offset-0 col-md-offset-0'
+        = render 'featured_item', img_file_name: 'stub-7.png', city: 'Milan', price: '$12', time: '1 hour', currency: 'euro', offset: 'col-xs-offset-1 col-sm-offset-1 col-md-offset-0'
+        = render 'featured_item', img_file_name: 'stub-3.png', city: 'Mexico D.F.', price: '$250', time: '1 hour', currency: 'mxd', offset: 'col-xs-offset-1 col-sm-offset-0 col-md-offset-0'
+    .tab-pane.fade#workspaces-content role="tabpanel" aria-labelledby="workspaces-tab"
+      .row
+        = render 'workspace_item', img_file_name: 'stub-1.png', amount: '129', desk_type: t('home.header.type_of_desk_1'), offset: 'col-xs-offset-1 col-sm-offset-0 col-md-offset-0'
+        = render 'workspace_item', img_file_name: 'stub-2.png', amount: '250', desk_type: t('home.header.type_of_desk_2'), offset: 'col-xs-offset-1 col-sm-offset-0 col-md-offset-0'
+        = render 'workspace_item', img_file_name: 'stub-3.png', amount: '750', desk_type: t('home.header.type_of_desk_3'), offset: 'col-xs-offset-1 col-sm-offset-0 col-md-offset-0'
+        = render 'workspace_item', img_file_name: 'stub-4.png', amount: '130', desk_type: t('home.header.type_of_desk_4'), offset: 'col-xs-offset-1 col-sm-offset-0 col-md-offset-0'
+        = render 'workspace_item', img_file_name: 'stub-5.png', amount: '550', desk_type: t('home.header.type_of_desk_5'), offset: 'col-xs-offset-1 col-sm-offset-0 col-md-offset-0'
+        = render 'workspace_item', img_file_name: 'stub-6.png', amount: '1250', desk_type: t('home.header.type_of_desk_6'), offset: 'col-xs-offset-1 col-sm-offset-0 col-md-offset-0'
+    .tab-pane.fade#trending-content role="tabpanel" aria-labelledby="trending-tab"
+      .row
+        = render 'trending_item', img_file_name: 'stub-1.png', city: 'new york', amount: '129', offset: 'col-xs-offset-1 col-sm-offset-1 col-md-offset-0'
+        = render 'trending_item', img_file_name: 'stub-2.png', city: 'San fernando del valle de catamarca', amount: '250', offset: 'col-xs-offset-1 col-sm-offset-0 col-md-offset-0'
+        = render 'trending_item', img_file_name: 'stub-3.png', city: 'Buenos Aires', amount: '750', offset: 'col-xs-offset-1 col-sm-offset-1 col-md-offset-0'
+        = render 'trending_item', img_file_name: 'stub-4.png', city: 'Madrid', amount: '130', offset: 'col-xs-offset-1 col-sm-offset-0 col-md-offset-0'
+        = render 'trending_item', img_file_name: 'stub-5.png', city: 'Berlin', amount: '550', offset: 'col-xs-offset-1 col-sm-offset-1 col-md-offset-0'
+        = render 'trending_item', img_file_name: 'stub-6.png', city: 'London', amount: '1250', offset: 'col-xs-offset-1 col-sm-offset-0 col-md-offset-0'
+        = render 'trending_item', img_file_name: 'stub-7.png', city: 'Milan', amount: '12', offset: 'col-xs-offset-1 col-sm-offset-1 col-md-offset-0'
+        = render 'trending_item', img_file_name: 'stub.png', city: 'Mexico D.F.', amount: '250', offset: 'col-xs-offset-1 col-sm-offset-0 col-md-offset-0'

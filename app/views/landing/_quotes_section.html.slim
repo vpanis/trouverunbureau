@@ -1,0 +1,22 @@
+.section-title
+  h3 · #{t('home.quotes.title')} ·
+  .small-separator
+  h4 #{t('home.quotes.subtitle')}
+.description
+  p #{t('home.quotes.description')}
+.carousel.slide#quotes-carousel
+  ol.carousel-indicators
+    li.active data-target="#quotes-carousel" data-slide-to="0"
+    li data-target="#quotes-carousel" data-slide-to="1"
+    li data-target="#quotes-carousel" data-slide-to="2"
+  .carousel-inner role="listbox"
+    .item.active
+      = render 'quote_item', avatar: 'default-avatar.png', name: 'Lorem ipsum dolor', title: 'dolor sit amet', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis purus ac felis. Phasellus id hendrerit ante. In hac habitasse platea dictumst'
+    .item
+      = render 'quote_item', avatar: 'default-avatar.png', name: 'Lorem ipsum dolor 2', title: 'dolor sit amet 2', content: '2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis purus ac felis. Phasellus id hendrerit ante. In hac habitasse platea dictumst'
+    .item
+      = render 'quote_item', avatar: 'default-avatar.png', name: 'Lorem ipsum dolor 3', title: 'dolor sit amet 3', content: '3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis purus ac felis. Phasellus id hendrerit ante. In hac habitasse platea dictumst'
+  a.left.carousel-control data-slide="prev" href="#quotes-carousel" role="button"
+    span.glyphicon.left-carousel-arrow aria-hidden="true"
+  a.right.carousel-control data-slide="next" href="#quotes-carousel" role="button"
+    span.glyphicon.right-carousel-arrow aria-hidden="true"
