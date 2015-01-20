@@ -43,7 +43,7 @@ class SpaceSearch
 
   def initialize(attributes = {})
     # wday 0 = sunday, venue_hours.weekday 0 = mon
-    attributes[:weekday] = (Time.parse(attributes[:date]).wday - 1 % 7) unless attributes[:date].blank?
+    attributes[:weekday] ||= (Time.parse(attributes[:date]).wday - 1 % 7) unless attributes[:date].blank?
     super(attributes)
   end
   
