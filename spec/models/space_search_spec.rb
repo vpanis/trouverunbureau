@@ -12,10 +12,10 @@ RSpec.describe SpaceSearch, type: :model do
                              longitude: 20, amenities: ['cafe_restaurant'], rating: 5, quantity_reviews: 10)
     FactoryGirl.create(:venue_hour, venue: @v2, weekday: 1)
     @v3 = FactoryGirl.create(:venue, v_type: Venue.v_types[:bussines_center], latitude: 30,
-                             longitude: 30, amenities: ['catering_available'], rating: 5, quantity_reviews: 3)
+                             longitude: 30, amenities: ['kitchen'], rating: 5, quantity_reviews: 3)
     FactoryGirl.create(:venue_hour, venue: @v3, weekday: 2)
     @v4 = FactoryGirl.create(:venue, v_type: Venue.v_types[:startup_office], latitude: 40,
-                             longitude: 40, amenities: %w(wifi lockers), rating: 4, quantity_reviews: 20)
+                             longitude: 40, amenities: %w(wifi gym), rating: 4, quantity_reviews: 20)
     FactoryGirl.create(:venue_hour, venue: @v4, weekday: 0)
     FactoryGirl.create(:venue_hour, venue: @v4, weekday: 3)
 
@@ -90,8 +90,8 @@ RSpec.describe SpaceSearch, type: :model do
       expect(ss.find_spaces).to contain_exactly(@s1_v2, @s2_v2)
     end
 
-    it 'returns the spaces \'lockers\' and \'wifi\'' do
-      ss = SpaceSearch.new(venue_amenities: %w(lockers wifi))
+    it 'returns the spaces \'gym\' and \'wifi\'' do
+      ss = SpaceSearch.new(venue_amenities: %w(gym wifi))
       expect(ss.find_spaces).to contain_exactly(@s1_v4, @s2_v4)
     end
 

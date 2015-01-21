@@ -16,10 +16,10 @@ class Venue < ActiveRecord::Base
 
   enum space_unit: [:square_mts, :square_foots]
 
-  AMENITY_TYPES = [:wifi, :cafe_restaurant, :catering_available,
-                   :coffee_tea_filtered_water, :lockers, :mail_service, :meeting_rooms,
-                   :pets_allowed, :phone_booth_room, :shared_kitchen,
-                   :wheelchair_accessible]
+  AMENITY_TYPES = [:whiteboards, :kitchen, :security, :wifi, :printer_scanner, :chill_area,
+                   :photocopier, :conference_rooms, :elevators, :outdoor_space, :team_bookings,
+                   :individual_bookings, :shower, :fax, :wheelchair_access, :air_conditioning,
+                   :pets_allowed, :mail_service, :gym, :cafe_restaurant, :phone_booth]
 
   # Callbacks
   after_initialize :initialize_fields
