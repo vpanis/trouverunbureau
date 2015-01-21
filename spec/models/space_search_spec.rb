@@ -9,13 +9,15 @@ RSpec.describe SpaceSearch, type: :model do
                              longitude: 10, amenities: ['wifi'], rating: 4, quantity_reviews: 10)
     FactoryGirl.create(:venue_hour, venue: @v1, weekday: 0)
     @v2 = FactoryGirl.create(:venue, v_type: Venue.v_types[:studio], latitude: 20,
-                             longitude: 20, amenities: ['cafe_restaurant'], rating: 5, quantity_reviews: 10)
+                             longitude: 20, amenities: ['cafe_restaurant'],
+                             rating: 5, quantity_reviews: 10)
     FactoryGirl.create(:venue_hour, venue: @v2, weekday: 1)
     @v3 = FactoryGirl.create(:venue, v_type: Venue.v_types[:bussines_center], latitude: 30,
                              longitude: 30, amenities: ['kitchen'], rating: 5, quantity_reviews: 3)
     FactoryGirl.create(:venue_hour, venue: @v3, weekday: 2)
     @v4 = FactoryGirl.create(:venue, v_type: Venue.v_types[:startup_office], latitude: 40,
-                             longitude: 40, amenities: %w(wifi gym), rating: 4, quantity_reviews: 20)
+                             longitude: 40, amenities: %w(wifi gym),
+                             rating: 4, quantity_reviews: 20)
     FactoryGirl.create(:venue_hour, venue: @v4, weekday: 0)
     FactoryGirl.create(:venue_hour, venue: @v4, weekday: 3)
 
@@ -207,7 +209,7 @@ RSpec.describe SpaceSearch, type: :model do
     end
 
     it 'returns the spaces ordered by quantity_reviews and rating' do
-      ss = SpaceSearch.new(venue_amenities: ['wifi'], 
+      ss = SpaceSearch.new(venue_amenities: ['wifi'],
                            space_types: [Space.s_types[:desk], Space.s_types[:conference_room]])
       expect(ss.find_spaces).to match_array([@s1_v4, @s1_v1])
     end

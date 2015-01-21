@@ -63,7 +63,7 @@ class SpaceSearch
   end
 
   def venue_conditions(spaces)
-    spaces = spaces.joins { venue }.order("venues.quantity_reviews DESC, venues.rating DESC")
+    spaces = spaces.joins { venue }.order('venues.quantity_reviews DESC, venues.rating DESC')
     spaces = latitude_longitude_conditions(spaces)
     spaces = spaces.where { venue.v_type.eq_any my { venue_types } } unless venue_types.blank?
     spaces = spaces.where('ARRAY[:amenities] <@ amenities',
