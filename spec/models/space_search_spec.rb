@@ -126,4 +126,96 @@ RSpec.describe SpaceSearch, type: :model do
     end
 
   end
+
+  context 'search setting only capacity' do
+
+    it 'returns the spaces with capacity grater than 3 when setted to 4' do
+      ss = SpaceSearch.new(capacity: 4)
+      expect(ss.find_spaces).to contain_exactly(@s1_v4, @s2_v4)
+    end
+
+    it 'returns the spaces with capacity grater than 2 when setted to 3' do
+      ss = SpaceSearch.new(capacity: 3)
+      expect(ss.find_spaces).to contain_exactly(@s1_v3, @s2_v3, @s1_v4, @s2_v4)
+    end
+
+    it 'returns an empty array when there are no spaces with that capacity' do
+      ss = SpaceSearch.new(capacity: 10)
+      expect(ss.find_spaces).to contain_exactly()
+    end
+
+  end
+
+  context 'search setting only quantity' do
+
+    it 'returns the spaces with quantity grater than 3 when setted to 4' do
+      ss = SpaceSearch.new(quantity: 4)
+      expect(ss.find_spaces).to contain_exactly(@s1_v4, @s2_v4)
+    end
+
+    it 'returns the spaces with quantity grater than 2 when setted to 3' do
+      ss = SpaceSearch.new(quantity: 3)
+      expect(ss.find_spaces).to contain_exactly(@s1_v3, @s2_v3, @s1_v4, @s2_v4)
+    end
+
+    it 'returns an empty array when there are no spaces with that quantity' do
+      ss = SpaceSearch.new(quantity: 10)
+      expect(ss.find_spaces).to contain_exactly()
+    end
+
+  end
+
+  context 'search setting only weekday' do
+
+    it 'returns the spaces with venue hours weekday 0' do
+      ss = SpaceSearch.new(weekday: 0)
+      expect(ss.find_spaces).to contain_exactly(@s1_v1, @s2_v1, @s1_v4, @s2_v4)
+    end
+
+    it 'returns the spaces with venue hours weekday 1' do
+      ss = SpaceSearch.new(weekday: 1)
+      expect(ss.find_spaces).to contain_exactly(@s1_v2, @s2_v2)
+    end
+
+    it 'returns an empty array when there are no spaces with that weekday' do
+      ss = SpaceSearch.new(weekday: 6)
+      expect(ss.find_spaces).to contain_exactly()
+    end
+
+  end
+
+  context 'search setting only date' do
+
+    it 'returns the spaces with venue hours with weekday monday' do
+      next_monday = Time.new.next_week
+      ss = SpaceSearch.new(date: next_monday.to_s)
+      expect(ss.find_spaces).to contain_exactly(@s1_v1, @s2_v1, @s1_v4, @s2_v4)
+    end
+
+    it 'returns the spaces with venue hours with weekday tuesday' do
+      next_monday = Time.new.next_week
+      ss = SpaceSearch.new(date: next_monday.advance(days: 1).to_s)
+      expect(ss.find_spaces).to contain_exactly(@s1_v2, @s2_v2)
+    end
+
+    it 'returns an empty array when there are no spaces with weekday sunday' do
+      next_monday = Time.new.next_week
+      ss = SpaceSearch.new(date: next_monday.advance(days: 6).to_s)
+      expect(ss.find_spaces).to contain_exactly()
+    end
+
+  end
+
+  context 'search setting multiple fields' do
+
+    it 'returns the spaces with weekday monday, startup_office, \'wifi\', and a conference_room' do
+      next_monday = Time.new.next_week
+      ss = SpaceSearch.new(date: next_monday.to_s, 
+                           venue_types: [Venue.v_types[:startup_office]],
+                           venue_amenities: ["wifi"],
+                           space_types: [Space.s_types[:conference_room]])
+      expect(ss.find_spaces).to contain_exactly(@s1_v4)
+    end
+
+  end
 end
