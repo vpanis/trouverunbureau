@@ -58,4 +58,14 @@ RSpec.describe Space, type: :model do
     should space.valid? be false
   end
 
+  it 'should add a price error if every price is nil' do
+    space = FactoryGirl.build(:space,
+                              hour_price: nil,
+                              day_price: nil,
+                              week_price: nil,
+                              month_price: nil)
+    space.valid?
+    expect(space.errors[:price]).to be_present
+  end
+
 end
