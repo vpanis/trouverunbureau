@@ -35,8 +35,8 @@ class VenueReview < ActiveRecord::Base
   end
 
   def update_ratings
-    result = calculate_count_sum_venue_review_stars
     venue = booking.space.venue
+    result = RatingsQuery.calculate_count_and_review_sum_for_venue(venue)
     venue.quantity_reviews = result['count']
     venue.reviews_sum = result['stars_sum'] || 0
     if venue.quantity_reviews != 0
@@ -45,17 +45,5 @@ class VenueReview < ActiveRecord::Base
       venue.rating = 0
     end
     venue.save
-  end
-
-  def calculate_count_sum_venue_review_stars
-    sql = "SELECT COUNT(*), SUM(venue_reviews.stars) as stars_sum
-           FROM venue_reviews
-           INNER JOIN bookings
-             ON bookings.id = venue_reviews.booking_id
-           INNER JOIN spaces
-             ON spaces.id = bookings.space_id
-           WHERE spaces.venue_id=#{booking.space.venue_id}
-             AND venue_reviews.active"
-    ActiveRecord::Base.connection.select_all(sql).first
   end
 end

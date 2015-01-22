@@ -35,7 +35,7 @@ class ClientReview < ActiveRecord::Base
   end
 
   def update_ratings
-    result = calculate_count_sum_client_review_stars
+    result = RatingsQuery.calculate_count_and_review_sum_for_client(booking.owner)
     booking.owner.quantity_reviews = result['count']
     booking.owner.reviews_sum = result['stars_sum'] || 0
     if booking.owner.quantity_reviews != 0
@@ -44,16 +44,5 @@ class ClientReview < ActiveRecord::Base
       booking.owner.rating = 0
     end
     booking.owner.save
-  end
-
-  def calculate_count_sum_client_review_stars
-    sql = "SELECT COUNT(*), SUM(client_reviews.stars) as stars_sum
-           FROM client_reviews
-           INNER JOIN bookings
-             ON bookings.id = client_reviews.booking_id
-           WHERE bookings.owner_id=#{booking.owner_id}
-             AND bookings.owner_type='#{booking.owner_type}'
-             AND client_reviews.active"
-    ActiveRecord::Base.connection.select_all(sql).first
   end
 end
