@@ -8,6 +8,8 @@ class SpaceSearch
   attr_accessor :venue_types
   # Venue::AMENITY_TYPES array ("wifi", "cafe_restaurant"...)
   attr_accessor :venue_amenities
+  # Venue::PROFESSIONS array ("technology", "public_relations"...)
+  attr_accessor :venue_professions
   attr_accessor :latitude_from, :latitude_to, :longitude_from, :longitude_to
   attr_accessor :capacity, :quantity, :date, :weekday
 
@@ -66,8 +68,11 @@ class SpaceSearch
     spaces = spaces.joins { venue }.order('venues.quantity_reviews DESC, venues.rating DESC')
     spaces = latitude_longitude_conditions(spaces)
     spaces = spaces.where { venue.v_type.eq_any my { venue_types } } unless venue_types.blank?
-    spaces = spaces.where('ARRAY[:amenities] <@ amenities',
+    spaces = spaces.where('ARRAY[:amenities] <@ venues.amenities',
                           amenities: venue_amenities) unless venue_amenities.blank?
+    spaces = spaces.where('ARRAY[:venue_professions] && venues.primary_professions
+                          OR ARRAY[:venue_professions] && venues.secondary_professions',
+                          venue_professions: venue_professions) unless venue_professions.blank?
     return spaces if weekday.blank?
     # day_hours is the name of the relation in venue, venue_hours the name of the table
     spaces.joins { venue.day_hours } .where { venue_hours.weekday == my { weekday } }
@@ -87,6 +92,13 @@ class SpaceSearch
     invalid_amenities = venue_amenities - Venue::AMENITY_TYPES.map(&:to_s)
     invalid_amenities.each do |amenity|
       errors.add(:venue_amenity, amenity + ' is not a valid amenity')
+    end
+  end
+
+  def each_profession_inclusion
+    invalid_professions = venue_professions - Venue::PROFESSIONS.map(&:to_s)
+    invalid_professions.each do |profession|
+      errors.add(:profession_list, profession + ' is not a valid amenity')
     end
   end
 end

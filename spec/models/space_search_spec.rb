@@ -6,17 +6,27 @@ RSpec.describe SpaceSearch, type: :model do
 
   before(:all) do
     @v1 = FactoryGirl.create(:venue, v_type: Venue.v_types[:startup_office], latitude: 10,
-                             longitude: 10, amenities: ['wifi'], rating: 4, quantity_reviews: 10)
+                             longitude: 10, amenities: ['wifi'],
+                             primary_professions: ['technology'],
+                             secondary_professions: ['public_relations'],
+                             rating: 4, quantity_reviews: 10)
     FactoryGirl.create(:venue_hour, venue: @v1, weekday: 0)
     @v2 = FactoryGirl.create(:venue, v_type: Venue.v_types[:studio], latitude: 20,
                              longitude: 20, amenities: ['cafe_restaurant'],
+                             primary_professions: [],
+                             secondary_professions: ['public_relations'],
                              rating: 5, quantity_reviews: 10)
     FactoryGirl.create(:venue_hour, venue: @v2, weekday: 1)
     @v3 = FactoryGirl.create(:venue, v_type: Venue.v_types[:bussines_center], latitude: 30,
-                             longitude: 30, amenities: ['kitchen'], rating: 5, quantity_reviews: 3)
+                             longitude: 30, amenities: ['kitchen'],
+                             primary_professions: ['entertainment'],
+                             secondary_professions: [],
+                             rating: 5, quantity_reviews: 3)
     FactoryGirl.create(:venue_hour, venue: @v3, weekday: 2)
     @v4 = FactoryGirl.create(:venue, v_type: Venue.v_types[:startup_office], latitude: 40,
                              longitude: 40, amenities: %w(wifi gym),
+                             primary_professions: ['public_relations'],
+                             secondary_professions: ['technology'],
                              rating: 4, quantity_reviews: 20)
     FactoryGirl.create(:venue_hour, venue: @v4, weekday: 0)
     FactoryGirl.create(:venue_hour, venue: @v4, weekday: 3)
@@ -92,9 +102,28 @@ RSpec.describe SpaceSearch, type: :model do
       expect(ss.find_spaces).to contain_exactly(@s1_v2, @s2_v2)
     end
 
-    it 'returns the spaces \'gym\' and \'wifi\'' do
+    it 'returns the spaces with \'gym\' and \'wifi\'' do
       ss = SpaceSearch.new(venue_amenities: %w(gym wifi))
       expect(ss.find_spaces).to contain_exactly(@s1_v4, @s2_v4)
+    end
+
+  end
+
+  context 'search setting only venue_professions' do
+
+    it 'returns the spaces that contains \'technology\'' do
+      ss = SpaceSearch.new(venue_professions: ['technology'])
+      expect(ss.find_spaces).to contain_exactly(@s1_v1, @s2_v1, @s1_v4, @s2_v4)
+    end
+
+    it 'returns the spaces that contains \'entertainment\'' do
+      ss = SpaceSearch.new(venue_professions: ['entertainment'])
+      expect(ss.find_spaces).to contain_exactly(@s1_v3, @s2_v3)
+    end
+
+    it 'returns the spaces that contains \'entertainment\' or \'technology\'' do
+      ss = SpaceSearch.new(venue_professions: %w(entertainment technology))
+      expect(ss.find_spaces).to contain_exactly(@s1_v1, @s2_v1, @s1_v3, @s2_v3, @s1_v4, @s2_v4)
     end
 
   end
