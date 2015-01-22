@@ -24,9 +24,12 @@ class Booking < ActiveRecord::Base
   class << self
 
     def bookable?(space, booking_type, from, to, quantity)
-      return false if space.quantity < quantity || quantity < 1
+      return false if space.quantity < quantity || quantity < 1 || from > to
       return false unless valid_hours_for_venue?(space.venue, booking_type, from, to)
-      true
+      Booking.where('bookings.from BETWEEN :from AND :to OR bookings.to BETWEEN :from AND :to',
+                    from: from, to: to).where(space: space).find_each do |booking|
+        # range logic
+      end
     end
 
     private
