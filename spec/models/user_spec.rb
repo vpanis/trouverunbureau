@@ -43,4 +43,9 @@ RSpec.describe User, type: :model do
     user = User.create(first_name: 'test', password: 'testtest')
     expect(user.valid?).to be(false)
   end
+
+  it 'should add an email error, if both provider and email are nil' do
+    user = User.create(first_name: 'test', password: 'testtest')
+    expect(user.errors[:email]).to be_present
+  end
 end
