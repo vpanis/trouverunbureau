@@ -1,7 +1,6 @@
 class VenueReview < ActiveRecord::Base
   # Relations
-  belongs_to :venue
-  belongs_to :from_user, class_name: 'User'
+  belongs_to :booking
 
   # Callbacks
   after_initialize :initialize_fields
@@ -9,7 +8,7 @@ class VenueReview < ActiveRecord::Base
   after_destroy :update_ratings, if: :active
 
   # Validations
-  validates :venue, :from_user, :stars, presence: true
+  validates :stars, :booking, presence: true
   validates :stars, numericality: {
     only_integer: true,
     greater_than_or_equal_to: 1,
@@ -36,8 +35,10 @@ class VenueReview < ActiveRecord::Base
   end
 
   def update_ratings
-    venue.quantity_reviews = VenueReview.where(venue_id: venue.id, active: true).size
-    venue.reviews_sum = VenueReview.where(venue_id: venue.id, active: true).sum(:stars)
+    venue = booking.space.venue
+    result = RatingsQuery.calculate_count_and_review_sum_for_venue(venue)
+    venue.quantity_reviews = result['count']
+    venue.reviews_sum = result['stars_sum'] || 0
     if venue.quantity_reviews != 0
       venue.rating = venue.reviews_sum / (venue.quantity_reviews * 1.0)
     else

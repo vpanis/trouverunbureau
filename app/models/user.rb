@@ -17,8 +17,8 @@ class User < ActiveRecord::Base
 
   has_many :users_favorites
 
-  # Favorited spaces
-  has_many :spaces, through: :users_favorites
+  # Favorite spaces
+  has_many :favorite_spaces, through: :users_favorites, source: :space
 
   # Callbacks
   after_initialize :initialize_fields

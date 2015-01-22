@@ -7,6 +7,8 @@ FactoryGirl.define do
     capacity 1
     quantity 4
     description { Faker::Lorem.sentence }
+    hour_price 20
+    day_price 150
 
     venue { FactoryGirl.build(:venue) }
   end

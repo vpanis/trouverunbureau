@@ -6,7 +6,6 @@ FactoryGirl.define do
     stars { rand(5) + 1 }
     active true
 
-    venue { FactoryGirl.build(:venue) }
-    from_user { FactoryGirl.build(:user) }
+    booking { FactoryGirl.build(:booking) }
   end
 end

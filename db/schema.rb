@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150108174607) do
+ActiveRecord::Schema.define(version: 20150114171536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,18 +33,15 @@ ActiveRecord::Schema.define(version: 20150108174607) do
   add_index "bookings", ["space_id"], name: "index_bookings_on_space_id", using: :btree
 
   create_table "client_reviews", force: true do |t|
-    t.integer  "from_user_id"
     t.text     "message"
     t.integer  "stars"
     t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "client_id"
-    t.string   "client_type"
+    t.integer  "booking_id"
   end
 
-  add_index "client_reviews", ["client_id", "client_type"], name: "index_client_reviews_on_client_id_and_client_type", using: :btree
-  add_index "client_reviews", ["from_user_id"], name: "index_client_reviews_on_from_user_id", using: :btree
+  add_index "client_reviews", ["booking_id"], name: "index_client_reviews_on_booking_id", using: :btree
 
   create_table "organization_users", force: true do |t|
     t.integer  "user_id"
@@ -78,6 +75,10 @@ ActiveRecord::Schema.define(version: 20150108174607) do
     t.integer  "venue_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "hour_price"
+    t.float    "day_price"
+    t.float    "week_price"
+    t.float    "month_price"
   end
 
   add_index "spaces", ["venue_id"], name: "index_spaces_on_venue_id", using: :btree
@@ -102,8 +103,6 @@ ActiveRecord::Schema.define(version: 20150108174607) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.string   "provider"
-    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -143,17 +142,15 @@ ActiveRecord::Schema.define(version: 20150108174607) do
   add_index "venue_photos", ["venue_id"], name: "index_venue_photos_on_venue_id", using: :btree
 
   create_table "venue_reviews", force: true do |t|
-    t.integer  "venue_id"
-    t.integer  "from_user_id"
     t.text     "message"
     t.integer  "stars"
     t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "booking_id"
   end
 
-  add_index "venue_reviews", ["from_user_id"], name: "index_venue_reviews_on_from_user_id", using: :btree
-  add_index "venue_reviews", ["venue_id"], name: "index_venue_reviews_on_venue_id", using: :btree
+  add_index "venue_reviews", ["booking_id"], name: "index_venue_reviews_on_booking_id", using: :btree
 
   create_table "venues", force: true do |t|
     t.string   "town"
