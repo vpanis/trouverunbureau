@@ -17,7 +17,7 @@ RSpec.describe SpaceSearch, type: :model do
                              secondary_professions: ['public_relations'],
                              rating: 5, quantity_reviews: 10)
     FactoryGirl.create(:venue_hour, venue: @v2, weekday: 1)
-    @v3 = FactoryGirl.create(:venue, v_type: Venue.v_types[:bussines_center], latitude: 30,
+    @v3 = FactoryGirl.create(:venue, v_type: Venue.v_types[:business_center], latitude: 30,
                              longitude: 30, amenities: ['kitchen'],
                              primary_professions: ['entertainment'],
                              secondary_professions: [],
