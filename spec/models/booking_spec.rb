@@ -13,6 +13,7 @@ RSpec.describe Booking, type: :model do
   it { should validate_presence_of(:b_type) }
   it { should validate_presence_of(:quantity) }
   it { should validate_presence_of(:from) }
+  it { should validate_presence_of(:to) }
 
   # Enums
   it { should define_enum_for(:b_types) }

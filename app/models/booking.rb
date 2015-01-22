@@ -14,12 +14,38 @@ class Booking < ActiveRecord::Base
   after_initialize :initialize_fields
 
   # Validations
-  validates :owner, :space, :b_type, :quantity, :from, presence: true
+  validates :owner, :space, :b_type, :quantity, :from, :to, presence: true
 
   validates :quantity, numericality: {
     only_integer: true,
     greater_than_or_equal_to: 1
   }
+
+  class << self
+
+    def bookable?(space, booking_type, from, to, quantity)
+      return false if space.quantity < quantity || quantity < 1
+      return false unless valid_hours_for_venue?(space.venue, booking_type, from, to)
+      true
+    end
+
+    private
+
+    def valid_hours_for_venue?(venue, booking_type, from, to)
+      utc_from = Time.zone.local_to_utc(from)
+      utc_to = Time.zone.local_to_utc(to)
+      case booking_type
+      when :hour
+        venue.opens_hours_from_to?(utc_from, utc_to)
+      when :day
+        venue.opens_days_from_to?(utc_from, utc_to)
+      else
+        # if the venue opens at least 1 hour, 1 day per week, the user can book for week and month
+        !venue.day_hours.empty?
+      end
+    end
+
+  end
 
   private
 
