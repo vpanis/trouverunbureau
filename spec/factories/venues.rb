@@ -5,6 +5,7 @@ FactoryGirl.define do
     town { Faker::Address.city }
     street { Faker::Address.street_address }
     postal_code { Faker::Address.postcode }
+    country { Faker::Address.country }
     phone { Faker::PhoneNumber.phone_number }
     email { Faker::Internet.safe_email }
     website { Faker::Internet.url('example.com') }

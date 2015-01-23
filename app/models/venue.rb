@@ -30,7 +30,7 @@ class Venue < ActiveRecord::Base
   before_destroy :erase_logo
 
   # Validations
-  validates :town, :street, :postal_code, :email, :latitude, :longitude,
+  validates :town, :street, :postal_code, :country, :email, :latitude, :longitude,
             :name, :description, :currency, :v_type, :vat_tax_rate, :owner,
             presence: true
 

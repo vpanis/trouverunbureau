@@ -8,6 +8,8 @@ Deskspotting::Application.routes.draw do
 
   root to: 'landing#index'
 
+  resources :venues, only: [:show]
+
   api_version(module: "api/v1", path: { value: 'api/v1' }) do
     resources :users do
         member do
@@ -24,4 +26,5 @@ Deskspotting::Application.routes.draw do
         end
     end
   end # api/v1
+
 end

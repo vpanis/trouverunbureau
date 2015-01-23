@@ -204,6 +204,7 @@ ActiveRecord::Schema.define(version: 20150205230237) do
     t.string   "owner_type"
     t.text     "primary_professions",   default: [], array: true
     t.text     "secondary_professions", default: [], array: true
+    t.string   "country"
   end
 
   add_index "venues", ["owner_id", "owner_type"], name: "index_venues_on_owner_id_and_owner_type", using: :btree

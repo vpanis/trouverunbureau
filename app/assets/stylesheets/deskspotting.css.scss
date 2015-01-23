@@ -10,6 +10,7 @@ $dark-red: #d2505a;
 $black: #000000;
 $light-black: #222222;
 $dark-gray: #808184;
+$gray-text: #9f9f9f;
 $gray: #cccccc;
 $light-gray: #efefef;
 $dark-white: #f8f8f8;
@@ -97,6 +98,11 @@ body{
   color: $dark-gray;
 }
 
+a, a:hover{
+  text-decoration: none;
+}
+
+
 /* ---- login section ---- */
 .small-italic{
   @include dark-gray-regular-text;
@@ -135,11 +141,6 @@ body{
     width: 100%;
     height: 35px;
   }
-
-  a, a:hover{
-    text-decoration: none;
-  }
-
   .section-header h2{
     @include section-text;
     margin-top: 2px;
@@ -240,7 +241,7 @@ body{
 .form-control{
   height: 40px;
   border: 1px solid $gray;
-  color: $gray;
+  color: $gray-text;
 }
 
 .checkbox-label{
@@ -293,7 +294,7 @@ input[type="checkbox"]:checked:after {
   position: absolute;
   bottom: 0.1em;
   left: 0.3em;
-  color: $gray;
+  color: $gray-text;
   font-size: 0.5em;
 }
 
@@ -396,7 +397,7 @@ input[type="checkbox"]:checked:after {
         -webkit-appearance: none;
         font-size: 14px;
         letter-spacing: 0.08rem;
-        font-weight: 200;
+        font-weight: 300;
         padding-bottom: 2px;
         color: $dark-gray;
       }
@@ -405,7 +406,7 @@ input[type="checkbox"]:checked:after {
         padding-left: 48px;
         font-size: 14px;
         letter-spacing: 0.08rem;
-        font-weight: 200;
+        font-weight: 300;
         padding-bottom: 2px;
       }
       *::-webkit-input-placeholder{
@@ -499,7 +500,7 @@ input[type="checkbox"]:checked:after {
       text-transform: uppercase;
       font-size: 12px;
       letter-spacing: 0.25rem;
-      font-weight: 600;
+      font-weight: 700;
     }
     .small-separator{
       border-top: 2px solid $yellow;
@@ -780,146 +781,7 @@ input[type="checkbox"]:checked:after {
           padding-bottom: 50px;
         }
       }
-      .left-carousel-arrow, .right-carousel-arrow{
-        width: 100%;
-        height: 100%;
-        background-repeat: no-repeat;
-        background-position-y: center;
-      }
-      .left-carousel-arrow{
-        @include at2x('arrow-quotes-left', 20px, 50px);
-        background-position-x: left;
-      }
-      .right-carousel-arrow{
-        @include at2x('arrow-quotes-right', 20px, 50px);
-        background-position-x: right;
-      }
-      .carousel-control.left, .carousel-control.right{
-        background-image: none;
-        opacity: 1;
-      }
-      .carousel-indicators{
-        li{
-          background-color: $light-gray;
-          height: 12px;
-          width: 12px;
-          margin: 1px 4px;
-        }
-        .active{
-          background-color: $yellow;
-        }
-      }
-    }
-  }
-  #footer{
-    .info{
-      width: 90%;
-      margin-right: auto;
-      margin-left: auto;
-    }
-    background: $light-black;
-    .row{
-      width: 99%;
-      margin: 0px auto;
-    }
-    .icon{
-      width: 100%;
-      height: 200px;
-      background-position-y: 70%;
-    }
-    .company{
-      padding-left: 20%;
-      a{
-        display: block;
-        font-weight: 300;
-        letter-spacing: 0.06rem;
-        line-height: 25px;
-      }
-      a:hover{
-        color: $yellow;
-      }
-    }
-    .company, .find-us{
-      h4{
-        color: $yellow;
-        text-transform: uppercase;
-        margin-top: 42px;
-        font-size: 11px;
-        letter-spacing: 0.35rem;
-        font-weight: 700;
-      }
-      .separator{
-        width: 50px;
-        margin: 11px 0px;
-      }
-    }
-    .find-us{
-      padding-left: 20%;
-      .social-icons{
-        height: 100px;
-        padding: 28px 0px;
-        min-width: 216px;
-        .social-icon{
-          width: 40px;
-          height: 40px;
-          display: inline-block;
-          margin-right: 14px;
-          @include at2x('social-icons-sprite', 170px, 80px);
-        }
-        .twitter{
-          background-position: -1px 0px;
-        }
-        .twitter:hover{
-          background-position: -1px 40px;
-        }
-        .facebook{
-          background-position: -44px 0px;
-        }
-        .facebook:hover{
-          background-position: -44px 40px;
-        }
-        .linkedin{
-          background-position: -87px 0px;
-        }
-        .linkedin:hover{
-          background-position: -87px 40px;
-        }
-        .instagram{
-          background-position: -130px 0px;
-        }
-        .instagram:hover{
-          background-position: -130px 40px;
-        }
-      }
-      .language{
-        margin-top: 5px;
-        border-bottom: solid 1px white;
-        p{
-          text-transform: uppercase;
-          font-size: 14px;
-          font-weight: 700;
-          letter-spacing: 0.1rem;
-          display: inline-block;
-          width: 90%;
-          text-align: left;
-        }
-        p.arrow{
-          text-align: right;
-          width: 14px;
-          color: white;
-        }
-      }
-    }
-    .rights{
-      text-align: center;
-      color: white;
-      font-weight: 300;
-      padding: 24px;
-      font-size: 11px;
-      letter-spacing: 0.08rem;
-      a{
-        color: $dark-gray;
-      }
+
     }
   }
 }
@@ -931,6 +793,475 @@ input[type="checkbox"]:checked:after {
     text-align: center;
     .separator{
       margin: 11px auto !important;
+    }
+  }
+}
+
+/* ======= FOOTER ======== */
+#footer{
+  a{
+    color: white;
+    text-decoration: none;
+  }
+  .icon{
+    @include at2x('isologo-top-bar', 205px, 35px);
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 205px;
+    height: 35px;
+    margin-left: 14px;
+    margin-top: 12px;
+  }
+  .info{
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  background: $light-black;
+  .row{
+    width: 99%;
+    margin: 0px auto;
+  }
+  .icon{
+    width: 100%;
+    height: 200px;
+    background-position-y: 70%;
+  }
+  .company{
+    padding-left: 20%;
+    a{
+      display: block;
+      font-weight: 300;
+      letter-spacing: 0.06rem;
+      line-height: 25px;
+    }
+    a:hover{
+      color: $yellow;
+    }
+  }
+  .company, .find-us{
+    h4{
+      color: $yellow;
+      text-transform: uppercase;
+      margin-top: 42px;
+      font-size: 11px;
+      letter-spacing: 0.35rem;
+      font-weight: 700;
+    }
+    .separator{
+      width: 50px;
+      margin: 11px 0px;
+    }
+  }
+  .find-us{
+    padding-left: 20%;
+    .social-icons{
+      height: 100px;
+      padding: 28px 0px;
+      min-width: 216px;
+      .social-icon{
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        margin-right: 14px;
+        @include at2x('social-icons-sprite', 170px, 80px);
+      }
+      .twitter{
+        background-position: -1px 0px;
+      }
+      .twitter:hover{
+        background-position: -1px 40px;
+      }
+      .facebook{
+        background-position: -44px 0px;
+      }
+      .facebook:hover{
+        background-position: -44px 40px;
+      }
+      .linkedin{
+        background-position: -87px 0px;
+      }
+      .linkedin:hover{
+        background-position: -87px 40px;
+      }
+      .instagram{
+        background-position: -130px 0px;
+      }
+      .instagram:hover{
+        background-position: -130px 40px;
+      }
+    }
+    .language{
+      margin-top: 5px;
+      border-bottom: solid 1px white;
+      p{
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.1rem;
+        display: inline-block;
+        width: 90%;
+        text-align: left;
+      }
+      p.arrow{
+        text-align: right;
+        width: 14px;
+        color: white;
+      }
+    }
+  }
+  .rights{
+    text-align: center;
+    color: white;
+    font-weight: 300;
+    padding: 24px;
+    font-size: 11px;
+    letter-spacing: 0.08rem;
+    a{
+      color: $dark-gray;
+    }
+  }
+}
+
+/* =========== CAROUSELS =========== */
+.left-carousel-arrow, .right-carousel-arrow{
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position-y: center;
+}
+.left-carousel-arrow{
+  @include at2x('arrow-quotes-left', 20px, 50px);
+  background-position-x: 25%;
+}
+.right-carousel-arrow{
+  @include at2x('arrow-quotes-right', 20px, 50px);
+  background-position-x: 75%;
+}
+.carousel-control.left, .carousel-control.right{
+  background-image: none;
+  opacity: 1;
+}
+.carousel-indicators{
+  li{
+    background-color: $light-gray;
+    border: none;
+    height: 12px;
+    width: 12px;
+    margin: 1px 4px;
+  }
+  .active{
+    background-color: $yellow;
+    margin: 1px 4px;
+  }
+}
+/* ========= END CAROUSELS ========= */
+
+
+
+/*  ======== APPLICATION ======== */
+.menubar{
+  height: 60px;
+  @include at2x('isologotipo-login', 205px, 35px);
+  background-repeat: no-repeat;
+  background-position: 16px 13px;
+  width: 100%;
+
+  .icon, .search, .user, .messages, .list{
+    display: inline-block;
+  }
+  .search{
+    margin-left: 240px;
+    margin-top: 10px;
+    width: 305px;
+    .styled-search{
+      background-color: $dark-white;
+      @include border-radius(2em);
+      @include at2x('loupe', 26px, 26px);
+      background-repeat: no-repeat;
+      background-position-x: 12px;
+      background-position-y: center;
+      height: 40px;
+      border: 0px;
+    }
+    input[type='text'].form-control{
+      width: 100%;
+      background-color: transparent;
+      padding-left: 48px;
+      font-size: 14px;
+      letter-spacing: 0.08rem;
+      font-weight: 200;
+      padding-bottom: 2px;
+      height: 39px;
+      border: 0px;
+      @include border-radius(2em);
+      -webkit-box-shadow: none;
+    }
+    *::-webkit-input-placeholder{
+      color: $dark-gray;
+    }
+    *:-moz-placeholder{
+      color: $dark-gray;
+    }
+    *::-moz-placeholder{
+      color: $dark-gray;
+    }
+    *:-ms-input-placeholder{
+      color: $dark-gray;
+    }
+  }
+}
+#venue-main-carousel{
+  .item{
+    height: 432px;
+    width: 100%;
+    .full-image{
+      height: 432px;
+      width: 100%;
+      background: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+  }
+}
+.venue-bar{
+  width: 100%;
+  background-color: white;
+  margin: 0;
+  .venue-avatar{
+    margin: 0px 13px;
+    display: inline-block;
+    vertical-align: top;
+    img{
+      @include border-radius(100%);
+    }
+  }
+  .basic-info{
+    display: inline-block;
+    padding-left: 7px;
+    padding-bottom: 24px;
+    margin-left: 5px;
+    .stars{
+      margin-top: 6px;
+      display: inline-block;
+      .star{
+        @include at2x('stars-sprite', 28px, 14px);
+        width: 14px;
+        height: 14px;
+        display: inline-block;
+        background-repeat: no-repeat;
+        margin: 0px 2px;
+        vertical-align: middle;
+        background-position: -14px 0px;
+      }
+      .star.active{
+        background-position: 0px 0px;
+      }
+    }
+    .reviews{
+      display: inline-block;
+      font-weight: 300;
+      color: $gray-text;
+      font-size: 13px;
+      letter-spacing: 0.08rem;
+      margin-left: 5px;
+      vertical-align: bottom;
+    }
+    .venue-name{
+      h1{
+        font-size: 27px;
+        margin: 5px 0px;
+        letter-spacing: 0.19rem;
+        font-weight: 400;
+        color: black;
+      }
+    }
+    .location{
+      height: 20px;
+      @include at2x('i-location', 14px, 20px);
+      background-repeat: no-repeat;
+      padding: 0px 20px;
+      p{
+        margin-top: 7px;
+        font-size: 13px;
+        letter-spacing: 0.06rem;
+        font-weight: 300;
+        color: $gray-text;
+        line-height: 20px;
+      }
+    }
+  }
+  .actions-on-venue{
+    text-align: right;
+    height: 18px;
+    margin-right: 12px;
+    padding-top: 7px;
+    a{
+      font-weight: 300;
+      color: $gray-text;
+      margin-right: 4px;
+      margin-left: 11px;
+      font-size: 12px;
+      letter-spacing: 0.06rem;
+      cursor: pointer;
+    }
+    #share-venue{
+      background-image: image-url('stub.png');
+      background-size: 16px 16px;
+      background-repeat: no-repeat;
+      padding-left: 22px;
+    }
+  }
+  .tab-selector{
+    height: 44px;
+    padding: 12px 22px;
+  }
+  .tab-selector a{
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: 0.06rem;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    padding: 10px;
+  }
+  .tab-selector.active a{
+    font-weight: 700;
+    letter-spacing: 0.04rem;
+  }
+  #venue-info-selector{
+    text-align: right;
+    border-right: solid 2px $yellow;
+  }
+  #venue-workspaces-selector{
+    text-align: left;
+  }
+  .tab-selector-container{
+    width: 90%;
+    margin: 25px auto;
+    background-color: white;
+  }
+}
+#venue-info-tab{
+  background-color: orange;
+  width: 100%;
+}
+#venue-workspaces-tab{
+  background-color: $dark-white;
+  width: 100%;
+  padding-top: 10px;
+  .cards-columns{
+    margin: 10px auto;
+  }
+}
+
+.space-card{
+  width: 483px;
+  margin-bottom: 20px;
+  background-color: white;
+  .card-top-bar{
+    height: 88px;
+    padding: 1px 19px;
+    h3{
+      font-size: 28px;
+      letter-spacing: 0.15rem;
+    }
+    .separator{
+      margin: 16px 0px;
+      width: 30px;
+    }
+  }
+  .carousel{
+    .item{
+      height: 260px;
+      .full-image{
+        height: 432px;
+        width: 100%;
+        background: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+    }
+  }
+  .space-info{
+    .description{
+      padding: 19px 22px 9px;
+      color: $gray-text;
+      letter-spacing: 0.065rem;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 24px;
+    }
+    .prices{
+      margin: 0 auto;
+      text-align: center;
+    }
+    .price{
+      text-align: center;
+      min-width: 120px;
+      display: inline-block;
+      padding: 0 5px;
+      p{
+        font-weight: 700;
+        font-size: 32px;
+        letter-spacing: 0.3rem;
+        margin: 0 5px;
+        span.currency{
+          text-transform: uppercase;
+          font-style: italic;
+          font-weight: 100;
+          font-size: 10px;
+          letter-spacing: 0.06rem;
+        }
+      }
+      .time{
+        font-weight: 300;
+        font-size: 12px;
+        letter-spacing: 0.15rem;
+      }
+    }
+    .booking-inquiry{
+      text-align: center;
+      padding: 35px 0px 42px;
+      a{
+        @include border-radius(2em);
+        border: 2px solid $yellow;
+        font-family: "Varela Round", sans-serif;
+        font-weight: 400;
+        letter-spacing: 0.15rem;
+        text-align: center;
+        background-color: $yellow;
+        cursor: pointer;
+        padding: 10px 160px;
+        font-size: 13px;
+        color: black;
+      }
+    }
+    .booking-inquiry{
+      a:hover{
+        background-color: white;
+      }
+    }
+  }
+}
+
+.space-card.selected{
+  border-bottom: solid 4px $yellow;
+  .card-top-bar{
+    background-color: $yellow;
+    h4{
+      color: white;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.09rem;
+      padding: 12px 3px 0px;
+      margin-bottom: 3px;
+    }
+    h3{
+      padding: 0px;
+      margin-top: 0px;
     }
   }
 }

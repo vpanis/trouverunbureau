@@ -1,0 +1,11 @@
+.menubar
+  .search
+    = form_tag '#', class: 'form-inline'
+      .styled-search
+        label.sr-only #{t('home.header.search_text')}
+        = text_field_tag :a, nil, class: 'form-control', placeholder: t('home.header.search_text')
+  .user
+    - if @user.present?
+      p = @user.first_name + ' ' + @user.last_name
+  .messages
+  .list

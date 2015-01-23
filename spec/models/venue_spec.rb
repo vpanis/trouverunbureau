@@ -13,6 +13,7 @@ RSpec.describe Venue, type: :model do
   it { should validate_presence_of(:town) }
   it { should validate_presence_of(:street) }
   it { should validate_presence_of(:postal_code) }
+  it { should validate_presence_of(:country) }
   it { should validate_presence_of(:email) }
   it { should validate_presence_of(:latitude) }
   it { should validate_presence_of(:longitude) }

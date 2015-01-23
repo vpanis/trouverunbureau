@@ -10,6 +10,8 @@
 #= require jquery.turbolinks
 #= require twitter/bootstrap
 #= require retina
+#= require masonry.pkgd
 #= require_directory .
 #= require_tree ./landing/
+#= require_tree ./venues/
 
