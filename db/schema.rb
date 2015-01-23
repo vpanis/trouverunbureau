@@ -124,8 +124,8 @@ ActiveRecord::Schema.define(version: 20150202163635) do
 
   create_table "venue_hours", force: true do |t|
     t.integer  "weekday"
-    t.time     "from"
-    t.time     "to"
+    t.integer  "from"
+    t.integer  "to"
     t.integer  "venue_id"
     t.datetime "created_at"
     t.datetime "updated_at"

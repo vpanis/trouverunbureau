@@ -12,6 +12,7 @@ class Booking < ActiveRecord::Base
 
   # Callbacks
   after_initialize :initialize_fields
+  before_validation :time_local_to_utc
 
   # Validations
   validates :owner, :space, :b_type, :quantity, :from, :to, presence: true
@@ -54,6 +55,11 @@ class Booking < ActiveRecord::Base
 
   def initialize_fields
     self.state ||= Booking.states[:pending_authorization]
+  end
+
+  def time_local_to_utc
+    self.from = Time.zone.local_to_utc(from)
+    self.to = Time.zone.local_to_utc(to)
   end
 
 end

@@ -56,7 +56,6 @@ class SpaceSearch
   def fill_conditions(spaces)
     spaces = space_conditions(spaces)
     spaces = venue_conditions(spaces)
-    # eager loading
     spaces
   end
 

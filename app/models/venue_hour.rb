@@ -4,8 +4,6 @@ class VenueHour < ActiveRecord::Base
 
   # weekday is the days_to_week_start fn in Time class (Mon:0, Tues:1, ...)
 
-  before_validation :hours_local_to_utc, unless: :created_at
-
   # Validations
   validates :venue, :from, :to, :weekday, presence: true
 
@@ -14,6 +12,14 @@ class VenueHour < ActiveRecord::Base
     greater_than_or_equal_to: 0,
     less_than: 7
   }
+
+  validates :from, :to, numericality: {
+    only_integer: true,
+    greater_than_or_equal_to: 0,
+    less_than: 2400
+  }
+
+  validate :possible_hours
 
   class << self
     def which_day(time)
@@ -34,8 +40,14 @@ class VenueHour < ActiveRecord::Base
 
   private
 
-  def hours_local_to_utc
-    self.from = Time.zone.local_to_utc(from)
-    self.to = Time.zone.local_to_utc(to)
+  def possible_hours
+    validate_hour(:from) if from
+    validate_hour(:to) if to
+  end
+
+  def validate_hour(sym)
+    minutes = self[sym] % 100
+    return if minutes == 30 || minutes == 0
+    errors.add(sym, self[sym].to_s + ' is not a valid hour')
   end
 end
