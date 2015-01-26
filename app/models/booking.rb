@@ -30,7 +30,7 @@ class Booking < ActiveRecord::Base
       rdc = RangeDateCollisioner.new(max_collition_permited: space.quantity - quantity,
                                first_date: from, minute_granularity: 30)
       Booking.where('bookings.from BETWEEN :from AND :to OR bookings.to BETWEEN :from AND :to',
-                    from: from, to: to).where(space: space).find_each do |booking|
+                    from: from, to: to).where(space: space).order(from: :asc).each do |booking|
         rdc.add_time_range(booking.from, booking.to, booking.quantity)
         break unless rdc.valid?
       end
