@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe RangeDateCollisioner, type: :model do
+RSpec.describe RangeDateCollider, type: :model do
 
   context 'RangeDatecollisioner with 4 max permited collitions,
            granularity 30 min and ordered_and_clean in true' do
 
     before(:each) do
       @beginning_of_day = Time.new.at_beginning_of_day
-      @rdc = RangeDateCollisioner.new(max_collition_permited: 4,
-                                      first_date: @beginning_of_day,
-                                      minute_granularity: 30)
+      @rdc = RangeDateCollider.new(max_collition_permited: 4,
+                                   first_date: @beginning_of_day,
+                                   minute_granularity: 30)
     end
 
     it 'don\'t add a range if the \'from\' date it\'s invalid' do

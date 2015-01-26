@@ -1,4 +1,4 @@
-class RangeDateCollisioner
+class RangeDateCollider
   include ActiveModel::Model
 
   attr_accessor :max_collition_permited, :errors, :first_date, :minute_granularity

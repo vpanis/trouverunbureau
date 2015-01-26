@@ -27,7 +27,7 @@ class Booking < ActiveRecord::Base
     def bookable?(space, booking_type, from, to, quantity)
       return false if space.quantity < quantity || quantity < 1 || from > to
       return false unless valid_hours_for_venue?(space.venue, booking_type, from, to)
-      rdc = RangeDateCollisioner.new(max_collition_permited: space.quantity - quantity,
+      rdc = RangeDateCollider.new(max_collition_permited: space.quantity - quantity,
                                first_date: from, minute_granularity: 30)
       Booking.where('bookings.from BETWEEN :from AND :to OR bookings.to BETWEEN :from AND :to',
                     from: from, to: to).where(space: space).order(from: :asc).each do |booking|
