@@ -12,14 +12,10 @@ class RangeDateCollider
   validates :max_collition_permited, :first_date, presence: true
 
   validates :minute_granularity, :max_collition_permited, numericality: {
-    only_integer: true,
-    greater_than_or_equal_to: 0
-  }
+    only_integer: true, greater_than_or_equal_to: 0 }
 
   validates :minute_granularity, numericality: {
-    only_integer: true,
-    greater_than: 0
-  }
+    only_integer: true, greater_than: 0 }
 
   def initialize(attributes = {})
     attributes[:ordered_and_clean] ||= true
@@ -30,9 +26,11 @@ class RangeDateCollider
   end
 
   def add_time_range(from, to, quantity)
-    return invalid_fields(from, to, quantity) if from.nil? || to.nil? || from > to || quantity <= 0
-    return quantity_exceed_error(from, to, quantity) if quantity > max_collition_permited
-    range_entry = new_range_entry(time_to_range_number(from), time_to_range_number(to), quantity)
+    return add_error(from, to, quantity, :invalid_entry) if from.nil? || to.nil? ||
+                                                            from > to || quantity <= 0
+    return add_error(from, to, quantity, :entry_exceed_max) if quantity > max_collition_permited
+    range_entry = RangeEntry.new(min: time_to_range_number(from), max: time_to_range_number(to),
+                                 element: quantity)
     add_range_entry(range_entry)
   end
 
@@ -53,84 +51,69 @@ class RangeDateCollider
     range_array.push(range_entry) if range_entry.present?
   end
 
-  def try_to_collide_elements(range_entry, element)
+  def try_to_collide_elements(range_entry, old_range_entry)
     # entry bigger
-    if range_smaller_than?(element[:range], range_entry[:range])
-      [range_entry, element_to_return_if_smaller(element)]
+    if old_range_entry.range_smaller_than?(range_entry)
+      [range_entry, range_entry_to_return_if_smaller(old_range_entry)]
     # entry smaller, only possible with ordered_and_clean = false
-    elsif range_smaller_than?(range_entry[:range], element[:range])
-      [nil, [range_entry, element]]
+    elsif range_entry.range_smaller_than?(old_range_entry)
+      [nil, [range_entry, old_range_entry]]
     else
-      collide_elements(range_entry, element)
+      collide_elements(range_entry, old_range_entry)
     end
-
   end
 
-  def collide_elements(range_entry, element)
+  def collide_elements(range_entry, old_range_entry)
     response = [nil, []]
-    mins_not_equal!(range_entry, element, response) unless
-      range_entry[:range].min == element[:range].min
-    last_range = maxs_not_equal!(range_entry, element, response) unless
-      range_entry[:range].max == element[:range].max
-    middle_range = new_range_entry(range_entry[:range].min, range_entry[:range].max,
-                                   range_entry[:quantity] + element[:quantity])
+    mins_not_equal!(range_entry, old_range_entry, response) unless
+      range_entry.min == old_range_entry.min
+    last_range = maxs_not_equal!(range_entry, old_range_entry, response) unless
+      range_entry.max == old_range_entry.max
+    middle_range = RangeEntry.new(min: range_entry.min, max: range_entry.max,
+                                  element: range_entry.element + old_range_entry.element)
     response[1].push(validate_new_entry(middle_range))
     response[1].push(last_range) unless last_range.nil?
     response
   end
 
-  def mins_not_equal!(range_entry, element, response)
-    if range_entry[:range].min > element[:range].min
-      aux = element_to_return_if_smaller(
-        new_range_entry(element[:range].min, range_entry[:range].min - 1, element[:quantity]))
-      element[:range] = range_entry[:range].min..element[:range].max
+  def mins_not_equal!(range_entry, old_range_entry, response)
+    if range_entry.min > old_range_entry.min
+      aux = range_entry_to_return_if_smaller(RangeEntry.new(min: old_range_entry.min,
+              max: range_entry.min - 1, element: old_range_entry.element))
+      old_range_entry.range = range_entry.min..old_range_entry.max
     else
-      aux = new_range_entry(range_entry[:range].min,
-                            element[:range].min - 1, range_entry[:quantity])
-      range_entry[:range] = element[:range].min..range_entry[:range].max
+      aux = RangeEntry.new(min: range_entry.min, max: old_range_entry.min - 1,
+                           element: range_entry.element)
+      range_entry.range = old_range_entry.min..range_entry.max
     end
     response[1].push(aux)
   end
 
-  def maxs_not_equal!(range_entry, element, response)
-    if range_entry[:range].max > element[:range].max
-      response[0] = new_range_entry(element[:range].max + 1,
-                                    range_entry[:range].max,
-                                    range_entry[:quantity])
-      range_entry[:range] = range_entry[:range].min..element[:range].max
+  def maxs_not_equal!(range_entry, old_range_entry, response)
+    if range_entry.max > old_range_entry.max
+      response[0] = RangeEntry.new(min: old_range_entry.max + 1, max: range_entry.max,
+                                   element: range_entry.element)
+      range_entry.range = range_entry.min..old_range_entry.max
       nil
     else
-      new_range_entry(range_entry[:range].max + 1, element[:range].max, element[:quantity])
+      RangeEntry.new(min: range_entry.max + 1, max: old_range_entry.max,
+                     element: old_range_entry.element)
     end
   end
 
-  def new_range_entry(min, max, quantity)
-    { range: min..max, quantity: quantity }
-  end
-
-  def element_to_return_if_smaller(element)
+  def range_entry_to_return_if_smaller(range_entry)
     return nil if ordered_and_clean
-    element
-  end
-
-  def range_smaller_than?(range1, range2)
-    range1.max < range2.min
+    range_entry
   end
 
   def validate_new_entry(entry)
-    errors.push(from: range_number_to_time(entry[:range].min),
-                to: range_number_to_time(entry[:range].max),
-                quantity: entry[:quantity],
-                type: :collition_max_reached) unless entry[:quantity] <= max_collition_permited
+    add_error(range_number_to_time(entry.min), range_number_to_time(entry.max), entry.element,
+              :collition_max_reached) unless entry.element <= max_collition_permited
     entry
   end
 
-  def invalid_fields(from, to, quantity)
-    errors.push(from: from, to: to, quantity: quantity, type: :invalid_entry)
-  end
-
-  def quantity_exceed_error(from, to, quantity)
-    errors.push(from: from, to: to, quantity: quantity, type: :entry_exceed_max)
+  def add_error(from, to, quantity, type)
+    errors.push(from: from, to: to, quantity: quantity, type: type)
   end
 
   def time_to_range_number(time)
