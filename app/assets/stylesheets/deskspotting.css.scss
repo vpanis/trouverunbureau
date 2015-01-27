@@ -13,11 +13,10 @@ $dark-gray: #808184;
 $gray-text: #9f9f9f;
 $gray: #cccccc;
 $light-gray: #efefef;
-$dark-white: #f8f8f8;
+$dark-white: #f6f6f6;
 
 $fb-blue: #3b5998;
 
-@import url(https://fonts.googleapis.com/css?family=Varela+Round);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,700);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700);
 
@@ -26,6 +25,11 @@ $fb-blue: #3b5998;
   -moz-border-radius: $radius;
   -ms-border-radius: $radius;
   border-radius: $radius;
+}
+
+@mixin transition($property, $duration : 2s){
+  -webkit-transition: $property $duration;
+  transition: $property $duration;
 }
 
 @mixin rounded-left($radius){
@@ -127,11 +131,6 @@ a, a:hover{
   margin-left: auto;
   h1, h2{
     text-align: center;
-  }
-  h1{
-    font-size: 23px;
-    letter-spacing: 0.24rem;
-    font-family: "Varela Round", sans-serif;
   }
   h1.icon{
     @include at2x('isologotipo-login', 205px, 35px);
@@ -429,6 +428,7 @@ input[type="checkbox"]:checked:after {
         font-size: 16px;
         letter-spacing: 0.15rem;
         color: black;
+        @include transition(background-color, 1s);
       }
       #landing-form-submit:hover{
         background-color: $light-yellow;
@@ -460,13 +460,14 @@ input[type="checkbox"]:checked:after {
   }
   .nav-btn:hover{
     color: $yellow;
+    @include transition(color, 1s);
   }
   a.ds-btn{
     @include border-radius(2em);
     border: 2px solid $yellow;
     color: $yellow;
     display: inline-block;
-    font-family: "Varela Round", sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-weight: 400;
     letter-spacing: 0.15rem;
     text-align: center;
@@ -474,6 +475,7 @@ input[type="checkbox"]:checked:after {
     cursor: pointer;
     padding: 10px 28px 0px;
     font-size: 13px;
+    @include transition(background-color, 1s);
   }
   a.ds-btn:hover{
     color: $black;
@@ -633,6 +635,7 @@ input[type="checkbox"]:checked:after {
           opacity: 0;
           position: relative;
           width: 100%;
+          @include transition(opacity, 1s);
           .space-image-info{
             position: absolute;
             width: 100%;
@@ -724,7 +727,7 @@ input[type="checkbox"]:checked:after {
       a.add-space-btn{
         @include border-radius(2em);
         border: 2px solid white;
-        font-family: "Varela Round", sans-serif;
+        font-family: "Open Sans", sans-serif;
         font-weight: 400;
         letter-spacing: 0.15rem;
         text-align: center;
@@ -733,6 +736,7 @@ input[type="checkbox"]:checked:after {
         padding: 10px 25%;
         font-size: 13px;
         color: black;
+        @include transition(background-color, 1s);
       }
       a.add-space-btn:hover{
         background-color: white;
@@ -782,17 +786,6 @@ input[type="checkbox"]:checked:after {
         }
       }
 
-    }
-  }
-}
-
-/* small devices */
-@media screen and (min-width: 0px) and (max-width: 768px) {
-  .company, .find-us{
-    padding-left: 0px !important;
-    text-align: center;
-    .separator{
-      margin: 11px auto !important;
     }
   }
 }
@@ -962,17 +955,19 @@ input[type="checkbox"]:checked:after {
 
 /*  ======== APPLICATION ======== */
 .menubar{
-  height: 60px;
-  @include at2x('isologotipo-login', 205px, 35px);
-  background-repeat: no-repeat;
-  background-position: 16px 13px;
   width: 100%;
-
   .icon, .search, .user, .messages, .list{
     display: inline-block;
   }
+  .icon{
+    width: 205px;
+    height: 60px;
+    @include at2x('isologotipo-login', 205px, 35px);
+    background-repeat: no-repeat;
+    background-position: 16px 13px;
+  }
   .search{
-    margin-left: 240px;
+    height: 60px;
     margin-top: 10px;
     width: 305px;
     .styled-search{
@@ -1033,11 +1028,15 @@ input[type="checkbox"]:checked:after {
     margin: 0px 13px;
     display: inline-block;
     vertical-align: top;
+    width: 90px;
     img{
       @include border-radius(100%);
     }
   }
   .basic-info{
+    width: -moz-calc(100% - 122px);
+    width: -webkit-calc(100% - 122px);
+    width: calc(100% - 122px);
     display: inline-block;
     padding-left: 7px;
     padding-bottom: 24px;
@@ -1107,7 +1106,7 @@ input[type="checkbox"]:checked:after {
       cursor: pointer;
     }
     #share-venue{
-      background-image: image-url('stub.png');
+      @include at2x('stub', 16px, 16px);
       background-size: 16px 16px;
       background-repeat: no-repeat;
       padding-left: 22px;
@@ -1143,20 +1142,16 @@ input[type="checkbox"]:checked:after {
     background-color: white;
   }
 }
-#venue-info-tab{
-  background-color: orange;
-  width: 100%;
-}
-#venue-workspaces-tab{
+#venue-workspaces-tab, #venue-info-tab{
   background-color: $dark-white;
   width: 100%;
   padding-top: 10px;
-  .cards-columns{
-    margin: 10px auto;
+  .cards-columns, .info-columns{
+    margin: 10px auto 0px;
   }
 }
 
-.space-card{
+.space-card, .info-card{
   width: 483px;
   margin-bottom: 20px;
   background-color: white;
@@ -1166,9 +1161,10 @@ input[type="checkbox"]:checked:after {
     h3{
       font-size: 28px;
       letter-spacing: 0.15rem;
+      padding: 3px 4px;
     }
     .separator{
-      margin: 16px 0px;
+      margin: 16px 4px;
       width: 30px;
     }
   }
@@ -1221,32 +1217,144 @@ input[type="checkbox"]:checked:after {
         letter-spacing: 0.15rem;
       }
     }
-    .booking-inquiry{
-      text-align: center;
-      padding: 35px 0px 42px;
-      a{
-        @include border-radius(2em);
-        border: 2px solid $yellow;
-        font-family: "Varela Round", sans-serif;
-        font-weight: 400;
-        letter-spacing: 0.15rem;
+    .opening-hours{
+      margin-top: 5px;
+      padding-bottom: 14px;
+      .opening-hour{
+        display: inline-block;
+        width: 116px;
         text-align: center;
-        background-color: $yellow;
-        cursor: pointer;
-        padding: 10px 160px;
-        font-size: 13px;
-        color: black;
+        margin: 9px auto;
+        p{
+          margin-bottom: 5px;
+        }
+        .hours{
+          font-size: 12px;
+          color: $gray-text;
+        }
+        .day-of-week{
+          text-transform: uppercase;
+          font-size: 12px;
+          font-weight: 700;
+        }
+      }
+      .vertical-separator{
+        width: 2px;
+        height: 18px;
+        margin-bottom: 8px;
+        border-right: solid 1px $gray-text;
+        display: inline-block;
       }
     }
     .booking-inquiry{
-      a:hover{
-        background-color: white;
+      text-align: center;
+      margin: 36px auto 42px;
+      width: 90%;
+      padding: 10px 10%;
+      @include border-radius(2em);
+      border: 2px solid $yellow;
+      background-color: $yellow;
+      cursor: pointer;
+      @include transition(background-color, 1s);
+      a{
+        font-family: "Open Sans", sans-serif;
+        font-weight: 700;
+        letter-spacing: 0.15rem;
+        text-align: center;
+        font-size: 13px;
+        color: black;
+
+      }
+    }
+    .booking-inquiry:hover{
+      background-color: $light-yellow;
+    }
+    .professions{
+      -webkit-column-count: 2; /* Chrome, Safari, Opera */
+      -moz-column-count: 2; /* Firefox */
+      column-count: 2;
+      padding: 10px 15px 5px 25px;
+      .profession{
+        margin-bottom: 17px;
+        margin-left: 4px;
+        text-transform: uppercase;
+        font-weight: 300;
+        font-size: 12px;
+        letter-spacing: 0.06rem;
+        color: $gray-text;
+        p{
+          margin-left: 37px;
+        }
+        .icon{
+          width: 14px;
+          height: 14px;
+          margin-top: 1px;
+          float: left;
+          @include at2x('stub', 28px, 14px);
+          background-size: 28px 14px;
+          background-repeat: no-repeat;
+          vertical-align: middle;
+          background-position: 0px 0px;
+        }
+      }
+      .profession.primary{
+        font-weight: 700;
+        letter-spacing: 0.06rem;
+        color: $dark-gray;
+        .icon{
+          @include at2x('stars-sprite', 28px, 14px);
+        }
+
+      }
+    }
+    .why-deskspotting-list{
+      display: inline-block;
+      width: 50%;
+      padding-top: 7px;
+      padding-bottom: 8px;
+      .why-deskspotting {
+        color: $gray-text;
+        @include at2x('stub', 22px, 22px);
+        background-size: 22px 22px;
+        background-repeat: no-repeat;
+        padding: 2px 0px 2px 31px;
+        margin-bottom: 9px;
+        margin-top: 9px;
+        font-weight: 300;
+        font-size: 13px;
+        margin-left: 23px;
+        letter-spacing: 0.06rem;
+        p{
+          margin: 0;
+          line-height: 20px;
+        }
+      }
+    }
+  }
+  .amenities-list{
+    padding: 4px 10px;
+    margin-bottom: 22px;
+    .amenity{
+      @include at2x('stub', 40px, 40px);
+      background-size: 40px 40px;
+      background-repeat: no-repeat;
+      padding-left: 59px;
+      height: 40px;
+      width: 46%;
+      display: inline-block;
+      margin: 0px 2% 26px;
+      p{
+        text-transform: uppercase;
+        line-height: 40px;
+        letter-spacing: 0.05rem;
+        font-size: 12px;
+        color: $gray-text;
       }
     }
   }
 }
 
-.space-card.selected{
+.space-card.selected, .info-card.selected{
   border-bottom: solid 4px $yellow;
   .card-top-bar{
     background-color: $yellow;
@@ -1264,4 +1372,9 @@ input[type="checkbox"]:checked:after {
       margin-top: 0px;
     }
   }
+}
+
+.venue-map{
+  width: 100%;
+  height: 205px;
 }

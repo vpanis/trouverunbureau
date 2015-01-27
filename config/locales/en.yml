@@ -102,6 +102,75 @@ en:
       terms_of_service: 'Terms of service'
       privacy_policy: 'Privacy policy'
   venues:
+    amenities:
+      whiteboards:
+        name: whiteboards
+        css: whiteboards
+      kitchen:
+        name: kitchen
+        css: kitchen
+      security:
+        name: security
+        css: security
+      wifi:
+        name: 'internet speed (wifi)'
+        css: wifi
+      printer_scanner:
+        name: 'printers/scanner'
+        css: printer
+      chill_area:
+        name: chill area
+        css: chill
+      photocopier:
+        name: photocopier
+        css: photocopier
+      conference_rooms:
+        name: conference rooms
+        css: conference
+      elevators:
+        name: elevators
+        css: elevators
+      outdoor_space:
+        name: outdoor space
+        css: outdoor
+      team_bookings:
+        name: team bookings
+        css: team
+      individual_bookings:
+        name: individual bookings
+        css: individual
+      shower:
+        name: shower
+        css: shower
+      fax:
+        name: fax
+        css: fax
+      wheelchair_access:
+        name: wheelchair access
+        css: wheelchair
+      air_conditioning:
+        name: air conditioning
+        css: air
+      pets_allowed:
+        name: pets allowed
+        css: pets
+      mail_service:
+        name: mail service
+        css: mail
+      gym:
+        name: gym
+        css: gym
+      cafe_restaurant:
+        name: cafe/restaurant
+        css: cafe
+      phone_booth:
+        name: phone booth
+        css: phone
+    professions:
+      technology: technology
+      public_relations: public relations
+      entertainment: entertainment
+      entrepreneur: entrepreneur
     show:
       share: 'Share'
       report_venue: 'Report Venue'
@@ -113,3 +182,19 @@ en:
       per_month: 'Per month'
       per_week: 'Per week'
       booking_inquiry: 'Booking inquiry'
+      about_venue: 'About venue'
+      location: 'Location'
+      opening_hours: 'Opening hours'
+      closed: 'Closed'
+      amenities: 'Amenities'
+      professions: 'Professions'
+      why_deskspotting:
+        title: 'Why Book on DeskSpotting?'
+        no_booking_fees: 'No booking fees.'
+        booking_time: 'Book only the time you need.'
+        secure_payments: 'Secure payments.'
+        desposit_held: 'Deposit held in escrow.'
+        verified_venues: 'Verified venues.'
+        flexible_cancellations: 'Flexible Cancellations.'
+
+

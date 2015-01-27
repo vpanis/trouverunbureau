@@ -1,0 +1,9 @@
+.card.info-card
+  .card-top-bar
+    h3 #{t('venues.show.amenities')}
+    .separator
+  .amenities-list
+    - @venue.amenities.each do |amenity|
+      .amenity class=(t("venues.amenities.#{amenity}.css"))
+        p = t("venues.amenities.#{amenity}.name")
+

@@ -1,0 +1,27 @@
+.card.info-card
+  .card-top-bar
+    h3 #{t('venues.show.opening_hours')}
+    .separator
+  .space-info
+    .opening-hours
+      - (1..6).each do |weekday|
+        - hour = @venue.day_hours.where(weekday: weekday).first
+        .opening-hour
+          .hours
+            - if hour.present?
+              p #{hour.from.hour < 13 ? hour.from.hour : hour.from.hour - 12 }#{hour.from.hour < 12 ? 'am' : 'pm'} - #{hour.to.hour < 13 ? hour.to.hour : hour.to.hour - 12 }#{hour.to.hour < 12 ? 'am' : 'pm'}
+            - else
+              p #{t('venues.show.closed')}
+          .day-of-week
+            p = Date::ABBR_DAYNAMES[weekday]
+        - if weekday != 4
+          .vertical-separator
+      - hour = @venue.day_hours.where(weekday: 0).first
+      .opening-hour
+        .hours
+          p #{hour.from.hour < 13 ? hour.from.hour : hour.from.hour - 12 }#{hour.from.hour < 12 ? 'am' : 'pm'} - #{hour.to.hour < 13 ? hour.to.hour : hour.to.hour - 12 }#{hour.to.hour < 12 ? 'am' : 'pm'}
+        .day-of-week
+          p = Date::ABBR_DAYNAMES[0]
+      .vertical-separator
+
+

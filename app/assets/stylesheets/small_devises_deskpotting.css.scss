@@ -1,0 +1,44 @@
+/* small devices */
+@media screen and (min-width: 0px) and (max-width: 768px) {
+  .company, .find-us{
+    padding-left: 0px !important;
+    text-align: center;
+    .separator{
+      margin: 11px auto !important;
+    }
+  }
+  .tab-selector-container{
+    margin: 0 auto 15px !important;
+  }
+}
+
+/* tunning venue cards for small devises */
+@media all and (max-width: 500px){
+  .space-card, .info-card{
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+    .professions{
+      -webkit-column-count: 1 !important; /* Chrome, Safari, Opera */
+      -moz-column-count: 1 !important; /* Firefox */
+      column-count: 1 !important;
+    }
+    .amenities-list .amenity{
+      width: 100%;
+    }
+  }
+  .why-card{
+    .space-info{
+      margin-top: 30px !important;
+    }
+    .why-deskspotting-list{
+      display: inline-block;
+      width: 100% !important;
+      padding-top: 0px !important;
+      padding-bottom: 0px !important;
+      .why-deskspotting{
+        margin-top: 0px !important;
+      }
+    }
+  }
+}

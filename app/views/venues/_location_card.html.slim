@@ -1,0 +1,10 @@
+.card.info-card
+  .card-top-bar
+    h3 #{t('venues.show.location')}
+    .separator
+  .venue-map#map-canvas
+  .venue-coordinates.hidden
+    .latitude = @venue.latitude
+    .longitude = @venue.longitude
+    .marker_icon = image_url('stars-sprite.png')
+

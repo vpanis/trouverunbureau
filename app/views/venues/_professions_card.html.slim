@@ -1,0 +1,15 @@
+.card.info-card
+  .card-top-bar
+    h3 #{t('venues.show.professions')}
+    .separator
+  .space-info
+    .professions
+      - @venue.primary_professions.each do |profession|
+        .profession.primary
+          .icon
+          p = t("venues.professions.#{profession}")
+      - @venue.secondary_professions.each do |profession|
+        .profession.secondary
+          .icon
+          p = t("venues.professions.#{profession}")
+

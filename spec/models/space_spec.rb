@@ -6,7 +6,7 @@ RSpec.describe Space, type: :model do
   # Relations
   it { should belong_to(:venue) }
   it { should have_many(:bookings) }
-  it { should have_one(:photo) }
+  it { should have_many(:photos) }
 
   # Presence
   it { should validate_presence_of(:s_type) }
