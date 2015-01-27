@@ -31,5 +31,13 @@ FactoryGirl.define do
     trait :with_spaces do
       spaces { FactoryGirl.build_list(:space, rand(3) + 1) }
     end
+
+    trait :with_venue_hours do
+      day_hours do
+        [FactoryGirl.build(:venue_hour, weekday: 0), FactoryGirl.build(:venue_hour, weekday: 1),
+         FactoryGirl.build(:venue_hour, weekday: 2), FactoryGirl.build(:venue_hour, weekday: 3),
+         FactoryGirl.build(:venue_hour, weekday: 4)]
+      end
+    end
   end
 end

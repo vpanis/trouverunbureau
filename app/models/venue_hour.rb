@@ -36,6 +36,10 @@ class VenueHour < ActiveRecord::Base
         (start_wday..(start_wday + days - 1)).to_a
       end
     end
+
+    def convert_time(time)
+      time.hour * 100 + time.min
+    end
   end
 
   private
