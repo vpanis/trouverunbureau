@@ -1,7 +1,7 @@
 .space-card class=('selected' if selected)
   .card-top-bar
     - if selected
-      h4 workspace chosen in search
+      h4 #{t('venues.show.chosen_workspace')}
     h3 = space.name
     .separator
   .carousel.slide id="space-carousel-#{space.id}"
@@ -25,24 +25,24 @@
           p
             = space.hour_price.round
             span.currency = "(#{space.venue.currency})"
-          p.time Per hour
+          p.time #{t('venues.show.per_hour')}
       - if space.day_price.present?
         .price
           p
             = space.day_price.round
             span.currency = "(#{space.venue.currency})"
-          p.time Per day
+          p.time #{t('venues.show.per_day')}
       - if space.week_price.present?
         .price
           p
             = space.week_price.round
             span.currency = "(#{space.venue.currency})"
-          p.time Per week
+          p.time #{t('venues.show.per_week')}
       - if space.month_price.present?
         .price
           p
             = space.month_price.round
             span.currency = "(#{space.venue.currency})"
-          p.time Per month
+          p.time #{t('venues.show.per_month')}
     .booking-inquiry
-      a href="#" Booking inquiry
+      a href="#" #{t('venues.show.booking_inquiry')}

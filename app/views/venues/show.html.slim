@@ -2,8 +2,8 @@
 = render 'main_carousel'
 .venue-bar.row
   .row.actions-on-venue
-      a#share-venue Share
-      a#report-venue Report Venue
+      a#share-venue #{t('venues.show.share')}
+      a#report-venue #{t('venues.show.report_venue')}
   .col-xs-12.col-sm-6.col-md-6.col-lg-6
     .row
       .col-xs-3.col-sm-3.col-md-3.col-lg-3
@@ -26,9 +26,9 @@
   .col-xs-12.col-sm-6.col-md-6.col-lg-6
     .row.tab-selector-container
       .col-xs-6.tab-selector.active#venue-info-selector
-        a VENUE
+        a #{t('venues.show.venue')}
       .col-xs-6.tab-selector#venue-workspaces-selector
-        a workspaces
+        a #{t('venues.show.workspaces')}
 #venue-info-tab
   p venue-info-tab
   = render 'info_tab'

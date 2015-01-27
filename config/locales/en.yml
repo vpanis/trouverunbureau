@@ -101,3 +101,15 @@ en:
       reserved_rights: ' 2014 DeskSpotting. All rights reserved.'
       terms_of_service: 'Terms of service'
       privacy_policy: 'Privacy policy'
+  venues:
+    show:
+      share: 'Share'
+      report_venue: 'Report Venue'
+      venue: 'venue'
+      workspaces: 'workspaces'
+      chosen_workspace: 'workspace chosen in search'
+      per_hour: 'Per hour'
+      per_day: 'Per day'
+      per_month: 'Per month'
+      per_week: 'Per week'
+      booking_inquiry: 'Booking inquiry'
