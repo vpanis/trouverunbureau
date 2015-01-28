@@ -46,6 +46,9 @@ gem 'jquery-turbolinks'
 gem 'devise'
 gem 'omniauth-facebook'
 
+# SQL simplifier
+gem 'squeel'
+
 # CodeClimate Reporter
 gem 'codeclimate-test-reporter', group: :test, require: nil
 gem 'simplecov', require: false, group: :test

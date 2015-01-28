@@ -67,5 +67,4 @@ RSpec.describe Space, type: :model do
     space.valid?
     expect(space.errors[:price]).to be_present
   end
-
 end

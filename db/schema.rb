@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150114171536) do
+ActiveRecord::Schema.define(version: 20150121181309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -174,7 +174,7 @@ ActiveRecord::Schema.define(version: 20150114171536) do
     t.integer  "rooms"
     t.integer  "desks"
     t.float    "vat_tax_rate"
-    t.text     "amenities",        default: [], array: true
+    t.text     "amenities",             default: [], array: true
     t.datetime "created_at"
     t.datetime "updated_at"
     t.decimal  "rating"
@@ -182,6 +182,8 @@ ActiveRecord::Schema.define(version: 20150114171536) do
     t.integer  "reviews_sum"
     t.integer  "owner_id"
     t.string   "owner_type"
+    t.text     "primary_professions",   default: [], array: true
+    t.text     "secondary_professions", default: [], array: true
   end
 
   add_index "venues", ["owner_id", "owner_type"], name: "index_venues_on_owner_id_and_owner_type", using: :btree

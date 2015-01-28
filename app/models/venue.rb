@@ -16,13 +16,16 @@ class Venue < ActiveRecord::Base
 
   enum space_unit: [:square_mts, :square_foots]
 
-  AMENITY_TYPES = [:wifi, :cafe_restaurant, :catering_available,
-                   :coffee_tea_filtered_water, :lockers, :mail_service, :meeting_rooms,
-                   :pets_allowed, :phone_booth_room, :shared_kitchen,
-                   :wheelchair_accessible]
+  AMENITY_TYPES = [:whiteboards, :kitchen, :security, :wifi, :printer_scanner, :chill_area,
+                   :photocopier, :conference_rooms, :elevators, :outdoor_space, :team_bookings,
+                   :individual_bookings, :shower, :fax, :wheelchair_access, :air_conditioning,
+                   :pets_allowed, :mail_service, :gym, :cafe_restaurant, :phone_booth]
+
+  PROFESSIONS = [:technology, :public_relations, :entertainment, :entrepreneur]
 
   # Callbacks
   after_initialize :initialize_fields
+  before_validation :not_repeated_professions_in_secondary
   before_destroy :erase_logo
 
   # Validations
@@ -60,6 +63,7 @@ class Venue < ActiveRecord::Base
   }
 
   validate :each_amenity_inclusion
+  validate :each_profession_inclusion
 
   private
 
@@ -77,6 +81,23 @@ class Venue < ActiveRecord::Base
     invalid_amenities = amenities - AMENITY_TYPES.map(&:to_s)
     invalid_amenities.each do |amenity|
       errors.add(:amenity_list, amenity + ' is not a valid amenity')
-    end if invalid_amenities
+    end
   end
+
+  def each_profession_inclusion
+    each_profession_inclusion_for(primary_professions)
+    each_profession_inclusion_for(secondary_professions)
+  end
+
+  def each_profession_inclusion_for(profession_list)
+    invalid_professions = profession_list - PROFESSIONS.map(&:to_s)
+    invalid_professions.each do |profession|
+      errors.add(:profession_list, profession + ' is not a valid amenity')
+    end
+  end
+
+  def not_repeated_professions_in_secondary
+    self.secondary_professions = secondary_professions - primary_professions
+  end
+
 end
