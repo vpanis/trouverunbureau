@@ -29,7 +29,7 @@ class BookingManager
           booking.state = Booking.states[:already_taken]
         end
         booking.save
-      end.reload
+      end
     end
 
     private

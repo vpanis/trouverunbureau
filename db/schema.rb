@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20150202163635) do
     t.datetime "updated_at"
     t.integer  "owner_id"
     t.string   "owner_type"
+    t.float    "price"
   end
 
   add_index "bookings", ["owner_id", "owner_type"], name: "index_bookings_on_owner_id_and_owner_type", using: :btree
