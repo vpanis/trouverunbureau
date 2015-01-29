@@ -41,8 +41,19 @@ class Booking < ActiveRecord::Base
   end
 
   def calculate_price
-    return self.price ||= nil unless space.respond_to?("#{b_type}_price")
-    self.price ||= space.send("#{b_type}_price")
-    errors.add(:price_not_found_for_b_type, b_type: b_type) unless price.present?
+    return unless space.respond_to?("#{b_type}_price")
+    unit_price = space.send("#{b_type}_price")
+    return errors.add(:price_not_found_for_b_type, b_type: b_type) unless unit_price.present?
+    self.price ||= unit_price * unit_price_quantity * quantity if quantity.present? && quantity > 0
+  end
+
+  def unit_price_quantity
+    return 0 unless space.present? && space.venue.present? && from <= to
+    if b_type == 'day'
+      venue_not_open_days = [0, 1, 2, 3, 4, 5, 6] - space.venue.day_hours.pluck(:weekday)
+      (VenueHour.weekdays_array(from, to) - venue_not_open_days).length
+    else
+      ((to - from) / 1.send(b_type)).round
+    end
   end
 end

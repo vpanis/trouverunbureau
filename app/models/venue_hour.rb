@@ -37,6 +37,17 @@ class VenueHour < ActiveRecord::Base
       end
     end
 
+    def weekdays_array(from, to)
+      days = ((to - from) / 1.day).round
+      return [] if days <= 0
+      start_wday = which_day(from)
+      week = [0, 1, 2, 3, 4, 5, 6]
+      weekdays = []
+      weekdays += week.slice(start_wday, days)
+      days -= weekdays.length
+      weekdays + weekdays * (days / 7) + weekdays.slice(0, days % 7)
+    end
+
     def convert_time(time)
       time.hour * 100 + time.min
     end
