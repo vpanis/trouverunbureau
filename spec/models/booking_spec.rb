@@ -6,6 +6,7 @@ RSpec.describe Booking, type: :model do
   # Relations
   it { should belong_to(:owner) }
   it { should belong_to(:space) }
+  it { should have_many(:messages) }
 
   # Presence
   it { should validate_presence_of(:owner) }
@@ -27,9 +28,9 @@ RSpec.describe Booking, type: :model do
 
   it { should validate_numericality_of(:price).is_greater_than_or_equal_to(0) }
 
-  it "should fail if the space don't have the booking type price" do
+  it 'should fail if the space don\'t have the booking type price' do
     space = FactoryGirl.create(:space, day_price: 10, month_price: nil)
-    booking = FactoryGirl.build(:booking, b_type: Booking.b_types[:month])
+    booking = FactoryGirl.build(:booking, space: space, b_type: Booking.b_types[:month])
     expect(booking.valid?).to be(false)
     expect(booking.errors[:price_not_found_for_b_type]).to be_present
   end

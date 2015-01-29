@@ -4,6 +4,8 @@ class Booking < ActiveRecord::Base
 
   belongs_to :space
 
+  has_many :messages
+
   # Constants/Enums
   enum b_type: [:hour, :day, :week, :month]
 
