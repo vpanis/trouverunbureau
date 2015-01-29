@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20150202163635) do
     t.integer  "owner_id"
     t.string   "owner_type"
     t.float    "price"
+    t.datetime "owner_last_seen"
+    t.datetime "venue_last_seen"
   end
 
   add_index "bookings", ["owner_id", "owner_type"], name: "index_bookings_on_owner_id_and_owner_type", using: :btree
@@ -51,6 +53,7 @@ ActiveRecord::Schema.define(version: 20150202163635) do
     t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "m_type"
   end
 
   add_index "messages", ["booking_id"], name: "index_messages_on_booking_id", using: :btree

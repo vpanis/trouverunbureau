@@ -16,6 +16,7 @@ class Booking < ActiveRecord::Base
   after_initialize :initialize_fields
   before_validation :calculate_price
   before_validation :time_local_to_utc
+  after_create :creation_message
 
   # Validations
   validates :owner, :space, :b_type, :quantity, :from, :to, :price, presence: true
@@ -30,6 +31,11 @@ class Booking < ActiveRecord::Base
   }
 
   private
+
+  def creation_message
+    message = messages.create(m_type: Message.m_types[:pending_authorization])
+    self.owner_last_seen = message.created_at
+  end
 
   def initialize_fields
     self.state ||= Booking.states[:pending_authorization]

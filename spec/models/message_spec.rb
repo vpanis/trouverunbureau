@@ -8,5 +8,5 @@ RSpec.describe Message, type: :model do
 
   # Presence
   it { should validate_presence_of(:user) }
-  it { should validate_presence_of(:text) }
+  it { should validate_presence_of(:m_type) }
 end
