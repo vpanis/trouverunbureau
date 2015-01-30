@@ -59,6 +59,10 @@ class Organization < ActiveRecord::Base
     errors.add(:user, 'Invalid user/user_id value')
   end
 
+  def user_in_organization(user)
+    users.exists?(user)
+  end
+
   def assign_user
     if user.present?
       organization_users.create(user_id: user.id, role: OrganizationUser.roles[:owner])

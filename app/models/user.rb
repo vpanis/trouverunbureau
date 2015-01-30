@@ -89,6 +89,16 @@ class User < ActiveRecord::Base
 
   private
 
+  def user_can_write_in_name_of(owner)
+    if owner.class == User
+      owner == self
+    elsif owner.class == Organization
+      owner.user_in_organization(self)
+    else
+      false
+    end
+  end
+
   def initialize_fields
     self.quantity_reviews ||= 0
     self.reviews_sum ||= 0

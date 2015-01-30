@@ -48,16 +48,17 @@ ActiveRecord::Schema.define(version: 20150202163635) do
 
   create_table "messages", force: true do |t|
     t.integer  "booking_id"
-    t.integer  "organization_id"
     t.integer  "user_id"
     t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "m_type"
+    t.integer  "represented_id"
+    t.string   "represented_type"
   end
 
   add_index "messages", ["booking_id"], name: "index_messages_on_booking_id", using: :btree
-  add_index "messages", ["organization_id"], name: "index_messages_on_organization_id", using: :btree
+  add_index "messages", ["represented_id", "represented_type"], name: "index_messages_on_represented_id_and_represented_type", using: :btree
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "organization_users", force: true do |t|

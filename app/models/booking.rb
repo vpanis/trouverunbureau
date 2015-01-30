@@ -30,11 +30,31 @@ class Booking < ActiveRecord::Base
     greater_than_or_equal_to: 0
   }
 
+  class << self
+    def administered_bookings(represented)
+      Booking.joins { space.venue }.where { space.venue.owner == my { represented } }
+    end
+
+    def bookings_with_news(represented)
+      Booking.joins { space.venue }.joins { messages }
+        .where do
+          ((owner == my { represented }) & (messages.created_at > bookings.owner_last_seen)) ||
+          ((space.venue.owner ==  my { represented }) &
+            (messages.created_at > bookings.venue_last_seen))
+        end.distinct
+    end
+  end
+
+  def change_last_seen(represented, last_seen)
+    self.owner_last_seen = last_seen if owner == represented
+    self.venue_last_seen = last_seen if space.venue.owner == represented
+    save
+  end
+
   private
 
   def creation_message
-    message = messages.create(m_type: Message.m_types[:pending_authorization])
-    self.owner_last_seen = message.created_at
+    messages.create(represented: owner, m_type: Message.m_types[:pending_authorization])
   end
 
   def initialize_fields
