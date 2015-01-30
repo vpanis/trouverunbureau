@@ -11,7 +11,10 @@
 #= require twitter/bootstrap
 #= require retina
 #= require masonry.pkgd
+#= require angular
 #= require_directory .
 #= require_tree ./landing/
 #= require_tree ./venues/
+#= require_tree ./angular/controllers
+
 

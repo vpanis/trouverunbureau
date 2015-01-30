@@ -1378,3 +1378,15 @@ input[type="checkbox"]:checked:after {
   width: 100%;
   height: 205px;
 }
+
+.venue-reviews{
+  background-color: white;
+  padding: 35px;
+  margin-top: 4px;
+  h2{
+    padding-top: 5px;
+    text-align: center;
+    font-size: 27px;
+    letter-spacing: 0.2rem;
+  }
+}

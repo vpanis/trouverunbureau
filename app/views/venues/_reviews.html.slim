@@ -1,1 +1,8 @@
-p  reviews
+.venue-reviews
+  h2 #{t('venues.show.reviews')}
+  .reviews-list ng-controller="ReviewsCtrl"
+    .review ng-repeat=("review in reviews")
+      p . {{review.text}}
+      p . {{review.user.name}}
+      img src="{{review.user.avatar}}"
+

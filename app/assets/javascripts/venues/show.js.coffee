@@ -31,7 +31,6 @@ initialize_map = ->
   latitude = parseFloat($('.latitude').html())
   longitude = parseFloat($('.longitude').html())
   marker_icon = $('.marker_icon').html()
-  console.log(marker_icon)
 
   mapOptions =
     center:
