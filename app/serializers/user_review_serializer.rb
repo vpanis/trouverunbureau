@@ -2,7 +2,7 @@ class UserReviewSerializer < ActiveModel::Serializer
   attributes :name, :avatar
 
   def name?
-    object.first_name+object.last_name
+    object.first_name + object.last_name
   end
 
   def avatar
