@@ -12,6 +12,8 @@
 #= require retina
 #= require masonry.pkgd
 #= require angular
+#= require lodash
+#= require restangular
 #= require_directory .
 #= require_tree ./landing/
 #= require_tree ./venues/
