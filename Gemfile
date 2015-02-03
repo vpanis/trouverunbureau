@@ -74,6 +74,8 @@ gem 'airbrake'
 # Active Model Serializers for JSON api
 gem 'active_model_serializers'
 
+gem 'will_paginate'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'

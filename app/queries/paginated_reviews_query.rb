@@ -1,11 +1,17 @@
 class PaginatedReviewsQuery < PaginatedQuery
 
-  protected
+ def initialize(venue_id)
+    @venue_id = venue_id
+  end
 
-  def reviews(venue_id, pagination_params)
-    @relation = User.where('users.id in (?)', ids).where(status: User.statuses[:active])
-                    .order(name: :asc, created_at: :desc)
+  def reviews(pagination_params)
+    @relation = select_reviews_for_venue(@venue_id);
     paginate(pagination_params)
     @relation
+  end
+
+  def select_reviews_for_venue(venue_id)
+    # byebug
+    VenueReview.joins {booking.space}.where{booking.space.venue_id == my {venue_id}}.includes{booking.owner}
   end
 end

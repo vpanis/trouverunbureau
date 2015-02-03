@@ -1,13 +1,13 @@
-module api
-  class ReviewsController < ApplicationApiController
-    include ParametersHelper
-    respond_to :json
+module Api
+  class ReviewsController < ApplicationController
+      include ParametersHelper
+      respond_to :json
 
-    def reviews
-      venue = Venue.find(params[:id])
-      render json: PaginatedReviewsQuery.new(venue).profile_feed(pagination_params),
-             each_serializer: ReviewSerializer
-    end
+      def reviews
+        result=PaginatedReviewsQuery.new(params[:id]).reviews(pagination_params)
+        # byebug
+        render json: result, each_serializer: ReviewSerializer
+      end
 
   end
 end

@@ -1,15 +1,14 @@
 class ReviewSerializer < ActiveModel::Serializer
-  attributes :id, :message
+  attributes :id, :message, :date
 
-  has_one :user, serializer: UserReviewSerializer
+  has_one :owner, serializer: UserReviewSerializer
 
-  def attending?
-    return nil if scope.blank?
-    AttendeeContext.new(scope, object).attending?
+  def date
+    object.created_at.strftime('%d/%m/%Y')
   end
 
-  def cover
-    object.cover.url
+  def owner
+    object.booking.owner
   end
 
 end

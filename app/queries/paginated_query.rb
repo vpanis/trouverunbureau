@@ -5,7 +5,7 @@ class PaginatedQuery
     amount =  pagination_params[:amount]
     page ||= 0
     amount ||= 25
-    @relation = @relation.page(page).per(amount)
+    @relation = @relation.paginate(page: page, per_page: amount)
   end
 
 end
