@@ -15,28 +15,25 @@ describe Api::ReviewsController do
 
     context 'when the venue exists' do
       let!(:a_venue) { create(:venue) }
-      let!(:a_booking) { create(:booking) }
-      let!(:a_venue_review) { create(:venue_review) }
       it 'succeeds' do
         get :reviews, id: a_venue.id
         expect(response.status).to eq(200)
       end
 
       context 'when the venue has reviews' do
-        let!(:followed_user) { create(:venue) }
-
-        before do
-        end
-
+        let!(:a_ve) { create(:venue) }
+        let!(:a_book) { create(:booking) }
+        let!(:a_ve_re) { create(:venue_review) }
         it 'should be a review in the result' do
-          expect(body['reviews']['id']).to eql(a_venue_review.id)
-          expect(body.first['reviews']['message']).to eql(a_venue_review.message)
-          expect(body.first['reviews']['user']['name']).to eql(:a_booking.owner.first_name +
-            :a_booking.owner.last_name)
-          expect(body.first['reviews']['user']['avatar']).to eql(:a_booking.owner.avatar.url)
-          expect(body.first['reviews']['date']).to eql(a_venue_review.created_at)
+          get :reviews, id: a_ve_re.booking.space.venue_id
+          expect(body['reviews'].first['id']).to eql(a_ve_re.id)
+          expect(body['reviews'].first['message']).to eql(a_ve_re.message)
+          expect(body['reviews'].first['date']).to eql(a_ve_re.created_at.strftime('%d/%m/%Y'))
+          expect(body['reviews'].first['owner']['avatar']).to eql(a_ve_re.booking.owner.avatar.url)
+          expect(body['reviews'].first['owner']['name']).to eql(
+            [a_ve_re.booking.owner.first_name, a_ve_re.booking.owner.last_name].join(' '))
         end
-      end # when the user has followed a user
+      end # when the venue has reviews
     end # when the venue exists
 
     context 'when the venue does not exist' do
