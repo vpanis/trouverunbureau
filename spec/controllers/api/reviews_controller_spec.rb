@@ -35,8 +35,7 @@ describe Api::ReviewsController do
           expect(body).to include("items_per_page")
           expect(body).to include("current_page")
           expect(body['reviews'].any? do |c|
-            c.to_json == ReviewSerializer.new(a_ve_re).to_json
-            byebug
+            JSON.parse(c.to_json) == JSON.parse(ReviewSerializer.new(a_ve_re).to_json)['review']
           end).to be true
         end
 
