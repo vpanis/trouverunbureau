@@ -21,11 +21,12 @@ describe Api::ReviewsController do
       end
 
       context 'when the venue has reviews' do
-        let!(:a_ve) { create(:venue) }
-        let!(:a_book) { create(:booking) }
         let!(:a_ve_re) { create(:venue_review) }
         it 'should be a review in the result' do
           get :reviews, id: a_ve_re.booking.space.venue_id
+          expect(body['count']).to eql(1)
+          expect(body).to include("items_per_page")
+          expect(body).to include("current_page")
           expect(body['reviews'].first['id']).to eql(a_ve_re.id)
           expect(body['reviews'].first['message']).to eql(a_ve_re.message)
           expect(body['reviews'].first['date']).to eql(a_ve_re.created_at.strftime('%d/%m/%Y'))

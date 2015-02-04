@@ -11,7 +11,6 @@ class PaginatedReviewsQuery < PaginatedQuery
   end
 
   def select_reviews_for_venue(venue_id)
-    # byebug
     ans = VenueReview.joins { booking.space } .where { booking.space.venue_id == my { venue_id } }
     ans.includes { booking.owner }
   end
