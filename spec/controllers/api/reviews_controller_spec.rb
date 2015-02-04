@@ -15,50 +15,29 @@ describe Api::ReviewsController do
 
     context 'when the venue exists' do
       let!(:a_venue) { create(:venue) }
-
+      let!(:a_booking) { create(:booking) }
+      let!(:a_venue_review) { create(:venue_review) }
       it 'succeeds' do
         get :reviews, id: a_venue.id
         expect(response.status).to eq(200)
       end
 
       context 'when the venue has reviews' do
-        let!(:followed_user) { create(:user) }
+        let!(:followed_user) { create(:venue) }
 
         before do
-          FollowshipContext.new(a_user, followed_user).follow
-          get :user_feed, id: a_user.id
         end
 
-        it 'should be a followship item in the feed' do
-          expect(body.first['type']).to eql('followship')
-          expect(body.first['source']['id']).to eql(a_user.id)
-          expect(body.first['source']['name']).to eql(a_user.name)
-          expect(body.first['target']['id']).to eql(followed_user.id)
-          expect(body.first['target']['name']).to eql(followed_user.name)
-          expect(body.first['short_description']).to eql(nil)
-          expect(body.first['avatar']).to eql(a_user.avatar.url)
+        it 'should be a review in the result' do
+          expect(body['reviews']['id']).to eql(a_venue_review.id)
+          expect(body.first['reviews']['message']).to eql(a_venue_review.message)
+          expect(body.first['reviews']['user']['name']).to eql(:a_booking.owner.first_name +
+            :a_booking.owner.last_name)
+          expect(body.first['reviews']['user']['avatar']).to eql(:a_booking.owner.avatar.url)
+          expect(body.first['reviews']['date']).to eql(a_venue_review.created_at)
         end
       end # when the user has followed a user
-
-      context 'when the user has attended an event' do
-        let(:event) { create(:night_club_event) }
-
-        before do
-          AttendeeContext.new(a_user, event).attend
-          get :user_feed, id: a_user.id
-        end
-
-        it 'should be an attending item in the feed' do
-          expect(body.first['type']).to eql('attending')
-          expect(body.first['source']['id']).to eql(a_user.id)
-          expect(body.first['source']['name']).to eql(a_user.name)
-          expect(body.first['target']['id']).to eql(event.id)
-          expect(body.first['target']['name']).to eql(event.title)
-          expect(body.first['short_description']).to eql(nil)
-          expect(body.first['avatar']).to eql(a_user.avatar.url)
-        end
-      end # when the user has attended an event
-    end # when the user exists
+    end # when the venue exists
 
     context 'when the venue does not exist' do
       before { get :reviews, id: -1 }
@@ -68,6 +47,4 @@ describe Api::ReviewsController do
       end
     end # when the venue does not exist
   end # GET venues/:id/reviews
-
-
 end
