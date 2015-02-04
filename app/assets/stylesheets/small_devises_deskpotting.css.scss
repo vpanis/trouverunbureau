@@ -1,5 +1,7 @@
+$gray-text: #9f9f9f;
+
 /* small devices */
-@media screen and (min-width: 0px) and (max-width: 768px) {
+@media screen and (min-width: 0px) and (max-width: 767px) {
   .company, .find-us{
     padding-left: 0px !important;
     text-align: center;
@@ -25,6 +27,12 @@
     }
     .amenities-list .amenity{
       width: 100%;
+    }
+    .vertical-separator.small-hidden{
+      border-right: solid 1px white !important;
+    }
+    .vertical-separator.large-hidden{
+      border-right: solid 1px $gray-text !important;
     }
   }
   .why-card{

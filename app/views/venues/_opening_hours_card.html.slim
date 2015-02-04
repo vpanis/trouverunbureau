@@ -15,7 +15,7 @@
           .day-of-week
             p = Date::ABBR_DAYNAMES[weekday]
         - if weekday != 4
-          .vertical-separator
+        .vertical-separator class=(weekday == 4 ? 'large-hidden' : ((weekday == 3 || weekday == 6)? 'small-hidden' : ''))
       - hour = @venue.day_hours.where(weekday: 0).first
       .opening-hour
         .hours

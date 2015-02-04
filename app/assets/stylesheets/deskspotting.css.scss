@@ -1139,7 +1139,6 @@ input[type="checkbox"]:checked:after {
   .tab-selector-container{
     width: 90%;
     margin: 25px auto;
-    background-color: white;
   }
 }
 #venue-workspaces-tab, #venue-info-tab{
@@ -1244,6 +1243,9 @@ input[type="checkbox"]:checked:after {
         margin-bottom: 8px;
         border-right: solid 1px $gray-text;
         display: inline-block;
+      }
+      .vertical-separator.large-hidden{
+        border-right: solid 1px white;
       }
     }
     .booking-inquiry{
@@ -1437,7 +1439,7 @@ input[type="checkbox"]:checked:after {
       width: 90%;
       p{
         padding-left: 12px;
-        min-height: 200px;
+        min-height: 170px;
         font-weight: 300;
         font-size: 13px;
         letter-spacing: 0.065rem;
@@ -1457,3 +1459,6 @@ input[type="checkbox"]:checked:after {
     }
   }
 }
+
+/*fix for ui-bootstrap, angular directives */
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }

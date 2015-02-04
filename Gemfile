@@ -36,10 +36,11 @@ gem 'jquery-rails', '~>3.1.2'
 
 gem 'loadjs', '~>0.0.6'
 
+gem 'inherited_resources' , '~>1.4.1'
+
 #angularjs
 gem 'angularjs-rails'
-
-gem 'inherited_resources' , '~>1.4.1'
+gem 'angular-ui-bootstrap-rails'
 
 gem 'carrierwave', '~>0.10.0'
 
