@@ -45,7 +45,7 @@ initialize_map = ->
       lng: longitude
     icon:
       url: marker_icon
-      scaledSize: new google.maps.Size(20, 22)
+      scaledSize: new google.maps.Size(30, 40)
     map: map
   new google.maps.Marker(marker);
   return

@@ -1106,7 +1106,7 @@ input[type="checkbox"]:checked:after {
       cursor: pointer;
     }
     #share-venue{
-      @include at2x('stub', 16px, 16px);
+      @include at2x('venue_profile_fbshare', 16px, 16px);
       background-size: 16px 16px;
       background-repeat: no-repeat;
       padding-left: 22px;
@@ -1292,21 +1292,12 @@ input[type="checkbox"]:checked:after {
           height: 14px;
           margin-top: 1px;
           float: left;
-          @include at2x('stub', 28px, 14px);
+          @include at2x('stars-sprite', 28px, 14px);
           background-size: 28px 14px;
           background-repeat: no-repeat;
           vertical-align: middle;
           background-position: 0px 0px;
         }
-      }
-      .profession.primary{
-        font-weight: 700;
-        letter-spacing: 0.06rem;
-        color: $dark-gray;
-        .icon{
-          @include at2x('stars-sprite', 28px, 14px);
-        }
-
       }
     }
     .why-deskspotting-list{
@@ -1316,7 +1307,7 @@ input[type="checkbox"]:checked:after {
       padding-bottom: 8px;
       .why-deskspotting {
         color: $gray-text;
-        @include at2x('stub', 22px, 22px);
+        @include at2x('venue_profile_why_book', 22px, 22px);
         background-size: 22px 22px;
         background-repeat: no-repeat;
         padding: 2px 0px 2px 31px;
@@ -1337,7 +1328,6 @@ input[type="checkbox"]:checked:after {
     padding: 4px 10px;
     margin-bottom: 22px;
     .amenity{
-      @include at2x('stub', 40px, 40px);
       background-size: 40px 40px;
       background-repeat: no-repeat;
       padding-left: 59px;
@@ -1352,6 +1342,69 @@ input[type="checkbox"]:checked:after {
         font-size: 12px;
         color: $gray-text;
       }
+    }
+    .amenity.whiteboards{
+      @include at2x('venue_profile_a_whiteboards', 40px, 40px);
+    }
+    .amenity.security{
+      @include at2x('venue_profile_a_security', 40px, 40px);
+    }
+    .amenity.printer{
+      @include at2x('venue_profile_a_printer_scanner', 40px, 40px);
+    }
+    .amenity.photocopier{
+      @include at2x('venue_profile_a_photocopier', 40px, 40px);
+    }
+    .amenity.elevators{
+      @include at2x('venue_profile_a_elevators', 40px, 40px);
+    }
+    .amenity.team{
+      @include at2x('venue_profile_a_team_bookings', 40px, 40px);
+    }
+    .amenity.shower{
+      @include at2x('venue_profile_a_shower', 40px, 40px);
+    }
+    .amenity.wheelchair{
+      @include at2x('venue_profile_a_wheelchair_access', 40px, 40px);
+    }
+    .amenity.pets{
+      @include at2x('venue_profile_a_pets_allowed', 40px, 40px);
+    }
+    .amenity.gym{
+      @include at2x('venue_profile_a_gym', 40px, 40px);
+    }
+    .amenity.phone{
+      @include at2x('venue_profile_a_phone_booth', 40px, 40px);
+    }
+    .amenity.kitchen{
+      @include at2x('venue_profile_a_kitchen', 40px, 40px);
+    }
+    .amenity.wifi{
+      @include at2x('venue_profile_a_wifi', 40px, 40px);
+    }
+    .amenity.chill{
+      @include at2x('venue_profile_a_chill_area', 40px, 40px);
+    }
+    .amenity.conference{
+      @include at2x('venue_profile_a_conference_rooms', 40px, 40px);
+    }
+    .amenity.outdoor{
+      @include at2x('venue_profile_a_outdoor-space', 40px, 40px);
+    }
+    .amenity.individual{
+      @include at2x('venue_profile_a_individual_bookings', 40px, 40px);
+    }
+    .amenity.fax{
+      @include at2x('venue_profile_a_fax', 40px, 40px);
+    }
+    .amenity.air{
+      @include at2x('venue_profile_a_air_conditioning', 40px, 40px);
+    }
+    .amenity.mail{
+      @include at2x('venue_profile_a_mail_service', 40px, 40px);
+    }
+    .amenity.cafe{
+      @include at2x('venue_profile_a_cafe_restaurant', 40px, 40px);
     }
   }
 }
@@ -1462,3 +1515,33 @@ input[type="checkbox"]:checked:after {
 
 /*fix for ui-bootstrap, angular directives */
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+
+
+/* pagination buttons */
+.pagination-container{
+  text-align: right;
+  width: 90%;
+  margin: 0 auto;
+  .pagination{
+    margin: 0;
+  }
+  .pagination-sm > li > a{
+    margin: 1px;
+    padding: 6px 10px;
+    font-size: 10px;
+    color: $gray-text;
+    border: none;
+    background-color: $dark-white;
+    @include border-radius(2px);
+  }
+  .pagination > .active > a{
+    background-color: $yellow;
+    color: $gray-text;
+    padding: 6px 11px;
+  }
+  .pagination > .disabled > a{
+    background-color: $dark-gray;
+    color: white;
+  }
+}

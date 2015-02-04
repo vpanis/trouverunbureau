@@ -9,7 +9,7 @@
       - if @venue.logo?
         = image_tag(@venue.logo.url, width: '90px', height: '90px')
       - else
-        = image_tag('default-avatar.png', width: '90px', height: '90px')
+        = image_tag('venue-default.png', width: '90px', height: '90px')
     .basic-info
       .stars
         - (1..5).each do |i|

@@ -3,7 +3,7 @@
   'restangular',
   'ui.bootstrap',
   'deskSpotting.reviews'
-]).config ( RestangularProvider) ->
+]).config (RestangularProvider) ->
   RestangularProvider.setBaseUrl 'http://private-82df-deskspotting.apiary-mock.com'
   return
 

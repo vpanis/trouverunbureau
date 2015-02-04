@@ -5,11 +5,6 @@
   .space-info
     .professions
       - @venue.primary_professions.each do |profession|
-        .profession.primary
+        .profession
           .icon
           p = t("venues.professions.#{profession}")
-      - @venue.secondary_professions.each do |profession|
-        .profession.secondary
-          .icon
-          p = t("venues.professions.#{profession}")
-

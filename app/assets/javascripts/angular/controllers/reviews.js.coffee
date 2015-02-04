@@ -4,8 +4,9 @@ angular.module('deskSpotting.reviews', []).controller("ReviewsCtrl", ReviewsCont
   $scope.reviews = []
   $scope.totalReviews = 0
   $scope.currentPage = 1
+  $scope.itemsPerPage = 5
   $scope.getReviews = () ->
-    Restangular.one('venues', $scope.venueId).customGET('reviews', {page: $scope.currentPage, amount: 5}).then (result) ->
+    Restangular.one('venues', $scope.venueId).customGET('reviews', {page: $scope.currentPage, amount: $scope.itemsPerPage}).then (result) ->
       $scope.reviews = result.reviews
       $scope.totalReviews = result.count
       $scope.currentPage = result.current_page

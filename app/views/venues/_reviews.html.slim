@@ -13,7 +13,6 @@
         .message
           p() {{review.message}}
           .separator
-    pagination.pagination-sm total-items="totalReviews" ng-model="currentPage" max-size="4" boundary-links="true" ng-change="getReviews()"
-
-
+    .pagination-container
+      pagination.pagination-sm ng-if="totalReviews > 0" ng-change="getReviews()" total-items="totalReviews" ng-model="currentPage" max-size="3" rotate="false" boundary-links="true" previous-text="‹" next-text="›" first-text="«" last-text="»" items-per-page="itemsPerPage"
 
