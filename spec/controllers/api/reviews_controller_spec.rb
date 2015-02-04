@@ -21,18 +21,32 @@ describe Api::ReviewsController do
       end
 
       context 'when the venue has reviews' do
-        let!(:a_ve_re) { create(:venue_review) }
-        it 'should be a review in the result' do
-          get :reviews, id: a_ve_re.booking.space.venue_id
-          expect(body['count']).to eql(1)
+        let(:space) { create(:space, venue: a_venue)}
+        let(:booking) { create(:booking, space: space) }
+        let(:booking_2) { create(:booking, space: space) }
+
+        let!(:a_ve_re) { create(:venue_review, booking: booking) }
+        let!(:a_ve_re_2) { create(:venue_review, booking: booking_2) }
+        let!(:a_ve_re_3) { create(:venue_review) }
+
+        it 'should return an array of venue reviews' do
+          get :reviews, id: a_venue.id
+          expect(body['count']).to eql(2)
           expect(body).to include("items_per_page")
           expect(body).to include("current_page")
-          expect(body['reviews'].first['id']).to eql(a_ve_re.id)
-          expect(body['reviews'].first['message']).to eql(a_ve_re.message)
-          expect(body['reviews'].first['date']).to eql(a_ve_re.created_at.strftime('%d/%m/%Y'))
-          expect(body['reviews'].first['owner']['avatar']).to eql(a_ve_re.booking.owner.avatar.url)
-          expect(body['reviews'].first['owner']['name']).to eql(
-            [a_ve_re.booking.owner.first_name, a_ve_re.booking.owner.last_name].join(' '))
+          byebug
+          expect(body['reviews'].any? do |c|
+            byebug
+            c.to_json eq ReviewSerializer.new(a_ve_re).to_json
+          end).to be_true
+        end
+
+        it 'does not retrieve other venues reviews' do
+          get :reviews, id: a_venue.id
+          byebug
+          expect(body['reviews'].any? do |c|
+            c.to_json eq ReviewSerializer.new(a_ve_re_3).to_json
+          end).to be_false
         end
       end # when the venue has reviews
     end # when the venue exists

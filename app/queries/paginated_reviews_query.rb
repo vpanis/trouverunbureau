@@ -12,6 +12,6 @@ class PaginatedReviewsQuery < PaginatedQuery
 
   def select_reviews_for_venue(venue_id)
     ans = VenueReview.joins { booking.space } .where { booking.space.venue_id == my { venue_id } }
-    ans.includes { booking.owner }
+    ans.order{created_at.desc}.includes { booking.owner }
   end
 end
