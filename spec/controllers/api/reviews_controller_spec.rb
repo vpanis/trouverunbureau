@@ -34,19 +34,17 @@ describe Api::ReviewsController do
           expect(body['count']).to eql(2)
           expect(body).to include("items_per_page")
           expect(body).to include("current_page")
-          byebug
           expect(body['reviews'].any? do |c|
+            c.to_json == ReviewSerializer.new(a_ve_re).to_json
             byebug
-            c.to_json eq ReviewSerializer.new(a_ve_re).to_json
-          end).to be_true
+          end).to be true
         end
 
         it 'does not retrieve other venues reviews' do
           get :reviews, id: a_venue.id
-          byebug
           expect(body['reviews'].any? do |c|
-            c.to_json eq ReviewSerializer.new(a_ve_re_3).to_json
-          end).to be_false
+            c.to_json == ReviewSerializer.new(a_ve_re_3).to_json
+          end).to be false
         end
       end # when the venue has reviews
     end # when the venue exists
