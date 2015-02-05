@@ -4,4 +4,10 @@ Deskspotting::Application.routes.draw do
 
   root to: 'landing#index'
 
+  resources :venues do
+      member do
+        get :reviews, to: 'api/reviews#reviews'
+      end
+  end
+
 end

@@ -20,6 +20,9 @@ class User < ActiveRecord::Base
   # Favorite spaces
   has_many :favorite_spaces, through: :users_favorites, source: :space
 
+  # Uploaders
+  mount_uploader :avatar, LogoUploader
+
   # Callbacks
   after_initialize :initialize_fields
 
