@@ -39,6 +39,27 @@ describe Api::ReviewsController do
           end).to be true
         end
 
+        it 'should retrieve venue reviews ordered by date' do
+          get :reviews, id: a_venue.id
+          first = JSON.parse(body['reviews'].first.to_json)
+          expect(first).to eql(JSON.parse(ReviewSerializer.new(a_ve_re_2).to_json)['review'])
+        end
+
+        it 'should paginate venue reviews' do
+          get :reviews, id: a_venue.id, page: 1, amount: 1
+          expect(body['count']).to eql(2)
+          expect(body['reviews'].size).to eql(1)
+          get :reviews, id: a_venue.id, page: 2, amount: 1
+          expect(body['count']).to eql(2)
+          expect(body['reviews'].size).to eql(1)
+        end
+
+        it 'does not paginate venue reviews outside limits' do
+          get :reviews, id: a_venue.id, page: 3, amount: 1
+          expect(body['count']).to eql(2)
+          expect(body['reviews'].size).to eql(0)
+        end
+
         it 'does not retrieve other venues reviews' do
           get :reviews, id: a_venue.id
           expect(body['reviews'].any? do |c|
