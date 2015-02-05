@@ -21,7 +21,7 @@ describe Api::ReviewsController do
       end
 
       context 'when the venue has reviews' do
-        let(:space) { create(:space, venue: a_venue)}
+        let(:space) { create(:space, venue: a_venue) }
         let(:booking) { create(:booking, space: space) }
         let(:booking_2) { create(:booking, space: space) }
 
@@ -32,8 +32,8 @@ describe Api::ReviewsController do
         it 'should return an array of venue reviews' do
           get :reviews, id: a_venue.id
           expect(body['count']).to eql(2)
-          expect(body).to include("items_per_page")
-          expect(body).to include("current_page")
+          expect(body).to include('items_per_page')
+          expect(body).to include('current_page')
           expect(body['reviews'].any? do |c|
             JSON.parse(c.to_json) == JSON.parse(ReviewSerializer.new(a_ve_re).to_json)['review']
           end).to be true
