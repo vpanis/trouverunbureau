@@ -11,7 +11,7 @@ class Booking < ActiveRecord::Base
   enum b_type: [:hour, :day, :week, :month]
 
   enum state: [:pending_authorization, :pending_payment, :paid,
-               :canceled, :denied, :already_taken]
+               :canceled, :denied, :expired]
 
   # Callbacks
   after_initialize :initialize_fields

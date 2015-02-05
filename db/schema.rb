@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150202163635) do
+ActiveRecord::Schema.define(version: 20150205230237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20150202163635) do
     t.float    "price"
     t.datetime "owner_last_seen"
     t.datetime "venue_last_seen"
+    t.datetime "approved_at"
   end
 
   add_index "bookings", ["owner_id", "owner_type"], name: "index_bookings_on_owner_id_and_owner_type", using: :btree

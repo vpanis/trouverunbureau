@@ -79,6 +79,8 @@ gem 'active_model_serializers'
 
 gem 'will_paginate'
 
+gem 'whenever', :require => false
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
