@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include OwnerActions
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :omniauthable,
@@ -87,8 +88,6 @@ class User < ActiveRecord::Base
     provider.nil?
   end
 
-  private
-
   def user_can_write_in_name_of(owner)
     if owner.class == User
       owner == self
@@ -98,6 +97,8 @@ class User < ActiveRecord::Base
       false
     end
   end
+
+  private
 
   def initialize_fields
     self.quantity_reviews ||= 0

@@ -1,4 +1,5 @@
 class Organization < ActiveRecord::Base
+  include OwnerActions
   # Only for creation purpose
   attr_accessor :user, :user_id
 

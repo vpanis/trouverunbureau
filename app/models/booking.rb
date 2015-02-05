@@ -1,4 +1,5 @@
 class Booking < ActiveRecord::Base
+  attr_accessor :user
   # Relations
   belongs_to :owner, polymorphic: true
 
@@ -16,7 +17,6 @@ class Booking < ActiveRecord::Base
   after_initialize :initialize_fields
   before_validation :calculate_price
   before_validation :time_local_to_utc
-  after_create :creation_message
 
   # Validations
   validates :owner, :space, :b_type, :quantity, :from, :to, :price, presence: true
@@ -32,30 +32,17 @@ class Booking < ActiveRecord::Base
 
   class << self
     def administered_bookings(represented)
-      Booking.joins { space.venue }.where { space.venue.owner == my { represented } }
+      joins { space.venue }.where { space.venue.owner == my { represented } }
     end
 
-    def bookings_with_news(represented)
-      Booking.joins { space.venue }.joins { messages }
-        .where do
-          ((owner == my { represented }) & (messages.created_at > bookings.owner_last_seen)) ||
-          ((space.venue.owner ==  my { represented }) &
-            (messages.created_at > bookings.venue_last_seen))
-        end.distinct
+    def all_bookings_for(owner_client)
+      joins { space.venue }.where do
+        (owner == my { owner_client }) | (space.venue.owner ==  my { owner_client })
+      end.distinct.order('bookings.updated_at DESC', 'bookings.state DESC')
     end
-  end
-
-  def change_last_seen(represented, last_seen)
-    self.owner_last_seen = last_seen if owner == represented
-    self.venue_last_seen = last_seen if space.venue.owner == represented
-    save
   end
 
   private
-
-  def creation_message
-    messages.create(represented: owner, m_type: Message.m_types[:pending_authorization])
-  end
 
   def initialize_fields
     self.state ||= Booking.states[:pending_authorization]
