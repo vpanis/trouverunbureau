@@ -18,7 +18,8 @@ class PaginatedReviewsQuery < PaginatedQuery
   end
 
   def select_reviews_for_client(user_id)
-    ans = ClientReview.joins { booking } .where { booking.owner_type == User and booking.owner_id == my { user_id } }
+    ans = ClientReview.joins { booking }
+    ans = ans.where { booking.owner_type == 'User' &&  booking.owner_id == my { user_id } }
     ans.order { created_at.desc }.includes { booking.space.venue }
   end
 end

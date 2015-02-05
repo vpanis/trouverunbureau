@@ -5,7 +5,7 @@ module Api
 
     def venue_reviews
       return render nothing: true, status: 404 unless Venue.find_by(id: params[:id]).present?
-      result = PaginatedReviewsQuery.new().venue_reviews(pagination_params, params[:id])
+      result = PaginatedReviewsQuery.new.venue_reviews(pagination_params, params[:id])
       render json: { count: result.total_entries, current_page: result.current_page,
                      items_per_page: result.per_page,
                      reviews: serialized_venue_reviews(result) },
@@ -14,7 +14,7 @@ module Api
 
     def client_reviews
       return render nothing: true, status: 404 unless User.find_by(id: params[:id]).present?
-      result = PaginatedReviewsQuery.new().client_reviews(pagination_params,params[:id])
+      result = PaginatedReviewsQuery.new.client_reviews(pagination_params, params[:id])
       render json: { count: result.total_entries, current_page: result.current_page,
                      items_per_page: result.per_page,
                      reviews: serialized_client_reviews(result) },
@@ -26,7 +26,7 @@ module Api
     end
 
     def serialized_client_reviews(result)
-      ActiveModel::ArraySerializer.new(result, each_serializer: ClientReviewSerializer, root: false)
+      ActiveModel::ArraySerializer.new(result, each_serializer: ClientReviewSerializer)
     end
   end
 end
