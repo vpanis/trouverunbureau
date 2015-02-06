@@ -4,7 +4,7 @@
   'ui.bootstrap',
   'deskSpotting.reviews'
 ]).config (RestangularProvider) ->
-  RestangularProvider.setBaseUrl 'http://private-82df-deskspotting.apiary-mock.com/api/v1'
+  RestangularProvider.setBaseUrl '/api/v1'
   return
 
 #fix for ui.bootrstrap carousel

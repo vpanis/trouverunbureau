@@ -1,4 +1,15 @@
 $gray-text: #9f9f9f;
+@mixin at2x($image_name, $w: auto, $h: auto, $extention: '.png') {
+  background-image: image_url($image_name + $extention);
+  $x2img : $image_name + '@2x' + $extention;
+
+  @media all and (-webkit-min-device-pixel-ratio : 1.5) {
+    background-image: image_url($x2img);
+    background-size: $w $h;
+  }
+}
+
+
 
 /* small devices */
 @media screen and (min-width: 0px) and (max-width: 767px) {
@@ -15,6 +26,21 @@ $gray-text: #9f9f9f;
   .pagination-container{
     text-align: center;
   }
+
+  /* display logo in the middle of nav bar when devise is mobile*/
+  .navbar-brand{
+    position: absolute;
+    width: -moz-calc(100% - 120px);
+    width: -webkit-calc(100% - 120px);
+    width: calc(100% - 120px);
+    left: 60px;
+    top: 0;
+    text-align: center;
+    margin: auto;
+    img{
+      display: inline-block;
+    }
+  }
 }
 
 /* tunning venue cards for small devises */
@@ -29,7 +55,7 @@ $gray-text: #9f9f9f;
       column-count: 1 !important;
     }
     .amenities-list .amenity{
-      width: 100%;
+      width: 95%;
     }
     .vertical-separator.small-hidden{
       border-right: solid 1px white !important;

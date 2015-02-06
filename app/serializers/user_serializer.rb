@@ -6,7 +6,7 @@ class UserSerializer < ActiveModel::Serializer
   end
 
   def avatar
-    return nil unless object.avatar.url
+    return nil unless object.respond_to?('avatar') && object.avatar
     object.avatar.url
   end
 

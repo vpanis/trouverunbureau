@@ -954,8 +954,23 @@ input[type="checkbox"]:checked:after {
 
 
 /*  ======== APPLICATION ======== */
+
+
+.after-menu{
+  padding-top: 50px;
+}
 .menubar{
-  width: 100%;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 5px 1px $gray-text;
+  -moz-box-shadow: 0px 0px 5px 1px $gray-text;
+  box-shadow: 0px 0px 5px 1px $gray-text;
+  .navbar-brand{
+    padding: 13px 16px;
+
+    img{
+      display: inline-block;
+    }
+  }
   .icon, .search, .user, .messages, .list{
     display: inline-block;
   }
@@ -967,15 +982,16 @@ input[type="checkbox"]:checked:after {
     background-position: 16px 13px;
   }
   .search{
-    height: 60px;
+    height: 40px;
     margin-top: 10px;
     width: 305px;
     .styled-search{
       background-color: $dark-white;
       @include border-radius(2em);
-      @include at2x('loupe', 26px, 26px);
+      @include at2x('loupe', 24px, 24px);
+      background-size: 24px;
       background-repeat: no-repeat;
-      background-position-x: 12px;
+      background-position-x: 18px;
       background-position-y: center;
       height: 40px;
       border: 0px;
@@ -983,11 +999,11 @@ input[type="checkbox"]:checked:after {
     input[type='text'].form-control{
       width: 100%;
       background-color: transparent;
-      padding-left: 48px;
+      padding-left: 50px;
       font-size: 14px;
       letter-spacing: 0.08rem;
       font-weight: 200;
-      padding-bottom: 2px;
+      padding-bottom: 4px;
       height: 39px;
       border: 0px;
       @include border-radius(2em);
@@ -1005,6 +1021,51 @@ input[type="checkbox"]:checked:after {
     *:-ms-input-placeholder{
       color: $dark-gray;
     }
+  }
+  .user{
+    .name{
+      display: inline-block;
+      padding: 20px 6px;
+      letter-spacing: 0.06rem;
+      font-weight: 300;
+      color: $dark-gray;
+    }
+    .avatar{
+      display: inline-block;
+      width: 45px;
+      height: 45px;
+      margin: 7px auto;
+      padding: 2px;
+      img{
+        @include border-radius(100%);
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  a.list-space{
+    @include border-radius(2em);
+    border: 2px solid $yellow;
+    display: inline-block;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.08rem;
+    color: black !important;
+    text-align: center;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 10px 28px 0px;
+    font-size: 14px;
+    @include transition(background-color);
+    margin-top: 9px;
+    margin-right: 10px;
+    p{
+      margin-bottom: 8px;
+    }
+  }
+  a.list-space:hover{
+    color: $black;
+    background-color: $yellow;
   }
 }
 #venue-main-carousel{
@@ -1165,6 +1226,83 @@ input[type="checkbox"]:checked:after {
     .separator{
       margin: 16px 4px;
       width: 30px;
+    }
+  }
+  .card-top-bar.space{
+    position: relative;
+    .favourite{
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      @include at2x('venue_wishlist_grey_inactive', 48px, 48px);
+      top: 20px;
+      right: 55px;
+    }
+    .favourite.active{
+      @include at2x('venue_wishlist_grey_active', 48px, 48px);
+    }
+    .space-options{
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      top: 20px;
+      right: 5px;
+      color: $gray-text;
+      line-height: 32px;
+      font-size: 24px;
+      letter-spacing: 0.15rem;
+      text-align: center;
+      font-weight: 700;
+    }
+    .space-popover{
+      position: absolute;
+      width: 116px;
+      height: 42px;
+      top: 2px;
+      right: 30px;
+      background-color: white;
+      border: solid 1px white;
+      margin: 20px;
+      padding-top: 10px;
+      -webkit-box-shadow: 0px 0px 5px 1px $gray-text;
+      -moz-box-shadow: 0px 0px 5px 1px $gray-text;
+      box-shadow: 0px 0px 5px 1px $gray-text;
+      .arrow{
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+        top: 50%;
+        right: -12px;
+        margin-top: -6px;
+        border-right-width: 0;
+        border-left-color: white;
+        border-width: 6px;
+      }
+      .arrow::after{
+        right: 1px;
+        bottom: -10px;
+        content: "";
+        border-right-width: 0;
+        border-left-color: white;
+        border-width: 5px;
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+      }
+      a{
+        font-weight: 300;
+        color: $gray-text;
+        margin-right: 4px;
+        margin-left: 11px;
+        font-size: 14px;
+        letter-spacing: 0.06rem;
+        cursor: pointer;
+      }
     }
   }
   .carousel{
@@ -1434,6 +1572,17 @@ input[type="checkbox"]:checked:after {
       margin-top: 0px;
     }
   }
+  .card-top-bar.space{
+    .favourite{
+      @include at2x('venue_wishlist_white_inactive', 48px, 48px);
+    }
+    .favourite.active{
+      @include at2x('venue_wishlist_white_active', 48px, 48px);
+    }
+    .space-options{
+      color: white;
+    }
+  }
 }
 
 .venue-map{
@@ -1460,7 +1609,7 @@ input[type="checkbox"]:checked:after {
 
 .venue-reviews{
   background-color: white;
-  padding: 35px;
+  padding: 35px 0px;
   margin-top: 4px;
   h2{
     padding-top: 5px;

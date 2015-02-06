@@ -1,9 +1,14 @@
 .card class=(card_class) class=('selected' if selected)
-  .card-top-bar
+  .card-top-bar.space
     - if selected
       h4 #{t('venues.show.chosen_workspace')}
     h3 = space.name
     .separator
+    .favourite class=('active' if is_favorite)
+    .space-options id="space-option-#{space.id}" ...
+    .space-popover class="space-popover-#{space.id}"
+      .arrow
+      a.report-space href="#" Report Space
   .carousel.slide id="space-carousel-#{space.id}"
     ol.carousel-indicators
       - space.photos.each_with_index do |item, index|

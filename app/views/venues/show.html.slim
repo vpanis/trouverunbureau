@@ -2,7 +2,6 @@
 = render 'main_carousel'
 .venue-bar.row
   .row.actions-on-venue
-      a#share-venue #{t('venues.show.share')}
       a#report-venue #{t('venues.show.report_venue')}
   .col-xs-12.col-sm-7.col-md-8.col-lg-9
     .venue-avatar
@@ -31,6 +30,6 @@
 #venue-workspaces-tab
   .cards-columns.js-masonry data-masonry-options='{ "itemSelector": ".space-card", "gutter": 20, "isFitWidth": true }'
     - @venue.spaces.each do |space|
-      = render 'workspace_card', card_class: 'space-card', space: space, selected: @selected_space.present? ? space.id == @selected_space.id : false
+      = render 'workspace_card', card_class: 'space-card', space: space, selected: @selected_space.present? ? space.id == @selected_space.id : false, is_favorite: @favorite_spaces_ids.include?(space.id)
 
 

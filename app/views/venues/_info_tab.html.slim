@@ -1,6 +1,6 @@
 .info-columns.js-masonry data-masonry-options='{ "itemSelector": ".info-card", "gutter": 20, "isFitWidth": true }'
   - if @selected_space
-    = render 'workspace_card', card_class: 'info-card', space: @selected_space, selected: true
+    = render 'workspace_card', card_class: 'info-card', space: @selected_space, selected: true, is_favorite: @favorite_spaces_ids.include?(@selected_space.id)
   = render 'about_venue_card', venue: @venue
   = render 'location_card', venue: @venue
   = render 'amenities_card', venue: @venue
