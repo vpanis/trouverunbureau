@@ -4,10 +4,17 @@ Deskspotting::Application.routes.draw do
 
   root to: 'landing#index'
 
-  resources :venues do
-      member do
-        get :reviews, to: 'api/reviews#reviews'
-      end
-  end
+  api_version(module: "api/v1", path: { value: 'api/v1' }) do
+    resources :users do
+        member do
+          get :reviews, to: 'reviews#client_reviews'
+        end
+    end
 
+    resources :venues do
+        member do
+          get :reviews, to: 'reviews#venue_reviews'
+        end
+    end
+  end # api/v1
 end
