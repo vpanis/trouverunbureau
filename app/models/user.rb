@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable,
-         omniauth_providers: [:facebook]
+         :async, omniauth_providers: [:facebook]
   # Relations
   has_many :venues, as: :owner
   # Organizations that the user have
