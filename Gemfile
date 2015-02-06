@@ -5,19 +5,19 @@ ruby '2.1.5'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
 
-gem 'google-webfonts-rails'
+gem 'google-webfonts-rails', '~>0.0.4'
 
 # Use postgresql as the database for Active Record
-gem 'pg'
+gem 'pg', '~>0.17.1'
 
 # To extract sensitive configuration
-gem 'app_configuration'
+gem 'app_configuration' , '~>0.0.3'
 
 # Use unicorn as the app server
-gem 'unicorn'
+gem 'unicorn', '~>4.8.3'
 
 # Api versions
-gem 'versionist'
+gem 'versionist', '~>1.4.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -27,31 +27,31 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.0.3'
-gem 'less-rails'
-gem 'therubyracer'
-gem 'twitter-bootstrap-rails'
+gem 'less-rails', '~>2.5.0'
+gem 'therubyracer', '~>0.12.1'
+gem 'twitter-bootstrap-rails', '~>3.2.0'
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', '~>3.1.2'
 
-gem 'loadjs'
+gem 'loadjs', '~>0.0.6'
 
-gem 'inherited_resources'
+gem 'inherited_resources' , '~>1.4.1'
 
-gem 'carrierwave'
+gem 'carrierwave', '~>0.10.0'
 
-gem 'rmagick'
+gem 'rmagick', '~>2.13.4'
 
-gem 'turbolinks'
+gem 'turbolinks' , '~>2.3.0'
 
-gem 'jquery-turbolinks'
+gem 'jquery-turbolinks', '~>2.1.0'
 
-gem 'devise'
-gem 'omniauth-facebook'
-gem 'devise-async'
+gem 'devise', '~>3.3.0'
+gem 'omniauth-facebook', '~>2.0.0'
+gem 'devise-async', '~>0.9.0'
 
 # SQL simplifier
-gem 'squeel'
+gem 'squeel', '~>1.2.2'
 
 # CodeClimate Reporter
 gem 'codeclimate-test-reporter', group: :test, require: nil
@@ -59,37 +59,36 @@ gem 'simplecov', require: false, group: :test
 
 # Active Admin
 gem 'activeadmin', github: 'activeadmin'
-gem 'formtastic'
-gem 'ransack'
-gem 'polyamorous'
+gem 'formtastic' , '~>2.3.1'
+gem 'ransack', '~>1.4.1'
+gem 'polyamorous', '~>1.1.0'
 
 # Enables Slim templates
-gem 'slim-rails'
+gem 'slim-rails', '~>2.1.5'
 
 # Sidekiq
-gem 'sidekiq'
+gem 'sidekiq', '~>3.2.5'
 gem 'sinatra', '>= 1.3.0', require: nil
 
-gem 'pundit'
+gem 'pundit', '~>0.3.0'
 
 # Exceptions Report
-gem 'airbrake'
+gem 'airbrake', '~>3.1.14'
 
 # Active Model Serializers for JSON api
-gem 'active_model_serializers'
+gem 'active_model_serializers', '~>0.9.3'
 
-gem 'will_paginate'
+gem 'will_paginate', '~>3.0.7'
 
-gem 'whenever', :require => false
-gem "resque"
+gem 'resque', '~>1.25.2'
 
 group :development do
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'spring'
+  gem 'better_errors', '~>2.0.0'
+  gem 'binding_of_caller', '~>0.7.2'
+  gem 'spring', '~>1.1.3'
 
   # Lints
-  gem 'rubocop'
+  gem 'rubocop', '~>0.26.1'
 end
 
 group :debugging, :development, :test do
@@ -109,7 +108,7 @@ group :test, :development do
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
 
   # Modify time in tests
-  gem 'timecop'
+  gem 'timecop', '~>0.7.1'
 
   # Cucumber with JS
   gem 'poltergeist'
@@ -121,5 +120,5 @@ group :test, :development do
 end
 
 group :production, :staging do
-  gem 'rails_12factor'
+  gem 'rails_12factor', '~>0.0.2'
 end
