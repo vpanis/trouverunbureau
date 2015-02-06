@@ -8,6 +8,7 @@ Deskspotting::Application.routes.draw do
     resources :users do
         member do
           get :reviews, to: 'reviews#client_reviews'
+          get :wishlist, to: 'wishlist#wishlist'
         end
     end
 
