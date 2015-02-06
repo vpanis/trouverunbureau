@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Api::ReviewsController do
+describe Api::V1::ReviewsController do
 
   let(:body) { JSON.parse(response.body) if response.body.present? }
   let!(:user) do

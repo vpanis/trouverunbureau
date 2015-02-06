@@ -16,6 +16,9 @@ gem 'app_configuration'
 # Use unicorn as the app server
 gem 'unicorn'
 
+# Api versions
+gem 'versionist'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
