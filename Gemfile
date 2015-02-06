@@ -48,6 +48,7 @@ gem 'jquery-turbolinks'
 
 gem 'devise'
 gem 'omniauth-facebook'
+gem 'devise-async'
 
 # SQL simplifier
 gem 'squeel'
@@ -80,7 +81,7 @@ gem 'active_model_serializers'
 gem 'will_paginate'
 
 gem 'whenever', :require => false
-gem "resque", "~> 2.0.0.pre.1", github: "resque/resque"
+gem "resque"
 
 group :development do
   gem 'better_errors'
