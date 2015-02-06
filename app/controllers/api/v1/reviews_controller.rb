@@ -23,7 +23,7 @@ module Api
       end
 
       def serialized_venue_reviews(result)
-        ActiveModel::ArraySerializer.new(result, each_serializer: ReviewSerializer, root: false)
+        ActiveModel::ArraySerializer.new(result, each_serializer: ReviewSerializer)
       end
 
       def serialized_client_reviews(result)
