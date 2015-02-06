@@ -4,7 +4,7 @@ class ReviewSerializer < ActiveModel::Serializer
   has_one :owner, serializer: UserReviewSerializer
 
   def date
-    object.created_at.strftime('%d/%m/%Y')
+    object.created_at.strftime('%B %Y')
   end
 
   def owner
