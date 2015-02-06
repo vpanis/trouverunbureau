@@ -2,6 +2,8 @@ class BookingManager
   extend BookingReservation
   extend BookingInquiry
 
+  @minute_granularity = 30
+
   class << self
     def book(user, booking_attributes = {})
       booking = Booking.new(booking_attributes)
@@ -69,8 +71,7 @@ class BookingManager
     def change_to_pending_payment(booking, custom_errors)
       [check_if_can_book_and_perform(booking, 'FOR UPDATE', custom_errors) do
         if custom_errors.empty?
-          booking.state = Booking.states[:pending_payment]
-          booking.save
+          booking.update_attributes(state: Booking.states[:pending_payment])
         end
       end, custom_errors]
     end

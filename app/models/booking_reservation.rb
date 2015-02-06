@@ -23,8 +23,8 @@ module BookingReservation
 
   def check_max_collition(booking, lock, custom_errors)
     Booking.transaction do
-      rdc = RangeDateCollider.new(first_date: booking.from, minute_granularity: 30,
-              max_collition_permited: booking.space.quantity - booking.quantity)
+      rdc = RangeDateCollider.new(first_date: booking.from, minute_granularity:
+        @minute_granularity, max_collition_permited: booking.space.quantity - booking.quantity)
       retrieve_bookings_that_collide_with(booking, lock).each do |element|
         rdc.add_time_range(element.from, element.to, element.quantity)
         break unless rdc.valid?
