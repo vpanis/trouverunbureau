@@ -1,4 +1,5 @@
 class Organization < ActiveRecord::Base
+  include OwnerActions
   # Only for creation purpose
   attr_accessor :user, :user_id
 
@@ -57,6 +58,10 @@ class Organization < ActiveRecord::Base
     end
   rescue
     errors.add(:user, 'Invalid user/user_id value')
+  end
+
+  def user_in_organization(user)
+    users.exists?(user)
   end
 
   def assign_user

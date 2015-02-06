@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include OwnerActions
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :omniauthable,
@@ -85,6 +86,16 @@ class User < ActiveRecord::Base
 
   def email_required?
     provider.nil?
+  end
+
+  def user_can_write_in_name_of(owner)
+    if owner.class == User
+      owner == self
+    elsif owner.class == Organization
+      owner.user_in_organization(self)
+    else
+      false
+    end
   end
 
   private

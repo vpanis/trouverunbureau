@@ -46,14 +46,16 @@ class SpaceSearch
   def initialize(attributes = {})
     date = attributes[:date]
     # wday 0 = sunday, venue_hours.weekday 0 = mon
-    attributes[:weekday] ||= (Time.parse(date).wday - 1 % 7) unless date.blank?
+    unless date.blank?
+      date_to_utc = Time.zone.local_to_utc(Time.parse(date))
+      attributes[:weekday] ||= VenueHour.which_day(date_to_utc)
+    end
     super(attributes)
   end
 
   def fill_conditions(spaces)
     spaces = space_conditions(spaces)
     spaces = venue_conditions(spaces)
-    # eager loading
     spaces
   end
 

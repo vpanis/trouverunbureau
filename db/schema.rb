@@ -27,6 +27,9 @@ ActiveRecord::Schema.define(version: 20150202163635) do
     t.datetime "updated_at"
     t.integer  "owner_id"
     t.string   "owner_type"
+    t.float    "price"
+    t.datetime "owner_last_seen"
+    t.datetime "venue_last_seen"
   end
 
   add_index "bookings", ["owner_id", "owner_type"], name: "index_bookings_on_owner_id_and_owner_type", using: :btree
@@ -42,6 +45,21 @@ ActiveRecord::Schema.define(version: 20150202163635) do
   end
 
   add_index "client_reviews", ["booking_id"], name: "index_client_reviews_on_booking_id", using: :btree
+
+  create_table "messages", force: true do |t|
+    t.integer  "booking_id"
+    t.integer  "user_id"
+    t.text     "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "m_type"
+    t.integer  "represented_id"
+    t.string   "represented_type"
+  end
+
+  add_index "messages", ["booking_id"], name: "index_messages_on_booking_id", using: :btree
+  add_index "messages", ["represented_id", "represented_type"], name: "index_messages_on_represented_id_and_represented_type", using: :btree
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "organization_users", force: true do |t|
     t.integer  "user_id"
@@ -124,8 +142,8 @@ ActiveRecord::Schema.define(version: 20150202163635) do
 
   create_table "venue_hours", force: true do |t|
     t.integer  "weekday"
-    t.time     "from"
-    t.time     "to"
+    t.integer  "from"
+    t.integer  "to"
     t.integer  "venue_id"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -65,6 +65,27 @@ class Venue < ActiveRecord::Base
   validate :each_amenity_inclusion
   validate :each_profession_inclusion
 
+  def opens_at_least_one_day_from_to?(from, to)
+    weekdays = VenueHour.days_covered(from, to)
+    1 <= day_hours.where { weekday.eq_any weekdays }.group(:weekday).count.length
+  end
+
+  def opens_days_from_to?(from, to)
+    weekdays = VenueHour.days_covered(from, to)
+    weekdays.length == day_hours.where { weekday.eq_any weekdays }.group(:weekday).count.length
+  end
+
+  def opens_hours_from_to?(from, to)
+    from_weekday = VenueHour.which_day(from)
+    from = VenueHour.convert_time(from)
+    to = VenueHour.convert_time(to)
+    1 <= day_hours.where do
+      (venue_hours.weekday == my { from_weekday }) &
+      (venue_hours.from <= my { from }) &
+      (venue_hours.to > my { to })
+    end.count
+  end
+
   private
 
   def initialize_fields
