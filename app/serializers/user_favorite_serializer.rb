@@ -1,5 +1,6 @@
 class UserFavoriteSerializer < ActiveModel::Serializer
-  attributes :id, :name, :city, :currency, :hour_price, :day_price, :week_price, :month_price
+  attributes :id, :name, :city, :currency, :hour_price, :day_price, :week_price, :month_price,
+             :photos
 
   def id
     object.space.id
@@ -33,4 +34,9 @@ class UserFavoriteSerializer < ActiveModel::Serializer
     object.space.month_price
   end
 
+  def photos
+    space_photos = []
+    space_photos << object.space.photo.url if object.space.photo
+    space_photos
+  end
 end
