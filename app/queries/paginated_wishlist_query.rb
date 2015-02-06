@@ -8,6 +8,6 @@ class PaginatedWishlistQuery < PaginatedQuery
 
   def select_favorites_for_user(user_id)
     ans = UsersFavorite.where { users_favorites.user_id == my { user_id } }. joins { space }
-    ans = ans.includes { [space.venue, space.photo] }
+    ans.includes { [space.venue, space.photo] }
   end
 end
