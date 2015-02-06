@@ -1,5 +1,5 @@
-class UserReviewSerializer < ActiveModel::Serializer
-  attributes :name, :avatar
+class UserSerializer < ActiveModel::Serializer
+  attributes :id, :name, :avatar
 
   def name?
     object.first_name + object.last_name

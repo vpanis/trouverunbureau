@@ -9,7 +9,7 @@ module Api
         result = PaginatedReviewsQuery.new.venue_reviews(pagination_params, params[:id])
         render json: { count: result.total_entries, current_page: result.current_page,
                        items_per_page: result.per_page,
-                       reviews: serialized_venue_reviews(result) },
+                       reviews: serialized_reviews(result, VenueReviewSerializer) },
                status: 200
       end
 
@@ -18,17 +18,14 @@ module Api
         result = PaginatedReviewsQuery.new.client_reviews(pagination_params, params[:id])
         render json: { count: result.total_entries, current_page: result.current_page,
                        items_per_page: result.per_page,
-                       reviews: serialized_client_reviews(result) },
+                       reviews: serialized_reviews(result, ClientReviewSerializer) },
                status: 200
       end
 
-      def serialized_venue_reviews(result)
-        ActiveModel::ArraySerializer.new(result, each_serializer: ReviewSerializer)
+      def serialized_reviews(result, serializer)
+        ActiveModel::ArraySerializer.new(result, each_serializer: serializer)
       end
 
-      def serialized_client_reviews(result)
-        ActiveModel::ArraySerializer.new(result, each_serializer: ClientReviewSerializer)
-      end
     end
   end
 end

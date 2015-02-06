@@ -1,13 +1,14 @@
 class VenueReviewSerializer < ActiveModel::Serializer
-  attributes :name, :logo
+  attributes :id, :message, :date
 
-  def name?
-    object.first_name + object.last_name
+  has_one :owner, serializer: UserSerializer
+
+  def date
+    object.created_at.strftime('%B %Y')
   end
 
-  def logo
-    return nil unless object.logo.url
-    object.logo.url
+  def owner
+    object.booking.owner
   end
 
 end
