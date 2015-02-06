@@ -7,39 +7,33 @@ RSpec.describe SpaceSearch, type: :model do
   before(:all) do
     @v1 = FactoryGirl.create(:venue, v_type: Venue.v_types[:startup_office], latitude: 10,
                              longitude: 10, amenities: ['wifi'],
-                             primary_professions: ['technology'],
-                             secondary_professions: ['public_relations'],
+                             professions: ['technology', 'public_relations'],
                              rating: 4, quantity_reviews: 10)
     FactoryGirl.create(:venue_hour, venue: @v1, weekday: 0)
     @v2 = FactoryGirl.create(:venue, v_type: Venue.v_types[:design_studio], latitude: 20,
                              longitude: 20, amenities: ['cafe_restaurant'],
-                             primary_professions: [],
-                             secondary_professions: ['public_relations'],
+                             professions: ['public_relations'],
                              rating: 5, quantity_reviews: 10)
     FactoryGirl.create(:venue_hour, venue: @v2, weekday: 1)
     @v3 = FactoryGirl.create(:venue, v_type: Venue.v_types[:business_center], latitude: 30,
                              longitude: 30, amenities: ['kitchen'],
-                             primary_professions: ['entertainment'],
-                             secondary_professions: [],
+                             professions: ['entertainment'],
                              rating: 5, quantity_reviews: 3)
     FactoryGirl.create(:venue_hour, venue: @v3, weekday: 2)
     @v4 = FactoryGirl.create(:venue, v_type: Venue.v_types[:startup_office], latitude: 40,
                              longitude: 40, amenities: %w(wifi gym),
-                             primary_professions: ['public_relations'],
-                             secondary_professions: ['technology'],
+                             professions: ['public_relations', 'technology'],
                              rating: 4, quantity_reviews: 20)
     FactoryGirl.create(:venue_hour, venue: @v4, weekday: 0)
     FactoryGirl.create(:venue_hour, venue: @v4, weekday: 3)
     @v5 = FactoryGirl.create(:venue, v_type: Venue.v_types[:corporate_office], latitude: 50,
                              longitude: 50, amenities: ['cafe_restaurant'],
-                             primary_professions: ['public_relations'],
-                             secondary_professions: [],
+                             professions: ['public_relations'],
                              rating: 4, quantity_reviews: 10)
     FactoryGirl.create(:venue_hour, venue: @v5, weekday: 2)
     @v6 = FactoryGirl.create(:venue, v_type: Venue.v_types[:hotel], latitude: 60,
                              longitude: 60, amenities: ['cafe_restaurant'],
-                             primary_professions: ['public_relations'],
-                             secondary_professions: [],
+                             professions: ['public_relations'],
                              rating: 4, quantity_reviews: 40)
     FactoryGirl.create(:venue_hour, venue: @v6, weekday: 2)
 

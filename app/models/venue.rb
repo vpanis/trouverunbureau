@@ -26,7 +26,6 @@ class Venue < ActiveRecord::Base
 
   # Callbacks
   after_initialize :initialize_fields
-  before_validation :not_repeated_professions_in_secondary
   before_destroy :erase_logo
 
   # Validations
@@ -107,19 +106,10 @@ class Venue < ActiveRecord::Base
   end
 
   def each_profession_inclusion
-    each_profession_inclusion_for(primary_professions)
-    each_profession_inclusion_for(secondary_professions)
-  end
-
-  def each_profession_inclusion_for(profession_list)
-    invalid_professions = profession_list - PROFESSIONS.map(&:to_s)
+    invalid_professions = professions - PROFESSIONS.map(&:to_s)
     invalid_professions.each do |profession|
       errors.add(:profession_list, profession + ' is not a valid amenity')
     end
-  end
-
-  def not_repeated_professions_in_secondary
-    self.secondary_professions = secondary_professions - primary_professions
   end
 
 end

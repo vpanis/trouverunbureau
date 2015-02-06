@@ -23,25 +23,25 @@
       - if space.hour_price.present?
         .price
           p
-            = space.hour_price.round
+            = "$#{space.hour_price.round}"
             span.currency = "(#{space.venue.currency})"
           p.time #{t('venues.show.per_hour')}
       - if space.day_price.present?
         .price
           p
-            = space.day_price.round
+            = "$#{space.day_price.round}"
             span.currency = "(#{space.venue.currency})"
           p.time #{t('venues.show.per_day')}
       - if space.week_price.present?
         .price
           p
-            = space.week_price.round
+            = "$#{space.week_price.round}"
             span.currency = "(#{space.venue.currency})"
           p.time #{t('venues.show.per_week')}
       - if space.month_price.present?
         .price
           p
-            = space.month_price.round
+            = "$#{space.month_price.round}"
             span.currency = "(#{space.venue.currency})"
           p.time #{t('venues.show.per_month')}
     .booking-inquiry

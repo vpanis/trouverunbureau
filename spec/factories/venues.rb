@@ -22,8 +22,7 @@ FactoryGirl.define do
     desks 40
     vat_tax_rate 1.5
     amenities { Venue::AMENITY_TYPES.sample(3).map(&:to_s) }
-    primary_professions { Venue::PROFESSIONS.sample(2).map(&:to_s) }
-    secondary_professions { (Venue::PROFESSIONS.map(&:to_s) - primary_professions).sample(2) }
+    professions { Venue::PROFESSIONS.sample(2).map(&:to_s) }
     logo Rack::Test::UploadedFile.new(File.open(File.join(
       Rails.root, '/spec/fixtures/dropkick.png')))
 

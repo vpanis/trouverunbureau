@@ -92,23 +92,9 @@ RSpec.describe Venue, type: :model do
     should venue.valid? be false
   end
 
-  it 'shouldn\'t accept invalid primary professions' do
-    venue = FactoryGirl.build(:venue, primary_professions: ['not_existing_amenity'])
+  it 'shouldn\'t accept invalid professions' do
+    venue = FactoryGirl.build(:venue, professions: ['not_existing_amenity'])
     should venue.valid? be false
   end
 
-  it 'shouldn\'t accept invalid secondary professions' do
-    venue = FactoryGirl.build(:venue, secondary_professions: ['not_existing_amenity'])
-    should venue.valid? be false
-  end
-
-  it 'shouldn\'t have the professions same profession in both arrays' do
-    venue = FactoryGirl.create(:venue,
-                               primary_professions: [Venue::PROFESSIONS[0].to_s],
-                               secondary_professions: [Venue::PROFESSIONS[0].to_s])
-
-    expect(venue.primary_professions & venue.secondary_professions).to contain_exactly
-    expect(venue.primary_professions).to include(Venue::PROFESSIONS[0].to_s)
-    expect(venue.secondary_professions).not_to include(Venue::PROFESSIONS[0].to_s)
-  end
 end

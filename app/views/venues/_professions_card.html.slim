@@ -3,8 +3,14 @@
     h3 #{t('venues.show.professions')}
     .separator
   .space-info
-    .professions
-      - @venue.primary_professions.each do |profession|
+    - if @venue.professions.empty?
+      .professions.single-column
         .profession
           .icon
-          p = t("venues.professions.#{profession}")
+          p = t("venues.professions.all")
+    - else
+      .professions.two-columns
+        - @venue.professions.each do |profession|
+          .profession
+            .icon
+            p = t("venues.professions.#{profession}")

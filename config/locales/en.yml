@@ -171,6 +171,7 @@ en:
       public_relations: public relations
       entertainment: entertainment
       entrepreneur: entrepreneur
+      all: All professions are welcome
     show:
       share: 'Share'
       report_venue: 'Report Venue'
@@ -197,5 +198,6 @@ en:
         verified_venues: 'Verified venues.'
         flexible_cancellations: 'Flexible Cancellations.'
       reviews: 'Reviews'
+      no_reviews: 'No reviews'
 
 
