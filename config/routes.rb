@@ -9,6 +9,7 @@ Deskspotting::Application.routes.draw do
         member do
           get :reviews, to: 'reviews#client_reviews'
           get :wishlist, to: 'wishlist#wishlist'
+          post :wishlist, to: 'wishlist#add_space_to_wishlist'
         end
     end
 

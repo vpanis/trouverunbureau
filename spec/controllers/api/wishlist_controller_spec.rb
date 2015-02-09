@@ -28,7 +28,7 @@ describe Api::V1::WishlistController do
         let!(:favorite_2) { create(:users_favorite, user: a_user, space: space_2) }
         let!(:favorite_3) { create(:users_favorite) }
 
-        it 'should retrieve user favorites ordered by xxx' do
+        it 'should retrieve user favorites ordered by name' do
           get :wishlist, id: a_user.id
           first = JSON.parse(body['spaces'].first.to_json)
           last = JSON.parse(body['spaces'].last.to_json)
