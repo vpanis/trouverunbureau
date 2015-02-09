@@ -29,7 +29,8 @@ coverage/*
 .security.yml
 .mail.yml
 .facebook.yml
-.resque-web.yml
+.resque.yml
+.redis.yml
 
 # Vagrant
 .vagrant/

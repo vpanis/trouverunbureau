@@ -4,7 +4,7 @@ Deskspotting::Application.routes.draw do
 
   devise_for :users, controllers: { :omniauth_callbacks => "users/omniauth_callbacks" }
 
-  mount Resque::Server, :at => "/resque"
+  mount Resque::Server, at: "/resque"
 
   root to: 'landing#index'
 
