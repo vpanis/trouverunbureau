@@ -22,16 +22,18 @@ describe Api::V1::WishlistController do
       end
 
       context 'when the user has favorites' do
-        let!(:favorite) { create(:users_favorite, user: a_user) }
-        let!(:favorite_2) { create(:users_favorite, user: a_user) }
+        let!(:space) { create(:space, name: 'a space') }
+        let!(:space_2) { create(:space, name: 'the space') }
+        let!(:favorite) { create(:users_favorite, user: a_user, space: space) }
+        let!(:favorite_2) { create(:users_favorite, user: a_user, space: space_2) }
         let!(:favorite_3) { create(:users_favorite) }
 
         it 'should retrieve user favorites ordered by xxx' do
           get :wishlist, id: a_user.id
           first = JSON.parse(body['spaces'].first.to_json)
           last = JSON.parse(body['spaces'].last.to_json)
-          fav_first = JSON.parse(UserFavoriteSerializer.new(favorite_2).to_json)['user_favorite']
-          fav_last = JSON.parse(UserFavoriteSerializer.new(favorite).to_json)['user_favorite']
+          fav_first = JSON.parse(UserFavoriteSerializer.new(favorite).to_json)['user_favorite']
+          fav_last = JSON.parse(UserFavoriteSerializer.new(favorite_2).to_json)['user_favorite']
           expect(first).to eql(fav_first)
           expect(last).to eql(fav_last)
         end

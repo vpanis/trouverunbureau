@@ -8,7 +8,7 @@ class PaginatedWishlistQuery < PaginatedQuery
 
   def select_favorites_for_user(user_id)
     ans = UsersFavorite.where { users_favorites.user_id == my { user_id } }. joins { space }
-    # TODO: define order (this is temporal)
-    ans.order { created_at.desc }.includes { [space.venue, space.photo] }
+    # TODO: check the order criteria
+    ans.includes { [space.venue, space.photo] }.order { spaces.name.asc }
   end
 end
