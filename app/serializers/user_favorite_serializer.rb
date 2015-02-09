@@ -37,6 +37,7 @@ class UserFavoriteSerializer < ActiveModel::Serializer
   def photos
     space_photos = []
     space_photos << object.space.photo.url if object.space.photo
+    # TODO: remember that a space can have more than one photos
     space_photos
   end
 end
