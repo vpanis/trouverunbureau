@@ -67,7 +67,7 @@ gem 'polyamorous', '~>1.1.0'
 gem 'slim-rails', '~>2.1.5'
 
 # Sidekiq
-gem 'sidekiq', '~>3.2.5'
+# gem 'sidekiq', '~>3.2.5'
 gem 'sinatra', '>= 1.3.0', require: nil
 
 gem 'pundit', '~>0.3.0'
