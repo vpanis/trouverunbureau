@@ -71,4 +71,53 @@ describe Api::V1::WishlistController do
       end
     end # when the user does not exist
   end # GET users/:id/wishlist
+
+  describe 'POST users/id/wishlist' do
+    let!(:user) { create(:user) }
+    context 'when the space exists' do
+      let!(:space) { create(:space) }
+
+      context 'when the space is not added to wishlist' do
+        before { post :add_space_to_wishlist, space_id: space.id }
+
+        it 'should return status 204' do
+          expect(response.status).to eq(204)
+        end
+
+        it 'should create the users favorite' do
+          users_favorites = UsersFavorite.where(space: space, user: user)
+          expect(users_favorites.size).to be(1)
+          expect(UsersFavoriteContext.new(user, space).wishlisted?).to be_true
+        end
+
+      end
+
+      context 'when the space is already added to the wishlist' do
+        before do
+          UsersFavoriteContext.new(user, space).add_to_wishlist
+          post :add_space_to_wishlist, space_id: space.id
+        end
+
+        it 'should return status 412' do
+          expect(response.status).to eq(412)
+        end
+
+        it 'should not create a new subscription' do
+          users_favorites = UsersFavorite.where(space: space, user: user)
+          expect(users_favorites.size).to be(1)
+          expect(UsersFavoritesContext.new(user, space).wishlisted?).to be_true
+        end
+
+      end
+    end
+
+    context 'when the space does not exist' do
+      before { post :add_space_to_wishlist, space_id: -1 }
+
+      it 'fails' do
+        expect(response.status).to eq(404)
+      end
+    end # when the space does not exist
+  end # POST users/:id/wishlist
+
 end

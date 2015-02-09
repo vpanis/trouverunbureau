@@ -16,7 +16,7 @@ module Api
       end
 
       def add_space_to_wishlist
-        user = User.find( params[:id])
+        user = User.find(params[:id])
         space = Space.find(params[:space_id])
         relationship = UsersFavoriteContext.new(user, space).add_to_wishlist
         return render_nothing if relationship.present?
@@ -24,7 +24,7 @@ module Api
       end
 
       def remove_space_from_wishlist
-        user = User.find( params[:id])
+        user = User.find(params[:id])
         space = Space.find(params[:space_id])
         relationship = UsersFavoriteContext.new(user, space).remove_from_wishlist
         return render_nothing if relationship.present?
