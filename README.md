@@ -22,3 +22,28 @@ Setup for Rails Applications
 `Errbit` is used for exception errors report. To complete this configuration setup the following environment variables in your server
 - ERRBIT_API_KEY
 - ERRBIT_HOST
+
+##Configuration Files
+
+###.mail.yml (mailer configuration for all the app)
+
+smtp_address: "smtp.gmail.com"  
+sender: "somemail@xxx.com"  
+password: "some password"
+
+###.facebook.yml (facebook app for login and share)
+
+app_id: "APP ID"  
+app_secret: "APP SECRET"  
+
+###.redis.yml (redis db connection)
+
+host: localhost  
+port: 6379  
+password: "a password if needed"
+
+###.resque.yml (web job's overview)
+
+user: "some user (this is a plain name, it doesn't matter if the user exists or not)"  
+password: "some password"
+
