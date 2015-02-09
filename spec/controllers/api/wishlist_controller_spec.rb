@@ -15,34 +15,31 @@ describe Api::V1::WishlistController do
 
     context 'when the user exists' do
       let!(:a_user) { create(:user) }
+
       it 'succeeds' do
         get :wishlist, id: a_user.id
         expect(response.status).to eq(200)
       end
 
       context 'when the user has favorites' do
-        let(:space) { create(:space) }
-        let(:space_2) { create(:space) }
-        let(:favorite) { create(:users_favorite, user: a_user, space: space) }
-        let(:favorite_2) { create(:users_favorite, user: a_user, space: space_2) }
-        let(:favorite_3) { create(:users_favorite) }
+        let!(:favorite) { create(:users_favorite, user: a_user) }
+        let!(:favorite_2) { create(:users_favorite, user: a_user) }
+        let!(:favorite_3) { create(:users_favorite) }
 
-        it 'should retrieve client reviews ordered by date' do
+        it 'should retrieve user favorites ordered by xxx' do
           get :wishlist, id: a_user.id
-          byebug
           first = JSON.parse(body['spaces'].first.to_json)
           last = JSON.parse(body['spaces'].last.to_json)
-          cl_re_first = JSON.parse(ClientReviewSerializer.new(a_cl_re_2).to_json)['client_review']
-          cl_re_last = JSON.parse(ClientReviewSerializer.new(a_cl_re).to_json)['client_review']
-          expect(first).to eql(cl_re_first)
-          expect(last).to eql(cl_re_last)
+          fav_first = JSON.parse(UserFavoriteSerializer.new(favorite_2).to_json)['user_favorite']
+          fav_last = JSON.parse(UserFavoriteSerializer.new(favorite).to_json)['user_favorite']
+          expect(first).to eql(fav_first)
+          expect(last).to eql(fav_last)
         end
 
         it 'should paginate user favorites' do
           page = 2
           amount =  1
           get :wishlist, id: a_user.id, page: page, amount: amount
-          byebug
           expect(body['count']).to eql(2)
           expect(body['items_per_page']).to eql(amount)
           expect(body['current_page']).to eql(page)
@@ -61,8 +58,8 @@ describe Api::V1::WishlistController do
             c.to_json == UserFavoriteSerializer.new(favorite_3).to_json
           end).to be false
         end
-      end # when the venue has reviews
-    end # when the venue exists
+      end # when the user has favorites
+    end # when the user exists
 
     context 'when the user does not exist' do
       before { get :wishlist, id: -1 }
