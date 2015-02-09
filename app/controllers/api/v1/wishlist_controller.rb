@@ -18,15 +18,15 @@ module Api
       def add_space_to_wishlist
         user = User.find( params[:id])
         space = Space.find(params[:space_id])
-        UsersFavoriteContext.new(user, space).add_to_wishlist
+        relationship = UsersFavoriteContext.new(user, space).add_to_wishlist
         return render_nothing if relationship.present?
         wrong_preconditions
       end
 
-      def remove_space_to_wishlist
+      def remove_space_from_wishlist
         user = User.find( params[:id])
         space = Space.find(params[:space_id])
-        UsersFavoriteContext.new(user, space).remove_from_wishlist
+        relationship = UsersFavoriteContext.new(user, space).remove_from_wishlist
         return render_nothing if relationship.present?
         wrong_preconditions
       end
