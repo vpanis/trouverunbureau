@@ -87,14 +87,14 @@ describe Api::V1::WishlistController do
         it 'should create the users favorite' do
           users_favorites = UsersFavorite.where(space: space, user: user)
           expect(users_favorites.size).to be(1)
-          expect(UsersFavoriteContext.new(user, space).wishlisted?).to be true
+          expect(UsersFavoriteContext.new(user.id, space.id).wishlisted?).to be true
         end
 
       end
 
       context 'when the space is already added to the wishlist' do
         before do
-          UsersFavoriteContext.new(user, space).add_to_wishlist
+          UsersFavoriteContext.new(user.id, space.id).add_to_wishlist
           post :add_space_to_wishlist, space_id: space.id, id: user.id
         end
 
@@ -105,7 +105,7 @@ describe Api::V1::WishlistController do
         it 'should not add again to the wishlist' do
           users_favorites = UsersFavorite.where(space: space, user: user)
           expect(users_favorites.size).to be(1)
-          expect(UsersFavoriteContext.new(user, space).wishlisted?).to be true
+          expect(UsersFavoriteContext.new(user.id, space.id).wishlisted?).to be true
         end
 
       end
@@ -135,7 +135,7 @@ describe Api::V1::WishlistController do
 
       context 'when the space is already added to the wishlist' do
         before do
-          UsersFavoriteContext.new(user, space).add_to_wishlist
+          UsersFavoriteContext.new(user.id, space.id).add_to_wishlist
           delete :remove_space_from_wishlist, space_id: space.id, id: user.id
         end
 
@@ -146,7 +146,7 @@ describe Api::V1::WishlistController do
         it 'should remove the space from the wishlist' do
           users_favorites = UsersFavorite.where(space: space, user: user)
           expect(users_favorites.size).to be(0)
-          expect(UsersFavoriteContext.new(user, space).wishlisted?).to be false
+          expect(UsersFavoriteContext.new(user.id, space.id).wishlisted?).to be false
         end
 
       end
