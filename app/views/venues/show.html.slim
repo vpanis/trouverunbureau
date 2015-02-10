@@ -3,23 +3,43 @@
 .venue-bar.row
   .row.actions-on-venue
       a#report-venue #{t('venues.show.report_venue')}
-  .col-xs-12.col-sm-7.col-md-8.col-lg-9
-    .venue-avatar
-      - if @venue.logo?
-        = image_tag(@venue.logo.url, width: '90px', height: '90px')
-      - else
-        = image_tag('venue-default.png', width: '90px', height: '90px')
-    .basic-info
-      .stars
-        - (1..5).each do |i|
-          .star class=('active' if @venue.rating > i)
-      .reviews
-        = "(#{@venue.quantity_reviews})"
-      .venue-name
-        h1 = @venue.name
-      .location
-        p = @venue.town + ', ' + @venue.country
-  .col-xs-12.col-sm-5.col-md-4.col-lg-3
+  .col-xs-12.col-sm-7.col-md-7.col-lg-8
+    .hidden-xs
+      .venue-avatar
+        - if @venue.logo?
+          = image_tag(@venue.logo.url, width: '90px', height: '90px')
+        - else
+          = image_tag('venue-default.png', width: '90px', height: '90px')
+      .basic-info
+        .stars
+          - (1..5).each do |i|
+            .star class=('active' if @venue.rating > i)
+        .reviews
+          = "(#{@venue.quantity_reviews})"
+        .venue-name
+          h1 = @venue.name
+        .location
+          p = @venue.town + ', ' + @venue.country
+    .visible-xs-block
+      .row
+        .venue-avatar
+          - if @venue.logo?
+            = image_tag(@venue.logo.url, width: '90px', height: '90px')
+          - else
+            = image_tag('venue-default.png', width: '90px', height: '90px')
+      .row
+        .basic-info
+          .stars
+            - (1..5).each do |i|
+              .star class=('active' if @venue.rating > i)
+          .reviews
+            = "(#{@venue.quantity_reviews})"
+          .venue-name
+            h1 = @venue.name
+          .location
+            .location-icon
+            p = @venue.town + ', ' + @venue.country
+  .col-xs-12.col-sm-5.col-md-5.col-lg-4
     .row.tab-selector-container
       .col-xs-6.tab-selector.active#venue-info-selector
         a #{t('venues.show.venue')}

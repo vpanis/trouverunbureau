@@ -1227,6 +1227,35 @@ input[type="checkbox"]:checked:after {
     width: 90%;
     margin: 25px auto;
   }
+  .visible-xs-block{
+    text-align: center;
+    .basic-info{
+      width: 90%;
+      padding-bottom: 15px;
+    }
+    .location{
+      background: none;
+      height: auto;
+      padding: 0;
+      display: inline-flex;
+      .location-icon{
+        height: 20px;
+        @include at2x('i-location', 14px, 20px);
+        background-repeat: no-repeat;
+        width: 20px;
+        display: inline-block;
+      }
+      p{
+        display: inline-block;
+        margin: 0px;
+        font-size: 13px;
+        letter-spacing: 0.06rem;
+        font-weight: 300;
+        color: $gray-text;
+        line-height: 20px;
+      }
+    }
+  }
 }
 #venue-workspaces-tab, #venue-info-tab{
   background-color: $dark-white;
