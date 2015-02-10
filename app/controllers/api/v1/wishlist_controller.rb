@@ -16,17 +16,15 @@ module Api
       end
 
       def add_space_to_wishlist
-        user = User.find(params[:id])
-        space = Space.find(params[:space_id])
-        relationship = UsersFavoriteContext.new(user, space).add_to_wishlist
+        process_params(params[:id], params[:space_id])
+        relationship = UsersFavoriteContext.new(@user, @space).add_to_wishlist
         return render_nothing if relationship.present?
         wrong_preconditions
       end
 
       def remove_space_from_wishlist
-        user = User.find(params[:id])
-        space = Space.find(params[:space_id])
-        relationship = UsersFavoriteContext.new(user, space).remove_from_wishlist
+        process_params(params[:id], params[:space_id])
+        relationship = UsersFavoriteContext.new(@user, @space).remove_from_wishlist
         return render_nothing if relationship.present?
         wrong_preconditions
       end
@@ -45,6 +43,13 @@ module Api
 
       def render_nothing
         render status: 204, nothing: true
+      end
+
+      private
+
+      def process_params(user_id, space_id)
+        @user = User.find(user_id)
+        @space = Space.find(space_id)
       end
 
     end
