@@ -7,7 +7,7 @@ module Api
 
       def wishlist
         return render nothing: true, status: 404 unless User.find_by(id: params[:id]).present?
-        result = PaginatedWishlistQuery.new.wishlist(pagination_params, params[:id])
+        result = WishlistQuery.new(params[:id]).wishlist(pagination_params)
         render json: { count: result.total_entries, current_page: result.current_page,
                        items_per_page: result.per_page,
                        spaces: serialized_reviews(result, UserFavoriteSerializer) },
@@ -39,9 +39,8 @@ module Api
       end
 
       def do_action(user_id, space_id, method)
-        user = User.find(user_id)
-        space = Space.find(space_id)
-        relationship = UsersFavoriteContext.new(user, space).send(method)
+        return record_not_found unless Space.find_by(id: params[:space_id]).present?
+        relationship = UsersFavoriteContext.new(user_id, space_id).send(method)
         return render_nothing if relationship.present?
         wrong_preconditions
       end
