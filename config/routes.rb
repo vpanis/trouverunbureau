@@ -8,6 +8,9 @@ Deskspotting::Application.routes.draw do
     resources :users do
         member do
           get :reviews, to: 'reviews#client_reviews'
+          get :wishlist, to: 'wishlist#wishlist'
+          post :wishlist, to: 'wishlist#add_space_to_wishlist'
+          delete :wishlist, to: 'wishlist#remove_space_from_wishlist'
         end
     end
 
