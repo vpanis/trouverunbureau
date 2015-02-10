@@ -16,17 +16,11 @@ module Api
       end
 
       def add_space_to_wishlist
-        process_params(params[:id], params[:space_id])
-        relationship = UsersFavoriteContext.new(@user, @space).add_to_wishlist
-        return render_nothing if relationship.present?
-        wrong_preconditions
+        do_action(params[:id], params[:space_id], 'add_to_wishlist')
       end
 
       def remove_space_from_wishlist
-        process_params(params[:id], params[:space_id])
-        relationship = UsersFavoriteContext.new(@user, @space).remove_from_wishlist
-        return render_nothing if relationship.present?
-        wrong_preconditions
+        do_action(params[:id], params[:space_id], 'remove_from_wishlist')
       end
 
       def serialized_reviews(result, serializer)
@@ -45,11 +39,12 @@ module Api
         render status: 204, nothing: true
       end
 
-      private
-
-      def process_params(user_id, space_id)
-        @user = User.find(user_id)
-        @space = Space.find(space_id)
+      def do_action(user_id, space_id, method)
+        user = User.find(user_id)
+        space = Space.find(space_id)
+        relationship = UsersFavoriteContext.new(user, space).send(method)
+        return render_nothing if relationship.present?
+        wrong_preconditions
       end
 
     end
