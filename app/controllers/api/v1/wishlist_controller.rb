@@ -8,7 +8,6 @@ module Api
       def wishlist
         return render nothing: true, status: 404 unless User.find_by(id: params[:id]).present?
         result = PaginatedWishlistQuery.new.wishlist(pagination_params, params[:id])
-        result.order { spaces.name.desc }
         render json: { count: result.total_entries, current_page: result.current_page,
                        items_per_page: result.per_page,
                        spaces: serialized_reviews(result, UserFavoriteSerializer) },
