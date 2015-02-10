@@ -11,7 +11,7 @@ RSpec.describe SpaceSearch, type: :model do
                              secondary_professions: ['public_relations'],
                              rating: 4, quantity_reviews: 10)
     FactoryGirl.create(:venue_hour, venue: @v1, weekday: 0)
-    @v2 = FactoryGirl.create(:venue, v_type: Venue.v_types[:studio], latitude: 20,
+    @v2 = FactoryGirl.create(:venue, v_type: Venue.v_types[:design_studio], latitude: 20,
                              longitude: 20, amenities: ['cafe_restaurant'],
                              primary_professions: [],
                              secondary_professions: ['public_relations'],
@@ -112,7 +112,7 @@ RSpec.describe SpaceSearch, type: :model do
     end
 
     it 'returns the spaces with :studio' do
-      ss = SpaceSearch.new(venue_types: [Venue.v_types[:studio]])
+      ss = SpaceSearch.new(venue_types: [Venue.v_types[:design_studio]])
       expect(ss.find_spaces).to contain_exactly(@s1_v2, @s2_v2)
     end
 
@@ -132,7 +132,8 @@ RSpec.describe SpaceSearch, type: :model do
     end
 
     it 'returns the spaces with :studio or :startup_office' do
-      ss = SpaceSearch.new(venue_types: [Venue.v_types[:studio], Venue.v_types[:startup_office]])
+      ss = SpaceSearch.new(venue_types: [Venue.v_types[:design_studio],
+                                         Venue.v_types[:startup_office]])
       expect(ss.find_spaces).to contain_exactly(@s1_v1, @s2_v1, @s1_v2, @s2_v2, @s1_v4, @s2_v4)
     end
 

@@ -12,7 +12,8 @@ class Venue < ActiveRecord::Base
   mount_uploader :logo, LogoUploader
 
   # Constants/Enums
-  enum v_type: [:startup_office, :studio, :corporate_office, :business_center, :hotel]
+  enum v_type: [:coworking_space, :startup_office, :hotel, :corporate_office, :business_center,
+                :design_studio, :loft, :apartment, :house, :cafe, :restaurant]
 
   enum space_unit: [:square_mts, :square_foots]
 
