@@ -19,6 +19,8 @@ describe Api::V1::WishlistController do
       it 'succeeds' do
         get :wishlist, id: a_user.id
         expect(response.status).to eq(200)
+        expect(body['count']).to eql(0)
+        expect(body['spaces'].size).to eql(0)
       end
 
       context 'when the user has favorites' do
