@@ -78,7 +78,7 @@ describe Api::V1::WishlistController do
       let!(:space) { create(:space) }
 
       context 'when the space is not added to wishlist' do
-        before { post :add_space_to_wishlist, space_id: space.id }
+        before { post :add_space_to_wishlist, space_id: space.id, id: user.id }
 
         it 'should return status 204' do
           expect(response.status).to eq(204)
@@ -87,7 +87,7 @@ describe Api::V1::WishlistController do
         it 'should create the users favorite' do
           users_favorites = UsersFavorite.where(space: space, user: user)
           expect(users_favorites.size).to be(1)
-          expect(UsersFavoriteContext.new(user, space).wishlisted?).to be_true
+          expect(UsersFavoriteContext.new(user, space).wishlisted?).to be true
         end
 
       end
@@ -95,29 +95,70 @@ describe Api::V1::WishlistController do
       context 'when the space is already added to the wishlist' do
         before do
           UsersFavoriteContext.new(user, space).add_to_wishlist
-          post :add_space_to_wishlist, space_id: space.id
+          post :add_space_to_wishlist, space_id: space.id, id: user.id
         end
 
         it 'should return status 412' do
           expect(response.status).to eq(412)
         end
 
-        it 'should not create a new subscription' do
+        it 'should not add again to the wishlist' do
           users_favorites = UsersFavorite.where(space: space, user: user)
           expect(users_favorites.size).to be(1)
-          expect(UsersFavoritesContext.new(user, space).wishlisted?).to be_true
+          expect(UsersFavoriteContext.new(user, space).wishlisted?).to be true
         end
 
       end
     end
 
     context 'when the space does not exist' do
-      before { post :add_space_to_wishlist, space_id: -1 }
+      before { post :add_space_to_wishlist, space_id: -1, id: user.id }
 
       it 'fails' do
         expect(response.status).to eq(404)
       end
     end # when the space does not exist
   end # POST users/:id/wishlist
+
+  describe 'DELETE users/id/wishlist' do
+    let!(:user) { create(:user) }
+    context 'when the space exists' do
+      let!(:space) { create(:space) }
+
+      context 'when the space is not added to wishlist' do
+        before { delete :remove_space_from_wishlist, space_id: space.id, id: user.id }
+
+        it 'should return status 412' do
+          expect(response.status).to eq(412)
+        end
+      end
+
+      context 'when the space is already added to the wishlist' do
+        before do
+          UsersFavoriteContext.new(user, space).add_to_wishlist
+          delete :remove_space_from_wishlist, space_id: space.id, id: user.id
+        end
+
+        it 'should return status 204' do
+          expect(response.status).to eq(204)
+        end
+
+        it 'should remove the space from the wishlist' do
+          users_favorites = UsersFavorite.where(space: space, user: user)
+          expect(users_favorites.size).to be(0)
+          expect(UsersFavoriteContext.new(user, space).wishlisted?).to be false
+        end
+
+      end
+    end
+
+    context 'when the space does not exist' do
+      before { delete :remove_space_from_wishlist, space_id: -1, id: user.id }
+
+      it 'fails' do
+        expect(response.status).to eq(404)
+      end
+    end # when the space does not exist
+  end # DELETE users/:id/wishlist
 
 end
