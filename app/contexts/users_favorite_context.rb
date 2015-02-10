@@ -11,16 +11,13 @@ class UsersFavoriteContext
 
   def add_to_wishlist
     return false if wishlisted?
-    addition = UsersFavorite.create!(user_id: @user.id, space_id: @space.id)
-    # FeedItemContext.new.subscription(@user, @space)
-    addition
+    UsersFavorite.create!(user_id: @user.id, space_id: @space.id)
   end
 
   def remove_from_wishlist
     return false unless wishlisted?
-    remotion = UsersFavorite.where(user_id: @user.id, space_id: @space.id)
+    UsersFavorite.where(user_id: @user.id, space_id: @space.id)
                                         .first.destroy!
-    remotion
   end
 
 end
