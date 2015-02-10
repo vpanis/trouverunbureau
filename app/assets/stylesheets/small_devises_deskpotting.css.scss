@@ -1,4 +1,6 @@
 $gray-text: #9f9f9f;
+$yellow: #ffe111;
+
 @mixin at2x($image_name, $w: auto, $h: auto, $extention: '.png') {
   background-image: image_url($image_name + $extention);
   $x2img : $image_name + '@2x' + $extention;
@@ -9,7 +11,10 @@ $gray-text: #9f9f9f;
   }
 }
 
-
+@mixin transition($property, $duration : 0.2s){
+  -webkit-transition: $property $duration;
+  transition: $property $duration;
+}
 
 /* small devices */
 @media screen and (min-width: 0px) and (max-width: 767px) {
@@ -26,9 +31,16 @@ $gray-text: #9f9f9f;
   .pagination-container{
     text-align: center;
   }
+}
 
+/* Customizing the collapse menu width*/
+$grid-float-breakpoint: 950px;
+@media all and (min-width: 0px) and (max-width: $grid-float-breakpoint) {
   /* display logo in the middle of nav bar when devise is mobile*/
-  .navbar-brand{
+  .navbar{
+    border: none;
+  }
+  .menubar .navbar-brand{
     position: absolute;
     width: -moz-calc(100% - 120px);
     width: -webkit-calc(100% - 120px);
@@ -37,9 +49,36 @@ $gray-text: #9f9f9f;
     top: 0;
     text-align: center;
     margin: auto;
+    padding: 6px 16px;
     img{
       display: inline-block;
     }
+  }
+  .hidden-collapse{
+    display: none !important;
+  }
+  .mobile-menu-items{
+    margin-top: 0;
+    margin-bottom: 0;
+    li{
+      font-family: "Open Sans", sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.08rem;
+      color: black !important;
+      text-align: center;
+      cursor: pointer;
+      font-size: 14px;
+      border-bottom: solid 1px $gray-text;
+      @include transition(background-color);
+    }
+    li:hover{
+      background-color: $yellow;
+    }
+  }
+}
+@media all  and (min-width: 951px) {
+  .hidden-large-navbar{
+    display: none !important;
   }
 }
 

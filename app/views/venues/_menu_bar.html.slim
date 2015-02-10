@@ -8,26 +8,37 @@
       a.navbar-brand href="#"
         = image_tag('isologotipo-login.png', width: '205px', height: '35px')
     #mobile-navbar.collapse.navbar-collapse
-      ul.nav.navbar-nav
+      ul.nav.navbar-nav.hidden-collapse
         li
           .search
             = form_tag '#', class: 'form-inline'
               .styled-search
                 label.sr-only #{t('home.header.search_text')}
                 = text_field_tag :a, nil, class: 'form-control', placeholder: t('home.header.search_text')
-      ul.nav.navbar-nav.navbar-right
+      ul.nav.navbar-nav.hidden-large-navbar.mobile-menu-items
+        li
+          a #{t('menu.search')}
+        li
+          a #{t('menu.profile')}
+        li
+          a #{t('menu.messages')}
+
+      ul.nav.navbar-nav.navbar-right.hidden-collapse
         - if @user.present?
           li
-            .user
+            .user.hidden-collapse
               .avatar
                 - if @user.avatar?
                   = image_tag(@user.avatar.url)
                 - else
                   = image_tag('default-avatar.png')
-              .name = @user.first_name + ' ' + @user.last_name
+              .name
+                p = @user.first_name + ' ' + @user.last_name + @user.first_name + ' ' + @user.last_name
         li
-          a.messages href="#"
+          a href="#"
+            .messages
+              p 0
         li
           a.list-space href="#"
-            p #{t('home.header.list_your_space')}
+            p #{t('home.list_your_space')}
 .after-menu
