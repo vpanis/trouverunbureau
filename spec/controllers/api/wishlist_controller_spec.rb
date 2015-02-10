@@ -32,8 +32,8 @@ describe Api::V1::WishlistController do
           get :wishlist, id: a_user.id
           first = JSON.parse(body['spaces'].first.to_json)
           last = JSON.parse(body['spaces'].last.to_json)
-          fav_first = JSON.parse(UserFavoriteSerializer.new(favorite).to_json)['user_favorite']
-          fav_last = JSON.parse(UserFavoriteSerializer.new(favorite_2).to_json)['user_favorite']
+          fav_first = JSON.parse(SpaceSerializer.new(space).to_json)['space']
+          fav_last = JSON.parse(SpaceSerializer.new(space_2).to_json)['space']
           expect(first).to eql(fav_first)
           expect(last).to eql(fav_last)
         end
@@ -57,7 +57,7 @@ describe Api::V1::WishlistController do
         it 'does not retrieve other user favorites' do
           get :wishlist, id: a_user.id
           expect(body['spaces'].any? do |c|
-            c.to_json == UserFavoriteSerializer.new(favorite_3).to_json
+            c.to_json == SpaceSerializer.new(favorite_3.space).to_json
           end).to be false
         end
       end # when the user has favorites

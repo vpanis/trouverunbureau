@@ -10,7 +10,7 @@ module Api
         result = WishlistQuery.new(params[:id]).wishlist(pagination_params)
         render json: { count: result.total_entries, current_page: result.current_page,
                        items_per_page: result.per_page,
-                       spaces: serialized_reviews(result, UserFavoriteSerializer) },
+                       spaces: serialized_reviews(result, SpaceSerializer) },
                status: 200
       end
 
