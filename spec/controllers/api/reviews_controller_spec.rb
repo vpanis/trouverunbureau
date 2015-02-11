@@ -7,10 +7,6 @@ describe Api::V1::ReviewsController do
     create(:user)
   end
 
-  before do
-
-  end
-
   describe 'GET venues/:id/reviews' do
 
     context 'when the venue exists' do
@@ -77,15 +73,28 @@ describe Api::V1::ReviewsController do
 
   describe 'GET users/:id/reviews' do
 
+    before(:each) do
+      @user_logged = FactoryGirl.create(:user)
+      sign_in @user_logged
+      # request.env['HTTP_ACCEPT'] = 'application/json'
+      # request.env['X-User-Email'] = @user_logged.email
+      # request.env['X-User-Token'] = @user_logged.authentication_token
+    end
+
+    after(:each) do
+      sign_out @user_logged
+    end
+
     context 'when the user exists' do
       let!(:a_user) { create(:user) }
+      let!(:a_venue) { create(:venue, :with_spaces, owner: @user_logged) }
+      let!(:booking) { create(:booking, owner: a_user, space: a_venue.spaces[0]) }
       it 'succeeds' do
-        get :client_reviews, id: a_user.id
+        get :client_reviews, id: a_user.id, type: 'User'
         expect(response.status).to eq(200)
       end
 
       context 'when the user has reviews' do
-        let(:booking) { create(:booking, owner: a_user) }
         let(:booking_2) { create(:booking, owner: a_user) }
         let(:booking_3) { create(:booking) }
 
@@ -94,7 +103,7 @@ describe Api::V1::ReviewsController do
         let!(:a_cl_re_3) { create(:client_review, booking: booking_3) }
 
         it 'should retrieve client reviews ordered by date' do
-          get :client_reviews, id: a_user.id
+          get :client_reviews, id: a_user.id, type: 'User'
 
           first = JSON.parse(body['reviews'].first.to_json)
           last = JSON.parse(body['reviews'].last.to_json)
@@ -107,7 +116,7 @@ describe Api::V1::ReviewsController do
         it 'should paginate client reviews' do
           page = 2
           amount =  1
-          get :client_reviews, id: a_user.id, page: page, amount: amount
+          get :client_reviews, id: a_user.id, type: 'User', page: page, amount: amount
 
           expect(body['count']).to eql(2)
           expect(body['items_per_page']).to eql(amount)
@@ -116,13 +125,13 @@ describe Api::V1::ReviewsController do
         end
 
         it 'does not paginate client reviews outside limits' do
-          get :client_reviews, id: a_user.id, page: 3, amount: 1
+          get :client_reviews, id: a_user.id, type: 'User', page: 3, amount: 1
           expect(body['count']).to eql(2)
           expect(body['reviews'].size).to eql(0)
         end
 
         it 'does not retrieve other client reviews' do
-          get :client_reviews, id: a_user.id
+          get :client_reviews, id: a_user.id, type: 'User'
           expect(body['reviews'].any? do |c|
             c.to_json == ClientReviewSerializer.new(a_cl_re_3).to_json
           end).to be false
@@ -131,7 +140,7 @@ describe Api::V1::ReviewsController do
     end # when the venue exists
 
     context 'when the user does not exist' do
-      before { get :client_reviews, id: -1 }
+      before { get :client_reviews, type: 'User', id: -1 }
 
       it 'fails' do
         expect(response.status).to eq(404)

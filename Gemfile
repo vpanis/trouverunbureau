@@ -56,6 +56,7 @@ gem 'jquery-turbolinks', '~>2.1.0'
 gem 'devise', '~>3.3.0'
 gem 'omniauth-facebook', '~>2.0.0'
 gem 'devise-async', '~>0.9.0'
+gem 'simple_token_authentication', '~> 1.7'
 
 # SQL simplifier
 gem 'squeel', '~>1.2.2'

@@ -1,5 +1,7 @@
 class Organization < ActiveRecord::Base
   include OwnerActions
+  acts_as_token_authenticatable
+  devise
   # Only for creation purpose
   attr_accessor :user, :user_id
 

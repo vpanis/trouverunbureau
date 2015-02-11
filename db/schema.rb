@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150205230237) do
+ActiveRecord::Schema.define(version: 20150210193509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,8 +81,10 @@ ActiveRecord::Schema.define(version: 20150205230237) do
     t.decimal  "rating"
     t.integer  "quantity_reviews"
     t.integer  "reviews_sum"
+    t.string   "authentication_token"
   end
 
+  add_index "organizations", ["authentication_token"], name: "index_organizations_on_authentication_token", using: :btree
   add_index "organizations", ["email"], name: "index_organizations_on_email", unique: true, using: :btree
 
   create_table "spaces", force: true do |t|
@@ -125,8 +127,10 @@ ActiveRecord::Schema.define(version: 20150205230237) do
     t.string   "provider"
     t.string   "uid"
     t.string   "avatar"
+    t.string   "authentication_token"
   end
 
+  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
