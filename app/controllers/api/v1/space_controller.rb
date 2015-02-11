@@ -7,11 +7,19 @@ module Api
 
       def list
         # return render nothing: true, status: 404 unless User.find_by(id: params[:id]).present?
-        result = SpaceQuery.new.all(pagination_params)
+        result = SpaceQuery.new.all(pagination_params, filter_conditions)
         render json: { count: result.total_entries, current_page: result.current_page,
                        items_per_page: result.per_page,
                        spaces: serialized_reviews(result, SpaceSerializer) },
                status: 200
+      end
+
+      def filter_conditions
+        filters = Hash.new
+        params.each do |p|
+
+        end
+        filters
       end
 
       def serialized_reviews(result, serializer)
