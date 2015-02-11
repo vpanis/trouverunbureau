@@ -14,9 +14,9 @@ module Api
 
       end
 
-      def do_action(id, entity, method, serializer)
+      def do_action(id, entity, review_type, serializer)
         return render nothing: true, status: 404 unless entity.find_by(id: id).present?
-        result = PaginatedReviewsQuery.new.send(method, pagination_params, id)
+        result = PaginatedReviewsQuery.new.send(review_type, pagination_params, id)
         render json: { count: result.total_entries, current_page: result.current_page,
                        items_per_page: result.per_page,
                        reviews: serialized_reviews(result, serializer) },
