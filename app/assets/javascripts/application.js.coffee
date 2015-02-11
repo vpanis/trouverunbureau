@@ -10,6 +10,14 @@
 #= require jquery.turbolinks
 #= require twitter/bootstrap
 #= require retina
+#= require masonry.pkgd
+#= require angular
+#= require lodash
+#= require restangular
+#= require angular-ui-bootstrap-tpls
 #= require_directory .
 #= require_tree ./landing/
+#= require_tree ./venues/
+#= require_tree ./angular/controllers
+
 

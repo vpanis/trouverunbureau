@@ -26,11 +26,10 @@ class Venue < ActiveRecord::Base
 
   # Callbacks
   after_initialize :initialize_fields
-  before_validation :not_repeated_professions_in_secondary
   before_destroy :erase_logo
 
   # Validations
-  validates :town, :street, :postal_code, :email, :latitude, :longitude,
+  validates :town, :street, :postal_code, :country, :email, :latitude, :longitude,
             :name, :description, :currency, :v_type, :vat_tax_rate, :owner,
             presence: true
 
@@ -100,26 +99,18 @@ class Venue < ActiveRecord::Base
   end
 
   def each_amenity_inclusion
-    invalid_amenities = amenities - AMENITY_TYPES.map(&:to_s)
-    invalid_amenities.each do |amenity|
-      errors.add(:amenity_list, amenity + ' is not a valid amenity')
-    end
+    each_inclusion(amenities, :amenity_list, AMENITY_TYPES, ' is not a valid amenity')
   end
 
   def each_profession_inclusion
-    each_profession_inclusion_for(primary_professions)
-    each_profession_inclusion_for(secondary_professions)
+    each_inclusion(professions, :profession_list, PROFESSIONS, ' is not a valid profession')
   end
 
-  def each_profession_inclusion_for(profession_list)
-    invalid_professions = profession_list - PROFESSIONS.map(&:to_s)
-    invalid_professions.each do |profession|
-      errors.add(:profession_list, profession + ' is not a valid amenity')
+  def each_inclusion(attribute, error_list, enum_list, error_message)
+    invalid_items = attribute - enum_list.map(&:to_s)
+    invalid_items.each do |item|
+      errors.add(error_list, item + error_message)
     end
-  end
-
-  def not_repeated_professions_in_secondary
-    self.secondary_professions = secondary_professions - primary_professions
   end
 
 end

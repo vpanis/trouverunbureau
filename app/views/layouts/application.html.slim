@@ -1,12 +1,15 @@
 doctype html
 html
   head
+    meta content="width=device-width, initial-scale=1.0" name="viewport" /
     title DeskSpotting
     = favicon_link_tag 'favicon.ico'
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
+    = javascript_include_tag "https://maps.googleapis.com/maps/api/js"
     = csrf_meta_tags
     style
 
-  body
+  body ng-app="deskSpotting" data-controller="#{controller.controller_name}" data-action="#{controller.action_name}"
     = yield
+    = render '/layouts/footer'

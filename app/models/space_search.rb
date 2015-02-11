@@ -72,8 +72,7 @@ class SpaceSearch
     spaces = spaces.where { venue.v_type.eq_any my { venue_types } } unless venue_types.blank?
     spaces = spaces.where('ARRAY[:amenities] <@ venues.amenities',
                           amenities: venue_amenities) unless venue_amenities.blank?
-    spaces = spaces.where('ARRAY[:venue_professions] && venues.primary_professions
-                          OR ARRAY[:venue_professions] && venues.secondary_professions',
+    spaces = spaces.where('ARRAY[:venue_professions] && venues.professions',
                           venue_professions: venue_professions) unless venue_professions.blank?
     return spaces if weekday.blank?
     # day_hours is the name of the relation in venue, venue_hours the name of the table

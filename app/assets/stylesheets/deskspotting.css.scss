@@ -10,13 +10,13 @@ $dark-red: #d2505a;
 $black: #000000;
 $light-black: #222222;
 $dark-gray: #808184;
+$gray-text: #9f9f9f;
 $gray: #cccccc;
 $light-gray: #efefef;
-$dark-white: #f8f8f8;
+$dark-white: #f6f6f6;
 
 $fb-blue: #3b5998;
 
-@import url(https://fonts.googleapis.com/css?family=Varela+Round);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,700);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700);
 
@@ -25,6 +25,11 @@ $fb-blue: #3b5998;
   -moz-border-radius: $radius;
   -ms-border-radius: $radius;
   border-radius: $radius;
+}
+
+@mixin transition($property, $duration : 0.2s){
+  -webkit-transition: $property $duration;
+  transition: $property $duration;
 }
 
 @mixin rounded-left($radius){
@@ -97,6 +102,11 @@ body{
   color: $dark-gray;
 }
 
+a, a:hover{
+  text-decoration: none;
+}
+
+
 /* ---- login section ---- */
 .small-italic{
   @include dark-gray-regular-text;
@@ -122,11 +132,6 @@ body{
   h1, h2{
     text-align: center;
   }
-  h1{
-    font-size: 23px;
-    letter-spacing: 0.24rem;
-    font-family: "Varela Round", sans-serif;
-  }
   h1.icon{
     @include at2x('isologotipo-login', 205px, 35px);
     background-repeat: no-repeat;
@@ -135,11 +140,6 @@ body{
     width: 100%;
     height: 35px;
   }
-
-  a, a:hover{
-    text-decoration: none;
-  }
-
   .section-header h2{
     @include section-text;
     margin-top: 2px;
@@ -240,7 +240,7 @@ body{
 .form-control{
   height: 40px;
   border: 1px solid $gray;
-  color: $gray;
+  color: $gray-text;
 }
 
 .checkbox-label{
@@ -293,7 +293,7 @@ input[type="checkbox"]:checked:after {
   position: absolute;
   bottom: 0.1em;
   left: 0.3em;
-  color: $gray;
+  color: $gray-text;
   font-size: 0.5em;
 }
 
@@ -396,7 +396,7 @@ input[type="checkbox"]:checked:after {
         -webkit-appearance: none;
         font-size: 14px;
         letter-spacing: 0.08rem;
-        font-weight: 200;
+        font-weight: 300;
         padding-bottom: 2px;
         color: $dark-gray;
       }
@@ -405,7 +405,7 @@ input[type="checkbox"]:checked:after {
         padding-left: 48px;
         font-size: 14px;
         letter-spacing: 0.08rem;
-        font-weight: 200;
+        font-weight: 300;
         padding-bottom: 2px;
       }
       *::-webkit-input-placeholder{
@@ -428,6 +428,7 @@ input[type="checkbox"]:checked:after {
         font-size: 16px;
         letter-spacing: 0.15rem;
         color: black;
+        @include transition(background-color);
       }
       #landing-form-submit:hover{
         background-color: $light-yellow;
@@ -459,13 +460,14 @@ input[type="checkbox"]:checked:after {
   }
   .nav-btn:hover{
     color: $yellow;
+    @include transition(color);
   }
   a.ds-btn{
     @include border-radius(2em);
     border: 2px solid $yellow;
     color: $yellow;
     display: inline-block;
-    font-family: "Varela Round", sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-weight: 400;
     letter-spacing: 0.15rem;
     text-align: center;
@@ -473,6 +475,7 @@ input[type="checkbox"]:checked:after {
     cursor: pointer;
     padding: 10px 28px 0px;
     font-size: 13px;
+    @include transition(background-color);
   }
   a.ds-btn:hover{
     color: $black;
@@ -499,7 +502,7 @@ input[type="checkbox"]:checked:after {
       text-transform: uppercase;
       font-size: 12px;
       letter-spacing: 0.25rem;
-      font-weight: 600;
+      font-weight: 700;
     }
     .small-separator{
       border-top: 2px solid $yellow;
@@ -632,6 +635,7 @@ input[type="checkbox"]:checked:after {
           opacity: 0;
           position: relative;
           width: 100%;
+          @include transition(opacity);
           .space-image-info{
             position: absolute;
             width: 100%;
@@ -723,7 +727,7 @@ input[type="checkbox"]:checked:after {
       a.add-space-btn{
         @include border-radius(2em);
         border: 2px solid white;
-        font-family: "Varela Round", sans-serif;
+        font-family: "Open Sans", sans-serif;
         font-weight: 400;
         letter-spacing: 0.15rem;
         text-align: center;
@@ -732,6 +736,7 @@ input[type="checkbox"]:checked:after {
         padding: 10px 25%;
         font-size: 13px;
         color: black;
+        @include transition(background-color);
       }
       a.add-space-btn:hover{
         background-color: white;
@@ -780,157 +785,1002 @@ input[type="checkbox"]:checked:after {
           padding-bottom: 50px;
         }
       }
-      .left-carousel-arrow, .right-carousel-arrow{
+
+    }
+  }
+}
+
+/* ======= FOOTER ======== */
+#footer{
+  a{
+    color: white;
+    text-decoration: none;
+  }
+  .icon{
+    @include at2x('isologo-top-bar', 205px, 35px);
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 205px;
+    height: 35px;
+    margin-left: 14px;
+    margin-top: 12px;
+  }
+  .info{
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  background: $light-black;
+  .row{
+    width: 99%;
+    margin: 0px auto;
+  }
+  .icon{
+    width: 100%;
+    height: 200px;
+    background-position-y: 70%;
+  }
+  .company{
+    padding-left: 20%;
+    a{
+      display: block;
+      font-weight: 300;
+      letter-spacing: 0.06rem;
+      line-height: 25px;
+    }
+    a:hover{
+      color: $yellow;
+    }
+  }
+  .company, .find-us{
+    h4{
+      color: $yellow;
+      text-transform: uppercase;
+      margin-top: 42px;
+      font-size: 11px;
+      letter-spacing: 0.35rem;
+      font-weight: 700;
+    }
+    .separator{
+      width: 50px;
+      margin: 11px 0px;
+    }
+  }
+  .find-us{
+    padding-left: 20%;
+    .social-icons{
+      height: 100px;
+      padding: 28px 0px;
+      min-width: 216px;
+      .social-icon{
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        margin-right: 14px;
+        @include at2x('social-icons-sprite', 170px, 80px);
+      }
+      .twitter{
+        background-position: -1px 0px;
+      }
+      .twitter:hover{
+        background-position: -1px 40px;
+      }
+      .facebook{
+        background-position: -44px 0px;
+      }
+      .facebook:hover{
+        background-position: -44px 40px;
+      }
+      .linkedin{
+        background-position: -87px 0px;
+      }
+      .linkedin:hover{
+        background-position: -87px 40px;
+      }
+      .instagram{
+        background-position: -130px 0px;
+      }
+      .instagram:hover{
+        background-position: -130px 40px;
+      }
+    }
+    .language{
+      margin-top: 5px;
+      border-bottom: solid 1px white;
+      p{
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.1rem;
+        display: inline-block;
+        width: 90%;
+        text-align: left;
+      }
+      p.arrow{
+        text-align: right;
+        width: 14px;
+        color: white;
+      }
+    }
+  }
+  .rights{
+    text-align: center;
+    color: white;
+    font-weight: 300;
+    padding: 24px;
+    font-size: 11px;
+    letter-spacing: 0.08rem;
+    a{
+      color: $dark-gray;
+    }
+  }
+}
+
+/* =========== CAROUSELS =========== */
+.left-carousel-arrow, .right-carousel-arrow{
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position-y: center;
+}
+.left-carousel-arrow{
+  @include at2x('arrow-quotes-left', 20px, 50px);
+  background-position-x: 25%;
+}
+.right-carousel-arrow{
+  @include at2x('arrow-quotes-right', 20px, 50px);
+  background-position-x: 75%;
+}
+.carousel-control.left, .carousel-control.right{
+  background-image: none;
+  opacity: 1;
+}
+.carousel-indicators{
+  li{
+    background-color: $light-gray;
+    border: none;
+    height: 12px;
+    width: 12px;
+    margin: 1px 4px;
+  }
+  .active{
+    background-color: $yellow;
+    margin: 1px 4px;
+  }
+}
+/* ========= END CAROUSELS ========= */
+
+
+
+/*  ======== APPLICATION ======== */
+
+
+.after-menu{
+  padding-top: 50px;
+}
+.menubar{
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 5px 1px $gray-text;
+  -moz-box-shadow: 0px 0px 5px 1px $gray-text;
+  box-shadow: 0px 0px 5px 1px $gray-text;
+  .navbar-collapse{
+    border-color: $gray-text;
+  }
+  .navbar-brand{
+    padding: 13px 16px 6px;
+    height: 57px;
+    img{
+      display: inline-block;
+    }
+  }
+  .search{
+    height: 40px;
+    margin-top: 10px;
+    width: 305px;
+    .styled-search{
+      background-color: $dark-white;
+      @include border-radius(2em);
+      @include at2x('loupe', 24px, 24px);
+      background-size: 24px;
+      background-repeat: no-repeat;
+      background-position-x: 18px;
+      background-position-y: center;
+      height: 40px;
+      border: 0px;
+    }
+    input[type='text'].form-control{
+      width: 100%;
+      background-color: transparent;
+      padding-left: 50px;
+      font-size: 14px;
+      letter-spacing: 0.08rem;
+      font-weight: 200;
+      padding-bottom: 4px;
+      height: 39px;
+      border: 0px;
+      @include border-radius(2em);
+      -webkit-box-shadow: none;
+    }
+    *::-webkit-input-placeholder{
+      color: $dark-gray;
+    }
+    *:-moz-placeholder{
+      color: $dark-gray;
+    }
+    *::-moz-placeholder{
+      color: $dark-gray;
+    }
+    *:-ms-input-placeholder{
+      color: $dark-gray;
+    }
+  }
+  .user{
+    .name{
+      display: inline-block;
+      padding-left: 8px;
+      letter-spacing: 0.06rem;
+      font-weight: 300;
+      color: $dark-gray;
+      line-height: 42px;
+      vertical-align: bottom;
+      width: 115px;
+      p{
+        margin: 0;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    }
+    .avatar{
+      display: inline-block;
+      width: 42px;
+      height: 42px;
+      padding: 0px;
+      margin-top: 9px;
+      img{
+        @include border-radius(100%);
         width: 100%;
         height: 100%;
+      }
+    }
+  }
+  a.list-space{
+    @include border-radius(2em);
+    border: 2px solid $yellow;
+    display: inline-block;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.08rem;
+    color: black !important;
+    text-align: center;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 10px 28px 0px;
+    font-size: 14px;
+    @include transition(background-color);
+    margin-top: 9px;
+    margin-right: 10px;
+    p{
+      margin-bottom: 8px;
+    }
+  }
+  a.list-space:hover{
+    color: $black;
+    background-color: $yellow;
+  }
+  .messages{
+    @include at2x('nav-bar-inbox', 28px, 23px);
+    background-size: 28px 23px;
+    background-repeat: no-repeat;
+    background-position: 0px 4px;
+    width: 35px;
+    height: 27px;
+    position: relative;
+    p{
+      position: absolute;
+      bottom: 13px;
+      left: 16px;
+      display: inline-block;
+      background-color: $red;
+      @include border-radius(100%);
+      color: white;
+      margin: 0;
+      line-height: 10px;
+      font-size: 10px;
+      text-align: center;
+      padding: 3px;
+      min-width: 16px;
+    }
+  }
+}
+#venue-main-carousel{
+  .item{
+    height: 432px;
+    width: 100%;
+    .full-image{
+      height: 432px;
+      width: 100%;
+      background: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+  }
+}
+.venue-bar{
+  width: 100%;
+  background-color: white;
+  margin: 0;
+  .venue-avatar{
+    margin: 0px 13px;
+    display: inline-block;
+    vertical-align: top;
+    width: 90px;
+    img{
+      @include border-radius(100%);
+    }
+  }
+  .basic-info{
+    width: -moz-calc(100% - 122px);
+    width: -webkit-calc(100% - 122px);
+    width: calc(100% - 122px);
+    display: inline-block;
+    padding-left: 7px;
+    padding-bottom: 24px;
+    margin-left: 5px;
+    .stars{
+      margin-top: 6px;
+      display: inline-block;
+      .star{
+        @include at2x('stars-sprite', 28px, 14px);
+        width: 14px;
+        height: 14px;
+        display: inline-block;
         background-repeat: no-repeat;
-        background-position-y: center;
+        margin: 0px 2px;
+        vertical-align: middle;
+        background-position: -14px 0px;
       }
-      .left-carousel-arrow{
-        @include at2x('arrow-quotes-left', 20px, 50px);
-        background-position-x: left;
+      .star.active{
+        background-position: 0px 0px;
       }
-      .right-carousel-arrow{
-        @include at2x('arrow-quotes-right', 20px, 50px);
-        background-position-x: right;
+    }
+    .reviews{
+      display: inline-block;
+      font-weight: 300;
+      color: $gray-text;
+      font-size: 13px;
+      letter-spacing: 0.08rem;
+      margin-left: 5px;
+      vertical-align: bottom;
+    }
+    .venue-name{
+      h1{
+        font-size: 27px;
+        margin: 5px 0px;
+        letter-spacing: 0.19rem;
+        font-weight: 400;
+        color: black;
       }
-      .carousel-control.left, .carousel-control.right{
-        background-image: none;
-        opacity: 1;
+    }
+    .location{
+      height: 20px;
+      @include at2x('i-location', 14px, 20px);
+      background-repeat: no-repeat;
+      padding: 0px 20px;
+      p{
+        margin-top: 7px;
+        font-size: 13px;
+        letter-spacing: 0.06rem;
+        font-weight: 300;
+        color: $gray-text;
+        line-height: 20px;
       }
-      .carousel-indicators{
-        li{
-          background-color: $light-gray;
-          height: 12px;
-          width: 12px;
-          margin: 1px 4px;
+    }
+  }
+  .actions-on-venue{
+    text-align: right;
+    height: 18px;
+    margin-right: 12px;
+    padding-top: 7px;
+    a{
+      font-weight: 300;
+      color: $gray-text;
+      margin-right: 4px;
+      margin-left: 11px;
+      font-size: 12px;
+      letter-spacing: 0.06rem;
+      cursor: pointer;
+    }
+    #share-venue{
+      @include at2x('venue_profile_fbshare', 16px, 16px);
+      background-size: 16px 16px;
+      background-repeat: no-repeat;
+      padding-left: 22px;
+    }
+  }
+  .tab-selector{
+    height: 44px;
+    padding: 12px 22px;
+  }
+  .tab-selector a{
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: 0.06rem;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    padding: 10px;
+  }
+  .tab-selector.active a{
+    font-weight: 700;
+    letter-spacing: 0.04rem;
+  }
+  #venue-info-selector{
+    text-align: right;
+    border-right: solid 2px $yellow;
+  }
+  #venue-workspaces-selector{
+    text-align: left;
+  }
+  .tab-selector-container{
+    width: 90%;
+    margin: 25px auto;
+  }
+  .visible-xs-block{
+    text-align: center;
+    .basic-info{
+      width: 90%;
+      padding-bottom: 15px;
+    }
+    .location{
+      background: none;
+      height: auto;
+      padding: 0;
+      display: inline-flex;
+      .location-icon{
+        height: 20px;
+        @include at2x('i-location', 14px, 20px);
+        background-repeat: no-repeat;
+        width: 20px;
+        display: inline-block;
+      }
+      p{
+        display: inline-block;
+        margin: 0px;
+        font-size: 13px;
+        letter-spacing: 0.06rem;
+        font-weight: 300;
+        color: $gray-text;
+        line-height: 20px;
+      }
+    }
+  }
+}
+#venue-workspaces-tab, #venue-info-tab{
+  background-color: $dark-white;
+  width: 100%;
+  padding-top: 10px;
+  .cards-columns, .info-columns{
+    margin: 10px auto 0px;
+  }
+}
+
+.space-card, .info-card{
+  width: 483px;
+  margin-bottom: 20px;
+  background-color: white;
+  .card-top-bar{
+    height: 88px;
+    padding: 1px 19px;
+    h3{
+      font-size: 28px;
+      letter-spacing: 0.15rem;
+      padding: 3px 4px;
+    }
+    .separator{
+      margin: 16px 4px;
+      width: 30px;
+    }
+  }
+  .card-top-bar.space{
+    position: relative;
+    .favourite{
+      cursor: pointer;
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      @include at2x('venue_wishlist_grey_inactive', 48px, 48px);
+      top: 20px;
+      right: 55px;
+    }
+    .favourite.active{
+      @include at2x('venue_wishlist_grey_active', 48px, 48px);
+    }
+    .space-options{
+      cursor: pointer;
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      top: 20px;
+      right: 5px;
+      color: $gray-text;
+      line-height: 32px;
+      font-size: 24px;
+      letter-spacing: 0.15rem;
+      text-align: center;
+      font-weight: 700;
+    }
+    .space-popover{
+      position: absolute;
+      width: 116px;
+      height: 42px;
+      top: 2px;
+      right: 30px;
+      background-color: white;
+      border: solid 1px white;
+      margin: 20px;
+      padding-top: 10px;
+      -webkit-box-shadow: 0px 0px 5px 1px $gray-text;
+      -moz-box-shadow: 0px 0px 5px 1px $gray-text;
+      box-shadow: 0px 0px 5px 1px $gray-text;
+      .arrow{
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+        top: 50%;
+        right: -12px;
+        margin-top: -6px;
+        border-right-width: 0;
+        border-left-color: white;
+        border-width: 6px;
+      }
+      .arrow::after{
+        right: 1px;
+        bottom: -10px;
+        content: "";
+        border-right-width: 0;
+        border-left-color: white;
+        border-width: 5px;
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+      }
+      a{
+        font-weight: 300;
+        color: $gray-text;
+        margin-right: 4px;
+        margin-left: 11px;
+        font-size: 14px;
+        letter-spacing: 0.06rem;
+        cursor: pointer;
+      }
+    }
+  }
+  .carousel{
+    .item{
+      height: 260px;
+      .full-image{
+        height: 432px;
+        width: 100%;
+        background: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+    }
+  }
+  .space-info{
+    .description{
+      padding: 19px 22px 9px;
+      color: $gray-text;
+      letter-spacing: 0.065rem;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 24px;
+    }
+    .prices{
+      margin: 0 auto;
+      text-align: center;
+    }
+    .price{
+      text-align: center;
+      min-width: 120px;
+      display: inline-block;
+      padding: 0 5px;
+      p{
+        font-weight: 700;
+        font-size: 32px;
+        letter-spacing: 0.3rem;
+        margin: 0 5px;
+        span.currency{
+          text-transform: uppercase;
+          font-style: italic;
+          font-weight: 100;
+          font-size: 10px;
+          letter-spacing: 0.06rem;
         }
-        .active{
-          background-color: $yellow;
+      }
+      .time{
+        font-weight: 300;
+        font-size: 12px;
+        letter-spacing: 0.15rem;
+      }
+    }
+    .opening-hours{
+      margin-top: 5px;
+      padding-bottom: 14px;
+      .opening-hour{
+        display: inline-block;
+        width: 116px;
+        text-align: center;
+        margin: 9px auto;
+        p{
+          margin-bottom: 5px;
+        }
+        .hours{
+          font-size: 12px;
+          color: $gray-text;
+        }
+        .day-of-week{
+          text-transform: uppercase;
+          font-size: 12px;
+          font-weight: 700;
+        }
+      }
+      .vertical-separator{
+        width: 2px;
+        height: 18px;
+        margin-bottom: 8px;
+        border-right: solid 1px $gray-text;
+        display: inline-block;
+      }
+      .vertical-separator.large-hidden{
+        border-right: solid 1px white;
+      }
+    }
+    .booking-inquiry{
+      text-align: center;
+      margin: 36px auto 42px;
+      width: 90%;
+      padding: 10px 10%;
+      @include border-radius(2em);
+      border: 2px solid $yellow;
+      background-color: $yellow;
+      cursor: pointer;
+      @include transition(background-color);
+      a{
+        font-family: "Open Sans", sans-serif;
+        font-weight: 700;
+        letter-spacing: 0.15rem;
+        text-align: center;
+        font-size: 13px;
+        color: black;
+
+      }
+    }
+    .booking-inquiry:hover{
+      background-color: $light-yellow;
+    }
+    .professions.single-column{
+      -webkit-column-count: 1; /* Chrome, Safari, Opera */
+      -moz-column-count: 1; /* Firefox */
+      column-count: 1;
+    }
+    .professions.two-columns{
+      -webkit-column-count: 2; /* Chrome, Safari, Opera */
+      -moz-column-count: 2; /* Firefox */
+      column-count: 2;
+    }
+    .professions{
+      padding: 10px 15px 5px 25px;
+      .profession{
+        margin-bottom: 17px;
+        margin-left: 4px;
+        text-transform: uppercase;
+        font-weight: 300;
+        font-size: 12px;
+        letter-spacing: 0.06rem;
+        color: $gray-text;
+        p{
+          margin-left: 37px;
+        }
+        .icon{
+          width: 14px;
+          height: 14px;
+          margin-top: 1px;
+          float: left;
+          @include at2x('stars-sprite', 28px, 14px);
+          background-size: 28px 14px;
+          background-repeat: no-repeat;
+          vertical-align: middle;
+          background-position: 0px 0px;
+        }
+      }
+    }
+    .why-deskspotting-list{
+      display: inline-block;
+      width: 50%;
+      padding-top: 7px;
+      padding-bottom: 8px;
+      .why-deskspotting {
+        color: $gray-text;
+        @include at2x('venue_profile_why_book', 22px, 22px);
+        background-size: 22px 22px;
+        background-repeat: no-repeat;
+        padding: 2px 0px 2px 31px;
+        margin-bottom: 9px;
+        margin-top: 9px;
+        font-weight: 300;
+        font-size: 13px;
+        margin-left: 23px;
+        letter-spacing: 0.06rem;
+        p{
+          margin: 0;
+          line-height: 20px;
         }
       }
     }
   }
-  #footer{
-    .info{
-      width: 90%;
-      margin-right: auto;
-      margin-left: auto;
-    }
-    background: $light-black;
-    .row{
-      width: 99%;
-      margin: 0px auto;
-    }
-    .icon{
-      width: 100%;
-      height: 200px;
-      background-position-y: 70%;
-    }
-    .company{
-      padding-left: 20%;
-      a{
-        display: block;
-        font-weight: 300;
-        letter-spacing: 0.06rem;
-        line-height: 25px;
-      }
-      a:hover{
-        color: $yellow;
-      }
-    }
-    .company, .find-us{
-      h4{
-        color: $yellow;
+  .amenities-list{
+    padding: 4px 10px;
+    margin-bottom: 22px;
+    .amenity{
+      background-size: 40px 40px;
+      background-repeat: no-repeat;
+      padding-left: 59px;
+      height: 40px;
+      width: 46%;
+      display: inline-block;
+      margin: 0px 2% 26px;
+      p{
         text-transform: uppercase;
-        margin-top: 42px;
-        font-size: 11px;
-        letter-spacing: 0.35rem;
-        font-weight: 700;
+        line-height: 40px;
+        letter-spacing: 0.05rem;
+        font-size: 12px;
+        color: $gray-text;
+      }
+    }
+    .amenity.whiteboards{
+      @include at2x('venue_profile_a_whiteboards', 40px, 40px);
+    }
+    .amenity.security{
+      @include at2x('venue_profile_a_security', 40px, 40px);
+    }
+    .amenity.printer{
+      @include at2x('venue_profile_a_printer_scanner', 40px, 40px);
+    }
+    .amenity.photocopier{
+      @include at2x('venue_profile_a_photocopier', 40px, 40px);
+    }
+    .amenity.elevators{
+      @include at2x('venue_profile_a_elevators', 40px, 40px);
+    }
+    .amenity.team{
+      @include at2x('venue_profile_a_team_bookings', 40px, 40px);
+    }
+    .amenity.shower{
+      @include at2x('venue_profile_a_shower', 40px, 40px);
+    }
+    .amenity.wheelchair{
+      @include at2x('venue_profile_a_wheelchair_access', 40px, 40px);
+    }
+    .amenity.pets{
+      @include at2x('venue_profile_a_pets_allowed', 40px, 40px);
+    }
+    .amenity.gym{
+      @include at2x('venue_profile_a_gym', 40px, 40px);
+    }
+    .amenity.phone{
+      @include at2x('venue_profile_a_phone_booth', 40px, 40px);
+    }
+    .amenity.kitchen{
+      @include at2x('venue_profile_a_kitchen', 40px, 40px);
+    }
+    .amenity.wifi{
+      @include at2x('venue_profile_a_wifi', 40px, 40px);
+    }
+    .amenity.chill{
+      @include at2x('venue_profile_a_chill_area', 40px, 40px);
+    }
+    .amenity.conference{
+      @include at2x('venue_profile_a_conference_rooms', 40px, 40px);
+    }
+    .amenity.outdoor{
+      @include at2x('venue_profile_a_outdoor-space', 40px, 40px);
+    }
+    .amenity.individual{
+      @include at2x('venue_profile_a_individual_bookings', 40px, 40px);
+    }
+    .amenity.fax{
+      @include at2x('venue_profile_a_fax', 40px, 40px);
+    }
+    .amenity.air{
+      @include at2x('venue_profile_a_air_conditioning', 40px, 40px);
+    }
+    .amenity.mail{
+      @include at2x('venue_profile_a_mail_service', 40px, 40px);
+    }
+    .amenity.cafe{
+      @include at2x('venue_profile_a_cafe_restaurant', 40px, 40px);
+    }
+  }
+}
+
+.space-card.selected, .info-card.selected{
+  border-bottom: solid 4px $yellow;
+  .card-top-bar{
+    background-color: $yellow;
+    h4{
+      color: white;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.09rem;
+      padding: 12px 3px 0px;
+      margin-bottom: 3px;
+    }
+    h3{
+      padding: 0px;
+      margin-top: 0px;
+    }
+  }
+  .card-top-bar.space{
+    .favourite{
+      cursor: pointer;
+      @include at2x('venue_wishlist_white_inactive', 48px, 48px);
+    }
+    .favourite.active{
+      @include at2x('venue_wishlist_white_active', 48px, 48px);
+    }
+    .space-options{
+      color: white;
+    }
+  }
+}
+
+.venue-map{
+  width: 100%;
+  height: 205px;
+}
+
+.card-top-bar.location{
+  position: relative;
+}
+.address{
+  position: absolute;
+  top: 27px;
+  right: 23px;
+  .street, .country{
+    text-align: right;
+    color: $gray-text;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.02rem;
+    line-height: 20px;
+  }
+}
+
+.venue-reviews{
+  background-color: white;
+  padding: 35px 0px;
+  margin-top: 4px;
+  h2{
+    padding-top: 5px;
+    text-align: center;
+    font-size: 28px;
+    letter-spacing: 0.15rem;
+    color: black;
+  }
+  .separator{
+    width: 30px;
+    margin: 18px auto 45px;
+  }
+  .reviews-list{
+    margin: 0 auto;
+    width: 85%;
+  }
+  .no-reviews{
+    text-align: center;
+    color: $gray-text;
+    font-weight: 300;
+    font-size: 13px;
+    letter-spacing: 0.065rem;
+    line-height: 24px;
+    padding-bottom: 48px;
+  }
+  .review{
+    text-align: center;
+    color: $gray-text;
+    .user{
+      font-weight: 300;
+      font-size: 14px;
+      letter-spacing: 0.01rem;
+      .avatar{
+        width: 80px;
+        height: 80px;
+        margin: 7px auto;
+        padding: 2px;
+        img{
+          @include border-radius(100%);
+          width: 100%;
+          height: 100%;
+        }
+      }
+      p{
+        margin: 0;
       }
       .separator{
-        width: 50px;
-        margin: 11px 0px;
+        border-top: 1px solid $yellow;
+        border-bottom: 0px;
+        margin: 8px auto 5px;
       }
-    }
-    .find-us{
-      padding-left: 20%;
-      .social-icons{
-        height: 100px;
-        padding: 28px 0px;
-        min-width: 216px;
-        .social-icon{
-          width: 40px;
-          height: 40px;
-          display: inline-block;
-          margin-right: 14px;
-          @include at2x('social-icons-sprite', 170px, 80px);
-        }
-        .twitter{
-          background-position: -1px 0px;
-        }
-        .twitter:hover{
-          background-position: -1px 40px;
-        }
-        .facebook{
-          background-position: -44px 0px;
-        }
-        .facebook:hover{
-          background-position: -44px 40px;
-        }
-        .linkedin{
-          background-position: -87px 0px;
-        }
-        .linkedin:hover{
-          background-position: -87px 40px;
-        }
-        .instagram{
-          background-position: -130px 0px;
-        }
-        .instagram:hover{
-          background-position: -130px 40px;
-        }
-      }
-      .language{
-        margin-top: 5px;
-        border-bottom: solid 1px white;
-        p{
-          text-transform: uppercase;
-          font-size: 14px;
-          font-weight: 700;
-          letter-spacing: 0.1rem;
-          display: inline-block;
-          width: 90%;
-          text-align: left;
-        }
-        p.arrow{
-          text-align: right;
-          width: 14px;
-          color: white;
-        }
-      }
-    }
-    .rights{
-      text-align: center;
-      color: white;
-      font-weight: 300;
-      padding: 24px;
-      font-size: 11px;
-      letter-spacing: 0.08rem;
-      a{
+      .date{
+        font-style: italic;
         color: $dark-gray;
+        padding-bottom: 20px;
+      }
+    }
+    .message{
+      color: $gray-text;
+      text-align: left;
+      margin: 0 auto;
+      width: 90%;
+      p{
+        padding-left: 12px;
+        min-height: 170px;
+        font-weight: 300;
+        font-size: 13px;
+        letter-spacing: 0.065rem;
+        line-height: 24px;
+        padding-bottom: 48px;
+
+      }
+      .separator{
+        margin: 0 auto 30px;
+        width: -moz-calc(100% - 12px);
+        width: -webkit-calc(100% - 12px);
+        width: calc(100% - 12px);
+        border: 0;
+        border-top: solid 1px $gray-text;
+
       }
     }
   }
 }
 
-/* small devices */
-@media screen and (min-width: 0px) and (max-width: 768px) {
-  .company, .find-us{
-    padding-left: 0px !important;
-    text-align: center;
-    .separator{
-      margin: 11px auto !important;
-    }
+/* pagination buttons */
+.pagination-container{
+  text-align: right;
+  width: 90%;
+  margin: 0 auto;
+  .pagination{
+    margin: 0;
+  }
+  .pagination-sm > li > a{
+    margin: 1px;
+    padding: 6px 10px;
+    font-size: 10px;
+    color: $gray-text;
+    border: none;
+    background-color: $dark-white;
+    @include border-radius(2px);
+  }
+  .pagination > .active > a{
+    background-color: $yellow;
+    color: $gray-text;
+    padding: 6px 11px;
+  }
+  .pagination > .disabled > a{
+    background-color: $dark-gray;
+    color: white;
   }
 }
+
+/*fix for ui-bootstrap, angular directives */
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+

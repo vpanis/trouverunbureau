@@ -29,6 +29,7 @@ describe Api::V1::WishlistController do
         let!(:favorite) { create(:users_favorite, user: a_user, space: space) }
         let!(:favorite_2) { create(:users_favorite, user: a_user, space: space_2) }
         let!(:favorite_3) { create(:users_favorite) }
+        let!(:space_photo) { create(:venue_photo, space: space, venue: space.venue) }
 
         it 'should retrieve user favorites ordered by name' do
           get :wishlist, id: a_user.id

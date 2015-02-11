@@ -1,0 +1,13 @@
+.card.info-card
+  .card-top-bar.location
+    h3 #{t('venues.show.location')}
+    .separator
+    .address
+      .street = @venue.street
+      .country = "#{@venue.town}, #{@venue.country}"
+  .venue-map#map-canvas
+  .venue-coordinates.hidden
+    .latitude = @venue.latitude
+    .longitude = @venue.longitude
+    .marker_icon = image_url('venue_profile_pin_map@2x.png')
+

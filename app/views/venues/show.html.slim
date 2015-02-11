@@ -1,0 +1,55 @@
+= render 'menu_bar'
+= render 'main_carousel'
+.venue-bar.row
+  .row.actions-on-venue
+      a#report-venue #{t('venues.show.report_venue')}
+  .col-xs-12.col-sm-7.col-md-7.col-lg-8
+    .hidden-xs
+      .venue-avatar
+        - if @venue.logo?
+          = image_tag(@venue.logo.url, width: '90px', height: '90px')
+        - else
+          = image_tag('venue-default.png', width: '90px', height: '90px')
+      .basic-info
+        .stars
+          - (1..5).each do |i|
+            .star class=('active' if @venue.rating > i)
+        .reviews
+          = "(#{@venue.quantity_reviews})"
+        .venue-name
+          h1 = @venue.name
+        .location
+          p = @venue.town + ', ' + @venue.country
+    .visible-xs-block
+      .row
+        .venue-avatar
+          - if @venue.logo?
+            = image_tag(@venue.logo.url, width: '90px', height: '90px')
+          - else
+            = image_tag('venue-default.png', width: '90px', height: '90px')
+      .row
+        .basic-info
+          .stars
+            - (1..5).each do |i|
+              .star class=('active' if @venue.rating > i)
+          .reviews
+            = "(#{@venue.quantity_reviews})"
+          .venue-name
+            h1 = @venue.name
+          .location
+            .location-icon
+            p = @venue.town + ', ' + @venue.country
+  .col-xs-12.col-sm-5.col-md-5.col-lg-4
+    .row.tab-selector-container
+      .col-xs-6.tab-selector.active#venue-info-selector
+        a #{t('venues.show.venue')}
+      .col-xs-6.tab-selector#venue-workspaces-selector
+        a #{t('venues.show.workspaces')}
+#venue-info-tab
+  = render 'info_tab'
+#venue-workspaces-tab
+  .cards-columns.js-masonry data-masonry-options='{ "itemSelector": ".space-card", "gutter": 20, "isFitWidth": true }'
+    - @venue.spaces.each do |space|
+      = render 'workspace_card', card_class: 'space-card', space: space, selected: @selected_space.present? ? space.id == @selected_space.id : false, is_favorite: @favorite_spaces_ids.include?(space.id)
+
+

@@ -3,7 +3,7 @@ class Space < ActiveRecord::Base
   belongs_to :venue
 
   has_many :bookings
-  has_one :photo, class_name: 'VenuePhoto'
+  has_many :photos, class_name: 'VenuePhoto'
 
   # Constants/Enums
   enum s_type: [:conference_room, :meeting_room, :office, :desk]

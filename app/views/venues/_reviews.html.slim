@@ -1,0 +1,18 @@
+.venue-reviews
+  h2 #{t('venues.show.reviews')}
+  .separator
+  .reviews-list ng-controller="ReviewsCtrl" data-avatar=(image_url('default-avatar.png')) data-venue-id=(venue.id)
+    .review.row ng-repeat=("review in reviews")
+      .user.col-xs-8.col-sm-2.col-md-2.col-lg-2.col-xs-offset-2.col-sm-offset-0
+        .avatar
+          img ng-src="{{review.user.avatar || defaultAvatar}}"
+        p() {{review.user.name}}
+        .separator
+        p.date() {{review.date}}
+      .col-xs-12.col-sm-10.col-md-10.col-lg-10
+        .message
+          p() {{review.message}}
+          .separator
+    .pagination-container
+      pagination.pagination-sm ng-if="totalReviews > 0" ng-change="getReviews()" total-items="totalReviews" ng-model="currentPage" max-size="3" rotate="false" boundary-links="true" previous-text="‹" next-text="›" first-text="«" last-text="»" items-per-page="itemsPerPage"
+    .no-reviews ng-if="totalReviews == 0"  #{t('venues.show.no_reviews')}

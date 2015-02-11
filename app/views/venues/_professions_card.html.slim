@@ -1,0 +1,16 @@
+.card.info-card
+  .card-top-bar
+    h3 #{t('venues.show.professions')}
+    .separator
+  .space-info
+    - if @venue.professions.empty?
+      .professions.single-column
+        .profession
+          .icon
+          p = t("venues.professions.all")
+    - else
+      .professions.two-columns
+        - @venue.professions.each do |profession|
+          .profession
+            .icon
+            p = t("venues.professions.#{profession}")

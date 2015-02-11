@@ -6,7 +6,7 @@ class VenueSerializer < ActiveModel::Serializer
   end
 
   def logo
-    return nil unless object.logo.url
+    return nil unless object.logo
     object.logo.url
   end
 
