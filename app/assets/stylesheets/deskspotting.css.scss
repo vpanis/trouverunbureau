@@ -1286,6 +1286,7 @@ input[type="checkbox"]:checked:after {
   .card-top-bar.space{
     position: relative;
     .favourite{
+      cursor: pointer;
       position: absolute;
       width: 48px;
       height: 48px;
@@ -1297,6 +1298,7 @@ input[type="checkbox"]:checked:after {
       @include at2x('venue_wishlist_grey_active', 48px, 48px);
     }
     .space-options{
+      cursor: pointer;
       position: absolute;
       width: 48px;
       height: 48px;
@@ -1629,6 +1631,7 @@ input[type="checkbox"]:checked:after {
   }
   .card-top-bar.space{
     .favourite{
+      cursor: pointer;
       @include at2x('venue_wishlist_white_inactive', 48px, 48px);
     }
     .favourite.active{

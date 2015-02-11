@@ -99,16 +99,17 @@ class Venue < ActiveRecord::Base
   end
 
   def each_amenity_inclusion
-    invalid_amenities = amenities - AMENITY_TYPES.map(&:to_s)
-    invalid_amenities.each do |amenity|
-      errors.add(:amenity_list, amenity + ' is not a valid amenity')
-    end
+    each_inclusion(amenities, :amenity_list, AMENITY_TYPES, ' is not a valid amenity')
   end
 
   def each_profession_inclusion
-    invalid_professions = professions - PROFESSIONS.map(&:to_s)
-    invalid_professions.each do |profession|
-      errors.add(:profession_list, profession + ' is not a valid amenity')
+    each_inclusion(professions, :profession_list, PROFESSIONS, ' is not a valid profession')
+  end
+
+  def each_inclusion(attribute, error_list, enum_list, error_message)
+    invalid_items = attribute - enum_list.map(&:to_s)
+    invalid_items.each do |item|
+      errors.add(error_list, item + error_message)
     end
   end
 

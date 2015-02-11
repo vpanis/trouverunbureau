@@ -8,9 +8,12 @@ on_load = ->
         set_info_tab()
       $('#venue-workspaces-selector').click ->
         set_workspace_tab()
+      opened = false
       $('.space-options').click ->
-        space_id = this.id.split('-')[2]
-        show_options_modal(space_id)
+        if !opened
+          space_id = this.id.split('-')[2]
+          show_options_modal(space_id)
+        opened = !opened
       $('a.report-space').click (event) ->
         event.preventDefault()
         $('.space-popover').hide()
