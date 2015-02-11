@@ -11,6 +11,6 @@ class SpaceSerializer < ActiveModel::Serializer
   end
 
   def photos
-    object.photos.map{ |p| p.photo.url }
+    object.photos.map { |p| p.photo.url }
   end
 end
