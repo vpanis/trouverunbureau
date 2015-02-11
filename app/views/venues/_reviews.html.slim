@@ -6,7 +6,7 @@
       .user.col-xs-8.col-sm-2.col-md-2.col-lg-2.col-xs-offset-2.col-sm-offset-0
         .avatar
           img ng-src="{{review.user.avatar || defaultAvatar}}"
-        p() {{review.user.name}}
+        p() {{review.owner.name}}
         .separator
         p.date() {{review.date}}
       .col-xs-12.col-sm-10.col-md-10.col-lg-10
