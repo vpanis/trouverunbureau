@@ -60,7 +60,7 @@ VenueHour.create(venue: venue2, weekday: 3, from: 700, to: 2100)
 VenueHour.create(venue: venue2, weekday: 4, from: 700, to: 2100)
 VenueHour.create(venue: venue2, weekday: 5, from: 1000, to: 1800)
 
-venue3 = Venue.create(owner: org2, town: "Madrid", street: "Malasaña", postal_code: "6511", phone: "66876064", email: "the_best_place2@example.com", website: "www.thebestplace.com/madrid", latitude: 30, longitude: 90, name: "The Best Place Madrid", description: Faker::Lorem.paragraph(20), currency: "euro", v_type: Venue.v_types[:studio], space: 800, space_unit: Venue.space_units[:square_mts], floors: 3, rooms: 10, desks: 30, vat_tax_rate: 0.2, amenities: ["wifi", "conference_rooms", "kitchen", "cafe_restaurant", "mail_service", "wheelchair_access"])
+venue3 = Venue.create(owner: org2, town: "Madrid", street: "Malasaña", postal_code: "6511", phone: "66876064", email: "the_best_place2@example.com", website: "www.thebestplace.com/madrid", latitude: 30, longitude: 90, name: "The Best Place Madrid", description: Faker::Lorem.paragraph(20), currency: "euro", v_type: Venue.v_types[:design_studio], space: 800, space_unit: Venue.space_units[:square_mts], floors: 3, rooms: 10, desks: 30, vat_tax_rate: 0.2, amenities: ["wifi", "conference_rooms", "kitchen", "cafe_restaurant", "mail_service", "wheelchair_access"])
 v3_sp1 = Space.create(venue: venue3, s_type: Space.s_types[:desk], name: "Desk", capacity: 1, quantity: 25, day_price: 25, month_price: 450, description: Faker::Lorem.paragraph(10))
 v3_sp2 = Space.create(venue: venue3, s_type: Space.s_types[:meeting_room], name: "Meeting Place", capacity: 10, quantity: 1, hour_price: 25, description: Faker::Lorem.paragraph(10))
 v3_sp3 = Space.create(venue: venue3, s_type: Space.s_types[:conference_room], name: "Conference Place", capacity: 100, quantity: 1, hour_price: 170, description: Faker::Lorem.paragraph(10))
@@ -70,7 +70,7 @@ VenueHour.create(venue: venue3, weekday: 1, from: 800, to: 2200)
 VenueHour.create(venue: venue3, weekday: 3, from: 800, to: 2200)
 VenueHour.create(venue: venue3, weekday: 4, from: 800, to: 2200)
 
-venue4 = Venue.create(owner: org3, town: "Berlin", street: "Bla strasse", postal_code: "5155", phone: "89040648", email: "desklirium@example.com", website: "www.desklirium.com", latitude: 0, longitude: 40, name: "Desklirium", description: Faker::Lorem.paragraph(20), currency: "euro", v_type: Venue.v_types[:studio], space: 200, space_unit: Venue.space_units[:square_mts], floors: 1, rooms: 3, desks: 20, vat_tax_rate: 0.1, amenities: ["wifi", "conference_rooms", "kitchen", "cafe_restaurant"])
+venue4 = Venue.create(owner: org3, town: "Berlin", street: "Bla strasse", postal_code: "5155", phone: "89040648", email: "desklirium@example.com", website: "www.desklirium.com", latitude: 0, longitude: 40, name: "Desklirium", description: Faker::Lorem.paragraph(20), currency: "euro", v_type: Venue.v_types[:design_studio], space: 200, space_unit: Venue.space_units[:square_mts], floors: 1, rooms: 3, desks: 20, vat_tax_rate: 0.1, amenities: ["wifi", "conference_rooms", "kitchen", "cafe_restaurant"])
 v4_sp1 = Space.create(venue: venue4, s_type: Space.s_types[:desk], name: "Normal Desk", capacity: 1, quantity: 10, hour_price: 4, day_price: 30, month_price: 600, description: Faker::Lorem.paragraph(10))
 v4_sp2 = Space.create(venue: venue4, s_type: Space.s_types[:desk], name: "Super Desk", capacity: 1, quantity: 8, hour_price: 5, day_price: 38, month_price: 700, description: Faker::Lorem.paragraph(10))
 v4_sp3 = Space.create(venue: venue4, s_type: Space.s_types[:meeting_room], name: "Meeting Place", capacity: 5, quantity: 4, hour_price: 40, description: Faker::Lorem.paragraph(10))
@@ -105,13 +105,83 @@ VenueHour.create(venue: venue6, weekday: 3, from: 1400, to: 2300)
 VenueHour.create(venue: venue6, weekday: 4, from: 800, to: 1200)
 VenueHour.create(venue: venue6, weekday: 4, from: 1400, to: 2300)
 
+venue7 = Venue.create(owner: user7, town: "Dublin", street: "Temple str", postal_code: "6166", phone: "516166646", email: "the_other_desk@example.com", website: "www.otherdesk.com", latitude: -30, longitude: 0, name: "The Other Desk", description: Faker::Lorem.paragraph(20), currency: "euro", v_type: Venue.v_types[:hotel], space: 100, space_unit: Venue.space_units[:square_mts], floors: 1, rooms: 2, desks: 4, vat_tax_rate: 0, amenities: ["wifi", "pets_allowed", "kitchen", "mail_service"])
+v7_sp1 = Space.create(venue: venue7, s_type: Space.s_types[:desk], name: "Home Desk", capacity: 1, quantity: 5, hour_price: 3.5, description: Faker::Lorem.paragraph(10))
+VenueHour.create(venue: venue7, weekday: 0, from: 800, to: 1200)
+VenueHour.create(venue: venue7, weekday: 0, from: 1400, to: 2300)
+VenueHour.create(venue: venue7, weekday: 1, from: 800, to: 1200)
+VenueHour.create(venue: venue7, weekday: 1, from: 1400, to: 2300)
+VenueHour.create(venue: venue7, weekday: 2, from: 800, to: 1200)
+VenueHour.create(venue: venue7, weekday: 2, from: 1400, to: 2300)
+VenueHour.create(venue: venue7, weekday: 3, from: 800, to: 1200)
+VenueHour.create(venue: venue7, weekday: 3, from: 1400, to: 2300)
+VenueHour.create(venue: venue7, weekday: 4, from: 800, to: 1200)
+VenueHour.create(venue: venue7, weekday: 4, from: 1400, to: 2300)
+
+venue8 = Venue.create(owner: user8, town: "London", street: "Ble street", postal_code: "8911", phone: "998723488", email: "my_venue@example.com", website: "www.myvenue.com", latitude: 60, longitude: 120, name: "My Place", description: Faker::Lorem.paragraph(20), currency: "euro", v_type: Venue.v_types[:loft], space: 500, space_unit: Venue.space_units[:square_foots], floors: 2, rooms: 6, desks: 10, vat_tax_rate: 0, amenities: ["wifi", "pets_allowed", "kitchen", "cafe_restaurant", "security"])
+v8_sp1 = Space.create(venue: venue8, s_type: Space.s_types[:desk], name: "Your Desk", capacity: 1, quantity: 6, hour_price: 4, description: Faker::Lorem.paragraph(10))
+v8_sp2 = Space.create(venue: venue8, s_type: Space.s_types[:meeting_room], name: "Meeting Place", capacity: 5, quantity: 1, hour_price: 15, description: Faker::Lorem.paragraph(10))
+VenueHour.create(venue: venue8, weekday: 0, from: 800, to: 1900)
+VenueHour.create(venue: venue8, weekday: 1, from: 800, to: 2000)
+VenueHour.create(venue: venue8, weekday: 2, from: 800, to: 2100)
+VenueHour.create(venue: venue8, weekday: 3, from: 800, to: 2000)
+VenueHour.create(venue: venue8, weekday: 4, from: 800, to: 1900)
+
+venue9 = Venue.create(owner: user7, town: "Bohn", street: "Ble street", postal_code: "8911", phone: "998723488", email: "my_venue_bohn@example.com", website: "www.myvenuebohn.com", latitude: 60, longitude: 120, name: "Bohn My Place", description: Faker::Lorem.paragraph(20), currency: "euro", v_type: Venue.v_types[:house], space: 500, space_unit: Venue.space_units[:square_foots], floors: 2, rooms: 6, desks: 10, vat_tax_rate: 0, amenities: ["wifi", "pets_allowed", "kitchen", "cafe_restaurant", "security"])
+v9_sp1 = Space.create(venue: venue9, s_type: Space.s_types[:desk], name: "Bohn Your Desk", capacity: 1, quantity: 6, hour_price: 4, description: Faker::Lorem.paragraph(10))
+v9_sp2 = Space.create(venue: venue9, s_type: Space.s_types[:meeting_room], name: "Bohn Meeting Place", capacity: 5, quantity: 1, hour_price: 15, description: Faker::Lorem.paragraph(10))
+VenueHour.create(venue: venue9, weekday: 0, from: 800, to: 1900)
+VenueHour.create(venue: venue9, weekday: 1, from: 800, to: 2000)
+VenueHour.create(venue: venue9, weekday: 2, from: 800, to: 2100)
+VenueHour.create(venue: venue9, weekday: 3, from: 800, to: 2000)
+VenueHour.create(venue: venue9, weekday: 4, from: 800, to: 1900)
+
+venue10 = Venue.create(owner: user9, town: "Oslo", street: "Ble street", postal_code: "8911", phone: "998723488", email: "my_venue_oslo@example.com", website: "www.myvenueoslo.com", latitude: 60, longitude: 120, name: "My Place Oslo", description: Faker::Lorem.paragraph(20), currency: "euro", v_type: Venue.v_types[:cafe], space: 500, space_unit: Venue.space_units[:square_foots], floors: 2, rooms: 6, desks: 10, vat_tax_rate: 0, amenities: ["wifi", "pets_allowed", "kitchen", "cafe_restaurant", "security"])
+v10_sp1 = Space.create(venue: venue10, s_type: Space.s_types[:desk], name: "Your Desk Oslo", capacity: 1, quantity: 6, hour_price: 4, description: Faker::Lorem.paragraph(10))
+v10_sp2 = Space.create(venue: venue10, s_type: Space.s_types[:meeting_room], name: "Oslo Meeting Place", capacity: 5, quantity: 1, hour_price: 15, description: Faker::Lorem.paragraph(10))
+VenueHour.create(venue: venue10, weekday: 0, from: 800, to: 1900)
+VenueHour.create(venue: venue10, weekday: 1, from: 800, to: 2000)
+VenueHour.create(venue: venue10, weekday: 2, from: 800, to: 2100)
+VenueHour.create(venue: venue10, weekday: 3, from: 800, to: 2000)
+VenueHour.create(venue: venue10, weekday: 4, from: 800, to: 1900)
+
+venue11 = Venue.create(owner: user7, town: "Estambul", street: "Ble street", postal_code: "8911", phone: "998723488", email: "my_venue_estambul@example.com", website: "www.myvenueestambul.com", latitude: 60, longitude: 120, name: "My Place Estambul", description: Faker::Lorem.paragraph(20), currency: "euro", v_type: Venue.v_types[:restaurant], space: 500, space_unit: Venue.space_units[:square_foots], floors: 2, rooms: 6, desks: 10, vat_tax_rate: 0, amenities: ["wifi", "pets_allowed", "kitchen", "cafe_restaurant", "security"])
+v11_sp1 = Space.create(venue: venue11, s_type: Space.s_types[:desk], name: "Your Desk Estambul", capacity: 1, quantity: 6, hour_price: 4, description: Faker::Lorem.paragraph(10))
+v11_sp2 = Space.create(venue: venue11, s_type: Space.s_types[:meeting_room], name: "Meeting Place Estambul", capacity: 5, quantity: 1, hour_price: 15, description: Faker::Lorem.paragraph(10))
+VenueHour.create(venue: venue11, weekday: 0, from: 800, to: 1900)
+VenueHour.create(venue: venue11, weekday: 1, from: 800, to: 2000)
+VenueHour.create(venue: venue11, weekday: 2, from: 800, to: 2100)
+VenueHour.create(venue: venue11, weekday: 3, from: 800, to: 2000)
+VenueHour.create(venue: venue11, weekday: 4, from: 800, to: 1900)
+
+venue12 = Venue.create(owner: user10, town: "Moscu", street: "Ble street", postal_code: "8911", phone: "998723488", email: "my_venue_moscu@example.com", website: "www.myvenuemoscu.com", latitude: 60, longitude: 120, name: "Moscu My Place", description: Faker::Lorem.paragraph(20), currency: "euro", v_type: Venue.v_types[:apartment], space: 500, space_unit: Venue.space_units[:square_foots], floors: 2, rooms: 6, desks: 10, vat_tax_rate: 0, amenities: ["wifi", "pets_allowed", "kitchen", "cafe_restaurant", "security"])
+v12_sp1 = Space.create(venue: venue12, s_type: Space.s_types[:desk], name: "Your Desk Moscu", capacity: 1, quantity: 6, hour_price: 4, description: Faker::Lorem.paragraph(10))
+v12_sp2 = Space.create(venue: venue12, s_type: Space.s_types[:meeting_room], name: "Meeting Place Moscu", capacity: 5, quantity: 1, hour_price: 15, description: Faker::Lorem.paragraph(10))
+VenueHour.create(venue: venue12, weekday: 0, from: 800, to: 1900)
+VenueHour.create(venue: venue12, weekday: 1, from: 800, to: 2000)
+VenueHour.create(venue: venue12, weekday: 2, from: 800, to: 2100)
+VenueHour.create(venue: venue12, weekday: 3, from: 800, to: 2000)
+VenueHour.create(venue: venue12, weekday: 4, from: 800, to: 1900)
+
+venue13 = Venue.create(owner: user10, town: "Kabul", street: "Ble street", postal_code: "8911", phone: "998723488", email: "my_venue_kabul@example.com", website: "www.myvenuekabul.com", latitude: 60, longitude: 120, name: "My Place Kabul", description: Faker::Lorem.paragraph(20), currency: "euro", v_type: Venue.v_types[:coworking_space], space: 500, space_unit: Venue.space_units[:square_foots], floors: 2, rooms: 6, desks: 10, vat_tax_rate: 0, amenities: ["wifi", "pets_allowed", "kitchen", "cafe_restaurant", "security"])
+v13_sp1 = Space.create(venue: venue13, s_type: Space.s_types[:desk], name: "Good Morning Kabul", capacity: 1, quantity: 6, hour_price: 4, description: Faker::Lorem.paragraph(10))
+v13_sp2 = Space.create(venue: venue13, s_type: Space.s_types[:meeting_room], name: "Meeting Place Kabul", capacity: 5, quantity: 1, hour_price: 15, description: Faker::Lorem.paragraph(10))
+VenueHour.create(venue: venue13, weekday: 0, from: 800, to: 1900)
+VenueHour.create(venue: venue13, weekday: 1, from: 800, to: 2000)
+VenueHour.create(venue: venue13, weekday: 2, from: 800, to: 2100)
+VenueHour.create(venue: venue13, weekday: 3, from: 800, to: 2000)
+VenueHour.create(venue: venue13, weekday: 4, from: 800, to: 1900)
+
 # user1 has access to venue1, venue2 and venue3
 # user2 has access to venue4
 # user3 has access to venue1
 # user4 has access to venue1
 # user5 has access to venue2 and venue3
 # user6 has access to venue4 and venue5
-# user7 has access to venue6
+# user7 has access to venue6, venue7, venue9 and venue11
+# user8 has access to venue8
+# user9 has access to venue10
+# user10 has access to venue12 and venue 13
 
 # User Favorite Spaces
 UsersFavorite.create(user: user1, space: v4_sp1)

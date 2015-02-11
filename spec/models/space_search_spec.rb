@@ -85,7 +85,6 @@ RSpec.describe SpaceSearch, type: :model do
                              rating: 4, quantity_reviews: 40)
     FactoryGirl.create(:venue_hour, venue: @v12, weekday: 1)
 
-
     @s1_v1 = FactoryGirl.create(:space, venue: @v1, s_type: Space.s_types[:desk],
                                 capacity: 1, quantity: 1)
     @s2_v1 = FactoryGirl.create(:space, venue: @v1, s_type: Space.s_types[:office],
@@ -224,7 +223,6 @@ RSpec.describe SpaceSearch, type: :model do
                                          Venue.v_types[:startup_office]])
       expect(ss.find_spaces).to contain_exactly(@s1_v1, @s2_v1, @s1_v2, @s2_v2, @s1_v4, @s2_v4)
     end
-
 
     it 'returns every space' do
       ss = SpaceSearch.new(venue_types: nil)
