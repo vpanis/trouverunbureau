@@ -11,9 +11,6 @@ class SpaceSerializer < ActiveModel::Serializer
   end
 
   def photos
-    space_photos = []
-    space_photos << object.photo.url if object.photo
-    # TODO: remember that a space can have more than one photos
-    space_photos
+    object.photos.map{ |p| p.photo.url }
   end
 end
