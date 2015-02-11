@@ -11,6 +11,8 @@ Deskspotting::Application.routes.draw do
   resources :venues, only: [:show]
 
   api_version(module: "api/v1", path: { value: 'api/v1' }) do
+    get :spaces, to: 'space#list'
+
     resources :users do
         member do
           get :reviews, to: 'reviews#client_reviews'
