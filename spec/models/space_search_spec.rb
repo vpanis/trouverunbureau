@@ -11,7 +11,7 @@ RSpec.describe SpaceSearch, type: :model do
                              secondary_professions: ['public_relations'],
                              rating: 4, quantity_reviews: 10)
     FactoryGirl.create(:venue_hour, venue: @v1, weekday: 0)
-    @v2 = FactoryGirl.create(:venue, v_type: Venue.v_types[:studio], latitude: 20,
+    @v2 = FactoryGirl.create(:venue, v_type: Venue.v_types[:design_studio], latitude: 20,
                              longitude: 20, amenities: ['cafe_restaurant'],
                              primary_professions: [],
                              secondary_professions: ['public_relations'],
@@ -43,6 +43,48 @@ RSpec.describe SpaceSearch, type: :model do
                              rating: 4, quantity_reviews: 40)
     FactoryGirl.create(:venue_hour, venue: @v6, weekday: 2)
 
+    @v7 = FactoryGirl.create(:venue, v_type: Venue.v_types[:loft], latitude: 60,
+                             longitude: 60, amenities: ['wifi'],
+                             primary_professions: ['public_relations'],
+                             secondary_professions: [],
+                             rating: 4, quantity_reviews: 30)
+    FactoryGirl.create(:venue_hour, venue: @v7, weekday: 2)
+
+    @v8 = FactoryGirl.create(:venue, v_type: Venue.v_types[:coworking_space], latitude: 60,
+                             longitude: 60, amenities: ['kitchen'],
+                             primary_professions: ['public_relations'],
+                             secondary_professions: [],
+                             rating: 4, quantity_reviews: 40)
+    FactoryGirl.create(:venue_hour, venue: @v8, weekday: 1)
+
+    @v9 = FactoryGirl.create(:venue, v_type: Venue.v_types[:apartment], latitude: 55,
+                             longitude: 60, amenities: ['wifi'],
+                             primary_professions: ['public_relations'],
+                             secondary_professions: [],
+                             rating: 4, quantity_reviews: 20)
+    FactoryGirl.create(:venue_hour, venue: @v9, weekday: 4)
+
+    @v10 = FactoryGirl.create(:venue, v_type: Venue.v_types[:house], latitude: 60,
+                             longitude: 60, amenities: ['kitchen'],
+                             primary_professions: ['public_relations'],
+                             secondary_professions: [],
+                             rating: 4, quantity_reviews: 40)
+    FactoryGirl.create(:venue_hour, venue: @v10, weekday: 5)
+
+    @v11 = FactoryGirl.create(:venue, v_type: Venue.v_types[:cafe], latitude: 60,
+                             longitude: 60, amenities: ['cafe_restaurant'],
+                             primary_professions: ['public_relations'],
+                             secondary_professions: [],
+                             rating: 4, quantity_reviews: 40)
+    FactoryGirl.create(:venue_hour, venue: @v11, weekday: 1)
+
+    @v12 = FactoryGirl.create(:venue, v_type: Venue.v_types[:restaurant], latitude: 60,
+                             longitude: 60, amenities: ['cafe_restaurant'],
+                             primary_professions: ['public_relations'],
+                             secondary_professions: [],
+                             rating: 4, quantity_reviews: 40)
+    FactoryGirl.create(:venue_hour, venue: @v12, weekday: 1)
+
     @s1_v1 = FactoryGirl.create(:space, venue: @v1, s_type: Space.s_types[:desk],
                                 capacity: 1, quantity: 1)
     @s2_v1 = FactoryGirl.create(:space, venue: @v1, s_type: Space.s_types[:office],
@@ -66,13 +108,26 @@ RSpec.describe SpaceSearch, type: :model do
                                 capacity: 1, quantity: 1)
     @s1_v6 = FactoryGirl.create(:space, venue: @v6, s_type: Space.s_types[:office],
                                 capacity: 1, quantity: 1)
+    @s1_v7 = FactoryGirl.create(:space, venue: @v7, s_type: Space.s_types[:desk],
+                                capacity: 1, quantity: 1)
+    @s1_v8 = FactoryGirl.create(:space, venue: @v8, s_type: Space.s_types[:desk],
+                                capacity: 1, quantity: 1)
+    @s1_v9 = FactoryGirl.create(:space, venue: @v9, s_type: Space.s_types[:desk],
+                                capacity: 1, quantity: 1)
+    @s1_v10 = FactoryGirl.create(:space, venue: @v10, s_type: Space.s_types[:desk],
+                                capacity: 1, quantity: 1)
+    @s1_v11 = FactoryGirl.create(:space, venue: @v11, s_type: Space.s_types[:desk],
+                                capacity: 1, quantity: 1)
+    @s1_v12 = FactoryGirl.create(:space, venue: @v12, s_type: Space.s_types[:desk],
+                                capacity: 1, quantity: 1)
   end
 
   context 'search setting only space_types' do
 
     it 'returns the spaces with :desk' do
       ss = SpaceSearch.new(space_types: [Space.s_types[:desk]])
-      expect(ss.find_spaces).to contain_exactly(@s1_v1, @s1_v2)
+      expect(ss.find_spaces).to contain_exactly(@s1_v1, @s1_v2, @s1_v7, @s1_v8,
+                                                @s1_v9, @s1_v10, @s1_v11, @s1_v12)
     end
 
     it 'returns the spaces with :office' do
@@ -92,14 +147,16 @@ RSpec.describe SpaceSearch, type: :model do
 
     it 'returns the spaces with :office or :desk' do
       ss = SpaceSearch.new(space_types: [Space.s_types[:office], Space.s_types[:desk]])
-      expect(ss.find_spaces).to contain_exactly(@s1_v1, @s1_v2, @s2_v1, @s1_v3, @s1_v5, @s1_v6)
+      expect(ss.find_spaces).to contain_exactly(@s1_v1, @s1_v2, @s2_v1, @s1_v3, @s1_v5, @s1_v6,
+                                                @s1_v7, @s1_v8, @s1_v9, @s1_v10, @s1_v11, @s1_v12)
     end
 
     it 'returns every space' do
       ss = SpaceSearch.new(space_types: nil)
       expect(ss.find_spaces).to contain_exactly(@s1_v1, @s2_v1, @s1_v2, @s2_v2,
                                                 @s1_v3, @s2_v3, @s1_v4, @s2_v4,
-                                                @s1_v5, @s1_v6)
+                                                @s1_v5, @s1_v6, @s1_v7, @s1_v8,
+                                                @s1_v9, @s1_v10, @s1_v11, @s1_v12)
     end
 
   end
@@ -111,8 +168,8 @@ RSpec.describe SpaceSearch, type: :model do
       expect(ss.find_spaces).to contain_exactly(@s1_v1, @s2_v1, @s1_v4, @s2_v4)
     end
 
-    it 'returns the spaces with :studio' do
-      ss = SpaceSearch.new(venue_types: [Venue.v_types[:studio]])
+    it 'returns the spaces with :design_studio' do
+      ss = SpaceSearch.new(venue_types: [Venue.v_types[:design_studio]])
       expect(ss.find_spaces).to contain_exactly(@s1_v2, @s2_v2)
     end
 
@@ -131,8 +188,39 @@ RSpec.describe SpaceSearch, type: :model do
       expect(ss.find_spaces).to contain_exactly(@s1_v6)
     end
 
-    it 'returns the spaces with :studio or :startup_office' do
-      ss = SpaceSearch.new(venue_types: [Venue.v_types[:studio], Venue.v_types[:startup_office]])
+    it 'returns the spaces with :loft' do
+      ss = SpaceSearch.new(venue_types: [Venue.v_types[:loft]])
+      expect(ss.find_spaces).to contain_exactly(@s1_v7)
+    end
+
+    it 'returns the spaces with :coworking_space' do
+      ss = SpaceSearch.new(venue_types: [Venue.v_types[:coworking_space]])
+      expect(ss.find_spaces).to contain_exactly(@s1_v8)
+    end
+
+    it 'returns the spaces with :apartment' do
+      ss = SpaceSearch.new(venue_types: [Venue.v_types[:apartment]])
+      expect(ss.find_spaces).to contain_exactly(@s1_v9)
+    end
+
+    it 'returns the spaces with :house' do
+      ss = SpaceSearch.new(venue_types: [Venue.v_types[:house]])
+      expect(ss.find_spaces).to contain_exactly(@s1_v10)
+    end
+
+    it 'returns the spaces with :cafe' do
+      ss = SpaceSearch.new(venue_types: [Venue.v_types[:cafe]])
+      expect(ss.find_spaces).to contain_exactly(@s1_v11)
+    end
+
+    it 'returns the spaces with :restaurant' do
+      ss = SpaceSearch.new(venue_types: [Venue.v_types[:restaurant]])
+      expect(ss.find_spaces).to contain_exactly(@s1_v12)
+    end
+
+    it 'returns the spaces with :design_studio or :startup_office' do
+      ss = SpaceSearch.new(venue_types: [Venue.v_types[:design_studio],
+                                         Venue.v_types[:startup_office]])
       expect(ss.find_spaces).to contain_exactly(@s1_v1, @s2_v1, @s1_v2, @s2_v2, @s1_v4, @s2_v4)
     end
 
@@ -140,7 +228,8 @@ RSpec.describe SpaceSearch, type: :model do
       ss = SpaceSearch.new(venue_types: nil)
       expect(ss.find_spaces).to contain_exactly(@s1_v1, @s2_v1, @s1_v2, @s2_v2,
                                                 @s1_v3, @s2_v3, @s1_v4, @s2_v4,
-                                                @s1_v5, @s1_v6)
+                                                @s1_v5, @s1_v6, @s1_v7, @s1_v8,
+                                                @s1_v9, @s1_v10, @s1_v11, @s1_v12)
     end
   end
 
@@ -148,12 +237,12 @@ RSpec.describe SpaceSearch, type: :model do
 
     it 'returns the spaces that contains \'wifi\'' do
       ss = SpaceSearch.new(venue_amenities: ['wifi'])
-      expect(ss.find_spaces).to contain_exactly(@s1_v1, @s2_v1, @s1_v4, @s2_v4)
+      expect(ss.find_spaces).to contain_exactly(@s1_v1, @s2_v1, @s1_v4, @s2_v4, @s1_v7, @s1_v9)
     end
 
     it 'returns the spaces that contains \'cafe_restaurant\'' do
       ss = SpaceSearch.new(venue_amenities: ['cafe_restaurant'])
-      expect(ss.find_spaces).to contain_exactly(@s1_v2, @s2_v2, @s1_v5, @s1_v6)
+      expect(ss.find_spaces).to contain_exactly(@s1_v2, @s2_v2, @s1_v5, @s1_v6, @s1_v11, @s1_v12)
     end
 
     it 'returns the spaces with \'gym\' and \'wifi\'' do
@@ -165,7 +254,8 @@ RSpec.describe SpaceSearch, type: :model do
       ss = SpaceSearch.new(venue_amenities: nil)
       expect(ss.find_spaces).to contain_exactly(@s1_v1, @s2_v1, @s1_v2, @s2_v2,
                                                 @s1_v3, @s2_v3, @s1_v4, @s2_v4,
-                                                @s1_v5, @s1_v6)
+                                                @s1_v5, @s1_v6, @s1_v7, @s1_v8,
+                                                @s1_v9, @s1_v10, @s1_v11, @s1_v12)
     end
   end
 
@@ -190,7 +280,8 @@ RSpec.describe SpaceSearch, type: :model do
       ss = SpaceSearch.new(venue_professions: nil)
       expect(ss.find_spaces).to contain_exactly(@s1_v1, @s2_v1, @s1_v2, @s2_v2,
                                                 @s1_v3, @s2_v3, @s1_v4, @s2_v4,
-                                                @s1_v5, @s1_v6)
+                                                @s1_v5, @s1_v6, @s1_v7, @s1_v8,
+                                                @s1_v9, @s1_v10, @s1_v11, @s1_v12)
     end
   end
 
@@ -216,7 +307,8 @@ RSpec.describe SpaceSearch, type: :model do
                            latitude_to: nil, longitude_to: nil)
       expect(ss.find_spaces).to contain_exactly(@s1_v1, @s2_v1, @s1_v2, @s2_v2,
                                                 @s1_v3, @s2_v3, @s1_v4, @s2_v4,
-                                                @s1_v5, @s1_v6)
+                                                @s1_v5, @s1_v6, @s1_v7, @s1_v8,
+                                                @s1_v9, @s1_v10, @s1_v11, @s1_v12)
     end
   end
 
@@ -241,7 +333,8 @@ RSpec.describe SpaceSearch, type: :model do
       ss = SpaceSearch.new(capacity: nil)
       expect(ss.find_spaces).to contain_exactly(@s1_v1, @s2_v1, @s1_v2, @s2_v2,
                                                 @s1_v3, @s2_v3, @s1_v4, @s2_v4,
-                                                @s1_v5, @s1_v6)
+                                                @s1_v5, @s1_v6, @s1_v7, @s1_v8,
+                                                @s1_v9, @s1_v10, @s1_v11, @s1_v12)
     end
   end
 
@@ -266,7 +359,8 @@ RSpec.describe SpaceSearch, type: :model do
       ss = SpaceSearch.new(quantity: nil)
       expect(ss.find_spaces).to contain_exactly(@s1_v1, @s2_v1, @s1_v2, @s2_v2,
                                                 @s1_v3, @s2_v3, @s1_v4, @s2_v4,
-                                                @s1_v5, @s1_v6)
+                                                @s1_v5, @s1_v6, @s1_v7, @s1_v8,
+                                                @s1_v9, @s1_v10, @s1_v11, @s1_v12)
     end
   end
 
@@ -279,7 +373,7 @@ RSpec.describe SpaceSearch, type: :model do
 
     it 'returns the spaces with venue hours weekday 1' do
       ss = SpaceSearch.new(weekday: 1)
-      expect(ss.find_spaces).to contain_exactly(@s1_v2, @s2_v2)
+      expect(ss.find_spaces).to contain_exactly(@s1_v2, @s2_v2, @s1_v8, @s1_v11, @s1_v12)
     end
 
     it 'returns an empty array when there are no spaces with that weekday' do
@@ -291,7 +385,8 @@ RSpec.describe SpaceSearch, type: :model do
       ss = SpaceSearch.new(weekday: nil)
       expect(ss.find_spaces).to contain_exactly(@s1_v1, @s2_v1, @s1_v2, @s2_v2,
                                                 @s1_v3, @s2_v3, @s1_v4, @s2_v4,
-                                                @s1_v5, @s1_v6)
+                                                @s1_v5, @s1_v6, @s1_v7, @s1_v8,
+                                                @s1_v9, @s1_v10, @s1_v11, @s1_v12)
     end
   end
 
@@ -306,7 +401,7 @@ RSpec.describe SpaceSearch, type: :model do
     it 'returns the spaces with venue hours with weekday tuesday' do
       next_monday = Time.new.next_week
       ss = SpaceSearch.new(date: next_monday.advance(days: 1).to_s)
-      expect(ss.find_spaces).to contain_exactly(@s1_v2, @s2_v2)
+      expect(ss.find_spaces).to contain_exactly(@s1_v2, @s2_v2, @s1_v8, @s1_v11, @s1_v12)
     end
 
     it 'returns an empty array when there are no spaces with weekday sunday' do
@@ -319,7 +414,8 @@ RSpec.describe SpaceSearch, type: :model do
       ss = SpaceSearch.new(date: nil)
       expect(ss.find_spaces).to contain_exactly(@s1_v1, @s2_v1, @s1_v2, @s2_v2,
                                                 @s1_v3, @s2_v3, @s1_v4, @s2_v4,
-                                                @s1_v5, @s1_v6)
+                                                @s1_v5, @s1_v6, @s1_v7, @s1_v8,
+                                                @s1_v9, @s1_v10, @s1_v11, @s1_v12)
     end
   end
 
@@ -337,7 +433,7 @@ RSpec.describe SpaceSearch, type: :model do
     it 'returns the spaces ordered by quantity_reviews and rating' do
       ss = SpaceSearch.new(venue_amenities: ['wifi'],
                            space_types: [Space.s_types[:desk], Space.s_types[:conference_room]])
-      expect(ss.find_spaces).to match_array([@s1_v4, @s1_v1])
+      expect(ss.find_spaces).to match_array([@s1_v4, @s1_v1, @s1_v7, @s1_v9])
     end
 
   end
