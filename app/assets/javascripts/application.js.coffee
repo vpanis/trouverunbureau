@@ -15,6 +15,7 @@
 #= require lodash
 #= require restangular
 #= require angular-ui-bootstrap-tpls
+#= require select2
 #= require_directory .
 #= require_tree ./landing/
 #= require_tree ./venues/
