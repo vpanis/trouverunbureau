@@ -75,14 +75,12 @@ describe Api::V1::ReviewsController do
 
     before(:each) do
       @user_logged = FactoryGirl.create(:user)
-      request.env['HTTP_ACCEPT'] = 'application/json'
-      request.env['USER_EMAIL_AUTH'] = @user_logged.email
-      request.env['USER_TOKEN_AUTH'] = @user_logged.authentication_token
+      sign_in @user_logged
     end
 
-    # after(:each) do
-    #   sign_out @user_logged
-    # end
+    after(:each) do
+      sign_out @user_logged
+    end
 
     context 'when the user exists' do
       let!(:a_user) { create(:user) }

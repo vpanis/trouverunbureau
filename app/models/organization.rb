@@ -1,7 +1,5 @@
 class Organization < ActiveRecord::Base
   include OwnerActions
-  acts_as_token_authenticatable
-  devise
   # Only for creation purpose
   attr_accessor :user, :user_id
 
@@ -36,6 +34,10 @@ class Organization < ActiveRecord::Base
     less_than_or_equal_to: 5
   }
 
+  def user_in_organization(user)
+    users.exists?(user)
+  end
+
   private
 
   def initialize_fields
@@ -60,10 +62,6 @@ class Organization < ActiveRecord::Base
     end
   rescue
     errors.add(:user, 'Invalid user/user_id value')
-  end
-
-  def user_in_organization(user)
-    users.exists?(user)
   end
 
   def assign_user

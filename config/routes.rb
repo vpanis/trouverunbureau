@@ -2,7 +2,8 @@ require 'resque/server'
 
 Deskspotting::Application.routes.draw do
 
-  devise_for :users, controllers: { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks"}
+                                    # sessions: "users/sessions"}
 
   mount Resque::Server, at: "/resque"
 
@@ -15,11 +16,18 @@ Deskspotting::Application.routes.draw do
 
     resources :users do
         member do
-          get :reviews, to: 'reviews#client_reviews'
           get :wishlist, to: 'wishlist#wishlist'
           post :wishlist, to: 'wishlist#add_space_to_wishlist'
           delete :wishlist, to: 'wishlist#remove_space_from_wishlist'
+          post :login_as_organization, to: 'users#login_as_organization'
+          delete :reset_organization, to: 'users#reset_organization'
         end
+    end
+
+    resources :clients do
+      member do
+        get :reviews, to: 'reviews#client_reviews'
+      end
     end
 
     resources :venues do

@@ -3,14 +3,17 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  # TODO: check this line for security issues
-  skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token, if: :json_request?
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   serialization_scope :view_context
 
   private
+
+  def json_request?
+    request.format.json?
+  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) do |u|

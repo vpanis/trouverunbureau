@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   include OwnerActions
-  acts_as_token_authenticatable
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :omniauthable,
@@ -27,11 +26,10 @@ class User < ActiveRecord::Base
 
   # Callbacks
   after_initialize :initialize_fields
-  before_save :renew_authentication_token
 
   # Validations
   validates :first_name, presence: true
-  validates :password, presence: true, unless: :created_at 
+  validates :password, presence: true, unless: :created_at
 
   validates :email, format: {
     with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,
@@ -101,15 +99,15 @@ class User < ActiveRecord::Base
     end
   end
 
+  def renew_authentication_token
+    user.update_attributes(authentication_token: Devise.friendly_token)
+  end
+
   private
 
   def initialize_fields
     self.quantity_reviews ||= 0
     self.reviews_sum ||= 0
     self.rating ||= 0
-  end
-
-  def renew_authentication_token
-    authentication_token = Devise.friendly_token
   end
 end
