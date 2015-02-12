@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
 
   # Callbacks
   after_initialize :initialize_fields
+  before_save :renew_authentication_token
 
   # Validations
   validates :first_name, presence: true
@@ -106,5 +107,9 @@ class User < ActiveRecord::Base
     self.quantity_reviews ||= 0
     self.reviews_sum ||= 0
     self.rating ||= 0
+  end
+
+  def renew_authentication_token
+    authentication_token = Devise.friendly_token
   end
 end

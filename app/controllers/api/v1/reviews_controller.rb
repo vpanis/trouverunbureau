@@ -11,7 +11,6 @@ module Api
 
       def venue_reviews
         do_action(params[:id], Venue, 'venue_reviews', VenueReviewSerializer)
-
       end
 
       def client_reviews
@@ -48,6 +47,7 @@ module Api
 
       def verify_user_can_read_client_reviews
         venue_owner = current_user
+        return true if current_user.id == params[:id].to_i
         # venue_owner = current_organization if current_organization.present?
         !Booking.joins { space.venue }
           .where { (owner_id == my { params[:id] }) & (owner_type == my { params[:type] }) }
