@@ -7,9 +7,10 @@ module Api
 
       def list
         result = SpaceQuery.new.all(pagination_params, filter_conditions)
+        favorites_ids = []
         render json: { count: result.total_entries, current_page: result.current_page,
                        items_per_page: result.per_page,
-                       spaces: serialized_reviews(result, SpaceSerializer) },
+                       spaces: serialized_reviews(result, SpaceSerializer, favorites_ids) },
                status: 200
       end
 
@@ -28,8 +29,9 @@ module Api
         param.in?(filter_parameters) && !value.strip.blank?
       end
 
-      def serialized_reviews(result, serializer)
-        ActiveModel::ArraySerializer.new(result, each_serializer: serializer)
+      def serialized_reviews(result, serializer, ids)
+        ActiveModel::ArraySerializer.new(result, each_serializer: serializer,
+                                                 scope: { favorites_ids: ids })
       end
 
       def record_not_found

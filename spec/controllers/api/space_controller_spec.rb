@@ -14,18 +14,21 @@ describe Api::V1::SpaceController do
       let!(:venue) { create(:venue, name: 'a venue') }
       let!(:venue_2) { create(:venue, name: 'the venue') }
 
-      let!(:space) { create(:space, venue: venue) }
-      let!(:space_2) { create(:space, venue: venue_2) }
+      let!(:sp) { create(:space, venue: venue) }
+      let!(:sp2) { create(:space, venue: venue_2) }
 
       it 'should retrieve spaces ordered by name' do
         get :list
 
+        f_ids = []
         first = JSON.parse(body['spaces'].first.to_json)
         last = JSON.parse(body['spaces'].last.to_json)
-        space_first = JSON.parse(SpaceSerializer.new(space).to_json)['space']
-        space_last = JSON.parse(SpaceSerializer.new(space_2).to_json)['space']
-        expect(first).to eql(space_first)
-        expect(last).to eql(space_last)
+        sp_1 = JSON.parse(SpaceSerializer.new(sp, scope: { favorites_ids: f_ids })
+                                              .to_json)['space']
+        sp_2 = JSON.parse(SpaceSerializer.new(sp2, scope: { favorites_ids: f_ids })
+                                              .to_json)['space']
+        expect(first).to eql(sp_1)
+        expect(last).to eql(sp_2)
       end
 
       it 'should paginate spaces' do

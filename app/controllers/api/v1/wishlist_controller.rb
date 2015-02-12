@@ -8,9 +8,10 @@ module Api
       def wishlist
         return render nothing: true, status: 404 unless User.find_by(id: params[:id]).present?
         result = WishlistQuery.new(params[:id]).wishlist(pagination_params)
+        favorites_ids = result.ids
         render json: { count: result.total_entries, current_page: result.current_page,
                        items_per_page: result.per_page,
-                       spaces: serialized_reviews(result, SpaceSerializer) },
+                       spaces: serialized_reviews(result, SpaceSerializer, favorites_ids) },
                status: 200
       end
 
@@ -22,8 +23,9 @@ module Api
         do_action(params[:id], params[:space_id], 'remove_from_wishlist')
       end
 
-      def serialized_reviews(result, serializer)
-        ActiveModel::ArraySerializer.new(result, each_serializer: serializer)
+      def serialized_reviews(result, serializer, ids)
+        ActiveModel::ArraySerializer.new(result, each_serializer: serializer,
+                                                 scope: { favorites_ids: ids })
       end
 
       def record_not_found
