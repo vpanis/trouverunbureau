@@ -45,11 +45,12 @@ describe Api::V1::SpaceController do
         expect(body['spaces'].size).to eql(0)
       end
 
-    end # when the venue has reviews
+    end # when a space exists
 
     context 'when no spaces exist' do
       before { get :list }
       it 'does not retrieve any space' do
+
         expect(response.status).to eq(200)
         expect(body['count']).to eql(0)
         expect(body).to include('items_per_page')

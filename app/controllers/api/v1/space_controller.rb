@@ -6,7 +6,6 @@ module Api
       rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
       def list
-        # return render nothing: true, status: 404 unless User.find_by(id: params[:id]).present?
         result = SpaceQuery.new.all(pagination_params, filter_conditions)
         render json: { count: result.total_entries, current_page: result.current_page,
                        items_per_page: result.per_page,
@@ -15,11 +14,18 @@ module Api
       end
 
       def filter_conditions
-        filters = Hash.new
-        params.each do |p|
-
+        filters = {}
+        params.each do |key, value|
+          filters.update(key => value) if filter_parameter?(key, value)
         end
         filters
+      end
+
+      def filter_parameter?(param, value)
+        filter_parameters = %w(capacity, quantity, latitude_from, latitude_to,
+                               longitude_from, longitude_to, space_types, venue_types,
+                               venue_amenities, venue_professions, weekday)
+        param.in?(filter_parameters) && !value.strip.blank?
       end
 
       def serialized_reviews(result, serializer)
