@@ -44,6 +44,7 @@ gem 'angular-ui-bootstrap-rails'
 
 gem 'select2-rails'
 
+gem 'fog'
 gem 'carrierwave', '~>0.10.0'
 
 gem 'rmagick', '~>2.13.4'
