@@ -4,7 +4,8 @@ describe Api::V1::SpaceController do
 
   let(:body) { JSON.parse(response.body) if response.body.present? }
 
-  before do
+  before(:all) do
+
 
   end
 
