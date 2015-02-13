@@ -1,0 +1,37 @@
+= form_for(@space) do |f|
+  .main-content
+    #space
+      .row
+        .details-section
+          .form-group#space-s_type-input
+            label #{t('space.s_type')}
+            = f.text_field :s_type
+          .form-group#space-name-input
+            label #{t('space.name')}
+            = f.text_field :name
+          .form-group#space-capacity-input
+            label #{t('space.capacity')}
+            = f.text_field :capacity
+          .form-group#space-quantity-input
+            label #{t('space.quantity')}
+            = f.text_field :quantity
+          .form-group#space-description-input
+            label #{t('space.description')}
+            = f.text_field :description
+          .form-group#space-hour_price-input
+            label #{t('space.hour_price')}
+            = f.text_field :hour_price
+          .form-group#space-day_price-input
+            label #{t('space.day_price')}
+            = f.text_field :day_price
+          .form-group#space-week_price-input
+            label #{t('space.week_price')}
+            = f.text_field :week_price
+          .form-group#space-month_price-input
+            label #{t('space.month_price')}
+            = f.text_field :month_price
+
+
+  .full-width-submit-button
+    = f.submit 'Save', class: 'submit-button', id: 'save-space'
+
