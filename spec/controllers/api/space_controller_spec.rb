@@ -6,12 +6,14 @@ describe Api::V1::SpaceController do
 
   before(:all) do
 
-
   end
 
   describe 'GET spaces' do
 
     context 'when a space exists' do
+      before do
+        Space.delete_all
+      end
       let!(:venue) { create(:venue, name: 'a venue') }
       let!(:venue_2) { create(:venue, name: 'the venue') }
 
@@ -20,7 +22,6 @@ describe Api::V1::SpaceController do
 
       it 'should retrieve spaces ordered by name' do
         get :list
-
         f_ids = []
         first = JSON.parse(body['spaces'].first.to_json)
         last = JSON.parse(body['spaces'].last.to_json)
@@ -37,14 +38,14 @@ describe Api::V1::SpaceController do
         amount =  1
         get :list, page: page, amount: amount
 
-        expect(body['count']).to eql(Space.count)
+        expect(body['count']).to eql(2)
         expect(body['items_per_page']).to eql(amount)
         expect(body['current_page']).to eql(page)
         expect(body['spaces'].size).to eql(amount)
       end
 
       it 'does not paginate spaces outside limits' do
-        size = Space.count
+        size = 2
         get :list, page: 2, amount: size
         expect(body['count']).to eql(size)
         expect(body['spaces'].size).to eql(0)
@@ -53,7 +54,11 @@ describe Api::V1::SpaceController do
     end # when a space exists
 
     context 'when no spaces exist' do
-      before { get :list }
+      before do
+        Space.delete_all
+        get :list
+      end
+
       it 'does not retrieve any space' do
         expect(response.status).to eq(200)
         expect(body['count']).to eql(0)
