@@ -12,7 +12,7 @@ module Api
       end
 
       def client_reviews
-        return render nothing: true, status: 404 unless %w(User Organization).include?(
+        return render 'Invalid type', status: 400 unless %w(User Organization).include?(
           params[:type])
         do_action(params[:id], Object.const_get(params[:type]), 'client_reviews',
                   ClientReviewSerializer)
