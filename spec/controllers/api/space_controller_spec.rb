@@ -37,15 +37,16 @@ describe Api::V1::SpaceController do
         amount =  1
         get :list, page: page, amount: amount
 
-        expect(body['count']).to eql(2)
+        expect(body['count']).to eql(Space.count)
         expect(body['items_per_page']).to eql(amount)
         expect(body['current_page']).to eql(page)
         expect(body['spaces'].size).to eql(amount)
       end
 
       it 'does not paginate spaces outside limits' do
-        get :list, page: 3, amount: 1
-        expect(body['count']).to eql(2)
+        size = Space.count
+        get :list, page: 2, amount: size
+        expect(body['count']).to eql(size)
         expect(body['spaces'].size).to eql(0)
       end
 
