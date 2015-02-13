@@ -7,8 +7,8 @@ class SpaceQuery < PaginatedQuery
   end
 
   def select_all(filter_conditions)
-    SpaceSearch.new(filter_conditions).find_spaces. includes { [venue, photo] }
-                                                    .order { venue.name.asc }
+    SpaceSearch.new(filter_conditions).find_spaces. includes { [venue, photos] }
+                                                    .order('venues.name asc')
   end
 
 end
