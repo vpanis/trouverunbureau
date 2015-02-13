@@ -27,5 +27,4 @@ class SpacesController < ApplicationController
     params.require(:space).permit(:s_type, :name, :capacity, :quantity, :description,
                                   :hour_price, :day_price, :week_price, :month_price)
   end
-
 end
