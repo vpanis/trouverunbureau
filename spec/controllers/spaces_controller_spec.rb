@@ -98,7 +98,7 @@ describe SpacesController do
             a_space.reload
           end
           it 'fails' do
-            expect(response.status).to eq(404)
+            expect(response.status).to eq(412)
           end
         end
 
@@ -110,7 +110,7 @@ describe SpacesController do
             a_space.reload
           end
           it 'fails' do
-            expect(response.status).to eq(404)
+            expect(response.status).to eq(412)
           end
         end
       end
