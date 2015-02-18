@@ -35,7 +35,7 @@ describe 'Users as Organization', type: :request do
       end
 
       it 'retrieves the organization data' do
-        get "/api/v1/clients/#{@organization.id}/reviews", type: 'Organization'
+        get "/api/v1/organizations/#{@organization.id}/reviews", type: 'Organization'
         expect(response.status).to eq(200)
         cl_review2_json = JSON.parse(ClientReviewSerializer.new(cl_review2)
                                      .to_json)['client_review']
@@ -44,16 +44,16 @@ describe 'Users as Organization', type: :request do
 
       context 'switch organizations' do
         it 'retrieves the other organization data' do
-          get "/api/v1/clients/#{@organization.id}/reviews", type: 'Organization'
+          get "/api/v1/organizations/#{@organization.id}/reviews", type: 'Organization'
           expect(response.status).to eq(200)
 
-          get "/api/v1/clients/#{organization2.id}/reviews", type: 'Organization'
+          get "/api/v1/organizations/#{organization2.id}/reviews", type: 'Organization'
           expect(response.status).to eq(403)
 
           post "/api/v1/users/#{@user.id}/login_as_organization", organization_id:
             organization2.id
 
-          get "/api/v1/clients/#{organization2.id}/reviews", type: 'Organization'
+          get "/api/v1/organizations/#{organization2.id}/reviews", type: 'Organization'
           expect(response.status).to eq(200)
           cl_review3_json = JSON.parse(ClientReviewSerializer.new(cl_review3)
                                        .to_json)['client_review']

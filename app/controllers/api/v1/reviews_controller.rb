@@ -5,16 +5,19 @@ module Api
       include RepresentedHelper
 
       respond_to :json
-      before_action :authenticate_user!, only: [:client_reviews]
+      before_action :authenticate_user!, only: [:user_reviews, :organization_reviews]
 
       def venue_reviews
         do_action(params[:id], Venue, 'venue_reviews', VenueReviewSerializer)
       end
 
-      def client_reviews
-        return render json: { error: 'Invalid type' }, status: 400 unless
-          %w(User Organization).include?(params[:type])
-        do_action(params[:id], Object.const_get(params[:type]), 'client_reviews',
+      def user_reviews
+        do_action(params[:id], User, 'client_reviews',
+                  ClientReviewSerializer)
+      end
+
+      def organization_reviews
+        do_action(params[:id], Organization, 'client_reviews',
                   ClientReviewSerializer)
       end
 
@@ -44,7 +47,7 @@ module Api
           entity == User)
         # My clients
         !Booking.joins { space.venue }
-          .where { (owner_id == my { params[:id] }) & (owner_type == my { params[:type] }) }
+          .where { (owner_id == my { params[:id] }) & (owner_type == my { entity }) }
           .where { space.venue.owner == my { current_represented } }.empty?
       end
     end

@@ -21,12 +21,13 @@ Deskspotting::Application.routes.draw do
           delete :wishlist, to: 'wishlist#remove_space_from_wishlist'
           post :login_as_organization, to: 'users#login_as_organization'
           delete :reset_organization, to: 'users#reset_organization'
+          get :reviews, to: 'reviews#user_reviews'
         end
     end
 
-    resources :clients do
+    resources :organizations do
       member do
-        get :reviews, to: 'reviews#client_reviews'
+        get :reviews, to: 'reviews#organization_reviews'
       end
     end
 

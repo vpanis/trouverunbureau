@@ -87,7 +87,7 @@ describe Api::V1::ReviewsController do
       let!(:a_venue) { create(:venue, :with_spaces, owner: @user_logged) }
       let!(:booking) { create(:booking, owner: a_user, space: a_venue.spaces[0]) }
       it 'succeeds' do
-        get :client_reviews, id: a_user.id, type: 'User'
+        get :user_reviews, id: a_user.id
         expect(response.status).to eq(200)
       end
 
@@ -100,7 +100,7 @@ describe Api::V1::ReviewsController do
         let!(:a_cl_re_3) { create(:client_review, booking: booking_3) }
 
         it 'should retrieve client reviews ordered by date' do
-          get :client_reviews, id: a_user.id, type: 'User'
+          get :user_reviews, id: a_user.id
 
           first = JSON.parse(body['reviews'].first.to_json)
           last = JSON.parse(body['reviews'].last.to_json)
@@ -113,7 +113,7 @@ describe Api::V1::ReviewsController do
         it 'should paginate client reviews' do
           page = 2
           amount =  1
-          get :client_reviews, id: a_user.id, type: 'User', page: page, amount: amount
+          get :user_reviews, id: a_user.id, page: page, amount: amount
 
           expect(body['count']).to eql(2)
           expect(body['items_per_page']).to eql(amount)
@@ -122,13 +122,13 @@ describe Api::V1::ReviewsController do
         end
 
         it 'does not paginate client reviews outside limits' do
-          get :client_reviews, id: a_user.id, type: 'User', page: 3, amount: 1
+          get :user_reviews, id: a_user.id, page: 3, amount: 1
           expect(body['count']).to eql(2)
           expect(body['reviews'].size).to eql(0)
         end
 
         it 'does not retrieve other client reviews' do
-          get :client_reviews, id: a_user.id, type: 'User'
+          get :user_reviews, id: a_user.id
           expect(body['reviews'].any? do |c|
             c.to_json == ClientReviewSerializer.new(a_cl_re_3).to_json
           end).to be false
@@ -137,7 +137,81 @@ describe Api::V1::ReviewsController do
     end # when the venue exists
 
     context 'when the user does not exist' do
-      before { get :client_reviews, type: 'User', id: -1 }
+      before { get :user_reviews, id: -1 }
+
+      it 'fails' do
+        expect(response.status).to eq(404)
+      end
+    end # when the user does not exist
+  end # GET users/:id/reviews
+
+  describe 'GET organizations/:id/reviews' do
+
+    before(:each) do
+      @user_logged = FactoryGirl.create(:user)
+      sign_in @user_logged
+    end
+
+    after(:each) do
+      sign_out @user_logged
+    end
+
+    context 'when the organization exists' do
+      let!(:a_organization) { create(:organization) }
+      let!(:a_venue) { create(:venue, :with_spaces, owner: @user_logged) }
+      let!(:booking) { create(:booking, owner: a_organization, space: a_venue.spaces[0]) }
+      it 'succeeds' do
+        get :organization_reviews, id: a_organization.id
+        expect(response.status).to eq(200)
+      end
+
+      context 'when the organization has reviews' do
+        let(:booking_2) { create(:booking, owner: a_organization) }
+        let(:booking_3) { create(:booking) }
+
+        let!(:a_cl_re) { create(:client_review, booking: booking) }
+        let!(:a_cl_re_2) { create(:client_review, booking: booking_2) }
+        let!(:a_cl_re_3) { create(:client_review, booking: booking_3) }
+
+        it 'should retrieve client reviews ordered by date' do
+          get :organization_reviews, id: a_organization.id
+
+          first = JSON.parse(body['reviews'].first.to_json)
+          last = JSON.parse(body['reviews'].last.to_json)
+          cl_re_first = JSON.parse(ClientReviewSerializer.new(a_cl_re_2).to_json)['client_review']
+          cl_re_last = JSON.parse(ClientReviewSerializer.new(a_cl_re).to_json)['client_review']
+          expect(first).to eql(cl_re_first)
+          expect(last).to eql(cl_re_last)
+        end
+
+        it 'should paginate client reviews' do
+          page = 2
+          amount =  1
+          get :organization_reviews, id: a_organization.id, page: page, amount: amount
+
+          expect(body['count']).to eql(2)
+          expect(body['items_per_page']).to eql(amount)
+          expect(body['current_page']).to eql(page)
+          expect(body['reviews'].size).to eql(amount)
+        end
+
+        it 'does not paginate client reviews outside limits' do
+          get :organization_reviews, id: a_organization.id, page: 3, amount: 1
+          expect(body['count']).to eql(2)
+          expect(body['reviews'].size).to eql(0)
+        end
+
+        it 'does not retrieve other client reviews' do
+          get :organization_reviews, id: a_organization.id
+          expect(body['reviews'].any? do |c|
+            c.to_json == ClientReviewSerializer.new(a_cl_re_3).to_json
+          end).to be false
+        end
+      end # when the venue has reviews
+    end # when the venue exists
+
+    context 'when the organization does not exist' do
+      before { get :organization_reviews, id: -1 }
 
       it 'fails' do
         expect(response.status).to eq(404)
