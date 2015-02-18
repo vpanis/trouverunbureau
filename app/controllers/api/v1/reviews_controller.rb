@@ -12,13 +12,11 @@ module Api
       end
 
       def user_reviews
-        do_action(params[:id], User, 'client_reviews',
-                  ClientReviewSerializer)
+        do_action(params[:id], User, 'client_reviews', ClientReviewSerializer)
       end
 
       def organization_reviews
-        do_action(params[:id], Organization, 'client_reviews',
-                  ClientReviewSerializer)
+        do_action(params[:id], Organization, 'client_reviews', ClientReviewSerializer)
       end
 
       private
