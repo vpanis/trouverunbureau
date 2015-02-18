@@ -7,10 +7,6 @@ describe SpacesController do
     create(:user)
   end
 
-<<<<<<< HEAD
-=======
-
->>>>>>> little refactoring
   describe 'GET spaces/:id/edit' do
     context 'when user logged in' do
       before(:each) do
