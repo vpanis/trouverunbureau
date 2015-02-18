@@ -2,14 +2,15 @@ class SpacesController < ApplicationController
   inherit_resources
 
   def edit
+    return render nothing: true, status: 404 unless Space.find_by(id: params[:id]).present?
     @space = Space.find(params[:id])
   end
 
   def update
+    return render nothing: true, status: 404 unless Space.find_by(id: params[:id]).present?
     @space = Space.find(params[:id])
-
-    @space.update_attributes(space_params) if @space.can_update(space_params)
-
+    return render nothing: true, status: 404 unless @space.can_update(space_params)
+    @space.update_attributes(space_params)
     redirect_to edit_space_path(@space)
   end
 
