@@ -25,10 +25,15 @@ class Space < ActiveRecord::Base
   def can_update(space_params)
     capacity_param = (space_params[:capacity] || capacity).to_i
     quantity_param = (space_params[:quantity] || quantity).to_i
-    !(capacity_param.nil? || capacity_param < capacity || quantity_param < quantity)
+    none_paid_or_pending || (!(capacity_param.nil? || capacity_param < capacity ||
+     quantity_param < quantity))
   end
 
   private
+
+  def none_paid_or_pending
+    !bookings.any? { |c| c.paid? || c.pending_authorization? }
+  end
 
   def at_least_one_price
     return if hour_price.present? ||
