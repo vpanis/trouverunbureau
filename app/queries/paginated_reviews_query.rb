@@ -6,20 +6,20 @@ class PaginatedReviewsQuery < PaginatedQuery
     @relation
   end
 
-  def client_reviews(pagination_params, user_id)
-    @relation = select_reviews_for_client(user_id)
+  def client_reviews(pagination_params, client_id, entity)
+    @relation = select_reviews_for_client(client_id, entity)
     paginate(pagination_params)
     @relation
   end
 
   def select_reviews_for_venue(venue_id)
-    ans = VenueReview.joins { booking.space } .where { booking.space.venue_id == my { venue_id } }
-    ans.order { created_at.desc }.includes { booking.owner }
+    VenueReview.joins { booking.space } .where { booking.space.venue_id == my { venue_id } }
+      .order('created_at desc').includes { booking.owner }
   end
 
-  def select_reviews_for_client(user_id)
-    ans = ClientReview.joins { booking }
-    ans = ans.where { booking.owner_type == 'User' &&  booking.owner_id == my { user_id } }
-    ans.order { created_at.desc }.includes { booking.space.venue }
+  def select_reviews_for_client(client_id, entity)
+    ClientReview.joins { booking }
+      .where { (booking.owner_type == my { entity }) & (booking.owner_id == my { client_id }) }
+      .order('created_at desc').includes { booking.space.venue }
   end
 end

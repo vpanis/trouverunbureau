@@ -5,7 +5,7 @@ FactoryGirl.define do
     user { FactoryGirl.create(:user) }
     name { Faker::Name.name }
     phone { Faker::PhoneNumber.phone_number }
-    email { Faker::Internet.safe_email }
+    sequence(:email) { |e| "#{e}_#{Faker::Internet.safe_email}" }
 
     trait :with_venues do
       venues { FactoryGirl.build_list(:venue, rand(3) + 1) }

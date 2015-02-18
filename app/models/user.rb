@@ -28,7 +28,8 @@ class User < ActiveRecord::Base
   after_initialize :initialize_fields
 
   # Validations
-  validates :first_name, :password, presence: true
+  validates :first_name, presence: true
+  validates :password, presence: true, unless: :created_at
 
   validates :email, format: {
     with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,
@@ -96,6 +97,10 @@ class User < ActiveRecord::Base
     else
       false
     end
+  end
+
+  def renew_authentication_token
+    user.update_attributes(authentication_token: Devise.friendly_token)
   end
 
   private

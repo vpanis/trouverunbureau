@@ -7,7 +7,7 @@ FactoryGirl.define do
     postal_code { Faker::Address.postcode }
     country { Faker::Address.country }
     phone { Faker::PhoneNumber.phone_number }
-    email { Faker::Internet.safe_email }
+    sequence(:email) { |e| "#{e}_#{Faker::Internet.safe_email}" }
     website { Faker::Internet.url('example.com') }
     latitude { Faker::Address.latitude }
     longitude { Faker::Address.longitude }
