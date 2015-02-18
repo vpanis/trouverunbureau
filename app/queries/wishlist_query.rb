@@ -12,7 +12,7 @@ class WishlistQuery < PaginatedQuery
 
   def select_favorites
     spaces_id = UsersFavorite.where { users_favorites.user_id == my { @user_id } }.pluck(:space_id)
-    Space.where { id.in spaces_id }. includes { [venue, photos] }. order { spaces.name.asc }
+    Space.where { id.in spaces_id }. includes { [venue, photos] }.order('spaces.name asc')
     # TODO: check the order criteria
   end
 

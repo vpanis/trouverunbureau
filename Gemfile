@@ -87,6 +87,7 @@ gem 'active_model_serializers', '~>0.9.3'
 
 gem 'will_paginate', '~>3.0.7'
 
+
 gem 'resque', '~>1.25.2'
 
 group :development do

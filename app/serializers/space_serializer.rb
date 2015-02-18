@@ -1,6 +1,6 @@
 class SpaceSerializer < ActiveModel::Serializer
   attributes :id, :name, :city, :currency, :hour_price, :day_price, :week_price, :month_price,
-             :photos
+             :favorite, :latitude, :longitude, :photos
 
   def city
     object.venue.town
@@ -8,6 +8,19 @@ class SpaceSerializer < ActiveModel::Serializer
 
   def currency
     object.venue.currency
+  end
+
+  def latitude
+    object.venue.latitude
+  end
+
+  def longitude
+    object.venue.longitude
+  end
+
+  def favorite
+    object.id.in?(scope[:favorites_ids])
+    # TODO: tell if it is favorite of logged user
   end
 
   def photos

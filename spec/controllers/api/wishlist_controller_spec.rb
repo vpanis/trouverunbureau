@@ -24,21 +24,24 @@ describe Api::V1::WishlistController do
       end
 
       context 'when the user has favorites' do
-        let!(:space) { create(:space, name: 'a space') }
-        let!(:space_2) { create(:space, name: 'the space') }
-        let!(:favorite) { create(:users_favorite, user: a_user, space: space) }
-        let!(:favorite_2) { create(:users_favorite, user: a_user, space: space_2) }
-        let!(:favorite_3) { create(:users_favorite) }
-        let!(:space_photo) { create(:venue_photo, space: space, venue: space.venue) }
+
+        let!(:sp) { create(:space, name: 'a space') }
+        let!(:sp2) { create(:space, name: 'the space') }
+        let!(:favorite) { create(:users_favorite, user: a_user, space: sp) }
+        let!(:favorite_2) { create(:users_favorite, user: a_user, space: sp2) }
+        let!(:fav_3) { create(:users_favorite) }
 
         it 'should retrieve user favorites ordered by name' do
           get :wishlist, id: a_user.id
           first = JSON.parse(body['spaces'].first.to_json)
           last = JSON.parse(body['spaces'].last.to_json)
-          fav_first = JSON.parse(SpaceSerializer.new(space).to_json)['space']
-          fav_last = JSON.parse(SpaceSerializer.new(space_2).to_json)['space']
-          expect(first).to eql(fav_first)
-          expect(last).to eql(fav_last)
+          f_id =  a_user.users_favorites.pluck(:space_id)
+          f1 = JSON.parse(SpaceSerializer.new(sp, scope: { favorites_ids: f_id })
+                                              .to_json)['space']
+          f2 = JSON.parse(SpaceSerializer.new(sp2, scope: { favorites_ids: f_id })
+                                              .to_json)['space']
+          expect(first).to eql(f1)
+          expect(last).to eql(f2)
         end
 
         it 'should paginate user favorites' do
@@ -59,8 +62,9 @@ describe Api::V1::WishlistController do
 
         it 'does not retrieve other user favorites' do
           get :wishlist, id: a_user.id
+          f_ids =  a_user.users_favorites.pluck(:space_id)
           expect(body['spaces'].any? do |c|
-            c.to_json == SpaceSerializer.new(favorite_3.space).to_json
+            c.to_json == SpaceSerializer.new(fav_3.space, scope: { favorites_ids: f_ids }).to_json
           end).to be false
         end
       end # when the user has favorites
