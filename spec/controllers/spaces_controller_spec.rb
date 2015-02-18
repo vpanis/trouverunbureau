@@ -7,9 +7,6 @@ describe SpacesController do
     create(:user)
   end
 
-  before do
-
-  end
 
   describe 'GET spaces/:id/edit' do
     context 'when the space exists' do
@@ -24,7 +21,7 @@ describe SpacesController do
         expect(assigns(:space)).to eq(a_space)
       end
 
-      it 'renders the :show template' do
+      it 'renders the :edit template' do
         get :edit, id: a_space.id
         expect(response).to render_template :edit
       end
