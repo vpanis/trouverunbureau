@@ -7,7 +7,6 @@ describe SpacesController do
     create(:user)
   end
 
-
   describe 'GET spaces/:id/edit' do
     context 'when the space exists' do
       let!(:a_space) { create(:space) }
@@ -42,9 +41,8 @@ describe SpacesController do
     context 'when the space exists' do
       let!(:a_space) { create(:space) }
       let(:new_description) { 'new description' }
-
+      let(:new_quantity) { a_space.quantity + 1 }
       before do
-        new_quantity = a_space.quantity + 1
         space_params = { id: a_space.id, description: new_description, quantity: new_quantity }
         patch :update, id: a_space.id, space: space_params
         a_space.reload
@@ -56,9 +54,10 @@ describe SpacesController do
 
       it 'updates the space' do
         expect(a_space.description).to eq(new_description)
+        expect(a_space.quantity).to eq(new_quantity)
       end
 
-      it 'renders the :show template' do
+      it 'renders the :edit template' do
         expect(response.redirect_url).to eq(edit_space_url(a_space))
       end
 
