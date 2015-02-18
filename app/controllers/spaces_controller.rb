@@ -7,7 +7,9 @@ class SpacesController < ApplicationController
 
   def update
     @space = Space.find(params[:id])
-    @space.update_attributes(space_params)
+
+    @space.update_attributes(space_params) if @space.can_update(space_params)
+
     redirect_to edit_space_path(@space)
   end
 
@@ -24,14 +26,4 @@ class SpacesController < ApplicationController
                                             :c11)
   end
 
-  def affinity_point
-    if @night_club.night_club_affinity_point.present?
-      return @night_club.night_club_affinity_point
-    end
-    affinity = NightClubAffinityPoint.create!(night_club: @night_club)
-    # we initialize all categories to 10% except for category 11.
-    (1..(Affinity::CATEGORIES - 1)).each { |n|affinity.send("c#{n}=", 10) }
-    affinity.save!
-    affinity
-  end
 end

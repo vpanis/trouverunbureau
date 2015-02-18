@@ -22,6 +22,12 @@ class Space < ActiveRecord::Base
 
   validate :at_least_one_price
 
+  def can_update(space_params)
+    capacity_param = (space_params[:capacity] || capacity).to_i
+    quantity_param = (space_params[:quantity] || quantity).to_i
+    !(capacity_param.nil? || capacity_param < capacity || quantity_param < quantity)
+  end
+
   private
 
   def at_least_one_price
