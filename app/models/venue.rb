@@ -86,6 +86,11 @@ class Venue < ActiveRecord::Base
     end.count
   end
 
+  def none_paid_or_pending
+
+    !bookings.any? { |c| c.paid? || c.pending_authorization? }
+  end
+
   private
 
   def initialize_fields
