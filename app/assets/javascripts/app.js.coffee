@@ -2,7 +2,8 @@
 @deskspotting = angular.module('deskSpotting', [
   'restangular',
   'ui.bootstrap',
-  'deskSpotting.reviews'
+  'deskSpotting.reviews',
+  'deskSpotting.user_profile'
 ]).config (RestangularProvider) ->
   RestangularProvider.setBaseUrl '/api/v1'
   return

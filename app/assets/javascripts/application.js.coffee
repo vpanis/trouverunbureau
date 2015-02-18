@@ -19,6 +19,7 @@
 #= require_directory .
 #= require_tree ./landing/
 #= require_tree ./venues/
+#= require_tree ./users/
 #= require_tree ./angular/controllers
 
 

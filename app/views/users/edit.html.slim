@@ -1,0 +1,36 @@
+= render 'shared/menu_bar'
+.row
+  .col-xs-12.col-sm-8.col-md-8.col-lg-8.col-xs-offset-0.col-sm-offset-2
+    .edit-profile-form.dashboard-form ng-controller="UserProfileCtrl"
+      = form_for @user do |f|
+        .row
+          .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+            label First name
+            = f.text_field :first_name, placeholder: 'First Name', class: 'form-control'
+          .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+            label Last name
+            = f.text_field :last_name, placeholder: 'Last Name', class: 'form-control'
+          .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+            label Gender
+            = f.select(:gender, @gender_options, {}, {class: 'form-control gender-select'})
+          .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+            label Phone number
+            = f.text_field :phone, placeholder: 'Phone', class: 'form-control'
+          .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+            label Profession
+            = f.select(:profession, @profession_options, {}, {class: 'form-control profession-select'})
+          .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+            label Email
+            = f.text_field :email, placeholder: 'Email', class: 'form-control'
+          .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+            label Language
+            = f.select(:language, @language_options, {}, {class: 'form-control gender-select'})
+          .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+            label Date of birth
+            .input-group
+              .input-group-addon ng-click="open($event)" type="button"
+                i.glyphicon.glyphicon-calendar
+              = f.text_field :date_of_birth, value: @user.date_of_birth.strftime("%d-%m-%Y"), placeholder: 'Date of birth', class: 'form-control', close_text: 'Close', datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened', ng_model:'user_date_of_birth', ng_required: 'true', type: 'text', show_button_bar:'false'
+
+          = f.submit 'save'
+

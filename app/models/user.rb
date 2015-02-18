@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
   # Uploaders
   mount_uploader :avatar, LogoUploader
 
+  # Enums
+  LANGUAGES = [:en, :es]
+  GENDERS = [:f, :m]
+
   # Callbacks
   after_initialize :initialize_fields
 
@@ -47,6 +51,11 @@ class User < ActiveRecord::Base
     greater_than_or_equal_to: 0,
     less_than_or_equal_to: 5
   }
+
+  validates :profession, inclusion: { in: Venue::PROFESSIONS.map(&:to_s) }
+  validates :gender, inclusion: { in: GENDERS.map(&:to_s), allow_nil: true }
+  validates :language, inclusion: { in: LANGUAGES.map(&:to_s), allow_nil: true }
+  validate :each_languages_spoken_inclusion
 
   class << self
 
@@ -110,4 +119,12 @@ class User < ActiveRecord::Base
     self.reviews_sum ||= 0
     self.rating ||= 0
   end
+
+  def each_languages_spoken_inclusion
+    invalid_items = languages_spoken - LANGUAGES.map(&:to_s)
+    invalid_items.each do |item|
+      errors.add(:language_list, item + ' is not a valid language')
+    end
+  end
+
 end

@@ -235,12 +235,52 @@ a, a:hover{
 
 .form-group{
   margin-bottom: 11px;
+  .input-group{
+    .input-group-addon{
+      background-color: white;
+      color: $gray-text;
+    }
+  }
 }
 
 .form-control{
   height: 40px;
   border: 1px solid $gray;
   color: $gray-text;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  transition: none;
+  -moz-transition: none;
+  -webkit-transition: none;
+}
+.dashboard-form{
+  .form-group{
+    margin-bottom: 8px;
+    .form-control{
+      height: 42px;
+      border: 2px solid $light-gray;
+      color: $gray-text;
+    }
+    input[type='text'].form-control{
+      font-size: 12px;
+      letter-spacing: 0.08rem;
+      font-weight: 300;
+      padding-bottom: 2px;
+    }
+    *::-webkit-input-placeholder{
+      color: $dark-gray;
+    }
+    *:-moz-placeholder{
+      color: $dark-gray;
+    }
+    *::-moz-placeholder{
+      color: $dark-gray;
+    }
+    *:-ms-input-placeholder{
+      color: $dark-gray;
+    }
+  }
 }
 
 .checkbox-label{
@@ -304,18 +344,6 @@ input[type="checkbox"]:checked:after {
   color: $red;
 }
 /* ====== LANDING ====== */
-.orange{
-  background-color: orange;
-}
-.cyan{
- background-color: cyan;
-}
-.green{
-  background-color: green;
-}
-.violet{
-  background-color: violet;
-}
 .separator{
   border-top: 2px solid $yellow;
   margin: 40px auto 68px;
@@ -945,7 +973,7 @@ input[type="checkbox"]:checked:after {
 
 
 .after-menu{
-  padding-top: 50px;
+  padding-top: 58px;
 }
 .menubar{
   background-color: white;
@@ -1788,7 +1816,7 @@ input[type="checkbox"]:checked:after {
       letter-spacing: 0.08rem;
       font-weight: 300;
       padding-bottom: 2px;
-      color: $dark-gray;
+      color: $gray-text;
       line-height: 50px;
     }
     span.select2-arrow{
@@ -1800,6 +1828,7 @@ input[type="checkbox"]:checked:after {
         @include at2x('arrow-dropdown', 14px, 10px);
         background-repeat: no-repeat;
         background-position-y: 22px;
+        background-position-y: calc(50% + 2px);
         background-size: 14px 10px;
       }
     }
@@ -1809,6 +1838,7 @@ input[type="checkbox"]:checked:after {
 .select2-container.select2-dropdown-open .select2-choice .select2-arrow b{
   @include at2x('arrow-dropdown-up', 14px, 10px);
   background-position: 0px 22px;
+  background-position-y: calc(50% + 2px);
 }
 .select2-dropdown-open.select2-drop-above .select2-choice, .select2-dropdown-open.select2-drop-above .select2-choices{
   border: none;
@@ -1821,7 +1851,6 @@ input[type="checkbox"]:checked:after {
 .select2-drop-active{
   border: none;
   .select2-search{
-
   }
   .select2-results{
     padding: 0px;
@@ -1832,7 +1861,7 @@ input[type="checkbox"]:checked:after {
       letter-spacing: 0.08rem;
       font-weight: 300;
       padding-bottom: 2px;
-      color: $dark-gray;
+      color: $gray-text;
       line-height: 35px;
     }
     .select2-highlighted{
@@ -1843,3 +1872,67 @@ input[type="checkbox"]:checked:after {
     }
   }
 }
+/* select style for the forms within the dashboard*/
+.dashboard-form{
+  .select2-container{
+    a.select2-choice{
+      height: 38px;
+      padding-left: 12px;
+      span.select2-chosen{
+        height: 38px;
+        line-height: 42px;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.select2-drop-active {
+  .select2-results {
+    .select2-result{
+      font-size: 12px;
+    }
+  }
+}
+
+/* ======= END SELECT2 RE-STYLING ======= */
+
+/* ======= BOOTSTRAP UI - CALENDAR RESTYLING ======= */
+ul.dropdown-menu{
+  padding: 5px;
+  li{
+    table thead tr th button.btn.btn-default.btn-sm{
+      background-color: $dark-white;
+      color: $gray-text;
+      font-family: "Open Sans", sans-serif;
+    }
+    table tbody tr td.text-center{
+      button.btn.btn-default.btn-sm.disabled{
+        background-color: $dark-gray;
+        color: white;
+      }
+      button.btn.btn-default.btn-sm.active, button.btn.btn-default.active{
+        background-color: $light-gray;
+      }
+      button.btn.btn-default.btn-sm.btn-info, button.btn.btn-default.btn-sm.btn-info.active, button.btn.btn-default.btn-info, button.btn.btn-default.btn-info.active{
+        background-color: $yellow;
+        border-color: $yellow;
+      }
+    }
+  }
+  .btn{
+    @include border-radius(2px);
+    color: $gray-text;
+  }
+  .text-info{
+    color: $dark-gray;
+  }
+  .btn.active{
+    -webkit-box-shadow: inset 0px 0px 0px 0px rgba(159,159,159,1);
+    -moz-box-shadow: inset 0px 0px 0px 0px rgba(159,159,159,1);
+    box-shadow: inset 0px 0px 0px 0px rgba(159,159,159,1);
+  }
+}
+
+/* ======= END BOOTSTRAP UI - CALENDAR RESTYLING ======= */
+
