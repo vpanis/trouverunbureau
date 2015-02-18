@@ -9,7 +9,7 @@ Deskspotting::Application.routes.draw do
 
   root to: 'landing#index'
 
-  resources :venues, only: [:show]
+  resources :venues, only: [:edit, :update, :show]
   resources :users, only: [:show, :edit, :update]
   resources :spaces, only: [:edit, :update]
 
