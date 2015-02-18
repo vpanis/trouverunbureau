@@ -87,8 +87,7 @@ class Venue < ActiveRecord::Base
   end
 
   def none_paid_or_pending
-
-    !bookings.any? { |c| c.paid? || c.pending_authorization? }
+    !spaces.any? { |s| s.none_paid_or_pending? }
   end
 
   private
