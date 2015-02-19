@@ -17,27 +17,43 @@ Deskspotting::Application.routes.draw do
     get :spaces, to: 'space#list'
 
     resources :users do
-        member do
-          get :wishlist, to: 'wishlist#wishlist'
-          post :wishlist, to: 'wishlist#add_space_to_wishlist'
-          delete :wishlist, to: 'wishlist#remove_space_from_wishlist'
-          post :login_as_organization, to: 'users#login_as_organization'
-          delete :reset_organization, to: 'users#reset_organization'
-          get :reviews, to: 'reviews#user_reviews'
-        end
+      member do
+        get :wishlist, to: 'wishlist#wishlist'
+        post :wishlist, to: 'wishlist#add_space_to_wishlist'
+        delete :wishlist, to: 'wishlist#remove_space_from_wishlist'
+        post :login_as_organization, to: 'users#login_as_organization'
+        delete :reset_organization, to: 'users#reset_organization'
+        get :reviews, to: 'reviews#user_reviews'
+        get :inquiries, to: 'booking_inquiries#inquiries', entity: User
+        get :inquiries_with_news, to: 'booking_inquiries#inquiries_with_news', entity: User
+      end
     end
 
     resources :organizations do
       member do
         get :reviews, to: 'reviews#organization_reviews'
+        get :inquiries, to: 'booking_inquiries#inquiries', entity: Organization
+        get :inquiries_with_news, to: 'booking_inquiries#inquiries_with_news', entity: Organization
       end
     end
 
     resources :venues do
-        member do
-          get :reviews, to: 'reviews#venue_reviews'
-        end
+      member do
+        get :reviews, to: 'reviews#venue_reviews'
+      end
     end
+
+    resources :inquiries do
+      member do
+        put :last_seen_message, to: 'booking_inquiries#last_seen_message'
+        post :messages, to: 'booking_inquiries#add_message'
+        get :messages, to: 'booking_inquiries#messages'
+        put :accept, to: 'booking_inquiries#accept'
+        put :cancel, to: 'booking_inquiries#cancel'
+        put :deny, to: 'booking_inquiries#deny'
+      end
+    end
+
   end # api/v1
 
 end

@@ -8,10 +8,18 @@ module Api
 
       # We will be using the current_represented, but we ask this data
       # for future cache reasons
-      # GET /represented/:id/inquiries?type=[User|Organization]
+      # GET /[users|organizations]/:id/inquiries
       def inquiries
         return unless represented_data_validation
         render status: 200, json: serialized_paginated_array(Booking.all_bookings_for(
+          current_represented), :inquiries, InquirySerializer)
+      end
+
+      # GET /[users|organizations]/:id/inquiries_with_news
+      def inqueries_with_news
+        return unless represented_data_validation
+        BookingManager.bookings_with_news(current_represented)
+        render status: 200, json: serialized_paginated_array(BookingManager.bookings_with_news(
           current_represented), :inquiries, InquirySerializer)
       end
 
@@ -27,15 +35,7 @@ module Api
         render status: 204, nothing: true
       end
 
-      # GET /represented/:id/inquiries?type=[User|Organization]
-      def inqueries_with_news
-        return unless represented_data_validation
-        BookingManager.bookings_with_news(current_represented)
-        render status: 200, json: serialized_paginated_array(BookingManager.bookings_with_news(
-          current_represented), :inquiries, InquirySerializer)
-      end
-
-      # POST /inquiry/:id/messages
+      # POST /inquiries/:id/messages
       def add_message
         booking = Booking.find_by_id(params[:id])
         return unless inquiry_data_validation(booking)
@@ -49,7 +49,7 @@ module Api
         render status: 200, json: MessageSerializer.new(message)
       end
 
-      # GET /inquiry/:id/messages[?from=x&to=x&amount=x&page=x]
+      # GET /inquiries/:id/messages[?from=x&to=x&amount=x&page=x]
       def messages
         booking = Booking.find_by_id(params[:id])
         return unless inquiry_data_validation(booking)
@@ -62,17 +62,17 @@ module Api
                                                              MessageSerializer)
       end
 
-      # PUT /inquiry/:id/accept
+      # PUT /inquiries/:id/accept
       def accept
         state_change(Booking.states[:pending_payment])
       end
 
-      # PUT /inquiry/:id/cancel
+      # PUT /inquiries/:id/cancel
       def cancel
         state_change(Booking.states[:canceled])
       end
 
-      # PUT /inquiry/:id/deny
+      # PUT /inquiries/:id/deny
       def deny
         state_change(Booking.states[:denied])
       end
@@ -89,11 +89,7 @@ module Api
       end
 
       def represented_data_validation
-        unless %w(User Organization).include?(params[:type])
-          render status: 400, json: { error: 'Invalid type' }
-          return false
-        end
-        if params[:id] != current_represented.id
+        if params[:id] != current_represented.id || params[:entity] != current_represented.class
           render status: 403, nothing: true
           return false
         end
