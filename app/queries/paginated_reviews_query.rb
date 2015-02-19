@@ -1,15 +1,11 @@
-class PaginatedReviewsQuery < PaginatedQuery
+class PaginatedReviewsQuery
 
   def venue_reviews(pagination_params, venue_id)
-    @relation = select_reviews_for_venue(venue_id)
-    paginate(pagination_params)
-    @relation
+    select_reviews_for_venue(venue_id).paginate(pagination_params)
   end
 
   def client_reviews(pagination_params, client_id, entity)
-    @relation = select_reviews_for_client(client_id, entity)
-    paginate(pagination_params)
-    @relation
+    select_reviews_for_client(client_id, entity).paginate(pagination_params)
   end
 
   def select_reviews_for_venue(venue_id)
