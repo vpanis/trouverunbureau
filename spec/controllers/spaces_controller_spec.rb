@@ -63,13 +63,15 @@ describe SpacesController do
 
       context 'when lower capacity' do
         context 'when there are bookings' do
-          let!(:a_booking) { create(:booking, space: a_space,
-                                    from: Time.zone.now.at_beginning_of_day,
-                                    to: Time.zone.now.at_end_of_day) }
+          let!(:a_booking) do
+            create(:booking, space: a_space,
+                             from: Time.zone.now.at_beginning_of_day,
+                             to: Time.zone.now.advance(minutes: 1))
+          end
           before do
-            byebug
             new_capacity = a_space.capacity - 1
             space_params = { id: a_space.id, capacity: new_capacity }
+
             patch :update, id: a_space.id, space: space_params
             a_space.reload
           end
@@ -78,23 +80,36 @@ describe SpacesController do
           end
         end
 
-        context 'where there arent bookings' do
+        context 'where there arent bookings of that space' do
+          let!(:a_booking) do
+            create(:booking, from: Time.zone.now.at_beginning_of_day,
+                             to: Time.zone.now.advance(minutes: 1))
+          end
+          before do
+            new_capacity = a_space.capacity - 1
+            space_params = { id: a_space.id, capacity: new_capacity }
+
+            patch :update, id: a_space.id, space: space_params
+            a_space.reload
+          end
+
           it 'succeeds' do
+            a_space.bookings.delete_all
             expect(response.status).to eq(302)
           end
         end
       end
 
       context 'when lower quantity' do
-        context 'when there are bookings' do
-          let!(:a_booking) { create(:booking, space: a_space,
-                                    from: Time.zone.now.at_beginning_of_day,
-                                    to: Time.zone.now.at_end_of_day) }
-          byebug
+        context 'when it is not bookable' do
+          let!(:a_booking) do
+            create(:booking, space: a_space,
+                             from: Time.zone.now.at_beginning_of_day,
+                             to: Time.zone.now.at_end_of_day)
+          end
           before do
-            byebug
-            new_capacity = a_space.capacity - 1
-            space_params = { id: a_space.id, capacity: new_capacity }
+            new_quantity = a_space.quantity - 1
+            space_params = { id: a_space.id, quantity: new_quantity }
             patch :update, id: a_space.id, space: space_params
             a_space.reload
           end
@@ -103,13 +118,19 @@ describe SpacesController do
           end
         end
 
-        context 'where there arent bookings' do
+        context 'where it is bookable' do
+          before do
+            new_quantity = a_space.quantity - 1
+            space_params = { id: a_space.id, quantity: new_quantity }
+            a_space.bookings.delete_all
+            patch :update, id: a_space.id, space: space_params
+            a_space.reload
+          end
           it 'succeeds' do
             expect(response.status).to eq(302)
           end
         end
       end
-
 
     end
 

@@ -26,8 +26,8 @@ class SpaceContext
     return true if new_capacity >= @space.capacity
     date_from = Time.zone.now.at_beginning_of_day - 1.day
     date_to = Time.zone.now.advance(months: 1).at_end_of_day
-    result = Booking.where { (from >= date_from) & (to <= date_to) }
-    result.present?
+    result =  @space.bookings.where { (from >= date_from) & (to <= date_to) }
+    !result.present?
   end
 
   def update?(space_params)
