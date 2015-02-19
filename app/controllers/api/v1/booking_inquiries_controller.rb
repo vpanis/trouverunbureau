@@ -1,15 +1,18 @@
 module Api
   module V1
     class BookingInquiriesController < ApplicationController
-      # include RepresentedHelper
-      include ParametersHelper
+      include RepresentedHelper
+      include ArraySerializerHelper
+
+      before_action :authenticate_user!
 
       # We will be using the current_represented, but we ask this data
       # for future cache reasons
       # GET /represented/:id/inquiries?type=[User|Organization]
       def inquiries
         return unless represented_data_validation
-        Booking.all_bookings_for(current_represented)
+        render status: 200, json: serialized_paginated_array(Booking.all_bookings_for(
+          current_represented), :inquiries, InquirySerializer)
       end
 
       # PUT /inquiries/:id/last_seen_message?message_id
@@ -28,6 +31,8 @@ module Api
       def inqueries_with_news
         return unless represented_data_validation
         BookingManager.bookings_with_news(current_represented)
+        render status: 200, json: serialized_paginated_array(BookingManager.bookings_with_news(
+          current_represented), :inquiries, InquirySerializer)
       end
 
       # POST /inquiry/:id/messages
@@ -41,7 +46,7 @@ module Api
         message = Message.new(message_params)
         return render status: 400, json: { error: message.errors } unless message.valid?
         message.save
-        render status: 200, json: message
+        render status: 200, json: MessageSerializer.new(message)
       end
 
       # GET /inquiry/:id/messages[?from=x&to=x&amount=x&page=x]
@@ -52,8 +57,9 @@ module Api
         messages = booking.messages
         messages = messages.where { created_at >= params[:from] } if params[:from]
         messages = messages.where { created_at <= params[:to] } if params[:to]
-        messages = messages.order('created_at DESC').paginate(pagination_params)
-        render status: 200, json: messages
+        messages = messages.order('created_at DESC')
+        render status: 200, json: serialized_paginated_array(messages, :inquiries,
+                                                             MessageSerializer)
       end
 
       # PUT /inquiry/:id/accept

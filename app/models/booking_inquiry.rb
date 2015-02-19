@@ -9,6 +9,15 @@ module BookingInquiry
     end.distinct
   end
 
+  def booking_with_news?(booking, represented)
+    last_message_date = booking.messages.last.created_at
+    if represented == booking.owner
+      last_message_date > booking.owner_last_seen
+    else
+      last_message_date > booking.venue_last_seen
+    end
+  end
+
   def change_last_seen(booking, represented, last_seen)
     booking.owner_last_seen = last_seen if booking.owner == represented
     booking.venue_last_seen = last_seen if booking.space.venue.owner == represented

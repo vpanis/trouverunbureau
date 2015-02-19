@@ -1,7 +1,7 @@
 module Api
   module V1
     class UsersController < ApiController
-      before_action :authenticate_user!, only: [:client_reviews]
+      before_action :authenticate_user!
 
       def login_as_organization
         organization = Organization.find_by(id: params[:organization_id])

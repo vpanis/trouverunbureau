@@ -9,6 +9,9 @@ class Organization < ActiveRecord::Base
   has_many :venues, as: :owner
   has_many :bookings, as: :owner
 
+  # Uploaders
+  mount_uploader :logo, LogoUploader
+
   # Callbacks
   after_initialize :initialize_fields
   after_create :assign_user
