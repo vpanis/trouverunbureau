@@ -14,8 +14,8 @@ class SpaceContext
     return true if new_quantity >= @space.quantity
     delta_quantity = (new_quantity - @space.quantity).abs
     booking_attributes = { state: Booking.states[:pending_authorization],
-                           from: Time.now.at_beginning_of_day - 1.day,
-                           to: Time.now.advance(years: 1).at_end_of_day,
+                           from: Time.zone.now.at_beginning_of_day - 1.day,
+                           to: Time.zone.now.advance(years: 1).at_end_of_day,
                            b_type: Booking.b_types[:hour], quantity: delta_quantity,
                            space: @space, owner: User.first }
     # TODO: el user debe ser el de la sesion
@@ -23,7 +23,11 @@ class SpaceContext
   end
 
   def valid_capacity?(new_capacity)
-
+    return true if new_capacity >= @space.capacity
+    date_from = Time.zone.now.at_beginning_of_day - 1.day
+    date_to = Time.zone.now.advance(months: 1).at_end_of_day
+    result = Booking.where { (from >= date_from) & (to <= date_to) }
+    result.present?
   end
 
   def update?(space_params)
