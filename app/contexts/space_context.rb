@@ -5,8 +5,8 @@ class SpaceContext
   end
 
   def can_update?(capacity_param, quantity_param)
-    capacity_aux = (capacity_param || capacity).to_i
-    quantity_aux = (quantity_param || quantity).to_i
+    capacity_aux = (capacity_param || @space.capacity).to_i
+    quantity_aux = (quantity_param || @space.quantity).to_i
     valid_quantity?(quantity_aux) && valid_capacity?(capacity_aux)
   end
 

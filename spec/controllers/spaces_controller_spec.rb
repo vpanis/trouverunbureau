@@ -61,37 +61,13 @@ describe SpacesController do
         expect(response.redirect_url).to eq(edit_space_url(a_space))
       end
 
-      context 'when no paid or pending_authorization bookings' do
-        context 'when lower capacity' do
+      context 'when lower capacity' do
+        context 'when there are bookings' do
+          let!(:a_booking) { create(:booking, space: a_space,
+                                    from: Time.zone.now.at_beginning_of_day,
+                                    to: Time.zone.now.at_end_of_day) }
           before do
-            new_capacity = a_space.capacity - 1
-            space_params = { id: a_space.id, capacity: new_capacity }
-            patch :update, id: a_space.id, space: space_params
-            a_space.reload
-          end
-          it 'succeeds' do
-            expect(response.status).to eq(302)
-          end
-        end
-
-        context 'when lower quantity' do
-          before do
-            new_quantity = a_space.quantity - 1
-            space_params = { id: a_space.id, quantity: new_quantity }
-            patch :update, id: a_space.id, space: space_params
-            a_space.reload
-          end
-          it 'succeeds' do
-            expect(response.status).to eq(302)
-          end
-        end
-      end
-
-      context 'when paid or pending_authorization bookings' do
-        let!(:a_booking) { create(:booking, space: a_space, state: :paid) }
-
-        context 'when lower capacity' do
-          before do
+            byebug
             new_capacity = a_space.capacity - 1
             space_params = { id: a_space.id, capacity: new_capacity }
             patch :update, id: a_space.id, space: space_params
@@ -102,10 +78,23 @@ describe SpacesController do
           end
         end
 
-        context 'when lower quantity' do
+        context 'where there arent bookings' do
+          it 'succeeds' do
+            expect(response.status).to eq(302)
+          end
+        end
+      end
+
+      context 'when lower quantity' do
+        context 'when there are bookings' do
+          let!(:a_booking) { create(:booking, space: a_space,
+                                    from: Time.zone.now.at_beginning_of_day,
+                                    to: Time.zone.now.at_end_of_day) }
+          byebug
           before do
-            new_quantity = a_space.quantity - 1
-            space_params = { id: a_space.id, quantity: new_quantity }
+            byebug
+            new_capacity = a_space.capacity - 1
+            space_params = { id: a_space.id, capacity: new_capacity }
             patch :update, id: a_space.id, space: space_params
             a_space.reload
           end
@@ -113,7 +102,14 @@ describe SpacesController do
             expect(response.status).to eq(412)
           end
         end
+
+        context 'where there arent bookings' do
+          it 'succeeds' do
+            expect(response.status).to eq(302)
+          end
+        end
       end
+
 
     end
 

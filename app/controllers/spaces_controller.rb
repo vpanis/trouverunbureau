@@ -8,6 +8,7 @@ class SpacesController < ApplicationController
   end
 
   def update
+    byebug
     @space = Space.find_by(id: params[:id])
     return render nothing: true, status: 404 unless @space.present?
     return render nothing: true, status: 412 unless SpaceContext.new(@space).update?(space_params)
