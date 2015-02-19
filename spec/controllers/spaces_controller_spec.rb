@@ -39,7 +39,7 @@ describe SpacesController do
   describe 'UPDATE spaces/:id/update' do
 
     context 'when the space exists' do
-      let!(:a_space) { create(:space) }
+      let(:a_space) { create(:space, capacity: 2) }
       let(:new_description) { 'new description' }
       let(:new_quantity) { a_space.quantity + 1 }
       before do
@@ -103,9 +103,9 @@ describe SpacesController do
       context 'when lower quantity' do
         context 'when it is not bookable' do
           let!(:a_booking) do
-            create(:booking, space: a_space,
+            create(:booking, state: Booking.states[:paid], space: a_space,
                              from: Time.zone.now.at_beginning_of_day,
-                             to: Time.zone.now.at_end_of_day)
+                             to: Time.zone.now.at_end_of_day, quantity: a_space.quantity)
           end
           before do
             new_quantity = a_space.quantity - 1

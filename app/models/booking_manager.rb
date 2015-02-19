@@ -36,6 +36,14 @@ class BookingManager
       custom_errors.empty?
     end
 
+    def bookable2?(booking_attributes = {})
+      booking = Booking.new(booking_attributes)
+      return false unless booking.valid?
+      custom_errors = ActiveModel::Errors.new(booking)
+      check_if_can_book_and_perform_without_venue_hours_validation(booking, 'FOR SHARE', custom_errors) {}
+      custom_errors.empty?
+    end
+
     def change_booking_status(user, booking, state)
       custom_errors = ActiveModel::Errors.new(booking)
       verify_states_changes(user, booking, state, custom_errors)
