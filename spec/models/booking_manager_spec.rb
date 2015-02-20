@@ -42,41 +42,46 @@ RSpec.describe BookingManager, type: :model do
       it 'returns false when ask if it\'s bookeable on a full day (monday)' do
         from = @next_monday_at_beginning.advance(hours: 8)
         to = @next_monday_at_beginning.advance(hours: 19).at_end_of_hour
-        expect(BookingManager.bookable?(owner: @user, space: @space,
-                                        b_type: Booking.b_types[:hour],
-                                        from: from, to: to, quantity: 1)).to be(false)
+        expect(BookingManager.bookable?({ owner: @user, space: @space,
+                                        b_type: Booking.b_types[:hour], from: from, to: to,
+                                        quantity: 1 }, 'check_if_can_book_and_perform'))
+                             .to be(false)
       end
 
       it 'returns true when ask if it\'s bookeable on an available day' do
         from = @next_monday_at_beginning.advance(days: 1, hours: 8)
         to = @next_monday_at_beginning.advance(days: 1, hours: 19).at_end_of_hour
-        expect(BookingManager.bookable?(owner: @user, space: @space,
-                                        b_type: Booking.b_types[:hour],
-                                        from: from, to: to, quantity: 1)).to be(true)
+        expect(BookingManager.bookable?({ owner: @user, space: @space,
+                                        b_type: Booking.b_types[:hour], from: from, to: to,
+                                        quantity: 1 }, 'check_if_can_book_and_perform'))
+                             .to be(true)
       end
 
       it 'returns false ask if it\'s bookeable on an available day but with a higher quantity' do
         from = @next_monday_at_beginning.advance(days: 1, hours: 8)
         to = @next_monday_at_beginning.advance(days: 1, hours: 19).at_end_of_hour
-        expect(BookingManager.bookable?(owner: @user, space: @space,
-                                        b_type: Booking.b_types[:hour],
-                                        from: from, to: to, quantity: 2)).to be(false)
+        expect(BookingManager.bookable?({ owner: @user, space: @space,
+                                        b_type: Booking.b_types[:hour], from: from, to: to,
+                                        quantity: 2 }, 'check_if_can_book_and_perform'))
+                             .to be(false)
       end
 
       it 'returns false ask if it\'s bookeable on an available day but with a unavailable range' do
         from = @next_monday_at_beginning.advance(days: 2, hours: 8)
         to = @next_monday_at_beginning.advance(days: 2, hours: 19).at_end_of_hour
-        expect(BookingManager.bookable?(owner: @user, space: @space,
-                                        b_type: Booking.b_types[:hour],
-                                        from: from, to: to, quantity: 1)).to be(false)
+        expect(BookingManager.bookable?({ owner: @user, space: @space,
+                                        b_type: Booking.b_types[:hour], from: from, to: to,
+                                        quantity: 1 }, 'check_if_can_book_and_perform'))
+                             .to be(false)
       end
 
       it 'returns true when ask if it\'s bookeable on an available day in a available range' do
         from = @next_monday_at_beginning.advance(days: 2, hours: 12, minutes: 30)
         to = @next_monday_at_beginning.at_end_of_hour.advance(days: 2, hours: 15, minutes: -30)
-        expect(BookingManager.bookable?(owner: @user, space: @space,
-                                        b_type: Booking.b_types[:hour],
-                                        from: from, to: to, quantity: 1)).to be(true)
+        expect(BookingManager.bookable?({ owner: @user, space: @space,
+                                        b_type: Booking.b_types[:hour], from: from, to: to,
+                                        quantity: 1 }, 'check_if_can_book_and_perform'))
+                             .to be(true)
       end
 
       it 'fails when quantity is greater than the space quantity' do

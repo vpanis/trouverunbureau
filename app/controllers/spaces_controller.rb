@@ -5,8 +5,7 @@ class SpacesController < ApplicationController
   def edit
     @space = Space.find_by(id: params[:id])
     return render nothing: true, status: 404 unless @space.present?
-    return render nothing: true, status: 403 unless SpaceContext.new(@space, current_user)
-                                                                .permissions?
+    return render nothing: true, status: 403 unless SpaceContext.new(@space, current_user).owner?
 
   end
 
@@ -14,7 +13,7 @@ class SpacesController < ApplicationController
     @space = Space.find_by(id: params[:id])
     return render nothing: true, status: 404 unless @space.present?
     space_context = SpaceContext.new(@space, current_user)
-    return render nothing: true, status: 403 unless space_context.permissions?
+    return render nothing: true, status: 403 unless space_context.owner?
     return render nothing: true, status: 412 unless space_context.update?(space_params)
     redirect_to edit_space_path(@space)
   end
