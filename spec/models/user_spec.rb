@@ -34,18 +34,55 @@ RSpec.describe User, type: :model do
     .is_greater_than_or_equal_to(0)
   end
 
+  # Inclusion
+  it do
+    should validate_inclusion_of(:language).in_array(User::LANGUAGES.map(&:to_s))
+  end
+
+  it do
+    should validate_inclusion_of(:gender).in_array(User::GENDERS.map(&:to_s))
+  end
+
+  it do
+    should validate_inclusion_of(:profession).in_array(Venue::PROFESSIONS.map(&:to_s))
+  end
+
   it 'should accept a nil email if the provider is present' do
-    user = User.create(first_name: 'test', password: 'testtest', provider: 'test')
+    user = User.create(first_name: 'test', password: 'testtest', provider: 'test',
+                       profession: Venue::PROFESSIONS.first.to_s)
     expect(user.valid?).to be(true)
   end
 
   it 'shouldn\'t accept a nil email if the provider is nil' do
-    user = User.create(first_name: 'test', password: 'testtest')
+    user = User.create(first_name: 'test', password: 'testtest',
+                       profession: Venue::PROFESSIONS.first.to_s)
     expect(user.valid?).to be(false)
   end
 
   it 'should add an email error, if both provider and email are nil' do
-    user = User.create(first_name: 'test', password: 'testtest')
+    user = User.create(first_name: 'test', password: 'testtest',
+                       profession: Venue::PROFESSIONS.first.to_s)
     expect(user.errors[:email]).to be_present
   end
+
+  it 'shouldn\'t accept invalid languages spoken' do
+    user = FactoryGirl.build(:user, languages_spoken: ['not_existing_language'])
+    expect(user.valid?).to be(false)
+  end
+
+  it 'should accept nil language' do
+    user = FactoryGirl.build(:user, language: nil)
+    expect(user.valid?).to be(true)
+  end
+
+  it 'should accept nil gender' do
+    user = FactoryGirl.build(:user, gender: nil)
+    expect(user.valid?).to be(true)
+  end
+
+  it 'shouldn\'t accept nil profession' do
+    user = FactoryGirl.build(:user, profession: nil)
+    expect(user.valid?).to be(false)
+  end
+
 end
