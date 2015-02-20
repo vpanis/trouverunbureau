@@ -40,7 +40,8 @@ class BookingManager
       booking = Booking.new(booking_attributes)
       return false unless booking.valid?
       custom_errors = ActiveModel::Errors.new(booking)
-      check_if_can_book_and_perform_without_venue_hours_validation(booking, 'FOR SHARE', custom_errors) {}
+      check_if_can_book_and_perform_without_venue_hours_validation(booking, 'FOR SHARE',
+                                                                   custom_errors) {}
       custom_errors.empty?
     end
 

@@ -13,7 +13,8 @@ module BookingReservation
     booking
   end
 
-  def check_if_can_book_and_perform_without_venue_hours_validation(booking, lock, custom_errors, &block)
+  def check_if_can_book_and_perform_without_venue_hours_validation(booking, lock, custom_errors,
+                                                                   &block)
     check_availability_without_venue_hours(booking, custom_errors)
     return booking unless booking.errors.empty?
     check_max_collition(booking, lock, custom_errors, &block)
@@ -49,8 +50,8 @@ module BookingReservation
     # Booking.lock(lock).where(':from BETWEEN bookings.from AND bookings.to OR
     #  :to BETWEEN bookings.from AND bookings.to', from: booking.from, to: booking.to)
     Booking.lock(lock).where(':from <= bookings.to AND :to >= bookings.from',
-      from: booking.from, to: booking.to)
-      .where(space: booking.space).where { state.eq_any my { block_states } }
+                             from: booking.from, to: booking.to).where(space: booking.space)
+      .where { state.eq_any my { block_states } }
       .order(from: :asc)
   end
 

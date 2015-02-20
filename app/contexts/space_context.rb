@@ -19,7 +19,6 @@ class SpaceContext
                            b_type: Booking.b_types[:month], quantity: delta_quantity,
                            price: 1, space: @space, owner: User.first }
     # TODO: el user debe ser el de la sesion
-    byebug
     BookingManager.bookable2?(booking_attributes)
   end
 
