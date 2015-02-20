@@ -29,7 +29,7 @@ describe VenuesController do
           end
           it 'assigns the requested venue to @venue' do
             get :edit, id: a_venue.id
-            expect(assigns(:space)).to eq(a_space)
+            expect(assigns(:venue)).to eq(a_venue)
           end
 
           it 'renders the :edit template' do
@@ -41,7 +41,7 @@ describe VenuesController do
         context ' when has not permissions' do
           let!(:a_venue) { create(:venue) }
           it 'succeeds' do
-            get :edit, id: a_space.id
+            get :edit, id: a_venue.id
             expect(response.status).to eq(403)
           end
         end # when has not permissions

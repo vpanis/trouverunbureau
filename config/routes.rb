@@ -9,12 +9,8 @@ Deskspotting::Application.routes.draw do
 
   root to: 'landing#index'
 
-<<<<<<< HEAD
   resources :venues, only: [:edit, :update, :show]
   resources :users, only: [:show, :edit, :update]
-=======
-  resources :venues, only: [:show]
->>>>>>> more little refactoring
   resources :spaces, only: [:edit, :update]
 
   api_version(module: "api/v1", path: { value: 'api/v1' }) do

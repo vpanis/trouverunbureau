@@ -6,7 +6,7 @@ class VenueContext
   end
 
   def owner?
-    @current_represented.present? && @space.venue.owner == @current_represented
+    @current_represented.present? && @venue.owner == @current_represented
   end
 
   def update_venue?(venue_params)
