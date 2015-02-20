@@ -1,12 +1,12 @@
 class SpaceContext
 
-  def initialize(space, current_user)
+  def initialize(space, current_represented)
     @space = space
-    @current_user = current_user
+    @current_represented = current_represented
   end
 
   def owner?
-    @current_user.present? && @space.venue.owner == @current_user
+    @current_represented.present? && @space.venue.owner == @current_represented
   end
 
   def update_space?(space_params)
@@ -29,7 +29,7 @@ class SpaceContext
                            from: Time.zone.now.at_beginning_of_day - 1.day,
                            to: Time.zone.now.advance(years: 1).at_end_of_day,
                            b_type: Booking.b_types[:month], quantity: delta_quantity,
-                           price: 1, space: @space, owner: @current_user }
+                           price: 1, space: @space, owner: @current_represented }
     BookingManager.bookable?(booking_attributes,
                              'check_if_can_book_and_perform_without_venue_hours_validation')
   end
