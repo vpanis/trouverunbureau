@@ -8,17 +8,13 @@ module BookingReservation
 
   def check_if_can_book_and_perform(booking, lock, custom_errors, &block)
     check_availability(booking, custom_errors)
-    return booking unless booking.errors.empty?
-    check_max_collition(booking, lock, custom_errors, &block)
-    booking
+    check_if_can_book_auxiliar(booking, lock, custom_errors, &block)
   end
 
   def check_if_can_book_and_perform_without_venue_hours_validation(booking, lock, custom_errors,
                                                                    &block)
     check_availability_without_venue_hours(booking, custom_errors)
-    return booking unless booking.errors.empty?
-    check_max_collition(booking, lock, custom_errors, &block)
-    booking
+    check_if_can_book_auxiliar(booking, lock, custom_errors, &block)
   end
 
   def check_availability(booking, custom_errors)
@@ -81,4 +77,11 @@ module BookingReservation
     !(booking.changed_attributes.keys & aux_array).empty?
   end
 
+  private
+
+  def check_if_can_book_auxiliar(booking, lock, custom_errors, &block)
+    return booking unless booking.errors.empty?
+    check_max_collition(booking, lock, custom_errors, &block)
+    booking
+  end
 end
