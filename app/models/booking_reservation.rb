@@ -13,17 +13,17 @@ module BookingReservation
 
   def check_if_can_book_and_perform_without_venue_hours_validation(booking, lock, custom_errors,
                                                                    &block)
-    check_availability_without_venue_hours(booking, custom_errors)
+    verify_dates(booking, custom_errors)
     check_if_can_book_auxiliar(booking, lock, custom_errors, &block)
   end
 
   def check_availability(booking, custom_errors)
-    check_availability_without_venue_hours(booking, custom_errors)
+    verify_dates(booking, custom_errors)
     return if valid_hours_for_venue?(booking)
     custom_errors.add(:invalid_venue_hours, from: booking.from, to: booking.to)
   end
 
-  def check_availability_without_venue_hours(booking, custom_errors)
+  def verify_dates(booking, custom_errors)
     verify_quantity(booking, custom_errors)
     custom_errors.add(:from_date_bigger_than_to,
                       from: booking.from, to: booking.to) if booking.from > booking.to
