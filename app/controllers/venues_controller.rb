@@ -1,17 +1,22 @@
 class VenuesController < ApplicationController
   inherit_resources
+  include RepresentedHelper
+  before_action :authenticate_user!, only: [:edit, :update]
 
   def edit
     @venue = Venue.find_by(id: params[:id])
     return render nothing: true, status: 404 unless @venue.present?
-
+    return render nothing: true, status: 403 unless VenueContext.new(@venue, current_represented)
+                                                                .owner?
   end
 
   def update
     @venue = Venue.find_by(id: params[:id])
     return render nothing: true, status: 404 unless @venue.present?
     return render nothing: true, status: 404 unless @venue.can_update(venue_params)
-    @venue.update_attributes(venue_params)
+    venue_context = VenueContext.new(@venue, current_represented)
+    return render nothing: true, status: 403 unless venue_context.owner?
+    return render nothing: true, status: 412 unless venue_context.update_space?(venue_params)
     redirect_to edit_venue_path(@venue)
   end
 

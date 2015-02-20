@@ -86,10 +86,6 @@ class Venue < ActiveRecord::Base
     end.count
   end
 
-  def none_paid_or_pending
-    !spaces.any? { |s| s.none_paid_or_pending? }
-  end
-
   private
 
   def initialize_fields
