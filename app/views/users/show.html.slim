@@ -1,0 +1,30 @@
+= render 'shared/menu_bar'
+p = link_to "Editar", edit_user_path(@user)
+.venue-bar.row
+  .col-xs-12.col-sm-7.col-md-7.col-lg-8
+    .venue-avatar
+      - if @user.avatar?
+        = image_tag(@user.avatar.url, width: '90px', height: '90px')
+      - else
+        = image_tag('default-avatar.png', width: '90px', height: '90px')
+    .basic-info
+      .stars
+        - (1..5).each do |i|
+          .star class=('active' if @user.rating > i)
+      .reviews
+        = "(#{@user.quantity_reviews})"
+      .venue-name
+        h1 = @user.first_name
+      .location
+        p user location
+
+p about me
+p languages:
+ul
+  - @user.languages_spoken.each do |lang|
+    li #{t("languages.#{lang}")}
+p company:
+p = @user.company_name
+p profession:
+p = @user.profession
+= render 'reviews', user: @user

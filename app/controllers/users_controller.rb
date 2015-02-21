@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   inherit_resources
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   def edit
     @user = User.find(params[:id])
     @gender_options = User::GENDERS.map { |g| [t("users.genders.#{g}"), g.to_s] }
@@ -19,7 +23,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :phone, :language, :avatar,
-                                 :date_of_birth, :gender, :profession)
+                                 :date_of_birth, :gender, :profession, :company_name)
   end
 
 end

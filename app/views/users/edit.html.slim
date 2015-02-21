@@ -23,6 +23,9 @@
             label Email
             = f.text_field :email, placeholder: 'Email', class: 'form-control'
           .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+            label Company name
+            = f.text_field :company_name, placeholder: 'Company name', class: 'form-control'
+          .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
             label Language
             = f.select(:language, @language_options, {}, {class: 'form-control gender-select'})
           .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6

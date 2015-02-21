@@ -13,6 +13,7 @@ RSpec.describe User, type: :model do
   # Presence
   it { should validate_presence_of(:first_name) }
   it { should validate_presence_of(:email) }
+  it { should validate_presence_of(:company_name) }
   # it { should validate_presence_of(:password) }
 
   # Numericality
@@ -49,19 +50,19 @@ RSpec.describe User, type: :model do
 
   it 'should accept a nil email if the provider is present' do
     user = User.create(first_name: 'test', password: 'testtest', provider: 'test',
-                       profession: Venue::PROFESSIONS.first.to_s)
+                       profession: Venue::PROFESSIONS.first.to_s, company_name: 'Wolox')
     expect(user.valid?).to be(true)
   end
 
   it 'shouldn\'t accept a nil email if the provider is nil' do
     user = User.create(first_name: 'test', password: 'testtest',
-                       profession: Venue::PROFESSIONS.first.to_s)
+                       profession: Venue::PROFESSIONS.first.to_s, company_name: 'Wolox')
     expect(user.valid?).to be(false)
   end
 
   it 'should add an email error, if both provider and email are nil' do
     user = User.create(first_name: 'test', password: 'testtest',
-                       profession: Venue::PROFESSIONS.first.to_s)
+                       profession: Venue::PROFESSIONS.first.to_s, company_name: 'Wolox')
     expect(user.errors[:email]).to be_present
   end
 

@@ -1,7 +1,7 @@
 .venue-reviews
   h2 #{t('venues.show.reviews')}
   .separator
-  .reviews-list ng-controller="ReviewsCtrl" data-avatar=(image_url('default-avatar.png')) data-venue-id=(venue.id)
+  .reviews-list ng-controller="VenueReviewsCtrl" data-avatar=(image_url('default-avatar.png')) data-venue-id=(venue.id)
     .review.row ng-repeat=("review in reviews")
       .user.col-xs-8.col-sm-2.col-md-2.col-lg-2.col-xs-offset-2.col-sm-offset-0
         .avatar
