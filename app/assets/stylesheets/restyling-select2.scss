@@ -1,0 +1,97 @@
+@import 'variables';
+@import 'mixins';
+@import 'tools';
+
+.select2-container{
+  a.select2-choice{
+    height: 50px;
+    background-color: white;
+    background-image: none;
+    span.select2-chosen{
+      background-color: white;
+      height: 50px;
+      @include border-radius(0px);
+      border: 0;
+      background: white;
+      font-size: 14px;
+      letter-spacing: 0.08rem;
+      font-weight: 300;
+      padding-bottom: 2px;
+      color: $gray-text;
+      line-height: 50px;
+    }
+    span.select2-arrow{
+      background-color: white;
+      background-image: none;
+      border-left: none;
+      width: 30px;
+      b{
+        @include at2x('arrow-dropdown', 14px, 10px);
+        background-repeat: no-repeat;
+        background-position-y: 22px;
+        background-position-y: calc(50% + 2px);
+        background-size: 14px 10px;
+      }
+    }
+  }
+}
+
+.select2-container.select2-dropdown-open .select2-choice .select2-arrow b{
+  @include at2x('arrow-dropdown-up', 14px, 10px);
+  background-position: 0px 22px;
+  background-position-y: calc(50% + 2px);
+}
+.select2-dropdown-open.select2-drop-above .select2-choice, .select2-dropdown-open.select2-drop-above .select2-choices{
+  border: none;
+  background-image: none;
+}
+.select2-drop.select2-drop-above.select2-drop-active{
+  border-top: none;
+}
+
+.select2-drop-active{
+  border: none;
+  .select2-search{
+  }
+  .select2-results{
+    padding: 0px;
+    margin: 4px 0px;
+    .select2-result{
+      background-color: white;
+      font-size: 14px;
+      letter-spacing: 0.08rem;
+      font-weight: 300;
+      padding-bottom: 2px;
+      color: $gray-text;
+      line-height: 35px;
+    }
+    .select2-highlighted{
+      color: black;
+      background-color: $yellow;
+      font-weight: 700;
+      letter-spacing: 0.08rem;
+    }
+  }
+}
+/* select style for the forms within the dashboard*/
+.dashboard-form{
+  .select2-container{
+    a.select2-choice{
+      height: 38px;
+      padding-left: 12px;
+      span.select2-chosen{
+        height: 38px;
+        line-height: 42px;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.select2-drop-active {
+  .select2-results {
+    .select2-result{
+      font-size: 12px;
+    }
+  }
+}

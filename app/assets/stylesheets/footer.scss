@@ -1,0 +1,129 @@
+@import 'variables';
+@import 'mixins';
+@import 'tools';
+
+#footer{
+  a{
+    color: white;
+    text-decoration: none;
+  }
+  .icon{
+    @include at2x('isologo-top-bar', 205px, 35px);
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 205px;
+    height: 35px;
+    margin-left: 14px;
+    margin-top: 12px;
+  }
+  .info{
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  background: $light-black;
+  .row{
+    width: 99%;
+    margin: 0px auto;
+  }
+  .icon{
+    width: 100%;
+    height: 200px;
+    background-position-y: 70%;
+  }
+  .company{
+    padding-left: 20%;
+    a{
+      display: block;
+      font-weight: 300;
+      letter-spacing: 0.06rem;
+      line-height: 25px;
+    }
+    a:hover{
+      color: $yellow;
+    }
+  }
+  .company, .find-us{
+    h4{
+      color: $yellow;
+      text-transform: uppercase;
+      margin-top: 42px;
+      font-size: 11px;
+      letter-spacing: 0.35rem;
+      font-weight: 700;
+    }
+    .separator{
+      width: 50px;
+      margin: 11px 0px;
+    }
+  }
+  .find-us{
+    padding-left: 20%;
+    .social-icons{
+      height: 100px;
+      padding: 28px 0px;
+      min-width: 216px;
+      .social-icon{
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        margin-right: 14px;
+        @include at2x('social-icons-sprite', 170px, 80px);
+      }
+      .twitter{
+        background-position: -1px 0px;
+      }
+      .twitter:hover{
+        background-position: -1px 40px;
+      }
+      .facebook{
+        background-position: -44px 0px;
+      }
+      .facebook:hover{
+        background-position: -44px 40px;
+      }
+      .linkedin{
+        background-position: -87px 0px;
+      }
+      .linkedin:hover{
+        background-position: -87px 40px;
+      }
+      .instagram{
+        background-position: -130px 0px;
+      }
+      .instagram:hover{
+        background-position: -130px 40px;
+      }
+    }
+    .language{
+      margin-top: 5px;
+      border-bottom: solid 1px white;
+      p{
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.1rem;
+        display: inline-block;
+        width: 90%;
+        text-align: left;
+      }
+      p.arrow{
+        text-align: right;
+        width: 14px;
+        color: white;
+      }
+    }
+  }
+  .rights{
+    text-align: center;
+    color: white;
+    font-weight: 300;
+    padding: 24px;
+    font-size: 11px;
+    letter-spacing: 0.08rem;
+    a{
+      color: $dark-gray;
+    }
+  }
+}

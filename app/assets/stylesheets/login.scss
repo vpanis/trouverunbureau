@@ -1,0 +1,111 @@
+@import 'variables';
+@import 'mixins';
+@import 'tools';
+
+.small-italic{
+  @include dark-gray-regular-text;
+  font-style: italic;
+  vertical-align: top;
+  line-height: 25px;
+}
+
+.dark-gray-regular{
+  @include dark-gray-regular-text;
+}
+
+.aqua-bold{
+  color: $aqua;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+.login-page{
+  width: 98%;
+  margin-right: auto;
+  margin-left: auto;
+  h1, h2{
+    text-align: center;
+  }
+  h1.icon{
+    @include at2x('isologotipo-login', 205px, 35px);
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    width: 100%;
+    height: 35px;
+  }
+  .section-header h2{
+    @include section-text;
+    margin-top: 2px;
+    span{
+      line-height: 28px;
+      padding-bottom: 7px;
+      border-bottom: 2px solid $yellow;
+    }
+  }
+
+  .fb-login-button{
+    background: $fb-blue;
+    background-image: image-url('facebook.png');
+    background-size: 16px 24px;
+    background-repeat: no-repeat;
+    background-position-x: 16px;
+    background-position-y: 12px;
+    height: 46px;
+    margin: 25px 0px;
+    @include border-radius(5px);
+    a, a:hover{
+      color: white;
+    }
+    .fb-button-text{
+      height: 19px;
+      border-left: 1px solid white;
+      margin-left: 55px;
+      position: relative;
+      top: 13px;
+      text-align: center;
+      letter-spacing: 0.08rem;
+    }
+  }
+  .section-separator{
+    @include section-text;
+    width: 100%;
+    height: 10px;
+    border-bottom: solid 2px $yellow;
+    margin-bottom: 23px;
+    .separator-text{
+      float: right;
+      background-color: white;
+      margin-right: 44%;
+      padding: 0 10px;
+    }
+
+  }
+  .help{
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: $dark-gray;
+  }
+  #login-form, #sigunp-form, #reset-password-form{
+    color: $dark-gray;
+  }
+  .rounded-button{
+    width: 100%;
+  }
+  .form-footer{
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 22px;
+    .left{
+      text-align: right;
+      width: 50%;
+      padding-right: 5px;
+    }
+    .right{
+      text-align: left;
+      width: 50%;
+      padding-left: 5px;
+    }
+  }
+}

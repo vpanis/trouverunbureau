@@ -1,0 +1,22 @@
+@import 'variables';
+@import 'mixins';
+
+.yellow{
+  color: $yellow;
+}
+
+.aqua{
+  color: $aqua;
+}
+
+.uppercase{
+  text-transform: uppercase;
+}
+
+.left{
+  float: left;
+}
+
+.right{
+  float: right;
+}
