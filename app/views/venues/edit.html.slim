@@ -71,5 +71,14 @@
             label #{t('venue.country')}
             = f.text_field :country
 
+      - (1..7).each do |day|
+        p = "DAY: #{day}"
+        p = "from:"
+
+        = text_field_tag 'day_from[]', "day_from"
+
+        p = "to:"
+        = text_field_tag 'day_to[]', "day_to"
+
   .full-width-submit-button
     = f.submit 'Save', class: 'submit-button', id: 'save-venue'

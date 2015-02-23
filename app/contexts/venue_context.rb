@@ -10,7 +10,7 @@ class VenueContext
   end
 
   def update_venue?(venue_params)
-    return false unless owner?
+    # return false unless owner?
     @venue.update_attributes!(venue_params)
   end
 
