@@ -30,7 +30,7 @@ class SpaceContext
                            to: Time.zone.now.advance(years: 1).at_end_of_day,
                            b_type: Booking.b_types[:month], quantity: delta_quantity,
                            price: 1, space: @space, owner: @current_represented }
-    BookingManager.bookable_without_venue_hours?(booking_attributes)
+    BookingManager.bookable?(booking_attributes, false)
   end
 
   def valid_capacity?(new_capacity)
