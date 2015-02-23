@@ -13,6 +13,6 @@
         .message
           p() {{review.message}}
           .separator
-    .pagination-container
-      pagination.pagination-sm ng-if="totalReviews > 0" ng-change="getReviews()" total-items="totalReviews" ng-model="currentPage" max-size="3" rotate="false" boundary-links="true" previous-text="‹" next-text="›" first-text="«" last-text="»" items-per-page="itemsPerPage"
+    .pagination-container.venue-reviews-pagination
+      pagination.pagination-sm ng-change="getReviews()" total-items="totalReviews" ng-model="currentPage" max-size="3" rotate="false" boundary-links="true" previous-text="‹" next-text="›" first-text="«" last-text="»" items-per-page="itemsPerPage"
     .no-reviews ng-if="totalReviews == 0"  #{t('venues.show.no_reviews')}

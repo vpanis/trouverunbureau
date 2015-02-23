@@ -13,6 +13,10 @@ angular.module('deskSpotting.venue_reviews', []).controller "VenueReviewsCtrl", 
         $scope.reviews = result.reviews
         $scope.totalReviews = result.count
         $scope.currentPage = result.current_page
+        if $scope.totalReviews > 0
+          $(".venue-reviews-pagination").show()
+        return
+      return
 
     $scope.getReviews()
 ]
