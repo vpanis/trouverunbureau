@@ -18,6 +18,9 @@ p = link_to "Editar", edit_user_path(@user)
       .location
         p user location
 
+p User since:
+p = @user.created_at.strftime('%B, %Y')
+
 p about me
 p languages:
 ul

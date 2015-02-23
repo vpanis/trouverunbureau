@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   after_initialize :initialize_fields
 
   # Validations
-  validates :first_name, :company_name, presence: true
+  validates :first_name, :company_name, :profession, presence: true
   validates :password, presence: true, unless: :created_at
 
   validates :email, format: {
