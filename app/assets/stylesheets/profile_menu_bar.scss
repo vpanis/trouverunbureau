@@ -1,0 +1,32 @@
+@import 'variables';
+@import 'mixins';
+@import 'tools';
+
+.user-menu {
+  background-color: $dark-white;
+  box-shadow: 0px 0px 10px $dark-gray;
+  ul {
+    float:none;
+    margin: 0 auto;
+    display: table;
+    table-layout: fixed;
+    a {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      color: $dark-gray;
+      position: relative;
+      &.active {
+        color: $black;
+        font-weight: 700;
+        &:before {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          border-bottom: 5px solid $yellow;
+        }
+      }
+    }
+  }
+}
