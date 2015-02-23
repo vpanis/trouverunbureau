@@ -40,7 +40,7 @@ describe SpacesController do
 
         context ' when has not permissions' do
           let!(:a_space) { create(:space) }
-          it 'succeeds' do
+          it 'fails' do
             get :edit, id: a_space.id
             expect(response.status).to eq(403)
           end
