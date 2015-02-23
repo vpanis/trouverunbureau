@@ -12,6 +12,7 @@ RSpec.describe User, type: :model do
 
   # Presence
   it { should validate_presence_of(:first_name) }
+  it { should validate_presence_of(:last_name) }
   it { should validate_presence_of(:email) }
   it { should validate_presence_of(:company_name) }
   it { should validate_presence_of(:profession) }
@@ -50,19 +51,20 @@ RSpec.describe User, type: :model do
   end
 
   it 'should accept a nil email if the provider is present' do
-    user = User.create(first_name: 'test', password: 'testtest', provider: 'test',
+    user = User.create(first_name: 'test', last_name: 'master', password: 'testtest',
+                       provider: 'test', gender: 'f',
                        profession: Venue::PROFESSIONS.first.to_s, company_name: 'Wolox')
     expect(user.valid?).to be(true)
   end
 
   it 'shouldn\'t accept a nil email if the provider is nil' do
-    user = User.create(first_name: 'test', password: 'testtest',
+    user = User.create(first_name: 'test', last_name: 'super', password: 'testtest', gender: 'f',
                        profession: Venue::PROFESSIONS.first.to_s, company_name: 'Wolox')
     expect(user.valid?).to be(false)
   end
 
   it 'should add an email error, if both provider and email are nil' do
-    user = User.create(first_name: 'test', password: 'testtest',
+    user = User.create(first_name: 'test', last_name: 'sir', password: 'testtest', gender: 'f',
                        profession: Venue::PROFESSIONS.first.to_s, company_name: 'Wolox')
     expect(user.errors[:email]).to be_present
   end
@@ -75,16 +77,6 @@ RSpec.describe User, type: :model do
   it 'should accept nil language' do
     user = FactoryGirl.build(:user, language: nil)
     expect(user.valid?).to be(true)
-  end
-
-  it 'should accept nil gender' do
-    user = FactoryGirl.build(:user, gender: nil)
-    expect(user.valid?).to be(true)
-  end
-
-  it 'shouldn\'t accept nil profession' do
-    user = FactoryGirl.build(:user, profession: nil)
-    expect(user.valid?).to be(false)
   end
 
 end
