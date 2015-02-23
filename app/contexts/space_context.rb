@@ -41,7 +41,7 @@ class SpaceContext
   end
 
   def no_bookings?(date_from, date_to)
-    !(@space.bookings.where { (from >= date_from) & (to <= date_to) }).present?
+    (@space.bookings.where { (from >= date_from) & (to <= date_to) }).empty?
   end
 
 end
