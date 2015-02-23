@@ -13,10 +13,9 @@ class VenuesController < ApplicationController
   def update
     @venue = Venue.find_by(id: params[:id])
     return render nothing: true, status: 404 unless @venue.present?
-    return render nothing: true, status: 404 unless @venue.can_update(venue_params)
     venue_context = VenueContext.new(@venue, current_represented)
     return render nothing: true, status: 403 unless venue_context.owner?
-    return render nothing: true, status: 412 unless venue_context.update_space?(venue_params)
+    return render nothing: true, status: 412 unless venue_context.update_venue?(venue_params)
     redirect_to edit_venue_path(@venue)
   end
 

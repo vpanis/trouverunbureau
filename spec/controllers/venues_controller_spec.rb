@@ -57,7 +57,7 @@ describe VenuesController do
     end # when user logged in
   end # GET venues/:id/edit
 
-    describe 'UPDATE spaces/:id/update' do
+  describe 'UPDATE venues/:id/update' do
     context 'when user logged in' do
       before(:each) do
         @user_logged = FactoryGirl.create(:user)
@@ -67,31 +67,28 @@ describe VenuesController do
       after(:each) do
         sign_out @user_logged
       end
-      context 'when the space exists' do
+      context 'when the venue exists' do
         context 'when has permissions' do
           let(:a_venue) { create(:venue, owner: @user_logged) }
           let(:a_space) { create(:space, capacity: 2, venue: a_venue) }
           let(:new_description) { 'new description' }
-          let(:new_quantity) { a_space.quantity + 1 }
           before do
-            space_params = { id: a_space.id, description: new_description, quantity: new_quantity }
-            patch :update, id: a_space.id, space: space_params
-            a_space.reload
+            venue_params = { id: a_venue.id, description: new_description }
+            patch :update, id: a_venue.id, venue: venue_params
+            a_venue.reload
           end
 
           it 'succeeds' do
             expect(response.status).to eq(302)
           end
 
-          it 'updates the space' do
-            expect(a_space.description).to eq(new_description)
-            expect(a_space.quantity).to eq(new_quantity)
+          it 'updates the venue' do
+            expect(a_venue.description).to eq(new_description)
           end
 
           it 'renders the :edit template' do
-            expect(response.redirect_url).to eq(edit_space_url(a_space))
+            expect(response.redirect_url).to eq(edit_venue_url(a_venue))
           end
-
 
         end
 
@@ -99,11 +96,10 @@ describe VenuesController do
           let(:a_venue) { create(:venue) }
           let(:a_space) { create(:space, capacity: 2, venue: a_venue) }
           let(:new_description) { 'new description' }
-          let(:new_quantity) { a_space.quantity + 1 }
           before do
-            space_params = { id: a_space.id, description: new_description, quantity: new_quantity }
-            patch :update, id: a_space.id, space: space_params
-            a_space.reload
+            venue_params = { id: a_venue.id, description: new_description }
+            patch :update, id: a_venue.id, venue: venue_params
+            a_venue.reload
           end
           it 'fails' do
             expect(response.status).to eq(403)
@@ -111,7 +107,7 @@ describe VenuesController do
         end
       end
 
-      context 'when the space does not exist' do
+      context 'when the venue does not exist' do
         before do
           patch :update, id: -1
         end
@@ -122,5 +118,5 @@ describe VenuesController do
       end
     end # when user logged in
 
-  end # UPDATE spaces/:id/update
+  end # UPDATE venues/:id/update
 end
