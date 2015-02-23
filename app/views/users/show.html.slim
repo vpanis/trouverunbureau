@@ -1,5 +1,5 @@
 = render 'shared/menu_bar'
-p = link_to "Editar", edit_user_path(@user)
+p = link_to t("users.edit_profile"), edit_user_path(@user)
 .venue-bar.row
   .col-xs-12.col-sm-7.col-md-7.col-lg-8
     .venue-avatar
@@ -23,7 +23,7 @@ p = @user.created_at.strftime('%B, %Y')
 p interests:
 p = @user.interests
 
-p about me
+p = t('users.about_me')
 p languages:
 ul
   - @user.languages_spoken.each do |lang|
@@ -31,5 +31,5 @@ ul
 p company:
 p = @user.company_name
 p profession:
-p = @user.profession
+p = t("venue.professions.#{@user.profession}")
 = render 'reviews', user: @user

@@ -23,6 +23,9 @@ en:
   languages:
     es: 'Español'
     en: 'English'
+  commons:
+    save: 'Save'
+    cancel: 'Cancel'
   session:
     email: 'Email address'
     password: 'Password'
@@ -206,10 +209,17 @@ en:
       reviews: 'Reviews'
       no_reviews: 'No reviews'
   users:
+    edit_profile: 'Edit profile'
+    about_me: 'About me'
     genders:
       m: 'Male'
       f: 'Female'
-
-
-
-
+    first_name: 'First name'
+    last_name: 'Last Name'
+    gender: 'Gender'
+    phone: 'Phone Number'
+    profession: 'Profession'
+    email: 'Email'
+    company_name: 'Company name'
+    language: 'Language'
+    date_of_birth: 'Date of birth'
