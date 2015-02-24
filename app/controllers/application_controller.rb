@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
 
   serialization_scope :view_context
 
+  rescue_from ActiveRecord::RecordNotFound, with: :redirect_to_not_found
+
   private
 
   def json_request?
@@ -23,6 +25,11 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_in) do |u|
       u.permit(:email, :password, :remember_me)
     end
+  end
+
+  def redirect_to_not_found
+    # TODO: redirect to custom 404 page
+    redirect_to root_path
   end
 
 end

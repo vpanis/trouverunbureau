@@ -1,4 +1,4 @@
-angular.module('deskSpotting.reviews', []).controller "ReviewsCtrl", [
+angular.module('deskSpotting.venue_reviews', []).controller "VenueReviewsCtrl", [
   '$scope'
   'Restangular'
   ($scope, Restangular) ->
@@ -13,6 +13,10 @@ angular.module('deskSpotting.reviews', []).controller "ReviewsCtrl", [
         $scope.reviews = result.reviews
         $scope.totalReviews = result.count
         $scope.currentPage = result.current_page
+        if $scope.totalReviews > 0
+          $(".venue-reviews-pagination").show()
+        return
+      return
 
     $scope.getReviews()
 ]

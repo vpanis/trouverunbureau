@@ -1,9 +1,6 @@
 module Api
   module V1
-    class SpaceController < ListController
-      include ParametersHelper
-      respond_to :json
-      rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+    class SpaceController < ApiController
 
       def list
         result = SpaceQuery.new.all(pagination_params, filter_conditions)

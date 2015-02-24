@@ -6,16 +6,16 @@ case Rails.env
 
     # Users
     puts 'creating users'
-    user1 = User.create!(first_name: "Robert", last_name: "De Niro", email: "robertdn@example.com", password: "12341234", phone: "23111131259")
-    user2 = User.create!(first_name: "Al", last_name: "Pacino", email: "apacino@example.com", password: "12341234", phone: "65468315358")
-    user3 = User.create!(first_name: "Judie", last_name: "Foster", email: "jfoster@example.com", password: "12341234", phone: "98461875135")
-    user4 = User.create!(first_name: "John", last_name: "Doe", email: "johndoe@example.com", password: "12341234", phone: "34155355515")
-    user5 = User.create!(first_name: "Danny", last_name: "Devito", email: "dannyd@example.com", password: "12341234", phone: "87964522466")
-    user6 = User.create!(first_name: "Julia", last_name: "Robert", email: "juliar@example.com", password: "12341234", phone: "65735238463")
-    user7 = User.create!(first_name: "Sean", last_name: "Connery", email: "sconnery@example.com", password: "12341234", phone: "98976865432")
-    user8 = User.create!(first_name: "Angelina", last_name: "Jolie", email: "ajolie@example.com", password: "12341234", phone: "65468363365")
-    user9 = User.create!(first_name: "Carlin", last_name: "Calvo", email: "el_hacker@example.com", password: "12341234", phone: "26654561666")
-    user10 = User.create!(first_name: "Quentin", last_name: "Tarantino", email: "qtarantino@example.com", password: "12341234", phone: "6446468684")
+    user1 = User.create!(first_name: "Robert", last_name: "De Niro", email: "robertdn@example.com", password: "12341234", phone: "23111131259", gender: 'm', company_name: 'Wolox', interests: 'Lorem ipsum and stuff', profession: Venue::PROFESSIONS.first.to_s, language: 'en', languages_spoken: ['es', 'en'])
+    user2 = User.create!(first_name: "Al", last_name: "Pacino", email: "apacino@example.com", password: "12341234", phone: "65468315358",  gender: 'm', company_name: 'Blue Jeans', interests: 'sarasa zaraza saraza zarasa', profession: Venue::PROFESSIONS.last.to_s)
+    user3 = User.create!(first_name: "Judie", last_name: "Foster", email: "jfoster@example.com", password: "12341234", phone: "98461875135",  gender: 'm', company_name: 'i work solo', profession: Venue::PROFESSIONS.first.to_s)
+    user4 = User.create!(first_name: "John", last_name: "Doe", email: "johndoe@example.com", password: "12341234", phone: "34155355515",  gender: 'f', company_name: 'freelancer', profession: Venue::PROFESSIONS.first.to_s)
+    user5 = User.create!(first_name: "Danny", last_name: "Devito", email: "dannyd@example.com", password: "12341234", phone: "87964522466",  gender: 'm', company_name: 'We are the best', profession: Venue::PROFESSIONS.last.to_s)
+    user6 = User.create!(first_name: "Julia", last_name: "Robert", email: "juliar@example.com", password: "12341234", phone: "65735238463",  gender: 'm', company_name: 'Wololo', profession: Venue::PROFESSIONS.first.to_s)
+    user7 = User.create!(first_name: "Sean", last_name: "Connery", email: "sconnery@example.com", password: "12341234", phone: "98976865432",  gender: 'm', company_name: 'Ultimate devs', profession: Venue::PROFESSIONS.last.to_s)
+    user8 = User.create!(first_name: "Angelina", last_name: "Jolie", email: "ajolie@example.com", password: "12341234", phone: "65468363365",  gender: 'f', company_name: 'Best Designers', profession: Venue::PROFESSIONS.last.to_s)
+    user9 = User.create!(first_name: "Carlin", last_name: "Calvo", email: "el_hacker@example.com", password: "12341234", phone: "26654561666",  gender: 'm', company_name: 'Molox', profession: Venue::PROFESSIONS.last.to_s)
+    user10 = User.create!(first_name: "Quentin", last_name: "Tarantino", email: "qtarantino@example.com", password: "12341234", phone: "6446468684", gender: 'm',  company_name: 'XO7OM', profession: Venue::PROFESSIONS.last.to_s)
 
     # Organizations
     puts 'creating organizations'

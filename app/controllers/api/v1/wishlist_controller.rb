@@ -1,12 +1,9 @@
 module Api
   module V1
-    class WishlistController < ListController
-      include ParametersHelper
-      respond_to :json
-      rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+    class WishlistController < ApiController
 
       def wishlist
-        return render nothing: true, status: 404 unless User.find_by(id: params[:id]).present?
+        return record_not_found unless User.find_by(id: params[:id]).present?
         result = WishlistQuery.new(params[:id]).wishlist(pagination_params)
         favorites_ids = result.ids
         render_result(result, serialized_reviews(result, SpaceSerializer, favorites_ids))

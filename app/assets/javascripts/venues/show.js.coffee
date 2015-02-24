@@ -76,4 +76,5 @@ on_load = ->
     initialize_map()
     initialize_listeners()
     $('.space-popover').hide()
+    $(".venue-reviews-pagination").hide()
 $(document).ready on_load

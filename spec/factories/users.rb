@@ -8,6 +8,8 @@ FactoryGirl.define do
     phone { Faker::PhoneNumber.phone_number }
     password { Faker::Internet.password }
     profession { Venue::PROFESSIONS.first.to_s }
+    company_name { Faker::Company.name }
+    gender { 'f' }
 
     trait :with_venues do
       venues { FactoryGirl.build_list(:venue, rand(3) + 1) }

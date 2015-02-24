@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   after_initialize :initialize_fields
 
   # Validations
-  validates :first_name, presence: true
+  validates :first_name, :last_name, :company_name, :profession, :gender, presence: true
   validates :password, presence: true, unless: :created_at
 
   validates :email, format: {
@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
   }
 
   validates :profession, inclusion: { in: Venue::PROFESSIONS.map(&:to_s) }
-  validates :gender, inclusion: { in: GENDERS.map(&:to_s), allow_nil: true }
+  validates :gender, inclusion: { in: GENDERS.map(&:to_s) }
   validates :language, inclusion: { in: LANGUAGES.map(&:to_s), allow_nil: true }
   validate :each_languages_spoken_inclusion
 
