@@ -75,10 +75,10 @@
         p = "DAY: #{day}"
         p = "from:"
 
-        = text_field_tag 'day_from[]', "day_from"
+        = text_field_tag 'day_from[]', ""
 
         p = "to:"
-        = text_field_tag 'day_to[]', "day_to"
+        = text_field_tag 'day_to[]', ""
 
   .full-width-submit-button
     = f.submit 'Save', class: 'submit-button', id: 'save-venue'
