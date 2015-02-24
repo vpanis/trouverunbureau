@@ -86,8 +86,10 @@ describe VenuesController do
 
           it 'updates the venue' do
             expect(a_venue.description).to eq(new_description)
-            expect(a_venue.day_hours.first.from).to eq(day_from[0].to_i)
-            expect(a_venue.day_hours.first.to).to eq(day_to[0].to_i)
+            expect(a_venue.day_hours.count).to eq(1)
+            day_hour = a_venue.day_hours.where{ weekday == 0 }.first
+            expect(day_hour.from).to eq(day_from[0].to_i)
+            expect(day_hour.to).to eq(day_to[0].to_i)
           end
 
           it 'renders the :edit template' do

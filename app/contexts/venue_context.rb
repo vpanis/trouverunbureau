@@ -29,14 +29,10 @@ class VenueContext
 
   def update_venue_hours!(days_from, days_to)
     (0..6).each do |n|
-      from = days_from[n].to_i
-      to = days_to[n].to_i
+      from = days_from[n].to_i if days_from[n].present?
+      to = days_to[n].to_i if days_to[n].present?
       dh = @day_hours[n]
-      if dh.present?
-        dh.update_attributes!(from: from, to: to)
-      else
-        VenueHour.create!(weekday: n, from: from, to: to, venue_id: @venue.id)
-      end
+      save_venue_hour(from, to, dh, n) if from.present? && to.present?
     end
   end
 
@@ -71,4 +67,13 @@ class VenueContext
       @day_hours[dh.weekday] = dh
     end
   end
+
+  def save_venue_hour(from, to, venue_hour, weekday)
+    if venue_hour.present?
+      venue_hour.update_attributes!(from: from, to: to)
+    else
+      VenueHour.create!(weekday: weekday, from: from, to: to, venue_id: @venue.id)
+    end
+  end
+
 end
