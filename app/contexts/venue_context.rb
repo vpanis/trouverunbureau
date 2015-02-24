@@ -37,7 +37,6 @@ class VenueContext
   end
 
   def reduce_venue_hours?(days_from, days_to)
-    byebug
     dangerous_change = false
     index = 0
     until index == 6 || dangerous_change

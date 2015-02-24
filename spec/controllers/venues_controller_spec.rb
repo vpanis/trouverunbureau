@@ -70,7 +70,9 @@ describe VenuesController do
       context 'when the venue exists' do
         context 'when has permissions' do
           let(:a_venue) { create(:venue, owner: @user_logged) }
-          let(:venue_hour) { create(:venue_hour, weekday: 1, from: 1600, to: 1700, venue_id: a_venue.id) }
+          let(:venue_hour) do
+            create(:venue_hour, weekday: 1, from: 1600, to: 1700,  venue_id: a_venue.id)
+          end
           let(:a_space) { create(:space, capacity: 2, venue: a_venue) }
           let(:new_description) { 'new description' }
           let(:day_from) { ['1500', '', '', '', '', '', ''] }
@@ -88,7 +90,7 @@ describe VenuesController do
           it 'updates the venue' do
             expect(a_venue.description).to eq(new_description)
             expect(a_venue.day_hours.count).to eq(1)
-            day_hour = a_venue.day_hours.where{ weekday == 0 }.first
+            day_hour = a_venue.day_hours.where { weekday == 0 }.first
             expect(day_hour.from).to eq(day_from[0].to_i)
             expect(day_hour.to).to eq(day_to[0].to_i)
           end
@@ -130,8 +132,6 @@ describe VenuesController do
               end
             end
           end
-
-
         end
 
         context 'when does not have permissions' do
