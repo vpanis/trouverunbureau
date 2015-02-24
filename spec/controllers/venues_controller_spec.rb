@@ -76,7 +76,7 @@ describe VenuesController do
           let(:day_to) { ['1700', '', '', '', '', '', ''] }
           before do
             venue_params = { id: a_venue.id, description: new_description }
-            patch :update, id: a_venue.id, venue: venue_params
+            patch :update, id: a_venue.id, venue: venue_params, day_from: day_from, day_to: day_to
             a_venue.reload
           end
 
@@ -86,6 +86,8 @@ describe VenuesController do
 
           it 'updates the venue' do
             expect(a_venue.description).to eq(new_description)
+            expect(a_venue.day_hours.first.from).to eq(day_from[0].to_i)
+            expect(a_venue.day_hours.first.to).to eq(day_to[0].to_i)
           end
 
           it 'renders the :edit template' do
