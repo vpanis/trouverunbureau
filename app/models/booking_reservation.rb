@@ -6,18 +6,18 @@ module BookingReservation
 
   private
 
-  def check_if_can_book_and_perform(booking, lock, custom_errors, &block)
-    check_availability(booking, custom_errors)
-    return booking unless booking.errors.empty?
+  def check_if_can_book_and_perform(booking, lock, custom_errors, check_venue_hours = true, &block)
+    check_availability(booking, custom_errors, check_venue_hours)
+    return booking unless booking.errors.empty? && custom_errors.empty?
     check_max_collition(booking, lock, custom_errors, &block)
     booking
   end
 
-  def check_availability(booking, custom_errors)
+  def check_availability(booking, custom_errors, check_venue_hours)
     verify_quantity(booking, custom_errors)
     custom_errors.add(:from_date_bigger_than_to,
                       from: booking.from, to: booking.to) if booking.from > booking.to
-    return if valid_hours_for_venue?(booking)
+    return if !check_venue_hours || valid_hours_for_venue?(booking)
     custom_errors.add(:invalid_venue_hours, from: booking.from, to: booking.to)
   end
 
@@ -35,9 +35,9 @@ module BookingReservation
   end
 
   def retrieve_bookings_that_collide_with(booking, lock)
-    Booking.lock(lock).where(':from BETWEEN bookings.from AND bookings.to OR
-      :to BETWEEN bookings.from AND bookings.to', from: booking.from, to: booking.to)
-      .where(space: booking.space).where { state.eq_any my { block_states } }
+    Booking.lock(lock).where(':from <= bookings.to AND :to >= bookings.from',
+                             from: booking.from, to: booking.to).where(space: booking.space)
+      .where { state.eq_any my { block_states } }
       .order(from: :asc)
   end
 

@@ -28,11 +28,11 @@ class BookingManager
       [booking, custom_errors]
     end
 
-    def bookable?(booking_attributes = {})
+    def bookable?(booking_attributes = {}, check_venue_hours = true)
       booking = Booking.new(booking_attributes)
       return false unless booking.valid?
       custom_errors = ActiveModel::Errors.new(booking)
-      check_if_can_book_and_perform(booking, 'FOR SHARE', custom_errors) {}
+      check_if_can_book_and_perform(booking, 'FOR SHARE', custom_errors, check_venue_hours) {}
       custom_errors.empty?
     end
 

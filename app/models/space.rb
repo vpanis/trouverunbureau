@@ -22,8 +22,6 @@ class Space < ActiveRecord::Base
 
   validate :at_least_one_price
 
-  private
-
   def at_least_one_price
     return if hour_price.present? ||
       day_price.present? || week_price.present? || month_price.present?

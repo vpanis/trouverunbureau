@@ -15,7 +15,7 @@ class Booking < ActiveRecord::Base
 
   # Callbacks
   after_initialize :initialize_fields
-  before_validation :calculate_price
+  before_validation :calculate_price, unless: :price?
   before_validation :time_local_to_utc
 
   # Validations
