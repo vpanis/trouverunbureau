@@ -37,11 +37,12 @@ class VenueContext
   end
 
   def reduce_venue_hours?(days_from, days_to)
+    byebug
     dangerous_change = false
     index = 0
     until index == 6 || dangerous_change
-      from = days_from[index].to_i
-      to = days_to[index].to_i
+      from = days_from[index]
+      to = days_to[index]
       dh = @day_hours[index]
       dangerous_change = true  if check_venue_hour?(from, to, dh)
       index += 1
@@ -50,7 +51,8 @@ class VenueContext
   end
 
   def check_venue_hour?(from, to, vh)
-    from.present? && to.present? && vh.present? && !(from <= vh.from && to >= vh.to && from < to)
+    from.present? && to.present? && vh.present? &&
+    !(from.to_i <= vh.from && to.to_i >= vh.to && from.to_i < to.to_i)
   end
 
   def no_bookings?(date_from)

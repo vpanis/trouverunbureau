@@ -70,9 +70,10 @@ describe VenuesController do
       context 'when the venue exists' do
         context 'when has permissions' do
           let(:a_venue) { create(:venue, owner: @user_logged) }
+          let(:venue_hour) { create(:venue_hour, weekday: 1, from: 1600, to: 1700, venue_id: a_venue.id) }
           let(:a_space) { create(:space, capacity: 2, venue: a_venue) }
           let(:new_description) { 'new description' }
-          let(:day_from) { ['1630', '', '', '', '', '', ''] }
+          let(:day_from) { ['1500', '', '', '', '', '', ''] }
           let(:day_to) { ['1700', '', '', '', '', '', ''] }
           before do
             venue_params = { id: a_venue.id, description: new_description }
@@ -95,6 +96,41 @@ describe VenuesController do
           it 'renders the :edit template' do
             expect(response.redirect_url).to eq(edit_venue_url(a_venue))
           end
+
+          context 'when reducing venue_hours' do
+            context 'when there are bookings' do
+              let!(:a_booking) do
+                create(:booking, space: a_space,
+                                 from: Time.zone.now.at_beginning_of_day,
+                                 to: Time.zone.now.advance(minutes: 1), state: :paid)
+              end
+              before do
+                d_from = ['1600', '', '', '', '', '', '']
+                d_to = ['1700', '', '', '', '', '', '']
+                venue_params = { id: a_venue.id }
+                patch :update, id: a_venue.id, venue: venue_params, day_from: d_from, day_to: d_to
+                a_venue.reload
+              end
+              it 'fails' do
+                expect(response.status).to eq(412)
+              end
+            end
+
+            context 'where there aren\'t bookings of venue\' spaces' do
+              before do
+                d_from = ['1600', '', '', '', '', '', '']
+                d_to = ['1700', '', '', '', '', '', '']
+                venue_params = { id: a_venue.id }
+                patch :update, id: a_venue.id, venue: venue_params, day_from: d_from, day_to: d_to
+                a_venue.reload
+              end
+
+              it 'succeeds' do
+                expect(response.status).to eq(302)
+              end
+            end
+          end
+
 
         end
 
