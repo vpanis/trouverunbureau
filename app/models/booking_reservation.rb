@@ -67,11 +67,4 @@ module BookingReservation
     !(booking.changed_attributes.keys & aux_array).empty?
   end
 
-  private
-
-  def check_if_can_book(booking, lock, custom_errors, &block)
-    return booking unless booking.errors.empty?
-    check_max_collition(booking, lock, custom_errors, &block)
-    booking
-  end
 end
