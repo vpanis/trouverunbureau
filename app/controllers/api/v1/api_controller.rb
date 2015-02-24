@@ -1,9 +1,8 @@
 module Api
   module V1
-    class ListController < ApplicationController
+    class ApiController < ApplicationController
       include ParametersHelper
       respond_to :json
-      rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
       def render_result(result, serialized_array)
         render json: { count: result.total_entries, current_page: result.current_page,
@@ -20,6 +19,10 @@ module Api
 
       def record_not_found
         render status: 404, nothing: true
+      end
+
+      def forbidden
+        render status: 403, nothing: true
       end
 
       def wrong_preconditions

@@ -1,5 +1,8 @@
 = render 'shared/menu_bar'
-p = link_to t("users.edit_profile"), edit_user_path(@user)
+
+-if @can_edit
+  p = link_to t("users.edit_profile"), edit_user_path(@user)
+
 .venue-bar.row
   .col-xs-12.col-sm-7.col-md-7.col-lg-8
     .venue-avatar
@@ -32,4 +35,6 @@ p company:
 p = @user.company_name
 p profession:
 p = t("venue.professions.#{@user.profession}")
-= render 'reviews', user: @user
+
+- if @can_view_reiews
+  = render 'reviews', user: @user

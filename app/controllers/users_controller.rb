@@ -1,12 +1,16 @@
 class UsersController < ApplicationController
   inherit_resources
+  include RepresentedHelper
 
   def show
     @user = User.find(params[:id])
+    @can_edit = @user.eql?(current_user)
+    @can_view_reiews = user_can_read_client_reviews?(User, @user.id)
   end
 
   def edit
     @user = User.find(params[:id])
+    return render nothing: true, status: 403 unless @user.eql?(current_user)
     @gender_options = User::GENDERS.map { |g| [t("users.genders.#{g}"), g.to_s] }
     @profession_options = Venue::PROFESSIONS.map { |p| [t("venues.professions.#{p}"), p.to_s] }
     # TODO: define languages list
@@ -15,6 +19,8 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    # TODO: redirect to custom 403 page
+    return render nothing: true, status: 403 unless @user.eql?(current_user)
     @user.update_attributes!(user_params)
     redirect_to edit_user_path(@user)
   end
