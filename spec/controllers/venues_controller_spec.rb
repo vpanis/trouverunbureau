@@ -72,6 +72,8 @@ describe VenuesController do
           let(:a_venue) { create(:venue, owner: @user_logged) }
           let(:a_space) { create(:space, capacity: 2, venue: a_venue) }
           let(:new_description) { 'new description' }
+          let(:day_from) { ['1630', '', '', '', '', '', ''] }
+          let(:day_to) { ['1700', '', '', '', '', '', ''] }
           before do
             venue_params = { id: a_venue.id, description: new_description }
             patch :update, id: a_venue.id, venue: venue_params

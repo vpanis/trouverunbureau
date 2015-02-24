@@ -14,9 +14,9 @@ class VenueContext
   end
 
   def update_venue?(venue_params, venue_hours_params)
-    return false unless can_update?(days_from, days_to)
     days_from = venue_hours_params[:day_from]
     days_to = venue_hours_params[:day_to]
+    return false unless can_update?(days_from, days_to)
     @venue.update_attributes!(venue_params) && update_venue_hours!(days_from, days_to)
   end
 
