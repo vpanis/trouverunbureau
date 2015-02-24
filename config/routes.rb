@@ -24,16 +24,16 @@ Deskspotting::Application.routes.draw do
         post :login_as_organization, to: 'users#login_as_organization'
         delete :reset_organization, to: 'users#reset_organization'
         get :reviews, to: 'reviews#user_reviews'
-        get :inquiries, to: 'booking_inquiries#inquiries', entity: User
-        get :inquiries_with_news, to: 'booking_inquiries#inquiries_with_news', entity: User
+        get :inquiries, to: 'booking_inquiries#user_inquiries'
+        get :inquiries_with_news, to: 'booking_inquiries#user_inquiries_with_news'
       end
     end
 
     resources :organizations do
       member do
         get :reviews, to: 'reviews#organization_reviews'
-        get :inquiries, to: 'booking_inquiries#inquiries', entity: Organization
-        get :inquiries_with_news, to: 'booking_inquiries#inquiries_with_news', entity: Organization
+        get :inquiries, to: 'booking_inquiries#organization_inquiries'
+        get :inquiries_with_news, to: 'booking_inquiries#organization_inquiries_with_news'
       end
     end
 

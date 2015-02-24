@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20150223191306) do
     t.decimal  "rating"
     t.integer  "quantity_reviews"
     t.integer  "reviews_sum"
+    t.string   "logo"
   end
 
   add_index "organizations", ["email"], name: "index_organizations_on_email", unique: true, using: :btree
