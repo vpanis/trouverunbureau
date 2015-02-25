@@ -20,14 +20,6 @@ class VenueContext
     @venue.update_attributes!(venue_params) && update_venue_hours!(days_from, days_to)
   end
 
-  def valid_venue_hours?(days_from, days_to)
-    load_day_hours
-    return false unless well_formed_venue_hours?(days_from, days_to)
-    return true unless reduce_venue_hours?(days_from, days_to)
-    date_from = Time.zone.now.at_beginning_of_day - 1.day
-    no_bookings?(date_from)
-  end
-
   def update_venue_hours!(days_from, days_to)
     (0..6).each do |n|
       from = days_from[n].to_i if days_from[n].present?
@@ -39,6 +31,28 @@ class VenueContext
         delete_venue_hour(dh)
       end
     end
+  end
+
+  def save_venue_hour(from, to, venue_hour, weekday)
+    if venue_hour.present?
+      venue_hour.update_attributes!(from: from, to: to)
+    else
+      VenueHour.create!(weekday: weekday, from: from, to: to, venue_id: @venue.id)
+    end
+  end
+
+  def delete_venue_hour(venue_hour)
+    VenueHour.delete(venue_hour) if venue_hour.present?
+  end
+
+  private
+
+  def valid_venue_hours?(days_from, days_to)
+    load_day_hours
+    return false unless well_formed_venue_hours?(days_from, days_to)
+    return true unless reduce_venue_hours?(days_from, days_to)
+    date_from = Time.zone.now.at_beginning_of_day - 1.day
+    no_bookings?(date_from)
   end
 
   def well_formed_venue_hours?(days_from, days_to)
@@ -68,8 +82,17 @@ class VenueContext
   end
 
   def check_venue_hour?(from, to, vh)
+    return true if remove_day?(from, to, vh)
+    reduce_hours?(from, to, vh)
+  end
+
+  def remove_day?(from, to, vh)
+    vh.present? && (from.empty? || to.empty?)
+  end
+
+  def reduce_hours?(from, to, vh)
     from.present? && to.present? && vh.present? &&
-    !(from.to_i <= vh.from && to.to_i >= vh.to && from.to_i < to.to_i)
+      !(from.to_i <= vh.from && to.to_i >= vh.to && from.to_i < to.to_i)
   end
 
   def no_bookings?(date_from)
@@ -85,18 +108,6 @@ class VenueContext
     @venue.day_hours.each do |dh|
       @day_hours[dh.weekday] = dh
     end
-  end
-
-  def save_venue_hour(from, to, venue_hour, weekday)
-    if venue_hour.present?
-      venue_hour.update_attributes!(from: from, to: to)
-    else
-      VenueHour.create!(weekday: weekday, from: from, to: to, venue_id: @venue.id)
-    end
-  end
-
-  def delete_venue_hour(venue_hour)
-    VenueHour.delete(venue_hour) if venue_hour.present?
   end
 
 end
