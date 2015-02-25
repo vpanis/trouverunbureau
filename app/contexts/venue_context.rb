@@ -32,7 +32,11 @@ class VenueContext
       from = days_from[n].to_i if days_from[n].present?
       to = days_to[n].to_i if days_to[n].present?
       dh = @day_hours[n]
-      save_venue_hour(from, to, dh, n) if from.present? && to.present?
+      if from.present? && to.present?
+        save_venue_hour(from, to, dh, n)
+      else
+        delete_venue_hour(dh)
+      end
     end
   end
 
@@ -75,6 +79,10 @@ class VenueContext
     else
       VenueHour.create!(weekday: weekday, from: from, to: to, venue_id: @venue.id)
     end
+  end
+
+  def delete_venue_hour(venue_hour)
+    VenueHour.delete(venue_hour) if venue_hour.present?
   end
 
 end

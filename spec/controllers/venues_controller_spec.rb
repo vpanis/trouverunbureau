@@ -75,8 +75,8 @@ describe VenuesController do
           end
           let(:a_space) { create(:space, capacity: 2, venue: a_venue) }
           let(:new_description) { 'new description' }
-          let(:day_from) { ['1500', '', '', '', '', '', ''] }
-          let(:day_to) { ['1700', '', '', '', '', '', ''] }
+          let(:day_from) { ['1500', '', '1600', '', '', '', ''] }
+          let(:day_to) { ['1700', '', '1700', '', '', '', ''] }
           before do
             venue_params = { id: a_venue.id, description: new_description }
             patch :update, id: a_venue.id, venue: venue_params, day_from: day_from, day_to: day_to
@@ -89,10 +89,13 @@ describe VenuesController do
 
           it 'updates the venue' do
             expect(a_venue.description).to eq(new_description)
-            expect(a_venue.day_hours.count).to eq(1)
-            day_hour = a_venue.day_hours.where { weekday == 0 }.first
-            expect(day_hour.from).to eq(day_from[0].to_i)
-            expect(day_hour.to).to eq(day_to[0].to_i)
+            expect(a_venue.day_hours.count).to eq(2)
+            day_hour_0 = a_venue.day_hours.where { weekday == 0 }.first
+            day_hour_2 = a_venue.day_hours.where { weekday == 2 }.first
+            expect(day_hour_0.from).to eq(day_from[0].to_i)
+            expect(day_hour_0.to).to eq(day_to[0].to_i)
+            expect(day_hour_2.from).to eq(day_from[2].to_i)
+            expect(day_hour_2.to).to eq(day_to[2].to_i)
           end
 
           it 'renders the :edit template' do
@@ -115,6 +118,7 @@ describe VenuesController do
               end
               it 'fails' do
                 expect(response.status).to eq(412)
+                expect(a_venue.day_hours.count).to eq(1)
               end
             end
 
