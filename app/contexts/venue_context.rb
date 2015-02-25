@@ -48,7 +48,7 @@ class VenueContext
       fr = days_from[n]
       to = days_to[n]
       v = VenueHour.new(venue: @venue, from: fr, to: to, weekday: n)
-      valid =  v.valid? unless fr.empty? && to.empty?
+      valid =  (v.valid?) unless fr.empty? && to.empty?
       n += 1
     end
     n >= 6 && valid
@@ -75,7 +75,7 @@ class VenueContext
   def no_bookings?(date_from)
     spaces_id = @venue.spaces.ids
     Booking.where do
-      (id.in spaces_id) & (from >= date_from) &
+      (space_id.in spaces_id) & (from >= date_from) &
       (state.in Booking.states.values_at(:paid, :pending_payment))
     end.empty?
   end

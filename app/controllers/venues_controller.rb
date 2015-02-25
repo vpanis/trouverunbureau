@@ -15,8 +15,8 @@ class VenuesController < ApplicationController
     return render nothing: true, status: 404 unless @venue.present?
     venue_context = VenueContext.new(@venue, current_represented)
     return render nothing: true, status: 403 unless venue_context.owner?
-    return render nothing: true, status: 412 unless venue_context.update_venue?(venue_params,
-                                                                                venue_hour_params)
+    updated = venue_context.update_venue?(venue_params, venue_hour_params)
+    return render nothing: true, status: 412 unless updated
     redirect_to edit_venue_path(@venue)
   end
 
