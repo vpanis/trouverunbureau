@@ -47,7 +47,8 @@ class VenueContext
     until n >= 6 || !valid
       fr = days_from[n]
       to = days_to[n]
-      v = VenueHour.new(venue: @venue, from: fr, to: to, weekday: n) unless fr.empty? && to.empty?
+      v = VenueHour.new(venue: @venue, from: fr, to: to, weekday: n)
+      valid =  v.valid? unless fr.empty? && to.empty?
       n += 1
     end
     n >= 6 && valid

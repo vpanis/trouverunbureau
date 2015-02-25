@@ -102,12 +102,25 @@ describe VenuesController do
             expect(response.redirect_url).to eq(edit_venue_url(a_venue))
           end
 
+          context 'when wrong venue_hours parameters' do
+            before do
+              d_from = ['1650', '', '', '', '', '', '']
+              d_to = ['1700', '', '', '', '', '', '']
+              venue_params = { id: a_venue.id }
+              patch :update, id: a_venue.id, venue: venue_params, day_from: d_from, day_to: d_to
+              a_venue.reload
+            end
+            it 'fails' do
+              expect(response.status).to eq(412)
+            end
+          end
+
           context 'when reducing venue_hours' do
             context 'when there are bookings' do
               let!(:a_booking) do
                 create(:booking, space: a_space,
-                                 from: Time.zone.now.at_beginning_of_day,
-                                 to: Time.zone.now.advance(minutes: 1), state: :paid)
+                                 from: Time.zone.now.advance(minutes: 2),
+                                 to: Time.zone.now.advance(minutes: 10), state: :paid)
               end
               before do
                 d_from = ['1600', '', '', '', '', '', '']
@@ -118,7 +131,6 @@ describe VenuesController do
               end
               it 'fails' do
                 expect(response.status).to eq(412)
-                expect(a_venue.day_hours.count).to eq(1)
               end
             end
 
@@ -145,20 +157,6 @@ describe VenuesController do
           before do
             venue_params = { id: a_venue.id, description: new_description }
             patch :update, id: a_venue.id, venue: venue_params
-            a_venue.reload
-          end
-          it 'fails' do
-            expect(response.status).to eq(403)
-          end
-        end
-
-        context 'when wrong venue_hours parameters' do
-          let(:a_venue) { create(:venue) }
-          before do
-            d_from = ['1650', '', '', '', '', '', '']
-            d_to = ['1700', '', '', '', '', '', '']
-            venue_params = { id: a_venue.id }
-            patch :update, id: a_venue.id, venue: venue_params, day_from: d_from, day_to: d_to
             a_venue.reload
           end
           it 'fails' do
