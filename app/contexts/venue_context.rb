@@ -22,6 +22,7 @@ class VenueContext
 
   def valid_venue_hours?(days_from, days_to)
     load_day_hours
+    return false unless well_formed_venue_hours?(days_from, days_to)
     return true unless reduce_venue_hours?(days_from, days_to)
     date_from = Time.zone.now.at_beginning_of_day - 1.day
     no_bookings?(date_from)
@@ -38,6 +39,18 @@ class VenueContext
         delete_venue_hour(dh)
       end
     end
+  end
+
+  def well_formed_venue_hours?(days_from, days_to)
+    valid = true
+    n = 0
+    until n >= 6 || !valid
+      fr = days_from[n]
+      to = days_to[n]
+      v = VenueHour.new(venue: @venue, from: fr, to: to, weekday: n) unless fr.empty? && to.empty?
+      n += 1
+    end
+    n >= 6 && valid
   end
 
   def reduce_venue_hours?(days_from, days_to)
