@@ -151,6 +151,20 @@ describe VenuesController do
             expect(response.status).to eq(403)
           end
         end
+
+        context 'when wrong venue_hours parameters' do
+          let(:a_venue) { create(:venue) }
+          before do
+            d_from = ['1650', '', '', '', '', '', '']
+            d_to = ['1700', '', '', '', '', '', '']
+            venue_params = { id: a_venue.id }
+            patch :update, id: a_venue.id, venue: venue_params, day_from: d_from, day_to: d_to
+            a_venue.reload
+          end
+          it 'fails' do
+            expect(response.status).to eq(403)
+          end
+        end
       end
 
       context 'when the venue does not exist' do
