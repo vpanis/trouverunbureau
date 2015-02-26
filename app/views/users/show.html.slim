@@ -1,45 +1,46 @@
 = render 'shared/menu_bar'
 = render 'shared/profile_menu_bar'
-.left-panel.col-lg-3
-  .venue-avatar
-      - if @user.avatar?
-        = image_tag(@user.avatar.url, width: '90px', height: '90px')
-      - else
-        = image_tag('default-avatar.png', width: '90px', height: '90px')
-  p = t('users.about_me')
-  p languages:
-  ul
-    - @user.languages_spoken.each do |lang|
-      li #{t("languages.#{lang}")}
-  p 
-    | company:
-    span = @user.company_name
-  p 
-    | profession:
-    span = t("venue.professions.#{@user.profession}")
-  p 
-    | interests:
-    span = @user.interests
+.row
+  .left-panel.col-lg-3
+    .venue-avatar
+        - if @user.avatar?
+          = image_tag(@user.avatar.url, width: '90px', height: '90px')
+        - else
+          = image_tag('default-avatar.png', width: '90px', height: '90px')
+    p = t('users.about_me')
+    p languages:
+    ul
+      - @user.languages_spoken.each do |lang|
+        li #{t("languages.#{lang}")}
+    p 
+      | company:
+      span = @user.company_name
+    p 
+      | profession:
+      span = t("venue.professions.#{@user.profession}")
+    p 
+      | interests:
+      span = @user.interests
 
-.right-panel.col-lg-9
-  .basic-info
-    -if @can_edit
-    p.pull-right = link_to t("users.edit_profile"), edit_user_path(@user)
-    .stars
-      - (1..5).each do |i|
-        .star class=('active' if @user.rating > i) *
-    .reviews
-      = "(#{@user.quantity_reviews})"
-    .venue-name
-      h1 = @user.first_name
-    .location
-      p.location.pull-left 
-        strong user location
-      p.since 
-        | User since: 
-        span = @user.created_at.strftime('%B, %Y')
-    p.description
-      | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid eius fuga obcaecati consectetur ea reiciendis porro nesciunt, tempora explicabo facere vitae velit molestiae, deleniti sed reprehenderit veniam nemo magnam eum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate autem minima illo, adipisci ea ex, aut nostrum, voluptate corrupti vel temporibus quos blanditiis repellat quae. Assumenda autem omnis, et accusantium.
+  .right-panel.col-lg-9
+    .basic-info
+      -if @can_edit
+      p.pull-right = link_to t("users.edit_profile"), edit_user_path(@user)
+      .venue-name
+        h1 = @user.first_name
+      .stars
+        - (1..5).each do |i|
+          .star class=('active' if @user.rating > i) *
+      .reviews
+        = "(#{@user.quantity_reviews})"
+      .location
+        p.location.pull-left 
+          strong user location
+        p.since 
+          | User since: 
+          span = @user.created_at.strftime('%B, %Y')
+      p.description
+        | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid eius fuga obcaecati consectetur ea reiciendis porro nesciunt, tempora explicabo facere vitae velit molestiae, deleniti sed reprehenderit veniam nemo magnam eum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate autem minima illo, adipisci ea ex, aut nostrum, voluptate corrupti vel temporibus quos blanditiis repellat quae. Assumenda autem omnis, et accusantium.
 
-  - if @can_view_reiews
-    = render 'reviews', user: @user
+    - if @can_view_reiews
+      = render 'reviews', user: @user
