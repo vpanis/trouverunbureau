@@ -4,11 +4,11 @@ class VenueContext
   def initialize(venue, current_represented)
     @venue = venue
     @current_represented = current_represented
-    @day_hours = load_day_hours
+    @old_day_hours = load_day_hours
   end
 
-  def can_update?(days_hours)
-    owner? && valid_venue_hours?(days_hours)
+  def can_update?(new_days_hours)
+    owner? && valid_venue_hours?(new_days_hours)
   end
 
   def owner?
@@ -16,47 +16,25 @@ class VenueContext
   end
 
   def update_venue?(venue_params)
-    days_hours = venue_params[:day_hours_attributes]
-    return false unless can_update?(days_hours)
+    new_days_hours = venue_params[:day_hours_attributes]
+    return false unless can_update?(new_days_hours)
     @venue.update_attributes!(venue_params)
-  end
-
-  def save_venue_hour(from, to, venue_hour, weekday)
-    if venue_hour.present?
-      venue_hour.update_attributes!(from: from, to: to)
-    else
-      VenueHour.create!(weekday: weekday, from: from, to: to, venue_id: @venue.id)
-    end
-  end
-
-  def delete_venue_hour(venue_hour)
-    VenueHour.delete(venue_hour) if venue_hour.present?
   end
 
   private
 
-  def valid_venue_hours?(days_hours)
-    return false unless well_formed_venue_hours?(days_hours)
-    return true unless reduce_venue_hours?(days_hours)
+  def valid_venue_hours?(new_days_hours)
+    return true unless reduce_venue_hours?(new_days_hours)
+    # TODO, use venue's timezone (not implemented yet)
     date_from = Time.zone.now.at_beginning_of_day - 1.day
     no_bookings?(date_from)
   end
 
-  def well_formed_venue_hours?(days_hours)
-    valid = true
-    days_hours.values.each do |d|
-      v = VenueHour.new(venue: @venue, from: d[:from], to: d[:to], weekday: d[:weekday])
-      valid =  (v.valid?) unless d[:from].empty? && d[:to].empty?
-      break unless valid
-    end
-    valid
-  end
-
-  def reduce_venue_hours?(days_hours)
+  def reduce_venue_hours?(new_days_hours)
     dangerous_change = false
     index = 0
-    days_hours.values.each do |d|
-      dh = @day_hours[index]
+    new_days_hours.values.each do |d|
+      dh = @old_day_hours[index]
       dangerous_change = true  if check_venue_hour?(d[:from], d[:to], dh)
       index += 1
       break unless dangerous_change
