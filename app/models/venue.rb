@@ -65,6 +65,8 @@ class Venue < ActiveRecord::Base
   validate :each_amenity_inclusion
   validate :each_profession_inclusion
 
+  accepts_nested_attributes_for :day_hours, allow_destroy: true, reject_if: :all_blank
+
   def opens_at_least_one_day_from_to?(from, to)
     weekdays = VenueHour.days_covered(from, to)
     1 <= day_hours.where { weekday.eq_any weekdays }.group(:weekday).count.length

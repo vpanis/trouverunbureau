@@ -78,7 +78,16 @@ describe VenuesController do
           let(:day_from) { ['1500', '', '1600', '', '', '', ''] }
           let(:day_to) { ['1700', '', '1700', '', '', '', ''] }
           before do
-            venue_params = { id: a_venue.id, description: new_description }
+            day_hours_attributes = { '0' => { from: '1500', to: '1700', weekday: 0 },
+                                     '1' => { from: '', to: '', weekday: '', _destroy: true },
+                                     '2' => { from: '1600', to: '1700', weekday: 2 },
+                                     '3' => { from: '', to: '', weekday: '', _destroy: true },
+                                     '4' => { from: '', to: '', weekday: '', _destroy: true },
+                                     '5' => { from: '', to: '', weekday: '', _destroy: true },
+                                     '6' => { from: '', to: '', weekday: '', _destroy: true } }
+            venue_params = { id: a_venue.id, description: new_description,
+                             day_hours_attributes: day_hours_attributes }
+
             patch :update, id: a_venue.id, venue: venue_params, day_from: day_from, day_to: day_to
             a_venue.reload
           end
@@ -104,10 +113,15 @@ describe VenuesController do
 
           context 'when wrong venue_hours parameters' do
             before do
-              d_from = ['1650', '', '', '', '', '', '']
-              d_to = ['1700', '', '', '', '', '', '']
-              venue_params = { id: a_venue.id }
-              patch :update, id: a_venue.id, venue: venue_params, day_from: d_from, day_to: d_to
+              day_hours_attributes = { '0' => { from: '1650', to: '1700', weekday: 0 },
+                                       '1' => { from: '', to: '', weekday: '', _destroy: true },
+                                       '2' => { from: '', to: '', weekday: 2, _destroy: true },
+                                       '3' => { from: '', to: '', weekday: '', _destroy: true },
+                                       '4' => { from: '', to: '', weekday: '', _destroy: true },
+                                       '5' => { from: '', to: '', weekday: '', _destroy: true },
+                                       '6' => { from: '', to: '', weekday: '', _destroy: true } }
+              venue_params = { id: a_venue.id, day_hours_attributes: day_hours_attributes }
+              patch :update, id: a_venue.id, venue: venue_params
               a_venue.reload
             end
             it 'fails' do
@@ -123,10 +137,15 @@ describe VenuesController do
                                  to: Time.zone.now.advance(minutes: 10), state: :paid)
               end
               before do
-                d_from = ['1600', '', '', '', '', '', '']
-                d_to = ['1700', '', '', '', '', '', '']
-                venue_params = { id: a_venue.id }
-                patch :update, id: a_venue.id, venue: venue_params, day_from: d_from, day_to: d_to
+                day_hours_attributes = { '0' => { from: '1600', to: '1700', weekday: 0 },
+                                         '1' => { from: '', to: '', weekday: '', _destroy: true },
+                                         '2' => { from: '', to: '', weekday: 2, _destroy: true },
+                                         '3' => { from: '', to: '', weekday: '', _destroy: true },
+                                         '4' => { from: '', to: '', weekday: '', _destroy: true },
+                                         '5' => { from: '', to: '', weekday: '', _destroy: true },
+                                         '6' => { from: '', to: '', weekday: '', _destroy: true } }
+                venue_params = { id: a_venue.id, day_hours_attributes: day_hours_attributes }
+                patch :update, id: a_venue.id, venue: venue_params
                 a_venue.reload
               end
               it 'fails' do
@@ -136,10 +155,15 @@ describe VenuesController do
 
             context 'where there aren\'t bookings of venue\' spaces' do
               before do
-                d_from = ['1600', '', '', '', '', '', '']
-                d_to = ['1700', '', '', '', '', '', '']
-                venue_params = { id: a_venue.id }
-                patch :update, id: a_venue.id, venue: venue_params, day_from: d_from, day_to: d_to
+                day_hours_attributes = { '0' => { from: '1600', to: '1700', weekday: 0 },
+                                         '1' => { from: '', to: '', weekday: '', _destroy: true },
+                                         '2' => { from: '', to: '', weekday: 2, _destroy: true },
+                                         '3' => { from: '', to: '', weekday: '', _destroy: true },
+                                         '4' => { from: '', to: '', weekday: '', _destroy: true },
+                                         '5' => { from: '', to: '', weekday: '', _destroy: true },
+                                         '6' => { from: '', to: '', weekday: '', _destroy: true } }
+                venue_params = { id: a_venue.id, day_hours_attributes: day_hours_attributes }
+                patch :update, id: a_venue.id, venue: venue_params
                 a_venue.reload
               end
 

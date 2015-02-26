@@ -7,32 +7,18 @@ class VenueContext
     @day_hours = load_day_hours
   end
 
-  def can_update?(days_from, days_to)
-    owner? && valid_venue_hours?(days_from, days_to)
+  def can_update?(days_hours)
+    owner? && valid_venue_hours?(days_hours)
   end
 
   def owner?
     @current_represented.present? && @venue.owner == @current_represented
   end
 
-  def update_venue?(venue_params, venue_hours_params)
-    days_from = venue_hours_params[:day_from]
-    days_to = venue_hours_params[:day_to]
-    return false unless can_update?(days_from, days_to)
-    @venue.update_attributes!(venue_params) && update_venue_hours!(days_from, days_to)
-  end
-
-  def update_venue_hours!(days_from, days_to)
-    (0..6).each do |n|
-      from = days_from[n].to_i if days_from[n].present?
-      to = days_to[n].to_i if days_to[n].present?
-      dh = @day_hours[n]
-      if from.present? && to.present?
-        save_venue_hour(from, to, dh, n)
-      else
-        delete_venue_hour(dh)
-      end
-    end
+  def update_venue?(venue_params)
+    days_hours = venue_params[:day_hours_attributes]
+    return false unless can_update?(days_hours)
+    @venue.update_attributes!(venue_params)
   end
 
   def save_venue_hour(from, to, venue_hour, weekday)
@@ -49,35 +35,31 @@ class VenueContext
 
   private
 
-  def valid_venue_hours?(days_from, days_to)
-    return false unless well_formed_venue_hours?(days_from, days_to)
-    return true unless reduce_venue_hours?(days_from, days_to)
+  def valid_venue_hours?(days_hours)
+    return false unless well_formed_venue_hours?(days_hours)
+    return true unless reduce_venue_hours?(days_hours)
     date_from = Time.zone.now.at_beginning_of_day - 1.day
     no_bookings?(date_from)
   end
 
-  def well_formed_venue_hours?(days_from, days_to)
+  def well_formed_venue_hours?(days_hours)
     valid = true
-    n = 0
-    until n >= 6 || !valid
-      fr = days_from[n]
-      to = days_to[n]
-      v = VenueHour.new(venue: @venue, from: fr, to: to, weekday: n)
-      valid =  (v.valid?) unless fr.empty? && to.empty?
-      n += 1
+    days_hours.values.each do |d|
+      v = VenueHour.new(venue: @venue, from: d[:from], to: d[:to], weekday: d[:weekday])
+      valid =  (v.valid?) unless d[:from].empty? && d[:to].empty?
+      break unless valid
     end
-    n >= 6 && valid
+    valid
   end
 
-  def reduce_venue_hours?(days_from, days_to)
+  def reduce_venue_hours?(days_hours)
     dangerous_change = false
     index = 0
-    until index == 6 || dangerous_change
-      from = days_from[index]
-      to = days_to[index]
+    days_hours.values.each do |d|
       dh = @day_hours[index]
-      dangerous_change = true  if check_venue_hour?(from, to, dh)
+      dangerous_change = true  if check_venue_hour?(d[:from], d[:to], dh)
       index += 1
+      break unless dangerous_change
     end
     dangerous_change
   end
