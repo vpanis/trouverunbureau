@@ -1144,3 +1144,45 @@ a, a:hover{
 
 /*fix for ui-bootstrap, angular directives */
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+
+/*  ======== USER ======== */
+
+/* profile */
+.user-header {
+  .name {
+    float: left;
+    position: relative;
+    &:after {
+      position: absolute;
+      content: '';
+      width: 30px;
+      height: 2px;
+      background-color: $yellow;
+      bottom: -10px;
+      left: 0;
+    }
+  }
+  .review-container {
+    margin: 25px;
+  }
+
+  .location {
+    position: relative;
+    padding: 0 20px;
+    color: $dark-gray;
+    display: inline-block;
+    &:after {
+      @include at2x('i-location', 14px, 20px);
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 14px;
+      height: 20px;
+    }
+  }
+  .since {
+    display: inline-block;
+  }
+}

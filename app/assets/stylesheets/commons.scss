@@ -1,0 +1,14 @@
+@import 'variables';
+@import 'mixins';
+@import 'tools';
+
+.text {
+  font-size: 13px;
+  font-weight: 300;
+  color: $dark-gray;
+  letter-spacing: 0.09rem;
+  line-height: 30px;
+  &.centered {
+    text-align: center;
+  }
+}

@@ -1,0 +1,16 @@
+@import 'variables';
+@import 'mixins';
+@import 'tools';
+
+.rounded-btn {
+  padding: 10px 20px;
+  border-radius: 40px;
+  border: 2px solid;
+  color: $dark-gray;
+  &.default {
+    border-color: $yellow;
+  }
+  &.green {
+    border-color: $aqua;
+  }
+}

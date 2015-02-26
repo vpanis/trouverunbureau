@@ -11,11 +11,7 @@
         - else
           = image_tag('venue-default.png', width: '90px', height: '90px')
       .basic-info
-        .stars
-          - (1..5).each do |i|
-            .star class=('active' if @venue.rating > i)
-        .reviews
-          = "(#{@venue.quantity_reviews})"
+        = render 'shared/stars', rating: @venue.rating, quantity: @venue.quantity_reviews
         .venue-name
           h1 = @venue.name
         .location
