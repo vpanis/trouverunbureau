@@ -1,0 +1,30 @@
+@import 'variables';
+@import 'mixins';
+@import 'tools';
+
+.stars{
+  margin-top: 6px;
+  display: inline-block;
+  .star{
+    @include at2x('stars-sprite', 28px, 14px);
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    margin: 0px 2px;
+    vertical-align: middle;
+    background-position: -14px 0px;
+  }
+  .star.active{
+    background-position: 0px 0px;
+  }
+}
+.reviews{
+  display: inline-block;
+  font-weight: 300;
+  color: $gray-text;
+  font-size: 13px;
+  letter-spacing: 0.08rem;
+  margin-left: 5px;
+  vertical-align: bottom;
+}
