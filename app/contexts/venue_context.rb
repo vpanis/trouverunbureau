@@ -1,8 +1,10 @@
 class VenueContext
+  include BookingReservation
 
   def initialize(venue, current_represented)
     @venue = venue
     @current_represented = current_represented
+    @day_hours = load_day_hours
   end
 
   def can_update?(days_from, days_to)
@@ -48,7 +50,6 @@ class VenueContext
   private
 
   def valid_venue_hours?(days_from, days_to)
-    load_day_hours
     return false unless well_formed_venue_hours?(days_from, days_to)
     return true unless reduce_venue_hours?(days_from, days_to)
     date_from = Time.zone.now.at_beginning_of_day - 1.day
@@ -98,16 +99,16 @@ class VenueContext
   def no_bookings?(date_from)
     spaces_id = @venue.spaces.ids
     Booking.where do
-      (space_id.in spaces_id) & (from >= date_from) &
-      (state.in Booking.states.values_at(:paid, :pending_payment))
+      (space_id.in spaces_id) & (from >= date_from) & (state.in my { block_states })
     end.empty?
   end
 
   def load_day_hours
-    @day_hours = []
+    day_hours = []
     @venue.day_hours.each do |dh|
-      @day_hours[dh.weekday] = dh
+      day_hours[dh.weekday] = dh
     end
+    day_hours
   end
 
 end
