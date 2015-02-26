@@ -1,0 +1,39 @@
+@import 'variables';
+@import 'mixins';
+@import 'tools';
+
+.modal-dialog{
+  width: 365px;
+  .modal-content{
+    border-left: none;
+    border-right: none;
+    border-top: solid 4px $yellow;
+    border-bottom: solid 4px $yellow;
+    @include border-radius(0px);
+    .modal-header{
+      border-bottom: 0px;
+      .close{
+        margin-top: -11px;
+        font-size: 24px;
+        opacity: 1;
+        color: $light-black;
+      }
+      h4{
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.07rem;
+        border-bottom: solid 1px $gray-text;
+        padding: 10px 3px 14px;
+        color: $light-black;
+      }
+    }
+    .modal-footer{
+      border-top: 0px;
+      button{
+        width: 90%;
+        margin: 0 auto;
+      }
+    }
+  }
+}

@@ -13,13 +13,13 @@
       ul
         - @user.languages_spoken.each do |lang|
           li #{t("languages.#{lang}")}
-      p 
+      p
         | company:
         span = @user.company_name
-      p 
+      p
         | profession:
         span = t("venue.professions.#{@user.profession}")
-      p 
+      p
         | interests:
         span = @user.interests
 
@@ -36,8 +36,8 @@
             .col-lg-12
               p.location
                 strong user location
-              p.since 
-                | User since: 
+              p.since
+                | User since:
                 span = @user.created_at.strftime('%B, %Y')
         p.text
           | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid eius fuga obcaecati consectetur ea reiciendis porro nesciunt, tempora explicabo facere vitae velit molestiae, deleniti sed reprehenderit veniam nemo magnam eum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate autem minima illo, adipisci ea ex, aut nostrum, voluptate corrupti vel temporibus quos blanditiis repellat quae. Assumenda autem omnis, et accusantium.

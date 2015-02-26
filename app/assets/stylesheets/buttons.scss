@@ -13,4 +13,13 @@
   &.green {
     border-color: $aqua;
   }
+  &.yellow-fill{
+    border-color: $yellow;
+    background-color: $yellow;
+    color: $black;
+  }
+  &.bold{
+    letter-spacing: 0.08rem;
+    font-weight: 700;
+  }
 }

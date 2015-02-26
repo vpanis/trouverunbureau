@@ -1,41 +1,67 @@
+= render 'language_modal'
+
 = render 'shared/menu_bar'
 = render 'shared/profile_menu_bar'
-.row
-  .col-xs-12.col-sm-8.col-md-8.col-lg-8.col-xs-offset-0.col-sm-offset-2
-    .edit-profile-form.dashboard-form ng-controller="UserProfileCtrl"
-      = form_for @user do |f|
-        .row
-          .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
-            label = t('users.first_name')
-            = f.text_field :first_name, placeholder: t('users.first_name'), class: 'form-control'
-          .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
-            label = t('users.last_name')
-            = f.text_field :last_name, placeholder: t('users.last_name'), class: 'form-control'
-          .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
-            label = t('users.gender')
-            = f.select(:gender, @gender_options, {}, {class: 'form-control gender-select'})
-          .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
-            label = t('users.phone')
-            = f.text_field :phone, placeholder: t('users.phone'), class: 'form-control'
-          .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
-            label = t('users.profession')
-            = f.select(:profession, @profession_options, {}, {class: 'form-control profession-select'})
-          .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
-            label = t('users.email')
-            = f.text_field :email, placeholder: t('users.email'), class: 'form-control'
-          .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
-            label = t('users.company_name')
-            = f.text_field :company_name, placeholder: t('users.company_name'), class: 'form-control'
-          .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
-            label = t('users.language')
-            = f.select(:language, @language_options, {}, {class: 'form-control gender-select'})
-          .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
-            label = t('users.date_of_birth')
-            .input-group
-              .input-group-addon ng-click="open($event)" type="button"
-                i.glyphicon.glyphicon-calendar
-              - value = @user.date_of_birth.strftime("%d-%m-%Y") if @user.date_of_birth.present?
-              = f.text_field :date_of_birth, value: value, placeholder: 'Date of birth', class: 'form-control', close_text: 'Close', datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened', ng_model:'user_date_of_birth', ng_required: 'true', type: 'text', show_button_bar:'false'
 
-          = f.submit t('commons.save')
+.user
+  .user-title
+    h3.yellow-title = t('users.edit_profile')
+    .small-separator
+    h4.gray-subtitle = t('users.required_fields')
+    .user-avatar
+      - if @user.avatar?
+        = image_tag(@user.avatar.url, width: '95px', height: '95px')
+      - else
+        = image_tag('default-avatar.png', width: '95px', height: '95px')
+    .edit-avatar
+      a#edit-avatar href="#" = t('users.change_picture')
+  .row
+    .col-xs-12.col-sm-8.col-md-8.col-lg-8.col-xs-offset-0.col-sm-offset-2
+      .edit-profile-form.dashboard-form ng-controller="UserProfileCtrl"
+        = form_for @user do |f|
+          .row
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              label = t('users.first_name')
+              = f.text_field :first_name, placeholder: t('users.first_name'), class: 'form-control'
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              label = t('users.last_name')
+              = f.text_field :last_name, placeholder: t('users.last_name'), class: 'form-control'
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              label = t('users.gender')
+              = f.select(:gender, @gender_options, {}, {class: 'form-control gender-select'})
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              label = t('users.phone')
+              = f.text_field :phone, placeholder: t('users.phone'), class: 'form-control'
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              label = t('users.profession')
+              = f.select(:profession, @profession_options, {}, {class: 'form-control profession-select'})
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              label = t('users.email')
+              = f.text_field :email, placeholder: t('users.email'), class: 'form-control'
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              label = t('users.company_name')
+              = f.text_field :company_name, placeholder: t('users.company_name'), class: 'form-control'
+
+          .row
+            .small-title
+              .small-separator
+              h4.gray-subtitle = t('users.optional_fields')
+
+          .row
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              label = t('users.language')
+              = f.select(:language, @language_options, {}, {class: 'form-control gender-select'})
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              label = t('users.date_of_birth')
+              .input-group
+                .input-group-addon ng-click="open($event)" type="button"
+                  i.glyphicon.glyphicon-calendar
+                - value = @user.date_of_birth.strftime("%d-%m-%Y") if @user.date_of_birth.present?
+                = f.text_field :date_of_birth, value: value, placeholder: 'Date of birth', class: 'form-control', close_text: 'Close', datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened', ng_model:'user_date_of_birth', ng_required: 'true', type: 'text', show_button_bar:'false'
+
+
+            p Language Spoken
+            a href='#' data-target="#languageModal" data-toggle="modal" add
+
+            = f.submit t('commons.save')
 
