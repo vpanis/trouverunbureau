@@ -5,6 +5,7 @@ class Venue < ActiveRecord::Base
   has_many :spaces, dependent: :destroy
 
   has_many :day_hours, class_name: 'VenueHour', dependent: :destroy
+  accepts_nested_attributes_for :day_hours, allow_destroy: true, reject_if: :all_blank
 
   has_many :photos, class_name: 'VenuePhoto', dependent: :destroy
 
@@ -64,8 +65,6 @@ class Venue < ActiveRecord::Base
 
   validate :each_amenity_inclusion
   validate :each_profession_inclusion
-
-  accepts_nested_attributes_for :day_hours, allow_destroy: true, reject_if: :all_blank
 
   def opens_at_least_one_day_from_to?(from, to)
     weekdays = VenueHour.days_covered(from, to)

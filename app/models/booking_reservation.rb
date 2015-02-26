@@ -8,7 +8,7 @@ module BookingReservation
 
   def check_if_can_book_and_perform(booking, lock, custom_errors, check_venue_hours = true, &block)
     check_availability(booking, custom_errors, check_venue_hours)
-    return booking unless booking.errors.empty? && custom_errors.empty?
+    return booking unless booking.valid? && custom_errors.empty?
     check_max_collition(booking, lock, custom_errors, &block)
     booking
   end
