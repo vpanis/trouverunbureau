@@ -2,6 +2,7 @@ class Booking < ActiveRecord::Base
   attr_accessor :user
   # Relations
   belongs_to :owner, polymorphic: true
+  belongs_to :payment, polymorphic: true
 
   belongs_to :space
 
@@ -11,7 +12,7 @@ class Booking < ActiveRecord::Base
   enum b_type: [:hour, :day, :week, :month]
 
   enum state: [:pending_authorization, :pending_payment, :paid,
-               :canceled, :denied, :expired]
+               :canceled, :denied, :expired, :payment_verification]
 
   # Callbacks
   after_initialize :initialize_fields

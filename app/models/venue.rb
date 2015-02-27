@@ -9,6 +9,7 @@ class Venue < ActiveRecord::Base
   has_many :spaces, dependent: :destroy
   has_many :day_hours, class_name: 'VenueHour', dependent: :destroy
   has_many :photos, class_name: 'VenuePhoto', dependent: :destroy
+  belongs_to :collection_account, polymorphic: true, dependent: :destroy
 
   accepts_nested_attributes_for :day_hours,
                                 allow_destroy: true,

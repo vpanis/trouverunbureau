@@ -1,7 +1,8 @@
 module BookingReservation
 
   def block_states
-    [Booking.states[:pending_payment], Booking.states[:paid]]
+    [Booking.states[:pending_payment], Booking.states[:paid],
+     Booking.states[:payment_verification]]
   end
 
   private

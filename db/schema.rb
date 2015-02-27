@@ -33,10 +33,30 @@ ActiveRecord::Schema.define(version: 20150317161020) do
     t.datetime "approved_at"
     t.boolean  "owner_delete",       default: false
     t.boolean  "venue_owner_delete", default: false
+    t.integer  "payment_id"
+    t.string   "payment_type"
   end
 
   add_index "bookings", ["owner_id", "owner_type"], name: "index_bookings_on_owner_id_and_owner_type", using: :btree
+  add_index "bookings", ["payment_id", "payment_type"], name: "index_bookings_on_payment_id_and_payment_type", using: :btree
   add_index "bookings", ["space_id"], name: "index_bookings_on_space_id", using: :btree
+
+  create_table "braintree_collection_accounts", force: true do |t|
+    t.boolean  "active",        default: false
+    t.string   "status"
+    t.text     "error_message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "braintree_payments", force: true do |t|
+    t.string   "transaction_status"
+    t.string   "escrow_status"
+    t.string   "transaction_id"
+    t.text     "error_message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "client_reviews", force: true do |t|
     t.text     "message"
@@ -215,7 +235,7 @@ ActiveRecord::Schema.define(version: 20150317161020) do
     t.integer  "rooms"
     t.integer  "desks"
     t.float    "vat_tax_rate"
-    t.text     "amenities",        default: [], array: true
+    t.text     "amenities",               default: [], array: true
     t.datetime "created_at"
     t.datetime "updated_at"
     t.decimal  "rating"
@@ -225,9 +245,12 @@ ActiveRecord::Schema.define(version: 20150317161020) do
     t.string   "owner_type"
     t.text     "professions",      default: [], array: true
     t.integer  "country_id"
+    t.integer  "collection_account_id"
+    t.string   "collection_account_type"
   end
 
   add_index "venues", ["country_id"], name: "index_venues_on_country_id", using: :btree
+  add_index "venues", ["collection_account_id", "collection_account_type"], name: "index_venues_on_polymorphic_collection_account", unique: true, using: :btree
   add_index "venues", ["owner_id", "owner_type"], name: "index_venues_on_owner_id_and_owner_type", using: :btree
 
 end

@@ -1,0 +1,11 @@
+= javascript_include_tag "braintree_payment/braintree_dropin"
+h2
+  span Hello #{current_represented.name}
+  br
+  span It's Payment Time
+
+= form_tag(payments_path, method: "post")
+  = hidden_field_tag :booking_id, @booking.id
+  = hidden_field_tag :mode, "Braintree"
+  #js-dropin
+  = submit_tag("Pay $10")
