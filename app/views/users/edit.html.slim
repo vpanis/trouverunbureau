@@ -13,8 +13,7 @@
         = image_tag(@user.avatar.url, width: '95px', height: '95px')
       - else
         = image_tag('default-avatar.png', width: '95px', height: '95px')
-    .edit-avatar
-      a#edit-avatar href="#" = t('users.change_picture')
+      a#edit-avatar.edit-avatar.aqua href="#" = t('users.change_picture')
   .row
     .col-xs-12.col-sm-8.col-md-8.col-lg-8.col-xs-offset-0.col-sm-offset-2
       .edit-profile-form.dashboard-form ng-controller="UserProfileCtrl"

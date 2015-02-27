@@ -1112,6 +1112,28 @@ h4.gray-subtitle{
   }
   .edit-avatar{
     padding-bottom: 25px;
+    position: relative;
+    width: 122px;
+    margin: 0 auto;
+    display: block;
+    padding-left: 20px;
+    line-height: 15px;
+    transition: .25s;
+    &:before {
+      content: '+';
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: $aqua;
+      width: 15px;
+      height: 15px;
+      border-radius: 100%;
+      color: $white;
+      line-height: 15px;
+    }
+    &:hover {
+      color: darken($aqua, 10%);
+    }
   }
 }
 .small-title{
