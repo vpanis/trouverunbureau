@@ -23,18 +23,22 @@
               label = t('users.first_name')
               = f.text_field :first_name, placeholder: t('users.first_name'), class: 'form-control'
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              .icon
               label = t('users.last_name')
               = f.text_field :last_name, placeholder: t('users.last_name'), class: 'form-control'
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              .icon
               label = t('users.gender')
               = f.select(:gender, @gender_options, {}, {class: 'form-control gender-select'})
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              .icon
               label = t('users.phone')
               = f.text_field :phone, placeholder: t('users.phone'), class: 'form-control'
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               label = t('users.profession')
               = f.select(:profession, @profession_options, {}, {class: 'form-control profession-select'})
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              .icon
               label = t('users.email')
               = f.text_field :email, placeholder: t('users.email'), class: 'form-control'
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
@@ -67,6 +71,7 @@
               label = t('More on your career interests')
               = f.text_area :company_name, placeholder: t('users.company_name'), class: 'form-control'
             .col-lg-12
+              .icon
               p 
                 | Emergency contact 
                 a href='#' edit
