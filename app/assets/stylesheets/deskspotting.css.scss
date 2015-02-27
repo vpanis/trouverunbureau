@@ -1073,7 +1073,7 @@ h4.gray-subtitle{
     &:after {
       position: absolute;
       content: '';
-      width: 30px;
+      width: 50px;
       height: 2px;
       background-color: $yellow;
       bottom: -15px;
@@ -1119,7 +1119,35 @@ h4.gray-subtitle{
   padding: 12px 0px 25px;
 }
 .user-profile {
-  .user-avatar {
-    margin: 55px 0 45px;
+  .left-panel{
+    .user-avatar {
+      margin: 55px 0 45px;
+    }
+    .about-me {
+      position: relative;
+      margin-bottom: 25px;
+      &:after {
+        position: absolute;
+        content: '';
+        width: 30px;
+        height: 2px;
+        background-color: $yellow;
+        bottom: -12px;
+        left: 0;
+      }
+    }
+    .profile-element {
+      margin-bottom: 15px;
+    }
   }
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  float: left;
+  margin-right: 10px;
+  background-position: center;
+  @include at2x('venue_wishlist_white_active', 48px, 48px);
 }
