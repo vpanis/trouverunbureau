@@ -1,16 +1,14 @@
-.venue-reviews
+.review-list.user
   h2 #{t('venues.show.reviews')}
   .separator
-  .reviews-list ng-controller="ClientReviewsCtrl" data-avatar=(image_url('venue-default.png')) data-client-id=(user.id)
-    .review.row ng-repeat=("review in reviews")
-      .user.col-xs-8.col-sm-2.col-md-2.col-lg-2.col-xs-offset-2.col-sm-offset-0
-        .avatar
-          img ng-src="{{review.venue.logo || defaultAvatar}}"
+  .container-fluid.reviews-list ng-controller="ClientReviewsCtrl" data-avatar=(image_url('venue-default.png')) data-client-id=(user.id)
+    .review-item.row ng-repeat=("review in reviews")
+      .user.col-lg-2
+        img.avatar ng-src="{{review.venue.logo || defaultAvatar}}"
         p() {{review.venue.name}}
         .separator
         p.date() {{review.date}}
-      .col-xs-12.col-sm-10.col-md-10.col-lg-10
-        .message
+      .message.col-lg-10
           p() {{review.message}}
           .separator
     .pagination-container.client-reviews-pagination
