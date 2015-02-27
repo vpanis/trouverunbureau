@@ -79,7 +79,8 @@ describe VenuesController do
           let(:day_to) { ['1700', '', '1700', '', '', '', ''] }
           before do
             day_hours_attributes = { '0' => { from: '1500', to: '1700', weekday: 0 },
-                                     '1' => { from: '', to: '', weekday: '', _destroy: true },
+                                     '1' => { id: venue_hour.id, from: '', to: '', weekday: '',
+                                              _destroy: true },
                                      '2' => { from: '1600', to: '1700', weekday: 2 },
                                      '3' => { from: '', to: '', weekday: '', _destroy: true },
                                      '4' => { from: '', to: '', weekday: '', _destroy: true },
