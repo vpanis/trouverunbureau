@@ -1,4 +1,4 @@
-class VenuesController < ApplicationController
+class VenuesController < ModelController
   inherit_resources
   include RepresentedHelper
   before_action :authenticate_user!, only: [:edit, :update]
@@ -13,12 +13,7 @@ class VenuesController < ApplicationController
   end
 
   def update
-    @venue = Venue.find_by(id: params[:id])
-    return render nothing: true, status: 404 unless @venue.present?
-    venue_context = VenueContext.new(@venue, current_represented)
-    return render nothing: true, status: 403 unless venue_context.owner?
-    return render nothing: true, status: 412 unless venue_context.update_venue?(venue_params)
-    redirect_to edit_venue_path(@venue)
+    do_update(Venue, VenueContext, 'owner?', 'update_venue?')
   end
 
   def show
@@ -31,7 +26,7 @@ class VenuesController < ApplicationController
 
   private
 
-  def venue_params
+  def object_params
     params.require(:venue).permit(:town, :street, :postal_code, :phone, :email, :website,
                                   :latitude, :longitude, :name, :description, :currency, :v_type,
                                   :space, :space_unit, :floors, :rooms, :desks, :vat_tax_rate,
