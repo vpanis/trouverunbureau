@@ -57,10 +57,34 @@
                   i.glyphicon.glyphicon-calendar
                 - value = @user.date_of_birth.strftime("%d-%m-%Y") if @user.date_of_birth.present?
                 = f.text_field :date_of_birth, value: value, placeholder: 'Date of birth', class: 'form-control', close_text: 'Close', datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened', ng_model:'user_date_of_birth', ng_required: 'true', type: 'text', show_button_bar:'false'
-
-
-            p Language Spoken
-            a href='#' data-target="#languageModal" data-toggle="modal" add
-
-            = f.submit t('commons.save')
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              label = t('users.company_name')
+              = f.text_field :company_name, placeholder: t('users.company_name'), class: 'form-control'
+            .form-group.col-lg-12
+              label = t('Language Spoken')
+              a href='#' data-target="#languageModal" data-toggle="modal" add
+            .form-group.col-lg-12
+              label = t('More on your career interests')
+              = f.text_area :company_name, placeholder: t('users.company_name'), class: 'form-control'
+            .col-lg-12
+              p 
+                | Emergency contact 
+                a href='#' edit
+              hr
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              label = t('users.first_name')
+              = f.text_field :first_name, placeholder: t('users.first_name'), class: 'form-control'
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              label = t('users.phone')
+              = f.text_field :phone, placeholder: t('users.phone'), class: 'form-control'
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              label = t('users.email')
+              = f.text_field :email, placeholder: t('users.email'), class: 'form-control'
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              label = t('Relationship')
+              = f.text_field :email, placeholder: t('users.email'), class: 'form-control'
+            .col-lg-6.margin-top
+              = f.submit t('commons.save'), class: 'rounded-btn width-100'
+            .col-lg-6.margin-top
+              = f.submit t('commons.save'), class: 'rounded-btn yellow-fill width-100'
 
