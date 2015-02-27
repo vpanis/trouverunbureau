@@ -73,6 +73,31 @@
     }
   }
 }
+
+/* multi select */
+.select2-container-multi .select2-choices{
+  background: white;
+  border: 2px solid $light-gray;
+  li.select2-search-choice{
+    background-color: white;
+    border: solid 1px $yellow;
+    background-image: none;
+    padding: 6px 28px 6px 12px;
+    div{
+      font-size: 11px;
+      font-weight: 300;
+    }
+    a.select2-search-choice-close{
+      right: 5px;
+      top: 6px;
+      left: initial;
+      /* TODO: get asset for this */
+      @include at2x('venue_profile_why_book', 11px, 11px);
+      background-size: 11px 11px;
+    }
+  }
+}
+
 /* select style for the forms within the dashboard*/
 .dashboard-form{
   .select2-container{

@@ -6,7 +6,7 @@
           span aria-hidden="true"  &times;
         h4#languageModalLabel.modal-title = t('users.enter_languages')
       .modal-body
-        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+        .form-group
           label = t('users.language')
           = select_tag('languages_spoken', options_for_select(@language_options), {multiple: true, class: 'form-control multi-lang-select'})
 
