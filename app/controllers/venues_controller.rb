@@ -17,8 +17,7 @@ class VenuesController < ApplicationController
     return render nothing: true, status: 404 unless @venue.present?
     venue_context = VenueContext.new(@venue, current_represented)
     return render nothing: true, status: 403 unless venue_context.owner?
-    updated = venue_context.update_venue?(venue_params)
-    return render nothing: true, status: 412 unless updated
+    return render nothing: true, status: 412 unless venue_context.update_venue?(venue_params)
     redirect_to edit_venue_path(@venue)
   end
 
@@ -41,17 +40,13 @@ class VenuesController < ApplicationController
 
   end
 
-  def venue_hour_params
-    params.permit(day_from: [], day_to: [])
-  end
-
   def load_day_hours
     day_hours = []
     @venue.day_hours.each do |dh|
       day_hours[dh.weekday] = dh
     end
     (0..6).each do |index|
-      day_hours[index] = VenueHour.new unless day_hours[index].present?
+      day_hours[index] = VenueHour.new(weekday: index) unless day_hours[index].present?
     end
     day_hours
   end

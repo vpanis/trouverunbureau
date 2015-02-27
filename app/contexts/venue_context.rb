@@ -4,7 +4,7 @@ class VenueContext
   def initialize(venue, current_represented)
     @venue = venue
     @current_represented = current_represented
-    @old_day_hours = load_day_hours
+    @old_day_hours = @venue.day_hours
   end
 
   def can_update?(new_days_hours)
@@ -31,24 +31,20 @@ class VenueContext
   end
 
   def reduce_venue_hours?(new_days_hours)
-    dangerous_change = false
-    index = 0
     new_days_hours.values.each do |d|
-      dh = @old_day_hours[index]
-      dangerous_change = true  if check_venue_hour?(d[:from], d[:to], dh)
-      index += 1
-      break unless dangerous_change
+      dh = @old_day_hours.select { |old_dh| old_dh.weekday == d[:weekday] }[0]
+      return true unless check_venue_hour?(d[:from], d[:to], dh, d[:_destroy])
     end
-    dangerous_change
+    false
   end
 
-  def check_venue_hour?(from, to, vh)
-    return true if remove_day?(from, to, vh)
+  def check_venue_hour?(from, to, vh, destroy)
+    return true if remove_day?(destroy, from, to, vh)
     reduce_hours?(from, to, vh)
   end
 
-  def remove_day?(from, to, vh)
-    vh.present? && (from.empty? || to.empty?)
+  def remove_day?(destroy, from, to, vh)
+    destroy || (vh.present? && (from.empty? || to.empty?))
   end
 
   def reduce_hours?(from, to, vh)
@@ -61,14 +57,6 @@ class VenueContext
     Booking.where do
       (space_id.in spaces_id) & (from >= date_from) & (state.in my { block_states })
     end.empty?
-  end
-
-  def load_day_hours
-    day_hours = []
-    @venue.day_hours.each do |dh|
-      day_hours[dh.weekday] = dh
-    end
-    day_hours
   end
 
 end

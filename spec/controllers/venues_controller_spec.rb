@@ -121,6 +121,7 @@ describe VenuesController do
                                        '5' => { from: '', to: '', weekday: '', _destroy: true },
                                        '6' => { from: '', to: '', weekday: '', _destroy: true } }
               venue_params = { id: a_venue.id, day_hours_attributes: day_hours_attributes }
+              byebug
               patch :update, id: a_venue.id, venue: venue_params
               a_venue.reload
             end
