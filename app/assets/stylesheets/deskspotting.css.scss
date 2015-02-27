@@ -1067,18 +1067,21 @@ h4.gray-subtitle{
   .name {
     float: left;
     position: relative;
+    margin-top: 35px;
+    font-size: 30px;
+    margin-bottom: 30px;
     &:after {
       position: absolute;
       content: '';
       width: 30px;
       height: 2px;
       background-color: $yellow;
-      bottom: -10px;
+      bottom: -15px;
       left: 0;
     }
   }
   .review-container {
-    margin: 25px;
+    margin: 35px 0 0 10px;
   }
 
   .location {
@@ -1114,4 +1117,9 @@ h4.gray-subtitle{
 .small-title{
   text-align: center;
   padding: 12px 0px 25px;
+}
+.user-profile {
+  .user-avatar {
+    margin: 55px 0 45px;
+  }
 }

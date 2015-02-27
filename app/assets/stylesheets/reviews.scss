@@ -4,18 +4,33 @@
 
 .review-list {
   background-color: white;
-  padding: 35px 0px;
-  margin-top: 4px;
-  h2{
-    padding-top: 5px;
-    text-align: center;
-    font-size: 28px;
-    letter-spacing: 0.15rem;
-    color: black;
+  &.user {
+    h2 {
+      padding-top: 20px;
+      font-size: 16px;
+      color: black;
+      margin: 0;
+      font-weight: 700;
+    }
+    .separator{
+      width: 30px;
+      margin: 10px 0 45px;
+    }
   }
-  .separator{
-    width: 30px;
-    margin: 18px auto 45px;
+  &.venue {
+    padding: 35px 0px;
+    margin-top: 4px;
+    h2 {
+      text-align: center;
+      padding-top: 5px;
+      font-size: 28px;
+      letter-spacing: 0.15rem;
+      color: black;
+    }
+    .separator{
+      width: 30px;
+      margin: 18px auto 25px;
+    }
   }
   .no-reviews{
     text-align: center;

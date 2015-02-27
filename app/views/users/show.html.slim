@@ -1,9 +1,9 @@
 = render 'shared/menu_bar'
 = render 'shared/profile_menu_bar'
-.container
+.user-profile.container
   .row
     .left-panel.col-lg-2
-      .venue-avatar
+      .user-avatar
           - if @user.avatar?
             = image_tag(@user.avatar.url, width: '160px', height: '160px')
           - else
