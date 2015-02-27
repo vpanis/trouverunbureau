@@ -2,13 +2,18 @@
 @import 'mixins';
 @import 'tools';
 
-.text {
-  font-size: 13px;
+p, h1, h2, h3, h4, h5, h6 {
+  letter-spacing: 0.065rem;
+}
+
+p {
+  color: $gray-text;
   font-weight: 300;
-  color: $dark-gray;
-  letter-spacing: 0.09rem;
-  line-height: 30px;
-  &.centered {
-    text-align: center;
-  }
+  font-size: 13px;
+  line-height: 24px;
+}
+
+h3 {
+  font-size: 15px;
+  font-weight: 700;
 }
