@@ -8,4 +8,5 @@ class BookingsController < ApplicationController
     @paid = booking_context.retrieve_state_bookings(Booking.states.values_at(:paid))
     @canceled = booking_context.retrieve_state_bookings(Booking.states.values_at(:canceled))
   end
+
 end

@@ -1,0 +1,8 @@
+h1 = 'Current bookings'
+- @paid.each do |booking|
+  = render 'booking_item', card_class: 'space-card', booking: booking, venue: booking.space.venue
+
+h2 = 'Cancelled bookings'
+- @canceled.each do |space|
+  = render 'booking_item', card_class: 'space-card', booking: booking, venue: booking.space.venue
+
