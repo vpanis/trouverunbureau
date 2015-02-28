@@ -1173,3 +1173,39 @@ h4.gray-subtitle{
   background-position: center;
   @include at2x('stub-2', 48px, 48px);
 }
+
+ul.spoken-languages-container{
+  position: relative;
+  list-style-type: none;
+  li{
+    background-color: white;
+    border: solid 1px $yellow;
+    @include border-radius(3px);
+    float: left;
+    margin: 3px 0px 3px 5px;
+    padding: 6px 28px 6px 12px;
+    position: relative;
+    .lang-name{
+      font-size: 11px;
+      font-weight: 300;
+      line-height: 13px;
+    }
+    .delete-lang{
+      right: 5px;
+      top: 6px;
+      left: initial;
+      /* TODO: get asset for this */
+      @include at2x('venue_profile_why_book', 11px, 11px);
+      background-size: 11px 11px;
+      cursor: pointer;
+      display: block;
+      height: 11px;
+      width: 11px;
+      left: auto;
+      right: 5px;
+      top: 6px;
+      line-height: 13px;
+      position: absolute;
+    }
+  }
+}

@@ -8,7 +8,7 @@
       .modal-body
         .form-group
           label = t('users.language')
-          = select_tag('languages_spoken', options_for_select(@language_options), {multiple: true, class: 'form-control multi-lang-select'})
+          = select_tag('languages_spoken_select', options_from_collection_for_select(@language_options, :second, :first, @user.languages_spoken), {multiple: true, class: 'form-control multi-lang-select'})
 
       .modal-footer
         button.rounded-btn.yellow-fill.bold.uppercase#save-languages = t('users.add_languages')

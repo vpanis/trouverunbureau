@@ -67,13 +67,20 @@
             .form-group.col-lg-12
               label = t('Language Spoken')
               a href='#' data-target="#languageModal" data-toggle="modal" add
+              ul.spoken-languages-container
+                - @language_options.each do |lang|
+                  li.lang-item id="lang-item-#{lang.last}"
+                    div.lang-name
+                      = lang.first
+                    .delete-lang href="#" data-lang=lang.last
+              = f.hidden_field :languages_spoken
             .form-group.col-lg-12
               label = t('More on your career interests')
               = f.text_area :company_name, placeholder: t('users.company_name'), class: 'form-control'
             .col-lg-12
               .icon
-              p 
-                | Emergency contact 
+              p
+                | Emergency contact
                 a href='#' edit
               hr
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
@@ -92,4 +99,3 @@
               = f.submit t('commons.save'), class: 'rounded-btn width-100'
             .col-lg-6.margin-top
               = f.submit t('commons.save'), class: 'rounded-btn yellow-fill width-100'
-

@@ -23,6 +23,8 @@ en:
   languages:
     es: 'Español'
     en: 'English'
+    it: 'Italiano'
+    de: 'Deutsch'
   commons:
     save: 'Save'
     cancel: 'Cancel'

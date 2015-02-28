@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, LogoUploader
 
   # Enums
-  LANGUAGES = [:en, :es]
+  LANGUAGES = [:en, :es, :it, :de]
   GENDERS = [:f, :m]
 
   # Callbacks
