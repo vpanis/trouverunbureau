@@ -38,7 +38,6 @@ on_load = ->
         ++index
       return
 
-
     initialize_selects = ->
       $('.gender-select').select2({minimumResultsForSearch: -1})
       $('.language-select').select2({minimumResultsForSearch: -1})
