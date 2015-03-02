@@ -75,21 +75,20 @@ describe VenuesController do
           end
           let(:a_space) { create(:space, capacity: 2, venue: a_venue) }
           let(:new_description) { 'new description' }
-          let(:day_from) { ['1500', '', '1600', '', '', '', ''] }
-          let(:day_to) { ['1700', '', '1700', '', '', '', ''] }
+          let(:day_hours_attributes) do
+            { '0' => { from: '1500', to: '1700', weekday: 0 },
+              '1' => { id: venue_hour.id, from: '', to: '', weekday: '', _destroy: true },
+              '2' => { from: '1600', to: '1700', weekday: 2 },
+              '3' => { from: '', to: '', weekday: '', _destroy: true },
+              '4' => { from: '', to: '', weekday: '', _destroy: true },
+              '5' => { from: '', to: '', weekday: '', _destroy: true },
+              '6' => { from: '', to: '', weekday: '', _destroy: true } }
+          end
           before do
-            day_hours_attributes = { '0' => { from: '1500', to: '1700', weekday: 0 },
-                                     '1' => { id: venue_hour.id, from: '', to: '', weekday: '',
-                                              _destroy: true },
-                                     '2' => { from: '1600', to: '1700', weekday: 2 },
-                                     '3' => { from: '', to: '', weekday: '', _destroy: true },
-                                     '4' => { from: '', to: '', weekday: '', _destroy: true },
-                                     '5' => { from: '', to: '', weekday: '', _destroy: true },
-                                     '6' => { from: '', to: '', weekday: '', _destroy: true } }
             venue_params = { id: a_venue.id, description: new_description,
                              day_hours_attributes: day_hours_attributes }
 
-            patch :update, id: a_venue.id, venue: venue_params, day_from: day_from, day_to: day_to
+            patch :update, id: a_venue.id, venue: venue_params
             a_venue.reload
           end
 
@@ -102,10 +101,10 @@ describe VenuesController do
             expect(a_venue.day_hours.count).to eq(2)
             day_hour_0 = a_venue.day_hours.where { weekday == 0 }.first
             day_hour_2 = a_venue.day_hours.where { weekday == 2 }.first
-            expect(day_hour_0.from).to eq(day_from[0].to_i)
-            expect(day_hour_0.to).to eq(day_to[0].to_i)
-            expect(day_hour_2.from).to eq(day_from[2].to_i)
-            expect(day_hour_2.to).to eq(day_to[2].to_i)
+            expect(day_hour_0.from).to eq(day_hours_attributes['0'][:from].to_i)
+            expect(day_hour_0.to).to eq(day_hours_attributes['0'][:to].to_i)
+            expect(day_hour_2.from).to eq(day_hours_attributes['2'][:from].to_i)
+            expect(day_hour_2.to).to eq(day_hours_attributes['2'][:to].to_i)
           end
 
           it 'renders the :edit template' do
@@ -156,9 +155,13 @@ describe VenuesController do
 
             context 'where there aren\'t bookings of venue\' spaces' do
               before do
-                day_hours_attributes = { '0' => { from: '1600', to: '1700', weekday: 0 },
+                day_hour_0 = a_venue.day_hours.where { weekday == 0 }.first
+                day_hour_2 = a_venue.day_hours.where { weekday == 2 }.first
+                day_hours_attributes = { '0' => { id: day_hour_0.id, from: '1600', to: '1700',
+                                                  weekday: 0 },
                                          '1' => { from: '', to: '', weekday: '', _destroy: true },
-                                         '2' => { from: '', to: '', weekday: 2, _destroy: true },
+                                         '2' => { id: day_hour_2.id, from: '', to: '', weekday: 2,
+                                                  _destroy: true },
                                          '3' => { from: '', to: '', weekday: '', _destroy: true },
                                          '4' => { from: '', to: '', weekday: '', _destroy: true },
                                          '5' => { from: '', to: '', weekday: '', _destroy: true },
@@ -170,6 +173,7 @@ describe VenuesController do
 
               it 'succeeds' do
                 expect(response.status).to eq(302)
+                expect(a_venue.day_hours.count).to eq(1)
               end
             end
           end
