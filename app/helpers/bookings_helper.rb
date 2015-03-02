@@ -1,30 +1,32 @@
 module BookingsHelper
 
-  def initialize(booking, represented)
-    @booking = booking
-    @represented = represented
-  end
-
-  def review?
+  def review?(booking)
+    # TODO, use venue's timezone (not implemented yet)
     now = Time.zone.now
-    now >= @booking.from
+    owner?(booking) && now >= booking.from
   end
 
-  def view_receipt?
+  def view_receipt?(booking)
     true
   end
 
-  def cancel?
-    # TODO, use venue's timezone (not implemented yet)
-    now = Time.zone.now
-    @booking.owner == @represented && !booking.canceled?
+  def cancel?(booking)
+    !delete?(booking)
   end
 
-  def delete?
-    booking.owner == @represented
+  def delete?(booking)
+    owner?(booking) && (booking.canceled? || finished?)
   end
 
   private
 
-  def
+  def finished?(booking)
+    # TODO, use venue's timezone (not implemented yet)
+    now = Time.zone.now
+    now > (booking.to + 1)
+  end
+
+  def owner?(booking)
+    booking.owner == current_represented
+  end
 end

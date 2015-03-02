@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   inherit_resources
   include RepresentedHelper
+  include BookingsHelper
   before_action :authenticate_user!
 
   def paid_bookings
