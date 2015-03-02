@@ -192,4 +192,5 @@ describe SpacesController do
     end # when user logged in
 
   end # UPDATE spaces/:id/update
+
 end

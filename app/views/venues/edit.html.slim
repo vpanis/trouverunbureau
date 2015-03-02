@@ -1,0 +1,85 @@
+= form_for(@venue) do |f|
+  .main-content
+    #venue
+      .row
+
+        .details-section
+          .form-group#venue-town-input
+            label #{t('venue.town')}
+            = f.text_field :town
+          .form-group#venue-street-input
+            label #{t('venue.street')}
+            = f.text_field :street
+          .form-group#venue-postal_code-input
+            label #{t('venue.postal_code')}
+            = f.text_field :postal_code
+          .form-group#venue-phone-input
+            label #{t('venue.phone')}
+            = f.text_field :phone
+          .form-group#venue-email-input
+            label #{t('venue.email')}
+            = f.text_field :email
+          .form-group#venue-website-input
+            label #{t('venue.website')}
+            = f.text_field :website
+          .form-group#venue-latitude-input
+            label #{t('venue.latitude')}
+            = f.text_field :latitude
+          .form-group#venue-longitude-input
+            label #{t('venue.longitude')}
+            = f.text_field :longitude
+          .form-group#venue-name-input
+            label #{t('venue.name')}
+            = f.text_field :name
+          .form-group#venue-description-input
+            label #{t('venue.description')}
+            = f.text_field :description
+          .form-group#venue-currency-input
+            label #{t('venue.currency')}
+            = f.text_field :currency
+          .form-group#venue-v_type-input
+            label #{t('venue.v_type')}
+            = f.text_field :v_type
+          .form-group#venue-space-input
+            label #{t('venue.space')}
+            = f.text_field :space
+          .form-group#venue-space_unit-input
+            label #{t('venue.space_unit')}
+            = f.text_field :space_unit
+          .form-group#venue-floors-input
+            label #{t('venue.floors')}
+            = f.text_field :floors
+          .form-group#venue-rooms-input
+            label #{t('venue.rooms')}
+            = f.text_field :rooms
+          .form-group#venue-desks-input
+            label #{t('venue.desks')}
+            = f.text_field :desks
+          .form-group#venue-vat_tax_rate-input
+            label #{t('venue.vat_tax_rate')}
+            = f.text_field :vat_tax_rate
+          .form-group#venue-amenities-input
+            label #{t('venue.amenities')}
+            = f.text_field :amenities
+          .form-group#venue-rating-input
+            label #{t('venue.rating')}
+            = f.text_field :rating
+          .form-group#venue-professions-input
+            label #{t('venue.professions')}
+            = f.text_field :professions
+          .form-group#venue-country-input
+            label #{t('venue.country')}
+            = f.text_field :country
+
+      = f.fields_for :day_hours, @modify_day_hours do |day_hours_fields|
+        p = "DAY:"
+        = day_hours_fields.text_field :weekday
+        p = 'from:'
+        = day_hours_fields.text_field :from
+        p = 'to:'
+        = day_hours_fields.text_field :to
+        p = 'Delete:'
+        = day_hours_fields.check_box :_destroy
+
+  .full-width-submit-button
+    = f.submit 'Save', class: 'submit-button', id: 'save-venue'

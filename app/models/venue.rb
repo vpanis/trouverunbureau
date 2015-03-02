@@ -5,6 +5,9 @@ class Venue < ActiveRecord::Base
   has_many :spaces, dependent: :destroy
 
   has_many :day_hours, class_name: 'VenueHour', dependent: :destroy
+  accepts_nested_attributes_for :day_hours,
+                                allow_destroy: true,
+                                reject_if: proc { |e| e[:from].blank? || e[:to].blank? }
 
   has_many :photos, class_name: 'VenuePhoto', dependent: :destroy
 
