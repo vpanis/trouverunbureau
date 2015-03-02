@@ -12,6 +12,14 @@ class BookingsController < ApplicationController
     retrieve_bookings(true)
   end
 
+  def delete
+    booking = Booking.find_by(id: params[:id])
+    return render nothing: true, status: 404 unless booking.present?
+    return render nothing: true, status: 403 unless BookingContext.new(current_represented)
+                                                                  .delete_booking(booking)
+    redirect_to paid_bookings_bookings_path
+  end
+
   private
 
   def retrieve_bookings(venue_books)

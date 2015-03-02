@@ -31,7 +31,6 @@ module BookingsHelper
   end
 
   def owner?(booking, own = true)
-    byebug
     (own) ? booking.owner == current_represented : booking.space.venue.owner == current_represented
   end
 end

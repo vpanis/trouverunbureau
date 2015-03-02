@@ -17,6 +17,9 @@ Deskspotting::Application.routes.draw do
       get :paid_bookings, to: "bookings#paid_bookings"
       get :venue_paid_bookings, to: "bookings#venue_paid_bookings"
     end
+    member do
+      delete :delete, to: 'bookings#delete'
+    end
   end
 
   api_version(module: "api/v1", path: { value: 'api/v1' }) do
