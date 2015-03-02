@@ -1,67 +1,22 @@
-    t.datetime "from"
-    t.datetime "to"
-    t.integer  "b_type"
-
-create_table "venues", force: true do |t|
-    t.string   "town"
-    t.string   "street"
-    t.string   "postal_code"
-    t.string   "phone"
-    t.string   "email"
-    t.string   "name"
-    t.string   "logo"
-    t.integer  "v_type"
-    t.float    "space"
-    t.integer  "space_unit"
-    t.integer  "floors"
-    t.integer  "rooms"
-    t.integer  "desks"
-    t.float    "vat_tax_rate"
-    t.text     "amenities",        default: [], array: true
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.decimal  "rating"
-    t.integer  "quantity_reviews"
-    t.integer  "reviews_sum"
-    t.integer  "owner_id"
-    t.string   "owner_type"
-    t.text     "professions",      default: [], array: true
-    t.string   "country"
-  end
-
-
 p = booking.state
 p = booking.price
-p = venue.currency
-p = space.s_type
+p = booking.space.venue.currency
+p = booking.space.s_type
 p = booking.quantity
-p = space.name
-p = venue.street + ", " + venue.town + ", " + venue.country
+p = booking.space.name
+p = booking.space.venue.street.to_s + ', ' + booking.space.venue.town.to_s \
+    + ', ' + booking.space.venue.country.to_s
+p = booking.from
+p = booking.to
 
-    .prices
-      - if space.hour_price.present?
-        .price
-          p
-            = "$#{space.hour_price.round}"
-            span.currency = "(#{space.venue.currency})"
-          p.time #{t('venues.show.per_hour')}
-      - if space.day_price.present?
-        .price
-          p
-            = "$#{space.day_price.round}"
-            span.currency = "(#{space.venue.currency})"
-          p.time #{t('venues.show.per_day')}
-      - if space.week_price.present?
-        .price
-          p
-            = "$#{space.week_price.round}"
-            span.currency = "(#{space.venue.currency})"
-          p.time #{t('venues.show.per_week')}
-      - if space.month_price.present?
-        .price
-          p
-            = "$#{space.month_price.round}"
-            span.currency = "(#{space.venue.currency})"
-          p.time #{t('venues.show.per_month')}
-    .booking-inquiry
-      a href="#" #{t('venues.show.booking_inquiry')}
+- if review?(booking)
+    p = 'Review'
+
+- if view_receipt?
+    p = 'View Receipt'
+
+- if cancel?(booking)
+    p = 'Cancel'
+
+- if delete?(booking)
+    p = 'Delete'

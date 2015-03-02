@@ -6,12 +6,12 @@ module BookingsHelper
     owner?(booking) && now >= booking.from
   end
 
-  def view_receipt?(booking)
-    true
+  def view_receipt?
+    owner?(booking)
   end
 
   def cancel?(booking)
-    !delete?(booking)
+    owner?(booking) && cancellable_states(booking) && !finished?
   end
 
   def delete?(booking)
@@ -19,6 +19,10 @@ module BookingsHelper
   end
 
   private
+
+  def cancellable_states(booking)
+    booking.paid? || booking.pending_authorization? || booking.pending_payment?
+  end
 
   def finished?(booking)
     # TODO, use venue's timezone (not implemented yet)

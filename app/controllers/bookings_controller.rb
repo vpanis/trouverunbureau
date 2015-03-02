@@ -5,9 +5,19 @@ class BookingsController < ApplicationController
   before_action :authenticate_user!
 
   def paid_bookings
-    booking_context = BookingContext.new(current_represented)
-    @paid = booking_context.retrieve_state_bookings(Booking.states.values_at(:paid))
-    @canceled = booking_context.retrieve_state_bookings(Booking.states.values_at(:canceled))
+    retrieve_bookings(false)
   end
 
+  def venue_paid_bookings
+    retrieve_bookings(true)
+  end
+
+  private
+
+  def retrieve_bookings(venue_books)
+    booking_context = BookingContext.new(current_represented)
+    method_name = (venue_books) ? 'retrieve_bookings_venues' : 'retrieve_bookings'
+    @paid = booking_context.send(method_name, Booking.states.values_at(:paid))
+    @canceled = booking_context.send(method_name, Booking.states.values_at(:canceled))
+  end
 end
