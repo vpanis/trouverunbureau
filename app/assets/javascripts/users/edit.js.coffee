@@ -50,8 +50,28 @@ on_load = ->
       $('.delete-lang').click  ->
         delete_language($(this))
 
+    initialize_popovers = ->
+      options = {
+        placement: (context, source) ->
+          position = $(source).offset()
+          if (position.left > 160)
+              return "left"
+          if (position.left < 160)
+              return "right"
+          if (position.top < 110)
+              return "bottom"
+          return "top"
+      }
+      $('#last-name-popover').popover(options)
+      $('#gender-popover').popover(options)
+      $('#email-popover').popover(options)
+      $('#phone-popover').popover(options)
+      $('#emergency-popover').popover(options)
+
     initialize_selects()
     initialize_listeners()
+    initialize_popovers()
     show_selected_languages(get_select2_languages())
+
   return
 $(document).ready on_load
