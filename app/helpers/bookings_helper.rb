@@ -1,21 +1,21 @@
 module BookingsHelper
 
-  def review?(booking)
+  def review?(booking, own = true)
     # TODO, use venue's timezone (not implemented yet)
     now = Time.zone.now
-    owner?(booking) && now >= booking.from
+    owner?(booking, own) && now >= booking.from
   end
 
-  def view_receipt?
-    owner?(booking)
+  def view_receipt?(booking, own = true)
+    owner?(booking, own)
   end
 
-  def cancel?(booking)
-    owner?(booking) && cancellable_states(booking) && !finished?
+  def cancel?(booking, own = true)
+    owner?(booking, own) && cancellable_states(booking) && !finished?
   end
 
-  def delete?(booking)
-    owner?(booking) && (booking.canceled? || finished?)
+  def delete?(booking, own = true)
+    owner?(booking, own) && (booking.canceled? || finished?)
   end
 
   private
@@ -30,7 +30,8 @@ module BookingsHelper
     now > (booking.to + 1)
   end
 
-  def owner?(booking)
-    booking.owner == current_represented
+  def owner?(booking, own = true)
+    byebug
+    (own) ? booking.owner == current_represented : booking.space.venue.owner == current_represented
   end
 end

@@ -12,6 +12,7 @@ class BookingContext
     venue_ids = @current_represented.venues.ids
     Booking.joins { space }.where { (space.venue_id.in venue_ids) & (state.in states) }
                            .includes { space.venue }
+    # Booking.joins { space }.where { state.in states }.includes { space.venue }
   end
 
 end
