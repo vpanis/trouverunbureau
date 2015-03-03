@@ -1,4 +1,5 @@
 = render 'language_modal'
+= render 'shared/image_modal', modal_id: 'avatar-modal', title: t('users.change_picture'), image_link_id: 'avatar-link', save_button_id: 'save-avatar'
 
 = render 'shared/menu_bar'
 = render 'shared/profile_menu_bar'
@@ -10,14 +11,15 @@
     h4.gray-subtitle = t('users.required_fields')
     .user-avatar
       - if @user.avatar?
-        = image_tag(@user.avatar.url, width: '95px', height: '95px')
+        = image_tag(@user.avatar.url, width: '95px', height: '95px', id: 'user-avatar-img')
       - else
-        = image_tag('default-avatar.png', width: '95px', height: '95px')
-      a#edit-avatar.edit-avatar.aqua href="#" = t('users.change_picture')
+        = image_tag('default-avatar.png', width: '95px', height: '95px', id: 'user-avatar-img')
+      a#edit-avatar.edit-avatar.aqua href="#" data-toggle="modal" data-target="#avatar-modal" = t('users.change_picture')
   .row
     .col-xs-12.col-sm-8.col-md-8.col-lg-8.col-xs-offset-0.col-sm-offset-2
       .edit-profile-form.dashboard-form ng-controller="UserProfileCtrl"
         = form_for @user do |f|
+          = f.file_field :avatar, class: 'hidden'
           .row
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               label = t('users.first_name')

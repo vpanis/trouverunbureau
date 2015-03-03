@@ -28,6 +28,8 @@ en:
   commons:
     save: 'Save'
     cancel: 'Cancel'
+    close: 'Close'
+    upload_file: 'Upload file'
   session:
     email: 'Email address'
     password: 'Password'
