@@ -26,16 +26,19 @@ describe Api::V1::BookingInquiriesController do
     context 'when the organization has inquiries' do
       before(:each) do
         @booking1 = FactoryGirl.create(:booking, owner: organization)
-        @message1_b1 = FactoryGirl.create(:message, user: @user_logged, booking: @booking1,
-                                          represented: @booking1.space.venue.owner)
+        @message1_b1 = FactoryGirl.create(:message, user: @booking1.space.venue.owner,
+                                                    booking: @booking1,
+                                                    represented: @booking1.space.venue.owner)
         advance_in_time(seconds: 1)
         @booking2 = FactoryGirl.create(:booking, owner: organization, state: Booking.states[:paid])
-        @message1_b2 = FactoryGirl.create(:message, user: @user_logged, booking: @booking2,
-                                          represented: @booking2.space.venue.owner)
+        @message1_b2 = FactoryGirl.create(:message, user: @booking2.space.venue.owner,
+                                                    booking: @booking2,
+                                                    represented: @booking2.space.venue.owner)
         advance_in_time(seconds: 1)
         @booking3 = FactoryGirl.create(:booking, owner: organization)
-        @message1_b3 = FactoryGirl.create(:message, user: @user_logged, booking: @booking3,
-                                          represented: @booking2.space.venue.owner)
+        @message1_b3 = FactoryGirl.create(:message, user: @booking3.space.venue.owner,
+                                                    booking: @booking3,
+                                                    represented: @booking3.space.venue.owner)
       end
 
       # The login is tested in the user_as_organization_spec, the way to logged as one
@@ -97,16 +100,19 @@ describe Api::V1::BookingInquiriesController do
     context 'when the user has inquiries' do
       before(:each) do
         @booking1 = FactoryGirl.create(:booking, owner: @user_logged)
-        @message1_b1 = FactoryGirl.create(:message, user: @user_logged, booking: @booking1,
-                                          represented: @booking1.space.venue.owner)
+        @message1_b1 = FactoryGirl.create(:message, user: @booking1.space.venue.owner,
+                                                    booking: @booking1,
+                                                    represented: @booking1.space.venue.owner)
         advance_in_time(seconds: 1)
         @booking2 = FactoryGirl.create(:booking, owner: @user_logged, state: Booking.states[:paid])
-        @message1_b2 = FactoryGirl.create(:message, user: @user_logged, booking: @booking2,
-                                          represented: @booking2.space.venue.owner)
+        @message1_b2 = FactoryGirl.create(:message, user: @booking2.space.venue.owner,
+                                                    booking: @booking2,
+                                                    represented: @booking2.space.venue.owner)
         advance_in_time(seconds: 1)
         @booking3 = FactoryGirl.create(:booking, owner: @user_logged)
-        @message1_b3 = FactoryGirl.create(:message, user: @user_logged, booking: @booking3,
-                                          represented: @booking2.space.venue.owner)
+        @message1_b3 = FactoryGirl.create(:message, user: @booking3.space.venue.owner,
+                                                    booking: @booking3,
+                                                    represented: @booking3.space.venue.owner)
       end
 
       it 'should retrieve inquiries ordered desc by the last message date' do
@@ -158,16 +164,19 @@ describe Api::V1::BookingInquiriesController do
     context 'when the organization has inquiries' do
       before(:each) do
         @booking1 = FactoryGirl.create(:booking, owner: organization)
-        @message1_b1 = FactoryGirl.create(:message, user: @user_logged, booking: @booking1,
-                                          represented: @booking1.space.venue.owner)
+        @message1_b1 = FactoryGirl.create(:message, user: @booking1.space.venue.owner,
+                                                    booking: @booking1,
+                                                    represented: @booking1.space.venue.owner)
         advance_in_time(seconds: 1)
         @booking2 = FactoryGirl.create(:booking, owner: organization, state: Booking.states[:paid])
-        @message1_b2 = FactoryGirl.create(:message, user: @user_logged, booking: @booking2,
-                                          represented: @booking2.space.venue.owner)
+        @message1_b2 = FactoryGirl.create(:message, user: @booking2.space.venue.owner,
+                                                    booking: @booking2,
+                                                    represented: @booking2.space.venue.owner)
         advance_in_time(seconds: 1)
         @booking3 = FactoryGirl.create(:booking, owner: organization)
-        @message1_b3 = FactoryGirl.create(:message, user: @user_logged, booking: @booking3,
-                                          represented: @booking2.space.venue.owner)
+        @message1_b3 = FactoryGirl.create(:message, user: @booking3.space.venue.owner,
+                                                    booking: @booking3,
+                                                    represented: @booking3.space.venue.owner)
 
         BookingManager.change_last_seen(@booking1, organization, @message1_b1.created_at)
       end
@@ -229,16 +238,19 @@ describe Api::V1::BookingInquiriesController do
     context 'when the user has inquiries with news' do
       before(:each) do
         @booking1 = FactoryGirl.create(:booking, owner: @user_logged)
-        @message1_b1 = FactoryGirl.create(:message, user: @user_logged, booking: @booking1,
-                                          represented: @booking1.space.venue.owner)
+        @message1_b1 = FactoryGirl.create(:message, user: @booking1.space.venue.owner,
+                                                    booking: @booking1,
+                                                    represented: @booking1.space.venue.owner)
         advance_in_time(seconds: 1)
         @booking2 = FactoryGirl.create(:booking, owner: @user_logged, state: Booking.states[:paid])
-        @message1_b2 = FactoryGirl.create(:message, user: @user_logged, booking: @booking2,
-                                          represented: @booking2.space.venue.owner)
+        @message1_b2 = FactoryGirl.create(:message, user: @booking2.space.venue.owner,
+                                                    booking: @booking2,
+                                                    represented: @booking2.space.venue.owner)
         advance_in_time(seconds: 1)
         @booking3 = FactoryGirl.create(:booking, owner: @user_logged)
-        @message1_b3 = FactoryGirl.create(:message, user: @user_logged, booking: @booking3,
-                                          represented: @booking2.space.venue.owner)
+        @message1_b3 = FactoryGirl.create(:message, user: @booking3.space.venue.owner,
+                                                    booking: @booking3,
+                                                    represented: @booking3.space.venue.owner)
 
         BookingManager.change_last_seen(@booking1, @user_logged, @message1_b1.created_at)
       end
@@ -290,12 +302,14 @@ describe Api::V1::BookingInquiriesController do
   describe 'PUT inquiries/:id/last_seen_message' do
     before(:each) do
       @booking1 = FactoryGirl.create(:booking, owner: @user_logged)
-      @message1_b1 = FactoryGirl.create(:message, user: @user_logged, booking: @booking1,
-                                        represented: @booking1.space.venue.owner)
+      @message1_b1 = FactoryGirl.create(:message, user: @booking1.space.venue.owner,
+                                                  booking: @booking1,
+                                                  represented: @booking1.space.venue.owner)
       advance_in_time(seconds: 1)
       @booking2 = FactoryGirl.create(:booking, owner: @user_logged, state: Booking.states[:paid])
-      @message1_b2 = FactoryGirl.create(:message, user: @user_logged, booking: @booking2,
-                                        represented: @booking2.space.venue.owner)
+      @message1_b2 = FactoryGirl.create(:message, user: @booking2.space.venue.owner,
+                                                  booking: @booking2,
+                                                  represented: @booking2.space.venue.owner)
     end
 
     it 'succeeds' do
@@ -314,8 +328,9 @@ describe Api::V1::BookingInquiriesController do
   describe 'POST inquiries/:id/messages' do
     before(:each) do
       @booking1 = FactoryGirl.create(:booking, owner: @user_logged)
-      @message1_b1 = FactoryGirl.create(:message, user: @user_logged, booking: @booking1,
-                                        represented: @booking1.space.venue.owner)
+      @message1_b1 = FactoryGirl.create(:message, user: @booking1.space.venue.owner,
+                                                  booking: @booking1,
+                                                  represented: @booking1.space.venue.owner)
     end
 
     it 'succeeds' do
@@ -362,8 +377,9 @@ describe Api::V1::BookingInquiriesController do
       let(:organization) { FactoryGirl.create(:organization, user: @user_logged) }
       before(:each) do
         @booking_org = FactoryGirl.create(:booking, owner: organization)
-        @message1_org = FactoryGirl.create(:message, user: @user_logged, booking: @booking_org,
-                                           represented: @booking1.space.venue.owner)
+        @message1_org = FactoryGirl.create(:message, user: @booking_org.space.venue.owner,
+                                                     booking: @booking_org,
+                                                     represented: @booking_org.space.venue.owner)
       end
 
       it 'fails to create a message in a booking of the user' do
@@ -388,20 +404,200 @@ describe Api::V1::BookingInquiriesController do
     end
   end
 
-  # describe 'GET inquiries/:id/messages' do
+  describe 'GET inquiries/:id/messages' do
+    before(:each) do
+      @booking = FactoryGirl.create(:booking, owner: @user_logged)
+    end
 
-  # end
+    it 'succeeds' do
+      get :messages, id: @booking.id
+      expect(response.status).to eq(200)
+    end
 
-  # describe 'PUT inquiries/:id/accept' do
+    context 'when the user has inquiries with news' do
 
-  # end
+      before(:each) do
+        @message1 = FactoryGirl.create(:message, user: @booking.space.venue.owner,
+                                       booking: @booking, represented: @booking.space.venue.owner)
+        advance_in_time(seconds: 2)
+        @message2 = FactoryGirl.create(:message, user: @user_logged,
+                                       booking: @booking, represented: @user_logged)
+        advance_in_time(seconds: 2)
+        @message3 = FactoryGirl.create(:message, user: @booking.space.venue.owner,
+                                       booking: @booking, represented: @booking.space.venue.owner)
+      end
 
-  # describe 'PUT inquiries/:id/cancel' do
+      it 'should retrieve messages ordered desc by created_at' do
+        get :messages, id: @booking.id
+        m1_json = JSON.parse(MessageSerializer.new(@message1).to_json)
+        m2_json = JSON.parse(MessageSerializer.new(@message2).to_json)
+        m3_json = JSON.parse(MessageSerializer.new(@message3).to_json)
+        expect(JSON.parse(body['messages'])).to match_array([m3_json['message'],
+                                                             m2_json['message'],
+                                                             m1_json['message']])
+      end
 
-  # end
+      it 'should paginate messages' do
+        page = 2
+        amount =  1
+        get :messages, id: @booking.id, page: page, amount: amount
 
-  # describe 'PUT inquiries/:id/deny' do
+        expect(body['count']).to eql(3)
+        expect(body['items_per_page']).to eql(amount)
+        expect(body['current_page']).to eql(page)
+        expect(JSON.parse(body['messages']).size).to eql(amount)
+      end
 
-  # end
+      it 'should get messages from a minimum date (not_included)' do
+        get :messages, id: @booking.id, from: @message1.created_at.advance(seconds: 1)
+        m2_json = JSON.parse(MessageSerializer.new(@message2).to_json)
+        m3_json = JSON.parse(MessageSerializer.new(@message3).to_json)
+        expect(JSON.parse(body['messages'])).to match_array([m3_json['message'],
+                                                             m2_json['message']])
+      end
+
+      it 'should get messages from a maximum date (not included)' do
+        get :messages, id: @booking.id, to: @message2.created_at.advance(seconds: 1)
+        m1_json = JSON.parse(MessageSerializer.new(@message1).to_json)
+        m2_json = JSON.parse(MessageSerializer.new(@message2).to_json)
+        expect(JSON.parse(body['messages'])).to match_array([m2_json['message'],
+                                                             m1_json['message']])
+      end
+
+      it 'should get messages from a date range (not included)' do
+        get :messages, id: @booking.id, from: @message1.created_at.advance(seconds: 1),
+            to: @message2.created_at.advance(seconds: 1)
+        m2_json = JSON.parse(MessageSerializer.new(@message2).to_json)
+        expect(JSON.parse(body['messages'])).to match_array([m2_json['message']])
+      end
+
+      it 'doesn\' let the user retrieve other users messages' do
+        @booking1 = FactoryGirl.create(:booking)
+        get :messages, id: @booking1.id
+        expect(response.status).to eq(403)
+      end
+    end
+
+    context 'when the user is logged as an organization' do
+      it 'doesn\'t retrieve the user messages' do
+        organization = FactoryGirl.create(:organization, user: @user_logged)
+        get :messages, { id: @booking.id },
+            current_organization_id: organization.id
+        expect(response.status).to eq(403)
+      end
+    end
+  end
+
+  describe 'PUT inquiries/:id/accept' do
+    before(:each) do
+      @venue = FactoryGirl.create(:venue, :with_venue_hours, owner: @user_logged)
+      @space = FactoryGirl.create(:space, venue: @venue, month_price: 300, quantity: 3)
+      @booking = FactoryGirl.create(:booking, space: @space, b_type: Booking.b_types[:month])
+    end
+
+    it 'succeeds' do
+      put :accept, id: @booking
+      expect(response.status).to eq(201)
+    end
+
+    it 'changes the status of the booking, to pending payment' do
+      put :accept, id: @booking
+      @booking.reload
+      expect(@booking.pending_payment?).to eq(true)
+    end
+
+    it 'adds a new message to the inquiry' do
+      old_messages_count = @booking.messages.count
+      put :accept, id: @booking
+      @booking.reload
+      expect(@booking.messages.count).to eq(old_messages_count + 1)
+      expect(@booking.messages.last.pending_payment?).to eq(true)
+    end
+
+    it 'fails if the state it\'s not pending_authorization' do
+      @booking.update_attributes(state: Booking.states[:paid])
+      put :accept, id: @booking
+      expect(response.status).to eq(400)
+    end
+
+    it 'fails if the booking\'s owner tries to accept it' do
+      @booking = FactoryGirl.create(:booking, owner: @user_logged)
+      put :accept, id: @booking
+      expect(response.status).to eq(400)
+    end
+  end
+
+  describe 'PUT inquiries/:id/cancel' do
+    before(:each) do
+      @venue = FactoryGirl.create(:venue, :with_venue_hours)
+      @space = FactoryGirl.create(:space, venue: @venue, month_price: 300, quantity: 3)
+      @booking = FactoryGirl.create(:booking, owner: @user_logged, space: @space,
+                                    b_type: Booking.b_types[:month])
+    end
+
+    it 'succeeds' do
+      put :cancel, id: @booking
+      expect(response.status).to eq(201)
+    end
+
+    it 'changes the status of the booking, to cancel' do
+      put :cancel, id: @booking
+      @booking.reload
+      expect(@booking.canceled?).to eq(true)
+    end
+
+    it 'adds a new message to the inquiry' do
+      old_messages_count = @booking.messages.count
+      put :cancel, id: @booking
+      @booking.reload
+      expect(@booking.messages.count).to eq(old_messages_count + 1)
+      expect(@booking.messages.last.canceled?).to eq(true)
+    end
+
+    it 'fails if the venue\'s owner tries to cancel it' do
+      @venue = FactoryGirl.create(:venue, :with_venue_hours, owner: @user_logged)
+      @space = FactoryGirl.create(:space, venue: @venue, month_price: 300, quantity: 3)
+      @booking = FactoryGirl.create(:booking, space: @space,
+                                              b_type: Booking.b_types[:month])
+      put :cancel, id: @booking
+      expect(response.status).to eq(400)
+    end
+  end
+
+  describe 'PUT inquiries/:id/deny' do
+    before(:each) do
+      @venue = FactoryGirl.create(:venue, :with_venue_hours, owner: @user_logged)
+      @space = FactoryGirl.create(:space, venue: @venue, month_price: 300, quantity: 3)
+      @booking = FactoryGirl.create(:booking, space: @space, b_type: Booking.b_types[:month])
+    end
+
+    it 'succeeds' do
+      put :deny, id: @booking
+      expect(response.status).to eq(201)
+    end
+
+    it 'changes the status of the booking, to cancel' do
+      put :deny, id: @booking
+      @booking.reload
+      expect(@booking.denied?).to eq(true)
+    end
+
+    it 'adds a new message to the inquiry' do
+      old_messages_count = @booking.messages.count
+      put :deny, id: @booking
+      @booking.reload
+      expect(@booking.messages.count).to eq(old_messages_count + 1)
+      expect(@booking.messages.last.denied?).to eq(true)
+    end
+
+    it 'fails if the booking\'s owner tries to cancel it' do
+      @venue = FactoryGirl.create(:venue, :with_venue_hours)
+      @space = FactoryGirl.create(:space, venue: @venue, month_price: 300, quantity: 3)
+      @booking = FactoryGirl.create(:booking, space: @space, owner: @user_logged,
+                                    b_type: Booking.b_types[:month])
+      put :deny, id: @booking
+      expect(response.status).to eq(400)
+    end
+  end
 
 end

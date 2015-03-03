@@ -40,7 +40,7 @@ class BookingManager
       custom_errors = ActiveModel::Errors.new(booking)
       verify_states_changes(user, booking, state, custom_errors)
       return [booking, custom_errors] unless custom_errors.empty?
-      if state == Booking.states[:pending_authorization]
+      if state == Booking.states[:pending_payment]
         booking, custom_errors = change_to_pending_payment(booking, custom_errors)
       else
         booking.update_attributes(state: state)
@@ -60,6 +60,7 @@ class BookingManager
     end
 
     def verify_states_changes(user, booking, state, custom_errors)
+      custom_errors.add(:invalid_state, state: state) unless Booking.states.values.include? state
       verify_valid_states_transitions(booking, state, custom_errors)
       if state == Booking.states[:paid] || state == Booking.states[:canceled]
         verify_user(user, booking.owner, custom_errors)
@@ -78,7 +79,7 @@ class BookingManager
 
     def verify_user(user, owner, custom_errors)
       return if user.user_can_write_in_name_of(owner)
-      custom_errors.add(:not_allowed_user, user: user)
+      custom_errors.add(:not_allowed_user, user_id: user.id)
     end
 
     def verify_updatable_state(booking, custom_errors)
@@ -87,9 +88,10 @@ class BookingManager
     end
 
     def verify_valid_states_transitions(booking, state, custom_errors)
-      custom_errors.add(:invalid_state, state: state) unless Booking.states.values.include? state
+      custom_errors.add(:invalid_transition, state: state) if !booking.pending_authorization? &&
+        state == Booking.states[:pending_payment]
       custom_errors.add(:invalid_transition, state: state) if state == Booking.states[:paid] &&
-        booking.state != Booking.states[:pending_authorization]
+        !booking.pending_payment?
       custom_errors.add(:same_state, state: state) if state == booking.state
     end
   end

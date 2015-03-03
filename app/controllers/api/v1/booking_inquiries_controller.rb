@@ -62,10 +62,10 @@ module Api
         return unless inquiry_data_validation(booking)
         convert_strings_to_dates(:from, :to)
         messages = booking.messages
-        messages = messages.where { created_at >= params[:from] } if params[:from]
-        messages = messages.where { created_at <= params[:to] } if params[:to]
+        messages = messages.where { created_at > my { params[:from] } } if params[:from]
+        messages = messages.where { created_at <= my { params[:to] } } if params[:to]
         messages = messages.order('created_at DESC')
-        render status: 200, json: serialized_paginated_array(messages, :inquiries,
+        render status: 200, json: serialized_paginated_array(messages, :messages,
                                                              MessageSerializer)
       end
 
@@ -101,9 +101,9 @@ module Api
       def state_change(state)
         booking = Booking.find_by_id(params[:id])
         return unless inquiry_data_validation(booking)
-        booking, errors = change_booking_status(current_user, booking, state)
-        return render status: 400, json: { error: booking.errors + errors } if !booking.valid? ||
-          !errors.empty?
+        booking, errors = BookingManager.change_booking_status(current_user, booking, state)
+        return render status: 400, json: { error: booking.errors.to_a + errors.to_a } if
+          !booking.valid? || !errors.empty?
         render status: 201, nothing: true
       end
 

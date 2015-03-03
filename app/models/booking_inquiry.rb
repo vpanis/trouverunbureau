@@ -41,8 +41,21 @@ module BookingInquiry
     return booking unless user.present?
     message = booking.messages.create(represented: booking.owner,
                                       user: user,
-                                      m_type: state)
+                                      m_type: booking_state_to_message_state(state))
     change_last_seen(booking, booking.owner, message.created_at)
+  end
+
+  def booking_state_to_message_state(state)
+    case state
+    when Booking.states[:pending_payment]
+      Message.m_types[:pending_payment]
+    when Booking.states[:paid]
+      Message.m_types[:paid]
+    when Booking.states[:canceled]
+      Message.m_types[:canceled]
+    when Booking.states[:denied]
+      Message.m_types[:denied]
+    end
   end
 
 end
