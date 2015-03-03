@@ -9,14 +9,14 @@ p = booking.space.venue.street.to_s + ', ' + booking.space.venue.town.to_s \
 p = booking.from
 p = booking.to
 
-- if review?(booking, own)
+- if can_review?(booking, own)
     p = 'Review'
 
-- if view_receipt?(booking, own)
+- if can_view_receipt?(booking, own)
     p = 'View Receipt'
 
-- if cancel?(booking, own)
+- if can_cancel?(booking, own)
     p = 'Cancel'
 
-- if delete?(booking, own)
+- if can_delete?(booking, own)
     p = link_to 'Delete', delete_booking(booking)
