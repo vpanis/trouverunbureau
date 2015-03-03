@@ -111,16 +111,89 @@ describe BookingsController do
       end
 
       context 'when booking exists' do
-        let(:venue1) { create(:venue, owner: @user_logged) }
-        let(:space1) { create(:space, venue: venue1) }
-        let!(:booking1) { create(:booking, space: space1, state: Booking.states[:paid]) }
-        let!(:booking2) { create(:booking, space: space1, state: Booking.states[:canceled]) }
-        let!(:booking3) { create(:booking, state: Booking.states[:paid]) }
-        let!(:booking4) { create(:booking, state: Booking.states[:canceled]) }
-        let!(:booking5) { create(:booking, space: space1, state: Booking.states[:denied]) }
-
         context 'when user has permissions' do
+          context 'when booking owner deletes booking' do
+            context 'when paid booking' do
+              let!(:book1) { create(:booking, owner: @user_logged, state: Booking.states[:paid]) }
+              before do
+                patch :delete, id: book1.id
+                book1.reload
+              end
+              it 'removes only from owner_delete' do
+                expect(book1.owner_delete).to eq(true)
+                expect(book1.venue_owner_delete).to eq(false)
+              end
+            end
+            context 'when cancelled booking' do
+              let!(:b2) { create(:booking, owner: @user_logged, state: Booking.states[:canceled]) }
+              before do
+                patch :delete, id: b2.id
+                b2.reload
+              end
+              it 'removes only from owner_delete' do
+                expect(b2.owner_delete).to eq(true)
+                expect(b2.venue_owner_delete).to eq(false)
+              end
+            end
+          end
 
+          context 'when venue owner deletes booking' do
+            let(:venue1) { create(:venue, owner: @user_logged) }
+            let(:space1) { create(:space, venue: venue1) }
+            context 'when paid booking' do
+              let!(:book1) { create(:booking, space: space1, state: Booking.states[:paid]) }
+              before do
+                patch :delete, id: book1.id
+                book1.reload
+              end
+              it 'removes only from owner_delete' do
+                expect(book1.owner_delete).to eq(false)
+                expect(book1.venue_owner_delete).to eq(true)
+              end
+            end
+            context 'when cancelled booking' do
+              let!(:b2) { create(:booking, space: space1, state: Booking.states[:canceled]) }
+              before do
+                patch :delete, id: b2.id
+                b2.reload
+              end
+              it 'removes only from owner_delete' do
+                expect(b2.owner_delete).to eq(false)
+                expect(b2.venue_owner_delete).to eq(true)
+              end
+            end
+          end
+
+          context 'when venue and booking owner deletes booking' do
+            let(:venue1) { create(:venue, owner: @user_logged) }
+            let(:sp1) { create(:space, venue: venue1) }
+            context 'when paid booking' do
+              let!(:book1) do
+                create(:booking, space: sp1, owner: @user_logged, state: Booking.states[:paid])
+              end
+              before do
+                patch :delete, id: book1.id
+                book1.reload
+              end
+              it 'removes from owner_delete and venue_owner_delete' do
+                expect(book1.owner_delete).to eq(true)
+                expect(book1.venue_owner_delete).to eq(true)
+              end
+            end
+            context 'when cancelled booking' do
+              let!(:b2) do
+                create(:booking, space: sp1, owner: @user_logged, state: Booking.states[:canceled])
+              end
+              before do
+                patch :delete, id: b2.id
+                b2.reload
+              end
+              it 'removes from owner_delete and venue_owner_delete' do
+                expect(b2.owner_delete).to eq(true)
+                expect(b2.venue_owner_delete).to eq(true)
+              end
+            end
+          end
         end
 
         context 'when user does not have permissions' do

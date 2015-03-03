@@ -15,7 +15,7 @@ module BookingsHelper
   end
 
   def delete?(booking, own = true)
-    owner?(booking, own) && (booking.canceled? || finished?)
+    owner?(booking, own) && !deleted?(booking, own) && (booking.canceled? || finished?)
   end
 
   private
@@ -28,6 +28,10 @@ module BookingsHelper
     # TODO, use venue's timezone (not implemented yet)
     now = Time.zone.now
     now > (booking.to + 1)
+  end
+
+  def deleted?(booking, own = true)
+    (own) ? booking.owner_delete? : booking.venue_owner_delete?
   end
 
   def owner?(booking, own = true)

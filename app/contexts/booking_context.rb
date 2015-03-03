@@ -4,7 +4,6 @@ class BookingContext
   end
 
   def retrieve_bookings(states)
-    # Booking.where { state.in states }.includes { space.venue }
     @current_represented.bookings.where { state.in states }.not_deleted_owner
                                  .includes { space.venue }
   end
@@ -13,7 +12,6 @@ class BookingContext
     venue_ids = @current_represented.venues.ids
     Booking.joins { space }.where { (space.venue_id.in venue_ids) & (state.in states) }
                            .not_deleted_venue_owner.includes { space.venue }
-    # Booking.joins { space }.where { state.in states }.includes { space.venue }
   end
 
   def delete(booking)
@@ -25,10 +23,10 @@ class BookingContext
   private
 
   def delete_booking(booking)
-    booking.update_attributes?(owner_delete: false)
+    booking.update_attributes(owner_delete: true)
   end
 
   def delete_venue_booking(booking)
-    booking.update_attributes?(venue_owner_delete: false)
+    booking.update_attributes(venue_owner_delete: true)
   end
 end

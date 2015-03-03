@@ -19,4 +19,4 @@ p = booking.to
     p = 'Cancel'
 
 - if delete?(booking, own)
-    p = 'Delete'
+    p = link_to 'Delete', delete_booking(booking)
