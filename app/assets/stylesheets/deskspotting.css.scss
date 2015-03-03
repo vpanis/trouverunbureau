@@ -1115,13 +1115,19 @@ h4.gray-subtitle{
 }
 
 .icon {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 18px;
   display: inline-block;
   float: left;
-  margin-right: 10px;
+  margin-right: 0px;
+  background-repeat: no-repeat;
   background-position: center;
-  @include at2x('stub-2', 48px, 48px);
+  &.info{
+    @include at2x('ic_profile_info', 16px, 16px);
+  }
+  &.lock{
+    @include at2x('ic_profile_lock', 16px, 16px);
+  }
 }
 
 ul.spoken-languages-container{
