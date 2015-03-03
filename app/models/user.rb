@@ -38,9 +38,11 @@ class User < ActiveRecord::Base
   validates :email, :emergency_email, format: {
     with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,
     on: :create
-  }, uniqueness: {
-    case_sensitive: false
   }, allow_nil: true
+
+  validates :email, uniqueness: {
+    case_sensitive: false
+  }
 
   validates :quantity_reviews, :reviews_sum, numericality: {
     only_integer: true,
