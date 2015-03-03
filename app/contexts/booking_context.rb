@@ -31,10 +31,10 @@ class BookingContext
   end
 
   def delete_booking(booking)
-    booking.update_attributes(owner_delete: true)
+    booking.update_attributes!(owner_delete: true)
   end
 
   def delete_venue_booking(booking)
-    booking.update_attributes(venue_owner_delete: true)
+    booking.update_attributes!(venue_owner_delete: true)
   end
 end
