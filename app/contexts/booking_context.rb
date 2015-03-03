@@ -10,9 +10,7 @@ class BookingContext
   end
 
   def retrieve_bookings_venues(states)
-    Booking.joins { space }.where { (space.venue_id.in my { @venue_ids }) & (state.in states) }
-                           .not_deleted_venue_owner.includes { space.venue }
-                           .order('bookings.from asc')
+    venue_bookings(states).order('bookings.from asc')
   end
 
   def retrieve_bookings_venue_names
@@ -26,6 +24,11 @@ class BookingContext
   end
 
   private
+
+  def venue_bookings(states)
+    Booking.joins { space }.where { (space.venue_id.in my { @venue_ids }) & (state.in states) }
+                           .not_deleted_venue_owner.includes { space.venue }
+  end
 
   def delete_booking(booking)
     booking.update_attributes(owner_delete: true)
