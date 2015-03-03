@@ -28,5 +28,6 @@ class BookingsController < ApplicationController
     method_name = (venue_books) ? 'retrieve_bookings_venues' : 'retrieve_bookings'
     @paid = booking_context.send(method_name, Booking.states.values_at(:paid))
     @canceled = booking_context.send(method_name, Booking.states.values_at(:canceled))
+    @venues = booking_context.retrieve_bookings_venue_names if venue_books
   end
 end
