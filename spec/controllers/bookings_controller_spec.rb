@@ -99,4 +99,51 @@ describe BookingsController do
     end # when user logged in
   end # GET bookings/venue_paid_bookings
 
+  describe 'DELETE bookings/:id/delete' do
+    context 'when user logged in' do
+      before(:each) do
+        @user_logged = FactoryGirl.create(:user)
+        sign_in @user_logged
+      end
+
+      after(:each) do
+        sign_out @user_logged
+      end
+
+      context 'when booking exists' do
+        let(:venue1) { create(:venue, owner: @user_logged) }
+        let(:space1) { create(:space, venue: venue1) }
+        let!(:booking1) { create(:booking, space: space1, state: Booking.states[:paid]) }
+        let!(:booking2) { create(:booking, space: space1, state: Booking.states[:canceled]) }
+        let!(:booking3) { create(:booking, state: Booking.states[:paid]) }
+        let!(:booking4) { create(:booking, state: Booking.states[:canceled]) }
+        let!(:booking5) { create(:booking, space: space1, state: Booking.states[:denied]) }
+
+        context 'when user has permissions' do
+
+        end
+
+        context 'when user does not have permissions' do
+          let(:booking1) { create(:booking, state: Booking.states[:canceled]) }
+          before do
+            patch :delete, id: booking1.id
+          end
+          it 'fails' do
+            expect(response.status).to eq(403)
+          end
+        end # when user does not have permissions
+      end # when booking exists
+
+      context 'when booking does not exists' do
+        before do
+          patch :delete, id: -1
+        end
+        it 'fails' do
+          expect(response.status).to eq(404)
+        end
+      end # when booking does not exists
+
+    end # when user logged in
+
+  end # DELETE bookings/:id/delete
 end
