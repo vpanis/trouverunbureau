@@ -19,8 +19,8 @@ class SpaceSerializer < ActiveModel::Serializer
   end
 
   def favorite
-    object.id.in?(scope[:favorites_ids]) if scope.present? && scope.include?(:favorites_ids)
-    # TODO: tell if it is favorite of logged user
+    return false unless scope.present? && scope.include?(:favorites_ids)
+    object.id.in?(scope[:favorites_ids]) 
   end
 
   def photos
