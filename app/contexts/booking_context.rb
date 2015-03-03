@@ -1,6 +1,7 @@
 class BookingContext
-  def initialize(current_represented)
+  def initialize(current_represented, venue_ids)
     @current_represented = current_represented
+    @venue_ids = (venue_ids.empty?) ? @current_represented.venues.ids : venue_ids
   end
 
   def retrieve_bookings(states)
@@ -9,8 +10,7 @@ class BookingContext
   end
 
   def retrieve_bookings_venues(states)
-    venue_ids = @current_represented.venues.ids
-    Booking.joins { space }.where { (space.venue_id.in venue_ids) & (state.in states) }
+    Booking.joins { space }.where { (space.venue_id.in my { @venue_ids }) & (state.in states) }
                            .not_deleted_venue_owner.includes { space.venue }
                            .order('bookings.from asc')
   end

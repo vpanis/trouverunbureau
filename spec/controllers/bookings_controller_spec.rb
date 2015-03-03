@@ -94,6 +94,41 @@ describe BookingsController do
           expect(response).to render_template :venue_paid_bookings
         end
 
+        context 'when filtering by venue' do
+          let(:venue2) { create(:venue, owner: @user_logged) }
+          let(:space2) { create(:space, venue: venue2) }
+          let!(:booking6) { create(:booking, space: space2, state: Booking.states[:paid]) }
+          let!(:booking7) { create(:booking, space: space2, state: Booking.states[:canceled]) }
+
+          before do
+            venue_ids = [venue1.id]
+            get :venue_paid_bookings, venue_ids: venue_ids
+          end
+
+          it 'succeeds' do
+            expect(response.status).to eq(200)
+          end
+
+          it 'assigns the requested venue paid bookings to @paid' do
+            expect(assigns(:paid).count).to eq(1)
+            expect(assigns(:paid).first).to eq(booking1)
+          end
+
+          it 'assigns the requested venue canceled bookings to @canceled' do
+            expect(assigns(:canceled).count).to eq(1)
+            expect(assigns(:canceled).first).to eq(booking2)
+          end
+
+          it 'does not retrieve other bookings venue' do
+            expect(assigns(:paid).any? do |p|
+              p == booking6
+            end).to be false
+            expect(assigns(:canceled).any? do |p|
+              p == booking7
+            end).to be false
+          end
+        end
+
       end # when user has paid or cancelled bookings
 
     end # when user logged in

@@ -15,7 +15,7 @@ class BookingsController < ApplicationController
   def delete
     booking = Booking.find_by(id: params[:id])
     return render nothing: true, status: 404 unless booking.present?
-    return render nothing: true, status: 403 unless BookingContext.new(current_represented)
+    return render nothing: true, status: 403 unless BookingContext.new(current_represented, [])
                                                                   .delete(booking)
     redirect_to paid_bookings_bookings_path
   end
@@ -23,7 +23,8 @@ class BookingsController < ApplicationController
   private
 
   def retrieve_bookings(venue_books)
-    booking_context = BookingContext.new(current_represented)
+    venue_ids = (venue_books && params[:venue_ids].present?) ? params[:venue_ids] : []
+    booking_context = BookingContext.new(current_represented, venue_ids)
     method_name = (venue_books) ? 'retrieve_bookings_venues' : 'retrieve_bookings'
     @paid = booking_context.send(method_name, Booking.states.values_at(:paid))
     @canceled = booking_context.send(method_name, Booking.states.values_at(:canceled))
