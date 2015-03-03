@@ -133,11 +133,11 @@ ActiveRecord::Schema.define(version: 20150303194416) do
     t.string   "profession"
     t.string   "company_name"
     t.text     "interests"
-    t.text     "location"
-    t.text     "emergency_name"
-    t.text     "emergency_email"
-    t.text     "emergency_phone"
-    t.text     "emergency_relationship"
+    t.string   "location"
+    t.string   "emergency_name"
+    t.string   "emergency_email"
+    t.string   "emergency_phone"
+    t.string   "emergency_relationship"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
