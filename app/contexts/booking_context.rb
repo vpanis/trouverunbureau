@@ -5,13 +5,14 @@ class BookingContext
 
   def retrieve_bookings(states)
     @current_represented.bookings.where { state.in states }.not_deleted_owner
-                                 .includes { space.venue }
+                                 .includes { space.venue }.order('bookings.from asc')
   end
 
   def retrieve_bookings_venues(states)
     venue_ids = @current_represented.venues.ids
     Booking.joins { space }.where { (space.venue_id.in venue_ids) & (state.in states) }
                            .not_deleted_venue_owner.includes { space.venue }
+                           .order('bookings.from asc')
   end
 
   def delete(booking)
