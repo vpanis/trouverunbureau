@@ -1,20 +1,20 @@
 module BookingsHelper
 
-  def review?(booking, own = true)
+  def can_eview?(booking, own = true)
     # TODO, use venue's timezone (not implemented yet)
     now = Time.zone.now
     owner?(booking, own) && now >= booking.from
   end
 
-  def view_receipt?(booking, own = true)
+  def can_view_receipt?(booking, own = true)
     owner?(booking, own)
   end
 
-  def cancel?(booking, own = true)
+  def can_cancel?(booking, own = true)
     owner?(booking, own) && cancellable_states(booking) && !finished?
   end
 
-  def delete?(booking, own = true)
+  def can_delete?(booking, own = true)
     owner?(booking, own) && !deleted?(booking, own) && (booking.canceled? || finished?)
   end
 
