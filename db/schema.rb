@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150223191306) do
+ActiveRecord::Schema.define(version: 20150303194416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 20150223191306) do
     t.datetime "owner_last_seen"
     t.datetime "venue_last_seen"
     t.datetime "approved_at"
+    t.boolean  "owner_delete",       default: false
+    t.boolean  "venue_owner_delete", default: false
   end
 
   add_index "bookings", ["owner_id", "owner_type"], name: "index_bookings_on_owner_id_and_owner_type", using: :btree
@@ -131,6 +133,11 @@ ActiveRecord::Schema.define(version: 20150223191306) do
     t.string   "profession"
     t.string   "company_name"
     t.text     "interests"
+    t.text     "location"
+    t.text     "emergency_name"
+    t.text     "emergency_email"
+    t.text     "emergency_phone"
+    t.text     "emergency_relationship"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
