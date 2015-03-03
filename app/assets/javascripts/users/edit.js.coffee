@@ -64,6 +64,8 @@ on_load = ->
         close_languages_modal()
       $('.delete-lang').click  ->
         delete_language($(this))
+      $('#emergency-toggle').click ->
+        $('.emergency-info').toggle()
       # handle avatar
       $('#avatar-link').click ->
         $('#user_avatar').click()
@@ -93,5 +95,6 @@ on_load = ->
     initialize_listeners()
     initialize_popovers()
     show_selected_languages(get_select2_languages())
+    $('.emergency-info').hide()
   return
 $(document).ready on_load
