@@ -1,5 +1,5 @@
 class UserReceiptSerializer < ActiveModel::Serializer
-  attributes :id, :first_name, :last_name, :avatar, :email, :phone
+  attributes :id, :first_name, :last_name, :avatar, :location
 
   def avatar
     return nil unless object.respond_to?('avatar') && object.avatar

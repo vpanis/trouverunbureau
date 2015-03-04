@@ -277,6 +277,14 @@ ActiveRecord::Schema.define(version: 20150528193537) do
 
   add_index "organizations", ["email"], name: "index_organizations_on_email", unique: true, using: :btree
 
+  create_table "receipts", force: true do |t|
+    t.integer  "booking_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "receipts", ["booking_id"], name: "index_receipts_on_booking_id", using: :btree
+
   create_table "spaces", force: true do |t|
     t.integer  "s_type"
     t.string   "name"
