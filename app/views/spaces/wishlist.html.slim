@@ -1,3 +1,37 @@
 = render 'shared/menu_bar', user: current_user
 = render 'shared/profile_menu_bar', user: current_user, selected: 'wishlist'
-p = @current_user.name
+
+- if @current_user.present?
+  .container.spaces-list ng-controller="WishlistCtrl" data-user-id=(@current_user.id)
+    .row
+      .favorite-space ng-repeat=("space in spaces")
+        .carousel.slide id="space-carousel-{{space.id}}"
+          ol.carousel-indicators
+            li data-target="space-carousel-{{space.id}}" data-slide-to="{{index}}" ng-repeat=("photo in space.photos track by $index") ng-class="{active: $index == 0}"
+          .carousel-inner role="listbox"
+            .item ng-class="{active: $index == 0}" ng-repeat=("photo in space.photos track by $index")
+              .full-image style="background-image: url('{{photo}}')"
+          a.left.carousel-control data-slide="prev" href="#space-carousel-{{space.id}}" role="button"
+            span.glyphicon.left-carousel-arrow aria-hidden="true"
+          a.right.carousel-control data-slide="next" href="#space-carousel-{{space.id}}" role="button"
+            span.glyphicon.right-carousel-arrow aria-hidden="true"
+        .space-info
+          .name() {{space.name}}
+          .city() {{space.city}}
+          .currency() {{space.currency}}
+          div ng-if=("space.hour_price")
+            .hour_price() $ {{space.hour_price}}
+            .duration = t('wishlist.hour')
+          div ng-if=("space.day_price")
+            .day_price() $ {{space.day_price}}
+            .duration = t('wishlist.day')
+          div ng-if=("space.week_price")
+            .week_price() $ {{space.week_price}}
+            .duration = t('wishlist.week')
+          div ng-if=("space.month_price")
+            .month_price() $ {{space.month_price}}
+            .duration = t('wishlist.month')
+
+    .pagination-container.wishlist-pagination
+      pagination.pagination-sm ng-change="getSpaces()" total-items="totalSpaces" ng-model="currentPage" max-size="3" rotate="false" boundary-links="true" previous-text="‹" next-text="›" first-text="«" last-text="»" items-per-page="itemsPerPage"
+    .no-reviews ng-if="totalSpaces == 0"  #{t('wishlist.no_favourites')}

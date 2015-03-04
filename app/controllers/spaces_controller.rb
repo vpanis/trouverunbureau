@@ -8,7 +8,6 @@ class SpacesController < ModelController
     return render nothing: true, status: 404 unless @space.present?
     return render nothing: true, status: 403 unless SpaceContext.new(@space, current_represented)
                                                                 .owner?
-
   end
 
   def update
