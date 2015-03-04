@@ -20,7 +20,7 @@ class SpaceSerializer < ActiveModel::Serializer
 
   def favorite
     return false unless scope.present? && scope.include?(:favorites_ids)
-    object.id.in?(scope[:favorites_ids]) 
+    object.id.in?(scope[:favorites_ids])
   end
 
   def photos
