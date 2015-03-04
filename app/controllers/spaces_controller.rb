@@ -15,10 +15,13 @@ class SpacesController < ModelController
     do_update(Space, SpaceContext, 'owner?', 'update_space?')
   end
 
+  def wishlist
+    @current_user = current_user
+  end
+
   private
 
   def object_params
-
     params.require(:space).permit(:s_type, :name, :capacity, :quantity, :description,
                                   :hour_price, :day_price, :week_price, :month_price)
   end

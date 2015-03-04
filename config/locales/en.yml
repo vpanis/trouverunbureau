@@ -114,6 +114,11 @@ en:
   menu:
     search: 'Search'
     profile: 'Profile'
+    inbox: 'Inbox'
+    bookings: 'Bookings'
+    venues: 'Venues'
+    wishlist: 'Wishlist'
+    account: 'Account'
   venues:
     amenities:
       whiteboards:
