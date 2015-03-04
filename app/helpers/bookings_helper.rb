@@ -1,6 +1,6 @@
 module BookingsHelper
 
-  def can_eview?(booking, own = true)
+  def can_review?(booking, own = true)
     # TODO, use venue's timezone (not implemented yet)
     now = Time.zone.now
     owner?(booking, own) && now >= booking.from

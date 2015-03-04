@@ -9,7 +9,7 @@ class BookingsController < ApplicationController
   end
 
   def venue_paid_bookings
-    venue_ids = (params[:venue_ids].present?) ? params[:venue_ids] : []
+    venue_ids = params[:venue_ids] || []
     retrieve_bookings(venue_ids, 'retrieve_bookings_venues')
     @venues = BookingContext.new(current_represented, venue_ids).retrieve_bookings_venue_names
   end
