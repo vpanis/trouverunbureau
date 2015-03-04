@@ -14,7 +14,7 @@ class BookingsController < ApplicationController
     @venues = BookingContext.new(current_represented, venue_ids).retrieve_bookings_venue_names
   end
 
-  def delete
+  def destroy
     booking = Booking.find_by(id: params[:id])
     return render nothing: true, status: 404 unless booking.present?
     return render nothing: true, status: 403 unless BookingContext.new(current_represented, [])

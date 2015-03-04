@@ -12,13 +12,10 @@ Deskspotting::Application.routes.draw do
   resources :venues, only: [:edit, :update, :show]
   resources :users, only: [:show, :edit, :update]
   resources :spaces, only: [:edit, :update]
-  resources :bookings do
+  resources :bookings, only: [:destroy]  do
     collection do
       get :paid_bookings, to: "bookings#paid_bookings"
       get :venue_paid_bookings, to: "bookings#venue_paid_bookings"
-    end
-    member do
-      delete :delete, to: 'bookings#delete'
     end
   end
 

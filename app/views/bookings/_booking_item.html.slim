@@ -19,4 +19,4 @@ p = booking.to
     p = 'Cancel'
 
 - if can_delete?(booking, own)
-    p = link_to 'Delete', delete_booking(booking)
+    p = button_to 'Delete', booking, method: :delete

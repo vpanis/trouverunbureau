@@ -151,7 +151,7 @@ describe BookingsController do
             context 'when paid booking' do
               let!(:book1) { create(:booking, owner: @user_logged, state: Booking.states[:paid]) }
               before do
-                patch :delete, id: book1.id
+                delete :destroy, id: book1.id
                 book1.reload
               end
               it 'removes only from owner_delete' do
@@ -162,7 +162,7 @@ describe BookingsController do
             context 'when cancelled booking' do
               let!(:b2) { create(:booking, owner: @user_logged, state: Booking.states[:canceled]) }
               before do
-                patch :delete, id: b2.id
+                delete :destroy, id: b2.id
                 b2.reload
               end
               it 'removes only from owner_delete' do
@@ -178,7 +178,7 @@ describe BookingsController do
             context 'when paid booking' do
               let!(:book1) { create(:booking, space: space1, state: Booking.states[:paid]) }
               before do
-                patch :delete, id: book1.id
+                delete :destroy, id: book1.id
                 book1.reload
               end
               it 'removes only from owner_delete' do
@@ -189,7 +189,7 @@ describe BookingsController do
             context 'when cancelled booking' do
               let!(:b2) { create(:booking, space: space1, state: Booking.states[:canceled]) }
               before do
-                patch :delete, id: b2.id
+                delete :destroy, id: b2.id
                 b2.reload
               end
               it 'removes only from owner_delete' do
@@ -207,7 +207,7 @@ describe BookingsController do
                 create(:booking, space: sp1, owner: @user_logged, state: Booking.states[:paid])
               end
               before do
-                patch :delete, id: book1.id
+                delete :destroy, id: book1.id
                 book1.reload
               end
               it 'removes from owner_delete and venue_owner_delete' do
@@ -220,7 +220,7 @@ describe BookingsController do
                 create(:booking, space: sp1, owner: @user_logged, state: Booking.states[:canceled])
               end
               before do
-                patch :delete, id: b2.id
+                delete :destroy, id: b2.id
                 b2.reload
               end
               it 'removes from owner_delete and venue_owner_delete' do
@@ -234,7 +234,7 @@ describe BookingsController do
         context 'when user does not have permissions' do
           let(:booking1) { create(:booking, state: Booking.states[:canceled]) }
           before do
-            patch :delete, id: booking1.id
+            delete :destroy, id: booking1.id
           end
           it 'fails' do
             expect(response.status).to eq(403)
@@ -244,7 +244,7 @@ describe BookingsController do
 
       context 'when booking does not exists' do
         before do
-          patch :delete, id: -1
+          delete :destroy, id: -1
         end
         it 'fails' do
           expect(response.status).to eq(404)
