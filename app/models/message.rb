@@ -4,7 +4,7 @@ class Message < ActiveRecord::Base
   belongs_to :user
 
   enum m_type: [:text, :pending_authorization, :pending_payment, :paid,
-                :canceled, :denied, :already_taken, :booking_change, :payment_verification]
+                :cancelled, :denied, :already_taken, :booking_change, :payment_verification]
 
   validates :m_type, :represented, presence: true
   validates :text, presence: true, if: proc { |e| e.m_type == 'text' }

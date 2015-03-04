@@ -62,7 +62,7 @@ class BookingManager
     def verify_states_changes(user, booking, state, custom_errors)
       custom_errors.add(:invalid_state, state: state) unless Booking.states.values.include? state
       verify_valid_states_transitions(booking, state, custom_errors)
-      if state == Booking.states[:paid] || state == Booking.states[:canceled] ||
+      if state == Booking.states[:paid] || state == Booking.states[:cancelled] ||
         state == Booking.states[:payment_verification]
         verify_user(user, booking.owner, custom_errors)
       else

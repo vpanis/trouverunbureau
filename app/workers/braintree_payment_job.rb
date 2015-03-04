@@ -1,6 +1,8 @@
 class BraintreePaymentJob
   @queue = :braintree_payments
-  @merchant_account_id = AppConfiguration.for(:braintree).merchant_account
+  @merchant_account_id = Rails.configuration.payment.braintree.merchant_account
+  @escrow_polling_time = Rails.configuration.payment.braintree.time_to_poll_for_escrow_status
+  @deskspotting_fee = @escrow_polling_time = Rails.configuration.payment.deskspotting_fee
 
   def self.perform(booking_id, payment_token, user_id)
     @booking = Booking.find_by_id(booking_id)
@@ -14,7 +16,7 @@ class BraintreePaymentJob
   def compute_braintree_response(braintree_response)
     if braintree_response.success?
       @booking.payment = accepted_payment(braintree_response.transaction)
-      Resque.enqueue_in(5.minutes, BraintreeEscrowAcceptedJob, @booking.payment.id)
+      Resque.enqueue_in(@escrow_polling_time, BraintreeEscrowAcceptedJob, @booking.id, user_id)
     else
       BookingManager.change_booking_status(User.find(user_id), @booking,
                                            Booking.states[:pending_payment])
@@ -45,8 +47,7 @@ class BraintreePaymentJob
     )
   end
 
-  # TODO
   def calculate_fee(price)
-    (price * 0.15).to_s
+    price * @deskspotting_fee
   end
 end

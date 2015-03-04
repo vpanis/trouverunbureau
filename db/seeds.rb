@@ -425,7 +425,7 @@ case Rails.env
     VenueReview.create!(booking: b_u1_v4_sp1_2, stars: 4, message: Faker::Lorem.paragraph(10))
 
     Booking.create!(owner: org1, space: v4_sp1, state: Booking.states[:paid], b_type: Booking.b_types[:day], quantity: 9, from: next_friday.at_beginning_of_day, to: next_friday.at_end_of_day)
-    Booking.create!(owner: user2, space: v4_sp1, state: Booking.states[:canceled], b_type: Booking.b_types[:hour], quantity: 1, from: next_friday.advance(hours: -2), to: next_friday.advance(hours: 10))
+    Booking.create!(owner: user2, space: v4_sp1, state: Booking.states[:cancelled], b_type: Booking.b_types[:hour], quantity: 1, from: next_friday.advance(hours: -2), to: next_friday.advance(hours: 10))
     Booking.create!(owner: user1, space: v4_sp1, state: Booking.states[:pending_payment], b_type: Booking.b_types[:hour], quantity: 1, from: next_friday.advance(hours: -2), to: next_friday.advance(hours: 10))
 
     b_o1_v4_sp2_1 = Booking.create!(owner: org1, space: v4_sp2, state: Booking.states[:paid], b_type: Booking.b_types[:day], quantity: 3, from: next_monday.at_beginning_of_day, to: next_monday.at_end_of_day)
