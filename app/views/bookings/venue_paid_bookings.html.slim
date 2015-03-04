@@ -3,8 +3,8 @@ h1 = 'Venue bookings'
 h1 = 'Current bookings'
 
 - @paid.each do |booking|
-  = render 'booking_item', card_class: 'space-card', booking: booking, own: false
+  = render 'booking_item', booking: booking, own: false
 
 h2 = 'Cancelled bookings'
 - @canceled.each do |booking|
-  = render 'booking_item', card_class: 'space-card', booking: booking, own: false
+  = render 'booking_item', booking: booking, own: false
