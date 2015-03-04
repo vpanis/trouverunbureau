@@ -156,6 +156,13 @@ Deskspotting::Application.routes.draw do
         get :refund_failed, to: 'hooks#refund_failed'
       end
     end
+
+    resources :bookings do
+        member do
+          post :create_receipt, to: 'receipt#create'
+          get :show_receipt, to: 'receipt#show'
+        end
+    end
   end # api/v1
 
   require 'sidekiq/web'
