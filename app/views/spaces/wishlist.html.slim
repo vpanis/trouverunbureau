@@ -2,10 +2,10 @@
 = render 'shared/profile_menu_bar', user: current_user, selected: 'wishlist'
 
 - if @current_user.present?
-  .container.spaces-list ng-controller="WishlistCtrl" data-user-id=(@current_user.id)
+  .container.spaces-list ng-controller="WishlistCtrl"
     .row
       .favorite-space.col-md-4 ng-repeat=("space in spaces")
-        .favourite.active ng-click=("removeFavorite(space.id)")
+        .favourite.active ng-click=("removeFavorite(space.id, true)")
         .carousel.slide id="space-carousel-{{space.id}}"
           ol.carousel-indicators
             li data-target="space-carousel-{{space.id}}" data-slide-to="{{index}}" ng-repeat=("photo in space.photos track by $index") ng-class="{active: $index == 0}"

@@ -1,10 +1,10 @@
 .card class=(card_class) class=('selected' if selected)
-  .card-top-bar.space
+  .card-top-bar.space ng-controller="WishlistCtrl"
     - if selected
       h4 #{t('venues.show.chosen_workspace')}
     h3 = space.name
     .separator
-    .favourite class=('active' if is_favorite)
+    .favourite class=('active' if is_favorite) ng-click=("toggleFavorite(#{space.id}, false)") data-is-favorite="#{is_favorite}"
     .space-options id="space-option-#{space.id}" ...
     .space-popover class="space-popover-#{space.id}"
       .arrow
