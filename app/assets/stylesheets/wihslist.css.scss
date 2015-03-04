@@ -1,0 +1,54 @@
+@import 'variables';
+@import 'mixins';
+
+[data-action="wishlist"] {
+  background-color: $light-gray;
+  .space-info {
+    background-color: $white;
+    padding: 15px;
+    .name {
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+      &:after {
+        position: absolute;
+        content: '';
+        bottom: -4px;
+        left: 0;
+        width: 40%;
+        height: 2px;
+        background-color: $yellow;
+      }
+    }
+    .city {
+      text-transform: uppercase;
+      margin-top: 10px;
+      font-size: 10px;
+    }
+  }
+  .bottom-line {
+    line-height: 20px;
+    margin-top: 6px;
+    font-size: 12px;
+    .currency,
+    [class^="price-"] {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .currency {
+      padding: 0 6px;
+      background-color: $yellow;
+      margin-right: 20px;
+    }
+    [class^="price-"] {
+      margin-right: 10px;
+    }
+    .hour-price,
+    .day-price,
+    .week-price,
+    .month-price {
+      font-weight: bold;
+      margin-right: 2px;
+    }
+  }
+}
