@@ -31,9 +31,9 @@
           .row
             .col-lg-12
               p.location
-                strong user location
+                strong = @user.location
               p.since
-                | User since 
+                | User since
                 span = @user.created_at.strftime('%B, %Y')
         p.text = @user.interests
 
