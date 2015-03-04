@@ -18,7 +18,8 @@ module Api
         receipt_context = ReceiptContext.new(current_represented)
         return forbidden unless receipt_context.owner?(booking)
         result = receipt_context.create_receipt(booking)
-        render json: { receipt: ReceiptSerializer.new(result) }, status: 200 if result.present?
+        byebug
+        render json: ReceiptSerializer.new(result), status: 200 if result.present?
       end
     end
   end

@@ -39,4 +39,8 @@ class ReceiptSerializer < ActiveModel::Serializer
     object.booking.to.strftime(format)
   end
 
+  def price
+    object.booking.price
+  end
+
 end

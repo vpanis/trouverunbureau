@@ -20,6 +20,6 @@ class ReceiptContext
   end
 
   def owner?(booking)
-    booking.owner == current_represented
+    booking.owner == @current_represented
   end
 end
