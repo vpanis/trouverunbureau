@@ -35,12 +35,14 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, :company_name, :profession, :gender, presence: true
   validates :password, presence: true, unless: :created_at
 
-  validates :email, format: {
+  validates :email, :emergency_email, format: {
     with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,
     on: :create
-  }, uniqueness: {
-    case_sensitive: false
   }, allow_nil: true
+
+  validates :email, uniqueness: {
+    case_sensitive: false
+  }
 
   validates :quantity_reviews, :reviews_sum, numericality: {
     only_integer: true,
