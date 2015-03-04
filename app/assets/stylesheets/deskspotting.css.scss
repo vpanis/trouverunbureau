@@ -1059,31 +1059,6 @@ h4.gray-subtitle{
   .user-avatar{
     margin: 7px;
   }
-  .edit-avatar{
-    padding-bottom: 25px;
-    position: relative;
-    width: 122px;
-    margin: 15px auto 0;
-    display: block;
-    padding-left: 20px;
-    line-height: 15px;
-    transition: .25s;
-    &:before {
-      content: '+';
-      position: absolute;
-      top: 0;
-      left: 0;
-      background-color: $aqua;
-      width: 15px;
-      height: 15px;
-      border-radius: 100%;
-      color: $white;
-      line-height: 15px;
-    }
-    &:hover {
-      color: darken($aqua, 10%);
-    }
-  }
 }
 .small-title{
   text-align: center;
@@ -1117,7 +1092,6 @@ h4.gray-subtitle{
   width: 16px;
   height: 18px;
   display: inline-block;
-  float: left;
   margin-right: 0px;
   background-repeat: no-repeat;
   background-position: center;
@@ -1135,6 +1109,7 @@ h4.gray-subtitle{
 ul.spoken-languages-container{
   position: relative;
   list-style-type: none;
+  padding: 0;
   li{
     background-color: white;
     border: solid 1px $yellow;
@@ -1166,4 +1141,23 @@ ul.spoken-languages-container{
       position: absolute;
     }
   }
+}
+
+.emergency-contact {
+  margin-top: $module * 2;
+  p {
+    display: inline-block;
+    vertical-align: text-top;
+    margin: 0 5px;
+    line-height: 1;
+  }
+  hr {
+    margin-top: 0;
+  }
+}
+
+.buttons {
+  margin: ($module * 4) 0;
+  display: inline-block;
+  width: 100%;
 }
