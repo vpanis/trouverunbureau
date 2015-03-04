@@ -92,7 +92,9 @@ class BookingManager
       custom_errors.add(:invalid_transition, state: state) if !booking.pending_authorization? &&
         state == Booking.states[:pending_payment]
       custom_errors.add(:invalid_transition, state: state) if state == Booking.states[:paid] &&
-        !booking.pending_payment?
+        !booking.pending_verification?
+      custom_errors.add(:invalid_transition, state: state) if
+        state == Booking.states[:payment_verification] && booking.pending_payment?
       custom_errors.add(:same_state, state: state) if state == booking.state
     end
   end
