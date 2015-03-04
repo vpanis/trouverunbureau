@@ -1129,6 +1129,9 @@ h4.gray-subtitle{
     @include at2x('ic_profile_lock', 16px, 16px);
   }
 }
+.user-avatar img{
+  @include border-radius(100%);
+}
 
 ul.spoken-languages-container{
   position: relative;

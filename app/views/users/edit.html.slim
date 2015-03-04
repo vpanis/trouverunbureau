@@ -1,4 +1,5 @@
 = render 'language_modal'
+= render 'shared/image_modal', modal_id: 'avatar-modal', title: t('users.change_picture'), image_link_id: 'avatar-link', save_button_id: 'save-avatar'
 
 = render 'shared/menu_bar'
 = render 'shared/profile_menu_bar'
@@ -10,14 +11,15 @@
     h4.gray-subtitle = t('users.required_fields')
     .user-avatar
       - if @user.avatar?
-        = image_tag(@user.avatar.url, width: '95px', height: '95px')
+        = image_tag(@user.avatar.url, width: '95px', height: '95px', id: 'user-avatar-img')
       - else
-        = image_tag('default-avatar.png', width: '95px', height: '95px')
-      a#edit-avatar.edit-avatar.aqua href="#" = t('users.change_picture')
+        = image_tag('default-avatar.png', width: '95px', height: '95px', id: 'user-avatar-img')
+      a#edit-avatar.edit-avatar.aqua href="#" data-toggle="modal" data-target="#avatar-modal" = t('users.change_picture')
   .row
     .col-xs-12.col-sm-8.col-md-8.col-lg-8.col-xs-offset-0.col-sm-offset-2
       .edit-profile-form.dashboard-form ng-controller="UserProfileCtrl"
         = form_for @user do |f|
+          = f.file_field :avatar, class: 'hidden'
           .row
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               label = t('users.first_name')
@@ -62,8 +64,8 @@
                 - value = @user.date_of_birth.strftime("%d-%m-%Y") if @user.date_of_birth.present?
                 = f.text_field :date_of_birth, value: value, placeholder: 'Date of birth', class: 'form-control', close_text: 'Close', datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened', ng_model:'user_date_of_birth', ng_required: 'true', type: 'text', show_button_bar:'false'
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
-              label = t('users.company_name')
-              = f.text_field :company_name, placeholder: t('users.company_name'), class: 'form-control'
+              label = t('users.location')
+              = f.text_field :location, placeholder: t('users.location'), class: 'form-control'
             .form-group.col-lg-12
               label = t('Language Spoken')
               a href='#' data-target="#languageModal" data-toggle="modal" add
@@ -75,26 +77,29 @@
                     .delete-lang href="#" data-lang=lang.last
               = f.hidden_field :languages_spoken
             .form-group.col-lg-12
-              label = t('More on your career interests')
-              = f.text_area :company_name, placeholder: t('users.company_name'), class: 'form-control'
+              label = t('users.interests')
+              = f.text_area :interests, placeholder: t('users.interests'), class: 'form-control'
             .col-lg-12
               .icon.info.pointer#emergency-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_share_emergency')}"
               p
                 | Emergency contact
-                a href='#' edit
-              hr
-            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
-              label = t('users.first_name')
-              = f.text_field :first_name, placeholder: t('users.first_name'), class: 'form-control'
-            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
-              label = t('users.phone')
-              = f.text_field :phone, placeholder: t('users.phone'), class: 'form-control'
-            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
-              label = t('users.email')
-              = f.text_field :email, placeholder: t('users.email'), class: 'form-control'
-            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
-              label = t('Relationship')
-              = f.text_field :email, placeholder: t('users.email'), class: 'form-control'
+                span.aqua#emergency-toggle edit
+
+            .emergency-info
+              .col-lg-12
+                hr
+              .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+                label = t('users.emergency_name')
+                = f.text_field :emergency_name, placeholder: t('users.emergency_name'), class: 'form-control'
+              .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+                label = t('users.emergency_phone')
+                = f.text_field :emergency_phone, placeholder: t('users.emergency_phone'), class: 'form-control'
+              .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+                label = t('users.emergency_email')
+                = f.text_field :emergency_email, placeholder: t('users.emergency_email'), class: 'form-control'
+              .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+                label = t('users.emergency_relationship')
+                = f.text_field :emergency_relationship, placeholder: t('users.emergency_relationship'), class: 'form-control'
             .col-lg-6.margin-top
               = f.submit t('commons.save'), class: 'rounded-btn width-100'
             .col-lg-6.margin-top

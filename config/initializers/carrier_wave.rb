@@ -25,12 +25,16 @@ CarrierWave.configure do |config|
   config.fog_use_ssl_for_aws = false
 
   # For testing, upload files to local `tmp` folder.
-  if Rails.env.test? || Rails.env.cucumber? || Rails.env.development?
+  if Rails.env.test? || Rails.env.cucumber?
     config.storage NullStorage
     # Required to prevent FactoryGirl from giving an infuriating exception
     # ArgumentError: wrong exec option
     # It also speeds up tests so it's a good idea
     config.enable_processing = false
+  elsif Rails.env.development?
+    config.storage = :file
+    config.enable_processing = false
+    config.root = "#{Rails.root}/public"
   else
     amazons3 = AppConfiguration.for(:amazons3)
     config.fog_credentials = {

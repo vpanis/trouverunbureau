@@ -28,6 +28,8 @@ en:
   commons:
     save: 'Save'
     cancel: 'Cancel'
+    close: 'Close'
+    upload_file: 'Upload file'
   session:
     email: 'Email address'
     password: 'Password'
@@ -229,7 +231,13 @@ en:
     gender: 'Gender'
     phone: 'Phone Number'
     profession: 'Profession'
+    interests: 'More on your carreer and profession'
     email: 'Email'
     company_name: 'Company name'
     language: 'Language'
     date_of_birth: 'Date of birth'
+    location: 'Location'
+    emergency_name: 'Name'
+    emergency_phone: 'Phone number'
+    emergency_email: 'Email'
+    emergency_relationship: 'Relationship'
