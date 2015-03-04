@@ -1,9 +1,7 @@
-class SpaceQuery < PaginatedQuery
+class SpaceQuery
 
   def all(pagination_params, filter_conditions)
-    @relation = select_all(filter_conditions)
-    paginate(pagination_params)
-    @relation
+    select_all(filter_conditions).paginate(pagination_params)
   end
 
   def select_all(filter_conditions)

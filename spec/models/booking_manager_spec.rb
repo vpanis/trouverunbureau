@@ -172,7 +172,7 @@ RSpec.describe BookingManager, type: :model do
                                                from: from, to: to, quantity: 1)
         expect(booking.errors.empty? && errors.empty?).to be(true)
         expect(BookingManager.change_booking_status(@space.venue.owner, booking,
-                                                    Booking.states[:pending_authorization])[0]
+                                                    Booking.states[:pending_payment])[0]
           .state).to eq('pending_payment')
       end
 
@@ -182,7 +182,7 @@ RSpec.describe BookingManager, type: :model do
         to = @next_monday_at_beginning.advance(days: 1, hours: 19).at_end_of_hour
         # creates 2 pending_authorization bookings
 
-        p_authorization = Booking.states[:pending_authorization]
+        p_payment = Booking.states[:pending_payment]
 
         booking1, errors1 = BookingManager.book(@user, owner: @user, space: @space,
                                                 b_type: Booking.b_types[:hour],
@@ -194,11 +194,11 @@ RSpec.describe BookingManager, type: :model do
         expect(booking2.errors.empty? && errors2.empty?).to be(true)
         # pending_payment booking1
         expect(BookingManager.change_booking_status(@space.venue.owner, booking1,
-                                                    p_authorization)[0]
+                                                    p_payment)[0]
         .state).to eq('pending_payment')
         # pending_payment booking2
         booking2, custom_errors = BookingManager.change_booking_status(@space.venue.owner,
-                                                                       booking2, p_authorization)
+                                                                       booking2, p_payment)
         expect(booking2.state).to eq('pending_authorization')
         expect(custom_errors[:collition_errors]).to be_present
       end

@@ -1,13 +1,10 @@
-class WishlistQuery < PaginatedQuery
-
+class WishlistQuery
   def initialize(user_id)
     @user_id = user_id
   end
 
   def wishlist(pagination_params)
-    @relation = select_favorites
-    paginate(pagination_params)
-    @relation
+    select_favorites.paginate(pagination_params)
   end
 
   def select_favorites
