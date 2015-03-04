@@ -2,6 +2,24 @@
 @import 'mixins';
 @import 'tools';
 
+.calendar-icon {
+  position: relative;
+  border-right: none;
+  border: 2px solid $light-gray;
+  padding: 0 30px;
+  &:after{
+    @include at2x('ic_profile_calendar', 25px, 25px);
+    background-position: center center;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    content: '';
+    transform: translatex(-50%) translateY(-50%);
+  }
+}
+
 ul.dropdown-menu{
   padding: 5px;
   li{

@@ -59,8 +59,7 @@
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               label = t('users.date_of_birth')
               .input-group
-                .input-group-addon ng-click="open($event)" type="button"
-                  i.glyphicon.glyphicon-calendar
+                .calendar-icon.input-group-addon ng-click="open($event)" type="button"
                 - value = @user.date_of_birth.strftime("%d-%m-%Y") if @user.date_of_birth.present?
                 = f.text_field :date_of_birth, value: value, placeholder: 'Date of birth', class: 'form-control', close_text: 'Close', datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened', ng_model:'user_date_of_birth', ng_required: 'true', type: 'text', show_button_bar:'false'
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
