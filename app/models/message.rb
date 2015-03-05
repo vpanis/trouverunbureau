@@ -3,8 +3,9 @@ class Message < ActiveRecord::Base
   belongs_to :represented, polymorphic: true
   belongs_to :user
 
-  enum m_type: [:text, :pending_authorization, :pending_payment, :paid,
-                :cancelled, :denied, :already_taken, :booking_change, :payment_verification]
+  # Beware: it must contain the Booking states
+  enum m_type: [:text, :booking_change, :pending_authorization, :pending_payment, :paid,
+                :cancelled, :denied, :expired, :payment_verification, :refunding]
 
   validates :m_type, :represented, presence: true
   validates :text, presence: true, if: proc { |e| e.m_type == 'text' }
