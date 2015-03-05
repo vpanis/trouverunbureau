@@ -3,12 +3,12 @@
   .separator
   .container-fluid.reviews-list ng-controller="ClientReviewsCtrl" data-avatar=(image_url('venue-default.png')) data-client-id=(user.id)
     .review-item.row ng-repeat=("review in reviews")
-      .user.col-lg-2
+      .user.col-md-3
         img.avatar ng-src="{{review.venue.logo || defaultAvatar}}"
         p() {{review.venue.name}}
         .separator
         p.date() {{review.date}}
-      .message.col-lg-10
+      .message.col-md-9
           p() {{review.message}}
           .separator
     .pagination-container.client-reviews-pagination

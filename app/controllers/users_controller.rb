@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     return render nothing: true, status: 403 unless @user.eql?(current_user)
     @user.update_attributes!(user_params)
     update_languages_spoken!
-    redirect_to edit_user_path(@user)
+    redirect_to user_path(@user)
   end
 
   private
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :phone, :language, :avatar,
                                  :date_of_birth, :gender, :profession, :company_name,
-                                 :languages_spoken, :location, :emergency_relationship,
+                                 :languages_spoken, :location, :interests, :emergency_relationship,
                                  :emergency_name, :emergency_email, :emergency_phone)
   end
 

@@ -65,7 +65,7 @@
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               label = t('users.location')
               = f.text_field :location, placeholder: t('users.location'), class: 'form-control'
-            .form-group.col-lg-12
+            .form-group.col-xs-12
               label = t('Language Spoken')
               a.add.margin-left.aqua href='#' data-target="#languageModal" data-toggle="modal" add
               ul.spoken-languages-container
@@ -75,13 +75,13 @@
                       = lang.first
                     .delete-lang href="#" data-lang=lang.last
               = f.hidden_field :languages_spoken
-            .form-group.col-lg-12
+            .form-group.col-xs-12
               label = t('users.interests')
-              = f.text_area :interests, placeholder: t('users.interestss'), class: 'form-control'
-            .emergency-contact.col-lg-12
+              = f.text_area :interests, placeholder: t('users.interests'), class: 'form-control'
+            .emergency-contact.col-xs-12
               .icon.info.pointer#emergency-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_share_emergency')}"
               p
-                | Emergency contact 
+                span = t('users.emergency_contact')
                 span.aqua#emergency-toggle.arrow edit
               hr
             .emergency-info
@@ -99,7 +99,8 @@
                 label = t('users.emergency_relationship')
                 = f.text_field :emergency_relationship, placeholder: t('users.emergency_relationship'), class: 'form-control'
             .buttons
-              .col-lg-6
-                = f.submit t('commons.save'), class: 'rounded-btn width-100'
-              .col-lg-6
-                = f.submit t('commons.save'), class: 'rounded-btn yellow-fill width-100'
+              .col-xs-6
+                a href=(user_path(@user))
+                  button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
+              .col-xs-6
+                = f.submit t('commons.save'), class: 'rounded-btn yellow-fill width-100 uppercase'

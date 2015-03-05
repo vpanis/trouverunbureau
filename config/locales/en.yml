@@ -223,6 +223,7 @@ en:
     info_no_share: 'we will never share this information with anyone'
     info_share_phone: 'we will only share your phone number with a host/guest once a booking has been made'
     info_share_emergency: 'we will only share your emergency contact information with a host once a booking has been made'
+    emergency_contact: 'Emergency Contact'
     genders:
       m: 'Male'
       f: 'Female'

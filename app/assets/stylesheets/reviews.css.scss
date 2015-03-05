@@ -6,14 +6,15 @@
   &.user {
     h2 {
       padding-top: 20px;
-      font-size: 16px;
+      font-size: 14px;
       color: black;
       margin: 0;
       font-weight: 700;
+      letter-spacing: 0.13rem
     }
     .separator{
       width: 30px;
-      margin: 10px 0 45px;
+      margin: 10px 0 0px;
     }
   }
   &.venue {
