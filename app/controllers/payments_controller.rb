@@ -28,6 +28,7 @@ class PaymentsController < ApplicationController
   def payment_braintree
     render status: 400, json: { error: 'invalid token' } if params[:payment_method_nonce].present?
 
-    Resque.enqueue(BraintreePaymentJob, booking.id, params[:payment_method_nonce], current_user.id)
+    Resque.enqueue(BraintreePaymentJob, booking.id, params[:payment_method_nonce], current_user.id,
+                   current_represented.id, current_represented.type)
   end
 end

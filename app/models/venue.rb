@@ -24,6 +24,8 @@ class Venue < ActiveRecord::Base
 
   enum space_unit: [:square_mts, :square_foots]
 
+  enum status: [:creating, :active, :reported, :closed]
+
   AMENITY_TYPES = [:whiteboards, :kitchen, :security, :wifi, :printer_scanner, :chill_area,
                    :photocopier, :conference_rooms, :elevators, :outdoor_space, :team_bookings,
                    :individual_bookings, :shower, :fax, :wheelchair_access, :air_conditioning,
@@ -105,6 +107,7 @@ class Venue < ActiveRecord::Base
     self.rating ||= 0
     self.amenities ||= []
     self.professions ||= []
+    self.status ||= Venue.statuses[:creating]
   end
 
   def erase_logo

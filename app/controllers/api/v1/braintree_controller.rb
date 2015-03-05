@@ -15,22 +15,22 @@ module Api
       end
 
       def current_represented_customer_token
-        render json: { token: braintree_token },
-               status: 200
+        render json: { token: braintree_token }, status: 200
       end
 
       private
 
       def braintree_token
         if current_represented.payment_customer_id.present?
-          Braintree::ClientToken.generate(:customer_id => customer_id)
+          Braintree::ClientToken.generate(customer_id: customer_id)
         else
           Braintree::ClientToken.generate
         end
       end
 
       def sub_merchant_account_approved(notification)
-        bca = BraintreeCollectionAccount.find_by_id(notification.merchant_account.id)
+        bca = BraintreeCollectionAccount.find_by_merchant_account_id(
+                notification.merchant_account.id)
         if bca.present?
           bca.update_attributes(status: notification.merchant_account.status, active: true)
         else
@@ -40,7 +40,8 @@ module Api
       end
 
       def sub_merchant_account_declined(notification)
-        bca = BraintreeCollectionAccount.find_by_id(notification.merchant_account.id)
+        bca = BraintreeCollectionAccount.find_by_merchant_account_id(
+                notification.merchant_account.id)
         if bca.present?
           bca.update_attributes(status: notification.merchant_account.status, active: false,
                                 error_message: notification.message)

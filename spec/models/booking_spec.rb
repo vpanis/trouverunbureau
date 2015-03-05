@@ -153,8 +153,8 @@ RSpec.describe Booking, type: :model do
     end
   end
 
-  context "fee calculation" do
-    it "returns the fee to pay to deskspotting" do
+  context 'fee calculation' do
+    it 'returns the fee to pay to deskspotting' do
       booking = FactoryGirl.create(:booking, price: 300, fee: 0)
       expect(booking.fee).to eq(booking.price * Rails.configuration.payment.deskspotting_fee)
     end

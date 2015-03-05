@@ -6,7 +6,7 @@ Deskspotting::Application.configure do
     braintree: OpenStruct.new(
       merchant_account_id: braintree.merchant_account,
       time_to_poll_for_escrow_status: braintree.minutes_to_poll_for_escro_status.minutes,
-      append_random_to_customer_id: braintree.append_random_to_customer_id
+      append_random_to_accounts_ids: braintree.append_random_to_accounts_ids
     )
   )
 end

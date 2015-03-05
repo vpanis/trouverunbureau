@@ -43,11 +43,12 @@ ActiveRecord::Schema.define(version: 20150317161020) do
   add_index "bookings", ["space_id"], name: "index_bookings_on_space_id", using: :btree
 
   create_table "braintree_collection_accounts", force: true do |t|
-    t.boolean  "active",        default: false
+    t.boolean  "active",              default: false
     t.string   "status"
     t.text     "error_message"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "merchant_account_id"
   end
 
   create_table "braintree_payments", force: true do |t|
@@ -250,6 +251,7 @@ ActiveRecord::Schema.define(version: 20150317161020) do
     t.integer  "country_id"
     t.integer  "collection_account_id"
     t.string   "collection_account_type"
+    t.integer  "status"
   end
 
   add_index "venues", ["country_id"], name: "index_venues_on_country_id", using: :btree
