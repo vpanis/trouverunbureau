@@ -36,8 +36,8 @@ class Space < ActiveRecord::Base
   end
 
   def hour_price=(hp)
-    return self[:hour_price] = (hp * 100).to_i if hp.class == Fixnum || hp.class == Float
     super(hp)
+    return self[:hour_price] = (hp * 100).to_i if hp.is_a? Numeric
   end
 
   def day_price
@@ -45,8 +45,8 @@ class Space < ActiveRecord::Base
   end
 
   def day_price=(hp)
-    return self[:day_price] = (hp * 100).to_i if hp.class == Fixnum || hp.class == Float
     super(hp)
+    return self[:day_price] = (hp * 100).to_i if hp.is_a? Numeric
   end
 
   def week_price
@@ -54,8 +54,8 @@ class Space < ActiveRecord::Base
   end
 
   def week_price=(hp)
-    return self[:week_price] = (hp * 100).to_i if hp.class == Fixnum || hp.class == Float
     super(hp)
+    return self[:week_price] = (hp * 100).to_i if hp.is_a? Numeric
   end
 
   def month_price
@@ -63,8 +63,8 @@ class Space < ActiveRecord::Base
   end
 
   def month_price=(hp)
-    return self[:month_price] = (hp * 100).to_i if hp.class == Fixnum || hp.class == Float
     super(hp)
+    return self[:month_price] = (hp * 100).to_i if hp.is_a? Numeric
   end
 
   private

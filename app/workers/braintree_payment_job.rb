@@ -52,7 +52,7 @@ class BraintreePaymentJob
         submit_for_settlement: true,
         hold_in_escrow: true
       },
-      service_fee_amount: calculate_fee(@booking.price)
+      service_fee_amount: @booking.fee)
     }
   end
 

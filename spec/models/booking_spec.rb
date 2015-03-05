@@ -28,6 +28,8 @@ RSpec.describe Booking, type: :model do
 
   it { should validate_numericality_of(:price).is_greater_than_or_equal_to(0) }
 
+  it { should validate_numericality_of(:fee).is_greater_than_or_equal_to(0) }
+
   it 'should fail if the space don\'t have the booking type price' do
     space = FactoryGirl.create(:space, day_price: 10, month_price: nil)
     booking = FactoryGirl.build(:booking, space: space, b_type: Booking.b_types[:month])
@@ -151,4 +153,10 @@ RSpec.describe Booking, type: :model do
     end
   end
 
+  context "fee calculation" do
+    it "returns the fee to pay to deskspotting" do
+      booking = FactoryGirl.create(:booking, price: 300, fee: 0)
+      expect(booking.fee).to eq(booking.price * Rails.configuration.payment.deskspotting_fee)
+    end
+  end
 end

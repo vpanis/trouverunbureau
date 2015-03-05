@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20150317161020) do
     t.datetime "updated_at"
     t.integer  "owner_id"
     t.string   "owner_type"
-    t.float    "price"
+    t.integer  "price"
     t.datetime "owner_last_seen"
     t.datetime "venue_last_seen"
     t.datetime "approved_at"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20150317161020) do
     t.boolean  "venue_owner_delete", default: false
     t.integer  "payment_id"
     t.string   "payment_type"
+    t.integer  "fee"
   end
 
   add_index "bookings", ["owner_id", "owner_type"], name: "index_bookings_on_owner_id_and_owner_type", using: :btree
@@ -110,6 +111,7 @@ ActiveRecord::Schema.define(version: 20150317161020) do
     t.integer  "quantity_reviews"
     t.integer  "reviews_sum"
     t.string   "logo"
+    t.string   "payment_customer_id"
   end
 
   add_index "organizations", ["email"], name: "index_organizations_on_email", unique: true, using: :btree
@@ -123,11 +125,11 @@ ActiveRecord::Schema.define(version: 20150317161020) do
     t.integer  "venue_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.float    "hour_price"
-    t.float    "day_price"
-    t.float    "week_price"
-    t.float    "month_price"
     t.integer  "deposit"
+    t.integer  "hour_price"
+    t.integer  "day_price"
+    t.integer  "week_price"
+    t.integer  "month_price"
   end
 
   add_index "spaces", ["venue_id"], name: "index_spaces_on_venue_id", using: :btree
@@ -166,6 +168,7 @@ ActiveRecord::Schema.define(version: 20150317161020) do
     t.string   "emergency_email"
     t.string   "emergency_phone"
     t.string   "emergency_relationship"
+    t.string   "payment_customer_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
