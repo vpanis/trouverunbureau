@@ -8,8 +8,9 @@ module Api
         booking = Booking.find_by(id: params[:id])
         return record_not_found unless booking.present?
         receipt_context = ReceiptContext.new(current_represented)
-        return forbidden unless receipt_context.can_create_receipt?(booking)
-        render_nothing if receipt_context.create_receipt(booking)
+        return forbidden unless receipt_context.owner?(booking)
+        return wrong_preconditions unless receipt_context.create_receipt(booking)
+        render_nothing
       end
 
       def show
@@ -17,9 +18,9 @@ module Api
         return record_not_found unless booking.present?
         receipt_context = ReceiptContext.new(current_represented)
         return forbidden unless receipt_context.owner?(booking)
-        result = receipt_context.create_receipt(booking)
-        byebug
-        render json: ReceiptSerializer.new(result), status: 200 if result.present?
+        result = receipt_context.get_receipt(booking)
+        return wrong_preconditions unless result.present?
+        render json: ReceiptSerializer.new(result), status: 200
       end
     end
   end
