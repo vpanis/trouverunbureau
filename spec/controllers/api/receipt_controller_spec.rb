@@ -67,32 +67,63 @@ describe Api::V1::ReceiptController do
 
     context 'when the booking exists' do
       context 'when user has permissions' do
-        context 'when booking is paid' do
-          let!(:a_booking) { create(:booking, owner: @user, state: :paid) }
-          let!(:a_receipt) { create(:receipt, booking: a_booking) }
+        context 'when user is booking owner' do
+          context 'when booking is paid' do
+            let!(:a_booking) { create(:booking, owner: @user, state: :paid) }
+            let!(:a_receipt) { create(:receipt, booking: a_booking) }
 
-          it 'succeeds' do
-            get :show, id: a_booking.id
-            expect(response.status).to eq(200)
+            it 'succeeds' do
+              get :show, id: a_booking.id
+              expect(response.status).to eq(200)
+            end
+
+            it 'should retrieve the receipt' do
+              get :show, id: a_booking.id
+              receipt = JSON.parse(body['receipt'].to_json)
+              real_receipt = JSON.parse(ReceiptSerializer.new(a_receipt).to_json)
+              expect(receipt).to eq(real_receipt['receipt'])
+            end
           end
 
-          it 'should retrieve the receipt' do
-            get :show, id: a_booking.id
-            receipt = JSON.parse(body['receipt'].to_json)
-            expect(receipt).to eq(JSON.parse(ReceiptSerializer.new(a_receipt).to_json)['receipt'])
+          context 'when booking isn\'t paid' do
+            let!(:a_booking) { create(:booking, owner: @user) }
+
+            it 'fails' do
+              get :show, id: a_booking.id
+              expect(response.status).to eq(412)
+            end
           end
         end
 
-        context 'when booking isn\'t paid' do
-          let!(:a_booking) { create(:booking, owner: @user) }
-          let!(:a_receipt) { create(:receipt, booking: a_booking) }
+        context 'when user is booking venue owner' do
+          context 'when booking is paid' do
+            let(:a_venue) { create(:venue, owner: @user) }
+            let(:a_space) { create(:space, venue: a_venue) }
+            let(:a_booking) { create(:booking, space: a_space, state: :paid) }
+            let!(:a_receipt) { create(:receipt, booking: a_booking) }
 
-          it 'fails' do
-            get :show, id: a_booking.id
-            expect(response.status).to eq(412)
+            it 'succeeds' do
+              get :show, id: a_booking.id
+              expect(response.status).to eq(200)
+            end
+
+            it 'should retrieve the receipt' do
+              get :show, id: a_booking.id
+              receipt = JSON.parse(body['receipt'].to_json)
+              real_receipt = JSON.parse(ReceiptSerializer.new(a_receipt).to_json)
+              expect(receipt).to eq(real_receipt['receipt'])
+            end
+          end
+
+          context 'when booking isn\'t paid' do
+            let!(:a_booking) { create(:booking, owner: @user) }
+
+            it 'fails' do
+              get :show, id: a_booking.id
+              expect(response.status).to eq(412)
+            end
           end
         end
-
       end
 
       context 'when user hasn\'t permissions' do

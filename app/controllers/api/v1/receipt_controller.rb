@@ -17,7 +17,7 @@ module Api
         booking = Booking.find_by(id: params[:id])
         return record_not_found unless booking.present?
         receipt_context = ReceiptContext.new(current_represented)
-        return forbidden unless receipt_context.owner?(booking)
+        return forbidden unless receipt_context.authorized?(booking)
         result = receipt_context.get_receipt(booking)
         return wrong_preconditions unless result.present?
         render json: ReceiptSerializer.new(result), status: 200

@@ -6,7 +6,7 @@ class ReceiptContext
 
   def can_create_receipt?(booking)
     # TODO, ver logica del pago
-    authorized?(booking)
+    owner?(booking) && booking.paid?
   end
 
   def create_receipt(booking)
@@ -23,9 +23,13 @@ class ReceiptContext
     booking.owner == @current_represented
   end
 
+  def authorized?(booking)
+    owner?(booking) || venue_owner?(booking)
+  end
+
   private
 
-  def authorized?(booking)
-    owner?(booking) && booking.paid?
+  def venue_owner?(booking)
+    booking.space.venue.owner == @current_represented
   end
 end

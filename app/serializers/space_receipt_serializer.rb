@@ -1,5 +1,5 @@
 class SpaceReceiptSerializer < ActiveModel::Serializer
-  attributes :id, :type
+  attributes :id, :type, :capacity
   has_one :host, serializer: VenueReceiptSerializer
 
   def type

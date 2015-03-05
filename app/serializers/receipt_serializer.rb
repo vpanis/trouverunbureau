@@ -2,6 +2,7 @@ class ReceiptSerializer < ActiveModel::Serializer
   attributes :id, :created, :owner, :check_in, :days, :date, :check_out, :price, :quantity
   has_one :owner, serializer: UserReceiptSerializer
   has_one :space, serializer: SpaceReceiptSerializer
+  has_one :venue, serializer: VenueReceiptSerializer
 
   def created
     object.booking.created_at.strftime('%a, %B %d, %Y')
@@ -13,6 +14,10 @@ class ReceiptSerializer < ActiveModel::Serializer
 
   def space
     object.booking.space
+  end
+
+  def venue
+    object.booking.space.venue
   end
 
   def quantity
