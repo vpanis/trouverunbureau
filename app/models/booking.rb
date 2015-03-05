@@ -6,6 +6,8 @@ class Booking < ActiveRecord::Base
 
   belongs_to :space
 
+  has_one :receipt
+
   has_many :messages
 
   # Constants/Enums

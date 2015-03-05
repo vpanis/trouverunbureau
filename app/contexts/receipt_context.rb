@@ -16,7 +16,7 @@ class ReceiptContext
 
   def get_receipt(booking)
     return nil unless authorized?(booking)
-    Receipt.where(booking_id: booking.id).first
+    booking.receipt
   end
 
   def owner?(booking)

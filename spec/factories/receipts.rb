@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :receipt do
-    booking nil
+    booking { FactoryGirl.create(:booking) }
   end
 end
