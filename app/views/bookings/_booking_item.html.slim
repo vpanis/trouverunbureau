@@ -1,0 +1,22 @@
+p = booking.state
+p = booking.price
+p = booking.space.venue.currency
+p = booking.space.s_type
+p = booking.quantity
+p = booking.space.name
+p = booking.space.venue.street.to_s + ', ' + booking.space.venue.town.to_s \
+    + ', ' + booking.space.venue.country.to_s
+p = booking.from
+p = booking.to
+
+- if can_review?(booking, own)
+    p = 'Review'
+
+- if can_view_receipt?(booking, own)
+    p = 'View Receipt'
+
+- if can_cancel?(booking, own)
+    p = 'Cancel'
+
+- if can_delete?(booking, own)
+    p = button_to 'Delete', booking, method: :delete

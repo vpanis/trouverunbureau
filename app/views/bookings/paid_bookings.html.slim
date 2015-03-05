@@ -1,0 +1,8 @@
+h1 = 'Current bookings'
+- @paid.each do |booking|
+  = render 'booking_item', booking: booking, own:true
+
+h2 = 'Cancelled bookings'
+- @canceled.each do |booking|
+  = render 'booking_item', booking: booking, own:true
+

@@ -30,6 +30,9 @@ class Booking < ActiveRecord::Base
     greater_than_or_equal_to: 0
   }
 
+  scope :not_deleted_owner, -> { where(owner_delete: false) }
+  scope :not_deleted_venue_owner, -> { where(venue_owner_delete: false) }
+
   class << self
     def administered_bookings(represented)
       joins { space.venue }.where { space.venue.owner == my { represented } }

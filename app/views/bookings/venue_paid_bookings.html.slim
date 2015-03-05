@@ -1,0 +1,10 @@
+h1 = 'Venue bookings'
+= select_tag :venue_ids, options_for_select(@venues, params[:param_name])
+h1 = 'Current bookings'
+
+- @paid.each do |booking|
+  = render 'booking_item', booking: booking, own: false
+
+h2 = 'Cancelled bookings'
+- @canceled.each do |booking|
+  = render 'booking_item', booking: booking, own: false

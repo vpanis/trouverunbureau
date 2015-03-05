@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 20150303194416) do
     t.datetime "owner_last_seen"
     t.datetime "venue_last_seen"
     t.datetime "approved_at"
+    t.boolean  "owner_delete",       default: false
+    t.boolean  "venue_owner_delete", default: false
   end
 
   add_index "bookings", ["owner_id", "owner_type"], name: "index_bookings_on_owner_id_and_owner_type", using: :btree
