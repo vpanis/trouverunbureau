@@ -56,6 +56,15 @@ class Booking < ActiveRecord::Base
     super(to)
   end
 
+  def price
+    self[:price] / 100.0 if self[:price].present?
+  end
+
+  def price=(hp)
+    return self[:price] = (hp * 100).to_i if hp.class == Fixnum || hp.class == Float
+    super(hp)
+  end
+
   private
 
   def initialize_fields

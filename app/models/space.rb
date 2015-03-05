@@ -31,10 +31,45 @@ class Space < ActiveRecord::Base
     errors.add(:price, 'Needs at least one price')
   end
 
+  def hour_price
+    self[:hour_price] / 100.0 if self[:hour_price].present?
+  end
+
+  def hour_price=(hp)
+    return self[:hour_price] = (hp * 100).to_i if hp.class == Fixnum || hp.class == Float
+    super(hp)
+  end
+
+  def day_price
+    self[:day_price] / 100.0 if self[:day_price].present?
+  end
+
+  def day_price=(hp)
+    return self[:day_price] = (hp * 100).to_i if hp.class == Fixnum || hp.class == Float
+    super(hp)
+  end
+
+  def week_price
+    self[:week_price] / 100.0 if self[:week_price].present?
+  end
+
+  def week_price=(hp)
+    return self[:week_price] = (hp * 100).to_i if hp.class == Fixnum || hp.class == Float
+    super(hp)
+  end
+
+  def month_price
+    self[:month_price] / 100.0 if self[:month_price].present?
+  end
+
+  def month_price=(hp)
+    return self[:month_price] = (hp * 100).to_i if hp.class == Fixnum || hp.class == Float
+    super(hp)
+  end
+
   private
 
   def initialize_fields
     self.deposit ||= 0
   end
-
 end
