@@ -22,12 +22,11 @@ module Api
       private
 
       def braintree_token
-        # Braintree::ClientToken.generate(:customer_id => customer_id)
-        Braintree::ClientToken.generate
-      end
-
-      def customer_id
-        "#{current_represented.class}##{current_represented.id}"
+        if current_represented.payment_customer_id.present?
+          Braintree::ClientToken.generate(:customer_id => customer_id)
+        else
+          Braintree::ClientToken.generate
+        end
       end
 
       def sub_merchant_account_approved(notification)

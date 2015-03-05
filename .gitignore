@@ -33,6 +33,7 @@ coverage/*
 .redis.yml
 .amazons3.yml
 .braintree.yml
+.deskspotting.yml
 
 # Vagrant
 .vagrant/

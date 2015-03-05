@@ -2,9 +2,10 @@ class BraintreePaymentJob
   @queue = :braintree_payments
   @merchant_account_id = Rails.configuration.payment.braintree.merchant_account
   @escrow_polling_time = Rails.configuration.payment.braintree.time_to_poll_for_escrow_status
-  @deskspotting_fee = @escrow_polling_time = Rails.configuration.payment.deskspotting_fee
+  @deskspotting_fee = Rails.configuration.payment.deskspotting_fee
+  @append_random = Rails.configuration.payment.braintree.append_random_to_customer_id
 
-  def self.perform(booking_id, payment_token, user_id)
+  def self.perform(booking_id, payment_token, user_id, represented_id, represented_type)
     @booking = Booking.find_by_id(booking_id)
     return unless @booking.present? && User.exists?(user_id) # impossible, but...
 
@@ -34,9 +35,17 @@ class BraintreePaymentJob
     BraintreePayment.create(transaction_status: 'error', error_message: braintree_response.message)
   end
 
-  def braintree_transaction(payment_token)
-    Braintree::Transaction.sale(
-      amount: @booking.price,
+  def braintree_transaction(payment_token, represented)
+    attributes = payment_atributes(payment_token)
+    unless represented.payment_customer_id.present?
+      generate_and_save_customer_id(represented)
+      add_new_customer_attributes(attributes, represented.payment_customer_id)
+    end
+    Braintree::Transaction.sale(attributes)
+  end
+
+  def payment_atributes(payment_token)
+    { amount: @booking.price,
       merchant_account_id: @merchant_account_id,
       payment_method_nonce: payment_token,
       options: {
@@ -44,10 +53,24 @@ class BraintreePaymentJob
         hold_in_escrow: true
       },
       service_fee_amount: calculate_fee(@booking.price)
-    )
+    }
+  end
+
+  def add_new_customer_attributes(attributes, customer_id)
+    attributes[:customer] = {
+      :id => customer_id
+    }
+    attributes[:options][:store_in_vault_on_success] = true
   end
 
   def calculate_fee(price)
     price * @deskspotting_fee
   end
+
+  def generate_and_save_customer_id(represented)
+    str = "#{represented.class}##{represented.id}"
+    str = SecureRandom.hex + '#' + str if @append_random
+    represented.update_attributes(payment_customer_id: str)
+  end
+
 end
