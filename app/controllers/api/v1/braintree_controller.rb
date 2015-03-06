@@ -22,7 +22,7 @@ module Api
 
       def braintree_token
         if current_represented.payment_customer_id.present?
-          Braintree::ClientToken.generate(customer_id: customer_id)
+          Braintree::ClientToken.generate(customer_id: current_represented.payment_customer_id)
         else
           Braintree::ClientToken.generate
         end

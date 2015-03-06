@@ -5,7 +5,7 @@ class BraintreeVerifyReleasedJob
     @payment = BraintreePayment.find_by_id(payment_id)
     return unless @payment.present? # impossible, but...
 
-    transaction = Braintree::Transaction.find(@payment.transaction_id).transaction
+    transaction = Braintree::Transaction.find(@payment.transaction_id)
     if transaction.escrow_status == Braintree::Transaction::Status::ReleasePending
       Resque.enqueue_in(1.day, BraintreeVerifyReleasedJob, payment_id)
     elsif transaction.escrow_status == Braintree::Transaction::Status::Released

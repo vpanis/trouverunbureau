@@ -4,8 +4,39 @@ h2
   br
   span It's Payment Time
 
+h4
+  span Venue: #{@booking.space.venue.name}
+  br
+  span Space: #{@booking.space.name}
+  br
+  span Description: #{@booking.space.description}
+  br
+  span Capacity: #{@booking.space.capacity}
+  br
+  span Quantity: #{@booking.quantity}
+  br
+  span From: #{@booking.from}
+  br
+  span To: #{@booking.to}
+
+h3
+  span Price: #{@booking.price}
+
 = form_tag(payments_path, method: "post")
   = hidden_field_tag :booking_id, @booking.id
-  = hidden_field_tag :mode, "Braintree"
+  = hidden_field_tag :mode, "braintree"
   #js-dropin
-  = submit_tag("Pay $10")
+  = submit_tag("Pay")
+
+h3
+  span BOOKING STATE: #{@booking.state}
+  br
+  - if @booking.payment.present?
+    span Transaction Status: #{@booking.payment.transaction_status}
+    br
+    span Escrow Status: #{@booking.payment.escrow_status}
+    br
+    span Transaction Id: #{@booking.payment.transaction_id}
+    br
+    span Error Message: #{@booking.payment.error_message}
+    br
