@@ -90,8 +90,7 @@
       right: 5px;
       top: 6px;
       left: initial;
-      /* TODO: get asset for this */
-      @include at2x('venue_profile_why_book', 11px, 11px);
+      @include at2x('ic_profile_close', 11px, 11px);
       background-size: 11px 11px;
     }
   }
