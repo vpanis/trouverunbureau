@@ -11,9 +11,9 @@
 
 .verification-steps {
   background-color: $dark-white;
-  border-right: 1px solid $dark-gray;
+  border-right: 1px solid $gray;
   .status {
-    border-bottom: 1px solid $dark-gray;
+    border-bottom: 1px solid $gray;
     .status-text {
       text-transform: uppercase;
       display: inline-block;
@@ -53,7 +53,7 @@
     li {
       position: relative;
       padding: 20px;
-      border-bottom: 1px solid $dark-gray;
+      border-bottom: 1px solid $gray;
       &.done:after {
         content: '';
         position: absolute;
