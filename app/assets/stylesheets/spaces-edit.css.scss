@@ -90,6 +90,8 @@
   .pictures {
     .img-wrapper {
       position: relative;
+      height: 155px;
+      background-size: cover;
       .hover {
         display: none;
         position: absolute;
@@ -105,6 +107,9 @@
       &:hover .hover {
         display: block;
       }
+      &.fav:hover .hover {
+        display: none;
+      }
       &.fav:before {
         content: '*';
         position: absolute;
@@ -114,13 +119,10 @@
         font-size: 30px;
         line-height: 1;
       }
-      img {
-        width: 100%;
-      }
     }
     .add-image {
       width: 100%;
-      height: 200px;
+      height: 155px;
       background: $yellow;
       position: relative;
       &:before {
