@@ -1136,6 +1136,7 @@ h4.gray-subtitle{
   margin-right: 0px;
   background-repeat: no-repeat;
   background-position: center;
+  vertical-align: middle;
   &.info{
     @include at2x('ic_profile_info', 16px, 16px);
   }
