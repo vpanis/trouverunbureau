@@ -647,6 +647,18 @@ h4.gray-subtitle{
   }
   .card-top-bar.space{
     position: relative;
+    .favourite{
+      cursor: pointer;
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      @include at2x('venue_wishlist_grey_inactive', 48px, 48px);
+      top: 20px;
+      right: 55px;
+    }
+    .favourite.active{
+      @include at2x('venue_wishlist_grey_active', 48px, 48px);
+    }
     .space-options{
       cursor: pointer;
       position: absolute;
@@ -1182,28 +1194,4 @@ ul.spoken-languages-container{
   margin: ($module * 4) 0;
   display: inline-block;
   width: 100%;
-}
-
-.favorite-space{
-  width: 300px;
-  float: left;
-  display: inline-block;
-  border: solid 1px black;
-  position: relative;
-  .favourite{
-    z-index: 1;
-  }
-}
-
-.favourite{
-  cursor: pointer;
-  position: absolute;
-  width: 48px;
-  height: 48px;
-  @include at2x('venue_wishlist_grey_inactive', 48px, 48px);
-  top: 20px;
-  right: 55px;
-  &.active{
-    @include at2x('venue_wishlist_grey_active', 48px, 48px);
-  }
 }
