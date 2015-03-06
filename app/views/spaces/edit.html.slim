@@ -60,9 +60,10 @@
               .col-md-3
                 a.rounded-btn.width-100 share
           .pictures.col-md-12
-            .row
+            .subtitle.row
               .col-md-12
-                .subtitle Space photos
+                .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
+                p Space photos
                 hr
             .row
               .col-md-4
@@ -78,9 +79,10 @@
               .col-md-4
                 .add-image
           .pricing.col-md-12
-            .row
+            .subtitle.row
               .col-md-12
-                .subtitle Pricing
+                .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
+                p Pricing
                 hr
             .hourly.row
               .checkbox.col-md-3
@@ -122,12 +124,14 @@
                 label #{t('space.month_price')}
                 = f.text_field :month_price, class: 'form-control'
               .form-group.col-md-5
+                .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
                 label Minimum renting period
                 = f.text_field :hour_price, class: 'form-control'
           .deposit.col-md-12
-            .row
+            .subtitle.row
               .col-md-12
-                .subtitle Deposit
+                .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
+                p Deposit
                 hr
             .hourly.row
               .form-group.col-md-2

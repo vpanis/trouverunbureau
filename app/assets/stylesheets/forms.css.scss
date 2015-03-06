@@ -108,3 +108,11 @@ input[type="checkbox"]:checked:after {
   color: $gray-text;
   font-size: 0.5em;
 }
+
+.subtitle {
+  margin-bottom: 20px;
+  p {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
