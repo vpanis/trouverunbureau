@@ -1053,6 +1053,13 @@ h4.gray-subtitle{
   }
   .since {
     display: inline-block;
+    span{
+      margin-left: 2px;
+    }
+    &:before{
+      content: '·';
+      margin-right: 20px;
+    }
   }
 }
 

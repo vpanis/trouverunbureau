@@ -20,7 +20,10 @@
           .row
             .col-md-12
               p.location
-                strong = @user.location
+                - if @user.location.present?
+                  strong = @user.location
+                - else
+                  strong = t('commons.unknown')
               p.since
                 | User since
                 span = @user.created_at.strftime('%B, %Y')
@@ -28,15 +31,18 @@
   .row
     .left-panel.col-md-3
       h3.about-me = t('users.about_me')
-      .profile-element
-        .icon.languages
-        p = @user.languages_spoken.map{ |lang| t("languages.#{lang}") }.join(', ')
-      .profile-element
-        .icon.company
-        p = @user.company_name
-      .profile-element
-        .icon.profession
-        p = t("venue.professions.#{@user.profession}")
+      - if @user.languages_spoken.any?
+        .profile-element
+          .icon.languages
+          p = @user.languages_spoken.map{ |lang| t("languages.#{lang}") }.join(', ')
+      - if @user.company_name.present?
+        .profile-element
+          .icon.company
+          p = @user.company_name
+      - if @user.profession.present?
+        .profile-element
+          .icon.profession
+          p = t("venue.professions.#{@user.profession}")
 
     .right-panel.col-md-9
       - if @can_view_reiews

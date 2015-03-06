@@ -30,6 +30,7 @@ en:
     cancel: 'Cancel'
     close: 'Close'
     upload_file: 'Upload file'
+    unknown: 'unknown'
   session:
     email: 'Email address'
     password: 'Password'
