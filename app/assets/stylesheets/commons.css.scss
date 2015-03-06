@@ -1,0 +1,107 @@
+@import 'variables';
+@import 'mixins';
+
+p, h1, h2, h3, h4, h5, h6 {
+  letter-spacing: 0.065rem;
+}
+
+p {
+  color: $gray-text;
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 24px;
+}
+
+h3 {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.yellow{
+  color: $yellow;
+}
+
+.aqua{
+  color: $aqua;
+}
+
+.uppercase{
+  text-transform: uppercase;
+}
+
+.left{
+  float: left;
+}
+
+.right{
+  float: right;
+}
+
+.margin-top {
+  margin-top: 20px !important;
+}
+
+.margin-left {
+  margin-left: 15px !important;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.add {
+  padding-bottom: 25px;
+  position: relative;
+  width: 122px;
+  margin: 15px auto 0;
+  padding-left: 20px;
+  line-height: 15px;
+  display: inline-block;
+  transition: .25s;
+  &.block {
+    display: block;
+  }
+  &:before {
+    text-align: center;
+    content: '+';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: $aqua;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    color: $white;
+    line-height: 15px;
+  }
+  &:hover {
+    color: darken($aqua, 10%);
+  }
+}
+
+.aqua.arrow {
+  position: relative;
+  padding-left: 20px;
+  display: inline-block;
+  transition: .25s;
+  cursor: pointer;
+  &.block {
+    display: block;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: $aqua;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    color: $white;
+    line-height: 15px;
+    @include at2x('ic_profile_arrow', 16px, 16px);
+  }
+  &:hover {
+    color: darken($aqua, 10%);
+  }
+}

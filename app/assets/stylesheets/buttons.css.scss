@@ -1,0 +1,32 @@
+@import 'variables';
+@import 'mixins';
+
+.rounded-btn {
+  padding: 10px 20px;
+  border-radius: 40px;
+  border: 2px solid;
+  color: $dark-gray;
+  background-color: transparent;
+  font-weight: 700;
+  &.default {
+    border-color: $yellow;
+  }
+  &.green {
+    border-color: $aqua;
+  }
+  &.yellow-fill{
+    border-color: $yellow;
+    background-color: $yellow;
+    color: $black;
+  }
+  &.bold{
+    letter-spacing: 0.08rem;
+    font-weight: 700;
+  }
+  &.width-50 {
+    width: 50%;
+  }
+  &.width-100 {
+    width: 100%;
+  }
+}

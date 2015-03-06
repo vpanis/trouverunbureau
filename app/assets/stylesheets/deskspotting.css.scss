@@ -1,6 +1,5 @@
 @import 'variables';
 @import 'mixins';
-@import 'tools';
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,700);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700);
 
@@ -17,6 +16,28 @@ a, a:hover{
 .field-error-message {
   color: $red;
 }
+
+h3.yellow-title{
+  margin: 0;
+  color: $yellow;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.25rem;
+  font-weight: 700;
+}
+.small-separator{
+  border-top: 2px solid $yellow;
+  margin: 18px auto 20px;
+  width: 5%;
+}
+h4.gray-subtitle{
+  margin: 0;
+  font-weight: 300;
+  font-size: 30px;
+  letter-spacing: 0.1rem;
+  padding: 1px;
+}
+
 /* ====== LANDING ====== */
 .separator{
   border-top: 2px solid $yellow;
@@ -186,26 +207,6 @@ a, a:hover{
   .section-title{
     text-align: center;
     padding-top: 85px;
-    h3{
-      margin: 0;
-      color: $yellow;
-      text-transform: uppercase;
-      font-size: 12px;
-      letter-spacing: 0.25rem;
-      font-weight: 700;
-    }
-    .small-separator{
-      border-top: 2px solid $yellow;
-      margin: 18px auto 20px;
-      width: 5%;
-    }
-    h4{
-      margin: 0;
-      font-weight: 300;
-      font-size: 30px;
-      letter-spacing: 0.1rem;
-      padding: 1px;
-    }
   }
   .description{
     width: 70%;
@@ -515,32 +516,6 @@ a, a:hover{
     padding-left: 7px;
     padding-bottom: 24px;
     margin-left: 5px;
-    .stars{
-      margin-top: 6px;
-      display: inline-block;
-      .star{
-        @include at2x('stars-sprite', 28px, 14px);
-        width: 14px;
-        height: 14px;
-        display: inline-block;
-        background-repeat: no-repeat;
-        margin: 0px 2px;
-        vertical-align: middle;
-        background-position: -14px 0px;
-      }
-      .star.active{
-        background-position: 0px 0px;
-      }
-    }
-    .reviews{
-      display: inline-block;
-      font-weight: 300;
-      color: $gray-text;
-      font-size: 13px;
-      letter-spacing: 0.08rem;
-      margin-left: 5px;
-      vertical-align: bottom;
-    }
     .venue-name{
       h1{
         font-size: 27px;
@@ -697,56 +672,6 @@ a, a:hover{
       letter-spacing: 0.15rem;
       text-align: center;
       font-weight: 700;
-    }
-    .space-popover{
-      position: absolute;
-      width: 116px;
-      height: 42px;
-      top: 2px;
-      right: 30px;
-      background-color: white;
-      border: solid 1px white;
-      margin: 20px;
-      padding-top: 10px;
-      -webkit-box-shadow: 0px 0px 5px 1px $gray-text;
-      -moz-box-shadow: 0px 0px 5px 1px $gray-text;
-      box-shadow: 0px 0px 5px 1px $gray-text;
-      .arrow{
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-color: transparent;
-        border-style: solid;
-        top: 50%;
-        right: -12px;
-        margin-top: -6px;
-        border-right-width: 0;
-        border-left-color: white;
-        border-width: 6px;
-      }
-      .arrow::after{
-        right: 1px;
-        bottom: -10px;
-        content: "";
-        border-right-width: 0;
-        border-left-color: white;
-        border-width: 5px;
-        position: absolute;
-        display: block;
-        width: 0;
-        height: 0;
-        border-color: transparent;
-        border-style: solid;
-      }
-      a{
-        font-weight: 300;
-        color: $gray-text;
-        margin-right: 4px;
-        margin-left: 11px;
-        font-size: 14px;
-        letter-spacing: 0.06rem;
-        cursor: pointer;
-      }
     }
   }
   .carousel{
@@ -1052,94 +977,6 @@ a, a:hover{
   }
 }
 
-.venue-reviews{
-  background-color: white;
-  padding: 35px 0px;
-  margin-top: 4px;
-  h2{
-    padding-top: 5px;
-    text-align: center;
-    font-size: 28px;
-    letter-spacing: 0.15rem;
-    color: black;
-  }
-  .separator{
-    width: 30px;
-    margin: 18px auto 45px;
-  }
-  .reviews-list{
-    margin: 0 auto;
-    width: 85%;
-  }
-  .no-reviews{
-    text-align: center;
-    color: $gray-text;
-    font-weight: 300;
-    font-size: 13px;
-    letter-spacing: 0.065rem;
-    line-height: 24px;
-    padding-bottom: 48px;
-  }
-  .review{
-    text-align: center;
-    color: $gray-text;
-    .user{
-      font-weight: 300;
-      font-size: 14px;
-      letter-spacing: 0.01rem;
-      .avatar{
-        width: 80px;
-        height: 80px;
-        margin: 7px auto;
-        padding: 2px;
-        img{
-          @include border-radius(100%);
-          width: 100%;
-          height: 100%;
-        }
-      }
-      p{
-        margin: 0;
-      }
-      .separator{
-        border-top: 1px solid $yellow;
-        border-bottom: 0px;
-        margin: 8px auto 5px;
-      }
-      .date{
-        font-style: italic;
-        color: $dark-gray;
-        padding-bottom: 20px;
-      }
-    }
-    .message{
-      color: $gray-text;
-      text-align: left;
-      margin: 0 auto;
-      width: 90%;
-      p{
-        padding-left: 12px;
-        min-height: 170px;
-        font-weight: 300;
-        font-size: 13px;
-        letter-spacing: 0.065rem;
-        line-height: 24px;
-        padding-bottom: 48px;
-
-      }
-      .separator{
-        margin: 0 auto 30px;
-        width: -moz-calc(100% - 12px);
-        width: -webkit-calc(100% - 12px);
-        width: calc(100% - 12px);
-        border: 0;
-        border-top: solid 1px $gray-text;
-
-      }
-    }
-  }
-}
-
 /* pagination buttons */
 .pagination-container{
   text-align: right;
@@ -1170,3 +1007,192 @@ a, a:hover{
 
 /*fix for ui-bootstrap, angular directives */
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+
+/*  ======== USER ======== */
+
+/* profile */
+.user-header {
+  .name {
+    float: left;
+    position: relative;
+    margin-top: 35px;
+    font-size: 28px;
+    letter-spacing: 0.15rem;
+    margin-bottom: 30px;
+    &:after {
+      position: absolute;
+      content: '';
+      width: 50px;
+      height: 2px;
+      background-color: $yellow;
+      bottom: -15px;
+      left: 0;
+    }
+  }
+  .review-container {
+    margin: 35px 0 0 10px;
+  }
+
+  .location {
+    position: relative;
+    padding: 0 20px;
+    color: $dark-gray;
+    display: inline-block;
+    &:after {
+      @include at2x('i-location', 14px, 20px);
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 14px;
+      height: 20px;
+    }
+  }
+  .since {
+    display: inline-block;
+  }
+}
+
+.user-title{
+  padding-top: 52px;
+  text-align: center;
+  .user-avatar{
+    margin: 7px;
+  }
+}
+.small-title{
+  text-align: center;
+  padding: 12px 0px 25px;
+}
+.user-profile {
+  .left-panel{
+    .user-avatar {
+      margin: 55px 0 45px;
+    }
+    .about-me {
+      position: relative;
+      margin-bottom: 25px;
+      font-size: 14px;
+      letter-spacing: 0.13rem;
+      &:after {
+        position: absolute;
+        content: '';
+        width: 30px;
+        height: 2px;
+        background-color: $yellow;
+        bottom: -12px;
+        left: 0;
+      }
+    }
+    .profile-element {
+      margin-bottom: 5px;
+      .icon{
+        vertical-align: top;
+        margin-top: 2px;
+        margin-right: 16px;
+        width: 20px;
+        height: 20px;
+        &.languages{
+          /* TODO: get real assets */
+          @include at2x('venue-default', 20px, 20px);
+          background-size: 20px 20px;
+        }
+        &.company{
+          /* TODO: get real assets */
+          @include at2x('venue-default', 20px, 20px);
+          background-size: 20px 20px;
+        }
+        &.profession{
+          /* TODO: get real assets */
+          @include at2x('venue-default', 20px, 20px);
+          background-size: 20px 20px;
+        }
+      }
+      p{
+        display: inline-block;
+        width: -moz-calc(100% - 40px);
+        width: -webkit-calc(100% - 40px);
+        width: calc(100% - 40px);
+      }
+    }
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 18px;
+  display: inline-block;
+  margin-right: 0px;
+  background-repeat: no-repeat;
+  background-position: center;
+  &.info{
+    @include at2x('ic_profile_info', 16px, 16px);
+  }
+  &.lock{
+    @include at2x('ic_profile_lock', 16px, 16px);
+  }
+}
+.user-avatar img{
+  @include border-radius(100%);
+}
+
+ul.spoken-languages-container{
+  position: relative;
+  list-style-type: none;
+  padding: 0;
+  li{
+    background-color: white;
+    border: solid 1px $yellow;
+    @include border-radius(3px);
+    float: left;
+    margin: 3px 0px 3px 5px;
+    padding: 6px 28px 6px 12px;
+    position: relative;
+    .lang-name{
+      font-size: 11px;
+      font-weight: 300;
+      line-height: 13px;
+    }
+    .delete-lang{
+      right: 5px;
+      top: 6px;
+      left: initial;
+      /* TODO: get asset for this */
+      @include at2x('venue_profile_why_book', 11px, 11px);
+      background-size: 11px 11px;
+      cursor: pointer;
+      display: block;
+      height: 11px;
+      width: 11px;
+      left: auto;
+      right: 5px;
+      top: 6px;
+      line-height: 13px;
+      position: absolute;
+    }
+  }
+}
+
+.emergency-contact {
+  margin-top: $module * 2;
+  p {
+    display: inline-block;
+    vertical-align: text-top;
+    margin: 0 5px;
+    line-height: 1;
+    font-size: 14px;
+  }
+  #emergency-toggle{
+    margin-left: 20px;
+  }
+  hr {
+    margin-top: 0;
+  }
+}
+
+.buttons {
+  margin: ($module * 4) 0;
+  display: inline-block;
+  width: 100%;
+}

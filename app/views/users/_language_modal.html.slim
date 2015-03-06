@@ -1,0 +1,15 @@
+#languageModal.modal.fade aria-hidden="true" aria-labelledby="languageModalLabel" role="dialog" tabindex="-1"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close aria-label="#{t('commons.close')}" data-dismiss="modal" type="button"
+          span aria-hidden="true"  &times;
+        h4#languageModalLabel.modal-title = t('users.enter_languages')
+      .modal-body
+        .form-group
+          label = t('users.language')
+          = select_tag('languages_spoken_select', options_from_collection_for_select(@language_options, :second, :first, @user.languages_spoken), {multiple: true, class: 'form-control multi-lang-select'})
+
+      .modal-footer
+        button.rounded-btn.yellow-fill.width-100.bold.uppercase#save-languages = t('users.add_languages')
+

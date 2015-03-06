@@ -1,40 +1,106 @@
+= render 'language_modal'
+= render 'shared/image_modal', modal_id: 'avatar-modal', title: t('users.change_picture'), image_link_id: 'avatar-link', save_button_id: 'save-avatar'
+
 = render 'shared/menu_bar'
-.row
-  .col-xs-12.col-sm-8.col-md-8.col-lg-8.col-xs-offset-0.col-sm-offset-2
-    .edit-profile-form.dashboard-form ng-controller="UserProfileCtrl"
-      = form_for @user do |f|
-        .row
-          .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
-            label = t('users.first_name')
-            = f.text_field :first_name, placeholder: t('users.first_name'), class: 'form-control'
-          .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
-            label = t('users.last_name')
-            = f.text_field :last_name, placeholder: t('users.last_name'), class: 'form-control'
-          .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
-            label = t('users.gender')
-            = f.select(:gender, @gender_options, {}, {class: 'form-control gender-select'})
-          .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
-            label = t('users.phone')
-            = f.text_field :phone, placeholder: t('users.phone'), class: 'form-control'
-          .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
-            label = t('users.profession')
-            = f.select(:profession, @profession_options, {}, {class: 'form-control profession-select'})
-          .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
-            label = t('users.email')
-            = f.text_field :email, placeholder: t('users.email'), class: 'form-control'
-          .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
-            label = t('users.company_name')
-            = f.text_field :company_name, placeholder: t('users.company_name'), class: 'form-control'
-          .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
-            label = t('users.language')
-            = f.select(:language, @language_options, {}, {class: 'form-control gender-select'})
-          .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
-            label = t('users.date_of_birth')
-            .input-group
-              .input-group-addon ng-click="open($event)" type="button"
-                i.glyphicon.glyphicon-calendar
-              - value = @user.date_of_birth.strftime("%d-%m-%Y") if @user.date_of_birth.present?
-              = f.text_field :date_of_birth, value: value, placeholder: 'Date of birth', class: 'form-control', close_text: 'Close', datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened', ng_model:'user_date_of_birth', ng_required: 'true', type: 'text', show_button_bar:'false'
+= render 'shared/profile_menu_bar'
 
-          = f.submit t('commons.save')
+.user.container
+  .user-title
+    h3.yellow-title = t('users.edit_profile')
+    .small-separator
+    h4.gray-subtitle = t('users.required_fields')
+    .user-avatar
+      - if @user.avatar?
+        = image_tag(@user.avatar.url, width: '95px', height: '95px', id: 'user-avatar-img')
+      - else
+        = image_tag('default-avatar.png', width: '95px', height: '95px', id: 'user-avatar-img')
+      a#edit-avatar.add.block.aqua href="#" data-toggle="modal" data-target="#avatar-modal" = t('users.change_picture')
+  .row
+    .col-xs-12.col-sm-8.col-md-8.col-lg-8.col-xs-offset-0.col-sm-offset-2
+      .edit-profile-form.dashboard-form ng-controller="UserProfileCtrl"
+        = form_for @user do |f|
+          = f.file_field :avatar, class: 'hidden'
+          .row
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              label = t('users.first_name')
+              = f.text_field :first_name, placeholder: t('users.first_name'), class: 'form-control'
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              .icon.lock.pointer#last-name-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
+              label = t('users.last_name')
+              = f.text_field :last_name, placeholder: t('users.last_name'), class: 'form-control'
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              .icon.lock.pointer#gender-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
+              label = t('users.gender')
+              = f.select(:gender, @gender_options, {}, {class: 'form-control gender-select'})
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              .icon.info.pointer#phone-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_share_phone')}"
+              label = t('users.phone')
+              = f.text_field :phone, placeholder: t('users.phone'), class: 'form-control'
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              label = t('users.profession')
+              = f.select(:profession, @profession_options, {}, {class: 'form-control profession-select'})
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              .icon.lock.pointer#email-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
+              label = t('users.email')
+              = f.text_field :email, placeholder: t('users.email'), class: 'form-control'
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              label = t('users.company_name')
+              = f.text_field :company_name, placeholder: t('users.company_name'), class: 'form-control'
 
+          .row
+            .small-title
+              .small-separator
+              h4.gray-subtitle = t('users.optional_fields')
+
+          .row
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              label = t('users.language')
+              = f.select(:language, @language_options, {}, {class: 'form-control language-select'})
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              label = t('users.date_of_birth')
+              .calendar.input-group
+                .calendar-icon.input-group-addon ng-click="open($event)" type="button"
+                - value = @user.date_of_birth.strftime("%d-%m-%Y") if @user.date_of_birth.present?
+                = f.text_field :date_of_birth, value: value, placeholder: 'Date of birth', class: 'form-control', close_text: 'Close', datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened', ng_model:'user_date_of_birth', ng_required: 'true', type: 'text', show_button_bar:'false'
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              label = t('users.location')
+              = f.text_field :location, placeholder: t('users.location'), class: 'form-control'
+            .form-group.col-xs-12
+              label = t('Language Spoken')
+              a.add.margin-left.aqua href='#' data-target="#languageModal" data-toggle="modal" add
+              ul.spoken-languages-container
+                - @language_options.each do |lang|
+                  li.lang-item id="lang-item-#{lang.last}"
+                    div.lang-name
+                      = lang.first
+                    .delete-lang href="#" data-lang=lang.last
+              = f.hidden_field :languages_spoken
+            .form-group.col-xs-12
+              label = t('users.interests')
+              = f.text_area :interests, placeholder: t('users.interests'), class: 'form-control'
+            .emergency-contact.col-xs-12
+              .icon.info.pointer#emergency-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_share_emergency')}"
+              p
+                span = t('users.emergency_contact')
+                span.aqua#emergency-toggle.arrow edit
+              hr
+            .emergency-info
+              .col-lg-12
+              .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+                label = t('users.emergency_name')
+                = f.text_field :emergency_name, placeholder: t('users.emergency_name'), class: 'form-control'
+              .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+                label = t('users.emergency_phone')
+                = f.text_field :emergency_phone, placeholder: t('users.emergency_phone'), class: 'form-control'
+              .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+                label = t('users.emergency_email')
+                = f.text_field :emergency_email, placeholder: t('users.emergency_email'), class: 'form-control'
+              .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+                label = t('users.emergency_relationship')
+                = f.text_field :emergency_relationship, placeholder: t('users.emergency_relationship'), class: 'form-control'
+            .buttons
+              .col-xs-6
+                a href=(user_path(@user))
+                  button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
+              .col-xs-6
+                = f.submit t('commons.save'), class: 'rounded-btn yellow-fill width-100 uppercase'

@@ -1,6 +1,5 @@
 @import 'variables';
 @import 'mixins';
-@import 'tools';
 
 #footer{
   a{
@@ -108,7 +107,7 @@
         width: 90%;
         text-align: left;
       }
-      p.arrow{
+      p.white-arrow{
         text-align: right;
         width: 14px;
         color: white;

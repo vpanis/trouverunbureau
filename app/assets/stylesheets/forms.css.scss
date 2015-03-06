@@ -1,6 +1,5 @@
 @import 'variables';
 @import 'mixins';
-@import 'tools';
 
 .rounded-button{
   font-family: "Open Sans", sans-serif;
@@ -39,6 +38,7 @@
   -moz-transition: none;
   -webkit-transition: none;
 }
+
 .dashboard-form{
   .form-group{
     margin-bottom: 8px;
@@ -46,6 +46,12 @@
       height: 42px;
       border: 2px solid $light-gray;
       color: $gray-text;
+    }
+    textarea.form-control{
+      height: 90px;
+      font-size: 12px;
+      letter-spacing: 0.08rem;
+      font-weight: 300;
     }
     input[type='text'].form-control{
       font-size: 12px;

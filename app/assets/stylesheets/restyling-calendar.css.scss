@@ -1,0 +1,70 @@
+@import 'variables';
+@import 'mixins';
+
+.calendar {
+  .calendar-icon {
+    position: relative;
+    border: 2px solid $light-gray;
+    border-right: none;
+    padding: 0 30px;
+    cursor: pointer;
+    &:before {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 5px;
+      bottom: 5px;
+      width: 2px;
+      background-color: $light-gray;
+    }
+    &:after{
+      @include at2x('ic_profile_calendar', 25px, 25px);
+      background-position: center center;
+      width: 25px;
+      height: 25px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      content: '';
+      transform: translatex(-50%) translateY(-50%);
+    }
+  }
+  input[type='text'].form-control {
+    border-left: none;
+  }
+  .dropdown-menu{
+    padding: 5px;
+    li{
+      table thead tr th button.btn.btn-default.btn-sm{
+        background-color: $dark-white;
+        color: $gray-text;
+        font-family: "Open Sans", sans-serif;
+      }
+      table tbody tr td.text-center{
+        button.btn.btn-default.btn-sm.disabled{
+          background-color: $dark-gray;
+          color: white;
+        }
+        button.btn.btn-default.btn-sm.active, button.btn.btn-default.active{
+          background-color: $light-gray;
+        }
+        button.btn.btn-default.btn-sm.btn-info, button.btn.btn-default.btn-sm.btn-info.active, button.btn.btn-default.btn-info, button.btn.btn-default.btn-info.active{
+          background-color: $yellow;
+          border-color: $yellow;
+        }
+      }
+    }
+    .btn{
+      @include border-radius(2px);
+      color: $gray-text;
+    }
+    .text-info{
+      color: $dark-gray;
+    }
+    .btn.active{
+      -webkit-box-shadow: inset 0px 0px 0px 0px rgba(159,159,159,1);
+      -moz-box-shadow: inset 0px 0px 0px 0px rgba(159,159,159,1);
+      box-shadow: inset 0px 0px 0px 0px rgba(159,159,159,1);
+    }
+  }
+}
