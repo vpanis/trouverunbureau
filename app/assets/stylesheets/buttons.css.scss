@@ -8,6 +8,7 @@
   color: $dark-gray;
   background-color: transparent;
   font-weight: 700;
+  text-align: center;
   &.default {
     border-color: $yellow;
   }
@@ -19,6 +20,11 @@
     background-color: $yellow;
     color: $black;
   }
+  &.grey-fill {
+    border-color: $gray;
+    background-color: $gray;
+    color: $white;
+  }
   &.bold{
     letter-spacing: 0.08rem;
     font-weight: 700;
@@ -27,6 +33,7 @@
     width: 50%;
   }
   &.width-100 {
+    display: inline-block;
     width: 100%;
   }
 }

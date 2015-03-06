@@ -1,8 +1,40 @@
+= render 'shared/menu_bar'
+= render 'shared/profile_menu_bar'
+
 = form_for(@space) do |f|
   .main-content
     #space
       .row
-        .details-section
+        .col-md-3
+          .verification-steps
+            .status
+              .status-text 
+                | status: 
+                span incomplete
+              .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title="" 
+
+              .progress-container
+                .progress [style = "width: 70%"]
+              .progress-counter 70%
+
+            ul.verification-list
+              li.venue.done
+                p Venue
+              li.details
+                p Details
+              li.amenities
+                p Amenities
+              li.photos
+                p Photos
+              li.users
+                p Users
+              li.spaces
+                p Spaces
+            .publish
+              a.rounded-btn.grey-fill.width-100 publish
+            .delete
+              a delete
+        .details-section.col-md-7.col-md-offset-1
           .form-group#space-s_type-input
             label #{t('space.s_type')}
             = f.text_field :s_type
@@ -32,6 +64,6 @@
             = f.text_field :month_price
 
 
-  .full-width-submit-button
-    = f.submit 'Save', class: 'submit-button', id: 'save-space'
+          .full-width-submit-button
+            = f.submit 'Save', class: 'submit-button', id: 'save-space'
 

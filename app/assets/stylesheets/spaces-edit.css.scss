@@ -1,0 +1,69 @@
+@import 'variables';
+@import 'mixins';
+
+.verification-steps {
+  background-color: $dark-white;
+  border-right: 1px solid $dark-gray;
+  .status {
+    border-bottom: 1px solid $dark-gray;
+    .status-text {
+      text-transform: uppercase;
+      display: inline-block;
+      margin: 0 5px 10px 0;
+      span {
+        color: red;
+      }
+    }
+    .progress-container {
+      position: relative;
+      width: 85%;
+      margin-right: 5%;
+      display: inline-block;
+      height: 20px;
+      vertical-align: middle;
+      border: 2px solid $yellow;
+      border-radius: 12px;
+      overflow: hidden;
+      .progress {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        background-color: $yellow;
+        border-radius: 0;
+        box-shadow: none;
+      }
+    }
+    .progress-counter {
+        width: 10%;
+        display: inline-block;
+    }
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    li {
+      position: relative;
+      padding: 20px;
+      border-bottom: 1px solid $dark-gray;
+      &.done:after {
+        content: '';
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        width: 22px;
+        height: 22px;
+        transform: translateY(-50%);
+        @include at2x('venue_profile_why_book', 22px, 22px);
+      }
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .status,
+  .publish,
+  .delete {
+    padding: 15px;
+  }
+}
