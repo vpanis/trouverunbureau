@@ -1,0 +1,7 @@
+= render 'shared/menu_bar', user: current_user
+= render 'shared/profile_menu_bar', user: current_user, selected: 'account'
+
+.user-profile.container
+  .row
+    p.center
+      = link_to t("session.logout"), destroy_user_session_path, method: 'delete', class: "rounded-btn green"

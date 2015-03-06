@@ -30,10 +30,12 @@ en:
     cancel: 'Cancel'
     close: 'Close'
     upload_file: 'Upload file'
+    unknown: 'unknown'
   session:
     email: 'Email address'
     password: 'Password'
     login: 'Log in'
+    logout: 'Log out'
     fb_login: 'Log in with Facebook'
     keep_session: 'Keep me logged in'
     forgot_password: 'Forgot password?'

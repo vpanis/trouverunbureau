@@ -6,4 +6,8 @@ class UserSerializer < ActiveModel::Serializer
     object.avatar.url
   end
 
+  def name
+    object.first_name
+  end
+
 end

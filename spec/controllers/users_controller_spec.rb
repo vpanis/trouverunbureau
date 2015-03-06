@@ -28,9 +28,9 @@ describe UsersController do
 
       context 'when the user does not exist' do
         it 'fails' do
-          get :show, id: -1
-          # redirect to root
-          expect(response.status).to eq(302)
+          assert_raises(ActiveRecord::RecordNotFound) do
+            get :show, id: -1
+          end
         end
       end # when the user does not exist
     end # when no user is logged in
@@ -121,9 +121,9 @@ describe UsersController do
 
       context 'when the user does not exist' do
         it 'fails' do
-          get :edit, id: -1
-          # redirect to root
-          expect(response.status).to eq(302)
+          assert_raises(ActiveRecord::RecordNotFound) do
+            get :edit, id: -1
+          end
         end
       end # when the user does not exist
     end # when no user is logged in
@@ -182,9 +182,9 @@ describe UsersController do
 
       context 'when the user does not exist' do
         it 'fails' do
-          patch :update, id: -1
-          # redirect to root
-          expect(response.status).to eq(302)
+          assert_raises(ActiveRecord::RecordNotFound) do
+            patch :update, id: -1
+          end
         end
       end # when the user does not exist
     end # when no user is logged in
