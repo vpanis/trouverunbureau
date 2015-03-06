@@ -72,6 +72,21 @@
   .space-title {
     color: $black;
   }
+  .share {
+    margin: 20px 0;
+    .share-text {
+      padding: 4px 0;
+      p {
+        @include at2x('venue_profile_fbshare', 32px, 32px);
+        background-repeat: no-repeat;
+        padding: 0 0 0 55px;
+        margin-bottom: 0;
+        font-size: 16px;
+        line-height: 32px;
+        background-position: 15px;
+      }
+    }
+  }
   .pictures {
     .img-wrapper {
       position: relative;
