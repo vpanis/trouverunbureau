@@ -156,11 +156,9 @@
           / .form-group.col-md-6#space-week_price-input
           /   label #{t('space.week_price')}
           /   = f.text_field :week_price, class: 'form-control'
-
-          .col-md-12
-            .row
+          .buttons
               .col-md-6
-                = f.submit 'cancel', class: 'rounded-btn width-100', id: 'save-space'
+                a href="#"
+                  button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
               .col-md-6
                 = f.submit 'Save', class: 'rounded-btn width-100 yellow', id: 'save-space'
-
