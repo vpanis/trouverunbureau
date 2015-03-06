@@ -94,6 +94,12 @@ group :development do
   gem 'better_errors', '~>2.0.0'
   gem 'binding_of_caller', '~>0.7.2'
   gem 'spring', '~>1.1.3'
+  
+  # Livereload
+  gem "guard", ">= 2.2.2",       :require => false
+  gem "guard-livereload",        :require => false
+  gem "rack-livereload"
+  gem "rb-fsevent",              :require => false
 
   # Lints
   gem 'rubocop', '~>0.26.1'
