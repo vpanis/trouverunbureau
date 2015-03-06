@@ -1,22 +1,6 @@
 @import 'variables';
 @import 'mixins';
 
-.rounded-button{
-  font-family: "Open Sans", sans-serif;
-  font-size: 0.875rem;
-  font-weight: 700;
-  text-align: center;
-  @include border-radius(2em);
-  border: 2px solid $yellow;
-  background-color: transparent;
-  cursor: pointer;
-  padding: 11px 0 7px 0;
-  font-size: 14px;
-  text-transform: uppercase;
-  color: black;
-  margin-top: 20px;
-}
-
 .form-group{
   margin-bottom: 11px;
   .input-group{
