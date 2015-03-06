@@ -114,9 +114,23 @@
         left: 0;
         bottom: 0;
         right: 0;
+        padding: 40px;
         background-color: transparentize($aqua, 0.5);
         a {
           color: $white;
+          display: block;
+          padding-left: 30%;
+          background-repeat: no-repeat;
+          line-height: 32px;
+        }
+        .main {
+          @include at2x('venue_wishlist_white_inactive', 32px, 32px);
+          background-position: calc(30% - 32px); // background image width
+          margin-bottom: 10px;
+        }
+        .delete {
+          @include at2x('venue_wishlist_white_inactive', 32px, 32px);
+          background-position: calc(30% - 32px); // background image width
         }
       }
       &:hover .hover {
