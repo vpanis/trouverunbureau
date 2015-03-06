@@ -45,12 +45,15 @@
             label #{t('space.s_type')}
             = f.text_field :s_type, class: 'form-control'
           .form-group.col-md-3#space-capacity-input
+            .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
             label #{t('space.capacity')}
             = f.text_field :capacity, class: 'form-control'
           .form-group.col-md-3#space-quantity-input
+            .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
             label #{t('space.quantity')}
             = f.text_field :quantity, class: 'form-control'
           .form-group.col-md-12#space-description-input
+            .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
             label #{t('space.description')}
             = f.text_area :description, class: 'form-control'
           .share.col-md-12
@@ -96,6 +99,7 @@
                 label #{t('space.hour_price')}
                 = f.text_field :hour_price, class: 'form-control'
               .form-group.col-md-5
+                .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
                 label Minimum renting period
                 = f.text_field :hour_price, class: 'form-control'
             .daily.row
@@ -110,6 +114,7 @@
                 label #{t('space.day_price')}
                 = f.text_field :day_price, class: 'form-control'
               .form-group.col-md-5
+                .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
                 label Minimum renting period
                 = f.text_field :hour_price, class: 'form-control'
             .monthly.row
