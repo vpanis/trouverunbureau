@@ -74,6 +74,13 @@
   .delete {
     padding: 15px;
   }
+  .delete a {
+    @include at2x('ic_profile_close', 22px, 22px); //TODO asset
+    background-repeat: no-repeat;
+    background-position: center left;
+    padding-left: 25px;
+    color: $gray;
+  }
 }
 
 .details-section {
