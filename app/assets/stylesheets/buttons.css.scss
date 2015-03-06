@@ -20,13 +20,23 @@
 .rounded-btn {
   padding: 10px 20px;
   border-radius: 40px;
-  border: 2px solid;
+  border: 2px solid $dark-gray;;
   color: $dark-gray;
   background-color: transparent;
   font-weight: 700;
   text-align: center;
+  cursor: pointer;
+  transition: .25s;
+  &:hover {
+    background-color: $dark-white;
+    color: $dark-gray;
+  }
   &.default {
     border-color: $yellow;
+    &:hover {
+      background-color: $yellow;
+      color: $black;
+    }
   }
   &.green {
     border-color: $aqua;
@@ -35,11 +45,19 @@
     border-color: $yellow;
     background-color: $yellow;
     color: $black;
+    &:hover {
+      background-color: darken($yellow, 5%);
+      border-color: darken($yellow, 5%);
+    }
   }
   &.grey-fill {
     border-color: $gray;
     background-color: $gray;
     color: $white;
+    &:hover {
+      background-color: darken($gray, 20%);
+      border-color: darken($gray, 20%);
+    }
   }
   &.bold{
     letter-spacing: 0.08rem;
