@@ -1,14 +1,15 @@
-.user-menu
-  ul.nav.navbar-nav
-    li
-      = link_to(t('menu.profile'), user_path(user), class: ('active' if selected.eql?('profile')))
-    li
-      a(href="#") = t('menu.inbox')
-    li
-      a(href="#") = t('menu.bookings')
-    li
-      a(href="#") = t('menu.venues')
-    li
-      = link_to(t('menu.wishlist'), wishlist_spaces_path, class: ('active' if selected.eql?('wishlist')))
-    li
-      a(href="#") = t('menu.account')
+- if user.present?
+  .user-menu
+    ul.nav.navbar-nav
+      li
+        = link_to(t('menu.profile'), user_path(user), class: ('active' if selected.eql?('profile')))
+      li
+        a(href="#") = t('menu.inbox')
+      li
+        a(href="#") = t('menu.bookings')
+      li
+        a(href="#") = t('menu.venues')
+      li
+        = link_to(t('menu.wishlist'), wishlist_spaces_path, class: ('active' if selected.eql?('wishlist')))
+      li
+        = link_to(t('menu.account'), account_user_path(user), class: ('active' if selected.eql?('account')))

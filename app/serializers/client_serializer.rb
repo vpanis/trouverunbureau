@@ -9,4 +9,9 @@ class ClientSerializer < ActiveModel::Serializer
     return object.logo.url if object.class == Organization
     object.avatar.url
   end
+
+  def name
+    return object.first_name if object.class == User
+    object.name
+  end
 end

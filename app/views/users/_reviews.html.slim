@@ -3,11 +3,12 @@
   .separator
   .container-fluid.reviews-list ng-controller="ClientReviewsCtrl" data-avatar=(image_url('venue-default.png')) data-client-id=(user.id)
     .review-item.row ng-repeat=("review in reviews")
-      .user.col-xs-8.col-sm-3.col-md-3.col-lg-2.col-xs-offset-2.col-sm-offset-0
-        img.avatar ng-src="{{review.venue.logo || defaultAvatar}}"
-        p() {{review.venue.name}}
-        .separator
-        p.date() {{review.date}}
+      a ng-href="/venues/{{review.venue.id}}"
+        .user.col-xs-8.col-sm-3.col-md-3.col-lg-2.col-xs-offset-2.col-sm-offset-0
+          img.avatar ng-src="{{review.venue.logo || defaultAvatar}}"
+          p() {{review.venue.name}}
+          .separator
+          p.date() {{review.date}}
       .col-xs-12.col-sm-9.col-md-9.col-lg-10
         .message
           p() {{review.message}}

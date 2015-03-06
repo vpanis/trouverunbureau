@@ -26,7 +26,7 @@
       ul.nav.navbar-nav.navbar-right.hidden-collapse
         - if user.present?
           li
-            .user
+            a.user href=user_path(user)
               .avatar
                 - if user.avatar?
                   = image_tag(user.avatar.url)
@@ -34,11 +34,15 @@
                   = image_tag('default-avatar.png')
               .name
                 p = user.name
-        li
-          a href="#"
-            .messages
-              p 0
-        li
-          a.list-space href="#"
-            p #{t('home.list_your_space')}
+          li
+            a href="#"
+              .messages
+                p 0
+          li
+            a.list-space href="#"
+              p #{t('home.list_your_space')}
+        - else
+          li
+            a.list-space href=new_user_session_path
+              p #{t('session.login')}
 .after-menu

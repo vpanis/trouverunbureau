@@ -57,14 +57,16 @@
       color: $dark-gray;
     }
   }
-  .user{
+  a.user{
+    padding-top: 0px;
+    padding-bottom: 0px;
     .name{
       display: inline-block;
       padding-left: 8px;
       letter-spacing: 0.06rem;
       font-weight: 300;
       color: $dark-gray;
-      line-height: 42px;
+      height: 42px;
       vertical-align: bottom;
       width: 115px;
       p{
@@ -72,6 +74,7 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
+        line-height: 42px;
       }
     }
     .avatar{
