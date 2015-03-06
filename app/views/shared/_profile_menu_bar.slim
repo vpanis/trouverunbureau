@@ -1,14 +1,14 @@
 .user-menu
   ul.nav.navbar-nav
     li
-      a.active(href="#") Profile
+      = link_to(t('menu.profile'), user_path(user), class: ('active' if selected.eql?('profile')))
     li
-      a(href="#") Inbox
+      a(href="#") = t('menu.inbox')
     li
-      a(href="#") Bookings
+      a(href="#") = t('menu.bookings')
     li
-      a(href="#") Venues
+      a(href="#") = t('menu.venues')
     li
-      a(href="#") Wishlist
+      = link_to(t('menu.wishlist'), wishlist_spaces_path, class: ('active' if selected.eql?('wishlist')))
     li
-      a(href="#") Account
+      a(href="#") = t('menu.account')

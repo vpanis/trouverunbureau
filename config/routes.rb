@@ -11,7 +11,13 @@ Deskspotting::Application.routes.draw do
 
   resources :venues, only: [:edit, :update, :show]
   resources :users, only: [:show, :edit, :update]
-  resources :spaces, only: [:edit, :update]
+
+  resources :spaces, only: [:edit, :update] do
+    collection do
+      get :wishlist
+    end
+  end
+
   resources :bookings, only: [:destroy]  do
     collection do
       get :paid_bookings, to: "bookings#paid_bookings"
@@ -24,9 +30,6 @@ Deskspotting::Application.routes.draw do
 
     resources :users do
       member do
-        get :wishlist, to: 'wishlist#wishlist'
-        post :wishlist, to: 'wishlist#add_space_to_wishlist'
-        delete :wishlist, to: 'wishlist#remove_space_from_wishlist'
         post :login_as_organization, to: 'users#login_as_organization'
         delete :reset_organization, to: 'users#reset_organization'
         get :reviews, to: 'reviews#user_reviews'
@@ -34,6 +37,8 @@ Deskspotting::Application.routes.draw do
         get :inquiries_with_news, to: 'booking_inquiries#user_inquiries_with_news'
       end
     end
+
+    resources :wishlist, only: [:index, :create, :destroy]
 
     resources :organizations do
       member do

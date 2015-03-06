@@ -943,11 +943,10 @@ h4.gray-subtitle{
   }
   .card-top-bar.space{
     .favourite{
-      cursor: pointer;
       @include at2x('venue_wishlist_white_inactive', 48px, 48px);
-    }
-    .favourite.active{
-      @include at2x('venue_wishlist_white_active', 48px, 48px);
+      &.active{
+        @include at2x('venue_wishlist_white_active', 48px, 48px);
+      }
     }
     .space-options{
       color: white;
@@ -1075,6 +1074,7 @@ h4.gray-subtitle{
       margin-bottom: 25px;
       font-size: 14px;
       letter-spacing: 0.13rem;
+      color: black;
       &:after {
         position: absolute;
         content: '';
@@ -1158,8 +1158,7 @@ ul.spoken-languages-container{
       right: 5px;
       top: 6px;
       left: initial;
-      /* TODO: get asset for this */
-      @include at2x('venue_profile_why_book', 11px, 11px);
+      @include at2x('ic_profile_close', 11px, 11px);
       background-size: 11px 11px;
       cursor: pointer;
       display: block;

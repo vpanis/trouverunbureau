@@ -24,16 +24,16 @@
           a #{t('menu.messages')}
 
       ul.nav.navbar-nav.navbar-right.hidden-collapse
-        - if @user.present?
+        - if user.present?
           li
             .user
               .avatar
-                - if @user.avatar?
-                  = image_tag(@user.avatar.url)
+                - if user.avatar?
+                  = image_tag(user.avatar.url)
                 - else
                   = image_tag('default-avatar.png')
               .name
-                p = @user.first_name + ' ' + @user.last_name + @user.first_name + ' ' + @user.last_name
+                p = user.name
         li
           a href="#"
             .messages
