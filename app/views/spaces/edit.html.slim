@@ -35,35 +35,126 @@
             .delete
               a delete
         .details-section.col-md-7.col-md-offset-1
-          .form-group#space-s_type-input
-            label #{t('space.s_type')}
-            = f.text_field :s_type
-          .form-group#space-name-input
+          .space-title.text-center
+            h3 List new space
+          .small-separator
+          .form-group.col-md-12#space-name-input
             label #{t('space.name')}
-            = f.text_field :name
-          .form-group#space-capacity-input
+            = f.text_field :name, class: 'form-control'
+          .form-group.col-md-6#space-s_type-input
+            label #{t('space.s_type')}
+            = f.text_field :s_type, class: 'form-control'
+          .form-group.col-md-3#space-capacity-input
             label #{t('space.capacity')}
-            = f.text_field :capacity
-          .form-group#space-quantity-input
+            = f.text_field :capacity, class: 'form-control'
+          .form-group.col-md-3#space-quantity-input
             label #{t('space.quantity')}
-            = f.text_field :quantity
-          .form-group#space-description-input
+            = f.text_field :quantity, class: 'form-control'
+          .form-group.col-md-12#space-description-input
             label #{t('space.description')}
-            = f.text_field :description
-          .form-group#space-hour_price-input
-            label #{t('space.hour_price')}
-            = f.text_field :hour_price
-          .form-group#space-day_price-input
-            label #{t('space.day_price')}
-            = f.text_field :day_price
-          .form-group#space-week_price-input
-            label #{t('space.week_price')}
-            = f.text_field :week_price
-          .form-group#space-month_price-input
-            label #{t('space.month_price')}
-            = f.text_field :month_price
+            = f.text_area :description, class: 'form-control'
+          .share.col-md-12
+            .row
+              .share-text.col-md-9 
+                .icon
+                p Share your listing with your Facebook friends
+              .col-md-3
+                a.rounded-btn.width-100 share
+          .pictures.col-md-12
+            .row
+              .col-md-12
+                .subtitle Space photos
+                hr
+            .row
+              .col-md-4
+                .img-wrapper.fav
+                  .hover
+                    a set as main
+                    a delete
+                  img  src="/assets/parallax1.jpg" /
+              .col-md-4
+                .img-wrapper
+                  .hover
+                    a set as main
+                    a delete
+                  img  src="/assets/parallax1.jpg" /
+              .col-md-4
+                .add-image
+          .pricing.col-md-12
+            .row
+              .col-md-12
+                .subtitle Pricing
+                hr
+            .hourly.row
+              .checkbox.col-md-3
+                label
+                  input type="checkbox" /
+                  | Per hour
+              .form-group.col-md-2
+                label currency
+                = f.text_field :hour_price, class: 'form-control'
+              .form-group.col-md-2#space-hour_price-input
+                label #{t('space.hour_price')}
+                = f.text_field :hour_price, class: 'form-control'
+              .form-group.col-md-5
+                label Minimum renting period
+                = f.text_field :hour_price, class: 'form-control'
+            .daily.row
+              .checkbox.col-md-3
+                label
+                  input type="checkbox" /
+                  | Per hour
+              .form-group.col-md-2
+                label currency
+                = f.text_field :hour_price, class: 'form-control'
+              .form-group.col-md-2#space-day_price-input
+                label #{t('space.day_price')}
+                = f.text_field :day_price, class: 'form-control'
+              .form-group.col-md-5
+                label Minimum renting period
+                = f.text_field :hour_price, class: 'form-control'
+            .monthly.row
+              .checkbox.col-md-3
+                label
+                  input type="checkbox" /
+                  | Per hour
+              .form-group.col-md-2
+                label currency
+                = f.text_field :hour_price, class: 'form-control'
+              .form-group.col-md-2#space-month_price-input
+                label #{t('space.month_price')}
+                = f.text_field :month_price, class: 'form-control'
+              .form-group.col-md-5
+                label Minimum renting period
+                = f.text_field :hour_price, class: 'form-control'
+          .deposit.col-md-12
+            .row
+              .col-md-12
+                .subtitle Deposit
+                hr
+            .hourly.row
+              .form-group.col-md-2
+                label currency
+                = f.text_field :hour_price, class: 'form-control'
+              .form-group.col-md-2#space-hour_price-input
+                label #{t('space.hour_price')}
+                = f.text_field :hour_price, class: 'form-control'
+            .daily.row
+              .form-group.col-md-2
+                label currency
+                = f.text_field :hour_price, class: 'form-control'
+              .form-group.col-md-2#space-day_price-input
+                label #{t('space.day_price')}
+                = f.text_field :day_price, class: 'form-control'
+          
+          / .form-group.col-md-6#space-week_price-input
+          /   label #{t('space.week_price')}
+          /   = f.text_field :week_price, class: 'form-control'
 
-
-          .full-width-submit-button
-            = f.submit 'Save', class: 'submit-button', id: 'save-space'
+          .col-md-12
+            .row
+              .col-md-6
+                = f.submit 'cancel', class: 'rounded-btn width-100', id: 'save-space'
+              .col-md-6
+                = f.submit 'Save', class: 'rounded-btn width-100 yellow', id: 'save-space'
 
