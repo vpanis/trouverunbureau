@@ -9,7 +9,7 @@ class SpaceContext
     @current_represented.present? && @space.venue.owner == @current_represented
   end
 
-  def update_space?(space_params)
+  def update_space(space_params)
     return false unless can_update?(space_params[:capacity], space_params[:quantity])
     @space.update_attributes!(space_params)
   end

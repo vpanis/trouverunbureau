@@ -1,17 +1,17 @@
 = render 'shared/menu_bar'
 = render 'shared/profile_menu_bar'
 
-= form_for(@space) do |f|
-  .main-content
+.main-content.dashboard-form
+  = form_for(@space) do |f|
     #space
       .row
         .col-md-3
           .verification-steps.height-100
             .status
-              .status-text 
-                | status: 
+              .status-text
+                | status:
                 span incomplete
-              .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title="" 
+              .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
 
               .progress-container
                 .progress [style = "width: 70%"]
@@ -41,9 +41,11 @@
           .form-group.col-md-12#space-name-input
             label #{t('space.name')}
             = f.text_field :name, class: 'form-control'
-          .form-group.col-md-6#space-s_type-input
-            label #{t('space.s_type')}
-            = f.text_field :s_type, class: 'form-control'
+          .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+            label = t('space.type')
+            = f.select(:s_type, @space_types_options, {}, {class: 'form-control space-types-select'})
+
+
           .form-group.col-md-3#space-capacity-input
             .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
             label #{t('space.capacity')}
@@ -58,7 +60,7 @@
             = f.text_area :description, class: 'form-control'
           .share.col-md-12
             .row
-              .share-text.col-md-9 
+              .share-text.col-md-9
                 p Share your listing with your Facebook friends
               .col-md-3
                 a.rounded-btn.width-100 href="#" share
@@ -69,27 +71,13 @@
                 p Space photos
                 hr
             .row
-              .col-md-4
-                .img-wrapper.fav style="background-image: url('http://images.nationalgeographic.com/wpf/media-live/photos/000/411/cache/northern-lights-picture-aurora-borealis-september-2011-yukon_41173_600x450.jpg');"
-                  .hover
-                    a.main href="#" set as main
-                    a.delete href="#" delete
-              .col-md-4
-                .img-wrapper style="background-image: url('http://images.nationalgeographic.com/wpf/media-live/photos/000/411/cache/northern-lights-picture-aurora-borealis-september-2011-yukon_41173_600x450.jpg');"
-                  .hover
-                    a.main href="#" set as main
-                    a.delete href="#" delete
-              .col-md-4
-                .img-wrapper style="background-image: url('http://images.nationalgeographic.com/wpf/media-live/photos/000/411/cache/northern-lights-picture-aurora-borealis-september-2011-yukon_41173_600x450.jpg');"
-                  .hover
-                    a.main href="#" set as main
-                    a.delete href="#" delete
-              .col-md-4
-                .img-wrapper style="background-image: url('http://images.nationalgeographic.com/wpf/media-live/photos/000/411/cache/northern-lights-picture-aurora-borealis-september-2011-yukon_41173_600x450.jpg');"
-                  .hover
-                    a.main href="#" set as main
-                    a.delete href="#" delete
-              .col-md-4
+              - @space.photos.each do |venue_photo|
+                .col-md-4
+                  //TODO: 'set as main' functionality not implemented yet
+                  .img-wrapper style="background-image: url(#{venue_photo.photo.url});" class=('fav' if false )
+                    .hover
+                      a.delete href="#" data-photo-id=venue_photo.id delete
+              .col-md-4.add-image-container
                 .add-image
           .pricing.col-md-12
             .subtitle.row
@@ -162,7 +150,7 @@
               .form-group.col-md-2#space-day_price-input
                 label #{t('space.day_price')}
                 = f.text_field :day_price, class: 'form-control'
-          
+
           / .form-group.col-md-6#space-week_price-input
           /   label #{t('space.week_price')}
           /   = f.text_field :week_price, class: 'form-control'
@@ -171,3 +159,9 @@
                 a href="#" type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
               .col-md-6
                 = f.submit 'Save', class: 'rounded-btn default width-100 yellow', id: 'save-space'
+
+= form_tag add_photo_spaces_path, id: 'venue-photo-form'
+  = text_field_tag 'venue_id', @space.venue.id
+  = text_field_tag 'space_id', @space.id
+  = file_field_tag 'photo'
+  = submit_tag 'save photo', id: 'add-photo'

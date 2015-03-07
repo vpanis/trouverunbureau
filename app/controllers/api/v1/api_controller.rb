@@ -9,7 +9,6 @@ module Api
                        items_per_page: result.per_page,
                        spaces: serialized_array },
                status: 200
-
       end
 
       def serialized_reviews(result, serializer, ids)

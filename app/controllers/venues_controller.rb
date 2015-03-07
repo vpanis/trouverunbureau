@@ -13,7 +13,7 @@ class VenuesController < ModelController
   end
 
   def update
-    do_update(Venue, VenueContext, 'owner?', 'update_venue?')
+    do_update(Venue, VenueContext, 'owner?', 'update_venue')
   end
 
   def show

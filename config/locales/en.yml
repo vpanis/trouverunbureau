@@ -260,3 +260,10 @@ en:
     emergency_phone: 'Phone number'
     emergency_email: 'Email'
     emergency_relationship: 'Relationship'
+  spaces:
+    types:
+      conference_room: 'Conference room'
+      meeting_room: 'Meeting room'
+      office: 'Office'
+      desk: 'Desk'
+    type: 'Workspace type'

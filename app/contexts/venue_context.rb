@@ -15,7 +15,7 @@ class VenueContext
     @current_represented.present? && @venue.owner == @current_represented
   end
 
-  def update_venue?(venue_params)
+  def update_venue(venue_params)
     new_days_hours = venue_params[:day_hours_attributes]
     return false unless can_update?(new_days_hours)
     @venue.update_attributes(venue_params)
