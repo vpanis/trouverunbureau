@@ -58,12 +58,6 @@
             .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
             label #{t('space.description')}
             = f.text_area :description, class: 'form-control'
-          .share.col-md-12
-            .row
-              .share-text.col-md-9
-                p Share your listing with your Facebook friends
-              .col-md-3
-                a.rounded-btn.width-100 href="#" share
           .pictures.col-md-12
             .subtitle.row
               .col-md-12
@@ -76,7 +70,7 @@
                   //TODO: 'set as main' functionality not implemented yet
                   .img-wrapper style="background-image: url(#{venue_photo.photo.url});" class=('fav' if false )
                     .hover
-                      a.delete href="#" data-photo-id=venue_photo.id delete
+                      a.delete-photo href="#" data-photo-id=venue_photo.id delete
               .col-md-4.add-image-container
                 .add-image
           .pricing.col-md-12
@@ -160,7 +154,7 @@
               .col-md-6
                 = f.submit 'Save', class: 'rounded-btn default width-100 yellow', id: 'save-space'
 
-= form_tag add_photo_spaces_path, id: 'venue-photo-form'
+= form_tag api_v1_venue_photos_path, id: 'venue-photo-form'
   = text_field_tag 'venue_id', @space.venue.id
   = text_field_tag 'space_id', @space.id
   = file_field_tag 'photo'

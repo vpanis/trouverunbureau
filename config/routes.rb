@@ -74,6 +74,7 @@ Deskspotting::Application.routes.draw do
       end
     end
 
+    resources :venue_photos, only: [:create, :destroy]
   end # api/v1
 
 end

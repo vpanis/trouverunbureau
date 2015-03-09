@@ -8,6 +8,7 @@ angular.module('deskSpotting.venue_reviews', []).controller "VenueReviewsCtrl", 
     $scope.totalReviews = 0
     $scope.currentPage = 1
     $scope.itemsPerPage = 5
+    $scope.tere = 'Teresa'
     $scope.getReviews = () ->
       Restangular.one('venues', $scope.venueId).customGET('reviews', {page: $scope.currentPage, amount: $scope.itemsPerPage}).then (result) ->
         $scope.reviews = result.reviews
