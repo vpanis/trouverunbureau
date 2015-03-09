@@ -5,7 +5,6 @@ FactoryGirl.define do
     town { Faker::Address.city }
     street { Faker::Address.street_address }
     postal_code { Faker::Address.postcode }
-    country { Faker::Address.country }
     phone { Faker::PhoneNumber.phone_number }
     sequence(:email) { |e| "#{e}_#{Faker::Internet.safe_email}" }
     website { Faker::Internet.url('example.com') }
@@ -27,7 +26,7 @@ FactoryGirl.define do
       Rails.root, '/spec/fixtures/dropkick.png')))
 
     owner { FactoryGirl.build(:user) }
-
+    country { FactoryGirl.build(:country) }
     trait :with_spaces do
       spaces { FactoryGirl.build_list(:space, rand(3) + 1) }
     end
