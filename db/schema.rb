@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150303194416) do
+ActiveRecord::Schema.define(version: 20150309155158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,12 @@ ActiveRecord::Schema.define(version: 20150303194416) do
   end
 
   add_index "client_reviews", ["booking_id"], name: "index_client_reviews_on_booking_id", using: :btree
+
+  create_table "countries", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "messages", force: true do |t|
     t.integer  "booking_id"
@@ -87,6 +93,20 @@ ActiveRecord::Schema.define(version: 20150303194416) do
   end
 
   add_index "organizations", ["email"], name: "index_organizations_on_email", unique: true, using: :btree
+
+  create_table "receipts", force: true do |t|
+    t.integer  "booking_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "guest_first_name"
+    t.string   "guest_last_name"
+    t.string   "guest_avatar"
+    t.string   "guest_location"
+    t.string   "guest_email"
+    t.string   "guest_phone"
+  end
+
+  add_index "receipts", ["booking_id"], name: "index_receipts_on_booking_id", using: :btree
 
   create_table "spaces", force: true do |t|
     t.integer  "s_type"
@@ -217,9 +237,10 @@ ActiveRecord::Schema.define(version: 20150303194416) do
     t.integer  "owner_id"
     t.string   "owner_type"
     t.text     "professions",      default: [], array: true
-    t.string   "country"
+    t.integer  "country_id"
   end
 
+  add_index "venues", ["country_id"], name: "index_venues_on_country_id", using: :btree
   add_index "venues", ["owner_id", "owner_type"], name: "index_venues_on_owner_id_and_owner_type", using: :btree
 
 end
