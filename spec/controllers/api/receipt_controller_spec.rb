@@ -73,7 +73,8 @@ describe Api::V1::ReceiptController do
             let!(:a_receipt) do
               create(:receipt, booking: a_booking, guest_first_name: @user.first_name,
                      guest_last_name: @user.last_name, guest_avatar: @user.avatar,
-                     guest_location: @user.location)
+                     guest_location: @user.location, guest_email: @user.email,
+                     guest_phone: @user.phone)
             end
 
             it 'succeeds' do
@@ -90,6 +91,8 @@ describe Api::V1::ReceiptController do
               expect(receipt['owner']['last_name']).to eq(@user.last_name)
               expect(receipt['owner']['avatar']).to eq(@user.avatar.url)
               expect(receipt['owner']['location']).to eq(@user.location)
+              expect(receipt['owner']['email']).to eq(@user.email)
+              expect(receipt['owner']['phone']).to eq(@user.phone)
             end
           end
 
@@ -111,8 +114,8 @@ describe Api::V1::ReceiptController do
             let!(:a_receipt) do
               create(:receipt, booking: a_booking, guest_first_name: a_booking.owner.first_name,
                      guest_last_name: a_booking.owner.last_name,
-                     guest_avatar: a_booking.owner.avatar,
-                     guest_location: a_booking.owner.location)
+                     guest_avatar: a_booking.owner.avatar, guest_email: a_booking.owner.email,
+                     guest_location: a_booking.owner.location, guest_phone: a_booking.owner.phone)
             end
             it 'succeeds' do
               get :show, id: a_booking.id
@@ -129,6 +132,8 @@ describe Api::V1::ReceiptController do
               expect(receipt['owner']['last_name']).to eq(owner.last_name)
               expect(receipt['owner']['avatar']).to eq(owner.avatar.url)
               expect(receipt['owner']['location']).to eq(owner.location)
+              expect(receipt['owner']['email']).to eq(owner.email)
+              expect(receipt['owner']['phone']).to eq(owner.phone)
             end
           end
 

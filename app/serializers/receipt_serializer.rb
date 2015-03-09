@@ -11,7 +11,7 @@ class ReceiptSerializer < ActiveModel::Serializer
   def owner
     User.new(id: object.booking.owner.id, first_name: object.guest_first_name,
              last_name: object.guest_last_name, avatar: object.booking.owner.avatar,
-             location: object.guest_location)
+             location: object.guest_location, email: object.guest_email, phone: object.guest_phone)
   end
 
   def space

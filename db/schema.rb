@@ -285,6 +285,8 @@ ActiveRecord::Schema.define(version: 20150528193537) do
     t.string   "guest_last_name"
     t.string   "guest_avatar"
     t.string   "guest_location"
+    t.string   "guest_email"
+    t.string   "guest_phone"
   end
 
   add_index "receipts", ["booking_id"], name: "index_receipts_on_booking_id", using: :btree
