@@ -11,7 +11,10 @@ class ReceiptContext
 
   def create_receipt(booking)
     return false unless can_create_receipt?(booking)
-    Receipt.create(booking_id: booking.id)
+    owner = booking.owner
+    Receipt.create(booking_id: booking.id, guest_first_name: owner.first_name,
+                   guest_last_name: owner.last_name, guest_avatar: owner.avatar,
+                   guest_location: owner.location)
   end
 
   def get_receipt(booking)

@@ -70,7 +70,11 @@ describe Api::V1::ReceiptController do
         context 'when user is booking owner' do
           context 'when booking is paid' do
             let!(:a_booking) { create(:booking, owner: @user, state: :paid) }
-            let!(:a_receipt) { create(:receipt, booking: a_booking) }
+            let!(:a_receipt) do
+              create(:receipt, booking: a_booking, guest_first_name: @user.first_name,
+                     guest_last_name: @user.last_name, guest_avatar: @user.avatar,
+                     guest_location: @user.location)
+            end
 
             it 'succeeds' do
               get :show, id: a_booking.id
@@ -80,8 +84,12 @@ describe Api::V1::ReceiptController do
             it 'should retrieve the receipt' do
               get :show, id: a_booking.id
               receipt = JSON.parse(body['receipt'].to_json)
-              real_receipt = JSON.parse(ReceiptSerializer.new(a_receipt).to_json)
-              expect(receipt).to eq(real_receipt['receipt'])
+              real_receipt = JSON.parse(ReceiptSerializer.new(a_receipt).to_json)['receipt']
+              expect(receipt).to eq(real_receipt)
+              expect(receipt['owner']['first_name']).to eq(@user.first_name)
+              expect(receipt['owner']['last_name']).to eq(@user.last_name)
+              expect(receipt['owner']['avatar']).to eq(@user.avatar.url)
+              expect(receipt['owner']['location']).to eq(@user.location)
             end
           end
 
@@ -100,8 +108,12 @@ describe Api::V1::ReceiptController do
             let(:a_venue) { create(:venue, owner: @user) }
             let(:a_space) { create(:space, venue: a_venue) }
             let(:a_booking) { create(:booking, space: a_space, state: :paid) }
-            let!(:a_receipt) { create(:receipt, booking: a_booking) }
-
+            let!(:a_receipt) do
+              create(:receipt, booking: a_booking, guest_first_name: a_booking.owner.first_name,
+                     guest_last_name: a_booking.owner.last_name,
+                     guest_avatar: a_booking.owner.avatar,
+                     guest_location: a_booking.owner.location)
+            end
             it 'succeeds' do
               get :show, id: a_booking.id
               expect(response.status).to eq(200)
@@ -110,8 +122,13 @@ describe Api::V1::ReceiptController do
             it 'should retrieve the receipt' do
               get :show, id: a_booking.id
               receipt = JSON.parse(body['receipt'].to_json)
-              real_receipt = JSON.parse(ReceiptSerializer.new(a_receipt).to_json)
-              expect(receipt).to eq(real_receipt['receipt'])
+              real_receipt = JSON.parse(ReceiptSerializer.new(a_receipt).to_json)['receipt']
+              owner = a_booking.owner
+              expect(receipt).to eq(real_receipt)
+              expect(receipt['owner']['first_name']).to eq(owner.first_name)
+              expect(receipt['owner']['last_name']).to eq(owner.last_name)
+              expect(receipt['owner']['avatar']).to eq(owner.avatar.url)
+              expect(receipt['owner']['location']).to eq(owner.location)
             end
           end
 
