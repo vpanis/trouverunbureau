@@ -2,6 +2,7 @@ module Api
   module V1
     class ApiController < ApplicationController
       include ParametersHelper
+      include RepresentedHelper
       respond_to :json
 
       def render_result(result, serialized_array)

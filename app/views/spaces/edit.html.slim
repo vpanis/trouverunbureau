@@ -1,5 +1,4 @@
-= render 'shared/menu_bar'
-= render 'shared/profile_menu_bar'
+= render 'shared/menu_bar', user: current_user
 
 .main-content.dashboard-form
   = form_for(@space) do |f|
@@ -154,8 +153,9 @@
               .col-md-6
                 = f.submit 'Save', class: 'rounded-btn default width-100 yellow', id: 'save-space'
 
-= form_tag api_v1_venue_photos_path, id: 'venue-photo-form'
-  = text_field_tag 'venue_id', @space.venue.id
-  = text_field_tag 'space_id', @space.id
-  = file_field_tag 'photo'
-  = submit_tag 'save photo', id: 'add-photo'
+.hidden
+  = form_tag api_v1_venue_photos_path, id: 'venue-photo-form'
+    = text_field_tag 'venue_id', @space.venue.id
+    = text_field_tag 'space_id', @space.id
+    = file_field_tag 'photo'
+    = submit_tag 'save photo', id: 'add-photo'

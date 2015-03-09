@@ -1,6 +1,7 @@
 module Api
   module V1
     class VenuePhotosController < ApiController
+      before_action :authenticate_user!
 
       def create
         space = Space.find_by(id: params[:space_id])
