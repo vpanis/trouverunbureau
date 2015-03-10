@@ -1,16 +1,6 @@
 @import 'variables';
 @import 'mixins';
 
-.form-group{
-  margin-bottom: 11px;
-  .input-group{
-    .input-group-addon{
-      background-color: white;
-      color: $gray-text;
-    }
-  }
-}
-
 .form-control{
   height: 40px;
   border: 1px solid $gray;
@@ -81,15 +71,14 @@ input[type='submit']:focus{
 }
 
 input[type="checkbox"]{
-  height: 12px;
-  width: 12px;
-  margin-bottom: 0px;
+  height: 17px;
+  width: 17px;
+  margin: 0;
   margin-right: 5px;
-  margin-top: 7px;
   cursor: pointer;
   -webkit-appearance: none;
-  -moz-appearance:none;
-  -o-appearance:none;
+  -moz-appearance: none;
+  -o-appearance: none;
   box-shadow: none;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
@@ -98,16 +87,18 @@ input[type="checkbox"]{
   padding: 5px;
   display: inline-block;
   position: relative;
+  border-radius: 3px;
+  vertical-align: middle;
+  &:checked:after {
+    content: '\2714';
+    position: absolute;
+    bottom: -1px;
+    left: 2px;
+    color: $gray-text;
+    font-size: 12px;
+  }
 }
 
-input[type="checkbox"]:checked:after {
-  content: '\2714';
-  position: absolute;
-  bottom: 0.1em;
-  left: 0.3em;
-  color: $gray-text;
-  font-size: 0.5em;
-}
 
 .subtitle {
   margin-bottom: 20px;
