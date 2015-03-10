@@ -1,3 +1,29 @@
-p new venue
-= form_for(@venue) do |f|
-  = f.submit 'SAVE'
+= render 'shared/menu_bar', user: current_user
+
+
+.venue.container.margin-top
+  .space-title.text-center
+    h3.yellow-title List your venue
+  .small-separator
+  h4.gray-subtitle.text-center Start by telling us about your venue...
+  .user-avatar.text-center
+    = image_tag('default-avatar.png', width: '95px', height: '95px', id: 'user-avatar-img')
+    a#edit-avatar.add.block.aqua href="#" data-toggle="modal" data-target="#avatar-modal" = t('Add venue logo')
+
+  form.col-md-8.col-md-offset-2
+    .row
+      .form-group.col-md-8.col-md-offset-2
+        label Venue Name
+        input.form-control placeholder=("Enter your venue's name") type="text" /
+
+      .form-group.col-md-8.col-md-offset-2
+        label Country
+        input.form-control placeholder=("Country") type="text" /
+    .row.buttons
+      .col-xs-6
+        a href='#'
+          button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
+      .col-xs-6
+        = form_for(@venue) do |f|
+          = f.submit 'save', class: 'rounded-btn yellow-fill width-100 uppercase'
+
