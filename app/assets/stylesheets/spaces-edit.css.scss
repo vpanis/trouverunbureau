@@ -63,6 +63,28 @@
         background-color: white;
         border-right: 1px solid $gray;
         margin-right: -1px;
+        p {
+          font-weight: 700;
+          color: $black;
+        }
+        &:before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          width: 5px;
+          background-color: $yellow;
+        }
+        &:after {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: -1px;
+          bottom: 0;
+          width: 3px;
+          background-color: $white;
+        }
       }
     }
   }
