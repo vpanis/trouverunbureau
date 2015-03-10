@@ -62,6 +62,9 @@ ActiveRecord::Schema.define(version: 20150317161020) do
     t.datetime "updated_at"
     t.text     "payment_nonce_token"
     t.datetime "payment_nonce_expire"
+    t.string   "card_type"
+    t.string   "card_last_4"
+    t.string   "card_expiration_date"
   end
 
   create_table "client_reviews", force: true do |t|

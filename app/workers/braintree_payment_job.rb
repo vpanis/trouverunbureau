@@ -45,8 +45,14 @@ class BraintreePaymentJob
       customer_id = braintree_response.transaction.customer_details.id
       @represented.update_attributes(payment_customer_id: customer_id) unless
         @represented.payment_customer_id.present?
-      transaction = braintree_response.transaction
-      @booking.payment.update_attributes(transaction_id: transaction.id,
+      update_payment_attributes(braintree_response.transaction)
+    end
+
+    def update_payment_attributes(transaction)
+      @booking.payment.update_attributes(card_type: transaction.credit_card_details.card_type,
+                                         card_last_4: transaction.credit_card_details.last_4,
+                                         card_expiration_date: transaction.credit_card_details.expiration_date,
+                                         transaction_id: transaction.id,
                                          transaction_status: transaction.status,
                                          escrow_status: transaction.escrow_status)
     end
