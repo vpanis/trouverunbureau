@@ -12,7 +12,7 @@
         = form_for @venue, url: {action: "amenities"} do |f|
           = hidden_field_tag 'venue[amenities][]'
           - Venue::AMENITY_TYPES.each do |amenity|
-            div.amenity-checkbox
+            div.amenity-checkbox.col-md-4
               = check_box_tag 'venue[amenities][]', amenity, @venue.amenities.include?(amenity.to_s)
               = t("venues.amenities.#{amenity.to_s}.name")
           .row.buttons
