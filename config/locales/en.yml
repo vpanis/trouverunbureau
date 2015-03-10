@@ -121,6 +121,10 @@ en:
     venues: 'Venues'
     wishlist: 'Wishlist'
     account: 'Account'
+  search:
+    count: 'Desks found'
+    filters: 'Filters'
+    limits: '%{from} - %{to} more than %{count} desks'
   venues:
     amenities:
       whiteboards:

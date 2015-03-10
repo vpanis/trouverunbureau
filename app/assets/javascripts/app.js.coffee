@@ -5,6 +5,7 @@
   'deskSpotting.venue_reviews',
   'deskSpotting.client_reviews',
   'deskSpotting.wishlist',
+  'deskSpotting.search',
   'deskSpotting.user_profile'
 ]).config (RestangularProvider) ->
   RestangularProvider.setBaseUrl '/api/v1'
