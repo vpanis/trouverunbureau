@@ -15,6 +15,11 @@
             - else
               p venue photo (no space)
             img src=photo.photo.url height='100px' width='100px'
-
-
-        = link_to 'save', spaces_venue_path(@venue)
+          .col-md-4.add-image-container
+            .add-image
+        .row.buttons
+          .col-xs-6
+            a href='#'
+              button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
+          .col-xs-6
+            = link_to 'save', spaces_venue_path(@venue), class: 'rounded-btn yellow-fill width-100 uppercase'
