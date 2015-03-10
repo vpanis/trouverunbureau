@@ -80,21 +80,6 @@
           /   label #{t('venue.professions')}
           /   = f.text_field :professions, class: 'form-control'
           
-
-          / = f.fields_for :day_hours, @modify_day_hours do |day_hours_fields|
-          /   .form-group#venue-country-input.col-md-6
-          /     label = "DAY:"
-          /     = day_hours_fields.text_field :weekday, class: 'form-control'
-          /   .form-group#venue-country-input.col-md-6
-          /     label = 'from:'
-          /     = day_hours_fields.text_field :from, class: 'form-control'
-          /   .form-group#venue-country-input.col-md-6
-          /     label = 'to:'
-          /     = day_hours_fields.text_field :to, class: 'form-control'
-          /   .form-group#venue-country-input.col-md-6
-          /     label = 'Delete:'
-          /     = day_hours_fields.check_box :_destroy, class: 'form-control'
-
           .row.buttons
             .col-xs-6
               a href='#'
