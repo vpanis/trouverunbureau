@@ -45,44 +45,51 @@
           / .form-group#venue-longitude-input.col-md-6
           /   label #{t('venue.longitude')}
           /   = f.text_field :longitude, class: 'form-control'
-          
+
           .form-group#venue-v_type-input.col-md-6
             label #{t('venue.v_type')}
-            = f.text_field :v_type, class: 'form-control'
-          .form-group#venue-currency-input.col-md-6
-            label #{t('venue.currency')}
-            = f.text_field :currency, class: 'form-control'
-          / .form-group#venue-space-input.col-md-6
-          /   label #{t('venue.space')}
-          /   = f.text_field :space, class: 'form-control'
-          / .form-group#venue-space_unit-input.col-md-6
-          /   label #{t('venue.space_unit')}
-          /   = f.text_field :space_unit, class: 'form-control'
-          / .form-group#venue-floors-input.col-md-6
-          /   label #{t('venue.floors')}
-          /   = f.text_field :floors, class: 'form-control'
-          / .form-group#venue-rooms-input.col-md-6
-          /   label #{t('venue.rooms')}
-          /   = f.text_field :rooms, class: 'form-control'
-          / .form-group#venue-desks-input.col-md-6
-          /   label #{t('venue.desks')}
-          /   = f.text_field :desks, class: 'form-control'
-          / .form-group#venue-vat_tax_rate-input.col-md-6
-          /   label #{t('venue.vat_tax_rate')}
-          /   = f.text_field :vat_tax_rate, class: 'form-control'
-          / .form-group#venue-amenities-input.col-md-6
-          /   label #{t('venue.amenities')}
-          /   = f.text_field :amenities, class: 'form-control'
-          / .form-group#venue-rating-input.col-md-6
-          /   label #{t('venue.rating')}
-          /   = f.text_field :rating, class: 'form-control'
-          / .form-group#venue-professions-input.col-md-6
-          /   label #{t('venue.professions')}
-          /   = f.text_field :professions, class: 'form-control'
-          
-          .row.buttons
-            .col-xs-6
-              a href='#'
-                button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
-            .col-xs-6
-              = f.submit 'Save', class: 'rounded-btn yellow-fill width-100 uppercase', id: 'save-venue'
+            = f.text_field :v_type
+          .form-group#venue-space-input
+            label #{t('venue.space')}
+            = f.text_field :space
+          .form-group#venue-space_unit-input
+            label #{t('venue.space_unit')}
+            = f.text_field :space_unit
+          .form-group#venue-floors-input
+            label #{t('venue.floors')}
+            = f.text_field :floors
+          .form-group#venue-rooms-input
+            label #{t('venue.rooms')}
+            = f.text_field :rooms
+          .form-group#venue-desks-input
+            label #{t('venue.desks')}
+            = f.text_field :desks
+          .form-group#venue-vat_tax_rate-input
+            label #{t('venue.vat_tax_rate')}
+            = f.text_field :vat_tax_rate
+          .form-group#venue-amenities-input
+            label #{t('venue.amenities')}
+            = f.text_field :amenities
+          .form-group#venue-rating-input
+            label #{t('venue.rating')}
+            = f.text_field :rating
+          .form-group#venue-professions-input
+            label #{t('venue.professions')}
+            = f.text_field :professions
+          .form-group#venue-country-input
+            label #{t('venue.country')}
+            = f.text_field :country
+
+          = f.fields_for :day_hours, @modify_day_hours do |day_hours_fields|
+            p = "DAY:"
+            = day_hours_fields.text_field :weekday
+            p = 'from:'
+            = day_hours_fields.text_field :from
+            p = 'to:'
+            = day_hours_fields.text_field :to
+            p = 'Delete:'
+            = day_hours_fields.check_box :_destroy
+
+          .full-width-submit-button
+            = f.submit 'Save', class: 'submit-button', id: 'save-venue'
+
