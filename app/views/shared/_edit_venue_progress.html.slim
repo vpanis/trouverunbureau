@@ -11,20 +11,20 @@
       .progress-counter = "#{progress}%"
 
     ul.verification-list
-      li.venue class=('done' if step > 1) class=('selected' if step == 1)
-        a href=edit_venue_path(venue)
+      a href=edit_venue_path(venue)
+        li.venue class=('done' if step > 1) class=('selected' if step == 1)
           p Venue
-      li.details class=('done' if step > 2) class=('selected' if step == 2)
-        a href=details_venue_path(venue)
+      a href=details_venue_path(venue)
+        li.details class=('done' if step > 2) class=('selected' if step == 2)
           p Details
-      li.amenities class=('done' if step > 3) class=('selected' if step == 3)
-        a href=amenities_venue_path(venue)
+      a href=amenities_venue_path(venue)
+        li.amenities class=('done' if step > 3) class=('selected' if step == 3)
           p Amenities
-      li.photos class=('done' if step > 4) class=('selected' if step == 4)
-        a href=photos_venue_path(venue)
+      a href=photos_venue_path(venue)
+        li.photos class=('done' if step > 4) class=('selected' if step == 4)
           p Photos
-      li.spaces class=('done' if step > 5) class=('selected' if step == 5)
-        a href=spaces_venue_path(venue)
+      a href=spaces_venue_path(venue)
+        li.spaces class=('done' if step > 5) class=('selected' if step == 5)
           p Spaces
     .publish
       a.rounded-btn.grey-fill.width-100 href="#" publish
