@@ -5,9 +5,10 @@
     .row
       = render 'shared/edit_venue_progress', venue: @venue, progress: 20, step: 4
       .details-section.col-md-7.col-md-offset-1
-        .space-title.text-center
-          h3 photos
-        .small-separator
+        .title.inline.text-center
+          = image_tag('default-avatar.png', width: '95px', height: '95px', id: 'user-avatar-img')
+          h3.big Wolox Driving Innovation
+          .small-separator
         .row
           - @venue.photos.each do |photo|
             - if photo.space_id.present?
