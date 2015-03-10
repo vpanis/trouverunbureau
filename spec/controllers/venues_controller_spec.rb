@@ -328,5 +328,4 @@ describe VenuesController do
       end
     end
   end
-
 end
