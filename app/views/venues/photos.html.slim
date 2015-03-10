@@ -1,0 +1,20 @@
+= render 'shared/menu_bar', user: current_user
+
+.main-content.dashboard-form
+  #venue
+    .row
+      = render 'shared/edit_venue_progress', venue: @venue, progress: 20, step: 4
+      .details-section.col-md-7.col-md-offset-1
+        .space-title.text-center
+          h3 photos
+        .small-separator
+        .row
+          - @venue.photos.each do |photo|
+            - if photo.space_id.present?
+              p = photo.space.name
+            - else
+              p venue photo (no space)
+            img src=photo.photo.url height='100px' width='100px'
+
+
+        = link_to 'save', spaces_venue_path(@venue)

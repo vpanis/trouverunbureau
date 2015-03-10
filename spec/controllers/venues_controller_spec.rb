@@ -108,7 +108,7 @@ describe VenuesController do
           end
 
           it 'renders the :edit template' do
-            expect(response.redirect_url).to eq(edit_venue_url(a_venue))
+            expect(response.redirect_url).to eq(details_venue_url(a_venue))
           end
 
           context 'when wrong venue_hours parameters' do

@@ -67,6 +67,11 @@
       p {
         margin-bottom: 0;
       }
+      &.selected{
+        background-color: white;
+        border-right: 1px solid $gray;
+        margin-right: -1px;
+      }
     }
   }
   .status,

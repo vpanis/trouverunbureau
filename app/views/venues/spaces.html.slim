@@ -1,0 +1,13 @@
+= render 'shared/menu_bar', user: current_user
+
+.main-content.dashboard-form
+  #venue
+    .row
+      = render 'shared/edit_venue_progress', venue: @venue, progress: 60, step: 5
+      .details-section.col-md-7.col-md-offset-1
+        .space-title.text-center
+          h3 photos
+        .small-separator
+        - @venue.spaces.each do |space|
+          h2 = space.name
+          = link_to 'edit space', edit_space_path(space)

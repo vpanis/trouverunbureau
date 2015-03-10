@@ -1,9 +1,14 @@
-= form_for(@venue) do |f|
-  .main-content
-    #venue
-      .row
+= render 'shared/menu_bar', user: current_user
 
-        .details-section
+.main-content.dashboard-form
+  #venue
+    .row
+      = render 'shared/edit_venue_progress', venue: @venue, progress: 0, step: 1
+      .details-section.col-md-7.col-md-offset-1
+        .space-title.text-center
+          h3 List new space
+        .small-separator
+        = form_for(@venue) do |f|
           .form-group#venue-town-input
             label #{t('venue.town')}
             = f.text_field :town
@@ -71,15 +76,15 @@
             label #{t('venue.country')}
             = f.text_field :country
 
-      = f.fields_for :day_hours, @modify_day_hours do |day_hours_fields|
-        p = "DAY:"
-        = day_hours_fields.text_field :weekday
-        p = 'from:'
-        = day_hours_fields.text_field :from
-        p = 'to:'
-        = day_hours_fields.text_field :to
-        p = 'Delete:'
-        = day_hours_fields.check_box :_destroy
+          = f.fields_for :day_hours, @modify_day_hours do |day_hours_fields|
+            p = "DAY:"
+            = day_hours_fields.text_field :weekday
+            p = 'from:'
+            = day_hours_fields.text_field :from
+            p = 'to:'
+            = day_hours_fields.text_field :to
+            p = 'Delete:'
+            = day_hours_fields.check_box :_destroy
 
-  .full-width-submit-button
-    = f.submit 'Save', class: 'submit-button', id: 'save-venue'
+          .full-width-submit-button
+            = f.submit 'Save', class: 'submit-button', id: 'save-venue'

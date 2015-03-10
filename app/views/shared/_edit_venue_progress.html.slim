@@ -1,0 +1,32 @@
+.col-md-3
+  .verification-steps.height-100
+    .status
+      .status-text
+        | status:
+        span incomplete
+      .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
+
+      .progress-container
+        .progress [style = "width: #{progress}%"]
+      .progress-counter = "#{progress}%"
+
+    ul.verification-list
+      li.venue class=('done' if step > 1) class=('selected' if step == 1)
+        a href=edit_venue_path(venue)
+          p Venue
+      li.details class=('done' if step > 2) class=('selected' if step == 2)
+        a href=details_venue_path(venue)
+          p Details
+      li.amenities class=('done' if step > 3) class=('selected' if step == 3)
+        a href=amenities_venue_path(venue)
+          p Amenities
+      li.photos class=('done' if step > 4) class=('selected' if step == 4)
+        a href=photos_venue_path(venue)
+          p Photos
+      li.spaces class=('done' if step > 5) class=('selected' if step == 5)
+        a href=spaces_venue_path(venue)
+          p Spaces
+    .publish
+      a.rounded-btn.grey-fill.width-100 href="#" publish
+    .delete
+      a href="#" Delete Venue

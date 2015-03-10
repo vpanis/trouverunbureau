@@ -97,6 +97,13 @@ class Venue < ActiveRecord::Base
     self.quantity_reviews ||= 0
     self.reviews_sum ||= 0
     self.rating ||= 0
+    self.floors ||= 0
+    self.rooms ||= 0
+    self.desks ||= 0
+    self.quantity_reviews ||= 0
+    self.reviews_sum ||= 0
+    self.space ||= 0
+    self.vat_tax_rate ||= 0
   end
 
   def erase_logo

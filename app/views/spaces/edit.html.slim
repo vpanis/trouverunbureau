@@ -1,42 +1,14 @@
 = render 'shared/menu_bar', user: current_user
 
 .main-content.dashboard-form
-  = form_for(@space) do |f|
-    #space
-      .row
-        .col-md-3
-          .verification-steps.height-100
-            .status
-              .status-text
-                | status:
-                span incomplete
-              .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
-
-              .progress-container
-                .progress [style = "width: 70%"]
-              .progress-counter 70%
-
-            ul.verification-list
-              li.venue.done
-                p Venue
-              li.details
-                p Details
-              li.amenities
-                p Amenities
-              li.photos
-                p Photos
-              li.users
-                p Users
-              li.spaces
-                p Spaces
-            .publish
-              a.rounded-btn.grey-fill.width-100 href="#" publish
-            .delete
-              a href="#" Delete Venue
-        .details-section.col-md-7.col-md-offset-1
-          .space-title.text-center
-            h3 List new space
-          .small-separator
+  #space
+    .row
+      = render 'shared/edit_venue_progress', venue: @space.venue, progress: 70, step: 5
+      .details-section.col-md-7.col-md-offset-1
+        .space-title.text-center
+          h3 List new space
+        .small-separator
+        = form_for(@space) do |f|
           .form-group.col-md-12#space-name-input
             label #{t('space.name')}
             = f.text_field :name, class: 'form-control'

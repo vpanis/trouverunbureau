@@ -9,9 +9,15 @@ Deskspotting::Application.routes.draw do
 
   root to: 'landing#index'
 
-  resources :venues, only: [:edit, :update, :show] do
-    collection do
+  resources :venues, only: [:new, :create, :edit, :update, :show] do
+    member do
       get :search
+      get :details
+      patch :details, to: 'venues#save_details'
+      get :amenities
+      patch :amenities, to: 'venues#save_amenities'
+      get :photos
+      get :spaces
     end
   end
 

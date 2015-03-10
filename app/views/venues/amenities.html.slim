@@ -1,0 +1,19 @@
+= render 'shared/menu_bar', user: current_user
+
+.main-content.dashboard-form
+  #venue
+    .row
+      = render 'shared/edit_venue_progress', venue: @venue, progress: 25, step: 3
+      .details-section.col-md-7.col-md-offset-1
+        .space-title.text-center
+          h3 amenities
+        .small-separator
+        = form_for @venue, url: {action: "amenities"} do |f|
+          .details-section
+            .form-group#venue-town-input
+              label #{t('venue.town')}
+              = f.text_field :town
+            .form-group#venue-street-input
+              label #{t('venue.street')}
+              = f.text_field :street
+          = f.submit 'SAVE'
