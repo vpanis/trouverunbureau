@@ -1,16 +1,24 @@
 @import 'variables';
 @import 'mixins';
 
-p, h1, h2, h3, h4, h5, h6 {
-  letter-spacing: 0.065rem;
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: .065rem;
 }
 
 p {
-  color: $gray-text;
-  font-weight: 300;
   font-size: 13px;
+  font-weight: 300;
   line-height: 24px;
+
   margin-bottom: 0;
+
+  color: $gray-text;
 }
 
 h3 {
@@ -23,23 +31,23 @@ hr {
   margin-bottom: 0;
 }
 
-.yellow{
+.yellow {
   color: $yellow;
 }
 
-.aqua{
+.aqua {
   color: $aqua;
 }
 
-.uppercase{
+.uppercase {
   text-transform: uppercase;
 }
 
-.left{
+.left {
   float: left;
 }
 
-.right{
+.right {
   float: right;
 }
 
@@ -51,34 +59,42 @@ hr {
   margin-left: 15px !important;
 }
 
-.pointer{
+.pointer {
   cursor: pointer;
 }
 
 .add {
-  padding-bottom: 25px;
+  line-height: 15px;
+
   position: relative;
+
+  display: inline-block;
+
   width: 122px;
   margin: 15px auto 0;
+  padding-bottom: 25px;
   padding-left: 20px;
-  line-height: 15px;
-  display: inline-block;
+
   transition: .25s;
   &.block {
     display: block;
   }
   &:before {
-    text-align: center;
-    content: '+';
+    line-height: 15px;
+
     position: absolute;
     top: 0;
     left: 0;
-    background-color: $aqua;
+
     width: 15px;
     height: 15px;
-    border-radius: 100%;
+
+    content: '+';
+    text-align: center;
+
     color: $white;
-    line-height: 15px;
+    border-radius: 100%;
+    background-color: $aqua;
   }
   &:hover {
     color: darken($aqua, 10%);
@@ -87,24 +103,32 @@ hr {
 
 .aqua.arrow {
   position: relative;
-  padding-left: 20px;
+
   display: inline-block;
-  transition: .25s;
+
+  padding-left: 20px;
+
   cursor: pointer;
+  transition: .25s;
   &.block {
     display: block;
   }
   &:before {
-    content: '';
+    line-height: 15px;
+
     position: absolute;
     top: 0;
     left: 0;
-    background-color: $aqua;
+
     width: 15px;
     height: 15px;
-    border-radius: 100%;
+
+    content: '';
+
     color: $white;
-    line-height: 15px;
+    border-radius: 100%;
+    background-color: $aqua;
+
     @include at2x('ic_profile_arrow', 16px, 16px);
   }
   &:hover {
@@ -115,8 +139,8 @@ hr {
 .overflow-hidden {
   overflow: hidden;
   .height-100 {
-    padding-bottom: 9999px;
     margin-bottom: -9999px;
+    padding-bottom: 9999px;
   }
 }
 
@@ -124,12 +148,14 @@ hr {
   &.inline {
     img {
       display: inline-block;
+
       margin-right: 5px;
     }
     h3 {
       display: inline-block;
       &.big {
         font-size: 21px;
+
         margin: 0;
       }
     }
@@ -137,34 +163,43 @@ hr {
 }
 
 .add-image {
+  position: relative;
+
   width: 100%;
   height: 155px;
+
   background: $yellow;
-  position: relative;
   &:before {
-    content: '+';
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 30px;
+
     position: absolute;
     top: calc(50% - 30px);
-    height: 30px;
+    left: calc(50% - 15px);
+
     width: 30px;
+    height: 30px;
+
+    content: '+';
     text-align: center;
+
+    color: $yellow;
     border-radius: 100%;
     background-color: $black;
-    left: calc(50% - 15px);
-    color: $yellow;
-    font-size: 30px;
-    line-height: 30px;
-    font-weight: 700;
   }
   &:after {
-    content: 'Add an Image';
-    position: absolute;
-    text-transform: uppercase;
-    width: 100%;
-    height: 100%;
-    margin-top: 50%;
-    text-align: center;
     font-weight: 700;
+
+    position: absolute;
+    top: calc(50% + 20px);
+
+    width: 100%;
+    height: 20px;
+
+    content: 'Add an Image';
     transform: translateY(-50%);
+    text-align: center;
+    text-transform: uppercase;
   }
 }
