@@ -1,17 +1,23 @@
 = render 'shared/menu_bar', user: current_user
 
 .main-content.dashboard-form
-  #venue
+  #venue.overflow-hidden
     .row
       = render 'shared/edit_venue_progress', venue: @venue, progress: 25, step: 3
       .details-section.col-md-7.col-md-offset-1
-        .space-title.text-center
-          h3 amenities
-        .small-separator
+        .title.inline.text-center
+          = image_tag('default-avatar.png', width: '95px', height: '95px', id: 'user-avatar-img')
+          h3.big Wolox Driving Innovation
+          .small-separator
         = form_for @venue, url: {action: "amenities"} do |f|
           = hidden_field_tag 'venue[amenities][]'
           - Venue::AMENITY_TYPES.each do |amenity|
             div.amenity-checkbox
               = check_box_tag 'venue[amenities][]', amenity, @venue.amenities.include?(amenity.to_s)
               = t("venues.amenities.#{amenity.to_s}.name")
-          = f.submit 'SAVE'
+          .row.buttons
+            .col-xs-6
+              a href='#'
+                button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
+            .col-xs-6
+              = f.submit 'Save', class: 'rounded-btn yellow-fill width-100 uppercase'
