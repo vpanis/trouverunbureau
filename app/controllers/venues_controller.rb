@@ -24,21 +24,6 @@ class VenuesController < ModelController
     redirect_to edit_venue_path(venue)
   end
 
-  def new
-    @venue = Venue.new
-  end
-
-  # TODO: almost all methods here have been harcoded. implement them!!!!
-  def create
-    venue = Venue.create(venue_params)
-    venue.update_attributes(owner: current_represented, town: 'a', street: 'b', postal_code: 'c',
-                            email: current_represented.email, latitude: 0, longitude: 0,
-                            description: 'd', currency: 'usd', v_type: 'coworking_space',
-                            vat_tax_rate: 1, country_id: 1, name: 'e')
-    venue.save!
-    redirect_to edit_venue_path(venue)
-  end
-
   def update
     @venue = Venue.find_by(id: params[:id])
     return unless can_edit?
@@ -60,21 +45,26 @@ class VenuesController < ModelController
   end
 
   def amenities
-    @venue = Venue.find(params[:id])
+    @venue = Venue.find_by(id: params[:id])
+    return unless can_edit?
   end
 
   def save_amenities
-    @venue = Venue.find(params[:id])
-    @venue.update_attributes!(object_params)
+    @venue = Venue.find_by(id: params[:id])
+    return unless can_edit?
+    @venue.amenities = amenities_params[:amenities].reject!(&:empty?)
+    @venue.save!
     redirect_to photos_venue_path(@venue)
   end
 
   def photos
-    @venue = Venue.find(params[:id])
+    @venue = Venue.find_by(id: params[:id])
+    return unless can_edit?
   end
 
   def spaces
-    @venue = Venue.find(params[:id])
+    @venue = Venue.find_by(id: params[:id])
+    return unless can_edit?
   end
 
   def show
