@@ -119,3 +119,18 @@ hr {
     margin-bottom: -9999px;
   }
 }
+
+.title {
+  &.inline {
+    img {
+      display: inline-block;
+      margin-right: 20px;
+    }
+    h3 {
+      display: inline-block;
+      &.big {
+        font-size: 26px;
+      }
+    }
+  }
+}

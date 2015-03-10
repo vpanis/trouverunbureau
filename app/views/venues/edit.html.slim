@@ -2,13 +2,15 @@
 = render 'shared/profile_menu_bar', user: current_user, selected: 'venue'
 
 .main-content.dashboard-form
-  #venue
+  #venue.overflow-hidden
     .row
       = render 'shared/edit_venue_progress', venue: @venue, progress: 0, step: 1
       .details-section.col-md-7.col-md-offset-1
-        .space-title.text-center
-          h3 List new space
-        .small-separator
+        h4.gray-subtitle.text-center Wolox Driving Innovation
+        .user-avatar.text-center
+          = image_tag('default-avatar.png', width: '95px', height: '95px', id: 'user-avatar-img')
+          a#edit-avatar.add.block.aqua href="#" data-toggle="modal" data-target="#avatar-modal" = t('Change venue logo')
+
         = form_for(@venue) do |f|
           .form-group#venue-name-input.col-md-6
             label #{t('venue.name')}
@@ -43,9 +45,7 @@
           / .form-group#venue-longitude-input.col-md-6
           /   label #{t('venue.longitude')}
           /   = f.text_field :longitude, class: 'form-control'
-          / .form-group#venue-description-input.col-md-6
-          /   label #{t('venue.description')}
-          /   = f.text_field :description, class: 'form-control'
+          
           .form-group#venue-v_type-input.col-md-6
             label #{t('venue.v_type')}
             = f.text_field :v_type, class: 'form-control'
