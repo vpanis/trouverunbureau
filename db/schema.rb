@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 20150317161020) do
     t.integer  "payment_id"
     t.string   "payment_type"
     t.integer  "fee"
+    t.boolean  "owner_delete",       default: false
+    t.boolean  "venue_owner_delete", default: false
   end
 
   add_index "bookings", ["owner_id", "owner_type"], name: "index_bookings_on_owner_id_and_owner_type", using: :btree
@@ -113,6 +115,7 @@ ActiveRecord::Schema.define(version: 20150317161020) do
     t.integer  "reviews_sum"
     t.string   "logo"
     t.string   "payment_customer_id"
+    t.text     "payment_token"
   end
 
   add_index "organizations", ["email"], name: "index_organizations_on_email", unique: true, using: :btree
@@ -170,6 +173,7 @@ ActiveRecord::Schema.define(version: 20150317161020) do
     t.string   "emergency_phone"
     t.string   "emergency_relationship"
     t.string   "payment_customer_id"
+    t.text     "payment_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

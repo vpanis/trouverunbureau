@@ -15,18 +15,12 @@ module Api
       end
 
       def current_represented_customer_token
-        render json: { token: braintree_token }, status: 200
+        token = current_represented.payment_token
+        current_represented.update_attributes(payment_token: nil)
+        render json: { token: token }, status: 200
       end
 
       private
-
-      def braintree_token
-        if current_represented.payment_customer_id.present?
-          Braintree::ClientToken.generate(customer_id: current_represented.payment_customer_id)
-        else
-          Braintree::ClientToken.generate
-        end
-      end
 
       def sub_merchant_account_approved(notification)
         bca = BraintreeCollectionAccount.find_by_merchant_account_id(

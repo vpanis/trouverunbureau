@@ -6,29 +6,43 @@ class PaymentsController < ApplicationController
   def new
     @booking = Booking.where(id: params[:booking_id],
                              owner: current_represented).first
-                             # state: Booking.states[:pending_payment], REMOVE FOR TESTING
+    # state: Booking.states[:pending_payment], REMOVE FOR TESTING
     # TODO: custom 404 page
     redirect_to root_path unless @booking.present?
+    generate_nonce_for_payment
   end
 
   # POST /payments
   def create
-    @booking = Booking.where(id: params[:booking_id],
-                             state: Booking.states[:pending_payment],
+    @booking = Booking.where(id: params[:booking_id], state: Booking.states[:pending_payment],
                              owner: current_represented).first
     # TODO: custom 404 page
-    redirect_to root_path unless @booking.present? && params[:mode].in?(%w(braintree))
-    send("payment_#{params[:mode]}")
-    BookingManager.change_booking_status(current_user, @booking,
-                                         Booking.states[:payment_verification])
-    redirect_to new_payment_path(booking_id: @booking.id) && return
+    redirect_to root_path unless @booking.present? && params[:mode].in?(%w(braintree)) &&
+      send("payment_#{params[:mode]}_verification")
+    pay_if_its_possible
   end
 
   private
 
-  def payment_braintree
-    render status: 400, json: { error: 'invalid token' } if params[:payment_method_nonce].present?
+  def generate_nonce_for_payment
+    Resque.enqueue(BraintreeTokenGenerationJob, current_represented.id,
+      current_represented.class.to_s)
+  end
 
+  def pay_if_its_possible
+    @booking, custom_errors = BookingManager.change_booking_status(
+                                current_user, @booking, Booking.states[:payment_verification])
+    # Error handling for collition in booking
+    redirect_to root_path unless @booking.valid? && custom_errors.empty?
+    send("payment_#{params[:mode]}")
+    redirect_to new_payment_path(booking_id: @booking.id)
+  end
+
+  def payment_braintree_verification
+    params[:payment_method_nonce].present?
+  end
+
+  def payment_braintree
     unless @booking.payment.present?
       @booking.payment = BraintreePayment.new
       @booking.save
