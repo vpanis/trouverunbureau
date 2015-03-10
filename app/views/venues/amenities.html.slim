@@ -9,11 +9,9 @@
           h3 amenities
         .small-separator
         = form_for @venue, url: {action: "amenities"} do |f|
-          .details-section
-            .form-group#venue-town-input
-              label #{t('venue.town')}
-              = f.text_field :town
-            .form-group#venue-street-input
-              label #{t('venue.street')}
-              = f.text_field :street
+          = hidden_field_tag 'venue[amenities][]'
+          - Venue::AMENITY_TYPES.each do |amenity|
+            div.amenity-checkbox
+              = check_box_tag 'venue[amenities][]', amenity, @venue.amenities.include?(amenity.to_s)
+              = t("venues.amenities.#{amenity.to_s}.name")
           = f.submit 'SAVE'

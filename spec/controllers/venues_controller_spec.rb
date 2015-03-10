@@ -3,49 +3,42 @@ require 'rails_helper'
 describe VenuesController do
 
   let(:body) { JSON.parse(response.body) if response.body.present? }
-  let!(:user) do
-    create(:user)
-  end
+  let!(:user) { create(:user) }
 
   describe 'GET venues/:id/edit' do
     context 'when user logged in' do
-      before(:each) do
-        @user_logged = FactoryGirl.create(:user)
-        sign_in @user_logged
-      end
+      before(:each) { sign_in user }
+      after(:each) { sign_out user }
 
-      after(:each) do
-        sign_out @user_logged
-      end
-
-      context 'when the space exists' do
+      context 'when the venue exists' do
         context 'when has permissions' do
-          let!(:a_venue) { create(:venue, owner: @user_logged) }
-          let(:a_space) { create(:space, venue: a_venue) }
+          let!(:venue) { create(:venue, owner: user) }
 
           it 'succeeds' do
-            get :edit, id: a_venue.id
+            get :edit, id: venue.id
             expect(response.status).to eq(200)
           end
+
           it 'assigns the requested venue to @venue' do
-            get :edit, id: a_venue.id
-            expect(assigns(:venue)).to eq(a_venue)
+            get :edit, id: venue.id
+            expect(assigns(:venue)).to eq(venue)
           end
 
           it 'renders the :edit template' do
-            get :edit, id: a_venue.id
+            get :edit, id: venue.id
             expect(response).to render_template :edit
           end
         end # when has permissions
 
         context ' when has not permissions' do
-          let!(:a_venue) { create(:venue) }
+          let!(:venue) { create(:venue) }
+
           it 'succeeds' do
-            get :edit, id: a_venue.id
+            get :edit, id: venue.id
             expect(response.status).to eq(403)
           end
         end # when has not permissions
-      end # when the space exists
+      end # when the venue exists
 
       context 'when the venue does not exist' do
         before { get :edit, id: -1 }
@@ -58,18 +51,14 @@ describe VenuesController do
   end # GET venues/:id/edit
 
   describe 'UPDATE venues/:id/update' do
-    context 'when user logged in' do
-      before(:each) do
-        @user_logged = FactoryGirl.create(:user)
-        sign_in @user_logged
-      end
 
-      after(:each) do
-        sign_out @user_logged
-      end
+    context 'when user is logged in' do
+      before(:each) { sign_in user }
+      after(:each) { sign_out user }
+
       context 'when the venue exists' do
-        context 'when has permissions' do
-          let(:a_venue) { create(:venue, owner: @user_logged) }
+        context 'when the user owns the venue' do
+          let(:a_venue) { create(:venue, owner: user) }
           let(:venue_hour) do
             create(:venue_hour, weekday: 1, from: 1600, to: 1700,  venue_id: a_venue.id)
           end
@@ -84,10 +73,10 @@ describe VenuesController do
               '5' => { from: '', to: '', weekday: '', _destroy: true },
               '6' => { from: '', to: '', weekday: '', _destroy: true } }
           end
+
           before do
             venue_params = { id: a_venue.id, description: new_description,
                              day_hours_attributes: day_hours_attributes }
-
             patch :update, id: a_venue.id, venue: venue_params
             a_venue.reload
           end
@@ -96,8 +85,11 @@ describe VenuesController do
             expect(response.status).to eq(302)
           end
 
-          it 'updates the venue' do
+          it 'updates normal venue attributes' do
             expect(a_venue.description).to eq(new_description)
+          end
+
+          it 'updates venue_hours' do
             expect(a_venue.day_hours.count).to eq(2)
             day_hour_0 = a_venue.day_hours.where { weekday == 0 }.first
             day_hour_2 = a_venue.day_hours.where { weekday == 2 }.first
@@ -124,10 +116,11 @@ describe VenuesController do
               patch :update, id: a_venue.id, venue: venue_params
               a_venue.reload
             end
+
             it 'fails' do
               expect(response.status).to eq(412)
             end
-          end
+          end # when wrong venue_hours parameters
 
           context 'when reducing venue_hours' do
             context 'when there are bookings' do
@@ -136,6 +129,7 @@ describe VenuesController do
                                  from: Time.zone.now.advance(minutes: 2),
                                  to: Time.zone.now.advance(minutes: 10), state: :paid)
               end
+
               before do
                 day_hours_attributes = { '0' => { from: '1600', to: '1700', weekday: 0 },
                                          '1' => { from: '', to: '', weekday: '', _destroy: true },
@@ -148,10 +142,11 @@ describe VenuesController do
                 patch :update, id: a_venue.id, venue: venue_params
                 a_venue.reload
               end
+
               it 'fails' do
                 expect(response.status).to eq(412)
               end
-            end
+            end # when there are bookings
 
             context 'where there aren\'t bookings of venue\' spaces' do
               before do
@@ -175,24 +170,25 @@ describe VenuesController do
                 expect(response.status).to eq(302)
                 expect(a_venue.day_hours.count).to eq(1)
               end
-            end
-          end
-        end
+            end # where there aren't bookings of venue' spaces
+          end # when reducing venue_hours
+        end # when the user owns the venue
 
-        context 'when does not have permissions' do
+        context 'when the user does not own the venue' do
           let(:a_venue) { create(:venue) }
-          let(:a_space) { create(:space, capacity: 2, venue: a_venue) }
           let(:new_description) { 'new description' }
+
           before do
             venue_params = { id: a_venue.id, description: new_description }
             patch :update, id: a_venue.id, venue: venue_params
             a_venue.reload
           end
+
           it 'fails' do
             expect(response.status).to eq(403)
           end
-        end
-      end
+        end # when the user does not own the venue
+      end # when the venue exists
 
       context 'when the venue does not exist' do
         before do
@@ -202,8 +198,105 @@ describe VenuesController do
         it 'fails' do
           expect(response.status).to eq(404)
         end
+      end # when the venue does not exist
+    end # when user is logged in
+
+    context 'when the user is not logged in' do
+      context 'when the venue exists' do
+        let!(:venue) { create(:venue) }
+        before { patch :update, id: venue.id }
+
+        it 'fails' do
+          expect(response.status).to eq(302)
+        end
+
+        it 'redirects to signin' do
+          expect(response.redirect_url).to eq(new_user_session_url)
+        end
       end
+
+      context 'when the venue does not exist' do
+        before { patch :update, id: -1 }
+
+        it 'fails' do
+          expect(response.status).to eq(302)
+        end
+
+        it 'redirects to signin' do
+          expect(response.redirect_url).to eq(new_user_session_url)
+        end
+      end
+    end # when the user is not logged in
+  end # UPDATE venues/:id/update
+
+  describe 'GET venues/:id/amenities' do
+    context 'when user is logged in' do
+      before(:each) { sign_in user }
+      after(:each) { sign_out user }
+
+      context 'when the venue exists' do
+        context 'when user owns the venue' do
+          let!(:venue) { create(:venue, owner: user) }
+
+          it 'succeeds' do
+            get :amenities, id: venue.id
+            expect(response.status).to eq(200)
+          end
+
+          it 'assigns the requested venue to @venue' do
+            get :amenities, id: venue.id
+            expect(assigns(:venue)).to eq(venue)
+          end
+
+          it 'renders the :amenities template' do
+            get :amenities, id: venue.id
+            expect(response).to render_template :amenities
+          end
+        end # when the user owns the venue
+
+        context 'when the user doesnt own the venue' do
+          let!(:venue) { create(:venue) }
+          it 'fails' do
+            get :amenities, id: venue.id
+            expect(response.status).to eq(403)
+          end
+        end # when the user does not own the venue
+      end # when the venue exists
+
+      context 'when the venue does not exist' do
+        before { get :amenities, id: -1 }
+
+        it 'fails' do
+          expect(response.status).to eq(404)
+        end
+      end # when the venue does not exist
     end # when user logged in
 
-  end # UPDATE venues/:id/update
+    context 'when the user is not logged in' do
+      context 'when the venue exists' do
+        let!(:venue) { create(:venue) }
+        before { get :amenities, id: venue.id }
+
+        it 'fails' do
+          expect(response.status).to eq(302)
+        end
+
+        it 'redirects to signin' do
+          expect(response.redirect_url).to eq(new_user_session_url)
+        end
+      end
+
+      context 'when the venue does not exists' do
+        before { get :amenities, id: -1 }
+
+        it 'fails' do
+          expect(response.status).to eq(302)
+        end
+
+        it 'redirects to signin' do
+          expect(response.redirect_url).to eq(new_user_session_url)
+        end
+      end
+    end # when the user is not logged in
+  end  # GET venues/:id/amenities
 end

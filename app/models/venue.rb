@@ -1,17 +1,15 @@
 class Venue < ActiveRecord::Base
   # Relations
   belongs_to :owner, polymorphic: true
-
   belongs_to :country
 
   has_many :spaces, dependent: :destroy
-
   has_many :day_hours, class_name: 'VenueHour', dependent: :destroy
+  has_many :photos, class_name: 'VenuePhoto', dependent: :destroy
+
   accepts_nested_attributes_for :day_hours,
                                 allow_destroy: true,
                                 reject_if: proc { |e| e[:from].blank? || e[:to].blank? }
-
-  has_many :photos, class_name: 'VenuePhoto', dependent: :destroy
 
   # Uploaders
   mount_uploader :logo, LogoUploader
@@ -53,9 +51,7 @@ class Venue < ActiveRecord::Base
     less_than_or_equal_to: 180
   }
 
-  validates :space, :vat_tax_rate, numericality: {
-    greater_than_or_equal_to: 0
-  }
+  validates :space, :vat_tax_rate, numericality: { greater_than_or_equal_to: 0 }
 
   validates :floors, :rooms, :desks, :quantity_reviews, :reviews_sum, numericality: {
     only_integer: true,
@@ -94,16 +90,16 @@ class Venue < ActiveRecord::Base
   private
 
   def initialize_fields
-    self.quantity_reviews ||= 0
-    self.reviews_sum ||= 0
-    self.rating ||= 0
     self.floors ||= 0
     self.rooms ||= 0
     self.desks ||= 0
-    self.quantity_reviews ||= 0
-    self.reviews_sum ||= 0
     self.space ||= 0
     self.vat_tax_rate ||= 0
+    self.quantity_reviews ||= 0
+    self.reviews_sum ||= 0
+    self.rating ||= 0
+    self.amenities ||= []
+    self.professions ||= []
   end
 
   def erase_logo
@@ -119,6 +115,7 @@ class Venue < ActiveRecord::Base
   end
 
   def each_inclusion(attribute, error_list, enum_list, error_message)
+    attribute = [] if attribute.nil?
     invalid_items = attribute - enum_list.map(&:to_s)
     invalid_items.each do |item|
       errors.add(error_list, item + error_message)
