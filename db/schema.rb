@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 20150317161020) do
     t.text     "error_message"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "payment_nonce_token"
+    t.datetime "payment_nonce_expire"
   end
 
   create_table "client_reviews", force: true do |t|
@@ -115,7 +117,6 @@ ActiveRecord::Schema.define(version: 20150317161020) do
     t.integer  "reviews_sum"
     t.string   "logo"
     t.string   "payment_customer_id"
-    t.text     "payment_token"
   end
 
   add_index "organizations", ["email"], name: "index_organizations_on_email", unique: true, using: :btree
@@ -173,7 +174,6 @@ ActiveRecord::Schema.define(version: 20150317161020) do
     t.string   "emergency_phone"
     t.string   "emergency_relationship"
     t.string   "payment_customer_id"
-    t.text     "payment_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

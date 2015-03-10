@@ -10,6 +10,7 @@ class PaymentsController < ApplicationController
     # TODO: custom 404 page
     redirect_to root_path unless @booking.present?
     generate_nonce_for_payment
+    @payment = @booking.payment
   end
 
   # POST /payments
@@ -25,8 +26,12 @@ class PaymentsController < ApplicationController
   private
 
   def generate_nonce_for_payment
+    unless @booking.payment.present?
+      @booking.payment = BraintreePayment.new
+      @booking.save
+    end
     Resque.enqueue(BraintreeTokenGenerationJob, current_represented.id,
-      current_represented.class.to_s)
+      current_represented.class.to_s, @booking.payment.id)
   end
 
   def pay_if_its_possible
@@ -43,10 +48,6 @@ class PaymentsController < ApplicationController
   end
 
   def payment_braintree
-    unless @booking.payment.present?
-      @booking.payment = BraintreePayment.new
-      @booking.save
-    end
     Resque.enqueue(BraintreePaymentJob, @booking.id, params[:payment_method_nonce],
                    current_user.id, current_represented.id, current_represented.class.to_s)
   end

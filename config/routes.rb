@@ -98,7 +98,7 @@ Deskspotting::Application.routes.draw do
 
     resource :braintree, only: [] do
       get :webhooks, to: 'braintree#verify_url'
-      get :current_represented_customer_token, to: 'braintree#current_represented_customer_token'
+      get :customer_nonce_token, to: 'braintree#customer_nonce_token'
       post :webhooks, to: 'braintree#notification'
     end
 

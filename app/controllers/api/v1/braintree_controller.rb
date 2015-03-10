@@ -2,7 +2,7 @@ module Api
   module V1
     class BraintreeController < ApplicationController
       include RepresentedHelper
-      before_action :authenticate_user!, only: [:current_represented_customer_token]
+      before_action :authenticate_user!, only: [:customer_nonce_token]
 
       def verify_url
         render status: 200, json: Braintree::WebhookNotification.verify(params['bt_challenge'])
@@ -14,9 +14,13 @@ module Api
         send(webhook_notification.kind, webhook_notification)
       end
 
-      def current_represented_customer_token
-        token = current_represented.payment_token
-        current_represented.update_attributes(payment_token: nil)
+      def customer_nonce_token
+        @payment = BraintreePayment.find_by_id(params[:payment_id])
+        return render json: { token: token }, status: 400 unless @payment.present?
+        token = @payment.payment_nonce_token if @payment.payment_nonce_expire.present? &&
+          Time.new < @payment.payment_nonce_expire
+        @payment.update_attributes(payment_nonce_token: nil, payment_nonce_expire: nil) unless
+          token.present?
         render json: { token: token }, status: 200
       end
 

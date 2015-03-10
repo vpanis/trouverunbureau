@@ -2,19 +2,19 @@ class BraintreeTokenGenerationJob
   @queue = :braintree_token_generation
 
   class << self
-    def perform(represented_id, represented_type)
-      init_log(represented_id, represented_type)
+    def perform(represented_id, represented_type, payment_id)
+      init_log(represented_id, represented_type, payment_id)
       @represented = represented_type.constantize.find_by_id(represented_id)
-      return unless @represented.present? # impossible, but...
-
+      @payment = BraintreePayment.find_by_id(payment_id)
+      return unless @represented.present? && @payment.present? # impossible, but...
       braintree_token
     end
 
     private
 
-    def init_log(represented_id, represented_type)
+    def init_log(represented_id, represented_type, payment_id)
       str = "BraintreeTokenGenerationJob on represented_id: #{represented_id}, "
-      str += "represented_type: #{represented_type}"
+      str += "represented_type: #{represented_type}, payment_id: #{payment_id}"
       Rails.logger.info(str)
     end
 
@@ -24,7 +24,8 @@ class BraintreeTokenGenerationJob
       else
         token = Braintree::ClientToken.generate
       end
-      @represented.update_attributes(payment_token: token)
+      @payment.update_attributes(payment_nonce_token: token,
+                                 payment_nonce_expire: Time.new.advance(hours: 12))
     end
   end
 end
