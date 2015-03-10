@@ -13,7 +13,7 @@ class Booking < ActiveRecord::Base
 
   # Beware: tye Messages m_types must contain the Booking states
   enum state: [:pending_authorization, :pending_payment, :paid, :cancelled, :denied, :expired,
-               :payment_verification, :refunding]
+               :payment_verification, :refunding, :error_refunding]
 
   # Callbacks
   after_initialize :initialize_fields

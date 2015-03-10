@@ -96,7 +96,7 @@ class BookingManager
     def invalid_transition?(state, booking)
       (state == Booking.states[:pending_payment] && !booking.pending_authorization?) ||
         (state == Booking.states[:payment_verification] && !booking.pending_payment?) ||
-        (state == Booking.states[:paid] && !booking.pending_verification?)
+        (state == Booking.states[:paid] && !booking.payment_verification?)
     end
   end
 

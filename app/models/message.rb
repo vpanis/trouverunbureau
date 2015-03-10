@@ -5,7 +5,7 @@ class Message < ActiveRecord::Base
 
   # Beware: it must contain the Booking states
   enum m_type: [:text, :booking_change, :pending_authorization, :pending_payment, :paid,
-                :cancelled, :denied, :expired, :payment_verification, :refunding]
+                :cancelled, :denied, :expired, :payment_verification, :refunding, :error_refunding]
 
   validates :m_type, :represented, presence: true
   validates :text, presence: true, if: proc { |e| e.m_type == 'text' }
