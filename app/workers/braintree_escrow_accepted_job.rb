@@ -4,7 +4,7 @@ class BraintreeEscrowAcceptedJob
 
   class << self
     def perform(booking_id, user_id)
-      puts "Escrow Accepted Job"
+      init_log(booking_id, user_id)
       @booking = Booking.includes(:payment).find_by_id(booking_id)
       return unless @booking.present? && User.exists?(user_id) # impossible, but...
 
@@ -14,6 +14,17 @@ class BraintreeEscrowAcceptedJob
     end
 
     private
+
+    def init_log(booking_id, user_id)
+      str = "BraintreeEscrowAcceptedJob on booking_id: #{booking_id}, user_id: #{user_id}"
+      Rails.logger.info(str)
+    end
+
+    def not_accepted_payment_log(booking_id, transaction)
+      str = "BraintreeEscrowAcceptedJob not_accepted_payment for booking_id: #{booking_id}, "
+      str += "transaction_id: #{transaction.id}, transaction_status: #{transaction.status}"
+      Rails.logger.warn(str)
+    end
 
     def braintree_transaction_find(transaction_id)
       Braintree::Transaction.find(transaction_id)
@@ -29,6 +40,7 @@ class BraintreeEscrowAcceptedJob
       attributes_to_update = { transaction_status: transaction.status,
                                escrow_status: transaction.escrow_status }
       if failed_status?(transaction)
+        not_accepted_payment_log(@booking.id, transaction)
         attributes_to_update[:error_message] = transaction.gateway_rejection_reason
       else
         Resque.enqueue_in(@escrow_polling_time, BraintreeEscrowAcceptedJob, @booking.id, user_id)

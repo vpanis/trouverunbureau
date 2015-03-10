@@ -7,15 +7,28 @@ class BraintreePaymentJob
 
   class << self
     def perform(booking_id, payment_token, user_id, represented_id, represented_type)
+      init_log(booking_id, payment_token, user_id, represented_id, represented_type)
       @booking = Booking.includes(space: { venue: [:collection_account] }).find_by_id(booking_id)
       return unless represented_type.in? %w(User Organization)
       @represented = represented_type.constantize.find_by_id(represented_id)
-      return unless @booking.present? && @represented && User.exists?(user_id) # impossible, but...
+      # impossible, but...
+      return unless @booking.present? && @represented.present? && User.exists?(user_id)
 
       compute_braintree_response(user_id, braintree_transaction(payment_token))
     end
 
     private
+
+    def init_log(booking_id, payment_token, user_id, represented_id, represented_type)
+      str = "BraintreePaymentJob on booking_id: #{booking_id}, payment_token: #{payment_token}, "
+      str += "user_id: #{user_id}, represented_id: #{represented_id}, "
+      str += "represented_type: #{represented_type}"
+      Rails.logger.info(str)
+    end
+
+    def declined_log(booking_id)
+      Rails.logger.warn("BraintreePaymentJob declined_payment for booking_id: #{booking_id}")
+    end
 
     def compute_braintree_response(user_id, braintree_response)
       if braintree_response.success?
@@ -39,6 +52,7 @@ class BraintreePaymentJob
     end
 
     def declined_payment(braintree_response)
+      declined_log(@booking.id)
       @booking.payment.update_attributes(transaction_status: 'error',
                                          error_message: braintree_response.message)
     end
