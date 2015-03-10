@@ -1,7 +1,7 @@
 = render 'shared/menu_bar', user: current_user
 
 .main-content.dashboard-form
-  #space
+  #space.overflow-hidden
     .row
       = render 'shared/edit_venue_progress', venue: @space.venue, progress: 70, step: 5
       .details-section.col-md-7.col-md-offset-1
