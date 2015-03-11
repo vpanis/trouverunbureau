@@ -5,7 +5,7 @@ class AddMerchantDataToBraintreeCollectionAccounts < ActiveRecord::Migration
     add_column :braintree_collection_accounts, :email, :string
     add_column :braintree_collection_accounts, :phone, :string
     add_column :braintree_collection_accounts, :date_of_birth, :date
-    add_column :braintree_collection_accounts, :ssn_last4, :string
+    add_column :braintree_collection_accounts, :ssn_last_4, :string
     add_column :braintree_collection_accounts, :individual_street_address, :string
     add_column :braintree_collection_accounts, :individual_locality, :string
     add_column :braintree_collection_accounts, :individual_region, :string
@@ -18,8 +18,9 @@ class AddMerchantDataToBraintreeCollectionAccounts < ActiveRecord::Migration
     add_column :braintree_collection_accounts, :business_region, :string
     add_column :braintree_collection_accounts, :business_postal_code, :string
     add_column :braintree_collection_accounts, :descriptor, :string
-    add_column :braintree_collection_accounts, :account_number_last4, :integer
-    add_column :braintree_collection_accounts, :routing_number, :integer
+    add_column :braintree_collection_accounts, :account_number_last_4, :string
+    add_column :braintree_collection_accounts, :routing_number, :string
     add_column :braintree_collection_accounts, :braintree_persisted, :boolean
+    add_column :braintree_collection_accounts, :expecting_braintree_response, :boolean
   end
 end

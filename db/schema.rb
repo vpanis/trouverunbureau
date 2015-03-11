@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20150317161020) do
   add_index "bookings", ["space_id"], name: "index_bookings_on_space_id", using: :btree
 
   create_table "braintree_collection_accounts", force: true do |t|
-    t.boolean  "active",                    default: false
+    t.boolean  "active",                       default: false
     t.string   "status"
     t.text     "error_message"
     t.datetime "created_at"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20150317161020) do
     t.string   "email"
     t.string   "phone"
     t.date     "date_of_birth"
-    t.string   "ssn_last4"
+    t.string   "ssn_last_4"
     t.string   "individual_street_address"
     t.string   "individual_locality"
     t.string   "individual_region"
@@ -69,9 +69,10 @@ ActiveRecord::Schema.define(version: 20150317161020) do
     t.string   "business_region"
     t.string   "business_postal_code"
     t.string   "descriptor"
-    t.integer  "account_number_last4"
-    t.integer  "routing_number"
+    t.string   "account_number_last_4"
+    t.string   "routing_number"
     t.boolean  "braintree_persisted"
+    t.boolean  "expecting_braintree_response"
   end
 
   create_table "braintree_payments", force: true do |t|

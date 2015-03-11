@@ -1,8 +1,6 @@
 class BraintreePaymentJob
   @queue = :braintree_payments
-  @merchant_account_id = Rails.configuration.payment.braintree.merchant_account
   @escrow_polling_time = Rails.configuration.payment.braintree.time_to_poll_for_escrow_status
-  @deskspotting_fee = Rails.configuration.payment.deskspotting_fee
   @append_random = Rails.configuration.payment.braintree.append_random_to_accounts_ids
 
   class << self
@@ -88,10 +86,6 @@ class BraintreePaymentJob
         id: customer_id
       }
       attributes[:options][:store_in_vault_on_success] = true
-    end
-
-    def calculate_fee(price)
-      price * @deskspotting_fee
     end
 
     def generate_customer_id

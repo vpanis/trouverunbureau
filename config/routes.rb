@@ -23,8 +23,8 @@ Deskspotting::Application.routes.draw do
       get :photos
       get :spaces
       get :new_space, to: "spaces#new"
-      get :collection_info, to: "venues#collection_info"
-      put :collection_info, to: "venues#edit_collection_method"
+      get :collection_account_info, to: "venues#collection_account_info"
+      patch :collection_account_info, to: "venues#edit_collection_account"
     end
   end
 
