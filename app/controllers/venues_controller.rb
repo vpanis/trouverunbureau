@@ -4,28 +4,26 @@ class VenuesController < ModelController
   before_action :authenticate_user!, except: [:show]
 
   def edit
-    @venue = Venue.find_by(id: params[:id])
+    @venue = Venue.find(params[:id])
     return unless can_edit?
     @modify_day_hours = load_day_hours
   end
 
   def new
     @venue = Venue.new
+    @countries_options = Country.all.map { |c| [c.name, c.id] }
   end
 
   # TODO: almost all methods here have been harcoded. implement them!!!!
   def create
-    venue = Venue.create(venue_params)
-    venue.update_attributes(owner: current_represented, town: 'a', street: 'b', postal_code: 'c',
-                            email: current_represented.email, latitude: 0, longitude: 0,
-                            description: 'd', currency: 'usd', v_type: 'coworking_space',
-                            vat_tax_rate: 1, country_id: 1, name: 'e')
+    venue = Venue.create(new_venue_params)
+    venue.update_attributes(owner: current_represented, email: current_represented.email)
     venue.save!
     redirect_to edit_venue_path(venue)
   end
 
   def update
-    @venue = Venue.find_by(id: params[:id])
+    @venue = Venue.find(params[:id])
     return unless can_edit?
     return render nothing: true, status: 412 unless VenueContext.new(@venue, current_represented)
                                                                 .update_venue(object_params)
@@ -33,24 +31,24 @@ class VenuesController < ModelController
   end
 
   def details
-    @venue = Venue.find_by(id: params[:id])
+    @venue = Venue.find(params[:id])
     return unless can_edit?
   end
 
   def save_details
-    @venue = Venue.find_by(id: params[:id])
+    @venue = Venue.find(params[:id])
     return unless can_edit?
     @venue.update_attributes!(object_params)
     redirect_to amenities_venue_path(@venue)
   end
 
   def amenities
-    @venue = Venue.find_by(id: params[:id])
+    @venue = Venue.find(params[:id])
     return unless can_edit?
   end
 
   def save_amenities
-    @venue = Venue.find_by(id: params[:id])
+    @venue = Venue.find(params[:id])
     return unless can_edit?
     @venue.amenities = amenities_params[:amenities].reject!(&:empty?)
     @venue.save!
@@ -58,12 +56,12 @@ class VenuesController < ModelController
   end
 
   def photos
-    @venue = Venue.find_by(id: params[:id])
+    @venue = Venue.find(params[:id])
     return unless can_edit?
   end
 
   def spaces
-    @venue = Venue.find_by(id: params[:id])
+    @venue = Venue.find(params[:id])
     return unless can_edit?
   end
 
@@ -82,10 +80,6 @@ class VenuesController < ModelController
   private
 
   def can_edit?
-    unless @venue.present?
-      render nothing: true, status: 404
-      return false
-    end
     return true if VenueContext.new(@venue, current_represented).owner?
     render nothing: true, status: 403
     false
@@ -104,9 +98,8 @@ class VenuesController < ModelController
     params.require(:venue).permit(amenities: [])
   end
 
-  def venue_params
-    params.permit(:town, :street, :postal_code, :email, :latitude, :longitude,
-                  :name, :description, :currency, :v_type, :vat_tax_rate, :country_id)
+  def new_venue_params
+    params.require(:venue).permit(:name, :country_id, :force_submit, :logo)
   end
 
   def load_day_hours

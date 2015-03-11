@@ -224,6 +224,12 @@ en:
         flexible_cancellations: 'Flexible Cancellations.'
       reviews: 'Reviews'
       no_reviews: 'No reviews'
+    edit:
+      list_your_venue: 'List your venue'
+      start_by: 'Start by telling us about your venue...'
+      add_venue_logo: 'Add venue logo'
+      change_logo: 'Change logo'
+      name: 'Venue Name'
   wishlist:
     no_favourites: "You don't have any favorite spaces"
     day: 'day'

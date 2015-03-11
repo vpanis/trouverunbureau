@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
 
   after_action :set_csrf_cookie_for_ng, :store_location
 
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+
   def set_csrf_cookie_for_ng
     cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
   end
@@ -51,6 +53,11 @@ class ApplicationController < ActionController::Base
   def render_forbidden
     # TODO: improve
     render file: "#{Rails.root}/public/403", layout: false, status: 403
+  end
+
+  def record_not_found
+    # TODO: improve
+    render file: "#{Rails.root}/public/404", layout: false, status: 404
   end
 
 end

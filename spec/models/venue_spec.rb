@@ -22,7 +22,6 @@ RSpec.describe Venue, type: :model do
   it { should validate_presence_of(:description) }
   it { should validate_presence_of(:currency) }
   it { should validate_presence_of(:v_type) }
-  it { should validate_presence_of(:vat_tax_rate) }
   it { should validate_presence_of(:owner) }
 
   it { should_not validate_presence_of(:floors) }
