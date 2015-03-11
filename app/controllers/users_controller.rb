@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    return render_403 unless @user.eql?(current_user)
+    return render_forbidden unless @user.eql?(current_user)
     @gender_options = User::GENDERS.map { |g| [t("users.genders.#{g}"), g.to_s] }
     @profession_options = Venue::PROFESSIONS.map { |p| [t("venues.professions.#{p}"), p.to_s] }
     # TODO: define languages list
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    return render_403 unless @user.eql?(current_user)
+    return render_forbidden unless @user.eql?(current_user)
     @user.update_attributes!(user_params)
     update_languages_spoken!
     redirect_to user_path(@user)
@@ -43,11 +43,6 @@ class UsersController < ApplicationController
     return unless  user_params['languages_spoken'].present?
     languages = user_params['languages_spoken'].gsub(/^\{+|\}+$/, '').split(',')
     @user.update_attributes!(languages_spoken: languages)
-  end
-
-  def render_403
-    # TODO: improve
-    render file: "#{Rails.root}/public/403", layout: false, status: 403
   end
 
 end

@@ -18,6 +18,7 @@ Deskspotting::Application.routes.draw do
       patch :amenities, to: 'venues#save_amenities'
       get :photos
       get :spaces
+      get :new_space, to: "spaces#new"
     end
   end
 
@@ -27,7 +28,7 @@ Deskspotting::Application.routes.draw do
     end
   end
 
-  resources :spaces, only: [:edit, :update] do
+  resources :spaces, only: [:edit, :update, :create] do
     collection do
       get :wishlist
     end

@@ -48,4 +48,9 @@ class ApplicationController < ActionController::Base
     super || form_authenticity_token == request.headers['X-XSRF-TOKEN']
   end
 
+  def render_forbidden
+    # TODO: improve
+    render file: "#{Rails.root}/public/403", layout: false, status: 403
+  end
+
 end

@@ -9,7 +9,6 @@ on_load = ->
       $('.delete-photo').click (event) ->
         delete_photo(event, this)
     delete_photo = (event, element) ->
-      console.log('delete')
       event.preventDefault()
       photoId = element.dataset.photoId
       if photoId == 'undefined' || photoId == null || photoId == ''
@@ -51,7 +50,6 @@ on_load = ->
           contentType: false
           processData: false
           success: (data) ->
-            console.log data
             add_photo(data)
             return
           error: (data) ->
