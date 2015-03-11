@@ -1,8 +1,11 @@
 @import 'variables';
 @import 'mixins';
 
-[data-action="wishlist"] {
+[data-action="wishlist"]{
   background-color: $light-gray;
+}
+
+[data-action="wishlist"], [data-action="search"] {
   text-align: center;
   .spaces-list{
     margin: 0 auto;

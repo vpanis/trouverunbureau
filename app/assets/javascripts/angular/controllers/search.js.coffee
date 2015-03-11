@@ -9,7 +9,6 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
     $scope.from = 1
     $scope.to = 12
     $scope.getSpaces = () ->
-      console.log("hola")
       Restangular.one('spaces').get({page: $scope.currentPage, amount: $scope.itemsPerPage}).then (result) ->
         $scope.spaces = result.spaces
         $scope.totalSpaces = result.count

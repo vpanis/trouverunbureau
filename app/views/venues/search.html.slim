@@ -2,7 +2,7 @@
 
 .container-fluid
   .row
-    .container-fluid.col-xs-13.col-sm-6.col-md-4
+    .container-fluid.col-sm-6.col-md-4.hidden-xs
       p Aca va el mapa
     .container-fluid.col-xs-12.col-sm-6.col-md-8
       .row
@@ -11,13 +11,13 @@
             .col-md-2.count-box
               .h1.count-number() {{totalSpaces}}
               .h5.text-annotation() = t('search.count')
-            .col-md-1.col-md-offset-9.border-circle.filter-button-box
-              .h6.text-annotation.filter-button() = t('search.filters')
+            .col-md-1.col-md-offset-8.filter-button-box
+              .h6.border-circle.text-annotation.filter-button() = t('search.filters')
           .filter-box-after
           .row
             .col-xs-12.col-sm-6.col-md-4 ng-repeat=("space in spaces")
               .favorite-space
-                .favourite.active ng-click=("removeFavorite(space.id, true)")
+                .favourite ng-class="{active: space.favorite}" ng-click=("toggleFavorite(space.id, false)") data-is-favorite="{{space.favorite}}"
                 .carousel-container
                   .carousel.slide id="space-carousel-{{space.id}}"
                     ol.carousel-indicators
@@ -49,5 +49,5 @@
           .row
             .pagination-container.search-pagination.pagination-box
               .col-md-2.left.pagination-limits-text() {{from}} - {{to}} than {{totalSpaces}} desks
-              pagination.pagination-sm ng-change="getSpaces()" total-items="totalSpaces" ng-model="currentPage" max-size="3" rotate="false" boundary-links="true" previous-text="‹" next-text="›" first-text="«" last-text="»" items-per-page="itemsPerPage"
-            .no-reviews ng-if="totalSpaces == 0"  #{t('wishlist.no_favourites')}
+              pagination.pagination-sm.pagination-pages ng-change="getSpaces()" total-items="totalSpaces" ng-model="currentPage" max-size="3" rotate="false" boundary-links="true" previous-text="‹" next-text="›" first-text="«" last-text="»" items-per-page="itemsPerPage"
+            .no-reviews ng-if="totalSpaces == 0"  #{t('search.no_results')}

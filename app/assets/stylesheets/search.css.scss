@@ -3,151 +3,48 @@
 
 [data-action="search"] {
   background-color: $white;
-  text-align: center;
-  .spaces-list{
-    margin: 0 auto;
-  }
-  .favorite-space{
-    height: 325px;
-    width: 100%;
-    position: relative;
-    background-color: white;
-    display: inline-block;
-    margin-bottom: 20px;
-    .carousel .item {
-      height: 232px;
-      .full-image{
-        height: 232px;
-        width: 100%;
-      }
-    }
-  }
-  .carousel-container{
-    position: absolute;
-    top: 0px;
-    width: 100%;
-    height: 232px;
-    @include at2x('space-no-photo', 90px, 90px);
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-  .space-info {
-    background-color: $white;
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
-    padding: 10px 12px 11px;
-    text-align: left;
-    .name {
-      position: relative;
-      display: inline-block;
-      font-size: 13px;
-      letter-spacing: 0.14rem;
-      &:after {
-        position: absolute;
-        content: '';
-        bottom: -6px;
-        left: 0;
-        width: 30px;
-        height: 2px;
-        background-color: $yellow;
-      }
-    }
-    .city {
-      text-transform: uppercase;
-      color: $gray-text;
-      margin-top: 12px;
-      font-size: 9px;
-      letter-spacing: 0.15rem;
-    }
-  }
-  .bottom-line {
-    line-height: 19px;
-    margin-top: 8px;
-    font-size: 12px;
-    .currency,
-    [class^="price-"] {
-      display: inline-block;
-      vertical-align: middle;
-    }
-    .currency {
-      padding: 0 10px;
-      background-color: $yellow;
-      margin-right: 20px;
-      font-size: 10px;
-      font-style: italic;
-      text-transform: uppercase;
-    }
-    [class^="price-"] {
-      margin-right: 10px;
-    }
-    .hour-price,
-    .day-price,
-    .week-price,
-    .month-price {
-      font-weight: bold;
-      margin-right: 5px;
-      font-size: 11px;
-    }
-    .duration{
-      font-size: 11px;
-    }
-  }
-  .search-pagination {
-    margin-top: 30px;
-  }
-  .favourite{
-    z-index: 1;
-    cursor: pointer;
-    position: absolute;
-    width: 48px;
-    height: 48px;
-    top: 10px;
-    right: 20px;
-    @include at2x('venue_wishlist_grey_inactive', 48px, 48px);
-    &.active{
-      @include at2x('venue_wishlist_grey_active', 48px, 48px);
-    }
-  }
   .border-circle{
     @include border-radius(100%);
     border: 2px solid $yellow;
   }
 
   .count-box{
-    width: 13%;
+    padding-right: 100px;
   }
+
   .count-number{
-    font-weight: bold;
+    font-weight: 700;
   }
 
   .text-annotation{
-    font-weight: lighter;
+    font-weight: 300;
   }
 
   .filter-button-box{
-    width: 65px;
-    margin-top: 18px;
     margin-bottom: 10px;
+    padding-left: 18px;
   }
 
   .filter-button{
     text-transform: uppercase;
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-top: 23px;
+    padding-bottom: 23px;
     text-align: center;
-    margin-left: -5px;
+    margin-left: 40px;
+    margin-right: -40px;
   }
 
   .pagination-box{
     margin-left: 10px;
     margin-bottom: 30px;
-    width: 96%;
   }
 
+  .pagination-pages{
+    margin-right: -7%;
+  }
   .pagination-limits-text{
     text-align: left;
-    font-weight: lighter;
+    font-weight: 300;
     margin-top: 5px;
   }
 
