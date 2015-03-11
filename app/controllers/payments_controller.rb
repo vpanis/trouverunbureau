@@ -31,7 +31,7 @@ class PaymentsController < ApplicationController
       @booking.save
     end
     Resque.enqueue(BraintreeTokenGenerationJob, current_represented.id,
-      current_represented.class.to_s, @booking.payment.id)
+                   current_represented.class.to_s, @booking.payment.id)
   end
 
   def pay_if_its_possible

@@ -57,6 +57,33 @@ class VenuesController < ModelController
     @venues = current_represented.venues
   end
 
+  def collection_info
+    @venue = Venue.find_by(id: params[:id])
+    return render nothing: true, status: 404 unless @venue.present?
+
+    if @venue.collection_account.present?
+      @venue.collection_account = BraintreeCollectionAccount.new(force_submit: true,
+                                                                 braintree_persisted: false)
+      @venue.save
+    end
+    @collection_account = @venue.collection_account
+  end
+
+  def edit_collection_method
+    @venue = Venue.includes(:collection_account).find_by(id: params[:id])
+    return render nothing: true, status: 404 unless @venue.present? &&
+      @venue.collection_account.present?
+
+    @venue.collection_account.assign_attributes(collection_params)
+    if @venue.collection_account.valid?
+      Resque.enqueue(BraintreeSubMerchantAccountJob, @venue.collection_account.id,
+                     @venue.collection_account.braintree_merchant_account_json)
+      @venue.collection_account.save
+      return render nothing: true, status: 201
+    end
+    render error: { @venue.collection_account.errors }, status: 400
+  end
+
   private
 
   def can_edit?
@@ -75,4 +102,13 @@ class VenuesController < ModelController
                                   :force_submit_upd)
   end
 
+  def collection_params
+    params.require(:collection_account).permit(:first_name, :last_name, :email, :date_of_birth,
+                                               :individual_street_address, :individual_locality,
+                                               :individual_region, :individual_posta_code, :phone,
+                                               :ssn_last4, :legal_name, :dba_name, :tax_id,
+                                               :business_street_address, :business_locality,
+                                               :business_region, :business_postal_code,
+                                               :descriptor, :account_number_last4, :routing_number)
+  end
 end

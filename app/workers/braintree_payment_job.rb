@@ -49,9 +49,10 @@ class BraintreePaymentJob
     end
 
     def update_payment_attributes(transaction)
-      @booking.payment.update_attributes(card_type: transaction.credit_card_details.card_type,
-                                         card_last_4: transaction.credit_card_details.last_4,
-                                         card_expiration_date: transaction.credit_card_details.expiration_date,
+      ccd = transaction.credit_card_details
+      @booking.payment.update_attributes(card_type: ccd.card_type,
+                                         card_last_4: ccd.last_4,
+                                         card_expiration_date: ccd.expiration_date,
                                          transaction_id: transaction.id,
                                          transaction_status: transaction.status,
                                          escrow_status: transaction.escrow_status)
