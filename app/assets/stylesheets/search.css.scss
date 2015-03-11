@@ -30,8 +30,9 @@
     padding-top: 23px;
     padding-bottom: 23px;
     text-align: center;
-    margin-left: 40px;
-    margin-right: -40px;
+    margin-left: -20px;
+    margin-right: 27px;
+    cursor: pointer;
   }
 
   .pagination-box{
@@ -49,8 +50,7 @@
   }
 
   .filter-box{
-    position: fixed;
-    width: 71%;
+    width: 111%;
     top: 50px;
     z-index: 20;
     background-color: $white;
@@ -58,7 +58,154 @@
     padding-bottom: 10px;
   }
 
+  .fixed-box{
+    position: fixed;
+    width: 71%;
+  }
+
   .filter-box-after{
     padding-top: 125px;
+  }
+
+  .venue-map{
+    height: 900px;
+  }
+
+  .venue-map-container{
+    position:fixed;
+  }
+
+  .filter-box{
+    float: left;
+  }
+
+  .filter-colapse-container{
+    margin-left: 64px;
+  }
+
+  .filter-colapse{
+    float: right;
+    border: 1px solid $yellow;
+    margin-left: 5px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    padding-right: 2px;
+  }
+
+  .filter-colapse.clear{
+    border: 1.5px solid $red;
+  }
+
+  .filter-colapse.refine{
+    border: 0px solid $red;
+  }
+  .filter-colapse-text{
+    margin: 2px;
+    float: left;
+  }
+
+  .filter-colapse-text.clear{
+    color: $red;
+  }
+
+  .filter-colapse-text.refine{
+    font-weight: 300;
+    margin-top: 6px;
+  }
+
+  .close-filter{
+    font-weight: 700;
+    @include border-radius(100%);
+    background-color: $yellow;
+    color: $white;
+    padding-left: 7px;
+    padding-right: 6px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    margin-bottom: 1px;
+    margin-top: 1px;
+    font-size: 11px;
+    float: left;
+  }
+
+  .filter-form-title{
+    float: left;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+  .filter-field-line{
+    width: 100%;
+    height: 1px;
+    background-color: $black;
+    margin-left: -16px;
+    margin-bottom: 20px;
+    margin-top: 15px;
+  }
+
+  .filter-row{
+    margin-right: 15px;
+  }
+
+  p.black-arrow{
+    text-align: right;
+    float: right;
+    width: 14px;
+    color: black;
+    font-weight: 300;
+    margin-right: 15px;
+        cursor: pointer;
+  }
+  .filter-item{
+    display: inline-block;
+  }
+
+  input[type="checkbox"]{
+    height: 14px;
+    width: 14px;
+    margin-top: 2px;
+  }
+  .button-filters{
+    background-color: $yellow;
+    font-weight: 700;
+    font-size: 18px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  #filtersForm{
+    display: none;
+    margin-top: 25px;
+  }
+
+  .text-field-form{
+    width: 96%;
+  }
+  .close-form{
+    font-weight: 700;
+    @include border-radius(100%);
+    background-color: $light-gray;
+    color: $dark-gray;
+    padding-left: 9px;
+    padding-right: 7px;
+    padding-bottom: 2px;
+    padding-top: 0px;
+    margin-right: 9px;
+    margin-bottom: 1px;
+    margin-top: -7px;
+    font-size: 20px;
+    float: right;
+    cursor: pointer;
+  }
+
+  .form-title{
+    font-weight: 700;
+  }
+
+  .filter-form-input{
+    padding-left: 25px;
+  }
+
+  .filter-form-input-checkbox{
+    margin-right: 6px;
   }
 }

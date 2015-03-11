@@ -19,9 +19,9 @@ module Api
       end
 
       def filter_parameter?(param, value)
-        filter_parameters = %w(capacity, quantity, latitude_from, latitude_to,
-                               longitude_from, longitude_to, space_types, venue_types,
-                               venue_amenities, venue_professions, weekday)
+        filter_parameters = %w(capacity quantity latitude_from latitude_to
+                               longitude_from longitude_to space_types venue_types
+                               venue_amenities venue_professions weekday date)
         param.in?(filter_parameters) && !value.strip.blank?
       end
 

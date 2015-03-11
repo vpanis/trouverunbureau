@@ -129,8 +129,16 @@ en:
   search:
     count: 'Desks found'
     filters: 'Filters'
+    workspace: 'Workspace'
+    neighbourhood: 'Neighbourhood'
+    profession: 'Profession'
+    capacity: 'Capacity'
+    check_in: 'Check In'
+    show_filters: 'Show listings'
+    clear_filters: 'Clear filters'
     limits: '%{from} - %{to} more than %{count} desks'
     no_results: "No spaces matched your search"
+    refine: 'Refine your search using the filters'
   venues:
     types:
       coworking_space: 'Coworking space'

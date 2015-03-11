@@ -54,6 +54,9 @@ class VenuesController < ModelController
 
   def search
     @current_user = current_user
+    @position_address = params[:address]
+    @professions = Venue::PROFESSIONS
+    @workspace = Space.s_types.to_a
   end
 
   def index
