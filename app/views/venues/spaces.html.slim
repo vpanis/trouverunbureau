@@ -4,14 +4,18 @@
 #venue.main-content.dashboard-form.clearfix.overflow-hidden
   = render 'shared/edit_venue_progress', venue: @venue, progress: 60, step: 5
   .details-section.col-md-7.col-md-offset-1.margin-top
-    .title.inline.text-center
+    .title.inline.text-center.margin-bottom
       = image_tag('default-avatar.png', width: '50px', height: '50px', id: 'user-avatar-img')
       h3.big Wolox Driving Innovation
       .small-separator
+      p.text-center  Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
     - @venue.spaces.each do |space|
-      .space.col-md-4
+      .space.pictures.col-md-4
         h2 = space.name
-        = link_to 'edit space', edit_space_path(space)
+        .img-wrapper style="background-image: url('https://sharedesk.net/api/httpdocs/media/workspaces/4e/02/23/4e0223a87610176ef0d24ef6d2dcde3a-medium.jpg');" class=('fav' if false )
+          .hover
+            = link_to 'edit space', edit_space_path(space), class: 'edit'
+            a.delete-photo href="#" delete
     .col-md-4.add-image-container
       .add-space
     .row.buttons
