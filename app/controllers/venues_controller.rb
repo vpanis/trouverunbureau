@@ -62,8 +62,13 @@ class VenuesController < ModelController
     return render nothing: true, status: 404 unless @venue.present?
     return render nothing: true, status: 403 unless current_represented == @venue.owner
 
-    create_collection_account_if_nil
-    @collection_account = @venue.collection_account
+    if @venue.collection_account.present?
+      @collection_account = @venue.collection_account
+    else
+      @collection_account = BraintreeCollectionAccount.new(force_submit: true,
+                                                           expecting_braintree_response: false,
+                                                           braintree_persisted: false)
+    end
   end
 
   def edit_collection_account
@@ -89,12 +94,11 @@ class VenuesController < ModelController
   end
 
   def create_collection_account_if_nil
-    unless @venue.collection_account.present?
-      @venue.collection_account =
-        BraintreeCollectionAccount.new(force_submit: true, expecting_braintree_response: false,
-                                       braintree_persisted: false)
-      @venue.save
-    end
+    return if @venue.collection_account.present?
+    @venue.collection_account =
+      BraintreeCollectionAccount.new(force_submit: true, expecting_braintree_response: false,
+                                     braintree_persisted: false)
+    @venue.save
   end
 
   def create_update_collection_account_in_braintree

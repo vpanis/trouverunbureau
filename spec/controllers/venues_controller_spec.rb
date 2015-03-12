@@ -352,19 +352,9 @@ describe VenuesController do
           expect(assigns(:venue)).to eq(@venue)
         end
 
-        context 'when collection account does not exist' do
-          it 'creates it' do
-            expect(@venue.collection_account).to be(nil)
-            get :collection_account_info, id: @venue.id
-            expect(response).to render_template :collection_account_info
-            @venue.reload
-            expect(@venue.collection_account).not_to be(nil)
-          end
-        end
-
         context 'when collection account exists' do
           it 'assigns it to @collection_account' do
-            @venue.collection_account = BraintreeCollectionAccount.new(force_submit: true)
+            @venue.collection_account = FactoryGirl.build(:braintree_collection_account)
             @venue.save
             get :collection_account_info, id: @venue.id
             expect(response).to render_template :collection_account_info
@@ -381,9 +371,74 @@ describe VenuesController do
         end # when the venue does not exist
       end
 
+      context 'when the user logged in is not the venue\'s owner' do
+        it 'fails' do
+          another_venue = FactoryGirl.create(:venue)
+          get :collection_account_info, id: another_venue.id
+          expect(response.status).to eq(403)
+        end
+      end
+    end
+  end
+
+  describe 'PATCH venues/:id/collection_account_info' do
+    context 'when user logged in' do
+      before(:each) do
+        @user_logged = FactoryGirl.create(:user)
+        @venue = FactoryGirl.create(:venue, owner: @user_logged)
+        sign_in @user_logged
+      end
+
+      after(:each) do
+        sign_out @user_logged
+      end
+
+      context 'when user logged in is the venue\'s owner' do
+        context 'when the venue has no collection account' do
+          it 'succeeds' do
+            patch :collection_account_info, id: @venue.id
+            expect(response.status).to eq(400)
+          end
+
+          it 'doesn\'t create the collection account if its invalid data' do
+            patch :collection_account_info, id: @venue.id
+            expect(@venue.collection_account.present?).to eq(true)
+          end
+        end
+
+        # context 'when collection account does not exist' do
+        #   it 'creates it' do
+        #     expect(@venue.collection_account).to be(nil)
+        #     patch :collection_account_info, id: @venue.id
+        #     expect(response).to render_template :collection_account_info
+        #     @venue.reload
+        #     expect(@venue.collection_account).not_to be(nil)
+        #   end
+        # end
+
+        # context 'when collection account exists' do
+        #   it 'assigns it to @collection_account' do
+        #     @venue.save
+        #     patch :collection_account_info, id: @venue.id
+        #     expect(response).to render_template :collection_account_info
+        #     expect(assigns(:collection_account)).to eq(@venue.collection_account)
+        #   end
+        # end
+
+        # context 'when the venue does not exist' do
+        #   before { patch :collection_account_info, id: -1 }
+
+        #   it 'fails' do
+        #     expect(response.status).to eq(404)
+        #   end
+        # end # when the venue does not exist
+      end
+
       context 'when user logged in is not the venue\'s owner' do
         it 'fails' do
           another_venue = FactoryGirl.create(:venue)
+          patch :collection_account_info, id: another_venue.id
+          expect(response.status).to eq(403)
         end
       end
     end

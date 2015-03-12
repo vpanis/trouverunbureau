@@ -31,7 +31,8 @@ class PaymentsController < ApplicationController
       @booking.save
     end
     BraintreeTokenGenerationWorker.perform_async(current_represented.id,
-      current_represented.class.to_s, @booking.payment.id)
+                                                 current_represented.class.to_s,
+                                                 @booking.payment.id)
   end
 
   def pay_if_its_possible
@@ -49,6 +50,7 @@ class PaymentsController < ApplicationController
 
   def payment_braintree
     BraintreePaymentWorker.perform_async(@booking.id, params[:payment_method_nonce],
-      current_user.id, current_represented.id, current_represented.class.to_s)
+                                         current_user.id, current_represented.id,
+                                         current_represented.class.to_s)
   end
 end

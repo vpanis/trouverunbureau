@@ -12,7 +12,7 @@ class BraintreeCollectionAccount < ActiveRecord::Base
 
   validate :legal_name_and_tax_id_presence, unless: :force_submit
 
-  after_create :generate_merchant_account_id
+  after_initialize :generate_merchant_account_id, unless: :merchant_account_id
 
   def braintree_merchant_account_json
     json = {}
