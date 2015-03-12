@@ -30,8 +30,8 @@ class PaymentsController < ApplicationController
       @booking.payment = BraintreePayment.new
       @booking.save
     end
-    Resque.enqueue(BraintreeTokenGenerationJob, current_represented.id,
-                   current_represented.class.to_s, @booking.payment.id)
+    BraintreeTokenGenerationWorker.perform_async(current_represented.id,
+      current_represented.class.to_s, @booking.payment.id)
   end
 
   def pay_if_its_possible
@@ -48,7 +48,7 @@ class PaymentsController < ApplicationController
   end
 
   def payment_braintree
-    Resque.enqueue(BraintreePaymentJob, @booking.id, params[:payment_method_nonce],
-                   current_user.id, current_represented.id, current_represented.class.to_s)
+    BraintreePaymentWorker.perform_async(@booking.id, params[:payment_method_nonce],
+      current_user.id, current_represented.id, current_represented.class.to_s)
   end
 end

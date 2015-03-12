@@ -5,14 +5,16 @@ run Rails.application
 
 
 # Sidekiq password
-# require 'sidekiq'
+require 'sidekiq'
 
-# require 'sidekiq/web'
+require 'sidekiq/web'
 
-# map '/sidekiq' do
-#   use Rack::Auth::Basic, "Protected Area" do |username, password|
-#     username == ENV['SIDEKIQ_USERNAME'] && password == ENV['SIDEKIQ_PASSWORD']
-#   end
+sidekiq = AppConfiguration.for(:sidekiq)
 
-#   run Sidekiq::Web
-# end
+map '/sidekiq' do
+  use Rack::Auth::Basic, "Protected Area" do |username, password|
+    username == sidekiq.user && password == sidekiq.password
+  end
+
+  run Sidekiq::Web
+end

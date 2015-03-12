@@ -29,7 +29,7 @@ coverage/*
 .security.yml
 .mail.yml
 .facebook.yml
-.resque.yml
+.sidekiq.yml
 .redis.yml
 .amazons3.yml
 .braintree.yml

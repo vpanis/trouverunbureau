@@ -100,7 +100,7 @@ class VenuesController < ModelController
   def create_update_collection_account_in_braintree
     data = @venue.collection_account.braintree_merchant_account_json
     unless data.empty?
-      Resque.enqueue(BraintreeSubMerchantAccountJob, @venue.collection_account.id, data)
+      BraintreeSubMerchantAccountWorker.perform_async(@venue.collection_account.id, data)
       @venue.collection_account.reload
       @venue.collection_account.update_attributes(expecting_braintree_response: true,
                                                   force_submit: true)

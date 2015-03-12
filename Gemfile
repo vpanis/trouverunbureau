@@ -74,7 +74,7 @@ gem 'polyamorous', '~>1.1.0'
 gem 'slim-rails', '~>2.1.5'
 
 # Sidekiq
-# gem 'sidekiq', '~>3.2.5'
+gem 'sidekiq', '~>3.2.5'
 gem 'sinatra', '>= 1.3.0', require: nil
 
 gem 'pundit', '~>0.3.0'
@@ -92,9 +92,6 @@ gem "mail_view", "~> 2.0.4"
 
 gem 'angular-translate-rails'
 gem 'braintree', '~>2.40.0'
-
-gem 'resque', '~>1.25.2'
-gem 'resque-scheduler', '~>4.0.0'
 
 group :development do
   gem 'better_errors', '~>2.0.0'

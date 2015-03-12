@@ -1,11 +1,6 @@
-require 'resque/server'
-
 Deskspotting::Application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks"}
-                                    # sessions: "users/sessions"}
-
-  mount Resque::Server, at: "/resque"
 
   if Rails.env.development?
     mount MailPreview => 'mail_view'
