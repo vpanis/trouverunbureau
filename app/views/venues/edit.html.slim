@@ -6,7 +6,7 @@
 #venue.main-content.dashboard-form.clearfix.overflow-hidden
   = render 'shared/edit_venue_progress', venue: @venue, progress: 0, step: 1
   .details-section.col-md-7.col-md-offset-1.margin-top
-    h4.gray-subtitle.text-center Wolox Driving Innovation
+    h4.gray-subtitle.text-center = @venue.name
     .user-avatar.text-center
       - if @venue.logo?
         = image_tag(@venue.logo.url, width: '95px', height: '95px', id: 'venue-logo-img')
@@ -45,9 +45,10 @@
         = f.select(:currency, @currency_options, {}, {class: 'form-control currency-select'})
         = f.hidden_field :latitude, value: '-34.6001'
         = f.hidden_field :longitude, value: '-58.4001'
+
       .row.buttons
         .col-xs-6
           a href='#'
             button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
         .col-xs-6
-          = f.submit t('commons.save'), class: 'rounded-btn yellow-fill width-100 uppercase', id: 'save-venue'
+          = f.submit t('commons.save'), name: 'venue[force_submit_upd]', class: 'rounded-btn yellow-fill width-100 uppercase', id: 'save-venue'

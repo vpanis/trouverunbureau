@@ -1,5 +1,6 @@
 class Venue < ActiveRecord::Base
   attr_accessor :force_submit
+  attr_accessor :force_submit_upd
 
   # Relations
   belongs_to :owner, polymorphic: true
@@ -35,8 +36,8 @@ class Venue < ActiveRecord::Base
 
   # Validations
   validates :town, :street, :postal_code, :country, :email, :latitude, :longitude,
-            :description, :currency, :v_type, :owner,
-            presence: true, unless: :force_submit
+            :currency, :v_type, :owner, presence: true, unless: :force_submit
+  validates :description, presence: true, unless: proc { |e| e.force_submit || e.force_submit_upd }
   validates :name, :country, presence: true
 
   validates :email, format: {
@@ -120,5 +121,4 @@ class Venue < ActiveRecord::Base
       errors.add(error_list, item + error_message)
     end
   end
-
 end

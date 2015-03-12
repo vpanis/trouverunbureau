@@ -8,6 +8,8 @@ on_load = ->
       $('.currency-select').select2({minimumResultsForSearch: -1})
 
     initialize_listeners = ->
+      $('#venue_postal_code, #venue_country_id, #venue_street, #venue_town').change ->
+        getLatLong()
       return
 
     initialize_popovers = ->
@@ -24,6 +26,29 @@ on_load = ->
       }
       return
       #$('#emergency-popover').popover(options)
+
+    getLatLong = ->
+      country = $('#s2id_venue_country_id  .select2-chosen').html()
+      street = $('#venue_street').val()
+      town = $('#venue_town').val()
+      address = street + ' ' + town + ' ' + country
+      if country == "" || street == "" || town == ""
+        return
+      getLatLongFromAddress(address.replace(RegExp(' ', 'g'), '+'))
+      return
+
+    getLatLongFromAddress = (address) ->
+      geocoder = new google.maps.Geocoder();
+      geocoder.geocode { 'address': address }, (results, status) ->
+        if status == google.maps.GeocoderStatus.OK
+          lat = results[0].geometry.location.lat()
+          lng = results[0].geometry.location.lng()
+          $('#venue_latitude').val(lat)
+          $('#venue_longitude').val(lng)
+        else
+          console.log('Geocode was not successful for the following reason: ' + status)
+        return
+      return
 
     initialize_selects()
     initialize_listeners()

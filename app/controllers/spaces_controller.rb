@@ -1,12 +1,13 @@
 class SpacesController < ModelController
   inherit_resources
   include RepresentedHelper
+  include SelectOptionsHelper
   before_action :authenticate_user!
 
   def new
     @venue = Venue.find_by(id: params[:id])
     @space = Space.new(venue: @venue)
-    @space_types_options = Space.s_types.map { |t| [t("spaces.types.#{t.first}"), t.first] }
+    @space_types_options = space_types_options
   end
 
   def create
@@ -15,11 +16,9 @@ class SpacesController < ModelController
   end
 
   def edit
-    @space = Space.find_by(id: params[:id])
-    return render nothing: true, status: 404 unless @space.present?
-    return render nothing: true, status: 403 unless SpaceContext.new(@space, current_represented)
-                                                                .owner?
-    @space_types_options = Space.s_types.map { |t| [t("spaces.types.#{t.first}"), t.first] }
+    @space = Space.find(params[:id])
+    return render_forbidden unless SpaceContext.new(@space, current_represented).owner?
+    @space_types_options = space_types_options
   end
 
   def update

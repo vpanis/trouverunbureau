@@ -1,26 +1,25 @@
 class VenuesController < ModelController
   inherit_resources
   include RepresentedHelper
+  include SelectOptionsHelper
   before_action :authenticate_user!, except: [:show]
 
   def edit
     @venue = Venue.find(params[:id])
     return unless can_edit?
-    @countries_options = Country.all.map { |c| [c.name, c.id] }
-    @v_types_options = Venue.v_types.map { |t| [t("venues.types.#{t.first}"), t.first] }
+    @countries_options = countries_options
+    @v_types_options = venue_types_options
     @currency_options = currency_options
   end
 
   def new
     @venue = Venue.new
-    @countries_options = Country.all.map { |c| [c.name, c.id] }
+    @countries_options = countries_options
   end
 
-  # TODO: almost all methods here have been harcoded. implement them!!!!
   def create
     venue = Venue.create(new_venue_params)
-    venue.update_attributes(owner: current_represented, email: current_represented.email)
-    venue.save!
+    venue.update_attributes!(owner: current_represented, email: current_represented.email)
     redirect_to edit_venue_path(venue)
   end
 
@@ -101,30 +100,22 @@ class VenuesController < ModelController
   end
 
   def new_venue_params
-    params.require(:venue).permit(:name, :country_id, :force_submit, :logo)
+    params.require(:venue).permit(:name, :country_id, :logo, :force_submit)
   end
 
   def edit_venue_params
-    params.require(:venue).permit(:name, :street, :country_id, :town, :postal_code, :email,
-                                  :phone, :v_type, :currency, :latitude, :longitude)
+    params.require(:venue).permit(:name, :street, :country_id, :town, :postal_code, :email, :phone,
+                                  :v_type, :currency, :latitude, :longitude, :logo,
+                                  :force_submit_upd)
   end
 
   def load_day_hours
     day_hours = []
-    @venue.day_hours.each do |dh|
-      day_hours[dh.weekday] = dh
-    end
+    @venue.day_hours.each { |dh| day_hours[dh.weekday] = dh }
     (0..6).each do |index|
       day_hours[index] = VenueHour.new(weekday: index) unless day_hours[index].present?
     end
     day_hours
-  end
-
-  def currency_options
-    # TODO: define currency list
-    [[t('currency.usd.long_name'), 'usd'], [t('currency.gbp.long_name'), 'gbp'],
-     [t('currency.euro.long_name'), 'eur'], [t('currency.cad.long_name'), 'cad'],
-     [t('currency.aud.long_name'), 'aud']]
   end
 
 end

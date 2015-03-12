@@ -19,7 +19,7 @@ on_load = ->
       $(selector).attr('src', remote_url)
 
     initialize_selects = ->
-      $('.country-select').select2({minimumResultsForSearch: -1})
+      $('.country-select').select2()
 
     initialize_listeners = ->
       # handle avatar

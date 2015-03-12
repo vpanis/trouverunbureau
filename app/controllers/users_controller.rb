@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   inherit_resources
   include RepresentedHelper
+  include SelectOptionsHelper
 
   def show
     @user = User.find(params[:id])
@@ -11,11 +12,9 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     return render_forbidden unless @user.eql?(current_user)
-    @gender_options = User::GENDERS.map { |g| [t("users.genders.#{g}"), g.to_s] }
-    @profession_options = Venue::PROFESSIONS.map { |p| [t("venues.professions.#{p}"), p.to_s] }
-    # TODO: define languages list
-    @language_options = [[t('languages.es'), 'es'], [t('languages.en'), 'en'],
-                         [t('languages.de'), 'de'], [t('languages.it'), 'it']]
+    @gender_options = gender_options
+    @profession_options = profession_options
+    @language_options = language_options
   end
 
   def update
