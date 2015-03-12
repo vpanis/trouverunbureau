@@ -1,6 +1,8 @@
 = render 'shared/menu_bar', user: current_user
 = render 'shared/profile_menu_bar', user: current_user, selected: 'venue'
 
+= render 'shared/image_modal', modal_id: 'logo-modal', title: t('venues.edit.change_logo'), image_link_id: 'logo-link', save_button_id: 'save-logo'
+
 .main-content.dashboard-form
   #venue.overflow-hidden
     .row
@@ -11,88 +13,44 @@
           - if @venue.logo?
             = image_tag(@venue.logo.url, width: '95px', height: '95px', id: 'venue-logo-img')
           - else
-            = image_tag('default-logo.png', width: '95px', height: '95px', id: 'venue-logo-img')
-          a#edit-avatar.add.block.aqua href="#" data-toggle="modal" data-target="#avatar-modal" = t('Change venue logo')
+            = image_tag('venue-default.png', width: '95px', height: '95px', id: 'venue-logo-img')
+          a#edit-logo.add.block.aqua href="#" data-toggle="modal" data-target="#logo-modal" = t('venues.edit.add_venue_logo')
 
         = form_for(@venue) do |f|
-          .form-group#venue-name-input.col-md-6
-            label #{t('venue.name')}
-            = f.text_field :name, class: 'form-control'
-          .form-group#venue-street-input.col-md-6
-            label #{t('venue.street')}
-            = f.text_field :street, class: 'form-control'
-          .form-group#venue-country-input.col-md-6
-            label #{t('venue.country')}
-            = f.text_field :country, class: 'form-control'
-          .form-group#venue-town-input.col-md-6
-            label #{t('venue.town')}
-            = f.text_field :town, class: 'form-control'
-          .form-group#venue-town-input.col-md-6
-            label Province / State
-            = f.text_field :town, class: 'form-control'
-          .form-group#venue-postal_code-input.col-md-6
-            label #{t('venue.postal_code')}
-            = f.text_field :postal_code, class: 'form-control'
-          .form-group#venue-email-input.col-md-6
-            label #{t('venue.email')}
-            = f.text_field :email, class: 'form-control'
-          .form-group#venue-phone-input.col-md-6
-            label #{t('venue.phone')}
-            = f.text_field :phone, class: 'form-control'
-          / .form-group#venue-website-input.col-md-6
-          /   label #{t('venue.website')}
-          /   = f.text_field :website, class: 'form-control'
-          / .form-group#venue-latitude-input.col-md-6
-          /   label #{t('venue.latitude')}
-          /   = f.text_field :latitude, class: 'form-control'
-          / .form-group#venue-longitude-input.col-md-6
-          /   label #{t('venue.longitude')}
-          /   = f.text_field :longitude, class: 'form-control'
-
-          .form-group#venue-v_type-input.col-md-6
-            label #{t('venue.v_type')}
-            = f.text_field :v_type
-          .form-group#venue-space-input
-            label #{t('venue.space')}
-            = f.text_field :space
-          .form-group#venue-space_unit-input
-            label #{t('venue.space_unit')}
-            = f.text_field :space_unit
-          .form-group#venue-floors-input
-            label #{t('venue.floors')}
-            = f.text_field :floors
-          .form-group#venue-rooms-input
-            label #{t('venue.rooms')}
-            = f.text_field :rooms
-          .form-group#venue-desks-input
-            label #{t('venue.desks')}
-            = f.text_field :desks
-          .form-group#venue-vat_tax_rate-input
-            label #{t('venue.vat_tax_rate')}
-            = f.text_field :vat_tax_rate
-          .form-group#venue-amenities-input
-            label #{t('venue.amenities')}
-            = f.text_field :amenities
-          .form-group#venue-rating-input
-            label #{t('venue.rating')}
-            = f.text_field :rating
-          .form-group#venue-professions-input
-            label #{t('venue.professions')}
-            = f.text_field :professions
-          .form-group#venue-country-input
-            label #{t('venue.country')}
-            = f.text_field :country
-
-          = f.fields_for :day_hours, @modify_day_hours do |day_hours_fields|
-            p = "DAY:"
-            = day_hours_fields.text_field :weekday
-            p = 'from:'
-            = day_hours_fields.text_field :from
-            p = 'to:'
-            = day_hours_fields.text_field :to
-            p = 'Delete:'
-            = day_hours_fields.check_box :_destroy
-
-          .full-width-submit-button
-            = f.submit 'Save', class: 'submit-button', id: 'save-venue'
+          = f.file_field :logo, class: 'hidden'
+          .form-group.col-md-6
+            label = t('venues.edit.name')
+            = f.text_field :name, placeholder: t('venues.edit.name'), class: 'form-control'
+          .form-group.col-md-6
+            label = t('venues.edit.street')
+            = f.text_field :street, placeholder: t('venues.edit.street'), class: 'form-control'
+          .form-group.col-md-6
+            label = t('venues.edit.country')
+            = f.select(:country_id, @countries_options, {}, {class: 'form-control country-select'})
+          .form-group.col-md-6
+            label = t('venues.edit.town')
+            = f.text_field :town, placeholder: t('venues.edit.town'), class: 'form-control'
+          .form-group.col-md-6
+            label = t('venues.edit.postal_code')
+            = f.text_field :postal_code, placeholder: t('venues.edit.postal_code'), class: 'form-control'
+          .form-group.col-md-6
+            label = t('venues.edit.email')
+            = f.text_field :email, placeholder: t('venues.edit.email'), class: 'form-control'
+          .form-group.col-md-6
+            label = t('venues.edit.phone')
+            = f.text_field :phone, placeholder: t('venues.edit.phone'), class: 'form-control'
+          .form-group.col-md-6
+            label = t('venues.edit.v_type')
+            = f.select(:v_type, @v_types_options, {}, {class: 'form-control venue-types-select'})
+          .form-group.col-md-6
+            label = t('venues.edit.currency')
+            = f.select(:currency, @currency_options, {}, {class: 'form-control currency-select'})
+            = f.hidden_field :latitude, value: '-34.6001'
+            = f.hidden_field :longitude, value: '-58.4001'
+          .row.buttons
+            .col-xs-6
+              a href='#'
+                button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
+            .col-xs-6
+              = f.submit t('commons.save'), class: 'rounded-btn yellow-fill width-100 uppercase', id: 'save-venue'
 

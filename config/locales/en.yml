@@ -25,6 +25,22 @@ en:
     en: 'English'
     it: 'Italiano'
     de: 'Deutsch'
+  currency:
+    usd:
+      short_name: 'usd'
+      long_name: 'American Dollars'
+    gbp:
+      short_name: 'gbp'
+      long_name: 'Pound Sterling'
+    euro:
+      short_name: 'eur'
+      long_name: 'Euro'
+    cad:
+      short_name: 'cad'
+      long_name: 'Canadian Dollars'
+    aud:
+      short_name: 'aud'
+      long_name: 'Australian Dollars'
   commons:
     save: 'Save'
     cancel: 'Cancel'
@@ -127,6 +143,18 @@ en:
     limits: '%{from} - %{to} more than %{count} desks'
     no_results: "No spaces matched your search"
   venues:
+    types:
+      coworking_space: 'Coworking space'
+      startup_office: 'Startup office'
+      hotel: 'Hotel'
+      corporate_office: 'Corportate office'
+      business_center: 'Business Center'
+      design_studio: 'Design Studio'
+      loft: 'Loft'
+      apartment: 'Apartment'
+      house: 'House'
+      cafe: 'Cafe'
+      restaurant: 'Restaurant'
     amenities:
       whiteboards:
         name: whiteboards
@@ -229,7 +257,15 @@ en:
       start_by: 'Start by telling us about your venue...'
       add_venue_logo: 'Add venue logo'
       change_logo: 'Change logo'
-      name: 'Venue Name'
+      name: 'Venue name'
+      street: 'Street address'
+      country: 'Country'
+      email: 'General Email'
+      town: 'City / Neighborhood'
+      postal_code: 'Zip / Postal code'
+      phone: 'Phone number'
+      v_type: 'Venue type'
+      currency: 'Currency'
   wishlist:
     no_favourites: "You don't have any favorite spaces"
     day: 'day'

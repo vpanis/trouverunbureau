@@ -6,7 +6,9 @@ class VenuesController < ModelController
   def edit
     @venue = Venue.find(params[:id])
     return unless can_edit?
-    @modify_day_hours = load_day_hours
+    @countries_options = Country.all.map { |c| [c.name, c.id] }
+    @v_types_options = Venue.v_types.map { |t| [t("venues.types.#{t.first}"), t.first] }
+    @currency_options = currency_options
   end
 
   def new
@@ -25,13 +27,15 @@ class VenuesController < ModelController
   def update
     @venue = Venue.find(params[:id])
     return unless can_edit?
-    return render nothing: true, status: 412 unless VenueContext.new(@venue, current_represented)
-                                                                .update_venue(object_params)
+    # return render nothing: true, status: 412 unless VenueContext.new(@venue, current_represented)
+    #                                                           .update_venue(object_params)
+    @venue.update_attributes!(edit_venue_params)
     redirect_to action: 'details'
   end
 
   def details
     @venue = Venue.find(params[:id])
+    @modify_day_hours = load_day_hours
     return unless can_edit?
   end
 
@@ -50,8 +54,7 @@ class VenuesController < ModelController
   def save_amenities
     @venue = Venue.find(params[:id])
     return unless can_edit?
-    @venue.amenities = amenities_params[:amenities].reject!(&:empty?)
-    @venue.save!
+    @venue.update_attributes!(amenities_params)
     redirect_to photos_venue_path(@venue)
   end
 
@@ -86,7 +89,6 @@ class VenuesController < ModelController
   end
 
   def object_params
-    # TODO: country
     params.require(:venue).permit(:town, :street, :postal_code, :phone, :email, :website,
                                   :latitude, :longitude, :name, :description, :currency, :v_type,
                                   :space, :space_unit, :floors, :rooms, :desks, :vat_tax_rate,
@@ -95,11 +97,16 @@ class VenuesController < ModelController
   end
 
   def amenities_params
-    params.require(:venue).permit(amenities: [])
+    params.require(:venue).permit(amenities: [])[:amenities].reject!(&:empty?)
   end
 
   def new_venue_params
     params.require(:venue).permit(:name, :country_id, :force_submit, :logo)
+  end
+
+  def edit_venue_params
+    params.require(:venue).permit(:name, :street, :country_id, :town, :postal_code, :email,
+                                  :phone, :v_type, :currency, :latitude, :longitude)
   end
 
   def load_day_hours
@@ -111,6 +118,13 @@ class VenuesController < ModelController
       day_hours[index] = VenueHour.new(weekday: index) unless day_hours[index].present?
     end
     day_hours
+  end
+
+  def currency_options
+    # TODO: define currency list
+    [[t('currency.usd.long_name'), 'usd'], [t('currency.gbp.long_name'), 'gbp'],
+     [t('currency.euro.long_name'), 'eur'], [t('currency.cad.long_name'), 'cad'],
+     [t('currency.aud.long_name'), 'aud']]
   end
 
 end
