@@ -1,23 +1,22 @@
 = render 'shared/menu_bar', user: current_user
+= render 'shared/profile_menu_bar', user: current_user, selected: 'venues'
 
-.main-content.dashboard-form
-  #venue.overflow-hidden
-    .row
-      = render 'shared/edit_venue_progress', venue: @venue, progress: 60, step: 5
-      .details-section.col-md-7.col-md-offset-1.margin-top
-        .title.inline.text-center
-          = image_tag('default-avatar.png', width: '50px', height: '50px', id: 'user-avatar-img')
-          h3.big Wolox Driving Innovation
-          .small-separator
-        - @venue.spaces.each do |space|
-          .space.col-md-4
-            h2 = space.name
-            = link_to 'edit space', edit_space_path(space)
-        .col-md-4.add-image-container
-          .add-space
-        .row.buttons
-            .col-xs-6
-              a href='#'
-                button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
-            .col-xs-6
-              button type='button' class='rounded-btn yellow-fill width-100 uppercase' = t("save")
+#venue.main-content.dashboard-form.clearfix.overflow-hidden
+  = render 'shared/edit_venue_progress', venue: @venue, progress: 60, step: 5
+  .details-section.col-md-7.col-md-offset-1.margin-top
+    .title.inline.text-center
+      = image_tag('default-avatar.png', width: '50px', height: '50px', id: 'user-avatar-img')
+      h3.big Wolox Driving Innovation
+      .small-separator
+    - @venue.spaces.each do |space|
+      .space.col-md-4
+        h2 = space.name
+        = link_to 'edit space', edit_space_path(space)
+    .col-md-4.add-image-container
+      .add-space
+    .row.buttons
+        .col-xs-6
+          a href='#'
+            button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
+        .col-xs-6
+          button type='button' class='rounded-btn yellow-fill width-100 uppercase' = t("save")

@@ -1,71 +1,69 @@
 = render 'shared/menu_bar', user: current_user
+= render 'shared/profile_menu_bar', user: current_user, selected: 'venues'
 
-.main-content.dashboard-form
-  #venue.overflow-hidden
-    .row
-      = render 'shared/edit_venue_progress', venue: @venue, progress: 20, step: 2
-      .details-section.col-md-7.col-md-offset-1.margin-top
-        .title.inline.text-center
-          = image_tag('default-avatar.png', width: '50px', height: '50px', id: 'user-avatar-img')
-          h3.big Wolox Driving Innovation
-          .small-separator
-        = form_for @venue, url: {action: "details"} do |f|
-          .form-group#venue-description-input.col-md-12
-            label #{t('venue.description')}
-            = f.text_area :description, class: 'form-control'
-          / professions
-          .subtitle
-            .col-md-12
-              .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
-              p Preferred Professions
-              span.add.aqua Add
-              label
-                input type="checkbox" /
-                | All professions are welcome
-              hr
-          / hours
-          .subtitle
-            .col-md-12
-              p Opening Hours
-              span.aqua Custom Times?
-              hr
-          / = f.fields_for :day_hours, @modify_day_hours do |day_hours_fields|
-          /   .form-group#venue-country-input.col-md-6
-          /     label = "DAY:"
-          /     = day_hours_fields.text_field :weekday, class: 'form-control'
-          /   .form-group#venue-country-input.col-md-6
-          /     label = 'from:'
-          /     = day_hours_fields.text_field :from, class: 'form-control'
-          /   .form-group#venue-country-input.col-md-6
-          /     label = 'to:'
-          /     = day_hours_fields.text_field :to, class: 'form-control'
-          /   .form-group#venue-country-input.col-md-6
-          /     label = 'Delete:'
-          /     = day_hours_fields.check_box :_destroy, class: 'form-control'
-          .form-group#venue-description-input.col-md-4
-            label Monday - Friday
-          .form-group#venue-description-input.col-md-4
-            label Opening Time
-            = f.text_field :description, class: 'form-control'
-          .form-group#venue-description-input.col-md-4
-            label Closing Time
-            = f.text_field :description, class: 'form-control'
-          .col-md-12
-            label
-              input type="checkbox" /
-              | Saturday Open
-          .col-md-12
-            label
-              input type="checkbox" /
-              | Sunday Open
-          .form-group#venue-description-input.col-md-12
-            label Office Rules
-            = f.text_area :description, class: 'form-control'
+#venue.main-content.dashboard-form.clearfix.overflow-hidden
+  = render 'shared/edit_venue_progress', venue: @venue, progress: 20, step: 2
+  .details-section.col-md-7.col-md-offset-1.margin-top
+    .title.inline.text-center
+      = image_tag('default-avatar.png', width: '50px', height: '50px', id: 'user-avatar-img')
+      h3.big Wolox Driving Innovation
+      .small-separator
+    = form_for @venue, url: {action: "details"} do |f|
+      .form-group#venue-description-input.col-md-12
+        label #{t('venue.description')}
+        = f.text_area :description, class: 'form-control'
+      / professions
+      .subtitle
+        .col-md-12
+          .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
+          p Preferred Professions
+          span.add.aqua Add
+          label
+            input type="checkbox" /
+            | All professions are welcome
+          hr
+      / hours
+      .subtitle
+        .col-md-12
+          p Opening Hours
+          span.aqua Custom Times?
+          hr
+      / = f.fields_for :day_hours, @modify_day_hours do |day_hours_fields|
+      /   .form-group#venue-country-input.col-md-6
+      /     label = "DAY:"
+      /     = day_hours_fields.text_field :weekday, class: 'form-control'
+      /   .form-group#venue-country-input.col-md-6
+      /     label = 'from:'
+      /     = day_hours_fields.text_field :from, class: 'form-control'
+      /   .form-group#venue-country-input.col-md-6
+      /     label = 'to:'
+      /     = day_hours_fields.text_field :to, class: 'form-control'
+      /   .form-group#venue-country-input.col-md-6
+      /     label = 'Delete:'
+      /     = day_hours_fields.check_box :_destroy, class: 'form-control'
+      .form-group#venue-description-input.col-md-4
+        label Monday - Friday
+      .form-group#venue-description-input.col-md-4
+        label Opening Time
+        = f.text_field :description, class: 'form-control'
+      .form-group#venue-description-input.col-md-4
+        label Closing Time
+        = f.text_field :description, class: 'form-control'
+      .col-md-12
+        label
+          input type="checkbox" /
+          | Saturday Open
+      .col-md-12
+        label
+          input type="checkbox" /
+          | Sunday Open
+      .form-group#venue-description-input.col-md-12
+        label Office Rules
+        = f.text_area :description, class: 'form-control'
 
-
-          .row.buttons
-            .col-xs-6
-              a href='#'
-                button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
-            .col-xs-6
-              = f.submit 'Save', class: 'rounded-btn yellow-fill width-100 uppercase'
+      .row.buttons
+        .col-xs-6
+          a href='#'
+            button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
+        .col-xs-6
+          = f.submit 'Save', class: 'rounded-btn yellow-fill width-100 uppercase'

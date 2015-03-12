@@ -1,32 +1,31 @@
-.col-md-3
-  .verification-steps.height-100
-    .status
-      .status-text
-        | status:
-        span incomplete
-      .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
+.verification-steps.height-100
+  .status
+    .status-text
+      | status:
+      span incomplete
+    .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
 
-      .progress-container
-        .progress [style = "width: #{progress}%"]
-      .progress-counter = "#{progress}%"
+    .progress-container
+      .progress [style = "width: #{progress}%"]
+    .progress-counter = "#{progress}%"
 
-    ul.verification-list
-      a href=edit_venue_path(venue)
-        li.venue class=('done' if step > 1) class=('selected' if step == 1)
-          p Venue
-      a href=details_venue_path(venue)
-        li.details class=('done' if step > 2) class=('selected' if step == 2)
-          p Details
-      a href=amenities_venue_path(venue)
-        li.amenities class=('done' if step > 3) class=('selected' if step == 3)
-          p Amenities
-      a href=photos_venue_path(venue)
-        li.photos class=('done' if step > 4) class=('selected' if step == 4)
-          p Photos
-      a href=spaces_venue_path(venue)
-        li.spaces class=('done' if step > 5) class=('selected' if step == 5)
-          p Spaces
-    .publish
-      a.rounded-btn.grey-fill.width-100 href="#" publish
-    .delete
-      a href="#" Delete Venue
+  ul.verification-list
+    a href=edit_venue_path(venue)
+      li.venue class=('done' if step > 1) class=('selected' if step == 1)
+        p Venue
+    a href=details_venue_path(venue)
+      li.details class=('done' if step > 2) class=('selected' if step == 2)
+        p Details
+    a href=amenities_venue_path(venue)
+      li.amenities class=('done' if step > 3) class=('selected' if step == 3)
+        p Amenities
+    a href=photos_venue_path(venue)
+      li.photos class=('done' if step > 4) class=('selected' if step == 4)
+        p Photos
+    a href=spaces_venue_path(venue)
+      li.spaces class=('done' if step > 5) class=('selected' if step == 5)
+        p Spaces
+  .publish
+    a.rounded-btn.grey-fill.width-100 href="#" publish
+  .delete
+    a href="#" Delete Venue

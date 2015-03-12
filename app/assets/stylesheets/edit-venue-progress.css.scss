@@ -4,6 +4,8 @@
 .verification-steps {
   background-color: $dark-white;
   border-right: 1px solid $gray;
+  width: 25%;
+  float: left;
   .status {
     border-bottom: 1px solid $gray;
     .status-text {
