@@ -60,23 +60,22 @@ class VenuesController < ModelController
   def collection_account_info
     @venue = Venue.find_by(id: params[:id])
     return render nothing: true, status: 404 unless @venue.present?
+    return render nothing: true, status: 403 unless current_represented == @venue.owner
 
-    unless @venue.collection_account.present?
-      @venue.collection_account =
-        BraintreeCollectionAccount.new(force_submit: true, expecting_braintree_response: false,
-                                       braintree_persisted: false)
-      @venue.save
-    end
+    create_collection_account_if_nil
     @collection_account = @venue.collection_account
   end
 
   def edit_collection_account
     @venue = Venue.includes(:collection_account).find_by(id: params[:id])
-    return render nothing: true, status: 404 unless @venue.present? &&
-      @venue.collection_account.present?
+    return render nothing: true, status: 404 unless @venue.present?
+    return render nothing: true, status: 403 unless current_represented == @venue.owner
+
+    # it should pass first through collection_account_info, but just in case (and testing purpose)
+    create_collection_account_if_nil
 
     @venue.collection_account.assign_attributes(braintree_collection_params)
-    return create_update_collection_account if @venue.collection_account.valid?
+    return create_update_collection_account_in_braintree if @venue.collection_account.valid?
 
     render json: @venue.collection_account.errors, status: 400
   end
@@ -89,7 +88,16 @@ class VenuesController < ModelController
     false
   end
 
-  def create_update_collection_account
+  def create_collection_account_if_nil
+    unless @venue.collection_account.present?
+      @venue.collection_account =
+        BraintreeCollectionAccount.new(force_submit: true, expecting_braintree_response: false,
+                                       braintree_persisted: false)
+      @venue.save
+    end
+  end
+
+  def create_update_collection_account_in_braintree
     data = @venue.collection_account.braintree_merchant_account_json
     unless data.empty?
       Resque.enqueue(BraintreeSubMerchantAccountJob, @venue.collection_account.id, data)

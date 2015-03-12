@@ -328,4 +328,64 @@ describe VenuesController do
       end
     end
   end
+
+  describe 'GET venues/:id/collection_info' do
+    context 'when user logged in' do
+      before(:each) do
+        @user_logged = FactoryGirl.create(:user)
+        @venue = FactoryGirl.create(:venue, owner: @user_logged)
+        sign_in @user_logged
+      end
+
+      after(:each) do
+        sign_out @user_logged
+      end
+
+      context 'when user logged in is the venue\'s owner' do
+        it 'succeeds' do
+          get :collection_account_info, id: @venue.id
+          expect(response.status).to eq(200)
+        end
+
+        it 'assigns the requested venue to @venue' do
+          get :collection_account_info, id: @venue.id
+          expect(assigns(:venue)).to eq(@venue)
+        end
+
+        context 'when collection account does not exist' do
+          it 'creates it' do
+            expect(@venue.collection_account).to be(nil)
+            get :collection_account_info, id: @venue.id
+            expect(response).to render_template :collection_account_info
+            @venue.reload
+            expect(@venue.collection_account).not_to be(nil)
+          end
+        end
+
+        context 'when collection account exists' do
+          it 'assigns it to @collection_account' do
+            @venue.collection_account = BraintreeCollectionAccount.new(force_submit: true)
+            @venue.save
+            get :collection_account_info, id: @venue.id
+            expect(response).to render_template :collection_account_info
+            expect(assigns(:collection_account)).to eq(@venue.collection_account)
+          end
+        end
+
+        context 'when the venue does not exist' do
+          before { get :collection_account_info, id: -1 }
+
+          it 'fails' do
+            expect(response.status).to eq(404)
+          end
+        end # when the venue does not exist
+      end
+
+      context 'when user logged in is not the venue\'s owner' do
+        it 'fails' do
+          another_venue = FactoryGirl.create(:venue)
+        end
+      end
+    end
+  end
 end

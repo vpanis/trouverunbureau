@@ -84,7 +84,7 @@ case Rails.env
     VenueHour.create!(venue: venue1, weekday: 2, from: 800, to: 2000)
     VenueHour.create!(venue: venue1, weekday: 3, from: 800, to: 2000)
     VenueHour.create!(venue: venue1, weekday: 4, from: 800, to: 2000)
-    venue1.collection_account = BraintreeCollectionAccount.new(merchant_account_id: "0000000000000000-1", active: true, status: "active")
+    venue1.collection_account = BraintreeCollectionAccount.new(merchant_account_id: "0000000000000000-1", force_submit: true, braintree_persisted: true, active: true, status: "active")
     venue1.status = Venue.statuses[:active]
     venue1.save!
 
@@ -98,7 +98,7 @@ case Rails.env
     VenueHour.create!(venue: venue2, weekday: 3, from: 700, to: 2100)
     VenueHour.create!(venue: venue2, weekday: 4, from: 700, to: 2100)
     VenueHour.create!(venue: venue2, weekday: 5, from: 1000, to: 1800)
-    venue2.collection_account = BraintreeCollectionAccount.new(merchant_account_id: "0000000000000000-2", active: true, status: "active")
+    venue2.collection_account = BraintreeCollectionAccount.new(merchant_account_id: "0000000000000000-2", force_submit: true, braintree_persisted: true, active: true, status: "active")
     venue2.status = Venue.statuses[:active]
     venue2.save!
 
@@ -111,7 +111,7 @@ case Rails.env
     VenueHour.create!(venue: venue3, weekday: 1, from: 800, to: 2200)
     VenueHour.create!(venue: venue3, weekday: 3, from: 800, to: 2200)
     VenueHour.create!(venue: venue3, weekday: 4, from: 800, to: 2200)
-    venue3.collection_account = BraintreeCollectionAccount.new(merchant_account_id: "0000000000000000-3", active: true, status: "active")
+    venue3.collection_account = BraintreeCollectionAccount.new(merchant_account_id: "0000000000000000-3", force_submit: true, braintree_persisted: true, active: true, status: "active")
     venue3.status = Venue.statuses[:active]
     venue3.save!
 
@@ -127,7 +127,7 @@ case Rails.env
     VenueHour.create!(venue: venue4, weekday: 4, from: 800, to: 2000)
     VenueHour.create!(venue: venue4, weekday: 5, from: 800, to: 2000)
     VenueHour.create!(venue: venue4, weekday: 6, from: 800, to: 2000)
-    venue4.collection_account = BraintreeCollectionAccount.new(merchant_account_id: "0000000000000000-4", active: true, status: "active")
+    venue4.collection_account = BraintreeCollectionAccount.new(merchant_account_id: "0000000000000000-4", force_submit: true, braintree_persisted: true, active: true, status: "active")
     venue4.status = Venue.statuses[:active]
     venue4.save!
 
@@ -139,7 +139,7 @@ case Rails.env
     VenueHour.create!(venue: venue5, weekday: 2, from: 800, to: 2100)
     VenueHour.create!(venue: venue5, weekday: 3, from: 800, to: 2000)
     VenueHour.create!(venue: venue5, weekday: 4, from: 800, to: 1900)
-    venue5.collection_account = BraintreeCollectionAccount.new(merchant_account_id: "0000000000000000-5", active: true, status: "active")
+    venue5.collection_account = BraintreeCollectionAccount.new(merchant_account_id: "0000000000000000-5", force_submit: true, braintree_persisted: true, active: true, status: "active")
     venue5.status = Venue.statuses[:active]
     venue5.save!
 
@@ -155,7 +155,7 @@ case Rails.env
     VenueHour.create!(venue: venue6, weekday: 3, from: 1400, to: 2300)
     VenueHour.create!(venue: venue6, weekday: 4, from: 800, to: 1200)
     VenueHour.create!(venue: venue6, weekday: 4, from: 1400, to: 2300)
-    venue6.collection_account = BraintreeCollectionAccount.new(merchant_account_id: "0000000000000000-6", active: true, status: "active")
+    venue6.collection_account = BraintreeCollectionAccount.new(merchant_account_id: "0000000000000000-6", force_submit: true, braintree_persisted: true, active: true, status: "active")
     venue6.status = Venue.statuses[:active]
     venue6.save!
 
@@ -171,7 +171,7 @@ case Rails.env
     VenueHour.create!(venue: venue7, weekday: 3, from: 1400, to: 2300)
     VenueHour.create!(venue: venue7, weekday: 4, from: 800, to: 1200)
     VenueHour.create!(venue: venue7, weekday: 4, from: 1400, to: 2300)
-    venue7.collection_account = BraintreeCollectionAccount.new(merchant_account_id: "0000000000000000-7", active: true, status: "active")
+    venue7.collection_account = BraintreeCollectionAccount.new(merchant_account_id: "0000000000000000-7", force_submit: true, braintree_persisted: true, active: true, status: "active")
     venue7.status = Venue.statuses[:active]
     venue7.save!
 
@@ -183,7 +183,7 @@ case Rails.env
     VenueHour.create!(venue: venue8, weekday: 2, from: 800, to: 2100)
     VenueHour.create!(venue: venue8, weekday: 3, from: 800, to: 2000)
     VenueHour.create!(venue: venue8, weekday: 4, from: 800, to: 1900)
-    venue8.collection_account = BraintreeCollectionAccount.new(merchant_account_id: "0000000000000000-8", active: true, status: "active")
+    venue8.collection_account = BraintreeCollectionAccount.new(merchant_account_id: "0000000000000000-8", force_submit: true, braintree_persisted: true, active: true, status: "active")
     venue8.status = Venue.statuses[:active]
     venue8.save!
 
@@ -195,7 +195,7 @@ case Rails.env
     VenueHour.create!(venue: venue9, weekday: 2, from: 800, to: 2100)
     VenueHour.create!(venue: venue9, weekday: 3, from: 800, to: 2000)
     VenueHour.create!(venue: venue9, weekday: 4, from: 800, to: 1900)
-    venue9.collection_account = BraintreeCollectionAccount.new(merchant_account_id: "0000000000000000-9", active: true, status: "active")
+    venue9.collection_account = BraintreeCollectionAccount.new(merchant_account_id: "0000000000000000-9", force_submit: true, braintree_persisted: true, active: true, status: "active")
     venue9.status = Venue.statuses[:active]
     venue9.save!
 
@@ -207,7 +207,7 @@ case Rails.env
     VenueHour.create!(venue: venue10, weekday: 2, from: 800, to: 2100)
     VenueHour.create!(venue: venue10, weekday: 3, from: 800, to: 2000)
     VenueHour.create!(venue: venue10, weekday: 4, from: 800, to: 1900)
-    venue10.collection_account = BraintreeCollectionAccount.new(merchant_account_id: "0000000000000000-10", active: true, status: "active")
+    venue10.collection_account = BraintreeCollectionAccount.new(merchant_account_id: "0000000000000000-10", force_submit: true, braintree_persisted: true, active: true, status: "active")
     venue10.status = Venue.statuses[:active]
     venue10.save!
 
@@ -219,7 +219,7 @@ case Rails.env
     VenueHour.create!(venue: venue11, weekday: 2, from: 800, to: 2100)
     VenueHour.create!(venue: venue11, weekday: 3, from: 800, to: 2000)
     VenueHour.create!(venue: venue11, weekday: 4, from: 800, to: 1900)
-    venue11.collection_account = BraintreeCollectionAccount.new(merchant_account_id: "0000000000000000-11", active: true, status: "active")
+    venue11.collection_account = BraintreeCollectionAccount.new(merchant_account_id: "0000000000000000-11", force_submit: true, braintree_persisted: true, active: true, status: "active")
     venue11.status = Venue.statuses[:active]
     venue11.save!
 
@@ -231,7 +231,7 @@ case Rails.env
     VenueHour.create!(venue: venue12, weekday: 2, from: 800, to: 2100)
     VenueHour.create!(venue: venue12, weekday: 3, from: 800, to: 2000)
     VenueHour.create!(venue: venue12, weekday: 4, from: 800, to: 1900)
-    venue12.collection_account = BraintreeCollectionAccount.new(merchant_account_id: "0000000000000000-12", active: true, status: "active")
+    venue12.collection_account = BraintreeCollectionAccount.new(merchant_account_id: "0000000000000000-12", force_submit: true, braintree_persisted: true, active: true, status: "active")
     venue12.status = Venue.statuses[:active]
     venue12.save!
 
@@ -243,9 +243,10 @@ case Rails.env
     VenueHour.create!(venue: venue13, weekday: 2, from: 800, to: 2100)
     VenueHour.create!(venue: venue13, weekday: 3, from: 800, to: 2000)
     VenueHour.create!(venue: venue13, weekday: 4, from: 800, to: 1900)
-    venue13.collection_account = BraintreeCollectionAccount.new(merchant_account_id: "0000000000000000-13", active: true, status: "active")
+    venue13.collection_account = BraintreeCollectionAccount.new(merchant_account_id: "0000000000000000-13", force_submit: true, braintree_persisted: true, active: true, status: "active")
     venue13.status = Venue.statuses[:active]
     venue13.save!
+
 
     # user1 has access to venue1, venue2 and venue3
     # user2 has access to venue4
