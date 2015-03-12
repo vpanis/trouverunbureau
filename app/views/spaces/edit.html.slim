@@ -1,128 +1,127 @@
 = render 'shared/menu_bar', user: current_user
+= render 'shared/profile_menu_bar', user: current_user, selected: 'venues'
 
-.main-content.dashboard-form
-  #space.overflow-hidden
-    .row
-      = render 'shared/edit_venue_progress', venue: @space.venue, progress: 70, step: 5
-      .details-section.col-md-7.col-md-offset-1
-        .space-title.text-center
-          h3 List new space
-        .small-separator
-        = form_for(@space) do |f|
-          .form-group.col-md-12#space-name-input
-            label #{t('space.name')}
-            = f.text_field :name, class: 'form-control'
-          .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
-            label = t('space.type')
-            = f.select(:s_type, @space_types_options, {}, {class: 'form-control space-types-select'})
+#space.main-content.dashboard-form.clearfix.overflow-hidden
+  = render 'shared/edit_venue_progress', venue: @space.venue, progress: 70, step: 5
+  .details-section.col-md-7.col-md-offset-1
+    .space-title.text-center
+      h3 List new space
+    .small-separator
+    = form_for(@space) do |f|
+      .form-group.col-md-12#space-name-input
+        label #{t('space.name')}
+        = f.text_field :name, class: 'form-control'
+      .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+        label = t('space.type')
+        = f.select(:s_type, @space_types_options, {}, {class: 'form-control space-types-select'})
 
-          .form-group.col-md-3#space-capacity-input
+      .form-group.col-md-3#space-capacity-input
+        .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
+        label #{t('space.capacity')}
+        = f.text_field :capacity, class: 'form-control'
+      .form-group.col-md-3#space-quantity-input
+        .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
+        label #{t('space.quantity')}
+        = f.text_field :quantity, class: 'form-control'
+      .form-group.col-md-12#space-description-input
+        .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
+        label #{t('space.description')}
+        = f.text_area :description, class: 'form-control'
+      .pictures.col-md-12
+        .subtitle.row
+          .col-md-12
             .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
-            label #{t('space.capacity')}
-            = f.text_field :capacity, class: 'form-control'
-          .form-group.col-md-3#space-quantity-input
+            p Space photos
+            hr
+        .row
+          - @space.photos.each do |venue_photo|
+            .col-md-4
+              //TODO: 'set as main' functionality not implemented yet
+              .img-wrapper style="background-image: url(#{venue_photo.photo.url});" class=('fav' if false )
+                .hover
+                  a.delete-photo href="#" data-photo-id=venue_photo.id delete
+          .col-md-4.add-image-container
+            .add-image
+      .pricing.col-md-12
+        .subtitle.row
+          .col-md-12
             .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
-            label #{t('space.quantity')}
-            = f.text_field :quantity, class: 'form-control'
-          .form-group.col-md-12#space-description-input
+            p Pricing
+            hr
+        .hourly.row
+          .checkbox.col-md-3
+            label
+              input type="checkbox" /
+              | Per hour
+          .form-group.col-md-2
+            label currency
+            = f.text_field :hour_price, class: 'form-control'
+          .form-group.col-md-2#space-hour_price-input
+            label #{t('space.hour_price')}
+            = f.text_field :hour_price, class: 'form-control'
+          .form-group.col-md-5
             .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
-            label #{t('space.description')}
-            = f.text_area :description, class: 'form-control'
-          .pictures.col-md-12
-            .subtitle.row
-              .col-md-12
-                .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
-                p Space photos
-                hr
-            .row
-              - @space.photos.each do |venue_photo|
-                .col-md-4
-                  //TODO: 'set as main' functionality not implemented yet
-                  .img-wrapper style="background-image: url(#{venue_photo.photo.url});" class=('fav' if false )
-                    .hover
-                      a.delete-photo href="#" data-photo-id=venue_photo.id delete
-              .col-md-4.add-image-container
-                .add-image
-          .pricing.col-md-12
-            .subtitle.row
-              .col-md-12
-                .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
-                p Pricing
-                hr
-            .hourly.row
-              .checkbox.col-md-3
-                label
-                  input type="checkbox" /
-                  | Per hour
-              .form-group.col-md-2
-                label currency
-                = f.text_field :hour_price, class: 'form-control'
-              .form-group.col-md-2#space-hour_price-input
-                label #{t('space.hour_price')}
-                = f.text_field :hour_price, class: 'form-control'
-              .form-group.col-md-5
-                .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
-                label Minimum renting period
-                = f.text_field :hour_price, class: 'form-control'
-            .daily.row
-              .checkbox.col-md-3
-                label
-                  input type="checkbox" /
-                  | Per day
-              .form-group.col-md-2
-                label currency
-                = f.text_field :day_price, class: 'form-control'
-              .form-group.col-md-2#space-day_price-input
-                label #{t('space.day_price')}
-                = f.text_field :day_price, class: 'form-control'
-              .form-group.col-md-5
-                .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
-                label Minimum renting period
-                = f.text_field :day_price, class: 'form-control'
-            .monthly.row
-              .checkbox.col-md-3
-                label
-                  input type="checkbox" /
-                  | Per month
-              .form-group.col-md-2
-                label currency
-                = f.text_field :month_price, class: 'form-control'
-              .form-group.col-md-2#space-month_price-input
-                label #{t('space.month_price')}
-                = f.text_field :month_price, class: 'form-control'
-              .form-group.col-md-5
-                .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
-                label Minimum renting period
-                = f.text_field :month_price, class: 'form-control'
-          .deposit.col-md-12
-            .subtitle.row
-              .col-md-12
-                .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
-                p Deposit
-                hr
-            .hourly.row
-              .form-group.col-md-2
-                label currency
-                = f.text_field :hour_price, class: 'form-control'
-              .form-group.col-md-2#space-hour_price-input
-                label #{t('space.hour_price')}
-                = f.text_field :hour_price, class: 'form-control'
-            .daily.row
-              .form-group.col-md-2
-                label currency
-                = f.text_field :hour_price, class: 'form-control'
-              .form-group.col-md-2#space-day_price-input
-                label #{t('space.day_price')}
-                = f.text_field :day_price, class: 'form-control'
+            label Minimum renting period
+            = f.text_field :hour_price, class: 'form-control'
+        .daily.row
+          .checkbox.col-md-3
+            label
+              input type="checkbox" /
+              | Per day
+          .form-group.col-md-2
+            label currency
+            = f.text_field :day_price, class: 'form-control'
+          .form-group.col-md-2#space-day_price-input
+            label #{t('space.day_price')}
+            = f.text_field :day_price, class: 'form-control'
+          .form-group.col-md-5
+            .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
+            label Minimum renting period
+            = f.text_field :day_price, class: 'form-control'
+        .monthly.row
+          .checkbox.col-md-3
+            label
+              input type="checkbox" /
+              | Per month
+          .form-group.col-md-2
+            label currency
+            = f.text_field :month_price, class: 'form-control'
+          .form-group.col-md-2#space-month_price-input
+            label #{t('space.month_price')}
+            = f.text_field :month_price, class: 'form-control'
+          .form-group.col-md-5
+            .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
+            label Minimum renting period
+            = f.text_field :month_price, class: 'form-control'
+      .deposit.col-md-12
+        .subtitle.row
+          .col-md-12
+            .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
+            p Deposit
+            hr
+        .hourly.row
+          .form-group.col-md-2
+            label currency
+            = f.text_field :hour_price, class: 'form-control'
+          .form-group.col-md-2#space-hour_price-input
+            label #{t('space.hour_price')}
+            = f.text_field :hour_price, class: 'form-control'
+        .daily.row
+          .form-group.col-md-2
+            label currency
+            = f.text_field :hour_price, class: 'form-control'
+          .form-group.col-md-2#space-day_price-input
+            label #{t('space.day_price')}
+            = f.text_field :day_price, class: 'form-control'
 
-          / .form-group.col-md-6#space-week_price-input
-          /   label #{t('space.week_price')}
-          /   = f.text_field :week_price, class: 'form-control'
-          .buttons
-              .col-md-6
-                a href="#" type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
-              .col-md-6
-                = f.submit 'Save', class: 'rounded-btn default width-100 yellow', id: 'save-space'
+      / .form-group.col-md-6#space-week_price-input
+      /   label #{t('space.week_price')}
+      /   = f.text_field :week_price, class: 'form-control'
+      .buttons
+          .col-md-6
+            a href="#" type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
+          .col-md-6
+            = f.submit 'Save', class: 'rounded-btn default width-100 yellow', id: 'save-space'
 
 .hidden
   = form_tag api_v1_venue_photos_path, id: 'venue-photo-form'
