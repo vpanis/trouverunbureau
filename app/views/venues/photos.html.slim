@@ -1,27 +1,28 @@
 = render 'shared/menu_bar', user: current_user
 = render 'shared/profile_menu_bar', user: current_user, selected: 'venues'
 
-.main-content.dashboard-form
-  #venue
-    .row
-      = render 'shared/edit_venue_progress', venue: @venue, progress: 60, step: 4
-      .details-section.col-md-7.col-md-offset-1.margin-top
-        .title.inline.text-center
-          = image_tag('default-avatar.png', width: '50px', height: '50px', id: 'user-avatar-img')
-          h3.big Wolox Driving Innovation
-          .small-separator
-        .row
-          - @venue.photos.each do |photo|
-            - if photo.space_id.present?
-              p = photo.space.name
-            - else
-              p venue photo (no space)
-            img src=photo.photo.url height='100px' width='100px'
-          .col-md-4.add-image-container
-            .add-image
-        .row.buttons
-          .col-xs-6
-            a href='#'
-              button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
-          .col-xs-6
-            = link_to 'save', spaces_venue_path(@venue), class: 'rounded-btn yellow-fill width-100 uppercase'
+#venue.main-content.dashboard-form.clearfix.overflow-hidden
+  = render 'shared/edit_venue_progress', venue: @venue, progress: 60, step: 4
+  .details-section.col-md-7.col-md-offset-1.margin-top
+    .title.inline.text-center
+      = image_tag('default-avatar.png', width: '50px', height: '50px', id: 'user-avatar-img')
+      h3.big Wolox Driving Innovation
+      .small-separator
+    .row.pictures
+      - @venue.photos.each do |photo|
+        .col-md-4.pictures
+          - if photo.space_id.present?
+            //p = photo.space.name
+            .img-wrapper style="background-image: url(#{photo.photo.url});" class=('fav' if false )
+              .hover
+                a.delete-photo href="#" delete
+          - else
+            p venue photo (no space)
+      .col-md-4.add-image-container
+        .add-image
+    .row.buttons
+      .col-xs-6
+        a href='#'
+          button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
+      .col-xs-6
+        = link_to 'save', spaces_venue_path(@venue), class: 'rounded-btn yellow-fill width-100 uppercase'
