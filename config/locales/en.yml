@@ -121,6 +121,11 @@ en:
     venues: 'Venues'
     wishlist: 'Wishlist'
     account: 'Account'
+  search:
+    count: 'Desks found'
+    filters: 'Filters'
+    limits: '%{from} - %{to} more than %{count} desks'
+    no_results: "No spaces matched your search"
   venues:
     amenities:
       whiteboards:

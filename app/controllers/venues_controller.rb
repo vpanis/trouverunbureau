@@ -24,6 +24,10 @@ class VenuesController < ModelController
     @favorite_spaces_ids = @user.favorite_spaces.pluck(:id)
   end
 
+  def search
+    @current_user = current_user
+  end
+
   private
 
   def object_params

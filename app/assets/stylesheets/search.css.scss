@@ -1,0 +1,64 @@
+@import 'variables';
+@import 'mixins';
+
+[data-action="search"] {
+  background-color: $white;
+  .border-circle{
+    @include border-radius(100%);
+    border: 2px solid $yellow;
+  }
+
+  .count-box{
+    padding-right: 100px;
+  }
+
+  .count-number{
+    font-weight: 700;
+  }
+
+  .text-annotation{
+    font-weight: 300;
+  }
+
+  .filter-button-box{
+    margin-bottom: 10px;
+    padding-left: 18px;
+  }
+
+  .filter-button{
+    text-transform: uppercase;
+    padding-top: 23px;
+    padding-bottom: 23px;
+    text-align: center;
+    margin-left: 40px;
+    margin-right: -40px;
+  }
+
+  .pagination-box{
+    margin-left: 10px;
+    margin-bottom: 30px;
+  }
+
+  .pagination-pages{
+    margin-right: -7%;
+  }
+  .pagination-limits-text{
+    text-align: left;
+    font-weight: 300;
+    margin-top: 5px;
+  }
+
+  .filter-box{
+    position: fixed;
+    width: 71%;
+    top: 50px;
+    z-index: 20;
+    background-color: $white;
+    padding-top: 25px;
+    padding-bottom: 10px;
+  }
+
+  .filter-box-after{
+    padding-top: 125px;
+  }
+}
