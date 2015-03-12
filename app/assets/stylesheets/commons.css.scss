@@ -55,6 +55,10 @@ hr {
   margin-top: 20px !important;
 }
 
+.margin-bottom {
+  margin-bottom: 20px !important;
+}
+
 .margin-left {
   margin-left: 15px !important;
 }
@@ -205,6 +209,9 @@ hr {
 .add-image:after {
   content: 'Add an Image';
 }
-.add-space:after {
-  content: 'List new space';
+.add-space {
+  height: 190px;
+  &:after {
+    content: 'List new space';
+  }
 }
