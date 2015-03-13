@@ -1,7 +1,7 @@
 on_load = ->
   load
     controllers:
-      venues: ["details"]
+      venue_details: ["details"]
   , (controller, action) ->
     initialize_selects = ->
       return
