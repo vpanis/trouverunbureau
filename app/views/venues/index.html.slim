@@ -26,10 +26,11 @@
           .panel-body
             - venue.spaces.each do |space|
               .col-md-3
-                .space.pictures
-                  h2 = space.name
-                  - if space.photos.any?
-                    .img-wrapper style="background-image: url('#{space.photos.first.photo.url}');" class=('fav' if false )
-                  - else
-                    .img-wrapper class=('fav' if false )
+                a href='#'
+                  .space.pictures
+                    h2 = space.name
+                    - if space.photos.any?
+                      .img-wrapper style="background-image: url('#{space.photos.first.photo.url}');" class=('fav' if false )
+                    - else
+                      .img-wrapper class=('fav' if false )
                   
