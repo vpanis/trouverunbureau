@@ -26,37 +26,8 @@ class VenuesController < ModelController
   def update
     @venue = Venue.find(params[:id])
     return unless can_edit?
-    # return render nothing: true, status: 412 unless VenueContext.new(@venue, current_represented)
-    #                                                           .update_venue(object_params)
     @venue.update_attributes!(edit_venue_params)
-    redirect_to action: 'details'
-  end
-
-  def details
-    @venue = Venue.find(params[:id])
-    return unless can_edit?
-    @modify_day_hours = load_day_hours
-    @professions_options = profession_options
-  end
-
-  def save_details
-    @venue = Venue.find(params[:id])
-    return unless can_edit?
-    @venue.update_attributes!(object_params)
-    update_professions!
-    redirect_to amenities_venue_path(@venue)
-  end
-
-  def amenities
-    @venue = Venue.find(params[:id])
-    return unless can_edit?
-  end
-
-  def save_amenities
-    @venue = Venue.find(params[:id])
-    return unless can_edit?
-    @venue.update_attributes!(amenities_params)
-    redirect_to photos_venue_path(@venue)
+    redirect_to details_venue_path(@venue)
   end
 
   def photos
@@ -98,10 +69,6 @@ class VenuesController < ModelController
                                   day_hours_attributes: [:id, :from, :to, :weekday, :_destroy])
   end
 
-  def amenities_params
-    params.require(:venue).permit(amenities: [])[:amenities].reject!(&:empty?)
-  end
-
   def new_venue_params
     params.require(:venue).permit(:name, :country_id, :logo, :force_submit)
   end
@@ -110,21 +77,6 @@ class VenuesController < ModelController
     params.require(:venue).permit(:name, :street, :country_id, :town, :postal_code, :email, :phone,
                                   :v_type, :currency, :latitude, :longitude, :logo,
                                   :force_submit_upd)
-  end
-
-  def load_day_hours
-    day_hours = []
-    @venue.day_hours.each { |dh| day_hours[dh.weekday] = dh }
-    (0..6).each do |index|
-      day_hours[index] = VenueHour.new(weekday: index) unless day_hours[index].present?
-    end
-    day_hours
-  end
-
-  def update_professions!
-    return unless  object_params['professions'].present?
-    professions = object_params['professions'].gsub(/^\{+|\}+$/, '').split(',')
-    @venue.update_attributes!(professions: professions)
   end
 
 end

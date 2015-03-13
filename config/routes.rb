@@ -12,10 +12,10 @@ Deskspotting::Application.routes.draw do
   resources :venues, only: [:new, :create, :edit, :update, :show, :index] do
     member do
       get :search
-      get :details
-      patch :details, to: 'venues#save_details'
-      get :amenities
-      patch :amenities, to: 'venues#save_amenities'
+      get :details, to: 'venue_details#details'
+      patch :details, to: 'venue_details#save_details'
+      get :amenities, to: 'venue_amenities#amenities'
+      patch :amenities, to: 'venue_amenities#save_amenities'
       get :photos
       get :spaces
       get :new_space, to: "spaces#new"
