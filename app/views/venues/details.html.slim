@@ -23,11 +23,16 @@
           label = t('venues.edit.professions')
           a.add.margin-left.aqua#open-professions href='#' data-target="#professionModal" data-toggle="modal" = t('commons.add')
           label
-            //input type="checkbox" = t('venues.professions.all')
             = check_box_tag 'all-professions', t('venues.professions.all')
             = t('venues.professions.all')
           hr
           = f.hidden_field :professions
+          ul.spoken-languages-container
+            - Venue::PROFESSIONS.each do |prof|
+              li.lang-item id="prof-item-#{prof}"
+                div.lang-name
+                  = t("venues.professions.#{prof.to_s}")
+                .delete-lang href="#" data-prof=prof
       .subtitle
         .col-md-12
           p Opening Hours

@@ -16,7 +16,8 @@ on_load = ->
       $('#professionModal').on 'show.bs.modal', (element) ->
         if belongsToArray(element.relatedTarget.classList, 'disabled')
           element.preventDefault()
-        return
+      $('.delete-lang').click  ->
+        delete_profession($(this))
 
     initialize_popovers = ->
       options = {
@@ -45,10 +46,10 @@ on_load = ->
       if element.checked
         $('#venue_professions').val("")
         $('#open-professions').addClass('disabled')
+        show_selected_professions()
       else
         $('#open-professions').removeClass('disabled')
         set_profession_values()
-
 
     close_professions_modal = ->
       set_profession_values()
@@ -65,9 +66,29 @@ on_load = ->
           values.push(option.value)
         i++
       $('#venue_professions').val(values.join())
+      show_selected_professions()
+
+    delete_profession = (element) ->
+      prof = element[0].dataset.prof
+      $('#selected_professions_'+prof).attr('checked', false)
+      set_profession_values()
+
+    show_selected_professions = ->
+      value = $('#venue_professions').val().replace(/{|}/g, "")
+      values = value.split(',')
+      $('.lang-item').hide()
+      if !values
+        return
+      index = 0
+      len = values.length
+      while index < len
+        $('#prof-item-'+values[index]).show()
+        ++index
+      return
 
     initialize_selects()
     initialize_listeners()
     initialize_popovers()
+    show_selected_professions()
   return
 $(document).ready on_load
