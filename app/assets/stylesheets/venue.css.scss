@@ -29,16 +29,26 @@
     .data-wrapper {
       display: inline-block;
     }
-    .arrow {
+    .right-wrapper {
       position: absolute;
       right: 15px;
       top: 50%;
       transform: translateY(-50%);
-      transition: .25s;
+      .edit,
+      .arrow {
+        display: inline-block;
+      }
+      .edit {
+        margin-right: 50px;
+      }
+      .arrow {
+        vertical-align: middle;
+        
+      }
     }
     &.collapsed {
       .arrow {
-        transform: translateY(-50%) rotate(-180deg);
+        transform: rotate(-180deg);
         transform-origin: 50% 50%;
       }
     }
@@ -53,5 +63,5 @@
 .space {
   background-color: white;
   padding: 20px;
-  margin-bottom: 20px;
+  margin: 15px auto;
 }
