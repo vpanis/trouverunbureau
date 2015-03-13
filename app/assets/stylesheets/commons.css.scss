@@ -103,6 +103,11 @@ hr {
   &:hover {
     color: darken($aqua, 10%);
   }
+  &.disabled{
+    cursor: not-allowed;
+    color: $dark-gray;
+    text-decoration: none;
+  }
 }
 
 .aqua.arrow {

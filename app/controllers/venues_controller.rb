@@ -34,14 +34,16 @@ class VenuesController < ModelController
 
   def details
     @venue = Venue.find(params[:id])
-    @modify_day_hours = load_day_hours
     return unless can_edit?
+    @modify_day_hours = load_day_hours
+    @professions_options = profession_options
   end
 
   def save_details
     @venue = Venue.find(params[:id])
     return unless can_edit?
     @venue.update_attributes!(object_params)
+    update_professions!
     redirect_to amenities_venue_path(@venue)
   end
 
@@ -88,10 +90,7 @@ class VenuesController < ModelController
   end
 
   def object_params
-    params.require(:venue).permit(:town, :street, :postal_code, :phone, :email, :website,
-                                  :latitude, :longitude, :name, :description, :currency, :v_type,
-                                  :space, :space_unit, :floors, :rooms, :desks, :vat_tax_rate,
-                                  :rating, :professions,
+    params.require(:venue).permit(:description, :professions,
                                   day_hours_attributes: [:id, :from, :to, :weekday, :_destroy])
   end
 
@@ -116,6 +115,12 @@ class VenuesController < ModelController
       day_hours[index] = VenueHour.new(weekday: index) unless day_hours[index].present?
     end
     day_hours
+  end
+
+  def update_professions!
+    return unless  object_params['professions'].present?
+    professions = object_params['professions'].gsub(/^\{+|\}+$/, '').split(',')
+    @venue.update_attributes!(professions: professions)
   end
 
 end

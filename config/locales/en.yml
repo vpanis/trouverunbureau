@@ -47,6 +47,7 @@ en:
     close: 'Close'
     upload_file: 'Upload file'
     unknown: 'unknown'
+    add: 'add'
   session:
     email: 'Email address'
     password: 'Password'
@@ -266,6 +267,10 @@ en:
       phone: 'Phone number'
       v_type: 'Venue type'
       currency: 'Currency'
+      description: 'Description'
+      professions: 'Preferred professions'
+      select_professions: 'Select preferred professions'
+      add_professions: 'Add professions'
   wishlist:
     no_favourites: "You don't have any favorite spaces"
     day: 'day'
@@ -279,6 +284,7 @@ en:
     optional_fields: 'Optional fields'
     change_picture: 'Change picture'
     enter_languages: 'Enter the languages you speak'
+    spoken_languages: 'Spoken Languages'
     add_languages: 'Add languages'
     info_no_share: 'we will never share this information with anyone'
     info_share_phone: 'we will only share your phone number with a host/guest once a booking has been made'
