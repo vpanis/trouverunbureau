@@ -1,12 +1,27 @@
 = render 'shared/menu_bar', user: current_user
 = render 'shared/profile_menu_bar', user: current_user, selected: 'venues'
 
-- @venues.each do |venue|
-  h1 = venue.name
-  - venue.spaces.each do |space|
-    h2 = space.name
-    - if space.photos.any?
-      = image_tag(space.photos.first.photo.url, width: '95px', height: '95px')
-    - else
-      = image_tag('venue-default.png', width: '95px', height: '95px')
-
+#venue-list.container.margin-top
+  #accordion.panel-group aria-multiselectable="true" role="tablist"
+    - @venues.each_with_index do |venue, index|
+      .panel.panel-default
+        #headingOne.panel-heading role="tab" aria-controls="collapseOne" aria-expanded="#{(index==0)? 'true':'false'}" data-parent="#accordion" data-toggle="collapse" href="#collapse-venue-#{venue.id}"
+          .img-wrapper
+            img src="http://www.motiqonline.com/wp-content/uploads/2010/01/Modular-Office-Lobby-Furniture-Venue-Photo-3.jpg" /
+          .data-wrapper
+            .estrella "*****"
+            .panel-title = venue.name
+            .location location
+          .arrow ˄
+        div[id="collapse-venue-#{venue.id}" class="panel-collapse collapse #{'in' if index==0}" data-aria-labelledby="headingOne" data-role= "tabpanel"] 
+          .panel-body
+            .row
+              - (venue.spaces * 6).each do |space|
+                .col-md-3
+                  .space.pictures
+                    h2 = space.name
+                    - if space.photos.any?
+                      .img-wrapper style="background-image: url('#{space.photos.first.photo.url}');" class=('fav' if false )
+                    - else
+                      .img-wrapper class=('fav' if false )
+                    
