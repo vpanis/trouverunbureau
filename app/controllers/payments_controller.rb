@@ -5,10 +5,11 @@ class PaymentsController < ApplicationController
   # GET /payments/new?booking_id
   def new
     @booking = Booking.where(id: params[:booking_id],
+                             state: Booking.states[:pending_payment], # REMOVE FOR TESTING
                              owner: current_represented).first
-    # state: Booking.states[:pending_payment], REMOVE FOR TESTING
     # TODO: custom 404 page
-    redirect_to root_path unless @booking.present?
+    redirect_to root_path unless @booking.present? && @booking.collection_account.present? &&
+      @booking.collection_account.active?
     generate_nonce_for_payment
     @payment = @booking.payment
   end
