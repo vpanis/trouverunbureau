@@ -9,7 +9,7 @@ Deskspotting::Application.routes.draw do
 
   root to: 'landing#index'
 
-  resources :venues, only: [:new, :create, :edit, :update, :show] do
+  resources :venues, only: [:new, :create, :edit, :update, :show, :index] do
     member do
       get :search
       get :details

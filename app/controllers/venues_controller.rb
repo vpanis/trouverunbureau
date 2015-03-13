@@ -71,7 +71,7 @@ class VenuesController < ModelController
 
   def show
     @venue = Venue.find(params[:id])
-    @user = User.first
+    @user = current_represented
     @photos = @venue.photos
     @selected_space = Space.find(params[:space_id]) if params[:space_id]
     @favorite_spaces_ids = @user.favorite_spaces.pluck(:id)
@@ -79,6 +79,10 @@ class VenuesController < ModelController
 
   def search
     @current_user = current_user
+  end
+
+  def index
+    @venues = current_represented.venues
   end
 
   private

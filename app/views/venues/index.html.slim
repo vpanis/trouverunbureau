@@ -1,0 +1,12 @@
+= render 'shared/menu_bar', user: current_user
+= render 'shared/profile_menu_bar', user: current_user, selected: 'venues'
+
+- @venues.each do |venue|
+  h1 = venue.name
+  - venue.spaces.each do |space|
+    h2 = space.name
+    - if space.photos.any?
+      = image_tag(space.photos.first.photo.url, width: '95px', height: '95px')
+    - else
+      = image_tag('venue-default.png', width: '95px', height: '95px')
+
