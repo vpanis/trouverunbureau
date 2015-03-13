@@ -106,5 +106,13 @@ input[type="checkbox"]{
   p {
     display: inline-block;
     vertical-align: middle;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: $dark-gray;
   }
+}
+
+.vertical-align {
+  margin-top: 36px;
 }
