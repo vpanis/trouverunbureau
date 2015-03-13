@@ -21,22 +21,9 @@
     cursor: pointer;
     transition: .25s;
     border-radius: 0;
+    padding: 28px 15px;
     &:hover {
       background-color: $dark-white;
-    }
-    .img-wrapper {
-      width: 50px;
-      height: 50px;
-      display: inline-block;
-      border-radius: 100%;
-      overflow: hidden;
-      margin-right: 20px;
-      img {
-        height: 100%;
-      }
-    }
-    .data-wrapper {
-      display: inline-block;
     }
     .right-wrapper {
       position: absolute;
@@ -52,7 +39,6 @@
       }
       .arrow {
         vertical-align: middle;
-        
       }
     }
     &.collapsed {

@@ -6,12 +6,18 @@
     - @venues.each_with_index do |venue, index|
       .panel.panel-default
         #headingOne.panel-heading role="tab" aria-controls="collapseOne" aria-expanded="#{(index==0)? 'true':'false'}" data-parent="#accordion" data-toggle="collapse" href="#collapse-venue-#{venue.id}"
-          .img-wrapper
-            img src="http://www.motiqonline.com/wp-content/uploads/2010/01/Modular-Office-Lobby-Furniture-Venue-Photo-3.jpg" /
-          .data-wrapper
-            .estrella "*****"
-            .panel-title = venue.name
-            .location location
+          .venue-bar
+            .venue-avatar
+              - if venue.logo?
+                = image_tag(venue.logo.url, width: '90px', height: '90px')
+              - else
+                = image_tag('venue-default.png', width: '90px', height: '90px')
+            .basic-info
+              = render 'shared/stars', rating: venue.rating, quantity: venue.quantity_reviews
+              .venue-name
+                h1 = venue.name
+              .location
+                p = venue.town + ', ' + venue.country.name
           .right-wrapper
             .icon.info.pointer
             .edit edit venue
