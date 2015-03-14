@@ -34,46 +34,11 @@
                   = t("venues.professions.#{prof.to_s}")
                 .delete-lang href="#" data-prof=prof
       .subtitle
-        .col-md-12
-          p Opening Hours
-          span.aqua Custom Times?
-          hr
-      / = f.fields_for :day_hours, @modify_day_hours do |day_hours_fields|
-      /   .form-group#venue-country-input.col-md-6
-      /     label = "DAY:"
-      /     = day_hours_fields.text_field :weekday, class: 'form-control'
-      /   .form-group#venue-country-input.col-md-6
-      /     label = 'from:'
-      /     = day_hours_fields.text_field :from, class: 'form-control'
-      /   .form-group#venue-country-input.col-md-6
-      /     label = 'to:'
-      /     = day_hours_fields.text_field :to, class: 'form-control'
-      /   .form-group#venue-country-input.col-md-6
-      /     label = 'Delete:'
-      /     = day_hours_fields.check_box :_destroy, class: 'form-control'
-      .form-group#venue-description-input.vertical-align.col-md-4
-        label Monday - Friday
-      .form-group#venue-description-input.col-md-4
-        label Opening Time
-        // = f.text_field :description, class: 'form-control'
-      .form-group#venue-description-input.col-md-4
-        label Closing Time
-        // = f.text_field :description, class: 'form-control'
-      .col-md-12
-        label
-          input type="checkbox" /
-          | Saturday Open
-      .col-md-12
-        label
-          input type="checkbox" /
-          | Sunday Open
-      .form-group#venue-description-input.col-md-12
-        label Office Rules
-        // = f.text_area :description, class: 'form-control'
-
+        = render 'day_hours', form: f
       .row.buttons
         .col-xs-6
           a href='#'
             button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
         .col-xs-6
-          = f.submit 'Save', class: 'rounded-btn yellow-fill width-100 uppercase'
+          = f.submit t("commons.save"), class: 'rounded-btn yellow-fill width-100 uppercase'
+

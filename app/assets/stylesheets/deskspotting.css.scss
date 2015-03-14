@@ -1206,7 +1206,6 @@ ul.spoken-languages-container{
   width: 100%;
 }
 
-
 .staging-alert{
   width: 100px;
   height: 55px;
@@ -1221,5 +1220,22 @@ ul.spoken-languages-container{
     width: 100%;
     height: auto;
   }
+}
 
+.nav-tabs > li > a{
+  display: inline-block;
+  &:hover{
+    background-color: white;
+    color: $aqua;
+    border: 1px solid transparent;
+  }
+}
+
+li.venue-hours.active{
+  display: none;
+}
+
+.weekday-col{
+  line-height: 42px;
+  padding-top: 20px;
 }

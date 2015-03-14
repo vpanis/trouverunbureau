@@ -21,6 +21,10 @@ class VenueHour < ActiveRecord::Base
 
   validate :possible_hours
 
+  def opened_day?
+    from.present? && to.present? && (to > from)
+  end
+
   class << self
     def which_day(time)
       (time.wday - 1) % 7

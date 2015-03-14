@@ -48,6 +48,7 @@ en:
     upload_file: 'Upload file'
     unknown: 'unknown'
     add: 'add'
+    open: 'Open'
   session:
     email: 'Email address'
     password: 'Password'
