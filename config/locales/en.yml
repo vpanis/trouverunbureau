@@ -278,6 +278,9 @@ en:
     account_number: Account Number
     routing_number: Routing Number
     previous_last_4: Previous Last 4
+    required: Required
+    only_tax_id_present: Only if tax id present
+    only_legal_name_present: Only if legal name present
   users:
     edit_profile: 'Edit profile'
     about_me: 'About me'
