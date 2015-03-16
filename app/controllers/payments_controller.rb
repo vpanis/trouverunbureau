@@ -8,8 +8,8 @@ class PaymentsController < ApplicationController
                              state: Booking.states[:pending_payment], # REMOVE FOR TESTING
                              owner: current_represented).first
     # TODO: custom 404 page
-    redirect_to root_path unless @booking.present? && @booking.collection_account.present? &&
-      @booking.collection_account.active?
+    return redirect_to root_path unless @booking.present? &&
+      @booking.collection_account.present? && @booking.collection_account.active?
     generate_nonce_for_payment
     @payment = @booking.payment
   end
@@ -19,7 +19,7 @@ class PaymentsController < ApplicationController
     @booking = Booking.where(id: params[:booking_id], state: Booking.states[:pending_payment],
                              owner: current_represented).first
     # TODO: custom 404 page
-    redirect_to root_path unless @booking.present? && params[:mode].in?(%w(braintree)) &&
+    return redirect_to root_path unless @booking.present? && params[:mode].in?(%w(braintree)) &&
       send("payment_#{params[:mode]}_verification")
     pay_if_its_possible
   end
@@ -40,7 +40,7 @@ class PaymentsController < ApplicationController
     @booking, custom_errors = BookingManager.change_booking_status(
                                 current_user, @booking, Booking.states[:payment_verification])
     # Error handling for collition in booking
-    redirect_to root_path unless @booking.valid? && custom_errors.empty?
+    return redirect_to root_path unless @booking.valid? && custom_errors.empty?
     send("payment_#{params[:mode]}")
     redirect_to new_payment_path(booking_id: @booking.id)
   end
