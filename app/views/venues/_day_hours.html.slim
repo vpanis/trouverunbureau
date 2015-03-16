@@ -1,51 +1,20 @@
 .col-md-12
   div role="tabpanel"
     ul.nav.nav-tabs role="tablist"
-      li.venue-hours.active role="presentation"
-        p Opening Hours
-        a.aqua aria-controls="standard" data-toggle="tab" href="#std-times" role="tab" Standard Times?
-      li.venue-hours role="presentation"
-        p Opening Hours
-        a.aqua aria-controls="curstom" data-toggle="tab" href="#custom-times" role="tab" Custom Times?
+      li.venue-hours role="presentation" class=('active' unless @custom_hours)
+        p = t('venues.edit.opening_hours')
+        a.aqua aria-controls="standard" data-toggle="tab" href="#std-times" role="tab" = t('venues.edit.standard_times')
+      li.venue-hours role="presentation" class=('active' if @custom_hours)
+        p = t('venues.edit.opening_hours')
+        a.aqua aria-controls="curstom" data-toggle="tab" href="#custom-times" role="tab" = t('venues.edit.custom_times')
     hr
     - options_for_hours = (0..48).collect { |n| [  "#{(n/2).to_s.rjust(2, '0')}:#{(30 * (n%2)).to_s.rjust(2, '0')}", (n/2)*100 + 30 * (n%2) ] }
     .tab-content
-      #std-times.tab-pane.active role="tabpanel"
-        .row
-          .form-group.venue-description-input.weekday-col.col-md-4
-            label = "#{Date::ABBR_DAYNAMES[(0 + 1) % 7]} - #{Date::ABBR_DAYNAMES[(4 + 1) % 7]}"
-            = check_box_tag "open_weekday", 1, @modify_day_hours[0].opened_day?, class: 'fake-open-day', data: {weekday: 'weekday', index: 5}
-            = t('commons.open')
-          .form-group.venue-description-input.col-md-4
-            label Opening Time
-            = select_tag('from_weekday', options_for_select(options_for_hours, @modify_day_hours[0].from), {class: 'form-control hour-select fake-hour-select', data: {weekday: 'weekday', from_to: 'from'} })
-          .form-group.venue-description-input.col-md-4
-            label Closing Time
-            = select_tag('to_weekday', options_for_select(options_for_hours, @modify_day_hours[0].to), {class: 'form-control hour-select fake-hour-select', data: {weekday: 'weekday', from_to: 'to'} })
-        .row
-          .form-group.venue-description-input.weekday-col.col-md-4
-            label = Date::ABBR_DAYNAMES[(5 + 1) % 7]
-            = check_box_tag "open_saturday", 1, @modify_day_hours[5].opened_day?, class: 'fake-open-day', data: {weekday: 'saturday', index: 5}
-            = t('commons.open')
-          .form-group.venue-description-input.col-md-4
-            label Opening Time
-            = select_tag('from_saturday', options_for_select(options_for_hours, @modify_day_hours[5].from), {class: 'form-control hour-select fake-hour-select', data: {weekday: 5, from_to: 'from'} })
-          .form-group.venue-description-input.col-md-4
-            label Closing Time
-            = select_tag('to_saturday', options_for_select(options_for_hours, @modify_day_hours[5].to), {class: 'form-control hour-select fake-hour-select', data: {weekday: 5, from_to: 'to'} })
-        .row
-          .form-group.venue-description-input.weekday-col.col-md-4
-            label = Date::ABBR_DAYNAMES[(6 + 1) % 7]
-            = check_box_tag "open_sunday", 1, @modify_day_hours[6].opened_day?, class: 'fake-open-day', data: {weekday: 'sunday', index: 6}
-            = t('commons.open')
-          .form-group.venue-description-input.col-md-4
-            label Opening Time
-            = select_tag('from_sunday', options_for_select(options_for_hours, @modify_day_hours[6].from), {class: 'form-control hour-select fake-hour-select', data: {weekday: 6, from_to: 'from'} })
-          .form-group.venue-description-input.col-md-4
-            label Closing Time
-            = select_tag('to_sunday', options_for_select(options_for_hours, @modify_day_hours[6].to), {class: 'form-control hour-select fake-hour-select', data: {weekday: 6, from_to: 'to'} })
-
-      #custom-times.tab-pane role="tabpanel"
+      #std-times.tab-pane role="tabpanel" class=('active' unless @custom_hours)
+        = render 'standard_time_item', day_label: "#{Date::ABBR_DAYNAMES[(0 + 1) % 7]} - #{Date::ABBR_DAYNAMES[(4 + 1) % 7]}", weekday: 'weekday', index: 0, options: options_for_hours
+        = render 'standard_time_item', day_label: Date::ABBR_DAYNAMES[(5 + 1) % 7], weekday: 'saturday', index: 5, options: options_for_hours
+        = render 'standard_time_item', day_label: Date::ABBR_DAYNAMES[(6 + 1) % 7], weekday: 'sunday', index: 6, options: options_for_hours
+      #custom-times.tab-pane role="tabpanel" class=('active' if @custom_hours)
         = form.fields_for :day_hours, @modify_day_hours do |ff|
           .row
             .form-group.venue-description-input.weekday-col.col-md-4
@@ -55,8 +24,8 @@
               = ff.hidden_field :weekday, class: 'form-control'
               = ff.check_box :_destroy, class: 'form-control hidden'
             .form-group.venue-description-input.col-md-4
-              label Opening Time
+              label = t('venues.edit.opening_time')
               = ff.select(:from, options_for_hours, {}, {class: 'form-control hour-select'})
             .form-group.venue-description-input.col-md-4
-              label Closing Time
+              label = t('venues.edit.closing_time')
               = ff.select(:to, options_for_hours, {}, {class: 'form-control hour-select'})

@@ -4,6 +4,7 @@ class VenueDetailsController < VenuesController
     @venue = Venue.find(params[:id])
     return unless can_edit?
     @modify_day_hours = load_day_hours
+    @custom_hours = custom_hours?
     @professions_options = profession_options
   end
 
@@ -36,6 +37,16 @@ class VenueDetailsController < VenuesController
       day_hours[index] = VenueHour.new(weekday: index) unless day_hours[index].present?
     end
     day_hours
+  end
+
+  def custom_hours?
+    previous = @modify_day_hours[0]
+    (1..4).each do |index|
+      current = @modify_day_hours[index]
+      return true if current.from != previous.from || current.to != previous.to
+      previous = current
+    end
+    false
   end
 
 end

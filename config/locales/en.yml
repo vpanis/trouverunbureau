@@ -257,6 +257,11 @@ en:
     edit:
       list_your_venue: 'List your venue'
       start_by: 'Start by telling us about your venue...'
+      opening_hours: 'Opening hours'
+      standard_times: 'Standard times?'
+      custom_times: 'Custom times?'
+      opening_time: 'Opening Time'
+      closing_time: 'Closting Time'
       add_venue_logo: 'Add venue logo'
       change_logo: 'Change logo'
       name: 'Venue name'
