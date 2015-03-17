@@ -73,6 +73,16 @@ ActiveRecord::Schema.define(version: 20150501135224) do
     t.boolean  "expecting_braintree_response"
   end
 
+  create_table "braintree_payment_accounts", force: true do |t|
+    t.integer  "buyer_id"
+    t.string   "buyer_type"
+    t.string   "braintree_customer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "braintree_payment_accounts", ["buyer_id", "buyer_type"], name: "index_braintree_payment_accounts_on_buyer_id_and_buyer_type", using: :btree
+
   create_table "braintree_payments", force: true do |t|
     t.string   "transaction_status"
     t.string   "escrow_status"
@@ -103,6 +113,28 @@ ActiveRecord::Schema.define(version: 20150501135224) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "mangopay_credit_cards", force: true do |t|
+    t.string   "credit_card_id"
+    t.string   "last_4"
+    t.string   "expiration"
+    t.string   "card_type"
+    t.integer  "mangopay_payment_account_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "mangopay_credit_cards", ["mangopay_payment_account_id"], name: "index_mangopay_credit_cards_on_mangopay_payment_account_id", using: :btree
+
+  create_table "mangopay_payment_accounts", force: true do |t|
+    t.integer  "buyer_id"
+    t.string   "buyer_type"
+    t.string   "mangopay_user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "mangopay_payment_accounts", ["buyer_id", "buyer_type"], name: "index_mangopay_payment_accounts_on_buyer_id_and_buyer_type", using: :btree
 
   create_table "messages", force: true do |t|
     t.integer  "booking_id"
@@ -139,7 +171,6 @@ ActiveRecord::Schema.define(version: 20150501135224) do
     t.integer  "quantity_reviews"
     t.integer  "reviews_sum"
     t.string   "logo"
-    t.string   "payment_customer_id"
   end
 
   add_index "organizations", ["email"], name: "index_organizations_on_email", unique: true, using: :btree
@@ -196,7 +227,6 @@ ActiveRecord::Schema.define(version: 20150501135224) do
     t.string   "emergency_email"
     t.string   "emergency_phone"
     t.string   "emergency_relationship"
-    t.string   "payment_customer_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

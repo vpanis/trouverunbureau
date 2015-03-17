@@ -92,6 +92,7 @@ gem "mail_view", "~> 2.0.4"
 
 gem 'angular-translate-rails'
 gem 'braintree', '~>2.40.0'
+gem 'mangopay', '~>3.0.0'
 
 group :development do
   gem 'better_errors', '~>2.0.0'
