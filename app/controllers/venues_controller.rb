@@ -64,11 +64,6 @@ class VenuesController < ModelController
     false
   end
 
-  def object_params
-    params.require(:venue).permit(:description, :professions,
-                                  day_hours_attributes: [:id, :from, :to, :weekday, :_destroy])
-  end
-
   def new_venue_params
     params.require(:venue).permit(:name, :country_id, :logo, :force_submit)
   end

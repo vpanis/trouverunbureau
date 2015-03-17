@@ -10,23 +10,22 @@ class VenueDetailsController < VenuesController
 
   def save_details
     @venue = Venue.find(params[:id])
-    return unless can_edit?
-    # return render nothing: true, status: 412 unless VenueContext.new(@venue, current_represented)
-    #                                                           .update_venue(object_params)
-    @venue.update_attributes!(object_params)
+    return unless can_save_details?
+    @venue.update_attributes!(venue_params)
     update_professions!
     redirect_to amenities_venue_path(@venue)
   end
 
   private
 
-  def amenities_params
-    params.require(:venue).permit(amenities: [])[:amenities].reject!(&:empty?)
+  def venue_params
+    params.require(:venue).permit(:description, :professions,
+                                  day_hours_attributes: [:id, :from, :to, :weekday, :_destroy])
   end
 
   def update_professions!
-    return unless  object_params['professions'].present?
-    professions = object_params['professions'].gsub(/^\{+|\}+$/, '').split(',')
+    return unless  venue_params['professions'].present?
+    professions = venue_params['professions'].gsub(/^\{+|\}+$/, '').split(',')
     @venue.update_attributes!(professions: professions)
   end
 
@@ -47,6 +46,19 @@ class VenueDetailsController < VenuesController
       previous = current
     end
     false
+  end
+
+  def can_save_details?
+    ctx = VenueContext.new(@venue, current_represented)
+    unless ctx.owner?
+      render nothing: true, status: 403
+      return false
+    end
+    unless ctx.can_update_venue_hours?(venue_params)
+      render nothing: true, status: 412
+      return false
+    end
+    true
   end
 
 end

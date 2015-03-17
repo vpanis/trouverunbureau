@@ -5,183 +5,246 @@ describe VenueDetailsController do
   let(:body) { JSON.parse(response.body) if response.body.present? }
   let!(:user) { create(:user) }
 
-  # FIX-ME
-  # describe 'PATCH venues/:id/update' do
-  #   context 'when user is logged in' do
-  #     before(:each) { sign_in user }
-  #     after(:each) { sign_out user }
+  describe 'GET venues/:id/details' do
+    context 'a user is logged in' do
+      before(:each) { sign_in user }
+      after(:each) { sign_out user }
 
-  #     context 'when the venue exists' do
-  #       context 'when the user owns the venue' do
-  #         let(:a_venue) { create(:venue, owner: user) }
-  #         let(:venue_hour) do
-  #           create(:venue_hour, weekday: 1, from: 1600, to: 1700,  venue_id: a_venue.id)
-  #         end
-  #         let(:a_space) { create(:space, capacity: 2, venue: a_venue) }
-  #         let(:new_description) { 'new description' }
-  #         let(:day_hours_attributes) do
-  #           { '0' => { from: '1500', to: '1700', weekday: 0 },
-  #             '1' => { id: venue_hour.id, from: '', to: '', weekday: '', _destroy: true },
-  #             '2' => { from: '1600', to: '1700', weekday: 2 },
-  #             '3' => { from: '', to: '', weekday: '', _destroy: true },
-  #             '4' => { from: '', to: '', weekday: '', _destroy: true },
-  #             '5' => { from: '', to: '', weekday: '', _destroy: true },
-  #             '6' => { from: '', to: '', weekday: '', _destroy: true } }
-  #         end
+      context 'the venue belongs to the user' do
+        let!(:venue) { create(:venue, owner: user) }
+        before { get :details, id: venue.id }
 
-  #         before do
-  #           venue_params = { id: a_venue.id, description: new_description,
-  #                            day_hours_attributes: day_hours_attributes }
-  #           patch :update, id: a_venue.id, venue: venue_params
-  #           a_venue.reload
-  #         end
+        it 'succeeds' do
+          expect(response.status).to eq(200)
+        end
 
-  #         it 'succeeds' do
-  #           expect(response.status).to eq(302)
-  #         end
+        it 'assigns the requested venue to @venue' do
+          expect(assigns(:venue)).to eq(venue)
+        end
 
-  #         it 'updates normal venue attributes' do
-  #           expect(a_venue.description).to eq(new_description)
-  #         end
+        it 'initializes hours and options' do
+          expect(:modify_day_hours).to be_present
+          expect(:custom_hours).to be_present
+          expect(:professions_options).to be_present
+        end
 
-  #         it 'updates venue_hours' do
-  #           expect(a_venue.day_hours.count).to eq(2)
-  #           day_hour_0 = a_venue.day_hours.where { weekday == 0 }.first
-  #           day_hour_2 = a_venue.day_hours.where { weekday == 2 }.first
-  #           expect(day_hour_0.from).to eq(day_hours_attributes['0'][:from].to_i)
-  #           expect(day_hour_0.to).to eq(day_hours_attributes['0'][:to].to_i)
-  #           expect(day_hour_2.from).to eq(day_hours_attributes['2'][:from].to_i)
-  #           expect(day_hour_2.to).to eq(day_hours_attributes['2'][:to].to_i)
-  #         end
+        it 'renders the :details template' do
+          expect(response).to render_template :details
+        end
+      end # the venue belongs to the user
 
-  #         it 'renders the :edit template' do
-  #           expect(response.redirect_url).to eq(details_venue_url(a_venue))
-  #         end
+      context 'the venue does not belong to the user' do
+        let!(:venue) { create(:venue) }
 
-  #         context 'when wrong venue_hours parameters' do
-  #           before do
-  #             day_hours_attributes = { '0' => { from: '1650', to: '1700', weekday: 0 },
-  #                                      '1' => { from: '', to: '', weekday: '', _destroy: true },
-  #                                      '2' => { from: '', to: '', weekday: 2, _destroy: true },
-  #                                      '3' => { from: '', to: '', weekday: '', _destroy: true },
-  #                                      '4' => { from: '', to: '', weekday: '', _destroy: true },
-  #                                      '5' => { from: '', to: '', weekday: '', _destroy: true },
-  #                                      '6' => { from: '', to: '', weekday: '', _destroy: true } }
-  #             venue_params = { id: a_venue.id, day_hours_attributes: day_hours_attributes }
-  #             patch :update, id: a_venue.id, venue: venue_params
-  #             a_venue.reload
-  #           end
+        it 'is forbidden' do
+          get :details, id: venue.id
+          expect(response.status).to eq(403)
+        end
+      end
 
-  #           it 'fails' do
-  #             expect(response.status).to eq(412)
-  #           end
-  #         end # when wrong venue_hours parameters
+      context 'the venue does not exist' do
+        it 'fails' do
+          get :details, id: -1
+          expect(response.status).to eq(404)
+        end
+      end
+    end # the user is logged in
 
-  #         context 'when reducing venue_hours' do
-  #           context 'when there are bookings' do
-  #             let!(:a_booking) do
-  #               create(:booking, space: a_space,
-  #                                from: Time.zone.now.advance(minutes: 2),
-  #                                to: Time.zone.now.advance(minutes: 10), state: :paid)
-  #             end
+    context 'no user is logged in' do
+      context 'the venue exists' do
+        let(:venue) { create(:venue) }
 
-  #             before do
-  #             day_hours_attributes = { '0' => { from: '1600', to: '1700', weekday: 0 },
-  #                                      '1' => { from: '', to: '', weekday: '', _destroy: true },
-  #                                      '2' => { from: '', to: '', weekday: 2, _destroy: true },
-  #                                      '3' => { from: '', to: '', weekday: '', _destroy: true },
-  #                                      '4' => { from: '', to: '', weekday: '', _destroy: true },
-  #                                      '5' => { from: '', to: '', weekday: '', _destroy: true },
-  #                                      '6' => { from: '', to: '', weekday: '', _destroy: true } }
-  #             venue_params = { id: a_venue.id, day_hours_attributes: day_hours_attributes }
-  #               patch :update, id: a_venue.id, venue: venue_params
-  #               a_venue.reload
-  #             end
+        it 'is redirected to login' do
+          get :details, id: venue.id
+          expect(response.status).to eq(302)
+          expect(response.redirect_url).to eq(new_user_session_url)
+        end
+      end
+      context 'the venue does not exist' do
+        it 'is redirected to login' do
+          get :details, id: -1
+          expect(response.status).to eq(302)
+          expect(response.redirect_url).to eq(new_user_session_url)
+        end
+      end
+    end # no user is logged in
+  end # GET venues/:id/details
 
-  #             it 'fails' do
-  #               expect(response.status).to eq(412)
-  #             end
-  #           end # when there are bookings
+  describe 'PATCH venues/:id/save_details' do
+    context 'a user is logged in' do
+      before(:each) { sign_in user }
+      after(:each) { sign_out user }
 
-  #           context 'where there aren\'t bookings of venue\' spaces' do
-  #             before do
-  #               day_hour_0 = a_venue.day_hours.where { weekday == 0 }.first
-  #               day_hour_2 = a_venue.day_hours.where { weekday == 2 }.first
-  #             day_hours_attributes = { '0' => { id: day_hour_0.id, from: '1600', to: '1700',
-  #                                               weekday: 0 },
-  #                                      '1' => { from: '', to: '', weekday: '', _destroy: true },
-  #                                      '2' => { id: day_hour_2.id, from: '', to: '', weekday: 2,
-  #                                               _destroy: true },
-  #                                      '3' => { from: '', to: '', weekday: '', _destroy: true },
-  #                                      '4' => { from: '', to: '', weekday: '', _destroy: true },
-  #                                      '5' => { from: '', to: '', weekday: '', _destroy: true },
-  #                                      '6' => { from: '', to: '', weekday: '', _destroy: true } }
-  #               venue_params = { id: a_venue.id, day_hours_attributes: day_hours_attributes }
-  #               patch :update, id: a_venue.id, venue: venue_params
-  #               a_venue.reload
-  #             end
+      context 'the venue belongs to the user' do
+        let!(:venue) { create(:venue, owner: user) }
+        let(:new_description) { 'new description' }
+        let(:new_professions) { "#{Venue::PROFESSIONS.first},#{Venue::PROFESSIONS.last}" }
+        let(:venue_hour) do
+          create(:venue_hour, weekday: 1, from: 1600, to: 1700,  venue_id: venue.id)
+        end
+        let(:space) { create(:space, capacity: 2, venue: venue) }
+        let(:day_hours_attributes) do
+          { '0' => { from: '1500', to: '1700', weekday: 0 },
+            '1' => { id: venue_hour.id, from: '', to: '', weekday: '', _destroy: true },
+            '2' => { from: '1600', to: '1700', weekday: 2 },
+            '3' => { from: '', to: '', weekday: '', _destroy: true },
+            '4' => { from: '', to: '', weekday: '', _destroy: true },
+            '5' => { from: '', to: '', weekday: '', _destroy: true },
+            '6' => { from: '', to: '', weekday: '', _destroy: true } }
+        end
 
-  #             it 'succeeds' do
-  #               expect(response.status).to eq(302)
-  #               expect(a_venue.day_hours.count).to eq(1)
-  #             end
-  #           end # where there aren't bookings of venue' spaces
-  #         end # when reducing venue_hours
-  #       end # when the user owns the venue
+        context 'venue hours are valid' do
+          before do
+            params = { id: venue.id, description: new_description, professions: new_professions,
+                       day_hours_attributes: day_hours_attributes }
+            patch :save_details, id: venue.id, venue: params
+            venue.reload
+          end
 
-  #       context 'when the user does not own the venue' do
-  #         let(:a_venue) { create(:venue) }
-  #         let(:new_description) { 'new description' }
+          it 'succeeds' do
+            expect(response.status).to eq(302)
+          end
 
-  #         before do
-  #           venue_params = { id: a_venue.id, description: new_description }
-  #           patch :update, id: a_venue.id, venue: venue_params
-  #           a_venue.reload
-  #         end
+          it 'updates normal venue attributes' do
+            expect(venue.description).to eq(new_description)
+            expect(venue.professions).to include(Venue::PROFESSIONS.first.to_s)
+            expect(venue.professions).to include(Venue::PROFESSIONS.last.to_s)
+          end
 
-  #         it 'fails' do
-  #           expect(response.status).to eq(403)
-  #         end
-  #       end # when the user does not own the venue
-  #     end # when the venue exists
+          it 'updates venue_hours' do
+            expect(venue.day_hours.count).to eq(2)
+            day_hour_0 = venue.day_hours.where { weekday == 0 }.first
+            day_hour_2 = venue.day_hours.where { weekday == 2 }.first
+            expect(day_hour_0.from).to eq(day_hours_attributes['0'][:from].to_i)
+            expect(day_hour_0.to).to eq(day_hours_attributes['0'][:to].to_i)
+            expect(day_hour_2.from).to eq(day_hours_attributes['2'][:from].to_i)
+            expect(day_hour_2.to).to eq(day_hours_attributes['2'][:to].to_i)
+          end
 
-  #     context 'when the venue does not exist' do
-  #       before do
-  #         patch :update, id: -1
-  #       end
+          it 'renders the :amenities template' do
+            expect(response.redirect_url).to eq(amenities_venue_url(venue))
+          end
+        end # venue hours are valid
 
-  #       it 'fails' do
-  #         expect(response.status).to eq(404)
-  #       end
-  #     end # when the venue does not exist
-  #   end # when user is logged in
+        context 'venue hours are invalid' do
+          before do
+            invalid_hours = { '0' => { from: '1650', to: '1700', weekday: 0 },
+                              '1' => { from: '', to: '', weekday: '', _destroy: true },
+                              '2' => { from: '', to: '', weekday: 2, _destroy: true },
+                              '3' => { from: '', to: '', weekday: '', _destroy: true },
+                              '4' => { from: '', to: '', weekday: '', _destroy: true },
+                              '5' => { from: '', to: '', weekday: '', _destroy: true },
+                              '6' => { from: '', to: '', weekday: '', _destroy: true } }
+            @params = { id: venue.id, day_hours_attributes: invalid_hours,
+                       description: new_description, professions: new_professions }
+          end
 
-  #   context 'when the user is not logged in' do
-  #     context 'when the venue exists' do
-  #       let!(:venue) { create(:venue) }
-  #       before { patch :update, id: venue.id }
+          it 'fails' do
+            expect do
+              patch :save_details, id: venue.id, venue: @params
+            end.to raise_error(ActiveRecord::RecordInvalid)
+          end
+        end # venue hours are invalid
 
-  #       it 'fails' do
-  #         expect(response.status).to eq(302)
-  #       end
+        context 'description is not present' do
+          it 'fails' do
+            params = { id: venue.id, description: nil, professions: new_professions,
+                       day_hours_attributes: day_hours_attributes }
+            expect do
+              patch :save_details, id: venue.id, venue: params
+            end.to raise_error(ActiveRecord::RecordInvalid)
+          end
+        end
 
-  #       it 'redirects to signin' do
-  #         expect(response.redirect_url).to eq(new_user_session_url)
-  #       end
-  #     end
+        context 'when reducing venue_hours' do
+          context 'when there are bookings' do
+            let!(:booking) do
+              create(:booking, space: space,
+                               from: Time.zone.now.advance(minutes: 2),
+                               to: Time.zone.now.advance(minutes: 10), state: :paid)
+            end
 
-  #     context 'when the venue does not exist' do
-  #       before { patch :update, id: -1 }
+            before do
+              fewer_hours = { '0' => { from: '1600', to: '1700', weekday: 0 },
+                              '1' => { from: '', to: '', weekday: '', _destroy: true },
+                              '2' => { from: '', to: '', weekday: 2, _destroy: true },
+                              '3' => { from: '', to: '', weekday: '', _destroy: true },
+                              '4' => { from: '', to: '', weekday: '', _destroy: true },
+                              '5' => { from: '', to: '', weekday: '', _destroy: true },
+                              '6' => { from: '', to: '', weekday: '', _destroy: true } }
+              venue_params = { id: venue.id, day_hours_attributes: fewer_hours }
+              patch :save_details, id: venue.id, venue: venue_params
+              venue.reload
+            end
 
-  #       it 'fails' do
-  #         expect(response.status).to eq(302)
-  #       end
+            it 'fails' do
+              expect(response.status).to eq(412)
+            end
+          end # when there are bookings
 
-  #       it 'redirects to signin' do
-  #         expect(response.redirect_url).to eq(new_user_session_url)
-  #       end
-  #     end
-  #   end # when the user is not logged in
-  # end # PATCH venues/:id/update
+          context 'where there aren\'t bookings of venue\' spaces' do
+            let(:day_hour_0) do
+              create(:venue_hour, weekday: 0, from: 1600, to: 1700,  venue_id: venue.id)
+            end
+            let(:day_hour_2) do
+              create(:venue_hour, weekday: 2, from: 1600, to: 1700,  venue_id: venue.id)
+            end
+            before do
+              fewer_hours = { '0' => { id: day_hour_0.id, from: '1600', to: '1700', weekday: 0 },
+                              '1' => { from: '', to: '', weekday: '', _destroy: true },
+                              '2' => { id: day_hour_2.id, from: '', to: '', weekday: 2,
+                                       _destroy: true },
+                              '3' => { from: '', to: '', weekday: '', _destroy: true },
+                              '4' => { from: '', to: '', weekday: '', _destroy: true },
+                              '5' => { from: '', to: '', weekday: '', _destroy: true },
+                              '6' => { from: '', to: '', weekday: '', _destroy: true } }
+              venue_params = { id: venue.id, day_hours_attributes: fewer_hours }
+              patch :save_details, id: venue.id, venue: venue_params
+              venue.reload
+            end
 
+            it 'succeeds' do
+              expect(response.status).to eq(302)
+              expect(venue.day_hours.count).to eq(1)
+            end
+          end # where there aren't bookings of venue' spaces
+        end # when reducing venue_hours
+      end # the venue belongs to the user
+
+      context 'the venue does not belong to the user' do
+        let(:venue) { create(:venue) }
+        it 'is forbidden' do
+          patch :save_details, id: venue.id
+          expect(response.status).to eq(403)
+        end
+      end
+
+      context 'the venue does not exist' do
+        it 'fails' do
+          patch :save_details, id: -1
+          expect(response.status).to eq(404)
+        end
+      end
+    end # a user is logged in
+
+    context 'no user is logged in' do
+      context 'the venue does exists' do
+        let!(:venue) { create(:venue) }
+
+        it 'is redirected to login' do
+          patch :save_details, id: venue.id
+          expect(response.status).to eq(302)
+          expect(response.redirect_url).to eq(new_user_session_url)
+        end
+      end
+
+      context 'the venue does not exist' do
+        it 'is redirected to login' do
+          patch :save_details, id: -1
+          expect(response.status).to eq(302)
+          expect(response.redirect_url).to eq(new_user_session_url)
+        end
+      end
+    end  # no user is logged in
+  end # PATCH venues/:id/save_details
 end
