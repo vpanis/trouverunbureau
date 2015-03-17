@@ -18,8 +18,9 @@ class BraintreeTokenGenerationWorker
   end
 
   def braintree_token
-    if @represented.payment_customer_id.present?
-      token = Braintree::ClientToken.generate(customer_id: @represented.payment_customer_id)
+    if @represented.braintree_payment_account.present?
+      token = Braintree::ClientToken.generate(
+                customer_id: @represented.braintree_payment_account.braintree_customer_id)
     else
       token = Braintree::ClientToken.generate
     end

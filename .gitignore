@@ -34,6 +34,7 @@ coverage/*
 .amazons3.yml
 .mangopay.yml
 .braintree.yml
+.mangopay.yml
 .deskspotting.yml
 
 # Vagrant

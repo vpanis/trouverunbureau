@@ -38,8 +38,11 @@ class BraintreePaymentWorker
 
   def accepted_payment(braintree_response)
     customer_id = braintree_response.transaction.customer_details.id
-    @represented.update_attributes(payment_customer_id: customer_id) unless
-      @represented.payment_customer_id.present?
+    unless @represented.braintree_payment_account.present?
+      @represented.braintree_payment_account = BraintreePaymentAccount.new(
+                                                braintree_customer_id: customer_id)
+      @represented.save
+    end
     update_payment_attributes(braintree_response.transaction)
   end
 
@@ -62,7 +65,7 @@ class BraintreePaymentWorker
   def braintree_transaction(payment_token)
     attributes = payment_atributes(payment_token)
     add_new_customer_attributes(attributes, generate_customer_id) unless
-      @represented.payment_customer_id.present?
+      @represented.braintree_payment_account.present?
     Braintree::Transaction.sale(attributes)
   end
 
@@ -86,17 +89,11 @@ class BraintreePaymentWorker
   end
 
   def generate_customer_id
-    str = "#{@represented.class.to_s.first}-#{@represented.id}"
-    str = SecureRandom.hex(8) + '-' + str if append_random
-    str
+    BraintreePaymentAccount.generate_customer_id(@represented)
   end
 
   def escrow_polling_time
     Rails.configuration.payment.braintree.time_to_poll_for_escrow_status
-  end
-
-  def append_random
-    Rails.configuration.payment.braintree.append_random_to_accounts_ids
   end
 
 end

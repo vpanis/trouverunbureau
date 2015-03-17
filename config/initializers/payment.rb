@@ -5,9 +5,14 @@ if Rails.env.test?
     hours_to_poll_for_verify_release: 0.01,
     append_random_to_accounts_ids: true)
   deskspotting = OpenStruct.new(fee: 0.15)
+  mangopay = OpenStruct.new(
+    client_id: "deskspotting-dev",
+    base_url: "https://api.sandbox.mangopay.com"
+  )
 else
   braintree = AppConfiguration.for(:braintree)
   deskspotting = AppConfiguration.for(:deskspotting)
+  mangopay = AppConfiguration.for(:mangopay)
 end
 
 Deskspotting::Application.configure do
@@ -18,6 +23,10 @@ Deskspotting::Application.configure do
       time_to_poll_for_escrow_status: braintree.minutes_to_poll_for_escrow_status.to_i.minutes,
       hours_to_poll_for_verify_release: braintree.hours_to_poll_for_verify_release.to_i.hours,
       append_random_to_accounts_ids: braintree.append_random_to_accounts_ids == 'true'
+    ),
+    mangopay: OpenStruct.new(
+      client_id: mangopay.client_id,
+      base_url: mangopay.base_url
     )
   )
 end
