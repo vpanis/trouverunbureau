@@ -29,6 +29,14 @@ class SpacesController < ModelController
     @current_user = current_user
   end
 
+  def destroy
+    space = Space.find(params[:id])
+    venue = space.venue
+    return render_forbidden unless SpaceContext.new(space, current_represented).owner?
+    space.destroy!
+    redirect_to spaces_venue_path(venue)
+  end
+
   private
 
   def object_params

@@ -1,12 +1,14 @@
 module Api
   module V1
-    class SpaceController < ApiController
+    class SpacesController < ApiController
 
-      def list
+      def index
         result = SpaceQuery.new.all(pagination_params, filter_conditions)
         favorites_ids = []
         render_result(result, serialized_reviews(result, SpaceSerializer, favorites_ids))
       end
+
+      private
 
       def filter_conditions
         filters = {}

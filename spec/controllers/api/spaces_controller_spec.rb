@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Api::V1::SpaceController do
+describe Api::V1::SpacesController do
 
   let(:body) { JSON.parse(response.body) if response.body.present? }
 
@@ -21,7 +21,7 @@ describe Api::V1::SpaceController do
       let!(:sp2) { create(:space, venue: venue_2) }
 
       it 'should retrieve spaces ordered by name' do
-        get :list
+        get :index
         f_ids = []
         first = JSON.parse(body['spaces'].first.to_json)
         last = JSON.parse(body['spaces'].last.to_json)
@@ -36,7 +36,7 @@ describe Api::V1::SpaceController do
       it 'should paginate spaces' do
         page = 2
         amount =  1
-        get :list, page: page, amount: amount
+        get :index, page: page, amount: amount
 
         expect(body['count']).to eql(2)
         expect(body['items_per_page']).to eql(amount)
@@ -46,7 +46,7 @@ describe Api::V1::SpaceController do
 
       it 'does not paginate spaces outside limits' do
         size = 2
-        get :list, page: 2, amount: size
+        get :index, page: 2, amount: size
         expect(body['count']).to eql(size)
         expect(body['spaces'].size).to eql(0)
       end
@@ -56,7 +56,7 @@ describe Api::V1::SpaceController do
     context 'when no spaces exist' do
       before do
         Space.delete_all
-        get :list
+        get :index
       end
 
       it 'does not retrieve any space' do

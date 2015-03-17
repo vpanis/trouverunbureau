@@ -28,7 +28,7 @@ Deskspotting::Application.routes.draw do
     end
   end
 
-  resources :spaces, only: [:edit, :update, :create] do
+  resources :spaces, only: [:edit, :update, :create, :destroy] do
     collection do
       get :wishlist
     end
@@ -42,7 +42,7 @@ Deskspotting::Application.routes.draw do
   end
 
   api_version(module: "api/v1", path: { value: 'api/v1' }) do
-    get :spaces, to: 'space#list'
+    resources :spaces, only: [:index]
 
     resources :users do
       member do

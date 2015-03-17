@@ -6,21 +6,26 @@
   .details-section.col-md-7.col-md-offset-1.margin-top
     .title.inline.text-center.margin-bottom
       = image_tag('default-avatar.png', width: '50px', height: '50px', id: 'user-avatar-img')
-      h3.big Wolox Driving Innovation
+      h3.big = @venue.name
       .small-separator
-      p.text-center  Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+      p.text-center  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
     - @venue.spaces.each do |space|
       .space.pictures.col-md-4
         h2 = space.name
-        .img-wrapper style="background-image: url('https://sharedesk.net/api/httpdocs/media/workspaces/4e/02/23/4e0223a87610176ef0d24ef6d2dcde3a-medium.jpg');" class=('fav' if false )
+        - if space.photos.any?
+          - photo = space.photos.first.photo.url
+        - else
+          - photo = 'venue-default.png'
+        .img-wrapper style="background-image: url('#{photo}');"
           .hover
             = link_to 'edit space', edit_space_path(space), class: 'edit'
-            a.delete-photo href="#" delete
+            = link_to 'delete space', space_path(space), method: :delete, class: 'delete-photo'
     .col-md-4.add-image-container
-      .add-space
+      a href=new_space_venue_path(@venue)
+        .add-space
     .row.buttons
-        .col-xs-6
-          a href='#'
-            button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
-        .col-xs-6
-          button type='button' class='rounded-btn yellow-fill width-100 uppercase' = t("save")
+      .col-xs-6
+        a href='#'
+          button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
+      .col-xs-6
+        button type='button' class='rounded-btn yellow-fill width-100 uppercase' = t("commons.save")
