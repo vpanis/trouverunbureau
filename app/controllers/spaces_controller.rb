@@ -41,11 +41,11 @@ class SpacesController < ModelController
 
   def object_params
     params.require(:space).permit(:s_type, :name, :capacity, :quantity, :description,
-                                  :hour_price, :day_price, :week_price, :month_price)
+                                  :hour_price, :day_price, :week_price, :month_price, :deposit)
   end
 
   def space_params
-    params.require(:space).permit(:s_type, :name, :capacity, :quantity, :description,
+    params.require(:space).permit(:s_type, :name, :capacity, :quantity, :description, :deposit,
                                   :hour_price, :day_price, :week_price, :month_price, :venue_id)
   end
 end
