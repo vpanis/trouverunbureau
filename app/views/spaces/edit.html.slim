@@ -33,13 +33,12 @@
             .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
             p Space photos
             hr
-        .row
+        .row.pictures
           - @space.photos.each do |venue_photo|
             .col-md-4
-              //TODO: 'set as main' functionality not implemented yet
-              .img-wrapper style="background-image: url(#{venue_photo.photo.url});" class=('fav' if false )
+              .img-wrapper style="background-image: url(#{venue_photo.photo.url});"
                 .hover
-                  a.delete-photo href="#" data-photo-id=venue_photo.id delete
+                  a.delete-photo href="#" data-photo-id=venue_photo.id = t('commons.delete')
           .col-md-4.add-image-container
             .add-image
       .pricing.col-md-12

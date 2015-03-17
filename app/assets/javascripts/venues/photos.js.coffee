@@ -1,7 +1,7 @@
 on_load = ->
   load
     controllers:
-      spaces: ["edit"]
+      venues: ["photos"]
   , (controller, action) ->
     add_photo = (data) ->
       photo_html = "<div class=\"col-md-4\"><div class=\"img-wrapper\" style=\"background-image: url("+data.photo+");\"><div class=\"hover\"><a class=\"delete-photo\" data-photo-id=\""+data.id+"\" href=\"#\">delete</a></div></div></div>"
@@ -28,9 +28,7 @@ on_load = ->
           console.log(data)
           return
       return
-    initialize_selects = ->
-      $('.space-types-select').select2({minimumResultsForSearch: -1})
-      return
+
     initialize_listeners = ->
       $('.delete-photo').click (event) ->
         delete_photo(event, this)
@@ -58,24 +56,7 @@ on_load = ->
             return
         return
 
-    initialize_popovers = ->
-      options = {
-        placement: (context, source) ->
-          position = $(source).offset()
-          if (position.left > 160)
-              return "left"
-          if (position.left < 160)
-              return "right"
-          if (position.top < 110)
-              return "bottom"
-          return "top"
-      }
-      # $('#one-popover').popover(options)
-      return
-
-    initialize_selects()
     initialize_listeners()
-    initialize_popovers()
 
   return
 $(document).ready on_load

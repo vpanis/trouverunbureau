@@ -4,24 +4,39 @@ module Api
       before_action :authenticate_user!
 
       def create
-        space = Space.find_by(id: params[:space_id])
-        venue = Venue.find_by(id: params[:venue_id])
-        return record_not_found unless photo_belongs_to_space_and_venue?(space, venue)
-        return forbidden unless SpaceContext.new(space, current_represented).owner?
-        venue_photo = VenuePhoto.create!(photo_params)
-        render json: { id: venue_photo.id, photo: venue_photo.photo.url }, status: 201
+        return create_space_photo if params[:space_id].present?
+        create_venue_photo
       end
 
       def destroy
         venue_photo = VenuePhoto.find_by(id: params[:id])
-        space = venue_photo.space
-        return record_not_found unless venue_photo.present? && space.present?
-        return forbidden unless SpaceContext.new(space, current_represented).owner?
+        return record_not_found unless venue_photo.present?
+        return forbidden unless VenueContext.new(venue_photo.venue, current_represented).owner?
         venue_photo.destroy!
         render nothing: true, status: 200
       end
 
       private
+
+      def create_space_photo
+        space = Space.find_by(id: params[:space_id])
+        venue = Venue.find_by(id: params[:venue_id])
+        return record_not_found unless photo_belongs_to_space_and_venue?(space, venue)
+        return forbidden unless SpaceContext.new(space, current_represented).owner?
+        create_photo!
+      end
+
+      def create_venue_photo
+        venue = Venue.find_by(id: params[:venue_id])
+        return record_not_found unless venue.present?
+        return forbidden unless VenueContext.new(venue, current_represented).owner?
+        create_photo!
+      end
+
+      def create_photo!
+        venue_photo = VenuePhoto.create!(photo_params)
+        render json: { id: venue_photo.id, photo: venue_photo.photo.url }, status: 201
+      end
 
       def photo_params
         params.permit(:venue_id, :space_id, :photo)

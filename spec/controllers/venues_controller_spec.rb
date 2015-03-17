@@ -237,4 +237,57 @@ describe VenuesController do
     end # when no user is logged in
   end # PATCH venues/:id/update
 
+  describe 'GET venues/:id/photos' do
+    context 'when user logged in' do
+      before(:each) { sign_in user }
+      after(:each) { sign_out user }
+
+      context 'when the user owns the venue' do
+        let!(:venue) { create(:venue, owner: user) }
+
+        it 'succeeds' do
+          get :photos, id: venue.id
+          expect(response.status).to eq(200)
+        end
+
+        it 'assigns the requested venue to @venue' do
+          get :photos, id: venue.id
+          expect(assigns(:venue)).to eq(venue)
+        end
+
+        it 'renders the :photos template' do
+          get :photos, id: venue.id
+          expect(response).to render_template :photos
+        end
+      end # when the user owns the venue
+
+      context 'the user does not own the venue' do
+        let!(:venue) { create(:venue) }
+
+        it 'is forbidden' do
+          get :photos, id: venue.id
+          expect(response.status).to eq(403)
+        end
+      end # the user does not own the venue
+
+      context 'the venue does not exist' do
+        before { get :photos, id: -1 }
+
+        it 'fails' do
+          expect(response.status).to eq(404)
+        end
+      end # when the venue does not exist
+    end # when user logged in
+
+    context 'when no user is logged in' do
+      let(:venue) { create(:venue) }
+
+      it 'is redirected to login' do
+        get :photos, id: venue.id
+        expect(response.status).to eq(302)
+        expect(response.redirect_url).to eq(new_user_session_url)
+      end
+    end # when no user is logged in
+  end # GET venues/:id/photos
+
 end

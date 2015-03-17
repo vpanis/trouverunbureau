@@ -6,23 +6,25 @@
   .details-section.col-md-7.col-md-offset-1.margin-top
     .title.inline.text-center
       = image_tag('default-avatar.png', width: '50px', height: '50px', id: 'user-avatar-img')
-      h3.big Wolox Driving Innovation
+      h3.big = @venue.name
       .small-separator
     .row.pictures
       - @venue.photos.each do |photo|
-        .col-md-4.pictures
-          - if photo.space_id.present?
-            //p = photo.space.name
-            .img-wrapper style="background-image: url(#{photo.photo.url});" class=('fav' if false )
-              .hover
-                a.delete-photo href="#" delete
-          - else
-            p venue photo (no space)
+        .col-md-4
+          .img-wrapper style="background-image: url(#{photo.photo.url});"
+            .hover
+              a.delete-photo href="#" data-photo-id=photo.id = t('commons.delete')
       .col-md-4.add-image-container
         .add-image
     .row.buttons
       .col-xs-6
         a href='#'
-          button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
+          button type='button' class='rounded-btn width-100 uppercase' = t('commons.cancel')
       .col-xs-6
-        = link_to 'save', spaces_venue_path(@venue), class: 'rounded-btn yellow-fill width-100 uppercase'
+        = link_to t('commons.save'), spaces_venue_path(@venue), class: 'rounded-btn yellow-fill width-100 uppercase'
+
+.hidden
+  = form_tag api_v1_venue_photos_path, id: 'venue-photo-form'
+    = text_field_tag 'venue_id', @venue.id
+    = file_field_tag 'photo'
+    = submit_tag 'save photo', id: 'add-photo'

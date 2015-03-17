@@ -49,6 +49,7 @@ en:
     unknown: 'unknown'
     add: 'add'
     open: 'Open'
+    delete: 'delete'
   session:
     email: 'Email address'
     password: 'Password'
