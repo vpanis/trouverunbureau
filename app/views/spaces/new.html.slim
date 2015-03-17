@@ -49,77 +49,38 @@
         .subtitle.row
           .col-md-12
             .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
-            p Pricing
+            p = t('spaces.pricing_in', currency: @space.venue.currency)
             hr
-        .hourly.row
-          .checkbox.col-md-3
+        .row
+          .checkbox.vertical-align.col-md-3
             label
-              input type="checkbox" /
-              | Per hour
+              = check_box_tag 'per_hour', 1, @space.hour_price.present?, class: 'price-checkbox', data: {time: 'hour'}
+              = t('spaces.per_hour')
           .form-group.col-md-2
-            label currency
-            = f.text_field :hour_price, class: 'form-control'
-          .form-group.col-md-2#space-hour_price-input
             label #{t('space.hour_price')}
             = f.text_field :hour_price, class: 'form-control'
-          .form-group.col-md-5
-            .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
-            label Minimum renting period
-            = f.text_field :hour_price, class: 'form-control'
-        .daily.row
-          .checkbox.col-md-3
+        .row
+          .checkbox.vertical-align.col-md-3
             label
-              input type="checkbox" /
-              | Per day
+              = check_box_tag 'per_day', 1, @space.day_price.present?, class: 'price-checkbox', data: {time: 'day'}
+              = t('spaces.per_day')
           .form-group.col-md-2
-            label currency
-            = f.text_field :hour_price, class: 'form-control'
-          .form-group.col-md-2#space-day_price-input
             label #{t('space.day_price')}
             = f.text_field :day_price, class: 'form-control'
-          .form-group.col-md-5
-            .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
-            label Minimum renting period
-            = f.text_field :hour_price, class: 'form-control'
-        .monthly.row
-          .checkbox.col-md-3
+        .row
+          .checkbox.vertical-align.col-md-3
             label
-              input type="checkbox" /
-              | Per month
+              = check_box_tag 'per_month', 1, @space.month_price.present?, class: 'price-checkbox', data: {time: 'month'}
+              = t('spaces.per_month')
           .form-group.col-md-2
-            label currency
-            = f.text_field :hour_price, class: 'form-control'
-          .form-group.col-md-2#space-month_price-input
             label #{t('space.month_price')}
             = f.text_field :month_price, class: 'form-control'
-          .form-group.col-md-5
-            .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
-            label Minimum renting period
-            = f.text_field :hour_price, class: 'form-control'
-      .deposit.col-md-12
-        .subtitle.row
-          .col-md-12
-            .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
-            p Deposit
-            hr
-        .hourly.row
+        .row
           .form-group.col-md-2
-            label currency
-            = f.text_field :hour_price, class: 'form-control'
-          .form-group.col-md-2#space-hour_price-input
-            label #{t('space.hour_price')}
-            = f.text_field :hour_price, class: 'form-control'
-        .daily.row
-          .form-group.col-md-2
-            label currency
-            = f.text_field :hour_price, class: 'form-control'
-          .form-group.col-md-2#space-day_price-input
-            label #{t('space.day_price')}
-            = f.text_field :day_price, class: 'form-control'
+            .icon.info.pointer
+            label = t('spaces.deposit')
+            = f.text_field :deposit, class: 'form-control'
 
-      / .form-group.col-md-6#space-week_price-input
-      /   label #{t('space.week_price')}
-      /   = f.text_field :week_price, class: 'form-control'
       .buttons
           .col-md-6
             a href="#" type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")

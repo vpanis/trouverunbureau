@@ -9,6 +9,7 @@ FactoryGirl.define do
     description { Faker::Lorem.sentence }
     hour_price 20
     day_price 150
+    deposit 50
 
     venue { FactoryGirl.build(:venue) }
   end
