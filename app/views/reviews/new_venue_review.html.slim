@@ -1,0 +1,17 @@
+p new venue review
+p este es el review que hace el usuario sobre el lugar
+
+
+h1 = @booking.space.venue.name
+p in the:
+p = @booking.space.name
+p date:
+p = @booking.from
+p spaces:
+p = @booking.quantity
+
+
+= form_for @review, url: {action: "create_venue_review"}, method: 'post'  do |f|
+  = f.text_field :stars
+  = f.text_area :message
+  = f.submit 'Save'

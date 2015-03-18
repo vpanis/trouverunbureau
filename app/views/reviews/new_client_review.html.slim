@@ -1,0 +1,14 @@
+p new client review
+p este es el review que hace el lugar sobre el usuario
+
+h1 = @booking.owner.name
+p date:
+p = @booking.from
+p spaces:
+p = @booking.quantity
+
+
+= form_for @review, url: {action: "create_client_review"}, method: 'post'  do |f|
+  = f.text_field :stars
+  = f.text_area :message
+  = f.submit 'Save'
