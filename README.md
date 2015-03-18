@@ -27,23 +27,28 @@ Setup for Rails Applications
 
 ###.mail.yml (mailer configuration for all the app)
 
-smtp_address: "smtp.gmail.com"  
-sender: "somemail@xxx.com"  
+smtp_address: "smtp.gmail.com"
+sender: "somemail@xxx.com"
 password: "some password"
 
 ###.facebook.yml (facebook app for login and share)
 
-app_id: "APP ID"  
-app_secret: "APP SECRET"  
+app_id: "APP ID"
+app_secret: "APP SECRET"
 
 ###.redis.yml (redis db connection)
 
-host: localhost  
-port: 6379  
+host: localhost
+port: 6379
 password: "a password if needed"
 
 ###.resque.yml (web job's overview)
 
-user: "some user (this is a plain name, it doesn't matter if the user exists or not)"  
+user: "some user (this is a plain name, it doesn't matter if the user exists or not)"
 password: "some password"
+
+
+## Staging Environment ##
+
+For the staging environment label to work. Set the `TRELLO_URL` environment variable.
 
