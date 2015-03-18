@@ -1205,3 +1205,21 @@ ul.spoken-languages-container{
   display: inline-block;
   width: 100%;
 }
+
+
+.staging-alert{
+  width: 100px;
+  height: 55px;
+  overflow: scroll;
+  position: fixed;
+  top: 250px;
+  z-index: 900;
+  &:hover{
+    .collapsed{
+      display:none;
+    }
+    width: 100%;
+    height: auto;
+  }
+
+}
