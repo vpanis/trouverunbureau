@@ -2,26 +2,43 @@
 = render 'shared/profile_menu_bar', user: current_user, selected: 'bookings'
 
 .review.container
-  .user-title
-    h3.yellow-title = t('users.edit_profile')
+  .user-title.margin-bottom
+    h3.yellow-title Guest Review
     .small-separator
     .user-avatar
       = image_tag('default-avatar.png', width: '95px', height: '95px', id: 'user-avatar-img')
     h4.gray-subtitle = @booking.owner.name
 
-
-
-
-p new client review
-p este es el review que hace el lugar sobre el usuario
-
-p date:
-p = @booking.from
-p spaces:
-p = @booking.quantity
-
-
-= form_for @review, url: {action: "create_client_review"}, method: 'post'  do |f|
-  = f.text_field :stars
-  = f.text_area :message
-  = f.submit 'Save'
+  .row.margin-top
+    .col-md-6.col-md-offset-3
+      .row
+        .col-md-3.data-review
+          p = @booking.from.strftime('%d/%m/%y')
+          p Date
+        .col-md-3.data-review
+          p = @booking.quantity
+          p Spaces
+        .col-md-3.data-review
+          p 2:00 PM
+          p Check In
+        .col-md-3.data-review
+          p 4:00 PM
+          p Check Out
+  .row.margin-top.margin-bottom
+    .col-md-6.col-md-offset-3
+      span Rate
+      hr
+  .row
+    .col-md-6.col-md-offset-3
+      .edit-profile-form.dashboard-form
+        = form_for @review, url: {action: "create_client_review"}, method: 'post'  do |f|
+          .bigstars
+            - (1..5).each do |i|
+              .bigstar
+          .form-group
+            label 
+              | Comment 
+              span = "(The review is about to write will be seen only by other hosts)"
+            = f.text_area :message, class: 'form-control'
+          .col-md-6.col-md-offset-3.margin-top.margin-bottom
+            = f.submit 'Save', class: 'rounded-btn yellow-fill width-100 uppercase'
