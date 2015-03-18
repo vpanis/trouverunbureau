@@ -1,8 +1,15 @@
-p new venue review
-p este es el review que hace el usuario sobre el lugar
+= render 'shared/menu_bar', user: current_user
+= render 'shared/profile_menu_bar', user: current_user, selected: 'bookings'
+
+.review.container
+  .user-title
+    h3.yellow-title = t('users.edit_profile')
+    .small-separator
+    .user-avatar
+      = image_tag('default-avatar.png', width: '95px', height: '95px', id: 'user-avatar-img')
+    h4.gray-subtitle = @booking.space.venue.name
 
 
-h1 = @booking.space.venue.name
 p in the:
 p = @booking.space.name
 p date:
