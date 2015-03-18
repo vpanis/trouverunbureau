@@ -50,6 +50,8 @@ en:
     add: 'add'
     open: 'Open'
     delete: 'delete'
+    add_image: 'Add an image'
+    add_space: 'Create new space'
   session:
     email: 'Email address'
     password: 'Password'
@@ -255,6 +257,8 @@ en:
         flexible_cancellations: 'Flexible Cancellations.'
       reviews: 'Reviews'
       no_reviews: 'No reviews'
+    edit_venue: 'Edit venue'
+    create_venue: 'Create new venue'
     edit:
       list_your_venue: 'List your venue'
       start_by: 'Start by telling us about your venue...'

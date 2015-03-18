@@ -21,7 +21,7 @@
     cursor: pointer;
     transition: .25s;
     border-radius: 0;
-    padding: 28px 15px;
+    padding: 10px 15px 0px;
     &:hover {
       background-color: $dark-white;
     }
@@ -47,6 +47,21 @@
         transform-origin: 50% 50%;
       }
     }
+    .venue-bar {
+      .basic-info{
+        padding-bottom: 15px;
+      }
+      .venue-avatar{
+        margin: 0px;
+        height: auto;
+        width: auto;
+        vertical-align: top;
+        img{
+          margin-top: 45%;
+        }
+      }
+    }
+
   }
   .panel-body {
     background-color: $light-gray;
@@ -59,4 +74,8 @@
   background-color: white;
   padding: 20px;
   margin: 15px auto;
+  &.add-image-container{
+    background-color: $yellow;
+    height: 250px;
+  }
 }

@@ -290,4 +290,43 @@ describe VenuesController do
     end # when no user is logged in
   end # GET venues/:id/photos
 
+  context 'GET venues' do
+    context 'a user is logged in' do
+      let!(:owned_venue) { create(:venue, owner: user) }
+      let!(:owned_venue2) { create(:venue, owner: user) }
+      let!(:others_venue) { create(:venue) }
+
+      before(:each) do
+        sign_in user
+        get :index
+      end
+
+      it 'succeeds' do
+        expect(response.status).to eq(200)
+      end
+
+      it 'renders the index template' do
+        expect(response).to render_template :index
+      end
+
+      it 'assigns the owned venues to venues' do
+        expect(assigns(:venues).size).to be(2)
+        expect(assigns(:venues)).to include(owned_venue)
+        expect(assigns(:venues)).to include(owned_venue2)
+      end
+
+      it 'does not assigns someoneelses venues to venues' do
+        expect(assigns(:venues)).not_to include(others_venue)
+      end
+    end
+
+    context 'no user is logged in' do
+      it 'is redirected to login' do
+        get :index
+        expect(response.status).to eq(302)
+        expect(response.redirect_url).to eq(new_user_session_url)
+      end
+    end
+  end
+
 end

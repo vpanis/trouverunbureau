@@ -198,7 +198,8 @@ hr {
     border-radius: 100%;
     background-color: $black;
   }
-  &:after {
+  p {
+    color: black;
     font-weight: 700;
 
     position: absolute;
@@ -211,12 +212,6 @@ hr {
     text-transform: uppercase;
   }
 }
-.add-image:after {
-  content: 'Add an Image';
-}
 .add-space {
   margin-top: 70px;
-  &:after {
-    content: 'List new space';
-  }
 }
