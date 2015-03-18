@@ -736,7 +736,7 @@ h4.gray-subtitle{
         p{
           margin-bottom: 5px;
         }
-        .hours{
+        .hours p{
           font-size: 12px;
           color: $gray-text;
         }
@@ -821,6 +821,7 @@ h4.gray-subtitle{
       width: 50%;
       padding-top: 7px;
       padding-bottom: 8px;
+      vertical-align: top;
       .why-deskspotting {
         color: $gray-text;
         @include at2x('venue_profile_why_book', 22px, 22px);
@@ -1278,5 +1279,9 @@ li.venue-hours.active{
     bottom: 15px;
     border-right: 1px solid;
   }
+}
+
+.container{
+  padding-top: 20px;
 }
 

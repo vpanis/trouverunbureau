@@ -37,12 +37,12 @@
           .row
             - @space.photos.each do |venue_photo|
               .col-md-4
-                //TODO: 'set as main' functionality not implemented yet
-                .img-wrapper style="background-image: url(#{venue_photo.photo.url});" class=('fav' if false )
+                .img-wrapper style="background-image: url(#{venue_photo.photo.url});"
                   .hover
                     a.delete-photo href="#" data-photo-id=venue_photo.id delete
             .col-md-4.add-image-container
               .add-image
+                p = t('commons.add_image')
         - else
           p Save space to start adding photos
       .pricing.col-md-12

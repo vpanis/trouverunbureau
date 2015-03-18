@@ -21,9 +21,9 @@
             .col-md-12
               p.location
                 - if @user.location.present?
-                  strong = @user.location
+                  strong.black = @user.location
                 - else
-                  strong = t('commons.unknown')
+                  strong.black = t('commons.unknown')
               p.since
                 | User since
                 span = @user.created_at.strftime('%B, %Y')

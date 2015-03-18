@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
   include RepresentedHelper
   before_action :authenticate_user!
 
-  #TODO implement properly and TEST
+  # TODO: implement properly and TEST
   def new_client_review
     @booking = Booking.find(params[:id])
     @review = ClientReview.new(booking: @booking)
@@ -23,6 +23,5 @@ class ReviewsController < ApplicationController
     @booking = Booking.find(params[:id])
     redirect_to venue_review_booking_path(@booking)
   end
-
 
 end

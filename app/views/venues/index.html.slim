@@ -20,15 +20,16 @@
                 p = "#{venue.town}, #{venue.country.name}"
           .right-wrapper
             .icon.info.pointer
-            a.edit href=edit_venue_path(venue) = t('venues.edit_venue')
+            a.edit.gray href=edit_venue_path(venue) = t('venues.edit_venue')
+            a.edit.gray href=venue_path(venue) = t('venues.preview')
             .arrow ˄
-        div.panel-collapse.collapse id="collapse-venue-#{venue.id}" class=('in' if index == 0) data-aria-labelledby="heading-#{venue.id}" data-role="tabpanel"
+        div[id="collapse-venue-#{venue.id}" class="panel-collapse collapse #{'in' if index==0}" data-aria-labelledby="headingOne" data-role= "tabpanel"]
           .panel-body
             - venue.spaces.each do |space|
               .col-md-3
                 a href=edit_space_path(space)
                   .space.pictures
-                    h2 = space.name
+                    h2.black = space.name
                     - if space.photos.any?
                       .img-wrapper style="background-image: url('#{space.photos.first.photo.url}');"
                     - else

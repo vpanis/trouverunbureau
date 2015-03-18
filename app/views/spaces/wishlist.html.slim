@@ -3,8 +3,8 @@
 
 - if @current_user.present?
   .container
-    .row
-      .spaces-list ng-controller="WishlistCtrl"
+    .spaces-list ng-controller="WishlistCtrl"
+      .row
         .col-xs-12.col-sm-6.col-md-4 ng-repeat=("space in spaces")
           .favorite-space
             .favourite.active ng-click=("removeFavorite(space.id, true)")
@@ -20,7 +20,7 @@
                 a.right.carousel-control data-slide="next" href="#space-carousel-{{space.id}}" role="button"
                   span.glyphicon.right-carousel-arrow aria-hidden="true"
             .space-info
-              .name() {{space.name}}
+              a.name ng-href="/venues/{{space.venue_id}}?space_id={{space.id}}" {{space.name}}
               .city() {{space.city}}
               .bottom-line
                 .currency() {{space.currency}}
@@ -36,6 +36,7 @@
                 .price-monthly ng-if=("space.month_price")
                   .month-price.pull-left() ${{space.month_price}}
                   .duration.pull-left = t('wishlist.month')
+      .row
         .pagination-container.wishlist-pagination
           pagination.pagination-sm ng-change="getSpaces()" total-items="totalSpaces" ng-model="currentPage" max-size="3" rotate="false" boundary-links="true" previous-text="‹" next-text="›" first-text="«" last-text="»" items-per-page="itemsPerPage"
         .no-reviews ng-if="totalSpaces == 0"  #{t('wishlist.no_favourites')}

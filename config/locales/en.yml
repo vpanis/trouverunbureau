@@ -259,6 +259,7 @@ en:
       no_reviews: 'No reviews'
     edit_venue: 'Edit venue'
     create_venue: 'Create new venue'
+    preview: 'Preview'
     edit:
       list_your_venue: 'List your venue'
       start_by: 'Start by telling us about your venue...'
