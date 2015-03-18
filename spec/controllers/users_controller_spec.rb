@@ -27,10 +27,10 @@ describe UsersController do
       end # when the user exists
 
       context 'when the user does not exist' do
+        before { get :show, id: -1 }
+
         it 'fails' do
-          assert_raises(ActiveRecord::RecordNotFound) do
-            get :show, id: -1
-          end
+          expect(response.status).to be(404)
         end
       end # when the user does not exist
     end # when no user is logged in
@@ -120,10 +120,10 @@ describe UsersController do
       end # when the user exists
 
       context 'when the user does not exist' do
+        before { get :edit, id: -1 }
+
         it 'fails' do
-          assert_raises(ActiveRecord::RecordNotFound) do
-            get :edit, id: -1
-          end
+          expect(response.status).to be(404)
         end
       end # when the user does not exist
     end # when no user is logged in
@@ -181,11 +181,12 @@ describe UsersController do
       end # when the user exists
 
       context 'when the user does not exist' do
+        before { patch :update, id: -1 }
+
         it 'fails' do
-          assert_raises(ActiveRecord::RecordNotFound) do
-            patch :update, id: -1
-          end
+          expect(response.status).to be(404)
         end
+
       end # when the user does not exist
     end # when no user is logged in
 

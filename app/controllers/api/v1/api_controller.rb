@@ -2,6 +2,7 @@ module Api
   module V1
     class ApiController < ApplicationController
       include ParametersHelper
+      include RepresentedHelper
       respond_to :json
 
       def render_result(result, serialized_array)
@@ -9,7 +10,6 @@ module Api
                        items_per_page: result.per_page,
                        spaces: serialized_array },
                status: 200
-
       end
 
       def serialized_reviews(result, serializer, ids)

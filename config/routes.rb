@@ -9,9 +9,16 @@ Deskspotting::Application.routes.draw do
 
   root to: 'landing#index'
 
-  resources :venues, only: [:edit, :update, :show] do
-    collection do
+  resources :venues, only: [:new, :create, :edit, :update, :show, :index] do
+    member do
       get :search
+      get :details, to: 'venue_details#details'
+      patch :details, to: 'venue_details#save_details'
+      get :amenities, to: 'venue_amenities#amenities'
+      patch :amenities, to: 'venue_amenities#save_amenities'
+      get :photos
+      get :spaces
+      get :new_space, to: "spaces#new"
     end
   end
 
@@ -21,7 +28,7 @@ Deskspotting::Application.routes.draw do
     end
   end
 
-  resources :spaces, only: [:edit, :update] do
+  resources :spaces, only: [:edit, :update, :create, :destroy] do
     collection do
       get :wishlist
     end
@@ -35,7 +42,7 @@ Deskspotting::Application.routes.draw do
   end
 
   api_version(module: "api/v1", path: { value: 'api/v1' }) do
-    get :spaces, to: 'space#list'
+    resources :spaces, only: [:index]
 
     resources :users do
       member do
@@ -74,6 +81,7 @@ Deskspotting::Application.routes.draw do
       end
     end
 
+    resources :venue_photos, only: [:create, :destroy]
   end # api/v1
 
 end

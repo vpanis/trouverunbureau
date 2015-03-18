@@ -20,6 +20,7 @@
 #= require_tree ./landing/
 #= require_tree ./venues/
 #= require_tree ./users/
+#= require_tree ./spaces/
 #= require_tree ./angular/controllers
 
 

@@ -1,0 +1,11 @@
+.row
+  .form-group.venue-description-input.weekday-col.col-md-4
+    label = day_label
+    = check_box_tag "open_#{weekday}", 1, @modify_day_hours[index].opened_day?, class: 'fake-open-day', data: {weekday: weekday, index: index}
+    = t('commons.open')
+  .form-group.venue-description-input.col-md-4
+    label = t('venues.edit.opening_time')
+    = select_tag("from_#{weekday}", options_for_select(options, @modify_day_hours[index].from), {class: 'form-control hour-select fake-hour-select', data: {weekday: weekday, index: index, from_to: 'from'} })
+  .form-group.venue-description-input.col-md-4
+    label = t('venues.edit.closing_time')
+    = select_tag("to_#{weekday}", options_for_select(options, @modify_day_hours[index].to), {class: 'form-control hour-select fake-hour-select', data: {weekday: weekday, index: index, from_to: 'to'} })

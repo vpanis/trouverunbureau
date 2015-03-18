@@ -14,6 +14,7 @@ RSpec.describe Space, type: :model do
   it { should validate_presence_of(:capacity) }
   it { should validate_presence_of(:quantity) }
   it { should validate_presence_of(:venue) }
+  it { should validate_presence_of(:deposit) }
 
   # Enums
   it { should define_enum_for(:s_types) }
@@ -47,6 +48,11 @@ RSpec.describe Space, type: :model do
   it do
     should validate_numericality_of(:month_price)
     .is_greater_than(0).allow_nil
+  end
+
+  it do
+    should validate_numericality_of(:deposit)
+    .only_integer.is_greater_than_or_equal_to(0)
   end
 
   it 'should have at least one price' do

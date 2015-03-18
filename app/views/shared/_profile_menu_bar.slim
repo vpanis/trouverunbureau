@@ -8,7 +8,7 @@
       li
         a(href="#") = t('menu.bookings')
       li
-        a(href="#") = t('menu.venues')
+        = link_to(t('menu.venues'), venues_path, class: ('active' if selected.eql?('venues')))
       li
         = link_to(t('menu.wishlist'), wishlist_spaces_path, class: ('active' if selected.eql?('wishlist')))
       li

@@ -1,0 +1,44 @@
+= render 'shared/menu_bar', user: current_user
+= render 'shared/profile_menu_bar', user: current_user, selected: 'venues'
+
+= render 'profession_modal'
+
+#venue.main-content.dashboard-form.clearfix.overflow-hidden
+  = render 'shared/edit_venue_progress', venue: @venue, progress: 20, step: 2
+  .details-section.col-md-7.col-md-offset-1.margin-top
+    .title.inline.text-center
+      - if @venue.logo?
+        = image_tag(@venue.logo.url, width: '95px', height: '95px', id: 'venue-logo-img')
+      - else
+        = image_tag('venue-default.png', width: '95px', height: '95px', id: 'venue-logo-img')
+      h3.big = @venue.name
+      .small-separator
+    = form_for @venue, url: {action: "details"} do |f|
+      .form-group#venue-description-input.col-md-12
+        label = t('venues.edit.description')
+        = f.text_area :description, class: 'form-control'
+      .subtitle
+        .col-md-12
+          .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
+          label = t('venues.edit.professions')
+          a.add.margin-left.aqua#open-professions href='#' data-target="#professionModal" data-toggle="modal" = t('commons.add')
+          label
+            = check_box_tag 'all-professions', t('venues.professions.all')
+            = t('venues.professions.all')
+          hr
+          = f.hidden_field :professions
+          ul.spoken-languages-container
+            - Venue::PROFESSIONS.each do |prof|
+              li.lang-item id="prof-item-#{prof}"
+                div.lang-name
+                  = t("venues.professions.#{prof.to_s}")
+                .delete-lang href="#" data-prof=prof
+      .subtitle
+        = render 'day_hours', form: f
+      .row.buttons
+        .col-xs-6
+          a href='#'
+            button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
+        .col-xs-6
+          = f.submit t("commons.save"), class: 'rounded-btn yellow-fill width-100 uppercase'
+

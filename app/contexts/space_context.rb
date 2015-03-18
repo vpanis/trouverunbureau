@@ -9,9 +9,15 @@ class SpaceContext
     @current_represented.present? && @space.venue.owner == @current_represented
   end
 
-  def update_space?(space_params)
+  def update_space(space_params)
     return false unless can_update?(space_params[:capacity], space_params[:quantity])
+    s_type = space_params[:s_type]
+    if s_type.present?
+      @space.s_type = Space.s_types[s_type]
+      space_params.reject! { |k| k == 's_type' }
+    end
     @space.update_attributes!(space_params)
+    @space.save
   end
 
   private

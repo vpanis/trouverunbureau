@@ -1,0 +1,183 @@
+@import 'variables';
+@import 'mixins';
+
+#space {
+  overflow: hidden;
+  .height-100 {
+    padding-bottom: 9999px;
+    margin-bottom: -9999px;
+  }
+}
+
+.verification-steps {
+  background-color: $dark-white;
+  border-right: 1px solid $gray;
+  .status {
+    border-bottom: 1px solid $gray;
+    .status-text {
+      text-transform: uppercase;
+      display: inline-block;
+      margin: 0 5px 10px 0;
+      span {
+        color: red;
+      }
+    }
+    .progress-container {
+      position: relative;
+      width: 85%;
+      margin-right: 5%;
+      display: inline-block;
+      height: 20px;
+      vertical-align: middle;
+      border: 2px solid $yellow;
+      border-radius: 12px;
+      overflow: hidden;
+      .progress {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        background-color: $yellow;
+        border-radius: 0;
+        box-shadow: none;
+      }
+    }
+    .progress-counter {
+        width: 10%;
+        display: inline-block;
+    }
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    li {
+      position: relative;
+      padding: 20px;
+      border-bottom: 1px solid $gray;
+      &.done:after {
+        content: '';
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        width: 22px;
+        height: 22px;
+        transform: translateY(-50%);
+        @include at2x('venue_profile_why_book', 22px, 22px); //TODO asset
+      }
+      p {
+        margin-bottom: 0;
+      }
+      &.selected{
+        background-color: white;
+        border-right: 1px solid $gray;
+        margin-right: -1px;
+      }
+    }
+  }
+  .status,
+  .publish,
+  .delete {
+    padding: 15px;
+  }
+  .delete a {
+    @include at2x('ic_profile_close', 22px, 22px); //TODO asset
+    background-repeat: no-repeat;
+    background-position: center left;
+    padding-left: 25px;
+    color: $gray;
+  }
+}
+
+.details-section {
+  .space-title {
+    color: $black;
+  }
+  .share {
+    margin: 20px 0;
+    .share-text {
+      padding: 4px 0;
+      p {
+        @include at2x('venue_profile_fbshare', 32px, 32px);
+        background-repeat: no-repeat;
+        padding: 0 0 0 55px;
+        margin-bottom: 0;
+        font-size: 16px;
+        line-height: 32px;
+        background-position: 15px;
+      }
+    }
+  }
+}
+.pictures {
+  .img-wrapper {
+    position: relative;
+    height: 155px;
+    background-size: cover;
+    background-image: asset-url("venue-default.png");
+    margin-bottom: 20px;
+    .hover {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      padding: 40px;
+      background-color: transparentize($aqua, 0.5);
+      a {
+        color: $white;
+        display: block;
+        padding-left: 30%;
+        background-repeat: no-repeat;
+        line-height: 32px;
+      }
+      .main {
+        @include at2x('venue_wishlist_white_inactive', 32px, 32px);
+        background-position: calc(30% - 32px); // background image width
+        margin-bottom: 10px;
+      }
+      .edit {
+        @include at2x('venue_profile_a_whiteboards', 32px, 32px);
+        background-position: calc(30% - 32px); // background image width
+        margin-bottom: 10px;
+      }
+      .delete-photo {
+        @include at2x('venue_wishlist_white_inactive', 32px, 32px);
+        background-position: calc(30% - 32px); // background image width
+      }
+    }
+    &:hover .hover {
+      display: block;
+    }
+    &.fav:hover .hover {
+      display: none;
+    }
+    &.fav:before {
+      content: '*';
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      color: $yellow;
+      font-size: 30px;
+      line-height: 1;
+    }
+  }
+}
+.space {
+  h2 {
+    font-size: 14px;
+    font-weight: 700;
+    display: inline-block;
+    position: relative;
+    margin: 0 0 18px;
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 40%;
+      height: 2px;
+      background: $yellow;
+    }
+  }
+}

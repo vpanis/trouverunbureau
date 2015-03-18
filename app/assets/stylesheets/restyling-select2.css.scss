@@ -35,6 +35,22 @@
   }
 }
 
+.select2-container.select2-container-disabled{
+  a.select2-choice{
+    background-color: $light-gray;
+    span.select2-chosen{
+      background-color: $light-gray;
+    }
+    .select2-arrow{
+      background-color: $light-gray;
+    }
+  }
+}
+
+.form-control.select2-container.select2-dropdown-open{
+  border-color: $light-gray;
+}
+
 .select2-container.select2-dropdown-open .select2-choice .select2-arrow b{
   @include at2x('arrow-dropdown-up', 14px, 10px);
   background-position: 0px 22px;

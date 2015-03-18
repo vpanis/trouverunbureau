@@ -1,15 +1,42 @@
 @import 'variables';
 @import 'mixins';
 
+.rounded-button{
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-align: center;
+  @include border-radius(2em);
+  border: 2px solid $yellow;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 11px 0 7px 0;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: black;
+  margin-top: 20px;
+}
+
 .rounded-btn {
   padding: 10px 20px;
   border-radius: 40px;
-  border: 2px solid;
+  border: 2px solid $dark-gray;;
   color: $dark-gray;
   background-color: transparent;
   font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  transition: .25s;
+  &:hover {
+    background-color: $dark-white;
+    color: $dark-gray;
+  }
   &.default {
     border-color: $yellow;
+    &:hover {
+      background-color: $yellow;
+      color: $black;
+    }
   }
   &.green {
     border-color: $aqua;
@@ -18,6 +45,19 @@
     border-color: $yellow;
     background-color: $yellow;
     color: $black;
+    &:hover {
+      background-color: darken($yellow, 5%);
+      border-color: darken($yellow, 5%);
+    }
+  }
+  &.grey-fill {
+    border-color: $gray;
+    background-color: $gray;
+    color: $white;
+    &:hover {
+      background-color: darken($gray, 20%);
+      border-color: darken($gray, 20%);
+    }
   }
   &.bold{
     letter-spacing: 0.08rem;
@@ -27,6 +67,7 @@
     width: 50%;
   }
   &.width-100 {
+    display: inline-block;
     width: 100%;
   }
 }

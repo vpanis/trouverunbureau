@@ -66,8 +66,8 @@
               label = t('users.location')
               = f.text_field :location, placeholder: t('users.location'), class: 'form-control'
             .form-group.col-xs-12
-              label = t('Language Spoken')
-              a.add.margin-left.aqua href='#' data-target="#languageModal" data-toggle="modal" add
+              label = t('users.spoken_languages')
+              a.add.margin-left.aqua href='#' data-target="#languageModal" data-toggle="modal" = t('commons.add')
               ul.spoken-languages-container
                 - @language_options.each do |lang|
                   li.lang-item id="lang-item-#{lang.last}"

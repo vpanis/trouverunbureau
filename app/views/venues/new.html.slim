@@ -1,0 +1,30 @@
+= render 'shared/menu_bar', user: current_user
+= render 'shared/profile_menu_bar', user: current_user, selected: 'venues'
+
+= render 'shared/image_modal', modal_id: 'logo-modal', title: t('venues.edit.change_logo'), image_link_id: 'logo-link', save_button_id: 'save-logo'
+
+.venue.container.margin-top
+  .space-title.text-center
+    h3.yellow-title = t('venues.edit.list_your_venue')
+  .small-separator
+  h4.gray-subtitle.text-center = t('venues.edit.start_by')
+  .user-avatar.text-center
+    = image_tag('venue-default.png', width: '95px', height: '95px', id: 'venue-logo-img')
+    a#edit-logo.add.block.aqua href="#" data-toggle="modal" data-target="#logo-modal" = t('venues.edit.add_venue_logo')
+
+  .dashboard-form.col-md-8.col-md-offset-2
+    = form_for(@venue) do |f|
+      = f.file_field :logo, class: 'hidden'
+      .row
+        .form-group.col-md-8.col-md-offset-2
+          label = t('venues.edit.name')
+          = f.text_field :name, placeholder: t('venues.edit.name'), class: 'form-control'
+        .form-group.col-md-8.col-md-offset-2
+          label = t('venues.edit.country')
+          = f.select(:country_id, @countries_options, {}, {class: 'form-control country-select'})
+      .row.buttons
+        .col-xs-6
+          a href='#'
+            button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
+        .col-xs-6
+          = f.submit t("commons.save"), name: 'venue[force_submit]', class: 'rounded-btn yellow-fill width-100 uppercase'

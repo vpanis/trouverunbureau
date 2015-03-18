@@ -1,0 +1,81 @@
+@import 'variables';
+@import 'mixins';
+
+// amenities
+.amenity-checkbox {
+  margin-bottom: 23px;
+}
+
+#venue-list {
+  .panel {
+    border: none;
+    border-bottom: 1px solid $gray;
+    & + .panel {
+      margin-top: 0;
+    }
+  }
+  .panel-heading {
+    position: relative;
+    background-color: $white;
+    border: none;
+    cursor: pointer;
+    transition: .25s;
+    border-radius: 0;
+    padding: 10px 15px 0px;
+    &:hover {
+      background-color: $dark-white;
+    }
+    .right-wrapper {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      .edit,
+      .arrow {
+        display: inline-block;
+      }
+      .edit {
+        margin-right: 50px;
+      }
+      .arrow {
+        vertical-align: middle;
+      }
+    }
+    &.collapsed {
+      .arrow {
+        transform: rotate(-180deg);
+        transform-origin: 50% 50%;
+      }
+    }
+    .venue-bar {
+      .basic-info{
+        padding-bottom: 15px;
+      }
+      .venue-avatar{
+        margin: 0px;
+        height: auto;
+        width: auto;
+        vertical-align: top;
+        img{
+          margin-top: 45%;
+        }
+      }
+    }
+
+  }
+  .panel-body {
+    background-color: $light-gray;
+    border-top: 2px solid $gray;
+    border-bottom: 2px solid $gray;
+  }
+}
+
+.space {
+  background-color: white;
+  padding: 20px;
+  margin: 15px auto;
+  &.add-image-container{
+    background-color: $yellow;
+    height: 250px;
+  }
+}

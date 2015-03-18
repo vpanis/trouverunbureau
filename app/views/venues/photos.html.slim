@@ -1,0 +1,30 @@
+= render 'shared/menu_bar', user: current_user
+= render 'shared/profile_menu_bar', user: current_user, selected: 'venues'
+
+#venue.main-content.dashboard-form.clearfix.overflow-hidden
+  = render 'shared/edit_venue_progress', venue: @venue, progress: 60, step: 4
+  .details-section.col-md-7.col-md-offset-1.margin-top
+    .title.inline.text-center
+      = image_tag('default-avatar.png', width: '50px', height: '50px', id: 'user-avatar-img')
+      h3.big = @venue.name
+      .small-separator
+    .row.pictures
+      - @venue.photos.each do |photo|
+        .col-md-4
+          .img-wrapper style="background-image: url(#{photo.photo.url});"
+            .hover
+              a.delete-photo href="#" data-photo-id=photo.id = t('commons.delete')
+      .col-md-4.add-image-container
+        .add-image
+    .row.buttons
+      .col-xs-6
+        a href='#'
+          button type='button' class='rounded-btn width-100 uppercase' = t('commons.cancel')
+      .col-xs-6
+        = link_to t('commons.save'), spaces_venue_path(@venue), class: 'rounded-btn yellow-fill width-100 uppercase'
+
+.hidden
+  = form_tag api_v1_venue_photos_path, id: 'venue-photo-form'
+    = text_field_tag 'venue_id', @venue.id
+    = file_field_tag 'photo'
+    = submit_tag 'save photo', id: 'add-photo'

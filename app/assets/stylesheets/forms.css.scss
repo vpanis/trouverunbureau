@@ -1,32 +1,6 @@
 @import 'variables';
 @import 'mixins';
 
-.rounded-button{
-  font-family: "Open Sans", sans-serif;
-  font-size: 0.875rem;
-  font-weight: 700;
-  text-align: center;
-  @include border-radius(2em);
-  border: 2px solid $yellow;
-  background-color: transparent;
-  cursor: pointer;
-  padding: 11px 0 7px 0;
-  font-size: 14px;
-  text-transform: uppercase;
-  color: black;
-  margin-top: 20px;
-}
-
-.form-group{
-  margin-bottom: 11px;
-  .input-group{
-    .input-group-addon{
-      background-color: white;
-      color: $gray-text;
-    }
-  }
-}
-
 .form-control{
   height: 40px;
   border: 1px solid $gray;
@@ -39,38 +13,36 @@
   -webkit-transition: none;
 }
 
-.dashboard-form{
-  .form-group{
-    margin-bottom: 8px;
-    .form-control{
-      height: 42px;
-      border: 2px solid $light-gray;
-      color: $gray-text;
-    }
-    textarea.form-control{
-      height: 90px;
-      font-size: 12px;
-      letter-spacing: 0.08rem;
-      font-weight: 300;
-    }
-    input[type='text'].form-control{
-      font-size: 12px;
-      letter-spacing: 0.08rem;
-      font-weight: 300;
-      padding-bottom: 2px;
-    }
-    *::-webkit-input-placeholder{
-      color: $dark-gray;
-    }
-    *:-moz-placeholder{
-      color: $dark-gray;
-    }
-    *::-moz-placeholder{
-      color: $dark-gray;
-    }
-    *:-ms-input-placeholder{
-      color: $dark-gray;
-    }
+.form-group{
+  margin-bottom: 8px;
+  .form-control{
+    height: 42px;
+    border: 2px solid $light-gray;
+    color: $gray-text;
+  }
+  textarea.form-control{
+    height: 90px;
+    font-size: 12px;
+    letter-spacing: 0.08rem;
+    font-weight: 300;
+  }
+  input[type='text'].form-control{
+    font-size: 12px;
+    letter-spacing: 0.08rem;
+    font-weight: 300;
+    padding-bottom: 2px;
+  }
+  *::-webkit-input-placeholder{
+    color: $dark-gray;
+  }
+  *:-moz-placeholder{
+    color: $dark-gray;
+  }
+  *::-moz-placeholder{
+    color: $dark-gray;
+  }
+  *:-ms-input-placeholder{
+    color: $dark-gray;
   }
 }
 
@@ -79,8 +51,6 @@
 }
 
 label{
-  padding-left: 6px;
-  font-size: 14px;
   font-weight: 300;
   letter-spacing: 0.05em;
   color: $dark-gray;
@@ -99,15 +69,14 @@ input[type='submit']:focus{
 }
 
 input[type="checkbox"]{
-  height: 12px;
-  width: 12px;
-  margin-bottom: 0px;
+  height: 17px;
+  width: 17px;
+  margin: 0;
   margin-right: 5px;
-  margin-top: 7px;
   cursor: pointer;
   -webkit-appearance: none;
-  -moz-appearance:none;
-  -o-appearance:none;
+  -moz-appearance: none;
+  -o-appearance: none;
   box-shadow: none;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
@@ -116,13 +85,32 @@ input[type="checkbox"]{
   padding: 5px;
   display: inline-block;
   position: relative;
+  border-radius: 3px;
+  vertical-align: middle;
+  &:checked:after {
+    content: '\2714';
+    position: absolute;
+    bottom: -1px;
+    left: 2px;
+    color: $gray-text;
+    font-size: 12px;
+  }
 }
 
-input[type="checkbox"]:checked:after {
-  content: '\2714';
-  position: absolute;
-  bottom: 0.1em;
-  left: 0.3em;
-  color: $gray-text;
-  font-size: 0.5em;
+
+.subtitle {
+  margin-bottom: 20px;
+  margin-top: 30px;
+  p {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: $dark-gray;
+  }
+}
+
+.vertical-align {
+  margin-top: 36px;
 }

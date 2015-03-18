@@ -1,7 +1,6 @@
 module Api
   module V1
     class ReviewsController < ApiController
-      include RepresentedHelper
       before_action :authenticate_user!, only: [:user_reviews, :organization_reviews]
 
       def venue_reviews

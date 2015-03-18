@@ -1,17 +1,18 @@
 class Venue < ActiveRecord::Base
+  attr_accessor :force_submit
+  attr_accessor :force_submit_upd
+
   # Relations
   belongs_to :owner, polymorphic: true
-
   belongs_to :country
 
   has_many :spaces, dependent: :destroy
-
   has_many :day_hours, class_name: 'VenueHour', dependent: :destroy
+  has_many :photos, class_name: 'VenuePhoto', dependent: :destroy
+
   accepts_nested_attributes_for :day_hours,
                                 allow_destroy: true,
                                 reject_if: proc { |e| e[:from].blank? || e[:to].blank? }
-
-  has_many :photos, class_name: 'VenuePhoto', dependent: :destroy
 
   # Uploaders
   mount_uploader :logo, LogoUploader
@@ -35,40 +36,35 @@ class Venue < ActiveRecord::Base
 
   # Validations
   validates :town, :street, :postal_code, :country, :email, :latitude, :longitude,
-            :name, :description, :currency, :v_type, :vat_tax_rate, :owner,
-            presence: true
+            :currency, :v_type, :owner, presence: true, unless: :force_submit
+  validates :description, presence: true, unless: proc { |e| e.force_submit || e.force_submit_upd }
+  validates :name, :country, presence: true
 
   validates :email, format: {
-    with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,
-    on: :create
-  }
+    with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create
+  }, unless: :force_submit
 
   validates :latitude, numericality: {
-    greater_than_or_equal_to: -90,
-    less_than_or_equal_to: 90
-  }
+    greater_than_or_equal_to: -90, less_than_or_equal_to: 90
+  }, unless: :force_submit
 
   validates :longitude, numericality: {
-    greater_than_or_equal_to: -180,
-    less_than_or_equal_to: 180
-  }
+    greater_than_or_equal_to: -180, less_than_or_equal_to: 180
+  }, unless: :force_submit
 
-  validates :space, :vat_tax_rate, numericality: {
-    greater_than_or_equal_to: 0
-  }
+  validates :space, :vat_tax_rate,
+            numericality: { greater_than_or_equal_to: 0 }, unless: :force_submit
 
   validates :floors, :rooms, :desks, :quantity_reviews, :reviews_sum, numericality: {
-    only_integer: true,
-    greater_than_or_equal_to: 0
-  }
+    only_integer: true, greater_than_or_equal_to: 0
+  }, unless: :force_submit
 
   validates :rating, numericality: {
-    greater_than_or_equal_to: 0,
-    less_than_or_equal_to: 5
-  }
+    greater_than_or_equal_to: 0, less_than_or_equal_to: 5
+  }, unless: :force_submit
 
-  validate :each_amenity_inclusion
-  validate :each_profession_inclusion
+  validate :each_amenity_inclusion, unless: :force_submit
+  validate :each_profession_inclusion, unless: :force_submit
 
   def opens_at_least_one_day_from_to?(from, to)
     weekdays = VenueHour.days_covered(from, to)
@@ -94,9 +90,16 @@ class Venue < ActiveRecord::Base
   private
 
   def initialize_fields
+    self.floors ||= 0
+    self.rooms ||= 0
+    self.desks ||= 0
+    self.space ||= 0
+    self.vat_tax_rate ||= 0
     self.quantity_reviews ||= 0
     self.reviews_sum ||= 0
     self.rating ||= 0
+    self.amenities ||= []
+    self.professions ||= []
   end
 
   def erase_logo
@@ -112,10 +115,10 @@ class Venue < ActiveRecord::Base
   end
 
   def each_inclusion(attribute, error_list, enum_list, error_message)
+    attribute = [] if attribute.nil?
     invalid_items = attribute - enum_list.map(&:to_s)
     invalid_items.each do |item|
       errors.add(error_list, item + error_message)
     end
   end
-
 end

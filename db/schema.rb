@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150309155158) do
+ActiveRecord::Schema.define(version: 20150317161020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,20 +94,6 @@ ActiveRecord::Schema.define(version: 20150309155158) do
 
   add_index "organizations", ["email"], name: "index_organizations_on_email", unique: true, using: :btree
 
-  create_table "receipts", force: true do |t|
-    t.integer  "booking_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "guest_first_name"
-    t.string   "guest_last_name"
-    t.string   "guest_avatar"
-    t.string   "guest_location"
-    t.string   "guest_email"
-    t.string   "guest_phone"
-  end
-
-  add_index "receipts", ["booking_id"], name: "index_receipts_on_booking_id", using: :btree
-
   create_table "spaces", force: true do |t|
     t.integer  "s_type"
     t.string   "name"
@@ -121,6 +107,7 @@ ActiveRecord::Schema.define(version: 20150309155158) do
     t.float    "day_price"
     t.float    "week_price"
     t.float    "month_price"
+    t.integer  "deposit"
   end
 
   add_index "spaces", ["venue_id"], name: "index_spaces_on_venue_id", using: :btree

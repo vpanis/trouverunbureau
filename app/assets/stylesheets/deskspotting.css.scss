@@ -500,7 +500,6 @@ h4.gray-subtitle{
 }
 .venue-bar{
   width: 100%;
-  background-color: white;
   margin: 0;
   .venue-avatar{
     margin: 0px 13px;
@@ -1133,9 +1132,10 @@ h4.gray-subtitle{
   width: 16px;
   height: 18px;
   display: inline-block;
-  margin-right: 0px;
+  margin-right: 5px;
   background-repeat: no-repeat;
   background-position: center;
+  vertical-align: text-bottom;
   &.info{
     @include at2x('ic_profile_info', 16px, 16px);
   }
@@ -1206,7 +1206,6 @@ ul.spoken-languages-container{
   width: 100%;
 }
 
-
 .staging-alert{
   width: 100px;
   height: 55px;
@@ -1221,5 +1220,21 @@ ul.spoken-languages-container{
     width: 100%;
     height: auto;
   }
+}
 
+.nav-tabs > li > a{
+  display: inline-block;
+  &:hover{
+    background-color: white;
+    color: $aqua;
+    border: 1px solid transparent;
+  }
+}
+
+li.venue-hours.active{
+  display: none;
+}
+
+.weekday-col label{
+  width: 40px;
 }

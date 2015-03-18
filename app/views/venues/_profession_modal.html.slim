@@ -1,0 +1,17 @@
+#professionModal.modal.fade aria-hidden="true" aria-labelledby="professionModalLabel" role="dialog" tabindex="-1"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close aria-label="#{t('commons.close')}" data-dismiss="modal" type="button"
+          span aria-hidden="true"  &times;
+        h4#professionModalLabel.modal-title = t('venues.edit.select_professions')
+      .modal-body
+        .form-group
+          - Venue::PROFESSIONS.each do |profession|
+            div.amenity-checkbox.col-md-6
+              label
+                = check_box_tag "selected_professions_#{profession}", profession, @venue.professions.include?(profession.to_s), class: 'selected-profession-option'
+                = t("venues.professions.#{profession.to_s}")
+      .modal-footer
+        button.rounded-btn.yellow-fill.width-100.bold.uppercase#save-professions = t('venues.edit.add_professions')
+

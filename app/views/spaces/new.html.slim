@@ -1,5 +1,4 @@
 = render 'shared/menu_bar', user: current_user
-= render 'shared/profile_menu_bar', user: current_user, selected: 'venues'
 
 #space.main-content.dashboard-form.clearfix.overflow-hidden
   = render 'shared/edit_venue_progress', venue: @space.venue, progress: 70, step: 5
@@ -8,40 +7,44 @@
       h3 List new space
     .small-separator
     = form_for(@space) do |f|
+      = f.hidden_field :venue_id, class: 'form-control'
       .form-group.col-md-12#space-name-input
-        label = t('spaces.name')
+        label #{t('space.name')}
         = f.text_field :name, class: 'form-control'
       .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
-        label = t('spaces.type')
+        label = t('space.type')
         = f.select(:s_type, @space_types_options, {}, {class: 'form-control space-types-select'})
 
       .form-group.col-md-3#space-capacity-input
         .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
-        label = t('spaces.capacity')
+        label #{t('space.capacity')}
         = f.text_field :capacity, class: 'form-control'
       .form-group.col-md-3#space-quantity-input
         .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
-        label = t('spaces.quantity')
+        label #{t('space.quantity')}
         = f.text_field :quantity, class: 'form-control'
       .form-group.col-md-12#space-description-input
         .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
-        label = t('spaces.description')
+        label #{t('space.description')}
         = f.text_area :description, class: 'form-control'
       .pictures.col-md-12
         .subtitle.row
           .col-md-12
             .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
-            p = t('spaces.space_photos')
+            p Space photos
             hr
-        .row.pictures
-          - @space.photos.each do |venue_photo|
-            .col-md-4
-              .img-wrapper style="background-image: url(#{venue_photo.photo.url});"
-                .hover
-                  a.delete-photo href="#" data-photo-id=venue_photo.id = t('commons.delete')
-          .col-md-4.add-image-container
-            .add-image
-              p = t('commons.add_image')
+        - if @space.id.present?
+          .row
+            - @space.photos.each do |venue_photo|
+              .col-md-4
+                //TODO: 'set as main' functionality not implemented yet
+                .img-wrapper style="background-image: url(#{venue_photo.photo.url});" class=('fav' if false )
+                  .hover
+                    a.delete-photo href="#" data-photo-id=venue_photo.id delete
+            .col-md-4.add-image-container
+              .add-image
+        - else
+          p Save space to start adding photos
       .pricing.col-md-12
         .subtitle.row
           .col-md-12
@@ -80,13 +83,6 @@
 
       .buttons
           .col-md-6
-            a href="#" type='button' class='rounded-btn width-100 uppercase' = t('commons.cancel')
+            a href="#" type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
           .col-md-6
-            = f.submit t('commons.save'), class: 'rounded-btn default width-100 yellow uppercase', id: 'save-space'
-
-.hidden
-  = form_tag api_v1_venue_photos_path, id: 'venue-photo-form'
-    = text_field_tag 'venue_id', @space.venue.id
-    = text_field_tag 'space_id', @space.id
-    = file_field_tag 'photo'
-    = submit_tag 'save photo', id: 'add-photo'
+            = f.submit 'Save', class: 'rounded-btn default width-100 yellow', id: 'save-space'

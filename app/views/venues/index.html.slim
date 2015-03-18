@@ -1,0 +1,41 @@
+= render 'shared/menu_bar', user: current_user
+= render 'shared/profile_menu_bar', user: current_user, selected: 'venues'
+
+#venue-list.container.margin-top
+  #accordion.panel-group aria-multiselectable="true" role="tablist"
+    - @venues.each_with_index do |venue, index|
+      .panel.panel-default
+        .panel-heading role="tab" id="heading-#{venue.id}"
+          .venue-bar aria-controls="collapse-venue-#{venue.id}" aria-expanded="#{(index==0)? 'true':'false'}" data-parent="#accordion" data-toggle="collapse" href="#collapse-venue-#{venue.id}"
+            .venue-avatar
+              - if venue.logo.present?
+                = image_tag(venue.logo.url, width: '50px', height: '50px')
+              - else
+                = image_tag('venue-default.png', width: '50px', height: '50px')
+            .basic-info
+              = render 'shared/stars', rating: venue.rating, quantity: venue.quantity_reviews
+              .venue-name
+                h1 = venue.name
+              .location
+                p = "#{venue.town}, #{venue.country.name}"
+          .right-wrapper
+            .icon.info.pointer
+            a.edit href=edit_venue_path(venue) = t('venues.edit_venue')
+            .arrow ˄
+        div.panel-collapse.collapse id="collapse-venue-#{venue.id}" class=('in' if index == 0) data-aria-labelledby="heading-#{venue.id}" data-role="tabpanel"
+          .panel-body
+            - venue.spaces.each do |space|
+              .col-md-3
+                a href=edit_space_path(space)
+                  .space.pictures
+                    h2 = space.name
+                    - if space.photos.any?
+                      .img-wrapper style="background-image: url('#{space.photos.first.photo.url}');"
+                    - else
+                      .img-wrapper
+            .col-md-3
+              a href=new_space_venue_path(venue)
+                .space.pictures.add-image-container
+                  .add-space
+                    p = t('commons.add_space')
+  a.button type='button' class='rounded-btn width-100 uppercase yellow-fill margin-top margin-bottom' href= new_venue_path = t('venues.create_venue')
