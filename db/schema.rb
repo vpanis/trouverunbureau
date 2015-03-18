@@ -132,6 +132,8 @@ ActiveRecord::Schema.define(version: 20150501135224) do
     t.string   "mangopay_user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "status"
+    t.text     "error_message"
   end
 
   add_index "mangopay_payment_accounts", ["buyer_id", "buyer_type"], name: "index_mangopay_payment_accounts_on_buyer_id_and_buyer_type", using: :btree

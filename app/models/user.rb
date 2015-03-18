@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   has_many :favorite_spaces, through: :users_favorites, source: :space
 
   has_one :braintree_payment_account, as: :buyer
-  has_one :mongopay_payment_account, as: :buyer
+  has_one :mangopay_payment_account, as: :buyer
 
   # Uploaders
   mount_uploader :avatar, LogoUploader
