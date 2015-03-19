@@ -2,6 +2,31 @@
 = render 'shared/profile_menu_bar', user: current_user, selected: 'account'
 
 .user-profile.container
-  .row
-    p.center
-      = link_to t("session.logout"), destroy_user_session_path, method: 'delete', class: "rounded-btn green"
+  .user-title.margin-bottom
+    h3.yellow-title = t('users.edit_profile')
+    .small-separator
+    h4.gray-subtitle I want to receive
+    p.center You can disable this at any time.
+    
+  .col-md-6.col-md-offset-3.margin-top
+    form
+      .row
+        .col-md-12.margin-bottom
+          label
+            input type="checkbox" /
+            | I receive a message from another person on DeskSpotting.
+        .col-md-12.margin-bottom
+          label
+            input type="checkbox" /
+            | My outstanding booking inquiry is accepted or declined.
+        .col-md-12.margin-bottom
+          label
+            input type="checkbox" /
+            | I receive a booking inquiry.
+        .col-md-12.margin-bottom
+          label
+            input type="checkbox" /
+            | Changes are made to my DeskSpotting account or listing.
+        .col-md-6.col-md-offset-3.margin-top.margin-bottom
+          input.rounded-btn.yellow-fill.width-100.uppercase name="commit" type="submit" value="Save" /
+
