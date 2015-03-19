@@ -1,0 +1,46 @@
+= render 'shared/menu_bar', user: current_user
+= render 'shared/profile_menu_bar', user: current_user, selected: 'bookings'
+
+.review.container
+  .user-title.margin-bottom
+    h3.yellow-title = t('reviews.guest_review')
+    .small-separator
+    .user-avatar
+      - if @booking.owner.avatar?
+        = image_tag(@user.avatar.url, width: '95px', height: '95px')
+      - else
+        = image_tag('default-avatar.png', width: '95px', height: '95px')
+    h4.gray-subtitle = @booking.owner.name
+
+  .row.margin-top
+    .col-md-6.col-md-offset-3
+      .row
+        .col-md-3.data-review
+          p = @booking.from.strftime('%d/%m/%y')
+          p = t('reviews.date')
+        .col-md-3.data-review
+          p = @booking.quantity
+          p = t('reviews.spaces')
+        .col-md-3.data-review
+          p 2:00 PM
+          p = t('reviews.check_in')
+        .col-md-3.data-review
+          p 4:00 PM
+          p = t('reviews.check_out')
+  .row.margin-top.margin-bottom
+    .col-md-6.col-md-offset-3
+      span = t('reviews.rate')
+      hr
+  .row
+    .col-md-6.col-md-offset-3
+      .edit-profile-form.dashboard-form
+        = form_for @review, url: {action: "create_client_review"}, method: 'post'  do |f|
+          .bigstars
+            - (1..5).each do |i|
+              .bigstar data-index=i
+          .form-group
+            label = t('reviews.comment')
+            = f.hidden_field :stars
+            = f.text_area :message, class: 'form-control'
+          .col-md-6.col-md-offset-3.margin-top.margin-bottom
+            = f.submit t('commons.save'), class: 'rounded-btn yellow-fill width-100 uppercase'

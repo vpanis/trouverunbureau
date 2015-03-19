@@ -46,6 +46,10 @@
       display: inline-block;
       font-size: 13px;
       letter-spacing: 0.14rem;
+      color: $desk-black;
+      &:hover{
+        color: $desk-black;
+      }
       &:after {
         position: absolute;
         content: '';

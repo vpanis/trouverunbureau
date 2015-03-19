@@ -35,6 +35,12 @@ Deskspotting::Application.routes.draw do
   end
 
   resources :bookings, only: [:destroy]  do
+    member do
+      get :client_review, to: "reviews#new_client_review"
+      get :venue_review, to: "reviews#new_venue_review"
+      post :client_review, to: "reviews#create_client_review"
+      post :venue_review, to: "reviews#create_venue_review"
+    end
     collection do
       get :paid_bookings, to: "bookings#paid_bookings"
       get :venue_paid_bookings, to: "bookings#venue_paid_bookings"

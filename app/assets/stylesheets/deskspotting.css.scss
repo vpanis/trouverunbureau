@@ -736,7 +736,7 @@ h4.gray-subtitle{
         p{
           margin-bottom: 5px;
         }
-        .hours{
+        .hours p{
           font-size: 12px;
           color: $gray-text;
         }
@@ -821,6 +821,7 @@ h4.gray-subtitle{
       width: 50%;
       padding-top: 7px;
       padding-bottom: 8px;
+      vertical-align: top;
       .why-deskspotting {
         color: $gray-text;
         @include at2x('venue_profile_why_book', 22px, 22px);
@@ -1238,3 +1239,50 @@ li.venue-hours.active{
 .weekday-col label{
   width: 40px;
 }
+
+.weekday-col{
+  line-height: 42px;
+  padding-top: 20px;
+}
+
+.bigstars{
+  margin: 0 auto;
+  width: 260px;
+  margin-bottom: 40px;
+  .bigstar{
+    @include at2x('stars-sprite', 80px, 42px);
+    background-size: 80px 42px;
+    width: 40px;
+    height: 42px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    margin: 0px 6px;
+    vertical-align: middle;
+    background-position: -40px 0px;
+  }
+  .bigstar.active{
+    background-position: 0px 0px;
+  }
+}
+
+.data-review {
+  position: relative;
+  text-align: center;
+  p:first-child {
+    font-weight: 700;
+    color: $dark-gray;
+  }
+  &:not(:last-child):after {
+    position: absolute;
+    content: '';
+    top: 15px;
+    right: 0;
+    bottom: 15px;
+    border-right: 1px solid;
+  }
+}
+
+.container{
+  padding-top: 20px;
+}
+

@@ -70,12 +70,18 @@
   }
 }
 
-.space {
-  background-color: white;
-  padding: 20px;
-  margin: 15px auto;
-  &.add-image-container{
-    background-color: $yellow;
-    height: 250px;
+.panel-body{
+  .space {
+    background-color: white;
+    @include at2x('space-no-photo', 90px, 90px);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 20px;
+    margin: 15px auto;
+    &.add-image-container{
+      background-color: $yellow;
+      height: 250px;
+    }
   }
 }
+

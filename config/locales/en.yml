@@ -259,6 +259,7 @@ en:
       no_reviews: 'No reviews'
     edit_venue: 'Edit venue'
     create_venue: 'Create new venue'
+    preview: 'Preview'
     edit:
       list_your_venue: 'List your venue'
       start_by: 'Start by telling us about your venue...'
@@ -347,3 +348,13 @@ en:
     day_price: 'Day price'
     month_price: 'Month price'
     deposit: 'Deposit'
+  reviews:
+    guest_review: 'Guest review'
+    space_review: 'Space review'
+    rate_space: "Rate %{space} of %{venue}"
+    date: 'Date'
+    spaces: 'Spaces'
+    check_in: 'Check In'
+    check_out: 'Check Out'
+    comment: 'Comment (The review is about to write will be seen only by other hosts)'
+
