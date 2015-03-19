@@ -3,30 +3,30 @@
 
 .user-profile.container
   .user-title.margin-bottom
-    h3.yellow-title = t('users.edit_profile')
+    h3.yellow-title = t('users.account.email_notifications')
     .small-separator
-    h4.gray-subtitle I want to receive
-    p.center You can disable this at any time.
-    
+    h4.gray-subtitle = t('users.account.i_want_to_receive')
+    p.center = t('users.account.you_can_disable')
+
   .col-md-6.col-md-offset-3.margin-top
     form
       .row
         .col-md-12.margin-bottom
           label
             input type="checkbox" /
-            | I receive a message from another person on DeskSpotting.
+            | #{t('users.account.person_message')}
         .col-md-12.margin-bottom
           label
             input type="checkbox" /
-            | My outstanding booking inquiry is accepted or declined.
+            | #{t('users.account.outstanding_booking')}
         .col-md-12.margin-bottom
           label
             input type="checkbox" /
-            | I receive a booking inquiry.
+            | #{t('users.account.booking_inquiry')}
         .col-md-12.margin-bottom
           label
             input type="checkbox" /
-            | Changes are made to my DeskSpotting account or listing.
+            | #{t('users.account.account_changes')}
         .col-md-6.col-md-offset-3.margin-top.margin-bottom
           input.rounded-btn.yellow-fill.width-100.uppercase name="commit" type="submit" value="Save" /
 
