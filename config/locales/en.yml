@@ -319,6 +319,14 @@ en:
     emergency_phone: 'Phone number'
     emergency_email: 'Email'
     emergency_relationship: 'Relationship'
+    account:
+      email_notifications: 'Email notifications'
+      i_want_to_receive: 'I want to receive'
+      you_can_disable: 'You can disable this at any time.'
+      person_message: 'I receive a message from another person on DeskSpotting.'
+      outstanding_booking: 'My outstanding booking inquiry is accepted or declined.'
+      booking_inquiry: 'I receive a booking inquiry.'
+      account_changes: 'Changes are made to my DeskSpotting account or listing.'
   spaces:
     types:
       conference_room: 'Conference room'

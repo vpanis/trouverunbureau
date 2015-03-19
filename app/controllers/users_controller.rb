@@ -25,6 +25,7 @@ class UsersController < ApplicationController
     redirect_to user_path(@user)
   end
 
+  # TODO: implement account form and email notifications accordingly
   def account
   end
 

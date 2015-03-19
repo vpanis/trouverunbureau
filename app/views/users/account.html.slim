@@ -2,6 +2,31 @@
 = render 'shared/profile_menu_bar', user: current_user, selected: 'account'
 
 .user-profile.container
-  .row
-    p.center
-      = link_to t("session.logout"), destroy_user_session_path, method: 'delete', class: "rounded-btn green"
+  .user-title.margin-bottom
+    h3.yellow-title = t('users.account.email_notifications')
+    .small-separator
+    h4.gray-subtitle = t('users.account.i_want_to_receive')
+    p.center = t('users.account.you_can_disable')
+
+  .col-md-6.col-md-offset-3.margin-top
+    form
+      .row
+        .col-md-12.margin-bottom
+          label
+            input type="checkbox" /
+            | #{t('users.account.person_message')}
+        .col-md-12.margin-bottom
+          label
+            input type="checkbox" /
+            | #{t('users.account.outstanding_booking')}
+        .col-md-12.margin-bottom
+          label
+            input type="checkbox" /
+            | #{t('users.account.booking_inquiry')}
+        .col-md-12.margin-bottom
+          label
+            input type="checkbox" /
+            | #{t('users.account.account_changes')}
+        .col-md-6.col-md-offset-3.margin-top.margin-bottom
+          input.rounded-btn.yellow-fill.width-100.uppercase name="commit" type="submit" value="Save" /
+
