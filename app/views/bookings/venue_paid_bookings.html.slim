@@ -1,10 +1,21 @@
-h1 = 'Venue bookings'
-= select_tag :venue_ids, options_for_select(@venues, params[:param_name])
-h1 = 'Current bookings'
+= render 'shared/menu_bar', user: current_user
+= render 'shared/profile_menu_bar', user: current_user, selected: 'bookings'
 
-- @paid.each do |booking|
-  = render 'booking_item', booking: booking, own: false
+div
+  div
+    = link_to('your bookings', paid_bookings_bookings_path, class: 'black')
+  div Venue Bookings
 
-h2 = 'Cancelled bookings'
-- @canceled.each do |booking|
-  = render 'booking_item', booking: booking, own: false
+.row
+  h1 = 'Venue bookings'
+  = select_tag :venue_ids, options_for_select(@venues, params[:param_name])
+
+.row
+  h1 = 'Current bookings'
+  - @paid.each do |booking|
+    = render 'booking_item', booking: booking, own: false
+
+.row
+  h2 = 'Cancelled bookings'
+  - @canceled.each do |booking|
+    = render 'booking_item', booking: booking, own: false

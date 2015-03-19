@@ -1,8 +1,18 @@
-h1 = 'Current bookings'
-- @paid.each do |booking|
-  = render 'booking_item', booking: booking, own:true
+= render 'shared/menu_bar', user: current_user
+= render 'shared/profile_menu_bar', user: current_user, selected: 'bookings'
 
-h2 = 'Cancelled bookings'
-- @canceled.each do |booking|
-  = render 'booking_item', booking: booking, own:true
+div
+  div Your bookings
+  div
+    = link_to('venue bookings', venue_paid_bookings_bookings_path, class: 'black')
+
+.row
+  h1 = 'Current bookings'
+  - @paid.each do |booking|
+    = render 'booking_item', booking: booking, own:true
+
+.row
+  h2 = 'Cancelled bookings'
+  - @canceled.each do |booking|
+    = render 'booking_item', booking: booking, own:true
 
