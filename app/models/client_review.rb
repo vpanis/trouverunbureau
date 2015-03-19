@@ -1,4 +1,6 @@
 class ClientReview < ActiveRecord::Base
+  # what the venue owner says about the client
+
   # Relations
   belongs_to :booking
 

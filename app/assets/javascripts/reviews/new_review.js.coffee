@@ -12,7 +12,10 @@ on_load = ->
         return
 
     set_rating = (index) ->
-      $('#client_review_stars').val(index)
+      if $('#client_review_stars')
+        $('#client_review_stars').val(index)
+      if $('#venue_review_stars')
+        $('#venue_review_stars').val(index)
 
     show_hide_stars = (index) ->
       stars = $('.bigstar')
