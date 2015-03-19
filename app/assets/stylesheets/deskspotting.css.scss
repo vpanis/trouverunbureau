@@ -1240,16 +1240,16 @@ li.venue-hours.active{
   width: 40px;
 }
 
-.weekday-col{
+.weekday-col {
   line-height: 42px;
   padding-top: 20px;
 }
 
-.bigstars{
+.bigstars {
   margin: 0 auto;
   width: 260px;
   margin-bottom: 40px;
-  .bigstar{
+  .bigstar {
     @include at2x('stars-sprite', 80px, 42px);
     background-size: 80px 42px;
     width: 40px;
@@ -1260,7 +1260,7 @@ li.venue-hours.active{
     vertical-align: middle;
     background-position: -40px 0px;
   }
-  .bigstar.active{
+  .bigstar.active {
     background-position: 0px 0px;
   }
 }
@@ -1282,7 +1282,7 @@ li.venue-hours.active{
   }
 }
 
-.container{
+.container {
   padding-top: 20px;
 }
 
@@ -1338,6 +1338,98 @@ li.venue-hours.active{
       border-bottom: 2px solid $dark-gray;
       border-radius: 0;
       height: 44px !important;
+
+/*--booking inquiry--*/
+
+.inquiring-container {
+  max-width: 940px;
+  margin: 0 auto;
+  .inquiry-title-container {
+    text-align: center;
+    padding-top: 50px;
+  }
+  .workspace-detail-container {
+    text-align: center;
+    margin: 30px 0;
+    .workspace-image {
+      height: 50px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 20px;
+    }
+    .workspace-detail-wrapper {
+      display: inline-block;
+      vertical-align: middle;
+      text-align: left;
+      .workspace-title,
+      .capacity-image,
+      .workspace-capacity,
+      .location-image,
+      .location-text,
+      .venue-name {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .workspace-title {
+        font-weight: bold;
+        margin-right: 20px;
+      }
+      .capacity-image {
+        width: 20px;
+        margin-right: 5px;
+      }
+      .workspace-capacity {
+        margin-right: 20px;
+      }
+      .small-separator {
+        margin: 10px 0;
+        width: 50px;
+      }
+      .location-image {
+        width: 20px;
+        margin-right: 5px;
+      }
+    }
+  }
+  .separator {
+    border-top: 1px solid $gray;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .time-select-wrapper {
+    text-align: center;
+    margin-bottom: 40px;
+    .multiple-switch-wrapper {
+      width: 600px;
+      margin: 0 auto;
+      .tab {
+        display: inline-block;
+        vertical-align: top;
+        width: 100px;
+        height: 50px;
+        border: 2px solid $light-gray;
+        border-left: none;
+        border-right: none;
+        line-height: 46px;
+        text-transform: uppercase;
+        font-size: 12px;
+        &:first-child {
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
+          border-left: 2px solid $light-gray;
+        }
+        &:last-child {
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 5px;
+          border-right: 2px solid $light-gray;
+        }
+        &.tab--selected {
+          border: none;
+          font-weight: bold;
+          background: $yellow;
+          line-height: 50px;
+        }
+      }
     }
   }
 }

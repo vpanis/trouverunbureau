@@ -24,6 +24,11 @@ class BookingsController < ApplicationController
     redirect_to paid_bookings_bookings_path
   end
 
+  def inquiry
+    space = Space.all.first #TODO agarrar el space de algun param
+    @booking = Booking.new(space: space, owner: current_represented)
+  end
+
   private
 
   def retrieve_bookings(venue_ids, method_name)
@@ -31,4 +36,5 @@ class BookingsController < ApplicationController
     @paid = booking_context.send(method_name, Booking.states.values_at(:paid))
     @canceled = booking_context.send(method_name, Booking.states.values_at(:canceled))
   end
+
 end

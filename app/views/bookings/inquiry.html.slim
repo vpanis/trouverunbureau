@@ -1,0 +1,57 @@
+= render 'shared/menu_bar', user: current_user
+.inquiring-container
+  .inquiry-title-container
+    h3.yellow-title = t('venues.show.booking_inquiry')
+    .small-separator
+  .workspace-detail-container
+    = image_tag('default-avatar.png', class: 'workspace-image')
+    .workspace-detail-wrapper
+      .workspace-basic-info
+        span.workspace-title
+          | bla
+        = image_tag('default-avatar.png', class: 'capacity-image')
+        span.workspace-capacity
+          | 8
+        span.venue-name
+          | asd
+      .small-separator
+      .workspace-location-wrapper
+        = image_tag('default-avatar.png', class: 'location-image')
+        span.location-text
+          | gilada
+  .separator
+  .time-select-wrapper
+    label
+      | Select Time Frame
+    .multiple-switch-wrapper
+      .tab.tab--selected
+        | Per hour
+      .tab
+        | Per day
+      .tab
+        | Per month
+  .day-booking-form
+    = form_for @booking do |f|
+      .row
+        .form-group.col-xs-12.col-sm-4.col-md-4.col-lg-4
+          label
+            | Check in
+          .calendar.input-group
+            .calendar-icon.input-group-addon ng-click="open($event)" type="button"
+            = f.text_field :from, placeholder: 'mm/dd/aa', class: 'form-control', close_text: 'Close', datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened', ng_model:'user_date_of_birth', ng_required: 'true', type: 'text', show_button_bar:'false'
+        .form-group.col-xs-12.col-sm-4.col-md-4.col-lg-4
+          label
+            | Check Out
+          .calendar.input-group
+            .calendar-icon.input-group-addon ng-click="open($event)" type="button"
+            = f.text_field :to, placeholder: 'Date of birth', class: 'form-control', close_text: 'Close', datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened', ng_model:'user_date_of_birth', ng_required: 'true', type: 'text', show_button_bar:'false'
+        .form-group.col-xs-12.col-sm-4.col-md-4.col-lg-4
+          label
+            | Number of Spaces
+          = f.text_field :quantity, placeholder: '1', class: 'form-control', ng_model:'user_date_of_birth', ng_required: 'true', type: 'number'
+      / .row
+        / .form-group.col-xs-12.col-sm-4.col-md-4.col-lg-4
+        /   label
+        /     | Your Message
+        /   = f.text_area :date_of_birth, placeholder: 'mm/dd/aa', class: 'form-control' ng_model:'user_date_of_birth', ng_required: 'true', type: 'text'
+
