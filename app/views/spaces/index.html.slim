@@ -1,0 +1,49 @@
+= render 'shared/menu_bar', user: current_user
+
+.space-search.container-fluid
+  .row#controller ng-controller="SearchCtrl" data-marker-icon=image_url('venue_profile_pin_map@2x.png')
+    #map-canvas.venue-map-container.hidden-xs.col-md-4
+    .col-md-8.results
+      = render 'search_filters'
+      = render 'collapsed_search_filters'
+      .open-footer footer
+      .spaces-results
+        .spaces-list
+          .col-md-4 ng-repeat=("space in spaces")
+            .favorite-space
+              - if current_user.present?
+                .favourite ng-class="{active: space.favorite}" ng-click=("toggleFavorite(space.id, false)") data-is-favorite="{{space.favorite}}"
+              - else
+                .favourite
+              .carousel-container
+                .carousel.slide id="space-carousel-{{space.id}}"
+                  ol.carousel-indicators
+                    li data-target="space-carousel-{{space.id}}" data-slide-to="{{index}}" ng-repeat=("photo in space.photos track by $index") ng-class="{active: $index == 0}"
+                  .carousel-inner role="listbox"
+                    .item ng-class="{active: $index == 0}" ng-repeat=("photo in space.photos track by $index")
+                      .full-image style="background-image: url('{{photo}}')"
+                  a.left.carousel-control data-slide="prev" href="#space-carousel-{{space.id}}" role="button"
+                    span.glyphicon.left-carousel-arrow aria-hidden="true"
+                  a.right.carousel-control data-slide="next" href="#space-carousel-{{space.id}}" role="button"
+                    span.glyphicon.right-carousel-arrow aria-hidden="true"
+              .space-info
+                a.name ng-href="/venues/{{space.venue_id}}?space_id={{space.id}}" {{space.name}}
+                .city() {{space.city}}
+                .bottom-line
+                  .currency() {{space.currency}}
+                  .price-hourly ng-if=("space.hour_price")
+                    .hour-price.pull-left() ${{space.hour_price}}
+                    .duration.pull-left = t('wishlist.hour')
+                  .price-daily ng-if=("space.day_price")
+                    .day-price.pull-left() ${{space.day_price}}
+                    .duration.pull-left = t('wishlist.day')
+                  .price-weekly ng-if=("space.week_price")
+                    .week-price.pull-left() ${{space.week_price}}
+                    .duration.pull-left = t('wishlist.week')
+                  .price-monthly ng-if=("space.month_price")
+                    .month-price.pull-left() ${{space.month_price}}
+                    .duration.pull-left = t('wishlist.month')
+        .pagination-container.search-pagination.pagination-box
+          .col-md-3.left.pagination-limits-text() {{from}} - {{to}} out of {{totalSpaces}} desks
+          pagination.pagination-sm.pagination-pages ng-change="getSpaces()" total-items="totalSpaces" ng-model="currentPage" max-size="3" rotate="false" boundary-links="true" previous-text="‹" next-text="›" first-text="«" last-text="»" items-per-page="itemsPerPage"
+        .no-reviews ng-if="totalSpaces == 0"  #{t('search.no_results')}

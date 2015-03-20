@@ -9,11 +9,15 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
     $scope.from = 1
     $scope.to = 12
     $scope.first_load = true
-    $scope.on_change_time = 0
-    $scope.filters = { Workspace: [], Profession: [], Capacity: null, Neighborhood: null, Date: null}
-    $scope.countFilters = 0;
-    parameters = document.getElementById('controller').dataset
-    $scope.marker_icon = parameters.markerIcon
+    $scope.latitude_from = -90
+    $scope.latitude_to = 90
+    $scope.longitude_from = -180
+    $scope.longitude_to = 180
+    $scope.workspaces = []
+    $scope.professions = {}
+    $scope.capacity = null
+    $scope.filters = []
+    $scope.marker_icon = document.getElementById('controller').dataset.markerIcon
     $scope.markers = []
     $scope.dateOptions =
       formatYear: 'yy'
@@ -22,7 +26,29 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
     $scope.format = 'dd-MM-yyyy'
 
     $scope.getSpaces = () ->
+      Restangular.one('spaces').get(build_search_params()).then (result) ->
+        $scope.spaces = result.spaces
+        $scope.totalSpaces = result.count
+        $scope.currentPage = result.current_page
+        $scope.from = ($scope.itemsPerPage)*($scope.currentPage-1) + 1
+        $scope.to = Math.min(($scope.itemsPerPage)*($scope.currentPage), $scope.totalSpaces)
+        $(".search-pagination").hide()
+        if $scope.totalSpaces > 0
+          $(".search-pagination").show()
+        console.log("mobile:"+ is_mobile())
+        if !is_mobile()
+          update_map($scope.first_load)
+          if $scope.first_load
+            $scope.first_load = false
+          google.maps.event.addListenerOnce $scope.map, 'bounds_changed', ->
+            bounds_changed_handler()
+          return
+      return
 
+    is_mobile = ->
+      return window.innerWidth < 768
+
+    build_search_params = ->
       search_parameters =
         page: $scope.currentPage
         amount: $scope.itemsPerPage
@@ -30,25 +56,185 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
         latitude_from: $scope.latitude_from
         longitude_to: $scope.longitude_to
         longitude_from: $scope.longitude_from
-        capacity: $scope.filters.Capacity
-        venue_professions: $scope.filters.Profession
-        space_types: $scope.filters.Workspace
-        date: $scope.filters.Date
-      Restangular.one('spaces').get(search_parameters).then (result) ->
-        $scope.spaces = result.spaces
-        $scope.totalSpaces = result.count
-        $scope.currentPage = result.current_page
-        $scope.from = ($scope.itemsPerPage)*($scope.currentPage-1) + 1
-        $scope.to = Math.min(($scope.itemsPerPage)*($scope.currentPage), $scope.totalSpaces)
-        if $scope.totalSpaces > 0
-          $(".search-pagination").show()
-          if $scope.first_load
-            initialize_map()
-            $scope.first_load = false
-          else
-            update_map()
+
+      if $scope.check_in != ''
+        search_parameters['date'] = $scope.check_in
+      if $scope.capacity == '1'
+        search_parameters['capacity_max'] = 1
+      else if $scope.capacity == '2'
+        search_parameters['capacity_min'] = 2
+
+      search_parameters['space_types[]'] = build_workspace_types()
+      search_parameters['venue_professions[]'] = build_professions()
+      return search_parameters
+
+    build_workspace_types = () ->
+      types = []
+      i = 0
+      while i < $scope.workspaces.length
+        if $scope.workspaces[i]
+          types.push(i)
+        i++
+      return types
+
+    build_professions = () ->
+      professions = []
+      for k of $scope.professions
+        if $scope.professions[k]
+          professions.push(k)
+      return professions
+
+    getUrlVars = ->
+      vars = []
+      hash = undefined
+      hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&')
+      i = 0
+      while i < hashes.length
+        hash = hashes[i].split('=')
+        vars.push hash[0]
+        vars[hash[0]] = hash[1]
+        i++
+      vars
+
+    $scope.getSpaceType = ->
+      type = getUrlVars()['s_type']
+      $("[id^='workspace_"+type+"']").attr('checked', true)
+      # $scope.filters.Workspace.push($("[id^='workspace_"+type+"']").attr('value'))
+      return
+
+    $scope.getLatLong = ->
+      address = getUrlVars()['search']
+      getLatLongFromAddress(address.replace(RegExp(' ', 'g'), '+'))
+      return
+
+    calculate_bounds = (results) ->
+      if results[0].geometry.bounds
+        ne = results[0].geometry.bounds.getNorthEast()
+        sw = results[0].geometry.bounds.getSouthWest()
+      else
+        ne = results[0].geometry.location
+        sw = results[0].geometry.location
+      setBoundsToScope(ne, sw)
+
+    setBoundsToScope = (ne, sw) ->
+      $scope.latitude_from = sw.lat()
+      $scope.latitude_to = ne.lat()
+      $scope.longitude_from = sw.lng()
+      $scope.longitude_to = ne.lng()
+      return
+
+    getLatLongFromAddress = (address) ->
+      geocoder = new google.maps.Geocoder();
+      geocoder.geocode { 'address': address }, (results, status) ->
+        if status == google.maps.GeocoderStatus.OK
+          calculate_bounds(results)
+        else
+          console.log('Geocode was not successful for the following reason: ' + status)
+        $scope.getSpaces()
         return
       return
+
+    initialize_map = ->
+      mapOptions =
+        zoom: 2
+        center:
+          lat: 0
+          lng: 0
+        scrollwheel: false
+      $scope.map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions)
+      return
+
+    bounds_changed_handler = ->
+      console.log('bounds changed')
+      ne = $scope.map.getBounds().getNorthEast()
+      sw = $scope.map.getBounds().getSouthWest()
+      setBoundsToScope(ne, sw)
+      $scope.getSpaces()
+      return
+
+    build_marker = (space) ->
+      marker =
+        position:
+          lat: parseFloat(space.latitude)
+          lng: parseFloat(space.longitude)
+        icon:
+          url: $scope.marker_icon
+          scaledSize: new (google.maps.Size)(30, 40)
+        map: $scope.map
+      return marker
+
+    add_marker_to_map = (i) ->
+      space = $scope.spaces[i]
+      space_position = new google.maps.LatLng(parseFloat(space.latitude), parseFloat(space.longitude))
+      marker = build_marker(space)
+      $scope.markers[i] = new (google.maps.Marker)(marker)
+      return space_position
+
+    remove_markers = ->
+      i = 0
+      while i < $scope.markers.length
+        $scope.markers[i].setMap(null)
+        i++
+      $scope.markers = []
+
+    add_markers = (fitbounds)->
+      i = 0
+      bounds = new google.maps.LatLngBounds();
+      while i < $scope.spaces.length
+        space_position = add_marker_to_map(i)
+        if !(bounds.contains(space_position))
+          bounds.extend(space_position)
+        i++
+      if ($scope.spaces.length > 0 && fitbounds)
+        $scope.map.fitBounds(bounds)
+      return
+
+    update_map = (fitbounds)->
+      remove_markers()
+      add_markers(fitbounds)
+      return
+
+    $scope.showFilters = ->
+      $scope.filters = []
+      if $scope.workspaces.length > 0
+        $scope.filters.push('workspaces')
+      if ! $.isEmptyObject($scope.professions)
+        $scope.filters.push('professions')
+      if $scope.capacity != null
+        $scope.filters.push('capacity')
+      if $scope.check_in != null && $scope.check_in != ''
+        $scope.filters.push('check in')
+      $scope.getSpaces()
+      return
+
+    $scope.removeFilter = (filter_name)->
+      if filter_name == 'workspaces'
+        $scope.workspaces = []
+      if filter_name == 'professions'
+        $scope.professions = {}
+      if filter_name == 'capacity'
+        $scope.capacity = null
+      if filter_name == 'check in'
+        $scope.check_in = ''
+      $scope.showFilters()
+      return
+
+    $scope.removeFilterAll = ->
+      $('.colapse').remove()
+      $scope.workspaces = []
+      $scope.professions = {}
+      $scope.capacity = null
+      $scope.filters = []
+      $scope.getSpaces()
+      event.currentTarget.remove()
+      return
+
+    $scope.openCalendar = ($event) ->
+      $event.preventDefault()
+      $event.stopPropagation()
+      $scope.opened = true
+      return
+
     $scope.removeFavorite = (id, refresh_list, element) ->
       Restangular.one('wishlist', id).remove().then (result) ->
         if refresh_list
@@ -71,143 +257,7 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
         return $scope.removeFavorite(id, refresh_list, element)
       return $scope.addToFavorites(id, element)
 
-    $scope.getLatLong = ->
-      address = $("#controller").attr('data-position-address')
-      getLatLongFromAddress(address.replace(RegExp(' ', 'g'), '+'))
-      return
-
-    getLatLongFromAddress = (address) ->
-      geocoder = new google.maps.Geocoder();
-      geocoder.geocode { 'address': address }, (results, status) ->
-        if status == google.maps.GeocoderStatus.OK
-          ne = results[0].geometry.bounds.getNorthEast()
-          sw = results[0].geometry.bounds.getSouthWest()
-          $scope.latitude_from = if sw.lat() > 0 then ne.lat() else sw.lat()
-          $scope.latitude_to = if sw.lat() > 0 then sw.lat() else ne.lat()
-          $scope.longitude_from = if sw.lng() > 0 then ne.lng() else sw.lng()
-          $scope.longitude_to = if sw.lng() > 0 then sw.lng() else ne.lng()
-          $scope.getSpaces()
-        else
-          console.log('Geocode was not successful for the following reason: ' + status)
-        return
-      return
-
-    initialize_map = ->
-
-      mapOptions =
-        center:
-          lat: ($scope.latitude_from + $scope.latitude_from ) / 2
-          lng: ($scope.longitude_from + $scope.longitude_from ) / 2
-        zoom: 14
-        scrollwheel: false
-
-      $scope.map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions)
-
-      i = 0
-      bounds = new google.maps.LatLngBounds()
-      while i < $scope.spaces.length
-        space = $scope.spaces[i]
-        space_position = new google.maps.LatLng(parseFloat(space.latitude), parseFloat(space.longitude))
-        marker =
-          position:
-            lat: parseFloat(space.latitude)
-            lng: parseFloat(space.longitude)
-          icon:
-            url: $scope.marker_icon
-            scaledSize: new (google.maps.Size)(30, 40)
-          map: $scope.map
-        $scope.markers[i] = new (google.maps.Marker)(marker)
-        bounds.extend(space_position)
-        i++
-      $scope.map.fitBounds(bounds)
-      google.maps.event.addListener $scope.map, 'bounds_changed', ->
-        $scope.on_change_time++
-        if !$scope.first_load && $scope.on_change_time>3
-          ne = $scope.map.getBounds().getNorthEast()
-          sw = $scope.map.getBounds().getSouthWest()
-          $scope.latitude_from = if sw.lat() > 0 then ne.lat() else sw.lat()
-          $scope.latitude_to = if sw.lat() > 0 then sw.lat() else ne.lat()
-          $scope.longitude_from = if sw.lng() > 0 then ne.lng() else sw.lng()
-          $scope.longitude_to = if sw.lng() > 0 then sw.lng() else ne.lng()
-          $scope.getSpaces()
-        return
-      return
-
-    update_map = ->
-      i = 0
-      while i < $scope.markers.length
-        $scope.markers[i].setMap(null)
-        i++
-      $scope.markers = []
-      $scope.markers.length = 0
-
-      i = 0
-      while i < $scope.spaces.length
-        space = $scope.spaces[i]
-        space_position = new google.maps.LatLng(parseFloat(space.latitude), parseFloat(space.longitude))
-        marker =
-          position:
-            lat: parseFloat(space.latitude)
-            lng: parseFloat(space.longitude)
-          icon:
-            url: $scope.marker_icon
-            scaledSize: new (google.maps.Size)(30, 40)
-          map: $scope.map
-        $scope.markers[i] = new (google.maps.Marker)(marker)
-        i++
-
-    $scope.showFilters = ->
-      reset_filters()
-
-      form_parameters = $('#filtersForm').serializeArray()
-      i = 0
-      while i < form_parameters.length
-        param = form_parameters[i]
-        if param.name == 'capacity'
-          if $scope.filters.Capacity == null then $scope.countFilters++
-          $scope.filters.Capacity = Math.min($scope.filters.capacity, parseInt(param.value))
-        else if param.name == 'professions'
-          if $scope.filters.Profession.length <= 0 then $scope.countFilters++
-          $scope.filters.Profession.push(param.value)
-        else if param.name == 'workspace'
-          if $scope.filters.Workspace.length <= 0 then $scope.countFilters++
-          $scope.filters.Workspace.push(param.value)
-        else if param.name == 'neighborhood'
-          if param.value != '' then $scope.countFilters++
-          $scope.filters.Neighborhood = param.value
-        else if param.name == 'check_in'
-          if param.value != '' then $scope.countFilters++
-          $scope.filters.Date = param.value
-        i++
-
-
-    $scope.removeFilter = (filter_name)->
-      element = event.currentTarget
-      if filter_name == 'Date' then filter_name = 'check_in'
-      if $("input[id^='"+filter_name.toLowerCase()+"']").is('input[type="text"]')
-        $("input[id^='"+filter_name.toLowerCase()+"']").val('')
-      else
-        $("input[id^='"+filter_name.toLowerCase()+"']").attr('checked',false)
-      $scope.countFilters--
-      element.remove()
-
-    $scope.removeFilterAll = ->
-      $('.colapse').remove()
-      $('input[type="text"]').val('')
-      $('input[type="checkbox"]').attr('checked', false)
-      reset_filters()
-      event.currentTarget.remove()
-
-    reset_filters = ->
-      $scope.filters = { Workspace: [], Profession: [], Capacity: null}
-      $scope.countFilters = 0
-
-    $scope.open = ($event) ->
-      $event.preventDefault()
-      $event.stopPropagation()
-      $scope.opened = true
-      return
-
-    reset_filters()
+    initialize_map()
+    $scope.getSpaceType()
     $scope.getLatLong()
 ]

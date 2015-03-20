@@ -32,4 +32,8 @@ module SelectOptionsHelper
   def space_types_options
     Space.s_types.map { |t| [t("spaces.types.#{t.first}"), t.first] }
   end
+
+  def space_types_checkbox_options
+    Space.s_types.map { |t| [t("spaces.types.#{t.first}"), t.last] }
+  end
 end

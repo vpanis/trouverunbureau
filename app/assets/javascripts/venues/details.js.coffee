@@ -17,69 +17,11 @@ on_load = ->
       $('.delete-lang').click  ->
         delete_profession($(this))
       $('.open-day').change ->
-        handle_day_checked(this.checked, this.dataset.index)
-      $('.fake-open-day').change ->
-        handle_fake_open_day(this)
-      $('.fake-hour-select').change ->
-        handle_fake_hour_select(this)
-
-    handle_fake_open_day = (element) ->
-      weekday = element.dataset.weekday
-      if weekday == 'weekday'
-        i = 0
-        while i < 5
-          toggleCustomChecked(i, element.checked, weekday)
-          i++
-      else
-        toggleCustomChecked(element.dataset.index, element.checked, weekday)
-      return
-
-    handle_fake_hour_select = (element) ->
-      weekday = element.dataset.weekday
-      from_to = element.dataset.fromTo
-      if weekday == 'weekday'
-        i = 0
-        while i < 5
-          triggerCustomValue(i, element.value, from_to)
-          i++
-      else
-        triggerCustomValue(weekday, element.value, from_to)
-      return
-
-    triggerCustomValue = (index, value, from_to) ->
-      $('#venue_day_hours_attributes_'+index+'_'+from_to).val(value).trigger('change')
-
-    toggleCustomChecked = (index, open, fake_day) ->
-      $('#open_'+index).attr('checked', open).trigger('change')
-      handle_day_checked(open, index)
-      if open
-        $('#from_'+fake_day).prop('disabled', false)
-        $('#to_'+fake_day).prop('disabled', false)
-      else
-        $('#from_'+fake_day).prop('disabled', 'disabled')
-        $('#to_'+fake_day).prop('disabled', 'disabled')
-
-      $('.open-day').change ->
         enable_disable_day(this.checked, this.dataset.index)
       $('.fake-open-day').change ->
         handle_std_open_day(this)
       $('.fake-hour-select').change ->
         handle_std_hour_select(this)
-
-    initialize_popovers = ->
-      options = {
-        placement: (context, source) ->
-          position = $(source).offset()
-          if (position.left > 160)
-              return "left"
-          if (position.left < 160)
-              return "right"
-          if (position.top < 110)
-              return "bottom"
-          return "top"
-      }
-      return
-      #$('#emergency-popover').popover(options)
 
     handle_std_open_day = (element) ->
       weekday = element.dataset.weekday
@@ -112,9 +54,7 @@ on_load = ->
         else
           $('#venue_day_hours_attributes_'+index+'_from').val($('#from_'+weekday).val()).trigger('change')
       $('#venue_day_hours_attributes_'+index+'_'+from_to).val(value).trigger('change')
-
-    is_closed = (index) ->
-      !($('#open_'+index)[0].checked)
+      return
 
     toggleCustomChecked = (index, open, fake_day) ->
       $('#open_'+index).attr('checked', open).trigger('change')
@@ -125,6 +65,24 @@ on_load = ->
       else
         $('#from_'+fake_day).prop('disabled', 'disabled')
         $('#to_'+fake_day).prop('disabled', 'disabled')
+
+    initialize_popovers = ->
+      options = {
+        placement: (context, source) ->
+          position = $(source).offset()
+          if (position.left > 160)
+              return "left"
+          if (position.left < 160)
+              return "right"
+          if (position.top < 110)
+              return "bottom"
+          return "top"
+      }
+      return
+      #$('#emergency-popover').popover(options)
+
+    is_closed = (index) ->
+      !($('#open_'+index)[0].checked)
 
     initialize_closed_days = ->
       initialize_custom_closed_days()

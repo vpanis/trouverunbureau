@@ -1,0 +1,14 @@
+#countResultsBox.filter-box.row
+  .col-md-2.text-center
+    .h1.count-number() {{totalSpaces}}
+    .h5.text-annotation() = t('search.count')
+  .col-md-8.filters
+    p.filter-colapse.clear ng-if="filters.length > 0" ng-click=("removeFilterAll()") #{t('search.clear_filters')}
+    p.filter-colapse.refine ng-if="filters.length == 0" #{t('search.refine')}
+    ul.list-unstyled
+      li.filter-item-list ng-repeat=("filter in filters")
+        p.filter-name() {{filter}}
+        a.filter-delete href="#" ng-click=("removeFilter(filter)") x
+
+  .col-md-2
+    .border-circle.text-annotation.filter-button() = t('search.filters')

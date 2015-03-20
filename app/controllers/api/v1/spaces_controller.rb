@@ -4,6 +4,7 @@ module Api
 
       def index
         result = SpaceQuery.new.all(pagination_params, filter_conditions)
+        # TODO: favorites
         favorites_ids = []
         render_result(result, serialized_reviews(result, SpaceSerializer, favorites_ids))
       end
@@ -19,10 +20,10 @@ module Api
       end
 
       def filter_parameter?(param, value)
-        filter_parameters = %w(capacity quantity latitude_from latitude_to
+        filter_parameters = %w(capacity_min capacity_max quantity latitude_from latitude_to
                                longitude_from longitude_to space_types venue_types
                                venue_amenities venue_professions weekday date)
-        param.in?(filter_parameters) && !value.strip.blank?
+        param.in?(filter_parameters) && (value.is_a?(Array) || !value.strip.blank?)
       end
 
     end

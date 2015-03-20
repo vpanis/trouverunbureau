@@ -1,25 +1,47 @@
 .menubar.nav.navbar.navbar-default.navbar-fixed-top
-  .container-fluid
-    .navbar-header
-      button.navbar-toggle data-target="#mobile-navbar" data-toggle="collapse" type="button"
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
-      a.navbar-brand href="#"
-        = image_tag('isologotipo-login.png', width: '205px', height: '35px')
-    #mobile-navbar.collapse.navbar-collapse
-      ul.nav.navbar-nav.hidden-collapse
+  .navbar-header
+    button.navbar-toggle data-target="#mobile-navbar" data-toggle="collapse" type="button"
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
+    a.navbar-brand href=root_path
+      = image_tag('isologotipo-login.png', width: '205px', height: '35px')
+  #mobile-navbar.collapse.navbar-collapse
+    ul.nav.navbar-nav.hidden-collapse
+      li
+        .search
+          = form_tag spaces_path, method: 'get', class: 'form-inline' do |f|
+            .styled-search
+              label.sr-only #{t('home.header.search_text')}
+              = text_field_tag :search, params[:search], class: 'form-control', placeholder: t('home.header.search_text')
+              = submit_tag "Search", name: nil, class: 'hidden'
+    ul.nav.navbar-nav.hidden-large-navbar.mobile-menu-items
+      li
+        a #{t('menu.search')}
+      li
+        a #{t('menu.profile')}
+      li
+        a #{t('menu.messages')}
+
+    ul.nav.navbar-nav.navbar-right.hidden-collapse
+      - if user.present?
         li
-          .search
-            = form_tag '#', class: 'form-inline'
-              .styled-search
-                label.sr-only #{t('home.header.search_text')}
-                = text_field_tag :a, nil, class: 'form-control', placeholder: t('home.header.search_text')
-      ul.nav.navbar-nav.hidden-large-navbar.mobile-menu-items
+          a.user href=user_path(user)
+            .avatar
+              - if user.avatar?
+                = image_tag(user.avatar.url)
+              - else
+                = image_tag('default-avatar.png')
+            .name
+              p = user.name
         li
-          a #{t('menu.search')}
+          a href="#"
+            .messages
+              p 0
         li
-          a #{t('menu.profile')}
+          a.list-space href="#"
+            p #{t('home.list_your_space')}
+      - else
         li
           a #{t('menu.messages')}
 

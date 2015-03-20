@@ -5,24 +5,26 @@
   background-color: $light-gray;
 }
 
-[data-action="wishlist"], [data-action="search"] {
+[data-action="wishlist"] {
   text-align: center;
   .spaces-list{
     margin: 0 auto;
+    background-color: $light-gray;
   }
-  .favorite-space{
-    height: 325px;
-    width: 100%;
-    position: relative;
-    background-color: white;
-    display: inline-block;
-    margin-bottom: 20px;
-    .carousel .item {
+}
+
+.favorite-space{
+  height: 325px;
+  width: 100%;
+  position: relative;
+  background-color: white;
+  display: inline-block;
+  margin-bottom: 20px;
+  .carousel .item {
+    height: 232px;
+    .full-image{
       height: 232px;
-      .full-image{
-        height: 232px;
-        width: 100%;
-      }
+      width: 100%;
     }
   }
   .carousel-container{

@@ -11,7 +11,6 @@ Deskspotting::Application.routes.draw do
 
   resources :venues, only: [:new, :create, :edit, :update, :show, :index] do
     member do
-      get :search
       get :details, to: 'venue_details#details'
       patch :details, to: 'venue_details#save_details'
       get :amenities, to: 'venue_amenities#amenities'
@@ -32,7 +31,7 @@ Deskspotting::Application.routes.draw do
     end
   end
 
-  resources :spaces, only: [:edit, :update, :create, :destroy] do
+  resources :spaces, only: [:edit, :update, :create, :destroy, :index] do
     collection do
       get :wishlist
     end

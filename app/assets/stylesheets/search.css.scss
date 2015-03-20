@@ -1,16 +1,7 @@
 @import 'variables';
 @import 'mixins';
 
-[data-action="search"] {
-  background-color: $white;
-  .border-circle{
-    @include border-radius(100%);
-    border: 2px solid $yellow;
-  }
-
-  .count-box{
-    padding-right: 100px;
-  }
+.space-search {
 
   .count-number{
     font-weight: 700;
@@ -20,24 +11,24 @@
     font-weight: 300;
   }
 
-  .filter-button-box{
-    margin-bottom: 10px;
-    padding-left: 18px;
-  }
-
   .filter-button{
     text-transform: uppercase;
-    padding-top: 23px;
-    padding-bottom: 23px;
-    text-align: center;
-    margin-left: -20px;
-    margin-right: 27px;
     cursor: pointer;
+    width: 75px;
+    height: 75px;
+    border-radius: 100%;
+    border: 2px solid $yellow;
+    text-align: center;
+    line-height: 75px;
+    font-weight: 700;
+    margin: 50% auto 0;
+    transform: translateY(-50%);
   }
 
   .pagination-box{
-    margin-left: 10px;
+    margin-left: 0;
     margin-bottom: 30px;
+    clear: both;
   }
 
   .pagination-pages{
@@ -49,63 +40,64 @@
     margin-top: 5px;
   }
 
-  .filter-box{
-    width: 111%;
-    top: 50px;
-    z-index: 20;
-    background-color: $white;
-    padding-top: 25px;
-    padding-bottom: 10px;
-  }
-
-  .fixed-box{
-    position: fixed;
-    width: 71%;
-  }
-
-  .filter-box-after{
-    padding-top: 125px;
-  }
-
   .venue-map{
-    height: 900px;
+    height: 100%;
   }
 
-  .venue-map-container{
-    position:fixed;
+  .filters {
+    margin-top: 40px;
   }
 
-  .filter-box{
+  .filter-colapse.clear,
+  .filter-item-list {
     float: left;
-  }
-
-  .filter-colapse-container{
-    margin-left: 64px;
-  }
-
-  .filter-colapse{
-    float: right;
+    padding: 0 5px; 
+    display: inline-block;
+    color: $dark-gray;
     border: 1px solid $yellow;
-    margin-left: 5px;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    padding-right: 2px;
+    font-size: 12px;
+    margin-right: 5px;
   }
 
-  .filter-colapse.clear{
-    border: 1.5px solid $red;
+  .filter-colapse.clear {
+    color: $red;
+    border: 1px solid $red;
+    cursor: pointer;
+    transition: .25s;
+    &:hover {
+      background-color: $red;
+      color: $white;
+    }
+  }
+
+  .filter-item-list {
+    .filter-name {
+      display: inline-block;
+    }
+    .filter-delete {
+      display: inline-block;
+      margin-left: 5px;
+      color: $white;
+      cursor: pointer;
+      background: $yellow;
+      width: 16px;
+      height: 16px;
+      border-radius: 100%;
+      text-align: center;
+      line-height: 16px;
+      font-size: 12px;
+    }
   }
 
   .filter-colapse.refine{
-    border: 0px solid $red;
+    text-align: right;
+    font-weight: 700;
+    color: #333;
+    line-height: 34px;
   }
   .filter-colapse-text{
     margin: 2px;
     float: left;
-  }
-
-  .filter-colapse-text.clear{
-    color: $red;
   }
 
   .filter-colapse-text.refine{
@@ -133,17 +125,9 @@
     text-transform: uppercase;
     font-weight: 300;
   }
-  .filter-field-line{
-    width: 100%;
-    height: 1px;
-    background-color: $black;
-    margin-left: -16px;
-    margin-bottom: 20px;
-    margin-top: 15px;
-  }
-
   .filter-row{
-    margin-right: 15px;
+    border-bottom: 1px solid $gray;
+    padding: 15px 0;
   }
 
   p.black-arrow{
@@ -159,22 +143,26 @@
     display: inline-block;
   }
 
-  input[type="checkbox"]{
-    height: 14px;
-    width: 14px;
-    margin-top: 2px;
-  }
   .button-filters{
     background-color: $yellow;
     font-weight: 700;
     font-size: 18px;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding: 15px 0;
+    text-align: center;
+    cursor: pointer;
+    transition: .25s;
+    &:hover {
+      background-color: darken($yellow, 5%);
+    }
   }
 
   #filtersForm{
+    padding: 25px;
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    background-color: $white;
     display: none;
-    margin-top: 25px;
   }
 
   .text-field-form{
@@ -207,5 +195,37 @@
 
   .filter-form-input-checkbox{
     margin-right: 6px;
+  }
+}
+
+[data-controller="spaces"] {
+  #footer {
+    position: fixed;
+    transform: translateY(100%);
+    bottom: 0;
+    width: 100%;
+    transition: 1s;
+    &.open {
+      transform: translateY(0);
+    }
+  }
+  .open-footer {
+    background-color: $light-black;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 10px 20px;
+    cursor: pointer;
+    z-index: 1000;
+    color: $white;
+  }
+  .results {
+    position: relative;
+  }
+  .spaces-results {
+    overflow-y: auto;
+    background: $light-gray;
+    width: 100%;
+    padding-top: 15px;
   }
 }
