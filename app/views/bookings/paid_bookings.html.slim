@@ -1,18 +1,18 @@
 = render 'shared/menu_bar', user: current_user
 = render 'shared/profile_menu_bar', user: current_user, selected: 'bookings'
 
-div
-  div Your bookings
-  div
-    = link_to('venue bookings', venue_paid_bookings_bookings_path, class: 'black')
+.container
+  .row
+    .btn-group aria-label="..." role="group" 
+      button.btn.btn-default type="button"  Your bookings
+      = link_to('venue bookings', venue_paid_bookings_bookings_path, class: 'button btn btn-default')
+  .row
+    h1 = 'Current bookings'
+    - @paid.each do |booking|
+      = render 'booking_item', booking: booking, own:true
 
-.row
-  h1 = 'Current bookings'
-  - @paid.each do |booking|
-    = render 'booking_item', booking: booking, own:true
-
-.row
-  h2 = 'Cancelled bookings'
-  - @canceled.each do |booking|
-    = render 'booking_item', booking: booking, own:true
+  .row
+    h2 = 'Cancelled bookings'
+    - @canceled.each do |booking|
+      = render 'booking_item', booking: booking, own:true
 
