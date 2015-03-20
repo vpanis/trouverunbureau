@@ -53,4 +53,5 @@ class SpacesController < ModelController
     params.require(:space).permit(:s_type, :name, :capacity, :quantity, :description, :deposit,
                                   :hour_price, :day_price, :week_price, :month_price, :venue_id)
   end
+
 end

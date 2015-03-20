@@ -24,11 +24,6 @@ class BookingsController < ApplicationController
     redirect_to paid_bookings_bookings_path
   end
 
-  def inquiry
-    space = Space.all.first #TODO agarrar el space de algun param
-    @booking = Booking.new(space: space, owner: current_represented)
-  end
-
   private
 
   def retrieve_bookings(venue_ids, method_name)

@@ -50,4 +50,4 @@
             span.currency = "(#{space.venue.currency})"
           p.time.black #{t('venues.show.per_month')}
     .booking-inquiry
-      = link_to t('venues.show.booking_inquiry'), inquiry_bookings_path
+      = link_to t('venues.show.booking_inquiry'), inquiry_space_path(space)

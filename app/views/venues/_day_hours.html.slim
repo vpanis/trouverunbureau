@@ -16,6 +16,7 @@
         = render 'standard_time_item', day_label: Date::ABBR_DAYNAMES[(6 + 1) % 7], weekday: 'sunday', index: 6, options: options_for_hours
       #custom-times.tab-pane role="tabpanel" class=('active' if @custom_hours)
         = form.fields_for :day_hours, @modify_day_hours do |ff|
+          - options_for_hours = (0..48).collect { |n| [  "#{(n/2).to_s.rjust(2, '0')}:#{(30 * (n%2)).to_s.rjust(2, '0')}", (n/2)*100 + 30 * (n%2) ] }
           .row
             .form-group.venue-description-input.weekday-col.col-md-4.vertical-align
               label = Date::ABBR_DAYNAMES[(ff.index + 1) % 7]
