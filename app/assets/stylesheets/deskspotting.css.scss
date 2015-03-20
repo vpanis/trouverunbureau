@@ -1322,5 +1322,14 @@ li.venue-hours.active{
       }
     }
   }
+  .select2-container {
+    width: calc(100% - 412px);
+    padding-left: 20px;
+    .select2-choice {
+      border: none;
+      border-bottom: 2px solid $dark-gray;
+      border-radius: 0;
+      height: 44px !important;
+    }
+  }
 }
-

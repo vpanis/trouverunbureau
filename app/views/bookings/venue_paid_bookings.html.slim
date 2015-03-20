@@ -6,17 +6,16 @@
     .btn-group aria-label="..." role="group" 
       = link_to('your bookings', paid_bookings_bookings_path, class: 'button btn btn-default')
       = link_to('venue bookings', venue_paid_bookings_bookings_path, class: 'button btn btn-default active')
+    = select_tag :venue_ids, options_for_select(@venues, params[:param_name])
 
-.row
-  h1 = 'Venue bookings'
-  = select_tag :venue_ids, options_for_select(@venues, params[:param_name])
-
-.row
-  h1 = 'Current bookings'
-  - @paid.each do |booking|
-    = render 'booking_item', booking: booking, own: false
-
-.row
-  h2 = 'Cancelled bookings'
-  - @canceled.each do |booking|
-    = render 'booking_item', booking: booking, own: false
+  .row
+    .title
+        h1 = 'Current bookings'
+    - @paid.each do |booking|
+      = render 'booking_item', booking: booking, own: false
+  /ocultar si no hay cancelados
+  .row
+    .title
+        h1 = 'Cancelled bookings'
+    - @canceled.each do |booking|
+      = render 'booking_item', booking: booking, own: false
