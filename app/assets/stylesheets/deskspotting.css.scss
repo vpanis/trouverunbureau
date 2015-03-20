@@ -1290,13 +1290,21 @@ li.venue-hours.active{
   .btn-default {
     background-color: transparent;
     border: 2px solid $light-gray;
+    color: $gray;
     padding: 10px 40px;
     text-transform: uppercase;
-    font-weight: 700;
+    &:first-child {
+      border-right: 0;
+    }
+    &:last-child {
+      border-left: 0;
+    }
     &.active {
       background-color: $yellow;
+      font-weight: 700;
       border: 2px solid $yellow;
       box-shadow: none;
+      color: $black;
     }
   }
   .title {
@@ -1323,8 +1331,8 @@ li.venue-hours.active{
     }
   }
   .select2-container {
-    width: calc(100% - 412px);
-    padding-left: 20px;
+    width: calc(100% - 428px);
+    margin-left: 20px;
     .select2-choice {
       border: none;
       border-bottom: 2px solid $dark-gray;
