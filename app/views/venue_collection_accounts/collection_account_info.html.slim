@@ -1,0 +1,53 @@
+.card class=(card_class) class=('selected' if selected)
+  .card-top-bar.space
+    - if selected
+      h4 #{t('venues.show.chosen_workspace')}
+    h3 = space.name
+    .separator
+    .favourite class=('active' if is_favorite)
+    .space-options id="space-option-#{space.id}" ...
+    .space-popover class="space-popover-#{space.id}"
+      .arrow
+      a.report-space href="#" Report Space
+  .carousel.slide id="space-carousel-#{space.id}"
+    ol.carousel-indicators
+      - space.photos.each_with_index do |item, index|
+        li data-target="#space-carousel-#{space.id}" data-slide-to="#{index}" class=('active' if index == 0)
+    .carousel-inner role="listbox"
+      - space.photos.each_with_index do |item, index|
+        .item class=('active' if index == 0)
+          .full-image style='background-image: url(#{item.photo.url})'
+    a.left.carousel-control data-slide="prev" href="#space-carousel-#{space.id}" role="button"
+      span.glyphicon.left-carousel-arrow aria-hidden="true"
+    a.right.carousel-control data-slide="next" href="#space-carousel-#{space.id}" role="button"
+      span.glyphicon.right-carousel-arrow aria-hidden="true"
+  .space-info
+    .description
+      p = space.description
+    .prices
+      - if space.hour_price.present?
+        .price
+          p
+            = "$#{space.hour_price.round}"
+            span.currency = "(#{space.venue.currency})"
+          p.time #{t('venues.show.per_hour')}
+      - if space.day_price.present?
+        .price
+          p
+            = "$#{space.day_price.round}"
+            span.currency = "(#{space.venue.currency})"
+          p.time #{t('venues.show.per_day')}
+      - if space.week_price.present?
+        .price
+          p
+            = "$#{space.week_price.round}"
+            span.currency = "(#{space.venue.currency})"
+          p.time #{t('venues.show.per_week')}
+      - if space.month_price.present?
+        .price
+          p
+            = "$#{space.month_price.round}"
+            span.currency = "(#{space.venue.currency})"
+          p.time #{t('venues.show.per_month')}
+    .booking-inquiry
+      a href="#" #{t('venues.show.booking_inquiry')}
