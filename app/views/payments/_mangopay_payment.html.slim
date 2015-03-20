@@ -1,0 +1,84 @@
+= javascript_include_tag "payment_modes/mangopay_dropin"
+
+= @payment_account.mangopay_credit_cards.activated.each do |credit_card|
+  .js-credit-card data-payment-id="#{credit_card.credit_card_id}"
+    span Last four digits: #{ credit_card.last_4 }
+    span Type: #{ credit_card.card_type }
+    span Expiration Date: #{ credit_card.expiration }
+    span Currency: #{ credit_card.currency }
+
+
+/ = form_for(@collection_account, url: collection_account_info_venue_path(@venue)) do |f|
+/   .main-content
+/     #venue
+/       .row
+/         .collection_account-section
+/           .form-group
+/             label #{t('venues.collection_account.individual')}
+/             .form-group#venue-first_name-input
+/               label #{t('venues.collection_account.first_name')} (*)
+/               = f.text_field :first_name
+/             .form-group#venue-last_name-input
+/               label #{t('venues.collection_account.last_name')} (*)
+/               = f.text_field :last_name
+/             .form-group#venue-email-input
+/               label #{t('venues.collection_account.email')} (*)
+/               = f.text_field :email
+/             .form-group#venue-phone-input
+/               label #{t('venues.collection_account.phone')}
+/               = f.text_field :phone
+/             .form-group#venue-date_of_birth-input
+/               label #{t('venues.collection_account.date_of_birth')} (*)
+/               = f.text_field :date_of_birth
+/             .form-group#venue-ssn-input
+/               label #{t('venues.collection_account.ssn')} #{" ( #{t('venues.collection_account.previous_last_4')}: #{@collection_account.ssn_last_4} )" if @collection_account.ssn_last_4.present?}
+/               = f.text_field :ssn
+/             .form-group#venue-individual_street_address-input
+/               label #{t('venues.collection_account.street_address')} (*)
+/               = f.text_field :individual_street_address
+/             .form-group#venue-individual_locality-input
+/               label #{t('venues.collection_account.locality')} (*)
+/               = f.text_field :individual_locality
+/             .form-group#venue-individual_region-input
+/               label #{t('venues.collection_account.region')} (*)
+/               = f.text_field :individual_region
+/             .form-group#venue-individual_postal_code-input
+/               label #{t('venues.collection_account.postal_code')} (*)
+/               = f.text_field :individual_postal_code
+/           .form-group
+/             label #{t('venues.collection_account.business')}
+/             .form-group#venue-legal_name-input
+/               label #{t('venues.collection_account.legal_name')} (*)(#{t('venues.collection_account.only_tax_id_present')})
+/               = f.text_field :legal_name
+/             .form-group#venue-tax_id-input
+/               label #{t('venues.collection_account.tax_id')} (*)(#{t('venues.collection_account.only_legal_name_present')})
+/               = f.text_field :tax_id
+/             .form-group#venue-dba_name-input
+/               label #{t('venues.collection_account.dba_name')}
+/               = f.text_field :dba_name
+/             .form-group#venue-business_street_address-input
+/               label #{t('venues.collection_account.street_address')}
+/               = f.text_field :business_street_address
+/             .form-group#venue-business_locality-input
+/               label #{t('venues.collection_account.locality')}
+/               = f.text_field :business_locality
+/             .form-group#venue-business_region-input
+/               label #{t('venues.collection_account.region')}
+/               = f.text_field :business_region
+/             .form-group#venue-business_postal_code-input
+/               label #{t('venues.collection_account.postal_code')}
+/               = f.text_field :business_postal_code
+/           .form-group
+/             label #{t('venues.collection_account.funding')}
+/             .form-group#venue-descriptor-input
+/               label #{t('venues.collection_account.descriptor')}
+/               = f.text_field :descriptor
+/             .form-group#venue-account_number-input
+/               label #{t('venues.collection_account.account_number')} #{" ( #{t('venues.collection_account.previous_last_4')}: #{@collection_account.account_number_last_4} )" if @collection_account.account_number_last_4.present?} (*)
+/               = f.text_field :account_number
+/             .form-group#venue-routing_number-input
+/               label #{t('venues.routing_number')} (*)
+/               = f.text_field :routing_number
+/     span() #{t('venues.collection_account.required')} = (*)
+/   .full-width-submit-button
+/     = f.submit 'Save', class: 'submit-button', id: 'save-collection_account'

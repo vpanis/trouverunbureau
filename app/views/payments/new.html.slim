@@ -1,8 +1,5 @@
-- if true
-  = javascript_include_tag "payment_modes/mongopay_dropin"
-- else
-  = javascript_include_tag "payment_modes/braintree_dropin"
 #hidden-data data-payment-id="#{@payment.id}"
+
 h2
   span Hello #{current_represented.name}
   br
@@ -26,11 +23,11 @@ h4
 h3
   span Price: #{@booking.price}
 
-= form_tag(payments_path, method: "post")
-  = hidden_field_tag :booking_id, @booking.id
-  = hidden_field_tag :mode, "braintree"
-  #js-dropin
-  = submit_tag("Pay")
+- case @payment_method
+- when "mangopay"
+    = render "mangopay_payment"
+- when "braintree"
+    = render "braintree_payment"
 
 h3
   span BOOKING STATE: #{@booking.state}

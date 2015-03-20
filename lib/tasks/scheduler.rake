@@ -3,4 +3,9 @@ namespace :scheduler do
   task expire_bookings: :environment do
     ExpireBookingsWorker.perform_async()
   end
+
+  desc 'Destroy the mangopay_credit_cards which registrations was not completed'
+  task destroy_mangopay_invalid_cards: :environment do
+    DestroyMangopayInvalidCreditCardWorker.perform_async()
+  end
 end

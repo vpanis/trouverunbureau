@@ -5,11 +5,10 @@ module Users
     protected
 
     def create_mangopay_user_account
-      binding.pry
       return unless resource.persisted? # user is created successfuly
-      MangopayPaymentAccount.create(buyer: resource,
-                                    status: MangopayPaymentAccount.statuses[:processing])
-      MangopayPaymentAccountWorker.perform_async(resource.id)
+      mpa = MangopayPaymentAccount.create(buyer: resource,
+                                          status: MangopayPaymentAccount.statuses[:processing])
+      MangopayPaymentAccountWorker.perform_async(resource.id, mpa.id)
     end
   end
 end

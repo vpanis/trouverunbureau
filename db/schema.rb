@@ -122,6 +122,14 @@ ActiveRecord::Schema.define(version: 20150501135224) do
     t.integer  "mangopay_payment_account_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "status"
+    t.string   "currency"
+    t.string   "card_registration_url"
+    t.string   "pre_registration_data"
+    t.string   "registration_access_key"
+    t.string   "registration_id"
+    t.datetime "registration_expiration_date"
+    t.text     "error_message"
   end
 
   add_index "mangopay_credit_cards", ["mangopay_payment_account_id"], name: "index_mangopay_credit_cards_on_mangopay_payment_account_id", using: :btree
@@ -134,9 +142,21 @@ ActiveRecord::Schema.define(version: 20150501135224) do
     t.datetime "updated_at"
     t.integer  "status"
     t.text     "error_message"
+    t.string   "wallet_id"
   end
 
   add_index "mangopay_payment_accounts", ["buyer_id", "buyer_type"], name: "index_mangopay_payment_accounts_on_buyer_id_and_buyer_type", using: :btree
+
+  create_table "mangopay_payments", force: true do |t|
+    t.string   "transaction_status"
+    t.string   "transaction_id"
+    t.text     "error_message"
+    t.string   "card_type"
+    t.string   "card_last_4"
+    t.string   "card_expiration_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "messages", force: true do |t|
     t.integer  "booking_id"

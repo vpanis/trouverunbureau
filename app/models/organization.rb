@@ -9,7 +9,7 @@ class Organization < ActiveRecord::Base
   has_many :venues, as: :owner
   has_many :bookings, as: :owner
   has_one :braintree_payment_account, as: :buyer
-  has_one :mongopay_payment_account, as: :buyer
+  has_one :mangopay_payment_account, as: :buyer
 
   # Uploaders
   mount_uploader :logo, LogoUploader

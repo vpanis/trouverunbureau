@@ -1,6 +1,6 @@
 module Api
   module V1
-    class BraintreeController < ApplicationController
+    class BraintreeController < ApiController
       include RepresentedHelper
       before_action :authenticate_user!, only: [:customer_nonce_token]
 

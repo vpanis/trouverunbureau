@@ -4,29 +4,51 @@ class PaymentsController < ApplicationController
 
   # GET /payments/new?booking_id
   def new
-    @booking = Booking.where(id: params[:booking_id],
-                             state: Booking.states[:pending_payment], # REMOVE FOR TESTING
-                             owner: current_represented).first
+    @booking = Booking.includes(:payment, space: [:venue])
+                 .where(id: params[:booking_id], state: Booking.states[:pending_payment],
+                        owner: current_represented).first
     # TODO: custom 404 page
     return redirect_to root_path unless @booking.present? &&
       @booking.collection_account.present? && @booking.collection_account.active?
-    generate_nonce_for_payment
+    @payment_method = which_payment_method(@booking.space.venue.collection_account)
+    payment_requeriments
     @payment = @booking.payment
   end
 
   # POST /payments
   def create
-    @booking = Booking.where(id: params[:booking_id], state: Booking.states[:pending_payment],
-                             owner: current_represented).first
+    @booking = Booking.includes(:payment, space: [:venue])
+                 .where(id: params[:booking_id], state: Booking.states[:pending_payment],
+                        owner: current_represented).first
     # TODO: custom 404 page
-    return redirect_to root_path unless @booking.present? && params[:mode].in?(%w(braintree)) &&
-      send("payment_#{params[:mode]}_verification")
+    return redirect_to root_path unless @booking.present?
+    @payment_method = which_payment_method(@booking.space.venue.collection_account)
+    return redirect_to root_path if @payment_method == 'invalid_collection_account' ||
+      !send("payment_#{@payment_method}_verification")
     pay_if_its_possible
   end
 
   private
 
-  def generate_nonce_for_payment
+  def payment_requeriments
+    case @payment_method
+    when 'mangopay'
+      return redirect_to root_path unless payment_mangopay_verification
+      mangopay_payment
+    when 'braintree'
+      braintree_payment_and_nonce
+    end
+  end
+
+  def mangopay_payment
+    unless @booking.payment.present?
+      @booking.payment = MangopayPayment.new
+      @booking.save
+    end
+    @payment_account = current_represented.mangopay_payment_account
+  end
+
+  def braintree_payment_and_nonce
     unless @booking.payment.present?
       @booking.payment = BraintreePayment.new
       @booking.save
@@ -53,5 +75,27 @@ class PaymentsController < ApplicationController
     BraintreePaymentWorker.perform_async(@booking.id, params[:payment_method_nonce],
                                          current_user.id, current_represented.id,
                                          current_represented.class.to_s)
+  end
+
+  def payment_mangopay_verification
+    current_represented.mangopay_payment_account.present? &&
+      current_represented.mangopay_payment_account.accepted?
+  end
+
+  def payment_mangopay
+    BraintreePaymentWorker.perform_async(@booking.id, params[:payment_method_nonce],
+                                         current_user.id, current_represented.id,
+                                         current_represented.class.to_s)
+  end
+
+  def which_payment_method(collection_account)
+    case collection_account.class
+    when BraintreeCollectionAccount
+      'braintree'
+    when BraintreeCollectionAccount
+      'mangopay'
+    else
+      'invalid_collection_account'
+    end
   end
 end

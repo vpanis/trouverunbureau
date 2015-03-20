@@ -1,4 +1,5 @@
 class BraintreePaymentAccount < ActiveRecord::Base
+  belongs_to :buyer, polymorphic: true
 
   class << self
     def generate_customer_id(owner)
