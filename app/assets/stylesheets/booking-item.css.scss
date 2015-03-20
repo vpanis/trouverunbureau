@@ -62,6 +62,9 @@
     background-position: left center;
     padding-left: 25px;
     line-height: 40px;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .date {
     float: left;
