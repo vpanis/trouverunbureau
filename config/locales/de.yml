@@ -257,6 +257,15 @@ de:
     month: 'month'
     hour: 'hour'
     week: 'week'
+  bookings:
+    no_bookings: 'There are no bookings'
+    state:
+      pending_authorization: 'Pending'
+      pending_payment: 'approved'
+      paid: 'paid'
+      canceled: 'cancelled'
+      denied: 'denied'
+      expired: 'expired'
   users:
     user_since: User since
     edit_profile: 'Edit profile'

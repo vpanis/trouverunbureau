@@ -2,6 +2,7 @@
 @deskspotting = angular.module('deskSpotting', [
   'restangular',
   'ui.bootstrap',
+  'deskSpotting.inbox',
   'deskSpotting.venue_reviews',
   'deskSpotting.client_reviews',
   'deskSpotting.wishlist',
@@ -22,3 +23,7 @@ angular.module('ui.bootstrap.carousel', [ 'ui.bootstrap.transition' ]).controlle
 ]).directive 'carousel', [ ->
   {}
 ]
+
+@deskspotting.filter 'reverse', ->
+  (items) ->
+    items.slice().reverse()

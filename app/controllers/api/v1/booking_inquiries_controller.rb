@@ -88,8 +88,9 @@ module Api
 
       def inquiries
         return unless represented_data_validation
-        render status: 200, json: serialized_paginated_array(Booking.all_bookings_for(
-          current_represented), :inquiries, InquirySerializer)
+        render status: 200,
+               json: serialized_paginated_array(Booking.all_bookings_for(current_represented),
+                                                :inquiries, InquirySerializer).as_json
       end
 
       def inqueries_with_news

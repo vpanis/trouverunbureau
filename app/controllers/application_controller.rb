@@ -11,6 +11,19 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
+  after_action :set_user_language
+
+  def set_user_language
+    return I18n.locale = params[:locale] if params[:locale].present? && current_user.nil?
+    I18n.locale = current_user.language if current_user.present? && current_user.language.present?
+  end
+
+  def default_url_options
+    default = super || {}
+    default[:locale] = params[:locale] if params[:locale].present?
+    default
+  end
+
   def set_csrf_cookie_for_ng
     cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
   end

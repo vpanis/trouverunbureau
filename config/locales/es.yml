@@ -57,7 +57,7 @@ es:
     change_password: 'Change Password'
   home:
     sign_in: 'Sign in'
-    list_your_space: 'List your space'
+    list_your_space: 'Lista tu espacio'
     profile: Profile
     manage_your_venues: Manage your venues
     header:
@@ -257,6 +257,15 @@ es:
     month: 'month'
     hour: 'hour'
     week: 'week'
+  bookings:
+    no_bookings: 'There are no bookings'
+    state:
+      pending_authorization: 'pending'
+      pending_payment: 'approved'
+      paid: 'paid'
+      canceled: 'cancelled'
+      denied: 'denied'
+      expired: 'expired'
   users:
     user_since: User since
     edit_profile: 'Edit profile'

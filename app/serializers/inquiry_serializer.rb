@@ -1,13 +1,16 @@
 class InquirySerializer < ActiveModel::Serializer
   include RepresentedHelper
-  attributes :id, :space, :state, :from, :to, :price, :quantity, :message_count, :last_message_at
+  attributes :id, :space, :state, :from, :to, :price, :quantity, :message_count, :last_message_at,
+             :client
 
-  # for some reason, it doesn't accept the 'only' used this way:
-  # has_one :space, serializer: SpaceSerializer, only: [list]
-  # so, for now, I've generated it manualy without the root to avoid
-  # 'space:{ space: {'
   def space
-    SpaceSerializer.new(object.space, only: [:id, :name, :city, :currency, :capacity], root: false)
+    SpaceSerializer.new(object.space, only: [:id, :name, :city, :currency, :capacity, :venue_name,
+                                             :deposit, :logo],
+                                      root: false)
+  end
+
+  def client
+    ClientSerializer.new(object.owner, root: false)
   end
 
   def message_count
@@ -20,6 +23,10 @@ class InquirySerializer < ActiveModel::Serializer
 
   def to
     object.to.to_s
+  end
+
+  def state
+    I18n.t("bookings.state.#{object.state}")
   end
 
   def last_message_at

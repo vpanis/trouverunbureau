@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   inherit_resources
   include RepresentedHelper
   include SelectOptionsHelper
+  before_action :authenticate_user!, except: [:show]
 
   def show
     @user = User.find(params[:id])
@@ -37,6 +38,9 @@ class UsersController < ApplicationController
     return render_forbidden unless current_user.id == params[:id].to_i
     session[:current_organization_id] = nil
     redirect_to session[:previous_url] || root_path
+  end
+
+  def inbox
   end
 
   # TODO: implement account form and email notifications accordingly

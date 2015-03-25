@@ -28,6 +28,7 @@ Deskspotting::Application.routes.draw do
   resources :users, only: [:show, :edit, :update] do
     member do
       get :account
+      get :inbox
     end
     collection do
       post :login_as_organization, to: 'users#login_as_organization'
