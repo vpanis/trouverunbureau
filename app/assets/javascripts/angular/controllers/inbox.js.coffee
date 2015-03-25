@@ -112,6 +112,5 @@ angular.module('deskSpotting.inbox', []).controller "InboxCtrl", [
           $scope.selected_booking.price = parseInt(price)
           return
 
-
     $scope.getBookings()
 ]
