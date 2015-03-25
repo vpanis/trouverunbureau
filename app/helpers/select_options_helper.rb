@@ -26,7 +26,7 @@ module SelectOptionsHelper
   def language_options
     # TODO: define languages list
     [[t('languages.es'), 'es'], [t('languages.en'), 'en'], [t('languages.de'), 'de'],
-     [t('languages.it'), 'it']]
+     [t('languages.it'), 'it'], [t('languages.fr'), 'fr'], [t('languages.pt'), 'pt']]
   end
 
   def space_types_options
