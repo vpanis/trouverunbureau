@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     path = request.env['omniauth.origin'] || session[:previous_url] || root_path
     # TODO: change this for search view
-    return user_path(resource) if path == root_path
+    return edit_user_path(resource) if path == root_path
     path
   end
 
