@@ -31,10 +31,10 @@ ActiveRecord::Schema.define(version: 20150501135224) do
     t.datetime "owner_last_seen"
     t.datetime "venue_last_seen"
     t.datetime "approved_at"
-    t.boolean  "owner_delete",       default: false
-    t.boolean  "venue_owner_delete", default: false
     t.integer  "payment_id"
     t.string   "payment_type"
+    t.boolean  "owner_delete",       default: false
+    t.boolean  "venue_owner_delete", default: false
     t.integer  "fee"
   end
 
@@ -110,6 +110,38 @@ ActiveRecord::Schema.define(version: 20150501135224) do
 
   create_table "countries", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "mangopay_collection_accounts", force: true do |t|
+    t.boolean  "active",                      default: false
+    t.string   "status"
+    t.text     "error_message"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "nationality"
+    t.string   "country_of_residence"
+    t.date     "date_of_birth"
+    t.string   "address"
+    t.string   "legal_person_type"
+    t.string   "business_name"
+    t.string   "business_email"
+    t.string   "bank_type"
+    t.string   "iban_last_4"
+    t.string   "bic"
+    t.string   "account_number_last_4"
+    t.string   "sort_code"
+    t.string   "bank_name"
+    t.string   "institution_number"
+    t.string   "branch_code"
+    t.string   "bank_country"
+    t.string   "mangopay_user_id"
+    t.string   "wallet_id"
+    t.string   "bank_account_id"
+    t.boolean  "mangopay_persisted"
+    t.boolean  "expecting_mangopay_response"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

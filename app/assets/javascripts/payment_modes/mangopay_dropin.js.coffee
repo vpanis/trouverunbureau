@@ -7,6 +7,16 @@ on_load = ->
       mangoPay.cardRegistration.baseURL = response.config.base_url
       mangoPay.cardRegistration.clientId = response.config.client_id
 
+  $('.js-credit-card').on 'click', (event, bla) ->
+    debugger;
+    target = event.target
+    $('.nav li a.active').removeClass('active')
+    $(this).addClass('active')
+    if target.length
+      event.preventDefault()
+      $(this).tab('show')
+    return
+
 create_new_card_registration = (currency) ->
   $.ajax
     url: 'api/v1/mangopay/card_registration'

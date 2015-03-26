@@ -3,7 +3,7 @@ class MangopayPaymentAccountWorker
 
   # The mangopay_payment_account.buyer.id it would be different from the user_id in the
   # case that the account it's for an Organization. Just for the moment. In the future
-  # the Organization MUST have a Business account (Legal User in mangopay)
+  # the Organization MUST have a Business/Organization account (Legal User in mangopay)
   def perform(user_id, mangopay_payment_account_id)
     init_log(user_id, mangopay_payment_account_id)
     @user = User.find_by_id(user_id)
@@ -27,7 +27,7 @@ class MangopayPaymentAccountWorker
   def save_payment_account(account)
     @mangopay_payment_account.mangopay_user_id = account['Id']
     wallet = create_wallet(account['Id'])
-    @mangopay_payment_account.wallet_id = wallet["Id"]
+    @mangopay_payment_account.wallet_id = wallet['Id']
     @mangopay_payment_account.status = MangopayPaymentAccount.statuses[:accepted]
     @mangopay_payment_account.save
   end
@@ -42,16 +42,16 @@ class MangopayPaymentAccountWorker
     MangoPay::NaturalUser.create(
       firstName: @user.first_name,
       lastName: @user.last_name,
-      birthday: Time.new.advance(years: -23).to_i, #fixed for testing
-      nationality: 'GB', #fixed for testing
-      countryOfResidence: 'GB', #fixed for testing
+      birthday: Time.new.advance(years: -23).to_i, # fixed for testing
+      nationality: 'GB', # fixed for testing
+      countryOfResidence: 'GB', # fixed for testing
       email: @user.email)
   end
 
   def create_wallet(mangopay_user_id)
     MangoPay::Wallet.create(
       owners: [mangopay_user_id],
-      currency: "EUR",
-      description: "Buyer wallet")
+      currency: 'EUR',
+      description: 'Buyer wallet')
   end
 end

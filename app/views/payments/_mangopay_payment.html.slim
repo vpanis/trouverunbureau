@@ -1,7 +1,7 @@
 = javascript_include_tag "payment_modes/mangopay_dropin"
 
 = @payment_account.mangopay_credit_cards.activated.each do |credit_card|
-  .js-credit-card data-payment-id="#{credit_card.credit_card_id}"
+  .js-credit-card data-credit-card-id="#{credit_card.credit_card_id}"
     span Last four digits: #{ credit_card.last_4 }
     span Type: #{ credit_card.card_type }
     span Expiration Date: #{ credit_card.expiration }

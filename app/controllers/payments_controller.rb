@@ -8,9 +8,10 @@ class PaymentsController < ApplicationController
                  .where(id: params[:booking_id], state: Booking.states[:pending_payment],
                         owner: current_represented).first
     # TODO: custom 404 page
-    return redirect_to root_path unless @booking.present? &&
-      @booking.collection_account.present? && @booking.collection_account.active?
-    @payment_method = which_payment_method(@booking.space.venue.collection_account)
+    return redirect_to root_path unless @booking.present?
+    @venue = @booking.space.venue
+    return unless @venue.collection_account.present? && @venue.collection_account.active?
+    @payment_method = which_payment_method(@venue.collection_account)
     payment_requeriments
     @payment = @booking.payment
   end
@@ -22,7 +23,9 @@ class PaymentsController < ApplicationController
                         owner: current_represented).first
     # TODO: custom 404 page
     return redirect_to root_path unless @booking.present?
-    @payment_method = which_payment_method(@booking.space.venue.collection_account)
+    @venue = @booking.space.venue
+    return unless @venue.collection_account.present? && @venue.collection_account.active?
+    @payment_method = which_payment_method(@venue.collection_account)
     return redirect_to root_path if @payment_method == 'invalid_collection_account' ||
       !send("payment_#{@payment_method}_verification")
     pay_if_its_possible
@@ -89,10 +92,10 @@ class PaymentsController < ApplicationController
   end
 
   def which_payment_method(collection_account)
-    case collection_account.class
-    when BraintreeCollectionAccount
+    case collection_account.class.to_s
+    when 'BraintreeCollectionAccount'
       'braintree'
-    when BraintreeCollectionAccount
+    when 'MangopayCollectionAccount'
       'mangopay'
     else
       'invalid_collection_account'
