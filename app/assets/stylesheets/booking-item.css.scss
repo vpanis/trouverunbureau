@@ -52,9 +52,6 @@
     margin: 0 10px;
     background-position: left center;
   }
-  .name {
-
-  }
   .city {
     @include at2x('i-location', 14px, 20px);
     background-repeat: no-repeat;
@@ -71,11 +68,13 @@
     width: 25%;
     text-align: center;
     position: relative;
-    color: $dark-gray;
+    color: $gray;
+    text-transform: capitalize;
     span {
       display: block;
     }
     span:first-child {
+      color: $dark-gray;
       font-weight: 700;
     }
     &:after {
