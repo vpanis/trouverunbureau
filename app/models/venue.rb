@@ -102,12 +102,16 @@ class Venue < ActiveRecord::Base
     self.desks ||= 0
     self.space ||= 0
     self.vat_tax_rate ||= 0
-    self.quantity_reviews ||= 0
-    self.reviews_sum ||= 0
-    self.rating ||= 0
     self.amenities ||= []
     self.professions ||= []
     self.status ||= Venue.statuses[:creating]
+    initialize_reviews_data
+  end
+
+  def initialize_reviews_data
+    self.quantity_reviews ||= 0
+    self.reviews_sum ||= 0
+    self.rating ||= 0
   end
 
   def erase_logo
