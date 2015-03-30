@@ -101,8 +101,7 @@ describe BookingsController do
           let!(:booking7) { create(:booking, space: space2, state: Booking.states[:canceled]) }
 
           before do
-            venue_ids = [venue1.id]
-            get :venue_paid_bookings, venue_ids: venue_ids
+            get :venue_paid_bookings, venue_id: venue1.id
           end
 
           it 'succeeds' do

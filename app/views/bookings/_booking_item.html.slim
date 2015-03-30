@@ -5,33 +5,32 @@
     p.currency = booking.space.venue.currency
   .col-md-5
     .clearfix
-      p.type.pull-left = booking.space.s_type
+      p.type.pull-left = booking.space.name
       p.quantity.pull-left = booking.quantity
-      p.name.pull-left = booking.space.name
+      p.name.pull-left = booking.space.venue.name
     p.city = booking.space.venue.street.to_s + ', ' + booking.space.venue.town.to_s \
         + ', ' + booking.space.venue.country.name
   .col-md-4.margin-top
     .date
-      span 8 
+      span 8
       span Days
     .date
       span 1
       span spaces
-    .date 
+    .date
       span = booking.from.strftime('%d/%m/%y')
       span from
-    .date 
+    .date
       span = booking.to.strftime('%d/%m/%y')
       span to
   .col-md-2
-    - if can_review?(booking, own)
-      a.review href="#" Review
-
+    - if can_review?(booking, own) && own
+      = link_to t('bookings.review'), venue_review_booking_path(booking), class: 'review'
+    - if can_review?(booking, own) && !own
+      = link_to t('bookings.review'), client_review_booking_path(booking), class: 'review'
     - if can_view_receipt?(booking, own)
-      a.receipt href="#" View Receipt
-
+      a.receipt.not-allowed href="#" = t('bookings.view_receipt')
     - if can_cancel?(booking, own)
-      a.cancel href="#" Cancel
-
+      a.cancel.not-allowed href="#" = t('bookings.cancel')
     - if can_delete?(booking, own)
-      a.delete href="#" Delete
+      a.delete.not-allowed href="#" = t('bookings.delete')
