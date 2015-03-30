@@ -30,8 +30,10 @@
               .btn.btn-default.dropdown-toggle type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"
                 a.user href=user_path(user)
                   .avatar
-                    - if user.avatar?
+                    - if user.kind_of?(User) && user.avatar?
                       = image_tag(user.avatar.url)
+                    - elsif user.kind_of?(Organization) && user.logo?
+                      = image_tag(user.logo.url)
                     - else
                       = image_tag('default-avatar.png')
                   .name
@@ -43,7 +45,7 @@
                 - other_members_current_represented.each do |m|
                   li
                     - if m.kind_of?(Organization)
-                      a.user role="menuitem" tabindex="-1"  href=login_as_organization_api_v1_user_path(organization_id: m.id) data-method="post"
+                      = link_to(login_as_organization_users_path(id: current_user.id, organization_id: m.id), method: :post) do
                         .avatar
                           - if m.logo?
                             = image_tag(m.logo.url)
@@ -52,7 +54,7 @@
                         .name
                           p = m.name
                     - else
-                      a.user role="menuitem" tabindex="-1"  href= reset_organization_api_v1_user_path(m)
+                      = link_to(reset_organization_users_path(id: m.id), method: :delete) do
                         .avatar
                           - if m.avatar?
                             = image_tag(m.avatar.url)
