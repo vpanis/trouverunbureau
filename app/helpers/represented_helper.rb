@@ -22,4 +22,8 @@ module RepresentedHelper
       .where { space.venue.owner == my { current_represented } }.empty?
   end
 
+  def other_members_current_represented
+    current_user.organizations + [current_user] - [@current_represented]
+  end
+
 end

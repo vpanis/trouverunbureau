@@ -26,14 +26,42 @@
       ul.nav.navbar-nav.navbar-right.hidden-collapse
         - if user.present?
           li
-            a.user href=user_path(user)
-              .avatar
-                - if user.avatar?
-                  = image_tag(user.avatar.url)
-                - else
-                  = image_tag('default-avatar.png')
-              .name
-                p = user.name
+            dropdown
+              .btn.btn-default.dropdown-toggle type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"
+                a.user href=user_path(user)
+                  .avatar
+                    - if user.avatar?
+                      = image_tag(user.avatar.url)
+                    - else
+                      = image_tag('default-avatar.png')
+                  .name
+                    p = user.name
+
+              ul.dropdown-menu role="menu" aria-labelledby="dropdownMenu1"
+                - if other_members_current_represented.count >0
+                    p role="menuitem" tabindex="-1" #{t('menu.change_user')}
+                - other_members_current_represented.each do |m|
+                  li
+                    - if m.kind_of?(Organization)
+                      a.user role="menuitem" tabindex="-1"  href=login_as_organization_api_v1_user_path(organization_id: m.id) data-method="post"
+                        .avatar
+                          - if m.logo?
+                            = image_tag(m.logo.url)
+                          - else
+                            = image_tag('default-avatar.png')
+                        .name
+                          p = m.name
+                    - else
+                      a.user role="menuitem" tabindex="-1"  href= reset_organization_api_v1_user_path(m)
+                        .avatar
+                          - if m.avatar?
+                            = image_tag(m.avatar.url)
+                          - else
+                            = image_tag('default-avatar.png')
+                        .name
+                          p = m.name
+                a.user role="menuitem" tabindex="-1"  href="#" #{t('menu.create_organization')}
+
           li
             a href="#"
               .messages
