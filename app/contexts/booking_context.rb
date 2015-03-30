@@ -13,10 +13,6 @@ class BookingContext
     venue_bookings(states).order('bookings.from asc')
   end
 
-  def retrieve_bookings_venue_names
-    Venue.where { (id.in my { @venue_ids }) }.pluck(:name, :id)
-  end
-
   def delete(booking)
     del_owner = delete_booking(booking) if booking.owner == @current_represented
     del_venue = delete_venue_booking(booking) if booking.space.venue.owner == @current_represented

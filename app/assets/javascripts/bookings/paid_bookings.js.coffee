@@ -4,9 +4,11 @@ on_load = ->
       bookings: ["venue_paid_bookings", "paid_bookings"]
   , (controller, action) ->
     initialize_selects = ->
-      $('#venue_ids').select2()
+      $('#venue_id').select2()
 
     initialize_listeners = ->
+      $('#venue_id').change ->
+        $('#venue_selector').submit()
       return
 
     initialize_selects()

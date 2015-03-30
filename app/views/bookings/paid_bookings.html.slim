@@ -3,18 +3,19 @@
 
 .booking.container
   .row.margin-top
-    .btn-group aria-label="..." role="group" 
+    .btn-group aria-label="..." role="group"
       = link_to('your bookings', paid_bookings_bookings_path, class: 'button btn btn-default active')
       = link_to('venue bookings', venue_paid_bookings_bookings_path, class: 'button btn btn-default')
-  .row
-    .title
-      h1 = 'Current bookings'
-    - @paid.each do |booking|
-      = render 'booking_item', booking: booking, own:true
-  /ocultar si no hay cancelados
-  .row 
-    .title
-      h1 = 'Cancelled bookings'
-    - @canceled.each do |booking|
-      = render 'booking_item', booking: booking, own:true
+  - if @paid.any?
+    .row
+      .title
+        h1 = 'Current bookings'
+      - @paid.each do |booking|
+        = render 'booking_item', booking: booking, own:true
+  - if @canceled.any?
+    .row
+      .title
+        h1 = 'Cancelled bookings'
+      - @canceled.each do |booking|
+        = render 'booking_item', booking: booking, own:true
 

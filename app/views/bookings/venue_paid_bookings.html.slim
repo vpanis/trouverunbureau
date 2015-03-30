@@ -3,19 +3,21 @@
 
 .booking.container
   .row.margin-top
-    .btn-group aria-label="..." role="group" 
+    .btn-group aria-label="..." role="group"
       = link_to('your bookings', paid_bookings_bookings_path, class: 'button btn btn-default')
       = link_to('venue bookings', venue_paid_bookings_bookings_path, class: 'button btn btn-default active')
-    = select_tag :venue_ids, options_for_select(@venues, params[:param_name])
-
-  .row
-    .title
-        h1 = 'Current bookings'
-    - @paid.each do |booking|
-      = render 'booking_item', booking: booking, own: false
-  /ocultar si no hay cancelados
-  .row
-    .title
-        h1 = 'Cancelled bookings'
-    - @canceled.each do |booking|
-      = render 'booking_item', booking: booking, own: false
+    = form_tag venue_paid_bookings_bookings_path, method: 'get', style: 'display: inline', id: 'venue_selector' do |f|
+      = select_tag :venue_id, options_from_collection_for_select(@venues, :id, :name, @venue_id), {prompt: 'All Venues'}
+      = submit_tag "filter", name: nil, class: 'hidden'
+  - if @paid.any?
+    .row
+      .title
+          h1 = 'Current bookings'
+      - @paid.each do |booking|
+        = render 'booking_item', booking: booking, own: false
+  - if @canceled.any?
+    .row
+      .title
+          h1 = 'Cancelled bookings'
+      - @canceled.each do |booking|
+        = render 'booking_item', booking: booking, own: false
