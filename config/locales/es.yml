@@ -342,7 +342,8 @@ es:
   bookings:
     review: Review
     view_receipt: View Receipt
-    cance: Cancel
+    cancel: Cancel
     delete: Delete
     all_venues: All Venues
-
+    current: Current bookings
+    cancelled: Cancelled bookings

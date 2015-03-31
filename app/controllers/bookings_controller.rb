@@ -9,9 +9,12 @@ class BookingsController < ApplicationController
   end
 
   def venue_paid_bookings
-    @venue_id = Venue.find_by(id: params[:venue_id]).id if params[:venue_id].present?
+    venue_ids = []
+    if Venue.exists?(params[:venue_id])
+      @venue_id = params[:venue_id]
+      venue_ids.push(@venue_id)
+    end
     @venues = current_represented.venues
-    venue_ids = @venue_id.present? ? [@venue_id] : []
     retrieve_bookings(venue_ids, 'retrieve_bookings_venues')
   end
 
