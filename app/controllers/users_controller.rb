@@ -4,7 +4,11 @@ class UsersController < ApplicationController
   include SelectOptionsHelper
 
   def show
-    @user = User.find(params[:id])
+    byebug
+    @organization = params[:organization].present? && params[:organization]
+    @user = User.find(params[:id]) unless @organization
+    @user = Organization.find(params[:id]) if @organization
+
     @can_edit = @user.eql?(current_user)
     @can_view_reiews = user_can_read_client_reviews?(User, @user.id)
   end
