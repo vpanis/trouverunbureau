@@ -10,7 +10,7 @@ class BookingsController < ApplicationController
 
   def venue_paid_bookings
     venue_ids = []
-    if Venue.exists?(params[:venue_id])
+    if Venue.exists?(params[:venue_id].to_i)
       @venue_id = params[:venue_id]
       venue_ids.push(@venue_id)
     end
@@ -19,10 +19,8 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    booking = Booking.find_by(id: params[:id])
-    return render nothing: true, status: 404 unless booking.present?
-    return render nothing: true, status: 403 unless BookingContext.new(current_represented, [])
-                                                                  .delete(booking)
+    booking = Booking.find(params[:id])
+    return render_forbidden unless BookingContext.new(current_represented, []).delete(booking)
     redirect_to paid_bookings_bookings_path
   end
 
