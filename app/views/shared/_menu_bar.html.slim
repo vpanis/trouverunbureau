@@ -30,12 +30,19 @@
               .btn.btn-default.dropdown-toggle type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"
                 a.user href=user_path(user)
                   .avatar
-                    - if user.kind_of?(User) && user.avatar.present?
-                      = image_tag(user.avatar.url)
-                    - elsif user.kind_of?(Organization) && user.logo.present?
-                      = image_tag(user.logo.url)
-                    - else
-                      = image_tag('default-avatar.png')
+                    - if user.kind_of?(User)
+                      - if user.avatar.present?
+                        = image_tag(user.logo.url)
+                      - else
+                        = image_tag('default-avatar.png')
+
+                    - elsif user.kind_of?(Organization)
+
+                      - if user.logo.present?
+                        = image_tag(user.logo.url)
+                      - else
+                        = image_tag('venue-default.png')
+
                   .name
                     p = user.name
 
@@ -51,7 +58,7 @@
                           - if m.logo.present?
                             = image_tag(m.logo.url)
                           - else
-                            = image_tag('default-avatar.png')
+                            = image_tag('venue-default.png')
                         .name
                           p = m.name
                     - else
