@@ -148,12 +148,15 @@
   width: 100%;
 }
 
-.dropdown-link{
+.dropdown-menu > li > .dropdown-link{
   color: $black;
   font-weight: 700;
   @include border-radius(2em);
   border: 2px solid $yellow;
-  padding: 5px 10px 5px;
+    font-size: 13px;
+  padding: 5px 9px 5px;
   margin-top: 9px;
   margin-bottom: 9px;
+  margin-left: 17px;
+  margin-right: 13px;
 }
