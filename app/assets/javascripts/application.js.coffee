@@ -17,11 +17,12 @@
 #= require angular-ui-bootstrap-tpls
 #= require select2
 #= require_directory .
+#= require_tree ./bookings/
 #= require_tree ./landing/
-#= require_tree ./venues/
-#= require_tree ./users/
-#= require_tree ./spaces/
 #= require_tree ./reviews/
+#= require_tree ./spaces/
+#= require_tree ./users/
+#= require_tree ./venues/
 #= require_tree ./angular/controllers
 
 

@@ -1,0 +1,115 @@
+@import 'variables';
+@import 'mixins';
+
+.booking-item {
+  padding: 20px 0;
+  &:nth-child(odd) {
+    background: $light-gray;
+  }
+  .margin-top {
+    margin-top: 15px !important;
+  }
+  a {
+    color: $dark-gray;
+  }
+  .state,
+  .price,
+  .currency {
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .state {
+    color: $aqua;
+  }
+  .price,
+  .currency {
+    color: $black;
+    line-height: 1;
+  }
+  .type,
+  .quantity,
+  .name {
+    font-size: 14px;
+    line-height: 40px;
+  }
+  .type {
+    font-weight: 700;
+    color: black;
+    position: relative;
+    &:after {
+      position: absolute;
+      content: '';
+      left: 0;
+      bottom: 0;
+      width: 40%;
+      border-bottom: 2px solid $yellow;
+    }
+  }
+  .quantity {
+    @include at2x('venue_profile_a_team_bookings', 20px, 20px);
+    background-size: 20px;
+    background-repeat: no-repeat;
+    padding-left: 23px;
+    margin: 0 10px;
+    background-position: left center;
+  }
+  .city {
+    @include at2x('i-location', 14px, 20px);
+    background-repeat: no-repeat;
+    display: block;
+    background-position: left center;
+    padding-left: 25px;
+    line-height: 40px;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .date {
+    float: left;
+    width: 25%;
+    text-align: center;
+    position: relative;
+    color: $gray;
+    text-transform: capitalize;
+    span {
+      display: block;
+    }
+    span:first-child {
+      color: $dark-gray;
+      font-weight: 700;
+    }
+    &:after {
+      position: absolute;
+      content: '';
+      right: 0;
+      border-right: 1px solid;
+      top: 10px;
+      bottom: 10px;
+    }
+    &:last-child:after {
+      border-right: none;
+    }
+  }
+  .review,
+  .receipt,
+  .cancel,
+  .delete {
+    display: block;
+    padding-left: 20px;
+    background-repeat: no-repeat;
+    margin: 0px 2px;
+    background-position: left center;
+  }
+  .review {
+    @include at2x('ic_profile_add', 16px, 16px);
+  }
+  .receipt {
+    @include at2x('ic_profile_add', 16px, 16px);
+  }
+  .cancel {
+    @include at2x('ic_profile_add', 16px, 16px);
+  }
+  .delete {
+    @include at2x('ic_profile_add', 16px, 16px);
+  }
+}

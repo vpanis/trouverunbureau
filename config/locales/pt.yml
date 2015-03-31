@@ -339,4 +339,11 @@ pt:
     check_in: 'Check In'
     check_out: 'Check Out'
     comment: 'Comment (The review is about to write will be seen only by other hosts)'
-
+  bookings:
+    review: Review
+    view_receipt: View Receipt
+    cancel: Cancel
+    delete: Delete
+    all_venues: All Venues
+    current: Current bookings
+    cancelled: Cancelled bookings

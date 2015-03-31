@@ -1,8 +1,21 @@
-h1 = 'Current bookings'
-- @paid.each do |booking|
-  = render 'booking_item', booking: booking, own:true
+= render 'shared/menu_bar', user: current_user
+= render 'shared/profile_menu_bar', user: current_user, selected: 'bookings'
 
-h2 = 'Cancelled bookings'
-- @canceled.each do |booking|
-  = render 'booking_item', booking: booking, own:true
+.booking.container
+  .row.margin-top
+    .btn-group role="group"
+      = link_to('your bookings', paid_bookings_bookings_path, class: 'button btn btn-default active')
+      = link_to('venue bookings', venue_paid_bookings_bookings_path, class: 'button btn btn-default')
+  - if @paid.any?
+    .row
+      .title
+        h1 = t('bookings.current')
+      - @paid.each do |booking|
+        = render 'booking_item', booking: booking, own:true
+  - if @canceled.any?
+    .row
+      .title
+        h1 = t('bookings.cancelled')
+      - @canceled.each do |booking|
+        = render 'booking_item', booking: booking, own:true
 
