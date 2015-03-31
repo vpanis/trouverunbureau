@@ -15,9 +15,12 @@
         .user-header
           .row
             .col-md-12
-              -if @can_edit
+              - if @can_edit
                 = link_to t("users.edit_profile"), edit_user_path(@user), class: " rounded-btn green pull-right margin-top"
-              h1.name = @user.first_name
+              - if @organization
+                h1.name = @user.name
+              - else
+                h1.name = @user.first_name
               = render 'shared/stars', rating: @user.rating, quantity: @user.quantity_reviews
           .row
             .col-md-12
