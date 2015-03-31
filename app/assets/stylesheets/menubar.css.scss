@@ -143,3 +143,17 @@
 .after-menu{
   padding-top: 58px;
 }
+
+.user-dropdown{
+  width: 100%;
+}
+
+.dropdown-link{
+  color: $black;
+  font-weight: 700;
+  @include border-radius(2em);
+  border: 2px solid $yellow;
+  padding: 5px 10px 5px;
+  margin-top: 9px;
+  margin-bottom: 9px;
+}

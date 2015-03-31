@@ -39,13 +39,14 @@
                   .name
                     p = user.name
 
-              ul.dropdown-menu role="menu" aria-labelledby="dropdownMenu1"
+              ul.dropdown-menu.user-dropdown role="menu" aria-labelledby="dropdownMenu1"
                 - if other_members_current_represented.count >0
-                    p role="menuitem" tabindex="-1" #{t('menu.change_user')}
+                    li.user
+                      p #{t('menu.change_user')}
                 - other_members_current_represented.each do |m|
-                  li
+                  li.user
                     - if m.kind_of?(Organization)
-                      = link_to(login_as_organization_users_path(id: current_user.id, organization_id: m.id, previous_url: previous_url), method: :post) do
+                      = link_to(login_as_organization_users_path(id: current_user.id, organization_id: m.id, previous_url: previous_url), method: :post, class: "user") do
                         .avatar
                           - if m.logo?
                             = image_tag(m.logo.url)
@@ -54,7 +55,7 @@
                         .name
                           p = m.name
                     - else
-                      = link_to(reset_organization_users_path(id: m.id, previous_url: previous_url), method: :delete) do
+                      = link_to(reset_organization_users_path(id: m.id, previous_url: previous_url), method: :delete, class: "user") do
                         .avatar
                           - if m.avatar?
                             = image_tag(m.avatar.url)
@@ -62,7 +63,8 @@
                             = image_tag('default-avatar.png')
                         .name
                           p = m.name
-                a.user role="menuitem" tabindex="-1"  href="#" #{t('menu.create_organization')}
+                li
+                  a.dropdown-link role="menuitem" tabindex="-1"  href="#" #{t('menu.create_organization')}
 
           li
             a href="#"

@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   include SelectOptionsHelper
 
   def show
-    byebug
     @user = User.find(params[:id])
     @can_edit = @user.eql?(current_user)
     @can_view_reiews = user_can_read_client_reviews?(User, @user.id)
