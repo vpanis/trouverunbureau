@@ -27,13 +27,17 @@ class ApplicationController < ActionController::Base
   # store last url - this is needed for post-login redirect to whatever the user last visited.
   def store_location
     return unless request.get?
-    session[:previous_url] = request.fullpath unless ignorable_request?
+    session[:previous_url] = request.fullpath unless ignorable_request? || api_request?
   end
 
   def ignorable_request?
-    request.path == '/users/sign_in' || request.path == '/users/password/new' ||
-    request.path == '/users/password/edit' || request.path == '/users/sign_out' ||
-    request.xhr? # don't store ajax calls
+    request.path == '/users/sign_in' || request.path == '/users/sign_up' ||
+    request.path == '/users/password/new' || request.path == '/users/sign_out' ||
+    request.path == '/users/password/edit'
+  end
+
+  def api_request?
+    request.path.start_with?('/api/') || request.xhr?
   end
 
   def configure_permitted_parameters
