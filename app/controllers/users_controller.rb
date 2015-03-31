@@ -27,17 +27,16 @@ class UsersController < ApplicationController
 
   def login_as_organization
     organization = Organization.find(params[:organization_id])
-    return record_not_found unless organization.present?
     return render_forbidden unless current_user.id == params[:id].to_i &&
     current_user.user_can_write_in_name_of(organization)
     session[:current_organization_id] = organization.id
-    redirect_to params[:previous_url]
+    redirect_to session[:previous_url] || root_path
   end
 
   def reset_organization
     return render_forbidden unless current_user.id == params[:id].to_i
     session[:current_organization_id] = nil
-    redirect_to params[:previous_url]
+    redirect_to session[:previous_url] || root_path
   end
 
   # TODO: implement account form and email notifications accordingly
