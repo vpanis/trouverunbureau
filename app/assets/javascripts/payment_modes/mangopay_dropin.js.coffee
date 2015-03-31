@@ -91,6 +91,7 @@ save_new_card = (credit_card_id) ->
 
     return
   ), (response) ->
+    $("#js-card-info :input").attr('disabled', false)
     # Handle error, see res.ResultCode and res.ResultMessage
     return
 

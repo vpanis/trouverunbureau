@@ -113,6 +113,8 @@ Deskspotting::Application.routes.draw do
       get :new_card_info, to: 'mangopay#new_card_info'
       post :card_registration, to: 'mangopay#card_registration'
       put :save_credit_card, to: 'mangopay#save_credit_card'
+      get :payin_succeeded, to: 'mangopay#payin_succeeded'
+      get :payin_failed, to: 'mangopay#payin_failed'
     end
 
     resources :inquiries, only: [] do

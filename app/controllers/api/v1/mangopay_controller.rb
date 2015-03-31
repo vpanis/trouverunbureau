@@ -4,6 +4,7 @@ module Api
       include RepresentedHelper
       before_action :authenticate_user!, only: [:configuration]
 
+      # GET /mangopay/configuration
       def configuration
         render json: {
           config: {
@@ -13,6 +14,7 @@ module Api
         }, status: 200
       end
 
+      # POST /mangopay/card_registration
       def card_registration
         return render nothing: true, status: 400 unless params[:currency].present?
         mcc = current_represented.mangopay_payment_account.mangopay_credit_cards
@@ -22,6 +24,7 @@ module Api
         render json: { mangopay_credit_card_id: mcc.id }, status: 200
       end
 
+      # GET /mangopay/new_card_info?mangopay_credit_card_id
       def new_card_info
         mcc = MangopayCreditCard.find_by_id(params[:mangopay_credit_card_id])
         return render nothing: true, status: 400 unless mcc.present?
@@ -30,6 +33,7 @@ module Api
         render_mangopay_credit_card_cases(mcc)
       end
 
+      # PUT /mangopay/save_credit_card
       def save_credit_card
         mcc = MangopayCreditCard.find_by_id(params[:mangopay_credit_card][:id])
         return render nothing: true, status: 400 unless mcc.present?
@@ -38,6 +42,23 @@ module Api
         params[:mangopay_credit_card][:status] = MangopayCreditCard.statuses[:created]
         return render nothing: true, status: 201 if mcc.update_attributes(credit_card_params)
         render json: { error: mcc.errors }, status: 400
+      end
+
+      # GET /mangopay/payin_succeeded?RessourceId&EventType=PAYIN_NORMAL_SUCCEEDED&Date
+      def payin_succeeded
+        mp = MangopayPayment.find_by_transaction_id(params[:RessourceId])
+        return unless mp.present? && mp.notification_date_int <= params[:Date]
+        mp.update_attributes(transaction_status: 'SUCCEEDED', notification_date_int: params[:Date])
+      end
+
+      # GET /mangopay/payin_failed?RessourceId&EventType=PAYIN_NORMAL_FAILED&Date
+      def payin_failed
+        mp = MangopayPayment.find_by_transaction_id(params[:RessourceId])
+        return unless mp.present? && mp.notification_date_int <= params[:Date]
+        # This update is not performed in the worker because, if the same hook is
+        # triggered before the worker starts, will trigger a duplicate worker.
+        mp.update_attributes(notification_date_int: params[:Date])
+        MangopayFetchTransactionWorker.perform_async(mp.id)
       end
 
       private

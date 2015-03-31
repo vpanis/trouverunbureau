@@ -32,7 +32,7 @@ class MangopayPaymentAccountWorker
 
   def save_account_error(e)
     @mangopay_payment_account.update_attributes(error_message: e.to_s,
-      status: MangopayPaymentAccount.statuses[:rejected])
+                                                status: MangopayPaymentAccount.statuses[:rejected])
   end
 
   def create_user

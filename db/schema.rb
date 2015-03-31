@@ -188,7 +188,10 @@ ActiveRecord::Schema.define(version: 20150501135224) do
     t.string   "card_expiration_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "notification_date_int"
   end
+
+  add_index "mangopay_payments", ["transaction_id"], name: "index_mangopay_payments_on_transaction_id", unique: true, using: :btree
 
   create_table "messages", force: true do |t|
     t.integer  "booking_id"
