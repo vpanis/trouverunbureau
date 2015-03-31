@@ -6,6 +6,10 @@ class MangopayPaymentAccount < ActiveRecord::Base
 
   after_initialize :initialize_fields
 
+  def active?
+    status == MangopayPaymentAccount.statuses[:accepted]
+  end
+
   private
 
   def initialize_fields

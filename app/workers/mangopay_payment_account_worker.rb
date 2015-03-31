@@ -25,17 +25,14 @@ class MangopayPaymentAccountWorker
   end
 
   def save_payment_account(account)
-    @mangopay_payment_account.mangopay_user_id = account['Id']
     wallet = create_wallet(account['Id'])
-    @mangopay_payment_account.wallet_id = wallet['Id']
-    @mangopay_payment_account.status = MangopayPaymentAccount.statuses[:accepted]
-    @mangopay_payment_account.save
+    @mangopay_payment_account.update_attributes(wallet_id: wallet['Id'],
+      mangopay_user_id: account['Id'], status: MangopayPaymentAccount.statuses[:accepted])
   end
 
   def save_account_error(e)
-    @mangopay_payment_account.error_message = e.to_s
-    @mangopay_payment_account.status = MangopayPaymentAccount.statuses[:rejected]
-    @mangopay_payment_account.save
+    @mangopay_payment_account.update_attributes(error_message: e.to_s,
+      status: MangopayPaymentAccount.statuses[:rejected])
   end
 
   def create_user

@@ -108,6 +108,13 @@ Deskspotting::Application.routes.draw do
       post :webhooks, to: 'braintree#notification'
     end
 
+    resource :mangopay, only: [] do
+      get :configuration, to: 'mangopay#configuration'
+      get :new_card_info, to: 'mangopay#new_card_info'
+      post :card_registration, to: 'mangopay#card_registration'
+      put :save_credit_card, to: 'mangopay#save_credit_card'
+    end
+
     resources :inquiries, only: [] do
       member do
         put :last_seen_message, to: 'booking_inquiries#last_seen_message'

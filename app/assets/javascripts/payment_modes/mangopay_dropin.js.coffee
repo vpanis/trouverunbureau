@@ -1,25 +1,26 @@
 timeBetweenRetrievesMS = 1000
-
+selectedCreditCardId = null
 on_load = ->
   $.ajax
-    url: 'api/v1/mangopay/configuration'
+    url: '/api/v1/mangopay/configuration'
     success: (response) ->
       mangoPay.cardRegistration.baseURL = response.config.base_url
       mangoPay.cardRegistration.clientId = response.config.client_id
+  $('#js-create-card-registration').on 'click', (event) ->
+    $("#new-credit-card").addClass("loading")
+    create_new_card_registration $('#js-card_currency').val().toUpperCase()
+  $('.js-credit-card').on 'click', select_card
 
-  $('.js-credit-card').on 'click', (event, bla) ->
-    debugger;
-    target = event.target
-    $('.nav li a.active').removeClass('active')
-    $(this).addClass('active')
-    if target.length
-      event.preventDefault()
-      $(this).tab('show')
-    return
+select_card = (event) ->
+  selectedCreditCardId = this.dataset.creditCardId
+  $('.js-credit-card').removeClass('active')
+  $("#js-card-info").removeClass('active')
+  $(this).addClass('active')
+  return
 
 create_new_card_registration = (currency) ->
   $.ajax
-    url: 'api/v1/mangopay/card_registration'
+    url: '/api/v1/mangopay/card_registration'
     method: 'POST'
     data:
       currency: currency
@@ -31,7 +32,7 @@ create_new_card_registration = (currency) ->
 
 retrieve_new_card_info = (credit_card_id) ->
   $.ajax
-    url: 'api/v1/mangopay/new_card_info?mangopay_credit_card_id=' + credit_card_id
+    url: '/api/v1/mangopay/new_card_info?mangopay_credit_card_id=' + credit_card_id
     success: (response) ->
       if response == null
         setTimeout (->
@@ -44,31 +45,55 @@ retrieve_new_card_info = (credit_card_id) ->
           preregistrationData: response.pre_registration_data
           accessKey: response.registration_access_key
           Id: response.registration_id
-        $("#js-card_info").removeClass("hidden")
+        $("#new-credit-card").removeClass("loading")
+        $("#js-card-pre-registration-data").remove()
+        $("#js-card-info").removeClass("hidden")
+        $('#js-create-credit-card').on 'click', (event) ->
+          save_new_card(credit_card_id)
 
-save_new_card = ->
+save_new_card = (credit_card_id) ->
+  $("#required-label").addClass("hidden")
+  non_empty_val = _.reduce $('#js-card-info input'), ((acc, input) ->
+    acc and $(input).val() != ''
+  ), true
+  if !non_empty_val
+    $("#required-label").removeClass("hidden")
+    return
+  $("#new-credit-card").addClass("loading")
   cardData =
-    cardNumber: $("#js-card_number").val(),
-    cardExpirationDate: $("#cjs-ard_exp_date_month").val() + $("#js-card_exp_date_year").val(),
-    cardCvx: $("#js-card_cvx").val(),
+    cardNumber: $("#js-card_number").val()
+    cardExpirationDate: $("#js-card_exp_date_month").val() + $("#js-card_exp_date_year").val()
+    cardCvx: $("#js-card_cvx").val()
     cardType: $("#js-card_type").val()
 
-    mangoPay.cardRegistration.registerCard cardData, ((response) ->
-      # Success, you can use res.CardId now that points to registered card
-      $.ajax
-        url: 'api/v1/mangopay/save_credit_card'
-        method: 'POST'
-        data:
+  $("#js-card-info :input").attr('disabled', true)
+  mangoPay.cardRegistration.registerCard cardData, ((response) ->
+    # Success, you can use res.CardId now that points to registered card
+    $.ajax
+      url: '/api/v1/mangopay/save_credit_card'
+      method: 'PUT'
+      data:
+        mangopay_credit_card:
+          id: credit_card_id
           credit_card_id: response.CardId
           last_4: cardData.cardNumber.substring(cardData.cardNumber.length - 4)
           expiration: cardData.cardExpirationDate
           card_type: cardData.cardType
-      return
-    ), (response) ->
-      # Handle error, see res.ResultCode and res.ResultMessage
-      return
+      success: (response) ->
+        $("#new-credit-card").removeClass("loading")
+        $('.js-credit-card').removeClass('active')
+        $("#js-card-info").addClass('active')
+        $("#js-create-credit-card").remove()
+        return
+      error: (response) ->
+        $("#new-credit-card").removeClass("loading")
+        console.log(response)
 
-pay_with_card_id = (card_id) ->
+    return
+  ), (response) ->
+    # Handle error, see res.ResultCode and res.ResultMessage
+    return
 
+# pay = (card_id) ->
 
 $(document).ready on_load

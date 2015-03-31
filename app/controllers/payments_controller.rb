@@ -1,5 +1,6 @@
 class PaymentsController < ApplicationController
   include RepresentedHelper
+  include SelectOptionsHelper
   before_action :authenticate_user!
 
   # GET /payments/new?booking_id
@@ -66,7 +67,7 @@ class PaymentsController < ApplicationController
                                 current_user, @booking, Booking.states[:payment_verification])
     # Error handling for collition in booking
     return redirect_to root_path unless @booking.valid? && custom_errors.empty?
-    send("payment_#{params[:mode]}")
+    send("payment_#{@payment_method}")
     redirect_to new_payment_path(booking_id: @booking.id)
   end
 

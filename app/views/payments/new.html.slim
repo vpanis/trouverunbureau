@@ -35,8 +35,9 @@ h3
   - if @booking.payment.present?
     span Transaction Status: #{@booking.payment.transaction_status}
     br
-    span Escrow Status: #{@booking.payment.escrow_status}
-    br
+    - if @payment_method == "braintree"
+      span Escrow Status: #{@booking.payment.escrow_status}
+      br
     span Transaction Id: #{@booking.payment.transaction_id}
     br
     span Error Message: #{@booking.payment.error_message}
