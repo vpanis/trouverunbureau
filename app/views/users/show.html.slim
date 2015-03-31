@@ -1,10 +1,12 @@
 = render 'shared/menu_bar', user: current_represented, previous_url: user_path
-= render 'shared/profile_menu_bar', user: current_user, selected: 'profile'
+= render 'shared/profile_menu_bar', user: current_represented, selected: 'profile'
 .user-profile.container
   .row
     .left-panel.col-md-3
       .user-avatar
-        - if @user.avatar?
+        - if @organization && @user.logo.present?
+          = image_tag(@user.logo.url, width: '150px', height: '150px')
+        - elsif !@organization && @user.avatar.present?
           = image_tag(@user.avatar.url, width: '150px', height: '150px')
         - else
           = image_tag('default-avatar.png', width: '150px', height: '150px')
