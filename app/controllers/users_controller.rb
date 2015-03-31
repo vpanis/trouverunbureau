@@ -26,16 +26,16 @@ class UsersController < ApplicationController
   end
 
   def login_as_organization
-    organization = Organization.find_by(id: params[:organization_id])
+    organization = Organization.find(params[:organization_id])
     return record_not_found unless organization.present?
-    return render nothing: true, status: 403 unless current_user.id == params[:id].to_i &&
+    return render_forbidden unless current_user.id == params[:id].to_i &&
     current_user.user_can_write_in_name_of(organization)
     session[:current_organization_id] = organization.id
     redirect_to params[:previous_url]
   end
 
   def reset_organization
-    return forbidden unless current_user.id == params[:id].to_i
+    return render_forbidden unless current_user.id == params[:id].to_i
     session[:current_organization_id] = nil
     redirect_to params[:previous_url]
   end
