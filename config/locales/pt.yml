@@ -124,6 +124,8 @@ pt:
     venues: 'Venues'
     wishlist: 'Wishlist'
     account: 'Account'
+    change_user: 'Use DeskSpotting as:'
+    create_organization: 'Create organization'
   search:
     count: 'Desks found'
     filters: 'Filters'

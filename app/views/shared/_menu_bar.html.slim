@@ -26,14 +26,53 @@
       ul.nav.navbar-nav.navbar-right.hidden-collapse
         - if user.present?
           li
-            a.user href=user_path(user)
-              .avatar
-                - if user.avatar?
-                  = image_tag(user.avatar.url)
-                - else
-                  = image_tag('default-avatar.png')
-              .name
-                p = user.name
+            dropdown
+              .btn.btn-default.dropdown-toggle type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"
+                a.user href=user_path(user)
+                  .avatar
+                    - if user.kind_of?(User)
+                      - if user.avatar.present?
+                        = image_tag(user.logo.url)
+                      - else
+                        = image_tag('default-avatar.png')
+
+                    - elsif user.kind_of?(Organization)
+
+                      - if user.logo.present?
+                        = image_tag(user.logo.url)
+                      - else
+                        = image_tag('venue-default.png')
+
+                  .name
+                    p = user.name
+
+              ul.dropdown-menu.user-dropdown role="menu" aria-labelledby="dropdownMenu1"
+                - if other_members_current_represented.count >0
+                    li.user
+                      p #{t('menu.change_user')}
+                - other_members_current_represented.each do |m|
+                  li.user
+                    - if m.kind_of?(Organization)
+                      = link_to(login_as_organization_users_path(id: current_user.id, organization_id: m.id, previous_url: previous_url), method: :post, class: "user") do
+                        .avatar
+                          - if m.logo.present?
+                            = image_tag(m.logo.url)
+                          - else
+                            = image_tag('venue-default.png')
+                        .name
+                          p = m.name
+                    - else
+                      = link_to(reset_organization_users_path(id: m.id, previous_url: previous_url), method: :delete, class: "user") do
+                        .avatar
+                          - if m.avatar.present?
+                            = image_tag(m.avatar.url)
+                          - else
+                            = image_tag('default-avatar.png')
+                        .name
+                          p = m.name
+                li
+                  a.dropdown-link role="menuitem" tabindex="-1"  href="#" #{t('menu.create_organization')}
+
           li
             a href="#"
               .messages

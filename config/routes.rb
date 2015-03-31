@@ -26,6 +26,10 @@ Deskspotting::Application.routes.draw do
     member do
       get :account
     end
+    collection do
+      post :login_as_organization, to: 'users#login_as_organization'
+      delete :reset_organization, to: 'users#reset_organization'
+    end
   end
 
   resources :spaces, only: [:edit, :update, :create, :destroy] do

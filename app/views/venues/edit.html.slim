@@ -1,4 +1,4 @@
-= render 'shared/menu_bar', user: current_user
+= render 'shared/menu_bar', user: current_represented, previous_url: edit_venue_path
 = render 'shared/profile_menu_bar', user: current_user, selected: 'venues'
 
 = render 'shared/image_modal', modal_id: 'logo-modal', title: t('venues.edit.change_logo'), image_link_id: 'logo-link', save_button_id: 'save-logo'
