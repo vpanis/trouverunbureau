@@ -32,13 +32,13 @@ class UsersController < ApplicationController
     return render nothing: true, status: 403 unless current_user.id == params[:id].to_i &&
     current_user.user_can_write_in_name_of(organization)
     session[:current_organization_id] = organization.id
-    render session[:previous_url], status: 204
+    redirect_to params[:previous_url]
   end
 
   def reset_organization
     return forbidden unless current_user.id == params[:id].to_i
     session[:current_organization_id] = nil
-    render session[:previous_url], status: 204
+    redirect_to params[:previous_url]
   end
 
   # TODO: implement account form and email notifications accordingly

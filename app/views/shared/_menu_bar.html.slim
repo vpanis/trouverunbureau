@@ -45,7 +45,7 @@
                 - other_members_current_represented.each do |m|
                   li
                     - if m.kind_of?(Organization)
-                      = link_to(login_as_organization_users_path(id: current_user.id, organization_id: m.id), method: :post) do
+                      = link_to(login_as_organization_users_path(id: current_user.id, organization_id: m.id, previous_url: previous_url), method: :post) do
                         .avatar
                           - if m.logo?
                             = image_tag(m.logo.url)
@@ -54,7 +54,7 @@
                         .name
                           p = m.name
                     - else
-                      = link_to(reset_organization_users_path(id: m.id), method: :delete) do
+                      = link_to(reset_organization_users_path(id: m.id, previous_url: previous_url), method: :delete) do
                         .avatar
                           - if m.avatar?
                             = image_tag(m.avatar.url)
