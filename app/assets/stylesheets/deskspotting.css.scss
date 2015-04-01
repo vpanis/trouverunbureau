@@ -1032,6 +1032,7 @@ h4.gray-subtitle{
       left: 0;
     }
   }
+
   .review-container {
     margin: 35px 0 0 10px;
   }
@@ -1061,6 +1062,18 @@ h4.gray-subtitle{
       margin-right: 20px;
     }
   }
+}
+
+.members-title{
+  font-size: 28px;
+}
+
+.no-float{
+  float: none;
+}
+
+.center{
+  text-align: center;
 }
 
 .user-title{
@@ -1286,3 +1299,58 @@ li.venue-hours.active{
   padding-top: 20px;
 }
 
+.booking {
+  .btn-default {
+    background-color: transparent;
+    border: 2px solid $light-gray;
+    color: $gray;
+    padding: 10px 40px;
+    text-transform: uppercase;
+    &:first-child {
+      border-right: 0;
+    }
+    &:last-child {
+      border-left: 0;
+    }
+    &.active {
+      background-color: $yellow;
+      font-weight: 700;
+      border: 2px solid $yellow;
+      box-shadow: none;
+      color: $black;
+    }
+  }
+  .title {
+    background-color: $yellow;
+    padding: 0 15px;
+    margin: 20px 0 0;
+    h1 {
+      color: $black;
+      display: inline-block;
+      position: relative;
+      font-size: 16px;
+      line-height: 1;
+      padding-bottom: 10px;
+      margin-top: 15px;
+      font-weight: 700;
+      &:after {
+        position: absolute;
+        content: '';
+        left: 0;
+        bottom: 0;
+        width: 40%;
+        border-bottom: 2px solid $white;
+      }
+    }
+  }
+  .select2-container {
+    width: calc(100% - 428px);
+    margin-left: 20px;
+    .select2-choice {
+      border: none;
+      border-bottom: 2px solid $dark-gray;
+      border-radius: 0;
+      height: 44px !important;
+    }
+  }
+}

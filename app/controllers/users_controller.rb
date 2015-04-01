@@ -5,11 +5,12 @@ class UsersController < ApplicationController
 
   def show
     byebug
-    @organization = params[:organization].present? && params[:organization]
+    @organization = (params[:organization].present? && params[:organization])? true : false
     @user = User.find(params[:id]) unless @organization
     @user = Organization.find(params[:id]) if @organization
-
-    @can_edit = @user.eql?(current_user)
+    @organization_members = organization_members if @organization && @user.kind_of?(Organization)
+    @owner = @organization_members.where(role: 0).first.user if @user.kind_of?(Organization)
+    @can_edit = @user.eql?(current_represented)
     @can_view_reiews = user_can_read_client_reviews?(User, @user.id)
   end
 
@@ -30,18 +31,17 @@ class UsersController < ApplicationController
   end
 
   def login_as_organization
-    organization = Organization.find_by(id: params[:organization_id])
-    return record_not_found unless organization.present?
-    return render nothing: true, status: 403 unless current_user.id == params[:id].to_i &&
+    organization = Organization.find(params[:organization_id])
+    return render_forbidden unless current_user.id == params[:id].to_i &&
     current_user.user_can_write_in_name_of(organization)
     session[:current_organization_id] = organization.id
-    redirect_to params[:previous_url]
+    redirect_to session[:previous_url] || root_path
   end
 
   def reset_organization
-    return forbidden unless current_user.id == params[:id].to_i
+    return render_forbidden unless current_user.id == params[:id].to_i
     session[:current_organization_id] = nil
-    redirect_to params[:previous_url]
+    redirect_to session[:previous_url] || root_path
   end
 
   # TODO: implement account form and email notifications accordingly
@@ -62,6 +62,11 @@ class UsersController < ApplicationController
     return unless  user_params['languages_spoken'].present?
     languages = user_params['languages_spoken'].gsub(/^\{+|\}+$/, '').split(',')
     @user.update_attributes!(languages_spoken: languages)
+  end
+
+  def organization_members
+    OrganizationUser.where{id.in [my{@user.id}]}.includes{[user]}
+
   end
 
 end

@@ -1,22 +1,36 @@
-p = booking.state
-p = booking.price
-p = booking.space.venue.currency
-p = booking.space.s_type
-p = booking.quantity
-p = booking.space.name
-p = booking.space.venue.street.to_s + ', ' + booking.space.venue.town.to_s \
-    + ', ' + booking.space.venue.country.to_s
-p = booking.from
-p = booking.to
-
-- if can_review?(booking, own)
-    p = 'Review'
-
-- if can_view_receipt?(booking, own)
-    p = 'View Receipt'
-
-- if can_cancel?(booking, own)
-    p = 'Cancel'
-
-- if can_delete?(booking, own)
-    p = button_to 'Delete', booking, method: :delete
+.booking-item.clearfix
+  .col-md-1.text-center.margin-top
+    p.state = booking.state
+    p.price = booking.price
+    p.currency = booking.space.venue.currency
+  .col-md-5
+    .clearfix
+      p.type.pull-left = booking.space.name
+      p.quantity.pull-left = booking.quantity
+      p.name.pull-left = booking.space.venue.name
+    p.city = booking.space.venue.street.to_s + ', ' + booking.space.venue.town.to_s \
+        + ', ' + booking.space.venue.country.name
+  .col-md-4.margin-top
+    .date
+      span 8
+      span Days
+    .date
+      span 1
+      span spaces
+    .date
+      span = booking.from.strftime('%d/%m/%y')
+      span from
+    .date
+      span = booking.to.strftime('%d/%m/%y')
+      span to
+  .col-md-2
+    - if can_review?(booking, own) && own
+      = link_to t('bookings.review'), venue_review_booking_path(booking), class: 'review'
+    - if can_review?(booking, own) && !own
+      = link_to t('bookings.review'), client_review_booking_path(booking), class: 'review'
+    - if can_view_receipt?(booking, own)
+      a.receipt.not-allowed href="#" = t('bookings.view_receipt')
+    - if can_cancel?(booking, own)
+      a.cancel.not-allowed href="#" = t('bookings.cancel')
+    - if can_delete?(booking, own)
+      a.delete.not-allowed href="#" = t('bookings.delete')

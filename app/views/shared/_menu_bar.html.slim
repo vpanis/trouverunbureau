@@ -30,12 +30,19 @@
               .btn.btn-default.dropdown-toggle type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"
                 a.user href=user_path(user)
                   .avatar
-                    - if user.kind_of?(User) && user.avatar?
-                      = image_tag(user.avatar.url)
-                    - elsif user.kind_of?(Organization) && user.logo?
-                      = image_tag(user.logo.url)
-                    - else
-                      = image_tag('default-avatar.png')
+                    - if user.kind_of?(User)
+                      - if user.avatar.present?
+                        = image_tag(user.logo.url)
+                      - else
+                        = image_tag('default-avatar.png')
+
+                    - elsif user.kind_of?(Organization)
+
+                      - if user.logo.present?
+                        = image_tag(user.logo.url)
+                      - else
+                        = image_tag('venue-default.png')
+
                   .name
                     p = user.name
 
@@ -46,18 +53,18 @@
                 - other_members_current_represented.each do |m|
                   li.user
                     - if m.kind_of?(Organization)
-                      = link_to(login_as_organization_users_path(id: current_user.id, organization_id: m.id, previous_url: previous_url), method: :post, class: "user") do
+                      = link_to(login_as_organization_users_path(id: current_user.id, organization_id: m.id), method: :post, class: "user") do
                         .avatar
-                          - if m.logo?
+                          - if m.logo.present?
                             = image_tag(m.logo.url)
                           - else
-                            = image_tag('default-avatar.png')
+                            = image_tag('venue-default.png')
                         .name
                           p = m.name
                     - else
-                      = link_to(reset_organization_users_path(id: m.id, previous_url: previous_url), method: :delete, class: "user") do
+                      = link_to(reset_organization_users_path(id: m.id), method: :delete, class: "user") do
                         .avatar
-                          - if m.avatar?
+                          - if m.avatar.present?
                             = image_tag(m.avatar.url)
                           - else
                             = image_tag('default-avatar.png')

@@ -11,11 +11,11 @@ module BookingsHelper
   end
 
   def can_cancel?(booking, own = true)
-    owner?(booking, own) && cancellable_states(booking) && !finished?
+    owner?(booking, own) && cancellable_states(booking) && !finished?(booking)
   end
 
   def can_delete?(booking, own = true)
-    owner?(booking, own) && !deleted?(booking, own) && (booking.canceled? || finished?)
+    owner?(booking, own) && !deleted?(booking, own) && (booking.canceled? || finished?(booking))
   end
 
   private

@@ -9,16 +9,18 @@ class BookingsController < ApplicationController
   end
 
   def venue_paid_bookings
-    venue_ids = params[:venue_ids] || []
+    venue_ids = []
+    if Venue.exists?(params[:venue_id].to_i)
+      @venue_id = params[:venue_id]
+      venue_ids.push(@venue_id)
+    end
+    @venues = current_represented.venues
     retrieve_bookings(venue_ids, 'retrieve_bookings_venues')
-    @venues = BookingContext.new(current_represented, venue_ids).retrieve_bookings_venue_names
   end
 
   def destroy
-    booking = Booking.find_by(id: params[:id])
-    return render nothing: true, status: 404 unless booking.present?
-    return render nothing: true, status: 403 unless BookingContext.new(current_represented, [])
-                                                                  .delete(booking)
+    booking = Booking.find(params[:id])
+    return render_forbidden unless BookingContext.new(current_represented, []).delete(booking)
     redirect_to paid_bookings_bookings_path
   end
 

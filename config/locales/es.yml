@@ -124,6 +124,8 @@ es:
     venues: 'Venues'
     wishlist: 'Wishlist'
     account: 'Account'
+    change_user: 'Use DeskSpotting as:'
+    create_organization: 'Create organization'
   search:
     count: 'Desks found'
     filters: 'Filters'
@@ -273,6 +275,9 @@ es:
     week: 'week'
   users:
     edit_profile: 'Edit profile'
+    edit_organization_profile: 'Edit organization'
+    owner: 'Owner'
+    admin: 'Admin'
     about_me: 'About me'
     required_fields: 'Required fields'
     optional_fields: 'Optional fields'
@@ -339,4 +344,11 @@ es:
     check_in: 'Check In'
     check_out: 'Check Out'
     comment: 'Comment (The review is about to write will be seen only by other hosts)'
-
+  bookings:
+    review: Review
+    view_receipt: View Receipt
+    cancel: Cancel
+    delete: Delete
+    all_venues: All Venues
+    current: Current bookings
+    cancelled: Cancelled bookings
