@@ -80,7 +80,7 @@
       }
     }
   }
-  a.list-space{
+  .list-space{
     @include border-radius(2em);
     border: 2px solid $yellow;
     display: inline-block;
@@ -91,13 +91,14 @@
     text-align: center;
     background-color: transparent;
     cursor: pointer;
-    padding: 10px 28px 0px;
+    padding: 10px 30px;
     font-size: 14px;
     @include transition(background-color);
-    margin-top: 9px;
-    margin-right: 10px;
+    margin-top: 10px;
+    margin-right: 15px;
     p{
-      margin-bottom: 8px;
+      margin-bottom: 0;
+      line-height: 1;
     }
   }
   a.list-space:hover{
@@ -190,8 +191,8 @@
     vertical-align: middle;
   }
   .avatar {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     margin-right: 10px;
     @include border-radius(100%);
     overflow: hidden;
