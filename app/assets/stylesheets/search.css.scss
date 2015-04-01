@@ -226,6 +226,9 @@
     overflow-y: auto;
     background: $light-gray;
     width: 100%;
-    padding-top: 15px;
+    .favorite-space {
+      margin-bottom: 0;
+      margin-top: 15px;
+    }
   }
 }
