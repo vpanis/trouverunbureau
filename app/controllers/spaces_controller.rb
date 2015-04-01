@@ -44,6 +44,21 @@ class SpacesController < ModelController
 
   private
 
+  def create_booking_message
+    Message.create!(m_type: Message.m_types[:text], user: current_user,
+      represented: current_represented, booking: @booking, text: params[:message]) if params[:message].present?
+  end
+
+  def handle_booking_type
+    if params[:booking_type] == "hour"
+      hour_type_booking
+    elsif params[:booking_type] == "day"
+      day_type_booking
+    else
+      month_type_booking
+    end
+  end
+
   def hour_type_booking
     @from_date = Time.parse(params[:booking][:from] + " " + params[:hour_booking_from])
     @to_date = Time.parse(params[:booking][:from] + " " + params[:hour_booking_to])
@@ -67,7 +82,7 @@ class SpacesController < ModelController
     @b_type = Booking.b_types[:month]
   end
 
-  def book_bla
+  def create_booking
     BookingManager.book(current_user, { owner: current_represented,
       from: @from_date,
       to: @to_date,
