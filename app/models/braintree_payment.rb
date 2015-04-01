@@ -1,3 +1,3 @@
 class BraintreePayment < ActiveRecord::Base
-  has_one :booking
+  has_one :booking, as: :payment
 end
