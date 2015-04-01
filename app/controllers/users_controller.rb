@@ -15,8 +15,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
-    return render_forbidden unless @user.eql?(current_user)
+    byebug
+    @organization = (params[:organization].present? && params[:organization])? true : false
+    @user = User.find(params[:id]) unless @organization
+    @user = Organization.find(params[:id]) if @organization
+    return render_forbidden unless @user.eql?(current_represented)
     @gender_options = gender_options
     @profession_options = profession_options
     @language_options = language_options
