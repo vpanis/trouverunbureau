@@ -255,7 +255,7 @@ en:
       standard_times: 'Standard times?'
       custom_times: 'Custom times?'
       opening_time: 'Opening Time'
-      closing_time: 'Closting Time'
+      closing_time: 'Closing Time'
       add_venue_logo: 'Add venue logo'
       change_logo: 'Change logo'
       name: 'Venue name'
@@ -370,3 +370,4 @@ en:
     feature_6: 'Flexible cancelations.'
     back: 'Back'
     send_inquiry: 'Send inquiry'
+    month_amount: 'Number of months'

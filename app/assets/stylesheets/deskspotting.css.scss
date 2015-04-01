@@ -1341,6 +1341,11 @@ li.venue-hours.active{
 
 /*--booking inquiry--*/
 
+.error-wrapper {
+  margin: 0 auto;
+  width: 600px;
+  padding-top: 40px;
+}
 .inquiring-container {
   max-width: 940px;
   margin: 0 auto;
@@ -1412,6 +1417,7 @@ li.venue-hours.active{
         line-height: 46px;
         text-transform: uppercase;
         font-size: 12px;
+        cursor: pointer;
         &:first-child {
           border-top-left-radius: 5px;
           border-bottom-left-radius: 5px;

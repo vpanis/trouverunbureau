@@ -16,7 +16,7 @@ class Booking < ActiveRecord::Base
   # Callbacks
   after_initialize :initialize_fields
   before_validation :calculate_price, unless: :price?
-  before_validation :time_local_to_utc
+#  before_validation :time_local_to_utc
 
   # Validations
   validates :owner, :space, :b_type, :quantity, :from, :to, :price, presence: true
@@ -45,16 +45,26 @@ class Booking < ActiveRecord::Base
     end
   end
 
+  def from=(from)
+    from = Time.zone.local_to_utc(from) if from.is_a? Time
+    super(from)
+  end
+
+  def to=(to)
+    to = Time.zone.local_to_utc(to) if to.is_a? Time
+    super(to)
+  end
+
   private
 
   def initialize_fields
     self.state ||= Booking.states[:pending_authorization]
   end
 
-  def time_local_to_utc
-    self.from = Time.zone.local_to_utc(from)
-    self.to = Time.zone.local_to_utc(to)
-  end
+#  def time_local_to_utc
+#    self.from = Time.zone.local_to_utc(from)
+#    self.to = Time.zone.local_to_utc(to)
+#  end
 
   def calculate_price
     return unless space.respond_to?("#{b_type}_price")
