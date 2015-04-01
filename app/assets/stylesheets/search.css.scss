@@ -163,12 +163,17 @@
   }
 
   #filtersForm{
-    padding: 10px 15px 10px 0;
+    padding: 10px 0;
+    margin-right: 15px;
     position: absolute;
     top: 0;
+    transform: translateY(-100%);
     z-index: 10;
     background-color: $white;
-    display: none;
+    transition: .5s;
+    &.visible {
+      transform: translateY(0);
+    }
   }
 
   .text-field-form{
