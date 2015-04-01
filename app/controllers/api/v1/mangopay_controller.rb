@@ -2,7 +2,7 @@ module Api
   module V1
     class MangopayController < ApiController
       include RepresentedHelper
-      before_action :authenticate_user!, only: [:configuration]
+      before_action :authenticate_user!
 
       # GET /mangopay/configuration
       def configuration
@@ -19,7 +19,8 @@ module Api
         return render nothing: true, status: 400 unless params[:currency].present?
         mcc = current_represented.mangopay_payment_account.mangopay_credit_cards
           .create!(status: MangopayCreditCard.statuses[:registering],
-                   currency: params[:currency].upcase)
+                   currency: params[:currency].upcase,
+                   registration_expiration_date: Time.new.advance(hours: 6))
         MangopayCardRegistrationWorker.perform_async(mcc.id)
         render json: { mangopay_credit_card_id: mcc.id }, status: 200
       end
@@ -44,6 +45,19 @@ module Api
         render json: { error: mcc.errors }, status: 400
       end
 
+      # PUT /mangopay/start_payment
+      def start_payment
+        @booking = Booking.find_by_id(params[:id])
+        return render nothing: true, status: 400 unless booking.present? &&
+          !param[:card_id].blank? && payment_mangopay_verification
+        return render nothing: true, status: 403 unless @booking.owner == current_represented
+        @booking, custom_errors = BookingManager.change_booking_status(
+                                    current_user, @booking, Booking.states[:payment_verification])
+        return render nothing: true, status: 400 unless @booking.valid? && custom_errors.empty?
+        payment = payment_mangopay(params[:card_id])
+        render json: { mangopay_payment: { id: payment.id } }, status: 201
+      end
+
       # GET /mangopay/payin_succeeded?RessourceId&EventType=PAYIN_NORMAL_SUCCEEDED&Date
       def payin_succeeded
         mp = MangopayPayment.find_by_transaction_id(params[:RessourceId])
@@ -62,6 +76,22 @@ module Api
       end
 
       private
+
+      def payment_mangopay_verification
+        current_represented.mangopay_payment_account.present? &&
+          current_represented.mangopay_payment_account.accepted?
+      end
+
+      def payment_mangopay(credit_card)
+        unless @booking.payment.present?
+          @booking.payment = MangopayPayment.new
+          @booking.save
+        end
+        MangopayPaymentWorker.perform_async(@booking.id, credit_card,
+                                            current_user.id, current_represented.id,
+                                            current_represented.class.to_s)
+        @booking.payment
+      end
 
       def credit_card_params
         params.require(:mangopay_credit_card).permit(:credit_card_id, :last_4, :expiration,

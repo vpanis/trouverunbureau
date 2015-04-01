@@ -45,10 +45,6 @@ class PaymentsController < ApplicationController
   end
 
   def mangopay_payment
-    unless @booking.payment.present?
-      @booking.payment = MangopayPayment.new
-      @booking.save
-    end
     @payment_account = current_represented.mangopay_payment_account
   end
 
@@ -84,12 +80,6 @@ class PaymentsController < ApplicationController
   def payment_mangopay_verification
     current_represented.mangopay_payment_account.present? &&
       current_represented.mangopay_payment_account.accepted?
-  end
-
-  def payment_mangopay
-    BraintreePaymentWorker.perform_async(@booking.id, params[:payment_method_nonce],
-                                         current_user.id, current_represented.id,
-                                         current_represented.class.to_s)
   end
 
   def which_payment_method(collection_account)

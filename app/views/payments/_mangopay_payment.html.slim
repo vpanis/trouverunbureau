@@ -5,7 +5,7 @@
   label Used Credit Cards
 
   - active_credit_cards.each do |credit_card|
-    .js-credit-card data-credit-card-id="#{credit_card.credit_card_id}"
+    .js-credit-card data-credit-card-id="#{credit_card.id}"
       div
         span Last four digits:
         span.last_4 #{ credit_card.last_4 }
@@ -30,21 +30,27 @@
     .form-group#card-number
       label Credit Card Number
       input type='text' id='js-card_number'
+      span.js-card-errors.js-card-format.hidden Invalid Card Number format
     .form-group#card-exp-month
       label Expiration Month (mm)
       input type='text' id='js-card_exp_date_month'
     .form-group#card-exp-year
       label Expiration Year (yy)
       input type='text' id='js-card_exp_date_year'
+      span.js-card-errors.js-expiration-format.hidden Invalid Expiry Date format
     .form-group#card-cvx
       label CVX
       input type='text' id='js-card_cvx'
+      span.js-card-errors.js-cvx-format.hidden Invalid CVV format
     .form-grout#card-type
       label Type
       select#js-card_type
         option selected=true label="CB/VISA/MASTERCARD" value="CB_VISA_MASTERCARD"
     label#required-label.hidden All field are required!!!
     button#js-create-credit-card Create Card
+
+#payment.hidden
+  button#js-pay Pay
 
 / = form_for(@collection_account, url: collection_account_info_venue_path(@venue)) do |f|
 /   .main-content

@@ -1,4 +1,4 @@
-#hidden-data data-payment-id="#{@payment.id}"
+#hidden-data data-payment-id="#{@payment.id if @payment.present?}" data-booking-id="#{@booking.id}"
 
 h2
   span Hello #{current_represented.name}
