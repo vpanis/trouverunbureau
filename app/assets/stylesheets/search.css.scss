@@ -122,9 +122,9 @@
   }
 
   .filter-form-title{
-    float: left;
     text-transform: uppercase;
     font-weight: 300;
+    font-size: 14px;
   }
   .filter-row{
     border-top: 1px solid $gray;
@@ -238,7 +238,36 @@
       margin-top: 15px;
     }
   }
-  .panel-heading {
-    background-color: red;
+  .panel-group {
+    margin-bottom: 0;
+    .panel {
+      border: none;
+      border-top: 1px solid $gray;
+      box-shadow: none;
+      & + .panel {
+        margin-top: 0;
+      }
+      .panel-heading {
+        background-color: $white;
+        border: none;
+        border-radius: 0;
+        padding: 15px 0;
+        position: relative;
+        cursor: pointer;
+        a {
+          text-decoration: none;
+        }
+        &:after {
+          position: absolute;
+          content: '▼';
+          top: 50%;
+          transform: translateY(-50%);
+          right: 15px;
+        }
+      }
+      .panel-body {
+        border-top: none !important;
+      }
+    }
   }
 }

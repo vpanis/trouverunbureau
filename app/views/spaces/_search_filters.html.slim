@@ -4,10 +4,10 @@ form#filtersForm.dashboard-form
     p.close-form#formCross x
   #accordion.panel-group aria-multiselectable="true" role="tablist" 
     .panel.panel-default
-      #headingOne.panel-heading role="tab" 
+      #headingOne.panel-heading role="tab" data-toggle="collapse" aria-controls="collapseOne" aria-expanded="false" href="#collapseWorkspace"
         h4.panel-title
-          a aria-controls="collapseOne" aria-expanded="true" data-parent="#accordion" data-toggle="collapse" href="#collapseWorkspace" =t('search.workspace')
-      #collapseWorkspace.panel-collapse.collapse.in aria-labelledby="headingOne" role="tabpanel" 
+          a.filter-form-title data-parent="#accordion" =t('search.workspace')
+      #collapseWorkspace.panel-collapse.collapse aria-labelledby="headingOne" role="tabpanel" 
         .panel-body
           .col-md-10.col-md-offset-2
             - @workspaces.each do |w|
@@ -15,9 +15,9 @@ form#filtersForm.dashboard-form
                 input type="checkbox" name="workspaces[]" ng-model="workspaces[#{w[1]}]"  value="#{w[1]}"
                 = label_tag "workspace_#{w}", w[0]
     .panel.panel-default
-      #headingTwo.panel-heading role="tab" 
+      #headingTwo.panel-heading role="tab" data-toggle="collapse" aria-controls="collapseTwo" aria-expanded="false" href="#collapseProfession"
         h4.panel-title
-          a.collapsed aria-controls="collapseTwo" aria-expanded="true" data-parent="#accordion" data-toggle="collapse" href="#collapseProfession" =t('search.profession')
+          a.filter-form-title data-parent="#accordion" =t('search.profession')
       #collapseProfession.panel-collapse.collapse aria-labelledby="headingTwo" role="tabpanel" 
         .panel-body
           .col-md-10.col-md-offset-2
