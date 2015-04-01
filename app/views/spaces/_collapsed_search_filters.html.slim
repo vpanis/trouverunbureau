@@ -1,8 +1,9 @@
 #countResultsBox.filter-box.row
-  .col-md-2.text-center
+  .counter.col-md-2.text-center
     .h1.count-number() {{totalSpaces}}
     .h5.text-annotation() = t('search.count')
-  .col-md-8.filters
+  
+  .filters.col-md-8
     p.filter-colapse.clear ng-if="filters.length > 0" ng-click=("removeFilterAll()") #{t('search.clear_filters')}
     p.filter-colapse.refine ng-if="filters.length == 0" #{t('search.refine')}
     ul.list-unstyled
