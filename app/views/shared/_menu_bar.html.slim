@@ -29,7 +29,7 @@
           li
             dropdown
               .btn.btn-default.dropdown-toggle type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"
-                a.user href=user_path(user)
+                a.user-visible href=user_path(user)
                   .avatar
                     - if user.kind_of?(User)
                       - if user.avatar.present?
@@ -50,7 +50,7 @@
               ul.dropdown-menu.user-dropdown role="menu" aria-labelledby="dropdownMenu1"
                 - if other_members_current_represented.count >0
                     li.user
-                      p #{t('menu.change_user')}
+                      p.title #{t('menu.change_user')}
                 - other_members_current_represented.each do |m|
                   li.user
                     - if m.kind_of?(Organization)
@@ -72,7 +72,23 @@
                         .name
                           p = m.name
                 li
-                  a.dropdown-link role="menuitem" tabindex="-1"  href="#" #{t('menu.create_organization')}
+                  a.dropdown-link.text-center role="menuitem" tabindex="-1"  href="#" #{t('menu.create_organization')}
+                li.divider
+                li
+                  a(href="#") Dashboard
+                li
+                  a(href="#") Your Booking
+                li
+                  a(href="#") Wishlist
+                li
+                  a(href="#") Invite Friends
+                li
+                  a(href="#") Edit Profile
+                li
+                  a(href="#") Account
+                li.divider
+                li
+                  a(href="#") Logout
 
           li
             a href="#"

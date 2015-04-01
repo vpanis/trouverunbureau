@@ -58,31 +58,21 @@
     }
   }
   a.user{
-    padding-top: 0px;
-    padding-bottom: 0px;
+    padding: 0;
     .name{
       display: inline-block;
       padding-left: 8px;
       letter-spacing: 0.06rem;
       font-weight: 300;
       color: $dark-gray;
-      height: 42px;
       vertical-align: bottom;
       width: 115px;
-      p{
-        margin: 0;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-        line-height: 42px;
-      }
     }
     .avatar{
       display: inline-block;
-      width: 42px;
-      height: 42px;
+      width: 24px;
+      height: 24px;
       padding: 0px;
-      margin-top: 9px;
       img{
         @include border-radius(100%);
         width: 100%;
@@ -144,19 +134,71 @@
   padding-top: 58px;
 }
 
-.user-dropdown{
-  width: 100%;
+.user-dropdown.dropdown-menu {
+  width: 200px;
+  padding: 6px 10px;
+  border: none;
+  margin-top: 0;
+  border-radius: 0;
+  li {
+    &.divider {
+      padding: 0;
+    }
+    a,
+    .title {
+      padding: 10px;
+      font-weight: 300;
+      font-size: 13px;
+      color: $gray-text;
+    }
+    a:hover {
+      background-color: $yellow;
+      color: $black;
+      font-size: 500;
+      p {
+        color: $black;
+      }
+    }
+    .dropdown-link {
+      color: $black;
+      font-weight: 700;
+      @include border-radius(2em);
+      border: 2px solid $yellow;
+      font-size: 13px;
+      margin: 10px;
+    }
+  }
+  
 }
 
-.dropdown-menu > li > .dropdown-link{
-  color: $black;
-  font-weight: 700;
-  @include border-radius(2em);
-  border: 2px solid $yellow;
-  font-size: 13px;
-  padding: 5px 9px 5px;
-  margin-top: 9px;
-  margin-bottom: 9px;
-  margin-left: 17px;
-  margin-right: 13px;
+.navbar {
+  .dropdown-toggle.btn-default {
+    background-color: $white;
+    border: none;
+    line-height: 57px;
+    padding: 0;
+  }
+}
+
+.user-visible {
+  display: block;
+  width: 200px;
+  text-align: left;
+  .avatar,
+  .name {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .avatar {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    @include border-radius(100%);
+    overflow: hidden;
+    img{
+      width: 100%;
+      height: 100%;
+      vertical-align: initial;
+    }
+  }
 }
