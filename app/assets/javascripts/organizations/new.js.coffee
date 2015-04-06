@@ -26,10 +26,10 @@ on_load = ->
     initialize_listeners = ->
       # handle avatar
       $('#avatar-link').click ->
-        $('#user_avatar').click()
+        $('#organization_logo').click()
         $('#avatar-modal').modal('hide')
-      $('#user_avatar').change ->
-        handle_local_img('#user_avatar', '#user-avatar-img')
+      $('#organization_logo').change ->
+        handle_local_img('#organization_logo', '#user-avatar-img')
 
     initialize_popovers = ->
       options = {

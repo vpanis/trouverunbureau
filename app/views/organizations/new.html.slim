@@ -4,9 +4,9 @@
 
 .user.container
   .user-title
-    h3.yellow-title = t('organizations.edit_profile')
+    h3.yellow-title = t('organizations.create_profile')
     .small-separator
-    h4.gray-subtitle = t('organizations.required_fields')
+    h4.gray-subtitle = t('organizations.create_title')
     .user-avatar
       - if @organization.logo?
         = image_tag(@user.logo.url, width: '95px', height: '95px', id: 'user-avatar-img')
@@ -36,7 +36,7 @@
 
           .buttons
             .col-xs-6
-              a href="#"
+              a href= session[:previous_url]
                 button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
             .col-xs-6
               = f.submit t('commons.create'), class: 'rounded-btn yellow-fill width-100 uppercase'
