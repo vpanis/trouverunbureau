@@ -34,6 +34,7 @@ pt:
     delete: 'delete'
     add_image: 'Add an image'
     add_space: 'Create new space'
+    create: 'Create'
   session:
     email: 'Email address'
     password: 'Password'
