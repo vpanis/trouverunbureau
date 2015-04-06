@@ -25,7 +25,7 @@ module BookingInquiry
   end
 
   def creation_message(user, booking)
-    state_change_message(user, booking, Message.m_types[:pending_authorization])
+    state_change_message(user, booking, Booking.states[:pending_authorization])
   end
 
   def change_attributes_message(user, booking)
@@ -45,17 +45,9 @@ module BookingInquiry
     change_last_seen(booking, booking.owner, message.created_at)
   end
 
+  # beware this, asumes that the Message model
   def booking_state_to_message_state(state)
-    case state
-    when Booking.states[:pending_payment]
-      Message.m_types[:pending_payment]
-    when Booking.states[:paid]
-      Message.m_types[:paid]
-    when Booking.states[:canceled]
-      Message.m_types[:canceled]
-    when Booking.states[:denied]
-      Message.m_types[:denied]
-    end
+    Message.m_types[Booking.states.key(state)]
   end
 
 end
