@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   def show
     @organization = params[:organization].present? && params[:organization]
     @user = show_represented(params[:id], @organization)
-    byebug
     @organization_members = organization_members if @user.is_a?(Organization)
     @owner = @organization_members.where(role: 0).first.user if @user.is_a?(Organization)
     @can_edit = @user.eql?(current_represented)
