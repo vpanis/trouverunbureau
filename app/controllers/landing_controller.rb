@@ -4,7 +4,7 @@ class LandingController < ApplicationController
   include SelectOptionsHelper
 
   def index
-    @space_types_options = space_types_options
+    @space_types_options = space_types_index_options
   end
 
 end

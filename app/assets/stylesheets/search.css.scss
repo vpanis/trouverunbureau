@@ -52,7 +52,7 @@
   .filter-colapse.clear,
   .filter-item-list {
     float: left;
-    padding: 0 5px; 
+    padding: 0 5px;
     display: inline-block;
     color: $dark-gray;
     border: 1px solid $yellow;
@@ -168,7 +168,7 @@
     position: absolute;
     top: 0;
     transform: translateY(-100%);
-    z-index: 10;
+    z-index: 90;
     background-color: $white;
     transition: .5s;
     &.visible {
@@ -216,7 +216,7 @@
     bottom: 0;
     width: 100%;
     transition: .25s;
-    z-index: 1;
+    z-index: 91;
     &.open {
       transform: translateY(0);
     }

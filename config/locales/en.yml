@@ -109,6 +109,7 @@ en:
       reserved_rights: ' 2014 DeskSpotting. All rights reserved.'
       terms_of_service: 'Terms of service'
       privacy_policy: 'Privacy policy'
+      more: 'more'
   menu:
     search: 'Search'
     profile: 'Profile'
@@ -132,6 +133,8 @@ en:
     limits: '%{from} - %{to} more than %{count} desks'
     no_results: "No spaces matched your search"
     refine: 'Refine your search using the filters'
+    teams: 'Teams'
+    individual: 'Individual'
   venues:
     types:
       coworking_space: 'Coworking space'
@@ -319,6 +322,7 @@ en:
       meeting_room: 'Meeting room'
       office: 'Office'
       desk: 'Desk'
+      all: 'All workspaces'
     type: 'Workspace type'
     name: 'Name'
     capacity: 'Capacity'
@@ -350,4 +354,3 @@ en:
     all_venues: All Venues
     current: Current bookings
     cancelled: Cancelled bookings
-

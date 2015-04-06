@@ -2,12 +2,12 @@ form#filtersForm.dashboard-form
   .filter-row
     .filter-form-title.form-title.left =t('search.filters')
     p.close-form#formCross x
-  #accordion.panel-group aria-multiselectable="true" role="tablist" 
+  #accordion.panel-group aria-multiselectable="true" role="tablist"
     .panel.panel-default
       #headingOne.panel-heading role="tab" data-toggle="collapse" aria-controls="collapseOne" aria-expanded="false" href="#collapseWorkspace"
         h4.panel-title
           a.filter-form-title data-parent="#accordion" =t('search.workspace')
-      #collapseWorkspace.panel-collapse.collapse aria-labelledby="headingOne" role="tabpanel" 
+      #collapseWorkspace.panel-collapse.collapse aria-labelledby="headingOne" role="tabpanel"
         .panel-body
           .col-md-10.col-md-offset-2
             - @workspaces.each do |w|
@@ -18,7 +18,7 @@ form#filtersForm.dashboard-form
       #headingTwo.panel-heading role="tab" data-toggle="collapse" aria-controls="collapseTwo" aria-expanded="false" href="#collapseProfession"
         h4.panel-title
           a.filter-form-title data-parent="#accordion" =t('search.profession')
-      #collapseProfession.panel-collapse.collapse aria-labelledby="headingTwo" role="tabpanel" 
+      #collapseProfession.panel-collapse.collapse aria-labelledby="headingTwo" role="tabpanel"
         .panel-body
           .col-md-10.col-md-offset-2
             - @professions.each do |p|
@@ -30,10 +30,10 @@ form#filtersForm.dashboard-form
     .input-group.col-md-10.col-md-offset-2.filter-form-input
       .col-md-4.filter-item.filter-form-input-checkbox
         input type="radio" name="capacity" ng-model="capacity" value="1"
-        = label_tag "Individual", nil
+        = label_tag t('search.individual'), nil
       .col-md-4.filter-item
         input type="radio" name="capacity" ng-model="capacity" value="2"
-        = label_tag "Teams", nil
+        = label_tag t('search.teams'), nil
 
   .filter-row
     .filter-form-title =t('search.check_in')

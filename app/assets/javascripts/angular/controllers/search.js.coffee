@@ -57,7 +57,7 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
         longitude_to: $scope.longitude_to
         longitude_from: $scope.longitude_from
 
-      if $scope.check_in != ''
+      if $scope.check_in != undefined && $scope.check_in != null && $scope.check_in != ''
         search_parameters['date'] = $scope.check_in
       if $scope.capacity == '1'
         search_parameters['capacity_max'] = 1
@@ -98,13 +98,16 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
 
     $scope.getSpaceType = ->
       type = getUrlVars()['s_type']
-      $("[id^='workspace_"+type+"']").attr('checked', true)
-      # $scope.filters.Workspace.push($("[id^='workspace_"+type+"']").attr('value'))
+      if type && type % 1 == 0
+        $scope.workspaces[type] = true
+        $scope.filters.push('workspaces')
       return
 
     $scope.getLatLong = ->
       address = getUrlVars()['search']
-      getLatLongFromAddress(address.replace(RegExp(' ', 'g'), '+'))
+      if address
+        return getLatLongFromAddress(address.replace(RegExp(' ', 'g'), '+'))
+      $scope.getSpaces()
       return
 
     calculate_bounds = (results) ->
@@ -195,6 +198,7 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
       return
 
     $scope.showFilters = ->
+      console.log($scope.check_in)
       $scope.filters = []
       if $scope.workspaces.length > 0
         $scope.filters.push('workspaces')
@@ -202,7 +206,7 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
         $scope.filters.push('professions')
       if $scope.capacity != null
         $scope.filters.push('capacity')
-      if $scope.check_in != null && $scope.check_in != ''
+      if $scope.check_in != undefined && $scope.check_in != null && $scope.check_in != ''
         $scope.filters.push('check in')
       $scope.getSpaces()
       return
