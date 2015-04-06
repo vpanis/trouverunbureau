@@ -31,6 +31,8 @@ Deskspotting::Application.routes.draw do
     end
   end
 
+  resources :organizations, only: [:index, :create, :edit, :update]
+
   resources :spaces, only: [:edit, :update, :create, :destroy, :index] do
     member do
       get :inquiry, to: "space_booking_inquiry#inquiry"

@@ -120,6 +120,9 @@ hr {
     color: $dark-gray;
     text-decoration: none;
   }
+  &.organization{
+    width: 200px;
+  }
 }
 
 .aqua.arrow {
