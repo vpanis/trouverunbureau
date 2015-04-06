@@ -32,6 +32,8 @@ Deskspotting::Application.routes.draw do
     end
   end
 
+  resources :organizations, only: [:index, :create, :edit, :update]
+
   resources :spaces, only: [:edit, :update, :create, :destroy] do
     collection do
       get :wishlist

@@ -3,7 +3,7 @@
 .user-profile.container
   - if @organization
     - if @can_edit
-      = link_to t("users.edit_organization_profile"), edit_user_path(@user, organization: @user.kind_of?(Organization)), class: " rounded-btn green pull-right"
+      = link_to t("users.edit_organization_profile"), edit_organization_path(@user), class: " rounded-btn green pull-right"
     .row.col-md-2.center-block.no-float
       .user-avatar
             - if @user.logo.present?

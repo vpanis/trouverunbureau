@@ -4,19 +4,16 @@ class UsersController < ApplicationController
   include SelectOptionsHelper
 
   def show
-    byebug
-    @organization = (params[:organization].present? && params[:organization])? true : false
-    @user = User.find(params[:id]) unless @organization
-    @user = Organization.find(params[:id]) if @organization
-    @organization_members = organization_members if @organization && @user.kind_of?(Organization)
-    @owner = @organization_members.where(role: 0).first.user if @user.kind_of?(Organization)
+    @organization = (params[:organization].present? && params[:organization]) ? true : false
+    @user = show_represented(params[:id], @organization)
+    @organization_members = organization_members if @user.is_a?(Organization)
+    @owner = @organization_members.where(role: 0).first.user if @user.is_a?(Organization)
     @can_edit = @user.eql?(current_represented)
     @can_view_reiews = user_can_read_client_reviews?(User, @user.id)
   end
 
   def edit
-    byebug
-    @organization = (params[:organization].present? && params[:organization])? true : false
+    @organization = (params[:organization].present? && params[:organization]) ? true : false
     @user = User.find(params[:id]) unless @organization
     @user = Organization.find(params[:id]) if @organization
     return render_forbidden unless @user.eql?(current_represented)
@@ -68,8 +65,13 @@ class UsersController < ApplicationController
   end
 
   def organization_members
-    OrganizationUser.where{id.in [my{@user.id}]}.includes{[user]}
+    OrganizationUser.where { id.in [my { @user.id }] }.includes { [user] }
+  end
 
+  def show_represented(id, organization)
+    user = User.find(id) unless organization
+    user = Organization.find(id) if organization
+    user
   end
 
 end

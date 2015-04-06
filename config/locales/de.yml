@@ -315,6 +315,13 @@ de:
       outstanding_booking: 'My outstanding booking inquiry is accepted or declined.'
       booking_inquiry: 'I receive a booking inquiry.'
       account_changes: 'Changes are made to my DeskSpotting account or listing.'
+  organizations:
+    edit_profile: 'Edit organization profile'
+    required_fields: 'Required fields'
+    change_picture: 'Change Organization logo'
+    name: 'Organization name'
+    email: 'General e-mail'
+    phone: 'Phone Number'
   spaces:
     types:
       conference_room: 'Conference room'

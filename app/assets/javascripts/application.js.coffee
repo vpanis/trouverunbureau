@@ -19,6 +19,7 @@
 #= require_directory .
 #= require_tree ./bookings/
 #= require_tree ./landing/
+#= require_tree ./organizations/
 #= require_tree ./reviews/
 #= require_tree ./spaces/
 #= require_tree ./users/
