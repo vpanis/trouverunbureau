@@ -12,9 +12,15 @@ class OrganizationsController < ApplicationController
 #    @can_view_reiews = user_can_read_client_reviews?(User, @user.id)
   end
 
-  def edit
-    @user = Organization.find(params[:id])
-    return render_forbidden unless @user.eql?(current_represented)
+  def new
+    @organization = Organization.new
+  end
+
+  def create
+    organization = Organization.create(new_organization_params)
+    byebug
+    organization.update_attributes!(user: current_user)
+    redirect_to user_path(current_user)
   end
 
   def update
@@ -22,6 +28,11 @@ class OrganizationsController < ApplicationController
     return render_forbidden unless @user.eql?(current_represented)
     @user.update_attributes!(user_params)
     redirect_to user_path(@user, organization: true)
+  end
+
+  def edit
+    @user = Organization.find(params[:id])
+    return render_forbidden unless @user.eql?(current_represented)
   end
 
   def login_as_organization
@@ -53,6 +64,10 @@ class OrganizationsController < ApplicationController
     user = User.find(id) unless organization
     user = Organization.find(id) if organization
     user
+  end
+
+  def new_organization_params
+    params.require(:organization).permit(:name, :email, :phone, :force_submit)
   end
 
 end

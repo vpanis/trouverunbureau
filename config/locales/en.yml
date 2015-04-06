@@ -34,6 +34,7 @@ en:
     delete: 'delete'
     add_image: 'Add an image'
     add_space: 'Create new space'
+    create: 'Create'
   session:
     email: 'Email address'
     password: 'Password'
@@ -326,6 +327,8 @@ en:
     phone: 'Phone Number'
     members: 'Members'
     members_text: 'Add people in your organization to help you manage your DeskSpotting account'
+    create_profile: 'List your organization'
+    create_title: 'Start by telling us about your organization...'
   spaces:
     types:
       conference_room: 'Conference room'

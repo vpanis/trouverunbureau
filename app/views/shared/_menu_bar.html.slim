@@ -71,7 +71,9 @@
                         .name
                           p = m.name
                 li
-                  a.dropdown-link role="menuitem" tabindex="-1"  href="#" #{t('menu.create_organization')}
+
+                  a.dropdown-link role="menuitem" tabindex="-1"  href=new_organization_path
+                    p #{t('menu.create_organization')}
 
           li
             a href="#"
