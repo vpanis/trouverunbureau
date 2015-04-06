@@ -51,7 +51,7 @@ class OrganizationsController < ApplicationController
   private
 
   def user_params
-    params.require(:organization).permit(:name, :email, :phone)
+    params.require(:organization).permit(:logo, :name, :email, :phone)
   end
 
   def organization_members
@@ -65,7 +65,7 @@ class OrganizationsController < ApplicationController
   end
 
   def new_organization_params
-    params.require(:organization).permit(:name, :email, :phone, :force_submit)
+    params.require(:organization).permit(:logo, :name, :email, :phone, :force_submit)
   end
 
 end
