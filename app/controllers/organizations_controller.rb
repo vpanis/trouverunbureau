@@ -31,6 +31,7 @@ class OrganizationsController < ApplicationController
 
   def edit
     @user = Organization.find(params[:id])
+    @organization_members = organization_members
     return render_forbidden unless @user.eql?(current_represented)
   end
 
@@ -55,7 +56,7 @@ class OrganizationsController < ApplicationController
   end
 
   def organization_members
-    OrganizationUser.where { id.in [my { @user.id }] }.includes { [user] }
+    OrganizationUser.where { organization_id.in [my { @user.id }] }.includes { [user] }
   end
 
   def show_represented(id, organization)
