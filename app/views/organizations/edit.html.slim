@@ -39,6 +39,22 @@
               .small-separator
               h4.gray-subtitle = t('organizations.members')
               label.gray-subtitle = t('organizations.members_text')
+
+          .row
+            - @organization_members.each do |m|
+              .col-md-3.center-block.no-float
+                .user-avatar
+                  - if m.user.avatar.present?
+                    = image_tag(@user.logo.url, width: '150px', height: '150px', class: "center-block no-float")
+                  - else
+                    = image_tag('default-avatar.png', width: '150px', height: '150px', class: "center-block no-float")
+                h3.center = m.user.name
+                p.center = m.user.email
+                .col-md-6.center-block.no-float
+                  .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus"
+                  label = t('users.'+m.role.to_s)
+            .col-md-3.center-block.no-float.yellow-fill
+               'Add new manager'
           .buttons
             .col-xs-6
               a href=(user_path(@user, organization: true))
