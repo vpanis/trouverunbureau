@@ -257,15 +257,6 @@ fr:
     month: 'month'
     hour: 'hour'
     week: 'week'
-  bookings:
-    no_bookings: 'There are no bookings'
-    state:
-      pending_authorization: 'Pending'
-      pending_payment: 'approved'
-      paid: 'paid'
-      canceled: 'cancelled'
-      denied: 'denied'
-      expired: 'expired'
   users:
     user_since: User since
     edit_profile: 'Edit profile'
@@ -346,6 +337,14 @@ fr:
     all_venues: All Venues
     current: Current bookings
     cancelled: Cancelled bookings
+    no_bookings: 'There are no bookings'
+    state:
+      pending_authorization: 'pending'
+      pending_payment: 'approved'
+      paid: 'paid'
+      canceled: 'cancelled'
+      denied: 'denied'
+      expired: 'expired'
   edit_venue_progress:
     status: status
     venue: Venue

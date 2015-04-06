@@ -10,10 +10,17 @@ angular.module('deskSpotting.inbox', []).controller "InboxCtrl", [
     $scope.messages = []
     $scope.message_text = ''
     $scope.user_id = $('.inbox')[0].dataset.userId
+    $scope.organization_id = $('.inbox')[0].dataset.organizationId
     $scope.defaultAvatar = $('.inbox')[0].dataset.avatar
     $scope.defaultLogo = $('.inbox')[0].dataset.logo
     $scope.getBookings = () ->
-      Restangular.one('users', $scope.user_id).customGET('inquiries', {page: $scope.currentPage, amount: $scope.itemsPerPage}).then (result) ->
+      if $scope.organization_id
+        getRemoteBookings('organizations', $scope.organization_id)
+      else
+        getRemoteBookings('users', $scope.user_id)
+
+    getRemoteBookings = (entity, id) ->
+      Restangular.one(entity, id).customGET('inquiries', {page: $scope.currentPage, amount: $scope.itemsPerPage}).then (result) ->
         $scope.bookings = result.inquiries
         $scope.totalBookings = result.count
         $scope.currentPage = result.current_page
@@ -33,7 +40,11 @@ angular.module('deskSpotting.inbox', []).controller "InboxCtrl", [
         $scope.messages = result.messages
 
     $scope.sendMessage = () ->
-      text = $scope.message_text
+      text = this.message_text
+      console.log(text)
+      if text == ''
+        console.log('empty messages are ignored')
+        return
       Restangular.one('inquiries', $scope.selected_booking.id).one('messages').customPOST({message: {text: text}}).then (result) ->
         $scope.message_text = ''
         reload_messages()

@@ -22,7 +22,7 @@
 .inbox-header
   .row
     .space-data.col-md-8
-      img.avatar style="background-image: url('{{selected_booking.space.logo || defaultLogo}}')"
+      img.avatar ng-src="{{selected_booking.space.logo || defaultLogo}}"
       .wrapper
         h1.space-name() {{selected_booking.space.name}}
         p.capacity() {{selected_booking.space.capacity}}
@@ -44,7 +44,7 @@
     .guest-data.col-md-4
       .clearfix.margin-bottom
         h3.title Guest
-      .avatar style="background-image: url('{{selected_booking.space.logo || defaultLogo}}')"
+      img.avatar ng-src="{{selected_booking.client.avatar || defaultAvatar}}"
       .wrapper
         p.name() {{selected_booking.client.name}}
         /p.description entrepreneur

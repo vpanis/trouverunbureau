@@ -2,21 +2,21 @@
   h3.title Messages
   .messages-wrapper
     .message-item.clearfix ng-repeat=("message in messages | reverse")
-      .who ng-if=('message.represented.venue') ng-class=('{own: message.user.id == user_id, other: message.user.id != user_id}')
+      .who ng-if=('message.represented.venue') ng-class=('{me: message.user.id == user_id, other: message.user.id != user_id}')
         .message-header
-          .message-avatar(style="background-image: url('{{message.represented.venue.logo || defaultLogo}}')")
-          p.message-name() {{message.user.name}} ({{message.represented.venue.name}})
+          .message-avatar ng-style="{'background-image': 'url({{message.represented.venue.logo || defaultLogo}})'}"
+          p.message-name() {{message.represented.venue.name}} ({{message.user.name}})
           p.message-date() {{message.date}}
         p.message-text() {{message.text}}
-      .who ng-if=('message.represented.organization') ng-class=('{own: message.user.id == user_id, other: message.user.id != user_id}')
+      .who ng-if=('message.represented.organization') ng-class=('{me: message.user.id == user_id, other: message.user.id != user_id}')
         .message-header
-          .message-avatar(style="background-image:url('{{message.represented.organization.logo || defaultLogo}}')")
-          p.message-name() {{message.user.name}} ({{message.represented.organization.name}})
+          .message-avatar ng-style="{'background-image': 'url({{message.represented.organization.logo || defaultLogo}})'}"
+          p.message-name() {{message.represented.organization.name}} ({{message.user.name}})
           p.message-date() {{message.date}}
         p.message-text() {{message.text}}
-      .who.me ng-if=('!message.represented') ng-class=('{own: message.user.id == user_id, other: message.user.id != user_id}')
+      .who ng-if=('!message.represented') ng-class=('{me: message.user.id == user_id, other: message.user.id != user_id}')
         .message-header
-          .message-avatar(style="background-image: url('{{message.user.avatar || defaultAvatar}}')")
+          .message-avatar ng-style="{'background-image': 'url({{message.user.avatar || defaultAvatar}})'}"
           p.message-name() {{message.user.name}}
           p.message-date() {{message.date}}
         p.message-text() {{message.text}}
