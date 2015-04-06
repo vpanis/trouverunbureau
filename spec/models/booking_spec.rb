@@ -105,7 +105,8 @@ RSpec.describe Booking, type: :model do
 
     it 'returns the calculated week price for 2 weeks, 1 space' do
       from = @monday
-      to = @monday.advance(weeks: 2).at_end_of_day
+      # beggining of monday to end of sunday in 13 days
+      to = @monday.advance(weeks: 2, days: -1).at_end_of_day
       booking = FactoryGirl.create(:booking, space: @space, b_type: Booking.b_types[:week],
                                    from: from, to: to, quantity: 1)
       expect(booking.price).to eq(100 * 2)
@@ -113,7 +114,8 @@ RSpec.describe Booking, type: :model do
 
     it 'returns the calculated week price for 2 weeks, 2 space' do
       from = @monday
-      to = @monday.advance(weeks: 2).at_end_of_day
+      # beggining of monday to end of sunday in 13 days
+      to = @monday.advance(weeks: 2, days: -1).at_end_of_day
       booking = FactoryGirl.create(:booking, space: @space, b_type: Booking.b_types[:week],
                                    from: from, to: to, quantity: 2)
       expect(booking.price).to eq(100 * 2 * 2)
@@ -121,15 +123,28 @@ RSpec.describe Booking, type: :model do
 
     it 'returns the calculated month price for 2 months, 1 space' do
       from = @monday
-      to = @monday.advance(months: 2).at_end_of_day
+      # if we add 1 month and then ask for the end of that day its 1 month and 1 day,
+      # and that will calculate the price of 2 months
+      to = @monday.advance(months: 2, days: -1).at_end_of_day
       booking = FactoryGirl.create(:booking, space: @space, b_type: Booking.b_types[:month],
                                    from: from, to: to, quantity: 1)
       expect(booking.price).to eq(400 * 2)
     end
 
+    it 'returns the calculated month price for 2 months, 1 day, 1 space' do
+      from = @monday
+      to = @monday.advance(months: 2, days: 1).at_end_of_day
+      booking = FactoryGirl.create(:booking, space: @space, b_type: Booking.b_types[:month],
+                                   from: from, to: to, quantity: 1)
+      # one day exceeded paying for months its one more month
+      expect(booking.price).to eq(400 * 3)
+    end
+
     it 'returns the calculated month price for 2 months, 2 space' do
       from = @monday
-      to = @monday.advance(months: 2).at_end_of_day
+      # if we add 1 month and then ask for the end of that day its 1 month and 1 day,
+      # and that will calculate the price of 2 months
+      to = @monday.advance(months: 2, days: -1).at_end_of_day
       booking = FactoryGirl.create(:booking, space: @space, b_type: Booking.b_types[:month],
                                    from: from, to: to, quantity: 2)
       expect(booking.price).to eq(400 * 2 * 2)

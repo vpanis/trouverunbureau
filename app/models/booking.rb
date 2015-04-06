@@ -16,7 +16,6 @@ class Booking < ActiveRecord::Base
   # Callbacks
   after_initialize :initialize_fields
   before_validation :calculate_price, unless: :price?
-#  before_validation :time_local_to_utc
 
   # Validations
   validates :owner, :space, :b_type, :quantity, :from, :to, :price, presence: true
@@ -61,11 +60,6 @@ class Booking < ActiveRecord::Base
     self.state ||= Booking.states[:pending_authorization]
   end
 
-#  def time_local_to_utc
-#    self.from = Time.zone.local_to_utc(from)
-#    self.to = Time.zone.local_to_utc(to)
-#  end
-
   def calculate_price
     return unless space.respond_to?("#{b_type}_price")
     unit_price = space.send("#{b_type}_price")
@@ -78,8 +72,10 @@ class Booking < ActiveRecord::Base
     if b_type == 'day'
       venue_not_open_days = [0, 1, 2, 3, 4, 5, 6] - space.venue.day_hours.pluck(:weekday)
       (VenueHour.weekdays_array(from, to) - venue_not_open_days).length
+    elsif b_type == 'month'
+      (to.year * 12 + to.month) - (from.year * 12 + from.month) + ((to.day >= from.day)? 1 : 0)
     else
-      ((to - from) / 1.send(b_type)).round
+      ((to - from) / 1.send(b_type)).ceil
     end
   end
 end
