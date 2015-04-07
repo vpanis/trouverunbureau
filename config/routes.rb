@@ -7,6 +7,10 @@ Deskspotting::Application.routes.draw do
 
   mount Resque::Server, at: "/resque"
 
+  if Rails.env.development?
+    mount MailPreview => 'mail_view'
+  end
+
   root to: 'landing#index'
 
   resources :venues, only: [:new, :create, :edit, :update, :show, :index] do

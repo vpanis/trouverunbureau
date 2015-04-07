@@ -346,3 +346,9 @@ it:
     publish: publish
     delete_venue: Delete venue
     incomplete: incomplete
+  new_message_email:
+    hi: Hi
+    got_new_message: Got a new message from
+    reply: Or reply directly on this mail.
+    view_on_deskspotting: View on DeskSpotting
+    team: The DeskSpotting Team
