@@ -1,16 +1,7 @@
 @import 'variables';
 @import 'mixins';
 
-[data-action="search"] {
-  background-color: $white;
-  .border-circle{
-    @include border-radius(100%);
-    border: 2px solid $yellow;
-  }
-
-  .count-box{
-    padding-right: 100px;
-  }
+.space-search {
 
   .count-number{
     font-weight: 700;
@@ -20,23 +11,25 @@
     font-weight: 300;
   }
 
-  .filter-button-box{
-    margin-bottom: 10px;
-    padding-left: 18px;
-  }
-
   .filter-button{
     text-transform: uppercase;
-    padding-top: 23px;
-    padding-bottom: 23px;
+    cursor: pointer;
+    width: 75px;
+    height: 75px;
+    border-radius: 100%;
+    border: 2px solid $yellow;
     text-align: center;
-    margin-left: 40px;
-    margin-right: -40px;
+    line-height: 75px;
+    font-weight: 700;
+    margin: 50% auto 0;
+    transform: translateY(-50%);
   }
 
   .pagination-box{
-    margin-left: 10px;
-    margin-bottom: 30px;
+    margin-left: 0;
+    margin: 15px 0;
+    clear: both;
+    display: inline-block !important;
   }
 
   .pagination-pages{
@@ -48,17 +41,231 @@
     margin-top: 5px;
   }
 
-  .filter-box{
-    position: fixed;
-    width: 71%;
-    top: 50px;
-    z-index: 20;
-    background-color: $white;
-    padding-top: 25px;
-    padding-bottom: 10px;
+  .venue-map{
+    height: 100%;
   }
 
-  .filter-box-after{
-    padding-top: 125px;
+  .filters {
+    margin-top: 40px;
+  }
+
+  .filter-colapse.clear,
+  .filter-item-list {
+    float: left;
+    padding: 0 5px;
+    display: inline-block;
+    color: $dark-gray;
+    border: 1px solid $yellow;
+    font-size: 12px;
+    margin-right: 5px;
+  }
+
+  .filter-colapse.clear {
+    color: $red;
+    border: 1px solid $red;
+    cursor: pointer;
+    transition: .25s;
+    &:hover {
+      background-color: $red;
+      color: $white;
+    }
+  }
+
+  .filter-item-list {
+    .filter-name {
+      display: inline-block;
+    }
+    .filter-delete {
+      display: inline-block;
+      margin-left: 5px;
+      color: $white;
+      cursor: pointer;
+      background: $yellow;
+      width: 16px;
+      height: 16px;
+      border-radius: 100%;
+      text-align: center;
+      line-height: 16px;
+      font-size: 12px;
+    }
+  }
+
+  .filter-colapse.refine{
+    text-align: right;
+    font-weight: 700;
+    color: #333;
+    line-height: 34px;
+  }
+  .filter-colapse-text{
+    margin: 2px;
+    float: left;
+  }
+
+  .filter-colapse-text.refine{
+    font-weight: 300;
+    margin-top: 6px;
+  }
+
+  .close-filter{
+    font-weight: 700;
+    @include border-radius(100%);
+    background-color: $yellow;
+    color: $white;
+    padding-left: 7px;
+    padding-right: 6px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    margin-bottom: 1px;
+    margin-top: 1px;
+    font-size: 11px;
+    float: left;
+  }
+
+  .filter-form-title{
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 14px;
+  }
+  .filter-row{
+    border-top: 1px solid $gray;
+    padding: 15px 0;
+    display: inline-block;
+    width: 100%;
+    &:first-child {
+      border-top: none;
+    }
+  }
+
+  p.black-arrow{
+    text-align: right;
+    float: right;
+    width: 14px;
+    color: black;
+    font-weight: 300;
+    margin-right: 15px;
+    cursor: pointer;
+  }
+  .filter-item{
+    display: inline-block;
+  }
+
+  .button-filters{
+    background-color: $yellow;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 15px 0;
+    text-align: center;
+    cursor: pointer;
+    transition: .25s;
+    &:hover {
+      background-color: darken($yellow, 5%);
+    }
+  }
+
+  #filtersForm{
+    padding: 10px 0;
+    margin-right: 15px;
+    position: absolute;
+    top: 0;
+    transform: translateY(-100%);
+    z-index: 90;
+    background-color: $white;
+    transition: .5s;
+    &.visible {
+      transform: translateY(0);
+    }
+  }
+
+  .text-field-form{
+    width: 96%;
+  }
+  .close-form{
+    font-weight: 700;
+    @include border-radius(100%);
+    background-color: $light-gray;
+    color: $dark-gray;
+    padding-left: 9px;
+    padding-right: 7px;
+    padding-bottom: 2px;
+    padding-top: 0px;
+    margin-right: 9px;
+    margin-bottom: 1px;
+    margin-top: -7px;
+    font-size: 20px;
+    float: right;
+    cursor: pointer;
+  }
+
+  .form-title{
+    font-weight: 700;
+  }
+
+  .filter-form-input{
+    padding-left: 25px;
+  }
+
+  .filter-form-input-checkbox{
+    margin-right: 6px;
+  }
+}
+
+[data-controller="spaces"] {
+  #footer {
+    position: fixed;
+    transform: translateY(100%);
+    bottom: 0;
+    width: 100%;
+    transition: .25s;
+    z-index: 91;
+    &.open {
+      transform: translateY(0);
+    }
+  }
+  .counter {
+    margin-top: 10px;
+  }
+  .results {
+    position: relative;
+  }
+  .spaces-results {
+    overflow-y: auto;
+    background: $light-gray;
+    width: 100%;
+    .favorite-space {
+      margin-bottom: 0;
+      margin-top: 15px;
+    }
+  }
+  .panel-group {
+    margin-bottom: 0;
+    .panel {
+      border: none;
+      border-top: 1px solid $gray;
+      box-shadow: none;
+      & + .panel {
+        margin-top: 0;
+      }
+      .panel-heading {
+        background-color: $white;
+        border: none;
+        border-radius: 0;
+        padding: 15px 0;
+        position: relative;
+        cursor: pointer;
+        a {
+          text-decoration: none;
+        }
+        &:after {
+          position: absolute;
+          content: '▼';
+          top: 50%;
+          transform: translateY(-50%);
+          right: 15px;
+        }
+      }
+      .panel-body {
+        border-top: none !important;
+      }
+    }
   }
 }

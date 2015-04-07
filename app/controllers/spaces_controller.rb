@@ -37,6 +37,11 @@ class SpacesController < ModelController
     redirect_to spaces_venue_path(venue)
   end
 
+  def index
+    @professions = profession_options
+    @workspaces = space_types_checkbox_options
+  end
+
   private
 
   def object_params

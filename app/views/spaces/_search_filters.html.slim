@@ -1,0 +1,44 @@
+form#filtersForm.dashboard-form
+  .filter-row
+    .filter-form-title.form-title.left =t('search.filters')
+    p.close-form#formCross x
+  #accordion.panel-group aria-multiselectable="true" role="tablist"
+    .panel.panel-default
+      #headingOne.panel-heading role="tab" data-toggle="collapse" aria-controls="collapseOne" aria-expanded="false" href="#collapseWorkspace"
+        h4.panel-title
+          a.filter-form-title data-parent="#accordion" =t('search.workspace')
+      #collapseWorkspace.panel-collapse.collapse aria-labelledby="headingOne" role="tabpanel"
+        .panel-body
+          .col-md-10.col-md-offset-2
+            - @workspaces.each do |w|
+              .col-md-4.filter-item
+                input type="checkbox" name="workspaces[]" ng-model="workspaces[#{w[1]}]"  value="#{w[1]}"
+                = label_tag "workspace_#{w}", w[0]
+    .panel.panel-default
+      #headingTwo.panel-heading role="tab" data-toggle="collapse" aria-controls="collapseTwo" aria-expanded="false" href="#collapseProfession"
+        h4.panel-title
+          a.filter-form-title data-parent="#accordion" =t('search.profession')
+      #collapseProfession.panel-collapse.collapse aria-labelledby="headingTwo" role="tabpanel"
+        .panel-body
+          .col-md-10.col-md-offset-2
+            - @professions.each do |p|
+              .col-md-4.filter-item
+                input type="checkbox" name="professions[]" ng-model="professions.#{p[1]}" value="#{p[1]}"
+                = label_tag "profession_#{p}", t(p[0])
+  .filter-row
+    .filter-form-title =t('search.capacity')
+    .input-group.col-md-10.col-md-offset-2.filter-form-input
+      .col-md-4.filter-item.filter-form-input-checkbox
+        input type="radio" name="capacity" ng-model="capacity" value="1"
+        = label_tag t('search.individual'), nil
+      .col-md-4.filter-item
+        input type="radio" name="capacity" ng-model="capacity" value="2"
+        = label_tag t('search.teams'), nil
+
+  .filter-row
+    .filter-form-title =t('search.check_in')
+    .calendar.input-group.col-md-4.col-md-offset-4
+      .calendar-icon.input-group-addon ng-click="openCalendar($event)" type="button"
+      = text_field_tag :check_in, nil, placeholder: '', class: 'form-control', close_text: 'Close', datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened', ng_model:'check_in', type: 'text', show_button_bar:'false'
+  .filter-row
+    #show_filters.button.button-filters ng-click=("showFilters()") = t('search.show_filters')

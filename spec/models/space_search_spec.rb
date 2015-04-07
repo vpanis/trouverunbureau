@@ -300,25 +300,55 @@ RSpec.describe SpaceSearch, type: :model do
     end
   end
 
-  context 'search setting only capacity' do
+  context 'search setting only capacity_min' do
 
     it 'returns the spaces with capacity greater than 3 when setted to 4' do
-      ss = SpaceSearch.new(capacity: 4)
+      ss = SpaceSearch.new(capacity_min: 4)
       expect(ss.find_spaces).to contain_exactly(@s1_v4, @s2_v4)
     end
 
     it 'returns the spaces with capacity greater than 2 when setted to 3' do
-      ss = SpaceSearch.new(capacity: 3)
+      ss = SpaceSearch.new(capacity_min: 3)
       expect(ss.find_spaces).to contain_exactly(@s1_v3, @s2_v3, @s1_v4, @s2_v4)
     end
 
     it 'returns an empty array when there are no spaces with that capacity' do
-      ss = SpaceSearch.new(capacity: 10)
+      ss = SpaceSearch.new(capacity_min: 10)
       expect(ss.find_spaces).to contain_exactly
     end
 
     it 'returns every space' do
-      ss = SpaceSearch.new(capacity: nil)
+      ss = SpaceSearch.new(capacity_min: nil)
+      expect(ss.find_spaces).to contain_exactly(@s1_v1, @s2_v1, @s1_v2, @s2_v2,
+                                                @s1_v3, @s2_v3, @s1_v4, @s2_v4,
+                                                @s1_v5, @s1_v6, @s1_v7, @s1_v8,
+                                                @s1_v9, @s1_v10, @s1_v11, @s1_v12)
+    end
+  end
+
+  context 'search setting only capacity_max' do
+
+    it 'returns the spaces with capacity lower or equal than 4 when setted to 4' do
+      ss = SpaceSearch.new(capacity_max: 4)
+      expect(ss.find_spaces).to contain_exactly(@s1_v1, @s2_v1, @s1_v2, @s2_v2, @s1_v3, @s2_v3,
+                                                @s1_v5, @s1_v6, @s1_v7, @s1_v8, @s1_v9, @s1_v10,
+                                                @s1_v11, @s1_v12, @s1_v4, @s2_v4)
+    end
+
+    it 'returns the spaces with capacity lower or equal than 3 when setted to 3' do
+      ss = SpaceSearch.new(capacity_max: 3)
+      expect(ss.find_spaces).to contain_exactly(@s1_v1, @s2_v1, @s1_v2, @s2_v2, @s1_v3, @s2_v3,
+                                                @s1_v5, @s1_v6, @s1_v7, @s1_v8, @s1_v9, @s1_v10,
+                                                @s1_v11, @s1_v12)
+    end
+
+    it 'returns an empty array when there are no spaces with that capacity' do
+      ss = SpaceSearch.new(capacity_max: 0)
+      expect(ss.find_spaces).to contain_exactly
+    end
+
+    it 'returns every space' do
+      ss = SpaceSearch.new(capacity_max: nil)
       expect(ss.find_spaces).to contain_exactly(@s1_v1, @s2_v1, @s1_v2, @s2_v2,
                                                 @s1_v3, @s2_v3, @s1_v4, @s2_v4,
                                                 @s1_v5, @s1_v6, @s1_v7, @s1_v8,

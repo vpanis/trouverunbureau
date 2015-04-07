@@ -52,10 +52,6 @@ class VenuesController < ModelController
     end
   end
 
-  def search
-    @current_user = current_user
-  end
-
   def index
     @venues = current_represented.venues
   end

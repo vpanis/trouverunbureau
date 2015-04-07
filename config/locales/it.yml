@@ -62,13 +62,6 @@ it:
       title: 'Everyone needs a workspace'
       subtitle: 'Rent unique offices or meeting rooms where and when you need them.'
       search_text: 'Where do you want your Desk?'
-      type_of_desk_all: 'All workspaces'
-      type_of_desk_1: 'Hot Desk'
-      type_of_desk_2: 'Dedicated Desk'
-      type_of_desk_3: 'Private Office'
-      type_of_desk_4: 'Meeting Room'
-      type_of_desk_5: 'Conference Room'
-      type_of_desk_6: 'Communal Space'
       find: 'Find'
     features:
       title: 'features'
@@ -116,6 +109,7 @@ it:
       reserved_rights: ' 2014 DeskSpotting. All rights reserved.'
       terms_of_service: 'Terms of service'
       privacy_policy: 'Privacy policy'
+      more: 'more'
   menu:
     search: 'Search'
     profile: 'Profile'
@@ -129,8 +123,18 @@ it:
   search:
     count: 'Desks found'
     filters: 'Filters'
+    workspace: 'Workspace'
+    neighbourhood: 'Neighbourhood'
+    profession: 'Profession'
+    capacity: 'Capacity'
+    check_in: 'Check In'
+    show_filters: 'Show listings'
+    clear_filters: 'Clear filters'
     limits: '%{from} - %{to} more than %{count} desks'
     no_results: "No spaces matched your search"
+    refine: 'Refine your search using the filters'
+    teams: 'Teams'
+    individual: 'Individual'
   venues:
     types:
       coworking_space: 'Coworking space'
@@ -318,6 +322,7 @@ it:
       meeting_room: 'Meeting room'
       office: 'Office'
       desk: 'Desk'
+      all: 'All workspaces'
     type: 'Workspace type'
     name: 'Name'
     capacity: 'Capacity'
