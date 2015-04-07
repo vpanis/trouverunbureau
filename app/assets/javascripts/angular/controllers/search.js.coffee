@@ -2,6 +2,7 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
   '$scope'
   'Restangular'
   ($scope, Restangular) ->
+    MAX_MOBILE_PIXELS_WIDE = 768
     $scope.spaces = []
     $scope.totalSpaces = ""
     $scope.currentPage = 1
@@ -46,7 +47,7 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
       return
 
     is_mobile = ->
-      return window.innerWidth < 768
+      return window.innerWidth < MAX_MOBILE_PIXELS_WIDE
 
     build_search_params = ->
       search_parameters =

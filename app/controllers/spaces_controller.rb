@@ -38,7 +38,6 @@ class SpacesController < ModelController
   end
 
   def index
-    @current_user = current_user
     @professions = profession_options
     @workspaces = space_types_checkbox_options
   end
