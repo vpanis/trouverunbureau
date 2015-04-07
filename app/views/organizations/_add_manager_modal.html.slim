@@ -1,0 +1,16 @@
+.modal.fade aria-hidden="true" aria-labelledby="#{modal_id}Label" role="dialog" tabindex="-1" id=modal_id
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close aria-label="#{t('commons.close')}" data-dismiss="modal" type="button"
+          span aria-hidden="true"  &times;
+        h4.modal-title id="#{modal_id}Label" = title
+      .modal-body
+        .form-group
+          label = t('organizations.email')
+
+        .form-group
+          label = t('organizations.role')
+          //= select_tag('languages_spoken_select', options_from_collection_for_select(@language_options, :second, :first, @user.languages_spoken), {multiple: true, class: 'form-control multi-lang-select'})
+        a id=image_link_id
+          button.width-100.rounded-btn.bold.yellow-fill.uppercase = t('organizations.add_manager_action')

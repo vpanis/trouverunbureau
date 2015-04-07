@@ -4,12 +4,10 @@ class OrganizationsController < ApplicationController
   include SelectOptionsHelper
 
   def show
-    # @organization = (params[:organization].present? && params[:organization]) ? true : false
-    # @user = show_represented(params[:id], @organization)
-    # @organization_members = organization_members if @user.is_a?(Organization)
-    # @owner = @organization_members.where(role: 0).first.user if @user.is_a?(Organization)
-    # @can_edit = @user.eql?(current_represented)
-    # @can_view_reiews = user_can_read_client_reviews?(User, @user.id)
+    @user = Organization.find(params[:id])
+    @organization_members = organization_members
+    @owner = @organization_members.where(role: 0).first.user
+    @can_edit = @user.eql?(current_represented)
   end
 
   def new
@@ -26,7 +24,7 @@ class OrganizationsController < ApplicationController
     @user = Organization.find(params[:id])
     return render_forbidden unless @user.eql?(current_represented)
     @user.update_attributes!(user_params)
-    redirect_to user_path(@user, organization: true)
+    redirect_to organization_path(@user)
   end
 
   def edit
