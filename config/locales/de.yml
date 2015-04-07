@@ -352,3 +352,22 @@ de:
     reply: Or reply directly on this mail.
     view_on_deskspotting: View on DeskSpotting
     team: The DeskSpotting Team
+  host_cancellation_email:
+    sorry_cancel: Sorry to see you had to cancel your booking of
+    unfortunately: "Unfortunately your guest, %{name}, had to cancel is booking with you for"
+    space: Space
+    date: Date
+    spaces: Spaces
+    check_in: Check In
+    check_out: Check Out
+    payout: You will receive a payout of
+    transferred: transferred to
+    bank_name: Bank Name
+    account_number: Account Number
+    holder: Holder
+    funds: Funds transferred On
+    refunded: "Your guest %{name} will be refunded"
+    terms1: If you have any questions about our
+    terms2: feel free to read
+    cancellation_policy: cancellation policy
+    terms_of_service: our terms of service
