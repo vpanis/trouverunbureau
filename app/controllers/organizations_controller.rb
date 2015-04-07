@@ -34,20 +34,6 @@ class OrganizationsController < ApplicationController
     return render_forbidden unless @user.eql?(current_represented)
   end
 
-  def login_as_organization
-    organization = Organization.find(params[:organization_id])
-    return render_forbidden unless current_user.id == params[:id].to_i &&
-    current_user.user_can_write_in_name_of(organization)
-    session[:current_organization_id] = organization.id
-    redirect_to session[:previous_url] || root_path
-  end
-
-  def reset_organization
-    return render_forbidden unless current_user.id == params[:id].to_i
-    session[:current_organization_id] = nil
-    redirect_to session[:previous_url] || root_path
-  end
-
   private
 
   def user_params

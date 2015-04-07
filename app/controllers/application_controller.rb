@@ -56,7 +56,9 @@ class ApplicationController < ActionController::Base
 
   def render_forbidden
     # TODO: improve
-    render file: "#{Rails.root}/public/403", layout: false, status: 403
+    redirect_needed = flash[:redirect_if_403].present?
+    redirect_to flash[:redirect_if_403] if redirect_needed
+    render file: "#{Rails.root}/public/403", layout: false, status: 403 unless redirect_needed
   end
 
   def record_not_found

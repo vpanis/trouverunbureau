@@ -1,8 +1,8 @@
 = render 'shared/menu_bar', user: current_represented
 = render 'shared/profile_menu_bar', user: current_represented, selected: 'profile'
 .user-profile.container
-  - if @can_edit
-    = link_to t("users.edit_organization_profile"), edit_organization_path(@user), class: " rounded-btn green pull-right"
+    - if @can_edit
+      = link_to t("users.edit_organization_profile"), edit_organization_path(@user), class: " rounded-btn green pull-right"
     .row.col-md-2.center-block.no-float
       .user-avatar
             - if @user.logo.present?
