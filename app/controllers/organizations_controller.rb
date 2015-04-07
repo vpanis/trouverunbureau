@@ -31,6 +31,8 @@ class OrganizationsController < ApplicationController
   def edit
     @user = Organization.find(params[:id])
     @organization_members = organization_members
+    @member_roles = OrganizationUser.roles.to_a
+    byebug
     return render_forbidden unless @user.eql?(current_represented)
   end
 

@@ -1,7 +1,7 @@
 module Api
   module V1
     class UsersController < ApiController
-      before_action :authenticate_user!
+      before_action :authenticate_user!, except: [:get_basic_info]
 
       def login_as_organization
         organization = Organization.find_by(id: params[:organization_id])
@@ -17,6 +17,12 @@ module Api
         session[:current_organization_id] = nil
         render nothing: true, status: 204
       end
+
+      def get_basic_info
+        user = User.find_by(id: params[:id])
+        return record_not_found unless user.present?
+      end
+
     end
   end
 end

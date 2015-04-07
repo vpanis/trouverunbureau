@@ -1,7 +1,7 @@
 = render 'shared/menu_bar', user: current_represented
 = render 'shared/profile_menu_bar', user: current_user, selected: 'profile'
 = render 'shared/image_modal', modal_id: 'avatar-modal', title: t('organizations.change_picture'), image_link_id: 'avatar-link', save_button_id: 'save-avatar'
-= render 'add_manager_modal', modal_id: 'add-manager-modal', title: t('organizations.add_manager'), image_link_id: 'avatar-link', save_button_id: 'save-avatar'
+= render 'add_manager_modal', modal_id: 'add-manager-modal', title: t('organizations.add_manager'), image_link_id: 'avatar-link', save_button_id: 'save-avatar', member_roles: @member_roles
 
 .user.container
   .user-title
@@ -22,12 +22,12 @@
           .row
             .form-group.center-block.no-float.col-xs-12.col-sm-6.col-md-6.col-lg-6
               label = t('organizations.name')
-              = f.text_field :name, placeholder: t('organizations.name'), class: 'form-control'
+              = f.text_field :name, placeholder: t('organizations.name_placeholder'), class: 'form-control'
           .row
             .form-group.center-block.no-float.col-xs-12.col-sm-6.col-md-6.col-lg-6
               .icon.lock.pointer#email-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
               label = t('organizations.email')
-              = f.text_field :email, placeholder: t('organizations.email'), class: 'form-control'
+              = f.text_field :email, placeholder: t('organizations.email_placeholder'), class: 'form-control'
           .row
             .form-group.center-block.no-float.col-xs-12.col-sm-6.col-md-6.col-lg-6
               .icon.info.pointer#phone-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_share_phone')}"
