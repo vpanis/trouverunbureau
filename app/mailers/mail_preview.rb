@@ -11,7 +11,7 @@ class MailPreview < MailView
     TestMailer.guest_review_email('test@asd.com')
   end
 
-    def host_review_email
+  def host_review_email
     TestMailer.host_review_email('test@asd.com')
   end
 end
