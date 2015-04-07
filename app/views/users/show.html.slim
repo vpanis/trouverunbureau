@@ -1,14 +1,10 @@
 = render 'shared/menu_bar', user: current_represented, previous_url: user_path
 = render 'shared/profile_menu_bar', user: current_represented, selected: 'profile'
 .user-profile.container
-  - if @organization
-    - if @can_edit
-      = link_to t("users.edit_organization_profile"), edit_organization_path(@user), class: " rounded-btn green pull-right"
-    .row.col-md-2.center-block.no-float
+  .row
+    .left-panel.col-md-3
       .user-avatar
-        - if @organization && @user.logo.present?
-          = image_tag(@user.logo.url, width: '150px', height: '150px')
-        - elsif !@organization && @user.avatar.present?
+        - if @user.avatar.present?
           = image_tag(@user.avatar.url, width: '150px', height: '150px')
         - else
           = image_tag('default-avatar.png', width: '150px', height: '150px')
@@ -18,11 +14,8 @@
           .row
             .col-md-12
               - if @can_edit
-                = link_to t("users.edit_profile"), edit_user_path(@user), class: " rounded-btn green pull-right margin-top"
-              - if @organization
-                h1.name = @user.name
-              - else
-                h1.name = @user.first_name
+                  = link_to t("users.edit_profile"), edit_user_path(@user), class: " rounded-btn green pull-right margin-top"
+              h1.name = @user.first_name
               = render 'shared/stars', rating: @user.rating, quantity: @user.quantity_reviews
           .row
             .col-md-12
@@ -34,7 +27,8 @@
               p.since
                 | User since
                 span = @user.created_at.strftime('%B, %Y')
-              p.text = @user.interests
+                p.text = @user.interests
+
   .row
     .left-panel.col-md-3
       h3.about-me = t('users.about_me')
