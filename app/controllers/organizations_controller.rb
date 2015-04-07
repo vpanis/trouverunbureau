@@ -34,6 +34,14 @@ class OrganizationsController < ApplicationController
     return render_forbidden unless @user.eql?(current_represented)
   end
 
+  def destroy
+    organization = Organization.find(params[:id])
+    return render_forbidden unless organization.eql?(current_represented)
+    organization.destroy!
+    session[:current_organization_id] = nil
+    redirect_to user_path(current_user)
+  end
+
   private
 
   def user_params
