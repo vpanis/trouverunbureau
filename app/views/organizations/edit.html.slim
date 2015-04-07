@@ -1,6 +1,7 @@
 = render 'shared/menu_bar', user: current_represented
 = render 'shared/profile_menu_bar', user: current_user, selected: 'profile'
 = render 'shared/image_modal', modal_id: 'avatar-modal', title: t('organizations.change_picture'), image_link_id: 'avatar-link', save_button_id: 'save-avatar'
+= render 'add_manager_modal', modal_id: 'add-manager-modal', title: t('organizations.add_manager'), image_link_id: 'avatar-link', save_button_id: 'save-avatar'
 
 .user.container
   .user-title
@@ -53,11 +54,13 @@
                 .col-md-6.center-block.no-float
                   .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus"
                   label = t('users.'+m.role.to_s)
-            .col-md-3.center-block.no-float.yellow-fill
-               'Add new manager'
+            .buttons
+              .col-md-3.center-block.no-float.yellow-fill
+                 a#add-manager.yellow-fill.width-100.uppercase href="#" data-toggle="modal" data-target="#add-manager-modal" 'Add new manager'
+
           .buttons
             .col-xs-6
-              a href=(user_path(@user, organization: true))
+              a href=(organization_path(@user))
                 button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
             .col-xs-6
               = f.submit t('commons.save'), class: 'rounded-btn yellow-fill width-100 uppercase'

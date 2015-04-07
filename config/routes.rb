@@ -32,7 +32,7 @@ Deskspotting::Application.routes.draw do
     end
   end
 
-  resources :organizations, only: [:index, :new, :create, :edit, :update]
+  resources :organizations, only: [:index, :new, :create, :edit, :update, :show]
 
   resources :spaces, only: [:edit, :update, :create, :destroy] do
     collection do

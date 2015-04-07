@@ -2,7 +2,10 @@
   .user-menu
     ul.nav.navbar-nav
       li
-        = link_to(t('menu.profile'), user_path(user, organization: current_represented.kind_of?(Organization)), class: ('active' if selected.eql?('profile')))
+        - if current_represented.is_a?(Organization)
+          = link_to(t('menu.profile'), organization_path(user), class: ('active' if selected.eql?('profile')))
+        - else
+          = link_to(t('menu.profile'), user_path(user), class: ('active' if selected.eql?('profile')))
       li
         a(href="#") = t('menu.inbox')
       li

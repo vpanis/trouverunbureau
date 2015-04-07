@@ -329,6 +329,10 @@ en:
     members_text: 'Add people in your organization to help you manage your DeskSpotting account'
     create_profile: 'List your organization'
     create_title: 'Start by telling us about your organization...'
+    add_manager: 'Add new manager'
+    add_manager_action: 'Add manager'
+    email: 'Email'
+    role: 'Role'
   spaces:
     types:
       conference_room: 'Conference room'
