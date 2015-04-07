@@ -31,7 +31,7 @@ Deskspotting::Application.routes.draw do
     end
   end
 
-  resources :organizations, only: [:index, :new, :create, :edit, :update, :show]
+  resources :organizations, only: [:index, :new, :edit, :update, :create, :show, :destroy]
 
   resources :spaces, only: [:edit, :update, :create, :destroy, :index] do
     member do

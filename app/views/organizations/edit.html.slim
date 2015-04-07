@@ -57,7 +57,9 @@
             .buttons
               .col-md-3.center-block.no-float.yellow-fill
                  a#add-manager.yellow-fill.width-100.uppercase href="#" data-toggle="modal" data-target="#add-manager-modal" 'Add new manager'
-
+            .buttons
+              .col-md-3.center-block.no-float
+                = link_to('Delete organization', organization_path(@user), method: :delete, class: 'button btn btn-default')
           .buttons
             .col-xs-6
               a href=(organization_path(@user))
