@@ -39,7 +39,7 @@ class BraintreeEscrowAcceptedWorker
                              escrow_status: transaction.escrow_status }
     if failed_status?(transaction)
       not_accepted_payment_log(@booking.id, transaction)
-      attributes_to_update[:error_message] = transaction.gateway_rejection_reason
+      invalid_payment(attributes_to_update, transaction, user_id)
     else
       BraintreeEscrowAcceptedWorker.perform_in(escrow_polling_time, @booking.id, user_id)
     end
@@ -58,5 +58,11 @@ class BraintreeEscrowAcceptedWorker
 
   def escrow_polling_time
     Rails.configuration.payment.braintree.time_to_poll_for_escrow_status
+  end
+
+  def invalid_payment(attributes_to_update, transaction, user_id)
+    attributes_to_update[:error_message] = transaction.gateway_rejection_reason
+    BookingManager.change_booking_status(User.find(user_id), @booking,
+                                         Booking.states[:pending_payment])
   end
 end

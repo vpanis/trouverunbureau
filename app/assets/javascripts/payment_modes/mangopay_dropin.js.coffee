@@ -11,7 +11,7 @@ onLoad = ->
     createNewCardRegistration $('#js-card_currency').val().toUpperCase()
   $('.js-credit-card').on 'click', select_card
   $('.js-pay').on 'click', (event) ->
-    if selectedCreditCardId !== null
+    if selectedCreditCardId != null
       pay(selectedCreditCardId)
 
 select_card = (event) ->
@@ -120,7 +120,7 @@ pay = (card_id) ->
     url: '/api/v1/mangopay/start_payment'
     method: 'PUT'
     data:
-      id: bookingId
+      booking_id: bookingId
       card_id: selectedCreditCardId
     success: (response) ->
       setTimeout (->
@@ -138,6 +138,6 @@ retrievePaymentInfo = (paymentId) ->
           return
         ), timeBetweenRetrievesMS
       else
-        window.location = response.redirect
+        window.location = response.redirect_url
 
 $(document).ready onLoad

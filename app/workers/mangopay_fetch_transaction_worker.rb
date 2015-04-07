@@ -7,8 +7,7 @@ class MangopayFetchTransactionWorker
     return unless @mangopay_payment.present?
 
     transaction = fetch_transaction
-    save_payment_error(transaction['ResultMessage']) if
-      transaction['Status'] == 'FAILED'
+    save_payment_error(transaction['ResultMessage']) if transaction['Status'] == 'FAILED'
   rescue MangoPay::ResponseError => e
     save_payment_error(e.errors)
   end
@@ -22,6 +21,8 @@ class MangopayFetchTransactionWorker
 
   def save_payment_error(e)
     @mangopay_payment.update_attributes(error_message: e.to_s, status: 'FAILED')
+    BookingManager.change_booking_status(User.find(mp.user_paying_id), @booking,
+                                         Booking.states[:pending_payment])
   end
 
   def fetch_transaction

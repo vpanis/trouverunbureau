@@ -40,7 +40,7 @@ class BookingManager
       custom_errors = ActiveModel::Errors.new(booking)
       verify_states_changes(user, booking, state, custom_errors)
       return [booking, custom_errors] unless custom_errors.empty?
-      if state == Booking.states[:pending_payment]
+      if state == Booking.states[:pending_payment] && !booking.payment_verification?
         booking, custom_errors = change_to_pending_payment(booking, custom_errors)
       else
         booking.update_attributes(state: state)
@@ -94,9 +94,16 @@ class BookingManager
     end
 
     def invalid_transition?(state, booking)
-      (state == Booking.states[:pending_payment] && !booking.pending_authorization?) ||
-        (state == Booking.states[:payment_verification] && !booking.pending_payment?) ||
-        (state == Booking.states[:paid] && !booking.payment_verification?)
+      case state
+      when Booking.states[:pending_payment]
+        !booking.pending_authorization? && !booking.payment_verification?
+      when Booking.states[:payment_verification]
+        !booking.pending_payment?
+      when Booking.states[:paid]
+        !booking.payment_verification?
+      else
+        false
+      end
     end
   end
 

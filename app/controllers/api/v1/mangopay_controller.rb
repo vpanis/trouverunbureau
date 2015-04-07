@@ -6,12 +6,10 @@ module Api
 
       # GET /mangopay/configuration
       def configuration
-        render json: {
-          config: {
-            base_url: Rails.configuration.payment.mangopay.base_url,
-            client_id: Rails.configuration.payment.mangopay.client_id
-          }
-        }, status: 200
+        render status: 200, json: { config: {
+          base_url: Rails.configuration.payment.mangopay.base_url,
+          client_id: Rails.configuration.payment.mangopay.client_id
+        } }
       end
 
       # POST /mangopay/card_registration
@@ -47,9 +45,8 @@ module Api
 
       # PUT /mangopay/start_payment
       def start_payment
-        @booking = Booking.find_by_id(params[:id])
-        return render nothing: true, status: 400 unless booking.present? &&
-          !param[:card_id].blank? && payment_mangopay_verification
+        @booking = Booking.find_by_id(params[:booking_id])
+        return render nothing: true, status: 400 unless valid_params?
         return render nothing: true, status: 403 unless @booking.owner == current_represented
         @booking, custom_errors = BookingManager.change_booking_status(
                                     current_user, @booking, Booking.states[:payment_verification])
@@ -58,11 +55,23 @@ module Api
         render json: { mangopay_payment: { id: payment.id } }, status: 201
       end
 
+      # GET /mangopay/payment_info?payment_id
+      def payment_info
+        @payment = MangopayPayment.find_by_id(params[:payment_id])
+        return render nothing: true, status: 400 unless @payment.present
+        return render nothing: true, status: 403 unless @booking.owner == current_represented
+        return render json: nil, status: 200 if @payment.expecting_response?
+        return render json: { error: @payment.error_message }, status: 500 if @payment.failed?
+        render json: { redirect_url: @payment.redirect_url }, status: 200
+      end
+
       # GET /mangopay/payin_succeeded?RessourceId&EventType=PAYIN_NORMAL_SUCCEEDED&Date
       def payin_succeeded
         mp = MangopayPayment.find_by_transaction_id(params[:RessourceId])
         return unless mp.present? && mp.notification_date_int <= params[:Date]
         mp.update_attributes(transaction_status: 'SUCCEEDED', notification_date_int: params[:Date])
+        BookingManager.change_booking_status(User.find(mp.user_paying_id), @booking,
+                                             Booking.states[:paid])
       end
 
       # GET /mangopay/payin_failed?RessourceId&EventType=PAYIN_NORMAL_FAILED&Date
@@ -82,20 +91,29 @@ module Api
           current_represented.mangopay_payment_account.accepted?
       end
 
-      def payment_mangopay(credit_card)
+      def payment_mangopay(credit_card_id)
         unless @booking.payment.present?
           @booking.payment = MangopayPayment.new
           @booking.save
         end
-        MangopayPaymentWorker.perform_async(@booking.id, credit_card,
-                                            current_user.id, current_represented.id,
-                                            current_represented.class.to_s)
+
+        @booking.payment.update_attributes(transaction_status: 'EXPECTING_RESPONSE',
+                                           user_paying: current_user)
+        MangopayPaymentWorker.perform_async(@booking.id, credit_card_id,
+                                            current_user.id, root_path)
         @booking.payment
       end
 
       def credit_card_params
         params.require(:mangopay_credit_card).permit(:credit_card_id, :last_4, :expiration,
                                                      :card_type, :status)
+      end
+
+      def valid_params?
+        @booking.present? && payment_mangopay_verification &&
+          MangopayCreditCard.joins(:mangopay_payment_account).where(id: params[:card_id].to_i)
+            .where { mangopay_payment_account.buyer == my { @booking.owner } }.first.present?
+        # credit card belongs to the booking_owner
       end
 
       def render_mangopay_credit_card_cases(mcc)

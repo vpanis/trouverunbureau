@@ -6,7 +6,7 @@ class BraintreeReleaseEscrowWorker
     @payment = BraintreePayment.find_by_id(payment_id)
     return unless @payment.present? # impossible, but...
 
-    # Can't release a found if the transaction is not held
+    # Can't release a fund if the transaction is not held
     if @payment.escrow_status == Braintree::Transaction::EscrowStatus::Held
       release_from_escrow
     elsif @payment.escrow_status == Braintree::Transaction::EscrowStatus::HoldPending
