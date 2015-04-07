@@ -1,0 +1,88 @@
+<style>
+    @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,700,300,400);
+</style>
+<div lang="es" style="min-width: 320px; margin: 0; padding: 20px 0; font-family: Open Sans, sans-serif;">
+  <div style="max-width: 720px; margin: 0 auto;">
+    <!-- body -->
+    <div class="body" style="color: #9f9f9f">
+      <div style="max-width: 650px; margin: 0 auto;">
+        <div style="padding: 20px 50px; border-bottom: 1px solid #ccc; text-align: center;">
+          <%= image_tag 'isologotipo-login.png' %>
+        </div>
+
+        <div>
+          <p><%= "#{t('guest_review_email.hi')} George," %></p> <!-- TODO: Change name -->
+          <p>
+            <%= t('host_review_email.your_guest') %>
+            <span style="color:black; font-weight: bold;"><%= " JP De Lorenzo " %></span><!-- TODO: Change guest name -->
+            <%= t('host_review_email.checked_in') %>
+            <span style="color:black; font-weight: bold;"><%= " Meeting room " %></span><!-- TODO: Change room name -->
+            <%= t('guest_review_email.at') %>
+            <span style="color:black; font-weight: bold;"><%= " Venue name" %></span><!-- TODO: Change venue name -->
+          </p>
+        </div>
+      </div>
+
+      <div style="display: table; margin: 0 auto; padding-top: 20px;">
+          <!-- TODO: If format days or date -->
+
+          <!-- DAYS FORMAT -->
+          <div style="padding: 0 15px; text-align: center; display: table-cell;">
+            <p style="line-height: 25px;">
+              <span style="font-weight: bold;">10</span><!-- TODO: Change days -->
+              <br>
+              <span style="font-size: 14px;"><%= t('guest_review_email.days') %></span>
+            </p>
+          </div>
+          <!-- END DAYS FORMAT -->
+          <!-- DATE FORMAT -->
+          <div style="padding: 0 15px; text-align: center; display: table-cell;">
+            <p style="line-height: 25px;">
+              <span style="font-weight: bold;">10/05/15</span><!-- TODO: Change date -->
+              <br>
+              <span style="font-size: 14px;"><%= t('guest_review_email.date') %></span>
+            </p>
+          </div>
+          <!-- END DATE FORMAT -->
+
+          <div style="text-align: center; display: table-cell; font-size: 20px; vertical-align: middle; font-weight: 100;">|</div>
+          <div style="padding: 0 15px; text-align: center; display: table-cell;">
+            <p style="line-height: 25px;">
+              <span style="font-weight: bold;">14:00 PM</span><!-- TODO: Change time -->
+              <br>
+              <span style="font-size: 14px;"><%= t('guest_review_email.check_in') %></span>
+            </p>
+          </div>
+          <div style="text-align: center; display: table-cell; font-size: 20px; vertical-align: middle; font-weight: 100;">|</div>
+          <div style="padding: 0 15px; text-align: center; display: table-cell;">
+            <p style="line-height: 25px;">
+              <span style="font-weight: bold;">16:00 PM</span><!-- TODO: Change time -->
+              <br>
+              <span style="font-size: 14px;"><%= t('guest_review_email.check_out') %></span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div style="background-color: #f6f6f6; text-align: center; padding: 25px 0; margin: 20px 0;">
+        <a href="" style="background-color: rgb(255, 225, 17); padding: 10px 70px; border-radius: 25px; color: black; font-weight: bold; text-decoration:none; text-transform: uppercase;"><!-- TODO: Change rate link -->
+          <%= t('host_review_email.rate_guest') %>
+        </a>
+      </div>
+
+
+      <div style="min-width: 650px; margin: 0 auto; display: table; border-bottom: 1px solid #ccc; padding-bottom: 15px;">
+        <p style="display: table-cell; vertical-align: middle; font-weight: 100;">
+          <%= t('new_message_email.team') %>
+        </p>
+        <div class="social-icons" style="min-width: 216px; display: table-cell; vertical-align: middle; text-align: right;">
+          <div class="twitter social-icon" style="width: 40px; height: 40px; display: inline-block; margin-right: 14px; background-image: url(/assets/email-social-icons-sprite.png); background-size: 170px 80px !important; background-position: -1px 0px;"></div>
+          <div class="facebook social-icon" style="width: 40px; height: 40px; display: inline-block; margin-right: 14px; background-image: url(/assets/email-social-icons-sprite.png); background-size: 170px 80px !important; background-position: -44px 0px;"></div>
+          <div class="linkedin social-icon" style="width: 40px; height: 40px; display: inline-block; margin-right: 14px; background-image: url(/assets/email-social-icons-sprite.png); background-size: 170px 80px !important; background-position: -87px 0px;"></div>
+          <div class="instagram social-icon" style="width: 40px; height: 40px; display: inline-block; margin-right: 14px; background-image: url(/assets/email-social-icons-sprite.png); background-size: 170px 80px !important; background-position: -130px 0px;"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
