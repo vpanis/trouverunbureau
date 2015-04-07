@@ -1,7 +1,6 @@
 = render 'shared/menu_bar', user: current_represented
 = render 'shared/profile_menu_bar', user: current_user, selected: 'profile'
-- if !@organization
-  = render 'language_modal'
+= render 'language_modal'
 = render 'shared/image_modal', modal_id: 'avatar-modal', title: t('users.change_picture'), image_link_id: 'avatar-link', save_button_id: 'save-avatar'
 
 .user.container
@@ -10,13 +9,6 @@
     .small-separator
     h4.gray-subtitle = t('users.required_fields')
     .user-avatar
-      - if @user.is_a?(Organization)
-        - if @user.logo?
-          = image_tag(@user.logo.url, width: '95px', height: '95px', id: 'user-avatar-img')
-        - else
-          = image_tag('venue-default.png', width: '95px', height: '95px', id: 'user-avatar-img')
-        a#edit-avatar.add.block.aqua href="#" data-toggle="modal" data-target="#avatar-modal" = t('users.change_picture')
-      - else
         - if @user.avatar?
           = image_tag(@user.avatar.url, width: '95px', height: '95px', id: 'user-avatar-img')
         - else
@@ -53,8 +45,6 @@
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               label = t('users.company_name')
               = f.text_field :company_name, placeholder: t('users.company_name'), class: 'form-control'
-
-          - if !@organization
 
             .row
               .small-title

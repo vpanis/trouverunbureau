@@ -68,7 +68,7 @@ Deskspotting::Application.routes.draw do
 
     resources :wishlist, only: [:index, :create, :destroy]
 
-    resources :organizations do
+    resources :organizations, only:[] do
       member do
         get :reviews, to: 'reviews#organization_reviews'
         get :inquiries, to: 'booking_inquiries#organization_inquiries'

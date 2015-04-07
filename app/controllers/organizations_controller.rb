@@ -2,6 +2,7 @@ class OrganizationsController < ApplicationController
   inherit_resources
   include RepresentedHelper
   include SelectOptionsHelper
+  before_action :authenticate_user!, except: [:show]
 
   def show
     @user = Organization.find(params[:id])

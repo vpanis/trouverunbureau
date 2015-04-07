@@ -1,27 +1,6 @@
 = render 'shared/menu_bar', user: current_represented
 = render 'shared/profile_menu_bar', user: current_represented, selected: 'profile'
 .user-profile.container
-  - if @organization
-    - if @can_edit
-      = link_to t("users.edit_organization_profile"), edit_organization_path(@user), class: " rounded-btn green pull-right"
-    .row.col-md-2.center-block.no-float
-      .user-avatar
-            - if @user.logo.present?
-              = image_tag(@user.logo.url, width: '150px', height: '150px')
-            - else
-              = image_tag('default-avatar.png', width: '150px', height: '150px')
-    .row.col-md-6.center-block.no-float
-      .basic-info.col-md-12.center-block.no-float
-        .user-header
-          h1.name = @user.name
-          .row
-            .col-md-12
-              p.location
-                - if @owner.location.present?
-                  strong.black = @owner.location
-                - else
-                  strong.black = t('commons.unknown')
-  - else
     .row
       .left-panel.col-md-3
         .user-avatar
@@ -50,7 +29,6 @@
                   span = @user.created_at.strftime('%B, %Y')
                   p.text = @user.interests
 
-  - if !@organization
     .row
       .left-panel.col-md-3
         h3.about-me = t('users.about_me')
@@ -70,21 +48,3 @@
       .right-panel.col-md-9
         - if @can_view_reiews
           = render 'reviews', user: @user
-  - else
-    .row.col-md-2.center-block.no-float
-      h1.members-title.center = t('users.organization_members')
-    .row.col-md-3.center-block.no-float
-      p.center = t('users.organization_members_text')
-    .row
-      - @organization_members.each do |m|
-        .col-md-3.center-block.no-float
-          .user-avatar
-            - if m.user.avatar.present?
-              = image_tag(@user.logo.url, width: '150px', height: '150px', class: "center-block no-float")
-            - else
-              = image_tag('default-avatar.png', width: '150px', height: '150px', class: "center-block no-float")
-          h3.center = m.user.name
-          p.center = m.user.email
-          .col-md-6.center-block.no-float
-            .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus"
-            label = t('users.'+m.role.to_s)
