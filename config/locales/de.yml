@@ -354,3 +354,9 @@ de:
     all_venues: All Venues
     current: Current bookings
     cancelled: Cancelled bookings
+  new_message_email:
+    hi: Hi
+    got_new_message: Got a new message from
+    reply: Or reply directly on this mail.
+    view_on_deskspotting: View on DeskSpotting
+    team: The DeskSpotting Team
