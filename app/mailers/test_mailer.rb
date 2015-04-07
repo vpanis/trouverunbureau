@@ -5,4 +5,8 @@ class TestMailer < ActionMailer::Base # Remove this file when create the mailers
     mail(to: email, subject: 'test')
   end
 
+  def host_cancellation_email(email)
+    mail(to: email, subject: 'test')
+  end
+
 end
