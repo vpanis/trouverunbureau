@@ -379,3 +379,16 @@ it:
     terms2: feel free to read
     cancellation_policy: cancellation policy
     terms_of_service: our terms of service
+  guest_review_email:
+    hi: Hi
+    checked_out: You have checked out of
+    at: at
+    check_in: Check In
+    check_out: Check Out
+    days: Days
+    date: Date
+    rate_stay: rate your stay
+  host_review_email:
+    rate_guest: rate your guest
+    your_guest: Your Guest
+    checked_in: has checked in of
