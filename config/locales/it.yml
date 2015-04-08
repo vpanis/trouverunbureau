@@ -320,6 +320,9 @@ it:
     day_price: 'Day price'
     month_price: 'Month price'
     deposit: 'Deposit'
+  inbox:
+    messages: 'Messages'
+    write_message: 'write message'
   reviews:
     guest_review: 'Guest review'
     space_review: 'Space review'

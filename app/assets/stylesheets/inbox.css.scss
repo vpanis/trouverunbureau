@@ -12,13 +12,13 @@
   }
   .right-panel {
     width: calc(75% - 30px);
-    padding: 15px;
+    padding: 15px 15px 0;
   }
   .booking-list{
     background: $light-gray;
     margin: 0px;
     overflow: auto;
-    height: 75vh;
+    height: calc(100vh - 155px);
     .booking-item{
       border-bottom: solid 1px $gray;
       border-right: solid 1px $gray;
@@ -45,9 +45,8 @@
   .pagination-container {
     width: 100%;
     text-align: center;
+    padding-top: 8px;
   }
-
-
 }
 
 .booking-item-wrapper {
@@ -294,6 +293,9 @@
       border-right: none;
     }
   }
+  .buttons{
+    margin: 60px 0 20px;
+  }
 }
 
 .inbox {
@@ -318,7 +320,8 @@
 }
 
 .messages-wrapper {
-  height: 300px;
+  min-height: 100px;
+  height: calc(100vh - 600px);
   overflow-y: auto;
   .who {
     display: inline-block;

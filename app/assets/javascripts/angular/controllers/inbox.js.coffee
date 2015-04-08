@@ -41,10 +41,10 @@ angular.module('deskSpotting.inbox', []).controller "InboxCtrl", [
 
     $scope.sendMessage = () ->
       text = this.message_text
-      console.log(text)
       if text == ''
         console.log('empty messages are ignored')
         return
+      this.message_text = ''
       Restangular.one('inquiries', $scope.selected_booking.id).one('messages').customPOST({message: {text: text}}).then (result) ->
         $scope.message_text = ''
         reload_messages()
