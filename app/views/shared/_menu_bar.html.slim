@@ -32,7 +32,7 @@
                   .avatar
                     - if user.kind_of?(User)
                       - if user.avatar.present?
-                        = image_tag(user.logo.url)
+                        = image_tag(user.avatar.url)
                       - else
                         = image_tag('default-avatar.png')
 
