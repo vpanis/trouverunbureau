@@ -14,6 +14,7 @@ angular.module('deskSpotting.organization_edit', []).controller "OrganizationEdi
       email = $('#email_field').val()
       role = $('#role_select').val()
       Restangular.one('users/info').get(email: email).then (result) ->
+        result.user.role = role
         $scope.future_members.push(result.user)
       return
 
