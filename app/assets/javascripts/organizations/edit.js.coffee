@@ -72,7 +72,8 @@ on_load = ->
         $('#avatar-modal').modal('hide')
       $('#organization_logo').change ->
         handle_local_img('#organization_logo', '#user-avatar-img')
-
+      $('#add-manager-link').click ->
+        $('#add-manager-modal').modal('hide')
     initialize_popovers = ->
       options = {
         placement: (context, source) ->

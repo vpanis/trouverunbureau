@@ -55,6 +55,14 @@
                   .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus"
                   label = t('users.'+m.role.to_s)
 
+            .col-md-3.center-block.no-float ng-repeat=("m in future_members")
+              .user-avatar
+                = image_tag('default-avatar.png', width: '150px', height: '150px', class: "center-block no-float")
+              h3.center() {{m.name}}
+              p.center() {{m.name}}
+              .col-md-6.center-block.no-float
+                .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus"
+                label() {{m.role.to_s}}
             .buttons
               .col-md-3.center-block.no-float.yellow-fill
                  a#add-manager.yellow-fill.width-100.uppercase href="#" data-toggle="modal" data-target="#add-manager-modal" 'Add new manager'
