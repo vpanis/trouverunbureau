@@ -44,53 +44,6 @@ class SpacesController < ModelController
 
   private
 
-  def create_booking_message
-    Message.create!(m_type: Message.m_types[:text], user: current_user,
-      represented: current_represented, booking: @booking, text: params[:message]) if params[:message].present?
-  end
-
-  def handle_booking_type
-    if params[:booking_type] == "hour"
-      hour_type_booking
-    elsif params[:booking_type] == "day"
-      day_type_booking
-    else
-      month_type_booking
-    end
-  end
-
-  def hour_type_booking
-    @from_date = Time.parse(params[:booking][:from] + " " + params[:hour_booking_from])
-    @to_date = Time.parse(params[:booking][:from] + " " + params[:hour_booking_to])
-    if @to_date.min.in?([0, 30])
-      @to_date = @to_date.advance(minutes: -1).at_end_of_minute
-    else
-      @to_date = @to_date.at_end_of_hour
-    end
-    @b_type = Booking.b_types[:hour]
-  end
-
-  def day_type_booking
-    @from_date = Time.parse(params[:booking][:from]).at_beginning_of_day
-    @to_date = Time.parse(params[:booking][:to]).at_end_of_day
-    @b_type = Booking.b_types[:day]
-  end
-
-  def month_type_booking
-    @from_date =Time.parse(params[:booking][:from]).at_beginning_of_day
-    @to_date =Time.parse(params[:booking][:from]).advance(months: params[:month_quantity]).at_end_of_day
-    @b_type = Booking.b_types[:month]
-  end
-
-  def create_booking
-    BookingManager.book(current_user, { owner: current_represented,
-      from: @from_date,
-      to: @to_date,
-      space_id: params[:id].to_i,
-      b_type: Booking.b_types[:month],
-      quantity: params[:booking][:quantity] })
-  end
-
   def object_params
     params.require(:space).permit(:s_type, :name, :capacity, :quantity, :description,
                                   :hour_price, :day_price, :week_price, :month_price, :deposit)
@@ -100,5 +53,4 @@ class SpacesController < ModelController
     params.require(:space).permit(:s_type, :name, :capacity, :quantity, :description, :deposit,
                                   :hour_price, :day_price, :week_price, :month_price, :venue_id)
   end
-
 end

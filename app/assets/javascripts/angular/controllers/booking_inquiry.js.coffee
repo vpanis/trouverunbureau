@@ -15,26 +15,25 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
       $scope.booking_from = $('#booking_from').value
       $scope.booking_to = $('#booking_to').value
 
-    $scope.swap_inquiry_type = ($show_class, $tabName) ->
+    $scope.swap_inquiry_type = (show_class, tab_name) ->
       hide_forms()
-      $($show_class).removeClass('form--hidden')
-      $scope.selected_tab = $tabName
+      $(show_class).removeClass('form--hidden')
+      $scope.selected_tab = tab_name
 
     $scope.disabled = (date, mode) ->
       days = [0, 1, 2, 3, 4, 5, 6]
       $.each available_dates_hours, () ->
-        datepicker_weekday = if @weekday + 1 < 7 then @weekday + 1 else 0
+        datepicker_weekday = ((@weekday + 1) % 7)
         _.pull(days, datepicker_weekday)
       return mode == 'day' && $.inArray(date.getDay(), days) >= 0
 
     $scope.hours_for_day = () ->
-      console.log('entre mil veces')
       if not $scope.booking_from?
         $('form .hour-select').prop('disabled', true);
         return
       available_hours = []
       $.each available_dates_hours, () ->
-        datepicker_weekday = if @weekday + 1 < 7 then @weekday + 1 else 0
+        datepicker_weekday = ((@weekday + 1) % 7)
         if datepicker_weekday == $scope.booking_from.getDay()
           current_hour = @from
           while current_hour <= @to
@@ -46,6 +45,8 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
             current_hour_string = addition_hours + hour + ":" + mins + addition_mins
             available_hours.push(current_hour_string)
             if mins > 0
+              # hours use 800 830 900 as its type, so we increment 70 to change from half an hour to
+              # a full hour
               current_hour += 70
             else
               current_hour += 30
@@ -64,10 +65,7 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
       else if $scope.selected_tab == 'day'
         if not $scope.booking_from? or not $scope.booking_to?
           return 0
-        if Math.ceil(($scope.booking_to - $scope.booking_from) / 86400000) + 1 > 0
-          return Math.ceil(($scope.booking_to - $scope.booking_from) / 86400000) + 1
-        else
-          return 0
+        return calculate_available_dates()
       else
         if not $scope.booking_from?
           $('#month_quantity').prop('disabled', true);
@@ -125,6 +123,18 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
 
     hide_forms = () ->
       $('.inquiring-container .form').addClass('form--hidden')
+
+    calculate_available_dates = () ->
+      current_date = new Date($scope.booking_from)
+      end_date = $scope.booking_to
+      counter = 0
+      while current_date <= end_date
+        $.each available_dates_hours, () ->
+          datepicker_weekday =  ((@weekday + 1) % 7)
+          if current_date.getDay() == datepicker_weekday
+            counter++
+        current_date.setDate(current_date.getDate() + 1)
+      return counter
 
     # CONTROLLER CODE
 

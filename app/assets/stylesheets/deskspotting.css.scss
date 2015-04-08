@@ -17,7 +17,7 @@ a, a:hover{
   color: $red;
 }
 
-h3.yellow-title{
+h3.yellow-title {
   margin: 0;
   color: $yellow;
   text-transform: uppercase;
@@ -25,12 +25,14 @@ h3.yellow-title{
   letter-spacing: 0.25rem;
   font-weight: 700;
 }
-.small-separator{
+
+.small-separator {
   border-top: 2px solid $yellow;
   margin: 18px auto 20px;
   width: 5%;
 }
-h4.gray-subtitle{
+
+h4.gray-subtitle {
   margin: 0;
   font-weight: 300;
   font-size: 30px;
@@ -39,11 +41,13 @@ h4.gray-subtitle{
 }
 
 /* ====== LANDING ====== */
-.separator{
+
+.separator {
   border-top: 2px solid $yellow;
   margin: 40px auto 68px;
   width: 10%;
 }
+
 .landing-page{
   .rounded-right{
     @include rounded-right(3px);

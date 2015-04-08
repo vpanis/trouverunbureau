@@ -69,13 +69,18 @@ class Booking < ActiveRecord::Base
 
   def unit_price_quantity
     return 0 unless space.present? && space.venue.present? && from <= to
-    if b_type == 'day'
+    case b_type
+    when 'day'
       venue_not_open_days = [0, 1, 2, 3, 4, 5, 6] - space.venue.day_hours.pluck(:weekday)
       (VenueHour.weekdays_array(from, to) - venue_not_open_days).length
-    elsif b_type == 'month'
-      (to.year * 12 + to.month) - (from.year * 12 + from.month) + ((to.day >= from.day)? 1 : 0)
+    when 'month'
+      calculate_months
     else
       ((to - from) / 1.send(b_type)).ceil
     end
+  end
+
+  def calculate_months
+    (to.year * 12 + to.month) - (from.year * 12 + from.month) + ((to.day >= from.day) ? 1 : 0)
   end
 end

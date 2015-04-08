@@ -72,6 +72,7 @@
               select name='hour_booking_to' id='hour_booking_to' class='form-control hour-select' ng-model='hour_booking_end' required='true' ng-options="hour for hour in hours_for_day() track by hour"
           input type="submit" class="input--hidden"
           = text_field_tag :booking_type, nil, { type: 'text', 'ng-model' => "selected_tab", hidden: "" }
+          = hidden_field_tag :message, nil, { placeholder: t('booking_inquiry.message_placeholder'), class: 'form-control', hidden: "", ng_model: "booking_message" }
     - if @booking.space.day_price.present?
       = form_for @booking, url: inquiry_space_path(@space), html: { id: 'day-form'} do |f|
         .form.form-day-booking.form--hidden
@@ -87,13 +88,14 @@
                 = t('booking_inquiry.chek_out')
               .calendar.input-group
                 .calendar-icon.input-group-addon ng-click="open($event, 'opened_to')" type="button"
-                = text_field_tag :date_booking_end, nil, { placeholder: 'mm/dd/aa', class: 'form-control', close_text: 'Close', datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened_to', ng_model: "booking_to", date_disabled: "disabled(date, mode)", type: 'text', show_button_bar:'false', ng_required: 'true' }
+                = f.text_field :to, { placeholder: 'mm/dd/aa', class: 'form-control', close_text: 'Close', datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened_to', ng_model: "booking_to", date_disabled: "disabled(date, mode)", type: 'text', show_button_bar:'false', ng_required: 'true' }
             .form-group.col-xs-12.col-sm-4.col-md-4.col-lg-4
               label
                 = t('booking_inquiry.space_amount')
               = f.text_field :quantity, value: 1, class: 'form-control', type: 'number', ng_model: 'space_quantity', min: '1', ng_required: 'true'
           input type="submit" class="input--hidden"
           = text_field_tag :booking_type, nil, { type: 'text', 'ng-model' => "selected_tab", hidden: "" }
+          = hidden_field_tag :message, nil, { placeholder: t('booking_inquiry.message_placeholder'), class: 'form-control', hidden: "", ng_model: "booking_message" }
     - if @booking.space.month_price.present?
       = form_for @booking, url: inquiry_space_path(@space), html: { id: 'month-form'} do |f|
         .form.form-month-booking.form--hidden
@@ -114,11 +116,12 @@
               = f.text_field :quantity, value: 1, class: 'form-control', type: 'number', ng_model: 'space_quantity', min: '1', ng_required: 'true'
           input type="submit" class="input--hidden"
           = text_field_tag :booking_type, nil, { type: 'text', 'ng-model' => "selected_tab", hidden: "" }
+          = hidden_field_tag :message, nil, { placeholder: t('booking_inquiry.message_placeholder'), class: 'form-control', hidden: "", ng_model: "booking_message" }
     .row
       .form-group.col-xs-12.col-sm-12.col-md-12.col-lg-12.message-wrapper
         label
           = t('booking_inquiry.your_message')
-        = text_area_tag :message, nil, { placeholder: t('booking_inquiry.message_placeholder'), class: 'form-control'}
+        = text_area_tag :message, nil, { placeholder: t('booking_inquiry.message_placeholder'), class: 'form-control', ng_model: "booking_message" }
     table.table-booking-inquiry
       tbody
         tr
