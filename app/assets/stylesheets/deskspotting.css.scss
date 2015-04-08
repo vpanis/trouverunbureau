@@ -17,7 +17,7 @@ a, a:hover{
   color: $red;
 }
 
-h3.yellow-title{
+h3.yellow-title {
   margin: 0;
   color: $yellow;
   text-transform: uppercase;
@@ -25,12 +25,14 @@ h3.yellow-title{
   letter-spacing: 0.25rem;
   font-weight: 700;
 }
-.small-separator{
+
+.small-separator {
   border-top: 2px solid $yellow;
   margin: 18px auto 20px;
   width: 5%;
 }
-h4.gray-subtitle{
+
+h4.gray-subtitle {
   margin: 0;
   font-weight: 300;
   font-size: 30px;
@@ -39,11 +41,13 @@ h4.gray-subtitle{
 }
 
 /* ====== LANDING ====== */
-.separator{
+
+.separator {
   border-top: 2px solid $yellow;
   margin: 40px auto 68px;
   width: 10%;
 }
+
 .landing-page{
   .rounded-right{
     @include rounded-right(3px);
@@ -1240,16 +1244,16 @@ li.venue-hours.active{
   width: 40px;
 }
 
-.weekday-col{
+.weekday-col {
   line-height: 42px;
   padding-top: 20px;
 }
 
-.bigstars{
+.bigstars {
   margin: 0 auto;
   width: 260px;
   margin-bottom: 40px;
-  .bigstar{
+  .bigstar {
     @include at2x('stars-sprite', 80px, 42px);
     background-size: 80px 42px;
     width: 40px;
@@ -1260,7 +1264,7 @@ li.venue-hours.active{
     vertical-align: middle;
     background-position: -40px 0px;
   }
-  .bigstar.active{
+  .bigstar.active {
     background-position: 0px 0px;
   }
 }
@@ -1282,7 +1286,7 @@ li.venue-hours.active{
   }
 }
 
-.container{
+.container {
   padding-top: 20px;
 }
 
@@ -1338,6 +1342,189 @@ li.venue-hours.active{
       border-bottom: 2px solid $dark-gray;
       border-radius: 0;
       height: 44px !important;
+    }
+  }
+}
+
+/*--booking inquiry--*/
+
+.error-wrapper {
+  margin: 0 auto;
+  width: 600px;
+  padding-top: 40px;
+}
+.inquiring-container {
+  max-width: 940px;
+  margin: 0 auto;
+  .inquiry-title-container {
+    text-align: center;
+    padding-top: 50px;
+  }
+  .workspace-detail-container {
+    text-align: center;
+    margin: 30px 0;
+    .workspace-image {
+      height: 50px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 20px;
+    }
+    .workspace-detail-wrapper {
+      display: inline-block;
+      vertical-align: middle;
+      text-align: left;
+      .workspace-title,
+      .capacity-image,
+      .workspace-capacity,
+      .location-image,
+      .location-text,
+      .venue-name {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .workspace-title {
+        font-weight: bold;
+        margin-right: 20px;
+      }
+      .capacity-image {
+        width: 20px;
+        margin-right: 5px;
+      }
+      .workspace-capacity {
+        margin-right: 20px;
+      }
+      .small-separator {
+        margin: 10px 0;
+        width: 50px;
+      }
+      .location-image {
+        margin-right: 5px;
+      }
+    }
+  }
+  .separator {
+    border-top: 1px solid $gray;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .time-select-wrapper {
+    text-align: center;
+    margin-bottom: 40px;
+    .multiple-switch-wrapper {
+      width: 600px;
+      margin: 0 auto;
+      .tab {
+        display: inline-block;
+        vertical-align: top;
+        width: 100px;
+        height: 50px;
+        border: 2px solid $light-gray;
+        border-left: none;
+        border-right: none;
+        line-height: 46px;
+        text-transform: uppercase;
+        font-size: 12px;
+        cursor: pointer;
+        &:first-child {
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
+          border-left: 2px solid $light-gray;
+        }
+        &:last-child {
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 5px;
+          border-right: 2px solid $light-gray;
+        }
+        &.tab--selected {
+          border: none;
+          font-weight: bold;
+          background: $yellow;
+          line-height: 50px;
+        }
+        &.tab--hidden {
+          display: none;
+        }
+      }
+    }
+  }
+  .message-wrapper {
+    margin-bottom: 30px;
+  }
+  .table-booking-inquiry {
+    width: 100%;
+    color: $gray-text;
+    margin-bottom: 40px;
+    tr {
+      height: 60px;
+      border-top: 1px solid $gray;
+      td {
+        padding: 0 20px;
+        &:last-child {
+          text-align: center;
+          text-transform: uppercase;
+        }
+        .base-price {
+          font-weight: bold;
+          font-size: 28px;
+          font-style: normal;
+          color: $light-black;
+        }
+      }
+      &:first-child {
+        background: $light-gray;
+        td:last-child {
+          font-size: 10px;
+          font-style: italic;
+        }
+      }
+      &:last-child {
+        background: $light-gray;
+        border-bottom: 1px solid $gray;
+        color: $light-black;
+        font-weight: bold;
+        td:last-child {
+          background: $yellow;
+        }
+      }
+    }
+  }
+  .booking-reasons-wrapper {
+    text-align: center;
+    margin-bottom: 40px;
+    h2 {
+      color: $light-black;
+    }
+    .features-wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .feature-item {
+      display: inline-block;
+      width: 300px;
+      height: 50px;
+      text-align: left;
+      padding-left: 55px;
+      .feature-icon {
+        width: 20px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px;
+      }
+      .feature-item-text {
+        color: $gray-text;
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+  }
+  .form-btn-wrapper {
+    height: 50px;
+    margin-bottom: 100px;
+    .btn-inquiry-back {
+      display: block;
+    }
+    .btn-inquiry-send {
+      width: 100%;
     }
   }
 }

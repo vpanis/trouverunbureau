@@ -255,7 +255,7 @@ en:
       standard_times: 'Standard times?'
       custom_times: 'Custom times?'
       opening_time: 'Opening Time'
-      closing_time: 'Closting Time'
+      closing_time: 'Closing Time'
       add_venue_logo: 'Add venue logo'
       change_logo: 'Change logo'
       name: 'Venue name'
@@ -354,3 +354,20 @@ en:
     all_venues: All Venues
     current: Current bookings
     cancelled: Cancelled bookings
+  booking_inquiry:
+    time_frame: 'Select Time Frame'
+    check_in: 'Check in'
+    check_out: 'Check_out'
+    spaces_amount: 'Number of spaces'
+    date: 'Date'
+    your_message: 'Your message'
+    message_placeholder: 'Tell the host more about yourself and your professional interests.'
+    feature_1: 'No booking fees.'
+    feature_2: 'Deposits held in scrows.'
+    feature_3: 'Book only the time you need.'
+    feature_4: 'Verified venues.'
+    feature_5: 'Secure payments.'
+    feature_6: 'Flexible cancelations.'
+    back: 'Back'
+    send_inquiry: 'Send inquiry'
+    month_amount: 'Number of months'

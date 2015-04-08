@@ -32,12 +32,16 @@ Deskspotting::Application.routes.draw do
   end
 
   resources :spaces, only: [:edit, :update, :create, :destroy, :index] do
+    member do
+      get :inquiry, to: "space_booking_inquiry#inquiry"
+      post :inquiry, to: "space_booking_inquiry#create_booking_inquiry"
+    end
     collection do
       get :wishlist
     end
   end
 
-  resources :bookings, only: [:destroy]  do
+  resources :bookings, only: [:destroy, :create]  do
     member do
       get :client_review, to: "reviews#new_client_review"
       get :venue_review, to: "reviews#new_venue_review"
