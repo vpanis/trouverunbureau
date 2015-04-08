@@ -8,7 +8,7 @@
             - if @user.logo.present?
               = image_tag(@user.logo.url, width: '150px', height: '150px')
             - else
-              = image_tag('default-avatar.png', width: '150px', height: '150px')
+              = image_tag('venue-default.png', width: '150px', height: '150px')
     .row.col-md-6.center-block.no-float
       .basic-info.col-md-12.center-block.no-float
         .user-header
@@ -30,7 +30,7 @@
         .col-md-3.center-block.no-float
           .user-avatar
             - if m.user.avatar.present?
-              = image_tag(@user.logo.url, width: '150px', height: '150px', class: "center-block no-float")
+              = image_tag(m.user.avatar.url, width: '150px', height: '150px', class: "center-block no-float")
             - else
               = image_tag('default-avatar.png', width: '150px', height: '150px', class: "center-block no-float")
           h3.center = m.user.name
