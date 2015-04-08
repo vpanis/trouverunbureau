@@ -1,7 +1,6 @@
 = render 'shared/menu_bar', user: current_represented
 = render 'shared/profile_menu_bar', user: current_user, selected: 'profile'
 = render 'shared/image_modal', modal_id: 'avatar-modal', title: t('organizations.change_picture'), image_link_id: 'avatar-link', save_button_id: 'save-avatar'
-= render 'add_manager_modal', modal_id: 'add-manager-modal', title: t('organizations.add_manager'), image_link_id: 'avatar-link', save_button_id: 'save-avatar', member_roles: @member_roles
 
 .user.container
   .user-title
@@ -17,6 +16,7 @@
   .row
     .col-xs-12.col-sm-8.col-md-8.col-lg-8.col-xs-offset-0.col-sm-offset-2
       .edit-profile-form.dashboard-form ng-controller="OrganizationEditCtrl"
+        = render 'add_manager_modal', modal_id: 'add-manager-modal', title: t('organizations.add_manager'), image_link_id: 'avatar-link', save_button_id: 'save-avatar', member_roles: @member_roles
         = form_for @user do |f|
           = f.file_field :logo, class: 'hidden'
           .row
@@ -46,7 +46,7 @@
               .col-md-3.center-block.no-float
                 .user-avatar
                   - if m.user.avatar.present?
-                    = image_tag(@user.logo.url, width: '150px', height: '150px', class: "center-block no-float")
+                    = image_tag(m.user.avatar.url, width: '150px', height: '150px', class: "center-block no-float")
                   - else
                     = image_tag('default-avatar.png', width: '150px', height: '150px', class: "center-block no-float")
                 h3.center = m.user.name
@@ -54,6 +54,7 @@
                 .col-md-6.center-block.no-float
                   .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus"
                   label = t('users.'+m.role.to_s)
+
             .buttons
               .col-md-3.center-block.no-float.yellow-fill
                  a#add-manager.yellow-fill.width-100.uppercase href="#" data-toggle="modal" data-target="#add-manager-modal" 'Add new manager'

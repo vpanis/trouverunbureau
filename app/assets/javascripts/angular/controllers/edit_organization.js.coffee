@@ -2,6 +2,8 @@ angular.module('deskSpotting.organization_edit', []).controller "OrganizationEdi
   '$scope'
   'Restangular'
   ($scope, Restangular) ->
+    $scope.future_members = []
+
     $scope.open = ($event) ->
       $event.preventDefault()
       $event.stopPropagation()
@@ -12,14 +14,7 @@ angular.module('deskSpotting.organization_edit', []).controller "OrganizationEdi
       email = $('#email_field').val()
       role = $('#role_select').val()
       Restangular.one('users/info').get(email: email).then (result) ->
-        $scope.spaces = result.spaces
-        $scope.totalSpaces = result.count
-        $scope.currentPage = result.current_page
-        $scope.from = ($scope.itemsPerPage)*($scope.currentPage-1) + 1
-        $scope.to = Math.min(($scope.itemsPerPage)*($scope.currentPage), $scope.totalSpaces)
-        if $scope.totalSpaces > 0
-          $(".search-pagination").show()
-        return
+        $scope.future_members.push(result.user)
       return
 
       return
