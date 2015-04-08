@@ -8,9 +8,9 @@
       .modal-body
         .form-group
           label = t('organizations.email')
-          = text_field_tag('email_field', nil, {class: 'form-control multi-lang-select', placeholder: "#{t('organizations.email_member_placeholder')}" } )
+          = text_field_tag('email_field', nil, {class: 'form-control', placeholder: "#{t('organizations.email_member_placeholder')}" } )
         .form-group
           label = t('organizations.role')
           = select_tag('role_select', options_for_select(member_roles, nil), {class: 'form-control multi-lang-select'})
-        a id=image_link_id
-          button.width-100.rounded-btn.bold.yellow-fill.uppercase = t('organizations.add_manager_action')
+        a id=image_link_id ng-click=("addManager()")
+          button.width-100.rounded-btn.bold.yellow-fill.uppercase  = t('organizations.add_manager_action')

@@ -16,7 +16,7 @@
       a#edit-avatar.add.organization.block.aqua href="#" data-toggle="modal" data-target="#avatar-modal" = t('organizations.change_picture')
   .row
     .col-xs-12.col-sm-8.col-md-8.col-lg-8.col-xs-offset-0.col-sm-offset-2
-      .edit-profile-form.dashboard-form
+      .edit-profile-form.dashboard-form ng-controller="OrganizationEditCtrl"
         = form_for @user do |f|
           = f.file_field :logo, class: 'hidden'
           .row

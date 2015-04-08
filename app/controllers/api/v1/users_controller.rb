@@ -1,7 +1,7 @@
 module Api
   module V1
     class UsersController < ApiController
-      before_action :authenticate_user!, except: [:get_basic_info]
+      before_action :authenticate_user!, except: [:basic_info]
 
       def login_as_organization
         organization = Organization.find_by(id: params[:organization_id])
@@ -18,9 +18,10 @@ module Api
         render nothing: true, status: 204
       end
 
-      def get_basic_info
-        user = User.find_by(id: params[:id])
+      def basic_info
+        user = User.find_by(email: params[:email])
         return record_not_found unless user.present?
+        render json: user, serializer: UserSerializer, status: 200
       end
 
     end
