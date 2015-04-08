@@ -68,6 +68,9 @@ Deskspotting::Application.routes.draw do
         get :inquiries, to: 'booking_inquiries#user_inquiries'
         get :inquiries_with_news, to: 'booking_inquiries#user_inquiries_with_news'
       end
+      collection do
+        get :info, to: 'users#basic_info'
+      end
     end
 
     resources :wishlist, only: [:index, :create, :destroy]

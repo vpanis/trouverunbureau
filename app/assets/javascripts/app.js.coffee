@@ -7,7 +7,8 @@
   'deskSpotting.wishlist',
   'deskSpotting.booking_inquiry'
   'deskSpotting.search',
-  'deskSpotting.user_profile'
+  'deskSpotting.user_profile',
+  'deskSpotting.organization_edit',
 ]).config (RestangularProvider) ->
   RestangularProvider.setBaseUrl '/api/v1'
   return
