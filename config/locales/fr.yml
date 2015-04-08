@@ -58,6 +58,8 @@ fr:
   home:
     sign_in: 'Sign in'
     list_your_space: 'List your space'
+    profile: Profile
+    manage_your_venues: Manage your venues
     header:
       title: 'Everyone needs a workspace'
       subtitle: 'Rent unique offices or meeting rooms where and when you need them.'
@@ -120,6 +122,7 @@ fr:
     account: 'Account'
     change_user: 'Use DeskSpotting as:'
     create_organization: 'Create organization'
+    messages: Inbox
   search:
     count: 'Desks found'
     filters: 'Filters'
@@ -320,8 +323,10 @@ fr:
     types:
       conference_room: 'Conference room'
       meeting_room: 'Meeting room'
-      office: 'Office'
-      desk: 'Desk'
+      private_office: 'Private office'
+      fixed_desk: 'Fixed desk'
+      hot_desk: Hot desk
+      communal_space: Communal space
       all: 'All workspaces'
     type: 'Workspace type'
     name: 'Name'

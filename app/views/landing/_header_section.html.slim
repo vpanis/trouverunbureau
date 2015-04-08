@@ -1,10 +1,17 @@
 .topbar
   .icon
   .right-topbar-content
-    a.nav-btn href=new_user_session_path()
-      p #{t('home.sign_in')}
-    a.ds-btn.hidden-xs href="#"
-      p #{t('home.list_your_space')}
+    - if user_signed_in?
+     a.nav-btn href=new_user_session_path()
+        p #{t('home.profile')}
+    - else
+      a.nav-btn href=new_user_session_path()
+        p #{t('home.sign_in')}
+    = link_to venues_path(), id: 'ds-home-btn', class: 'ds-btn hidden-xs'
+      - if user_signed_in? && !current_user.venues.empty?
+        p #{t('home.manage_your_venues')}
+      - else
+        p #{t('home.list_your_space')}
 h1 #{t('home.header.title')}
 h4 #{t('home.header.subtitle')}
 .separator

@@ -79,8 +79,11 @@
               .messages
                 p 0
           li
-            a.list-space href="#"
-              p #{t('home.list_your_space')}
+            = link_to venues_path(), class: 'list-space'
+              - if user_signed_in? && !current_user.venues.empty?
+                p #{t('home.manage_your_venues')}
+              - else
+                p #{t('home.list_your_space')}
         - else
           li
             a.list-space href=new_user_session_path

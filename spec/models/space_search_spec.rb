@@ -73,17 +73,17 @@ RSpec.describe SpaceSearch, type: :model do
                              rating: 4, quantity_reviews: 40)
     FactoryGirl.create(:venue_hour, venue: @v12, weekday: 1)
 
-    @s1_v1 = FactoryGirl.create(:space, venue: @v1, s_type: Space.s_types[:desk],
+    @s1_v1 = FactoryGirl.create(:space, venue: @v1, s_type: Space.s_types[:hot_desk],
                                 capacity: 1, quantity: 1)
-    @s2_v1 = FactoryGirl.create(:space, venue: @v1, s_type: Space.s_types[:office],
+    @s2_v1 = FactoryGirl.create(:space, venue: @v1, s_type: Space.s_types[:private_office],
                                 capacity: 1, quantity: 1)
 
-    @s1_v2 = FactoryGirl.create(:space, venue: @v2, s_type: Space.s_types[:desk],
+    @s1_v2 = FactoryGirl.create(:space, venue: @v2, s_type: Space.s_types[:hot_desk],
                                 capacity: 2, quantity: 2)
     @s2_v2 = FactoryGirl.create(:space, venue: @v2, s_type: Space.s_types[:meeting_room],
                                 capacity: 2, quantity: 2)
 
-    @s1_v3 = FactoryGirl.create(:space, venue: @v3, s_type: Space.s_types[:office],
+    @s1_v3 = FactoryGirl.create(:space, venue: @v3, s_type: Space.s_types[:private_office],
                                 capacity: 3, quantity: 3)
     @s2_v3 = FactoryGirl.create(:space, venue: @v3, s_type: Space.s_types[:conference_room],
                                 capacity: 3, quantity: 3)
@@ -92,34 +92,34 @@ RSpec.describe SpaceSearch, type: :model do
                                 capacity: 4, quantity: 4)
     @s2_v4 = FactoryGirl.create(:space, venue: @v4, s_type: Space.s_types[:meeting_room],
                                 capacity: 4, quantity: 4)
-    @s1_v5 = FactoryGirl.create(:space, venue: @v5, s_type: Space.s_types[:office],
+    @s1_v5 = FactoryGirl.create(:space, venue: @v5, s_type: Space.s_types[:private_office],
                                 capacity: 1, quantity: 1)
-    @s1_v6 = FactoryGirl.create(:space, venue: @v6, s_type: Space.s_types[:office],
+    @s1_v6 = FactoryGirl.create(:space, venue: @v6, s_type: Space.s_types[:private_office],
                                 capacity: 1, quantity: 1)
-    @s1_v7 = FactoryGirl.create(:space, venue: @v7, s_type: Space.s_types[:desk],
+    @s1_v7 = FactoryGirl.create(:space, venue: @v7, s_type: Space.s_types[:hot_desk],
                                 capacity: 1, quantity: 1)
-    @s1_v8 = FactoryGirl.create(:space, venue: @v8, s_type: Space.s_types[:desk],
+    @s1_v8 = FactoryGirl.create(:space, venue: @v8, s_type: Space.s_types[:hot_desk],
                                 capacity: 1, quantity: 1)
-    @s1_v9 = FactoryGirl.create(:space, venue: @v9, s_type: Space.s_types[:desk],
+    @s1_v9 = FactoryGirl.create(:space, venue: @v9, s_type: Space.s_types[:hot_desk],
                                 capacity: 1, quantity: 1)
-    @s1_v10 = FactoryGirl.create(:space, venue: @v10, s_type: Space.s_types[:desk],
+    @s1_v10 = FactoryGirl.create(:space, venue: @v10, s_type: Space.s_types[:hot_desk],
                                 capacity: 1, quantity: 1)
-    @s1_v11 = FactoryGirl.create(:space, venue: @v11, s_type: Space.s_types[:desk],
+    @s1_v11 = FactoryGirl.create(:space, venue: @v11, s_type: Space.s_types[:hot_desk],
                                 capacity: 1, quantity: 1)
-    @s1_v12 = FactoryGirl.create(:space, venue: @v12, s_type: Space.s_types[:desk],
+    @s1_v12 = FactoryGirl.create(:space, venue: @v12, s_type: Space.s_types[:hot_desk],
                                 capacity: 1, quantity: 1)
   end
 
   context 'search setting only space_types' do
 
-    it 'returns the spaces with :desk' do
-      ss = SpaceSearch.new(space_types: [Space.s_types[:desk]])
+    it 'returns the spaces with :hot_desk' do
+      ss = SpaceSearch.new(space_types: [Space.s_types[:hot_desk]])
       expect(ss.find_spaces).to contain_exactly(@s1_v1, @s1_v2, @s1_v7, @s1_v8,
                                                 @s1_v9, @s1_v10, @s1_v11, @s1_v12)
     end
 
-    it 'returns the spaces with :office' do
-      ss = SpaceSearch.new(space_types: [Space.s_types[:office]])
+    it 'returns the spaces with :private_office' do
+      ss = SpaceSearch.new(space_types: [Space.s_types[:private_office]])
       expect(ss.find_spaces).to contain_exactly(@s2_v1, @s1_v3, @s1_v5, @s1_v6)
     end
 
@@ -133,8 +133,8 @@ RSpec.describe SpaceSearch, type: :model do
       expect(ss.find_spaces).to contain_exactly(@s2_v3, @s1_v4)
     end
 
-    it 'returns the spaces with :office or :desk' do
-      ss = SpaceSearch.new(space_types: [Space.s_types[:office], Space.s_types[:desk]])
+    it 'returns the spaces with :private_office or :hot_desk' do
+      ss = SpaceSearch.new(space_types: [Space.s_types[:private_office], Space.s_types[:hot_desk]])
       expect(ss.find_spaces).to contain_exactly(@s1_v1, @s1_v2, @s2_v1, @s1_v3, @s1_v5, @s1_v6,
                                                 @s1_v7, @s1_v8, @s1_v9, @s1_v10, @s1_v11, @s1_v12)
     end
@@ -450,7 +450,8 @@ RSpec.describe SpaceSearch, type: :model do
 
     it 'returns the spaces ordered by quantity_reviews and rating' do
       ss = SpaceSearch.new(venue_amenities: ['wifi'],
-                           space_types: [Space.s_types[:desk], Space.s_types[:conference_room]])
+                           space_types: [Space.s_types[:hot_desk],
+                                         Space.s_types[:conference_room]])
       expect(ss.find_spaces).to match_array([@s1_v4, @s1_v1, @s1_v7, @s1_v9])
     end
 

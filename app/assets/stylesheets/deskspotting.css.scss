@@ -192,6 +192,16 @@ h4.gray-subtitle{
     color: $black;
     background-color: $yellow;
   }
+  #ds-home-btn {
+    padding: 10px 28px !important;
+    p {
+      color: $yellow;
+      font-weight: bold;
+    }
+    &:hover p {
+      color: grey;
+    }
+  }
   .topbar .logo{
     width: 250px;
     height: 60px;
