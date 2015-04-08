@@ -4,28 +4,25 @@
 .inbox{
   .left-panel,
   .right-panel {
-    display: inline-block;
-    vertical-align: top;
+    float: left;
+    box-sizing: content-box;
   }
   .left-panel {
-    width: 350px;
+    width: 25%;
   }
   .right-panel {
-    width: calc(100% - 350px);
+    width: calc(75% - 30px);
     padding: 15px 15px 0;
-
   }
   .booking-list{
     background: $light-gray;
     margin: 0px;
     overflow: auto;
-    direction: rtl;
     height: calc(100vh - 155px);
     .booking-item{
       border-bottom: solid 1px $gray;
       border-right: solid 1px $gray;
       position: relative;
-      direction: ltr;
       padding: 15px;
       &.selected{
         background: $white;
@@ -48,16 +45,8 @@
   .pagination-container {
     width: 100%;
     text-align: center;
-    background: $light-gray;
-    border-right: 1px solid $gray;
-    border-top: 1px solid $gray;
     padding-top: 8px;
   }
-<<<<<<< HEAD
-=======
-
-
->>>>>>> inbox messages
 }
 
 .booking-item-wrapper {
@@ -117,51 +106,44 @@
       text-overflow: ellipsis;
       width: 150px;
     }
-    .booking-city {
-      background-image: url(/assets/i-location.png);
-      background-size: 14px 20px !important;
-      background-repeat: no-repeat;
-      background-position: left center;
-      padding-left: 20px;
-    }
     .bottom-content {
       display: inline-block;
       font-size: 12px;
       line-height: 20px;
       &.messages {
-        @include at2x('globe', 20px, 20px);
+        @include at2x('venue_profile_a_team_bookings', 20px, 20px);
         background-repeat: no-repeat;
         background-position: left center;
         padding-left: 25px;
       }
     }
-    .pending_authorization,
-    .pending_payment,
+    .pending,
+    .approved,
     .paid,
-    .canceled,
+    .cancelled,
     .denied,
     .expired {
       text-transform: uppercase;
       font-weight: 700;
       width: 90px;
     }
-    .pending_authorization {
+    .pending {
       color: $red;
     }
-    .pending_payment {
+    .approved {
       color: $aqua;
     }
     .paid {
       color: $yellow;
     }
-    .canceled {
+    .cancelled {
       color: $dark-gray;
     }
     .denied {
       color: $dark-gray;
     }
     .expired {
-      color: $red;
+      color: $dark-gray;
     }
   }
 }
@@ -227,80 +209,71 @@
 }
 
 .inbox-header {
-  .booking-data-container {
-    text-align: center;
-    .space-data {
-      text-align: center;
+  .space-data {
+    .avatar {
       display: inline-block;
-      vertical-align: middle;
-      padding: 0 40px;
-      .avatar {
-        display: inline-block;
-        margin-right: 20px;
-        height: 50px;
-        width: 50px;
-        border-radius: 100%;
-        background-size: contain;
+      margin-right: 20px;
+      height: 50px;
+      width: 50px;
+      border-radius: 100%;
+      background-size: contain;
+    }
+    .space-name,
+    .capacity,
+    .venue-name {
+      display: inline-block;
+      font-size: 16px;
+    }
+    .wrapper {
+      display: inline-block;
+      vertical-align: top;
+    }
+    .space-name {
+      position: relative;
+      font-weight: 700;
+      margin: 0 10px 0 0;
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        height: 2px;
+        width: 40%;
+        background-color: $yellow;
       }
-      .space-name,
-      .capacity,
-      .venue-name {
-        display: inline-block;
-        font-size: 16px;
-      }
-      .wrapper {
-        display: inline-block;
-        vertical-align: top;
-      }
-      .space-name {
-        position: relative;
-        font-weight: 700;
-        margin: 0 10px 0 0;
-        &:after {
-          content: '';
-          position: absolute;
-          bottom: -8px;
-          left: 0;
-          height: 2px;
-          width: 40%;
-          background-color: $yellow;
-        }
-      }
-      .capacity {
-        @include at2x('venue_profile_a_team_bookings', 20px, 20px);
-        background-repeat: no-repeat;
-        background-position: left center;
-        padding-left: 25px;
-        margin-right: 10px;
-      }
-      .venue-name {
+    }
+    .capacity {
+      @include at2x('venue_profile_a_team_bookings', 20px, 20px);
+      background-repeat: no-repeat;
+      background-position: left center;
+      padding-left: 25px;
+      margin-right: 10px;
+    }
+    .venue-name {
 
-      }
-      .city {
-        @include at2x('i-location', 14px, 20px);
-        background-repeat: no-repeat;
-        background-position: left center;
-        text-align: left;
-        padding-left: 20px;
-        margin-top: 10px;
-      }
-      .from {
+    }
+    .city {
+      @include at2x('i-location', 14px, 20px);
+      background-repeat: no-repeat;
+      background-position: left center;
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+    .from {
 
-      }
-      .to {
+    }
+    .to {
 
-      }
-      .quantity {
+    }
+    .quantity {
 
-      }
     }
   }
   .date {
+    float: left;
+    width: 25%;
     text-align: center;
     position: relative;
-    display: inline-block;
-    padding: 0 20px;
-
     color: $dark-gray;
     span {
       display: block;
@@ -320,14 +293,8 @@
       border-right: none;
     }
   }
-  .inbox-buttons{
+  .buttons{
     margin: 60px 0 20px;
-    text-align: center;
-    button {
-      display: inline-block;
-      min-width: 200px;
-      margin: 0 10px;
-    }
   }
 }
 
@@ -345,7 +312,7 @@
     width: 100%;
     border: 0;
     border-top: 2px solid $gray;
-    margin-top: 18px;
+    margin-top: 20px;
     background-color: $dark-white;
     padding: 10px;
     outline: none;
@@ -384,6 +351,7 @@
       }
     }
   }
+
   .message-header {
     .message-avatar,
     .message-name,
@@ -421,10 +389,6 @@
 
 .guest-data {
   border-left: 1px solid $gray;
-  display: inline-block;
-  vertical-align: middle;
-  padding: 0 40px;
-  text-align: left;
   .avatar {
     display: inline-block;
     margin-right: 10px;
