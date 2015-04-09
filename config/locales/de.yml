@@ -152,74 +152,51 @@ de:
       cafe: 'Cafe'
       restaurant: 'Restaurant'
     amenities:
-      whiteboards:
-        name: whiteboards
-        css: whiteboards
-      kitchen:
-        name: kitchen
-        css: kitchen
-      security:
-        name: security
-        css: security
-      wifi:
-        name: 'internet speed (wifi)'
-        css: wifi
-      printer_scanner:
-        name: 'printers/scanner'
-        css: printer
-      chill_area:
-        name: chill area
-        css: chill
-      photocopier:
-        name: photocopier
-        css: photocopier
-      conference_rooms:
-        name: conference rooms
-        css: conference
-      elevators:
-        name: elevators
-        css: elevators
-      outdoor_space:
-        name: outdoor space
-        css: outdoor
-      team_bookings:
-        name: team bookings
-        css: team
-      individual_bookings:
-        name: individual bookings
-        css: individual
-      shower:
-        name: shower
-        css: shower
-      fax:
-        name: fax
-        css: fax
-      wheelchair_access:
-        name: wheelchair access
-        css: wheelchair
-      air_conditioning:
-        name: air conditioning
-        css: air
-      pets_allowed:
-        name: pets allowed
-        css: pets
-      mail_service:
-        name: mail service
-        css: mail
-      gym:
-        name: gym
-        css: gym
-      cafe_restaurant:
-        name: cafe/restaurant
-        css: cafe
-      phone_booth:
-        name: phone booth
-        css: phone
+      whiteboards: whiteboards
+      kitchen: kitchen
+      security: security
+      wifi: 'internet speed (wifi)'
+      printer_scanner: 'printers/scanner'
+      chill_area: chill area
+      photocopier: photocopier
+      conference_rooms: conference rooms
+      elevators: elevators
+      outdoor_space: outdoor space
+      team_bookings: team bookings
+      individual_bookings: individual bookings
+      shower: shower
+      fax: fax
+      wheelchair_access: wheelchair access
+      air_conditioning: air conditioning
+      pets_allowed: pets allowed
+      mail_service: mail service
+      gym: gym
+      cafe_restaurant: cafe/restaurant
+      phone_booth: phone booth
+      tv: tv
+      projector: projector
+      concierge: concierge
+      parking: parking
+      water_fountain: water fountain
+      reception_service: reception service
+      cleaning_service: cleaning service
     professions:
       technology: technology
       public_relations: public relations
       entertainment: entertainment
       entrepreneur: entrepreneur
+      startup: startup
+      media: media
+      design: design
+      architect: architect
+      advertising: advertising
+      finance: finance
+      consultant: consultant
+      freelance: freelance
+      journalist: journalist
+      fashion: fashion
+      lawyer: lawyer
+      professor: professor
       all: All professions are welcome
     show:
       share: 'Share'

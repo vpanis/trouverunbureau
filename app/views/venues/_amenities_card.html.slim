@@ -4,6 +4,6 @@
     .separator
   .amenities-list
     - @venue.amenities.each do |amenity|
-      .amenity class=(t("venues.amenities.#{amenity}.css"))
-        p = t("venues.amenities.#{amenity}.name")
+      .amenity class='#{amenity}'
+        p = t("venues.amenities.#{amenity}")
 

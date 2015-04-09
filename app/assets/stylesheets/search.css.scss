@@ -209,7 +209,7 @@
   }
 }
 
-[data-controller="spaces"] {
+[data-controller="spaces"][data-action="index"] {
   #footer {
     position: fixed;
     transform: translateY(100%);
