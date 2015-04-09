@@ -28,7 +28,7 @@ class Venue < ActiveRecord::Base
                    :individual_bookings, :shower, :fax, :wheelchair_access, :air_conditioning,
                    :pets_allowed, :mail_service, :gym, :cafe_restaurant, :phone_booth]
 
-  PROFESSIONS = [:technology, :public_relations, :entertainment, :entrepreneur]
+  PROFESSIONS = [:technology, :public_relations, :entertainment, :entrepreneur, :startup, :media, :design, :architect, :advertising, :finance, :consultant, :freelance, :journalist, :fashion, :lawyer, :professor]
 
   # Callbacks
   after_initialize :initialize_fields

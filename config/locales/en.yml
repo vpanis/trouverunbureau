@@ -220,6 +220,18 @@ en:
       public_relations: public relations
       entertainment: entertainment
       entrepreneur: entrepreneur
+      startup: startup
+      media: media
+      design: design
+      architect: architect
+      advertising: advertising
+      finance: finance
+      consultant: consultant
+      freelance: freelance
+      journalist: journalist
+      fashion: fashion
+      lawyer: lawyer
+      professor: professor
       all: All professions are welcome
     show:
       share: 'Share'
