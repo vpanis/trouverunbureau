@@ -13,7 +13,7 @@ module Api
               .create!(status: MangopayCreditCard.statuses[:registering],
                        currency: params[:currency].upcase,
                        registration_expiration_date: Time.new.advance(hours: 6))
-            MangopayCardRegistrationWorker.perform_async(mcc.id)
+            Payments::Mangopay::CardRegistrationWorker.perform_async(mcc.id)
             render json: { mangopay_credit_card_id: mcc.id }, status: 200
           end
 

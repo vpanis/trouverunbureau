@@ -46,7 +46,8 @@ class VenueCollectionAccountsController < VenuesController
       @venue.collection_account.reload
       @venue.collection_account.update_attributes(expecting_braintree_response: true,
                                                   force_submit: true)
-      BraintreeSubMerchantAccountWorker.perform_async(@venue.collection_account.id, data)
+      Payments::Braintree::SubMerchantAccountWorker.perform_async(@venue.collection_account.id,
+                                                                  data)
     end
     @collection_account = @venue.collection_account
     render :collection_account_info, status: 201

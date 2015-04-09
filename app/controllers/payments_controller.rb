@@ -51,9 +51,9 @@ class PaymentsController < ApplicationController
       @booking.payment = BraintreePayment.new
       @booking.save
     end
-    BraintreeTokenGenerationWorker.perform_async(current_represented.id,
-                                                 current_represented.class.to_s,
-                                                 @booking.payment.id)
+    Payments::Braintree::TokenGenerationWorker.perform_async(current_represented.id,
+                                                             current_represented.class.to_s,
+                                                             @booking.payment.id)
     @payment = @booking.payment
   end
 
@@ -71,9 +71,9 @@ class PaymentsController < ApplicationController
   end
 
   def payment_braintree
-    BraintreePaymentWorker.perform_async(@booking.id, params[:payment_method_nonce],
-                                         current_user.id, current_represented.id,
-                                         current_represented.class.to_s)
+    Payments::Braintree::PaymentWorker.perform_async(@booking.id, params[:payment_method_nonce],
+                                                     current_user.id, current_represented.id,
+                                                     current_represented.class.to_s)
   end
 
   def payment_mangopay_verification?

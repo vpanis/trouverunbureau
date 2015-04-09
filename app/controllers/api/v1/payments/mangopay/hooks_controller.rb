@@ -21,7 +21,7 @@ module Api
             # This update is not performed in the worker because, if the same hook is
             # triggered before the worker starts, will trigger a duplicate worker.
             mp.update_attributes(notification_date_int: params[:Date])
-            MangopayFetchTransactionWorker.perform_async(mp.id)
+            Payments::Mangopay::FetchTransactionWorker.perform_async(mp.id)
           end
         end
       end

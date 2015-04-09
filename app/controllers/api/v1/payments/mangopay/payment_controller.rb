@@ -47,8 +47,8 @@ module Api
 
             @booking.payment.update_attributes(transaction_status: 'EXPECTING_RESPONSE',
                                                user_paying: current_user)
-            MangopayPaymentWorker.perform_async(@booking.id, credit_card_id,
-                                                current_user.id, root_path)
+            Payments::Mangopay::PaymentWorker.perform_async(@booking.id, credit_card_id,
+                                                            current_user.id, root_path)
             @booking.payment
           end
 
