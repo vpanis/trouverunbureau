@@ -47,6 +47,12 @@
         transform-origin: 50% 50%;
       }
     }
+    &.open {
+      .arrow {
+        transform: rotate(-180deg);
+        transform-origin: 50% 50%;
+      }
+    }
     .venue-bar {
       .basic-info{
         padding-bottom: 15px;
