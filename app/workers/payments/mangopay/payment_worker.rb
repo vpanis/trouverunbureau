@@ -48,7 +48,7 @@ module Payments
         redirect = transaction_data['SecureModeRedirectURL'] || absolute_return_url(return_url)
         @booking.payment.update_attributes(
           transaction_id: transaction_data['Id'],
-          transaction_status: transaction_data['Status'],
+          transaction_status: "PAYIN_#{transaction_data['Status']}",
           redirect_url: redirect, error_message: nil,
           card_type: @credit_card.card_type, card_last_4: @credit_card.last_4,
           card_expiration_date: @credit_card.expiration)
@@ -58,7 +58,7 @@ module Payments
         @booking, _cerr = BookingManager.change_booking_status(User.find(user_id), @booking,
                                                                Booking.states[:pending_payment])
         @booking.payment.update_attributes(error_message: e.to_s,
-                                           transaction_status: 'FAILED')
+                                           transaction_status: 'PAYIN_FAILED')
       end
 
       def require_validations?(user_id)

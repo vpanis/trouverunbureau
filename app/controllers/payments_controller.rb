@@ -79,7 +79,7 @@ class PaymentsController < ApplicationController
   def payment_mangopay_verification?
     current_represented.mangopay_payment_account.present? &&
       current_represented.mangopay_payment_account.accepted? && (@booking.pending_payment? ||
-        @payment.present? && (@payment.created? || @payment.expecting_response?))
+        @payment.present? && (@payment.payin_created? || @payment.expecting_response?))
   end
 
   def which_payment_method(collection_account)

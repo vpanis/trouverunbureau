@@ -15,7 +15,7 @@ onLoad = ->
   bookingPaymentData = $("#hidden-data")[0].dataset
   if bookingPaymentData.bookingState == "payment_verification" and
     (bookingPaymentData.paymentState == 'EXPECTING_RESPONSE' or
-      bookingPaymentData.paymentState == 'CREATED')
+      bookingPaymentData.paymentState == 'PAYING_CREATED')
     disableCardSelection()
     retrievePaymentInfo(bookingPaymentData.paymentId)
 

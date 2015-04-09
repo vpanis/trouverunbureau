@@ -8,7 +8,7 @@ module Api
           def payin_succeeded
             mp = MangopayPayment.find_by_transaction_id(params[:RessourceId])
             return unless mp.present? && mp.notification_date_int <= params[:Date]
-            mp.update_attributes(transaction_status: 'SUCCEEDED',
+            mp.update_attributes(transaction_status: 'PAYIN_SUCCEEDED',
                                  notification_date_int: params[:Date])
             BookingManager.change_booking_status(User.find(mp.user_paying_id), @booking,
                                                  Booking.states[:paid])
