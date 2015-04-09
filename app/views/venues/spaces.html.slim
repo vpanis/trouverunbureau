@@ -14,7 +14,7 @@
       p.text-center  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
     - @venue.spaces.each do |space|
       .space.pictures.col-md-4
-        h2 = space.name
+        h2 = t('spaces.types.' + space.s_type)
         - if space.photos.any?
           - photo = space.photos.first.photo.url
         - else
@@ -23,13 +23,7 @@
           .hover
             = link_to 'edit space', edit_space_path(space), class: 'edit'
             = link_to 'delete space', space_path(space), method: :delete, class: 'delete-photo'
-    .col-md-4.add-image-container
+    .col-md-4.add-image-container.space
       a href=new_space_venue_path(@venue)
-        .add-space
+        .margin-top-0.add-space.add-space-section
           p = t('commons.add_space')
-    .row.buttons
-      .col-xs-6
-        a href='#'
-          button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
-      .col-xs-6
-        button type='button' class='rounded-btn yellow-fill width-100 uppercase' = t("commons.save")

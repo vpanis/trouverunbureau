@@ -62,7 +62,7 @@
         width: 22px;
         height: 22px;
         transform: translateY(-50%);
-        @include at2x('venue_profile_why_book', 22px, 22px); //TODO asset
+        @include at2x('check', 22px, 22px);
       }
       p {
         margin-bottom: 0;
@@ -80,7 +80,7 @@
     padding: 15px;
   }
   .delete a {
-    @include at2x('ic_profile_close', 22px, 22px); //TODO asset
+    @include at2x('cross', 22px, 22px);
     background-repeat: no-repeat;
     background-position: center left;
     padding-left: 25px;
@@ -136,12 +136,12 @@
         margin-bottom: 10px;
       }
       .edit {
-        @include at2x('venue_profile_a_whiteboards', 32px, 32px);
+        @include at2x('hover_edit', 32px, 32px);
         background-position: calc(30% - 32px); // background image width
         margin-bottom: 10px;
       }
       .delete-photo {
-        @include at2x('venue_wishlist_white_inactive', 32px, 32px);
+        @include at2x('hover_trash', 32px, 32px);
         background-position: calc(30% - 32px); // background image width
       }
     }
