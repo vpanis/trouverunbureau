@@ -392,3 +392,10 @@ en:
     rate_guest: rate your guest
     your_guest: Your Guest
     checked_in: has checked in of
+  reset_password_email:
+    this_link: just use this link
+    forgot_password:  It seems like you forgot your DeskSpotting password.
+    dont_worry: Don't worry it happens to the best of us
+    new_password: To create the new password and your back in business
+    not_request: If you did not make this request, all good, just disregard
+    stay_same: this email and your password will stay the same.
