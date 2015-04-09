@@ -10,6 +10,11 @@ class MangopayPayment < ActiveRecord::Base
     transaction_status == 'EXPECTING_RESPONSE'
   end
 
+  # 'created' needs a validation before 'succeded'
+  def created?
+    transaction_status == 'CREATED'
+  end
+
   def failed?
     transaction_status == 'FAILED'
   end

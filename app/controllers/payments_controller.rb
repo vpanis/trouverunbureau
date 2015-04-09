@@ -13,7 +13,6 @@ class PaymentsController < ApplicationController
     return unless active_collection_account?(@venue.collection_account)
     @payment_method = which_payment_method(@venue.collection_account)
     payment_requeriments
-    @payment = @booking.payment
   end
 
   # POST /payments
@@ -35,7 +34,8 @@ class PaymentsController < ApplicationController
   def payment_requeriments
     case @payment_method
     when 'mangopay'
-      return redirect_to root_path unless payment_mangopay_verification
+      @payment = @booking.payment
+      return redirect_to root_path unless payment_mangopay_verification?
       mangopay_payment
     when 'braintree'
       braintree_payment_and_nonce
@@ -54,6 +54,7 @@ class PaymentsController < ApplicationController
     BraintreeTokenGenerationWorker.perform_async(current_represented.id,
                                                  current_represented.class.to_s,
                                                  @booking.payment.id)
+    @payment = @booking.payment
   end
 
   def pay_if_its_possible
@@ -75,9 +76,10 @@ class PaymentsController < ApplicationController
                                          current_represented.class.to_s)
   end
 
-  def payment_mangopay_verification
+  def payment_mangopay_verification?
     current_represented.mangopay_payment_account.present? &&
-      current_represented.mangopay_payment_account.accepted?
+      current_represented.mangopay_payment_account.accepted? && (@booking.pending_payment? ||
+        @payment.present? && (@payment.created? || @payment.expecting_response?))
   end
 
   def which_payment_method(collection_account)

@@ -11,6 +11,13 @@ onLoad = ->
   $('#js-pay').on 'click', (event) ->
     if selectedCreditCardId != null
       pay(selectedCreditCardId)
+  # If the payment is in a expected response status
+  bookingPaymentData = $("#hidden-data")[0].dataset
+  if bookingPaymentData.bookingState == "payment_verification" and
+    (bookingPaymentData.paymentState == 'EXPECTING_RESPONSE' or
+      bookingPaymentData.paymentState == 'CREATED')
+    disableCardSelection()
+    retrievePaymentInfo(bookingPaymentData.paymentId)
 
 select_card = (event) ->
   selectedCreditCardId = this.dataset.creditCardId
@@ -109,10 +116,13 @@ saveNewCard = (creditCardId) ->
     # Handle error, see res.ResultCode and res.ResultMessage
     return
 
-pay = (card_id) ->
+disableCardSelection = ->
   $("#js-pay").attr('disabled', true)
   $('.js-credit-card').attr('disabled', true)
   $("#js-card-info").attr('disabled', true)
+
+pay = (card_id) ->
+  disableCardSelection()
   bookingId = $("#hidden-data")[0].dataset.bookingId
   $.ajax
     url: '/api/v1/mangopay/start_payment'
