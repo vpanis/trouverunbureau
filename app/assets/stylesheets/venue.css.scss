@@ -4,6 +4,7 @@
 // amenities
 .amenity-checkbox {
   margin-bottom: 23px;
+  text-transform: capitalize;
 }
 
 #venue-list {
@@ -87,6 +88,7 @@
     &.add-image-container{
       background-color: $yellow;
       height: 250px;
+      background-image: none;
     }
   }
 }

@@ -24,9 +24,9 @@
               = t('commons.open')
               = ff.hidden_field :weekday, class: 'form-control'
               = ff.check_box :_destroy, class: 'form-control hidden'
-            .form-group.venue-description-input.col-md-4
+            .form-group.venue-description-input.col-md-4.vertical-align
               label = t('venues.edit.opening_time')
               = ff.select(:from, options_for_hours, {}, {class: 'form-control hour-select'})
-            .form-group.venue-description-input.col-md-4
+            .form-group.venue-description-input.col-md-4.vertical-align
               label = t('venues.edit.closing_time')
               = ff.select(:to, options_for_hours, {}, {class: 'form-control hour-select'})

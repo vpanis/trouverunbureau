@@ -855,10 +855,10 @@ h4.gray-subtitle {
       }
     }
   }
-  .amenities-list{
+  .amenities-list {
     padding: 4px 10px;
     margin-bottom: 22px;
-    .amenity{
+    .amenity {
       background-size: 40px 40px;
       background-repeat: no-repeat;
       padding-left: 59px;
@@ -874,68 +874,89 @@ h4.gray-subtitle {
         color: $gray-text;
       }
     }
-    .amenity.whiteboards{
+    .amenity.whiteboards {
       @include at2x('venue_profile_a_whiteboards', 40px, 40px);
     }
-    .amenity.security{
+    .amenity.security {
       @include at2x('venue_profile_a_security', 40px, 40px);
     }
-    .amenity.printer{
+    .amenity.printer_scanner {
       @include at2x('venue_profile_a_printer_scanner', 40px, 40px);
     }
-    .amenity.photocopier{
+    .amenity.photocopier {
       @include at2x('venue_profile_a_photocopier', 40px, 40px);
     }
-    .amenity.elevators{
+    .amenity.elevators {
       @include at2x('venue_profile_a_elevators', 40px, 40px);
     }
-    .amenity.team{
+    .amenity.team_bookings {
       @include at2x('venue_profile_a_team_bookings', 40px, 40px);
     }
-    .amenity.shower{
+    .amenity.shower {
       @include at2x('venue_profile_a_shower', 40px, 40px);
     }
-    .amenity.wheelchair{
+    .amenity.wheelchair_access {
       @include at2x('venue_profile_a_wheelchair_access', 40px, 40px);
     }
-    .amenity.pets{
+    .amenity.pets_allowed {
       @include at2x('venue_profile_a_pets_allowed', 40px, 40px);
     }
-    .amenity.gym{
+    .amenity.gym {
       @include at2x('venue_profile_a_gym', 40px, 40px);
     }
-    .amenity.phone{
+    .amenity.phone_booth {
       @include at2x('venue_profile_a_phone_booth', 40px, 40px);
     }
-    .amenity.kitchen{
+    .amenity.kitchen {
       @include at2x('venue_profile_a_kitchen', 40px, 40px);
     }
-    .amenity.wifi{
+    .amenity.wifi {
       @include at2x('venue_profile_a_wifi', 40px, 40px);
     }
-    .amenity.chill{
+    .amenity.chill_area {
       @include at2x('venue_profile_a_chill_area', 40px, 40px);
     }
-    .amenity.conference{
+    .amenity.conference_rooms {
       @include at2x('venue_profile_a_conference_rooms', 40px, 40px);
     }
-    .amenity.outdoor{
+    .amenity.outdoor_space {
       @include at2x('venue_profile_a_outdoor-space', 40px, 40px);
     }
-    .amenity.individual{
+    .amenity.individual_bookings {
       @include at2x('venue_profile_a_individual_bookings', 40px, 40px);
     }
-    .amenity.fax{
+    .amenity.fax {
       @include at2x('venue_profile_a_fax', 40px, 40px);
     }
-    .amenity.air{
+    .amenity.air_conditioning {
       @include at2x('venue_profile_a_air_conditioning', 40px, 40px);
     }
-    .amenity.mail{
+    .amenity.mail_service {
       @include at2x('venue_profile_a_mail_service', 40px, 40px);
     }
-    .amenity.cafe{
+    .amenity.cafe_restaurant {
       @include at2x('venue_profile_a_cafe_restaurant', 40px, 40px);
+    }
+    .amenity.tv {
+      @include at2x('venue_profile_a_tv', 40px, 40px);
+    }
+    .amenity.projector {
+      @include at2x('venue_profile_a_projector', 40px, 40px);
+    }
+    .amenity.concierge {
+      @include at2x('venue_profile_a_concierge', 40px, 40px);
+    }
+    .amenity.parking {
+      @include at2x('venue_profile_a_parking', 40px, 40px);
+    }
+    .amenity.water_fountain {
+      @include at2x('venue_profile_a_water_fountain', 40px, 40px);
+    }
+    .amenity.reception_service {
+      @include at2x('venue_profile_a_reception_service', 40px, 40px);
+    }
+    .amenity.cleaning_service {
+      @include at2x('venue_profile_a_cleaning_service', 40px, 40px);
     }
   }
 }
@@ -1251,7 +1272,8 @@ li.venue-hours.active{
 }
 
 .weekday-col label{
-  width: 40px;
+  margin: 0 10px;
+  vertical-align: middle;
 }
 
 .weekday-col {
