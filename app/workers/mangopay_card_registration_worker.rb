@@ -11,7 +11,7 @@ class MangopayCardRegistrationWorker
       card_registration['Status'] == 'FAILED'
     save_credit_card(card_registration)
   rescue MangoPay::ResponseError => e
-    save_credit_card_error(e.errors)
+    save_credit_card_error(e.message)
   end
 
   private

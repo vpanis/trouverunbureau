@@ -1,26 +1,24 @@
 class MangopayPaymentWorker
   include Sidekiq::Worker
 
-  @deskspotting = AppConfiguration.for(:deskspotting)
-
   def perform(booking_id, credit_card_id, user_id, return_url)
-    init_log(booking_id, credit_card, user_id)
-    @booking = Booking.includes(space: { venue: [:collection_account] }).find_by_id(booking_id)
+    init_log(booking_id, credit_card_id, user_id)
+    @booking = Booking.includes(space: [:venue]).find_by_id(booking_id)
     # impossible, but...
     return unless require_validations?(user_id)
     @represented = @booking.owner
     @credit_card = MangopayCreditCard.find_by_id(credit_card_id)
     return unless valid_credit_card?(user_id)
 
-    save_payment(mangopay_transaction(@credit_card.credit_card_id, return_url))
+    save_payment(mangopay_transaction(@credit_card.credit_card_id, return_url), return_url)
   rescue MangoPay::ResponseError => e
-    save_payment_error(e.errors, user_id)
+    save_payment_error(e.message, user_id)
   end
 
   private
 
-  def init_log(booking_id, credit_card, user_id)
-    str = "MangoPaymentWorker on booking_id: #{booking_id}, credit_card: #{credit_card}, "
+  def init_log(booking_id, credit_card_id, user_id)
+    str = "MangoPaymentWorker on booking_id: #{booking_id}, credit_card_id: #{credit_card_id}, "
     str += "user_id: #{user_id}"
     Rails.logger.info(str)
   end
@@ -48,7 +46,9 @@ class MangopayPaymentWorker
     @booking.payment.update_attributes(
       transaction_id: transaction_data['Id'],
       transaction_status: transaction_data['Status'],
-      redirect_url: redirect)
+      redirect_url: redirect, error_message: nil,
+      card_type: @credit_card.card_type, card_last_4: @credit_card.last_4,
+      card_expiration_date: @credit_card.expiration)
   end
 
   def save_payment_error(e, user_id)
@@ -59,10 +59,11 @@ class MangopayPaymentWorker
   end
 
   def require_validations?(user_id)
-    @booking.present? && @booking.owner.present? && User.exists?(user_id)
+    @booking.present? && @booking.owner.present? && User.exists?(user_id) &&
+      @booking.payment.present?
   end
 
   def absolute_return_url(return_url)
-    @deskspotting.base_url + return_url
+    Rails.configuration.base_url + return_url
   end
 end

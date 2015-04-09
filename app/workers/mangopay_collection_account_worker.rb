@@ -10,7 +10,7 @@ class MangopayCollectionAccountWorker
     account = create_user(collection_account_data)
     save_collection_account(account, collection_account_data)
   rescue MangoPay::ResponseError => e
-    save_account_error(e.errors)
+    save_account_error(e.message)
   end
 
   private

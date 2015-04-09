@@ -13,7 +13,7 @@ class MangopayPaymentAccountWorker
     account = create_user
     save_payment_account(account)
   rescue MangoPay::ResponseError => e
-    save_account_error(e.errors)
+    save_account_error(e.message)
   end
 
   private

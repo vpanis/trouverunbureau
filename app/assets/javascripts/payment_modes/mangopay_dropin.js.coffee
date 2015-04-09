@@ -1,16 +1,14 @@
 timeBetweenRetrievesMS = 1000
 selectedCreditCardId = null
 onLoad = ->
-  $.ajax
-    url: '/api/v1/mangopay/configuration'
-    success: (response) ->
-      mangoPay.cardRegistration.baseURL = response.config.base_url
-      mangoPay.cardRegistration.clientId = response.config.client_id
+  mangopayConfiguration = $("#js-mangopay-config")[0].dataset
+  mangoPay.cardRegistration.baseURL = mangopayConfiguration.baseUrl
+  mangoPay.cardRegistration.clientId = mangopayConfiguration.clientId
   $('#js-create-card-registration').on 'click', (event) ->
     $("#new-credit-card").addClass("loading")
     createNewCardRegistration $('#js-card_currency').val().toUpperCase()
   $('.js-credit-card').on 'click', select_card
-  $('.js-pay').on 'click', (event) ->
+  $('#js-pay').on 'click', (event) ->
     if selectedCreditCardId != null
       pay(selectedCreditCardId)
 

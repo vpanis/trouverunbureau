@@ -16,6 +16,7 @@ else
 end
 
 Deskspotting::Application.configure do
+  config.base_url = AppConfiguration.for(:deskspotting).base_url
   config.payment = OpenStruct.new(
     deskspotting_fee: deskspotting.fee.to_f,
     braintree: OpenStruct.new(

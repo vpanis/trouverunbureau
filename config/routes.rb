@@ -102,21 +102,6 @@ Deskspotting::Application.routes.draw do
       end
     end
 
-    resource :braintree, only: [] do
-      get :webhooks, to: 'braintree#verify_url'
-      get :customer_nonce_token, to: 'braintree#customer_nonce_token'
-      post :webhooks, to: 'braintree#notification'
-    end
-
-    resource :mangopay, only: [] do
-      get :configuration, to: 'mangopay#configuration'
-      get :new_card_info, to: 'mangopay#new_card_info'
-      post :card_registration, to: 'mangopay#card_registration'
-      put :save_credit_card, to: 'mangopay#save_credit_card'
-      get :payin_succeeded, to: 'mangopay#payin_succeeded'
-      get :payin_failed, to: 'mangopay#payin_failed'
-    end
-
     resources :inquiries, only: [] do
       member do
         put :last_seen_message, to: 'booking_inquiries#last_seen_message'
@@ -130,6 +115,27 @@ Deskspotting::Application.routes.draw do
     end
 
     resources :venue_photos, only: [:create, :destroy]
+
+    scope module: 'payments' do
+      namespace :braintree do
+        get :webhooks, to: 'hooks#verify_url'
+        post :webhooks, to: 'hooks#notification'
+
+        get :customer_nonce_token, to: 'payment#customer_nonce_token'
+      end
+
+      namespace :mangopay do
+        get :new_card_info, to: 'credit_card#new_card_info'
+        post :card_registration, to: 'credit_card#card_registration'
+        put :save_credit_card, to: 'credit_card#save_credit_card'
+
+        put :start_payment, to: 'payment#start_payment'
+        get :payment_info, to: 'payment#payment_info'
+
+        get :payin_succeeded, to: 'hooks#payin_succeeded'
+        get :payin_failed, to: 'hooks#payin_failed'
+      end
+    end
   end # api/v1
 
 end

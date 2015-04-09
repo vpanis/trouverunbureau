@@ -9,7 +9,7 @@ class MangopayFetchTransactionWorker
     transaction = fetch_transaction
     save_payment_error(transaction['ResultMessage']) if transaction['Status'] == 'FAILED'
   rescue MangoPay::ResponseError => e
-    save_payment_error(e.errors)
+    save_payment_error(e.message)
   end
 
   private

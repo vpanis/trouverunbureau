@@ -6,12 +6,11 @@ class PaymentsController < ApplicationController
   # GET /payments/new?booking_id
   def new
     @booking = Booking.includes(:payment, space: [:venue])
-                 .where(id: params[:booking_id], state: Booking.states[:pending_payment],
-                        owner: current_represented).first
+                 .where(id: params[:booking_id], owner: current_represented).first
     # TODO: custom 404 page
-    return redirect_to root_path unless @booking.present?
+    return redirect_to root_path unless booking_is_payable?
     @venue = @booking.space.venue
-    return unless @venue.collection_account.present? && @venue.collection_account.active?
+    return unless active_collection_account?(@venue.collection_account)
     @payment_method = which_payment_method(@venue.collection_account)
     payment_requeriments
     @payment = @booking.payment
@@ -20,12 +19,11 @@ class PaymentsController < ApplicationController
   # POST /payments
   def create
     @booking = Booking.includes(:payment, space: [:venue])
-                 .where(id: params[:booking_id], state: Booking.states[:pending_payment],
-                        owner: current_represented).first
+                 .where(id: params[:booking_id], owner: current_represented).first
     # TODO: custom 404 page
-    return redirect_to root_path unless @booking.present?
+    return redirect_to root_path unless @booking.present? && @booking.pending_payment?
     @venue = @booking.space.venue
-    return unless @venue.collection_account.present? && @venue.collection_account.active?
+    return unless active_collection_account?(@venue.collection_account)
     @payment_method = which_payment_method(@venue.collection_account)
     return redirect_to root_path if @payment_method == 'invalid_collection_account' ||
       !send("payment_#{@payment_method}_verification")
@@ -91,5 +89,14 @@ class PaymentsController < ApplicationController
     else
       'invalid_collection_account'
     end
+  end
+
+  def active_collection_account?(collection_account)
+    collection_account.present? && collection_account.active?
+  end
+
+  def booking_is_payable?
+    # mangopay can continue a started payment
+    @booking.present? && (@booking.pending_payment? || @booking.payment_verification?)
   end
 end

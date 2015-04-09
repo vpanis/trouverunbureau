@@ -7,10 +7,10 @@ class MangopayPayment < ActiveRecord::Base
   validates :transaction_status, inclusion: { in: TRANSACTION_STATUSES }
 
   def expecting_response?
-    status == 'EXPECTING_RESPONSE'
+    transaction_status == 'EXPECTING_RESPONSE'
   end
 
   def failed?
-    status == 'FAILED'
+    transaction_status == 'FAILED'
   end
 end
