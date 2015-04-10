@@ -48,16 +48,16 @@ h4.gray-subtitle {
   width: 10%;
 }
 
-.landing-page{
-  .rounded-right{
+.landing-page {
+  .rounded-right {
     @include rounded-right(3px);
     @include rounded-left(0px);
   }
-  .rounded-left{
+  .rounded-left {
     @include rounded-left(3px);
     @include rounded-right(0px);
   }
-  .icon{
+  .icon {
     @include at2x('isologo-top-bar', 205px, 35px);
     background-repeat: no-repeat;
     background-position: center;
@@ -67,86 +67,97 @@ h4.gray-subtitle {
     margin-left: 14px;
     margin-top: 12px;
   }
-  #header{
+  #header {
     background: gray;
     background-image: image-url('parallax1.jpg');
     background-size: cover;
     height: 100%;
-    h1{
-      font-size: 20px;
-      text-align: center;
-      color: white;
-      letter-spacing: 0.65rem;
-      font-size: 46px;
-      margin-top: 120px;
+    background-position: 50%;
+    position: relative;
+    .header-overlay {
+      background: $translucent-black;
+      height: 100%;
+      position: absolute;
+      width: 100%;
     }
-    h4{
-      color: white;
-      font-weight: 300;
-      text-align: center;
-      margin-top: 26px;
-      letter-spacing: 0.09rem;
-      font-size: 17px;
-    }
-    .search-form{
-      margin-right: auto;
-      margin-left: auto;
-      text-align: center;
-      padding: 8px;
-      .form-group{
-        padding: 0;
+    .header-content {
+      position: relative;
+      h1 {
+        font-size: 20px;
+        text-align: center;
+        color: white;
+        letter-spacing: 0.65rem;
+        font-size: 46px;
+        margin-top: 120px;
       }
-      .form-control{
-        height: 50px;
-        width: 100%;
-        border: solid 0px;
-        box-shadow: none;
-      }
-      .styled-search{
-        background-color: white;
-        @include at2x('loupe', 26px, 26px);
-        background-repeat: no-repeat;
-        background-position-x: 12px;
-        background-position-y: 14px;
-        height: 50px;
-        border-right: 1px solid $gray;
-      }
-      .styled-select{
-        background-color: white;
-        height: 50px;
-      }
-      input[type='text'].form-control{
-        background-color: transparent;
-        padding-left: 48px;
-        font-size: 14px;
-        letter-spacing: 0.08rem;
+      h4 {
+        color: white;
         font-weight: 300;
-        padding-bottom: 2px;
+        text-align: center;
+        margin-top: 26px;
+        letter-spacing: 0.09rem;
+        font-size: 17px;
       }
-      *::-webkit-input-placeholder{
-        color: $dark-gray;
-      }
-      *:-moz-placeholder{
-        color: $dark-gray;
-      }
-      *::-moz-placeholder{
-        color: $dark-gray;
-      }
-      *:-ms-input-placeholder{
-        color: $dark-gray;
-      }
-      #landing-form-submit{
-        height: 50px;
-        background-color: $yellow;
-        border: 0;
-        @include rounded-right(3px);
-        font-size: 16px;
-        letter-spacing: 0.15rem;
-        color: black;
-        @include transition(background-color);
-      }
-      #landing-form-submit:hover{
-        background-color: $light-yellow;
+      .search-form {
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+        padding: 8px;
+        .form-group {
+          padding: 0;
+        }
+        .form-control {
+          height: 50px;
+          width: 100%;
+          border: solid 0px;
+          box-shadow: none;
+        }
+        .styled-search {
+          background-color: white;
+          @include at2x('loupe', 26px, 26px);
+          background-repeat: no-repeat;
+          background-position-x: 12px;
+          background-position-y: 14px;
+          height: 50px;
+          border-right: 1px solid $gray;
+        }
+        .styled-select {
+          background-color: white;
+          height: 50px;
+        }
+        input[type='text'].form-control {
+          background-color: transparent;
+          padding-left: 48px;
+          font-size: 14px;
+          letter-spacing: 0.08rem;
+          font-weight: 300;
+          padding-bottom: 2px;
+        }
+        *::-webkit-input-placeholder {
+          color: $dark-gray;
+        }
+        *:-moz-placeholder {
+          color: $dark-gray;
+        }
+        *::-moz-placeholder {
+          color: $dark-gray;
+        }
+        *:-ms-input-placeholder {
+          color: $dark-gray;
+        }
+        #landing-form-submit {
+          height: 50px;
+          background-color: $yellow;
+          border: 0;
+          @include rounded-right(3px);
+          font-size: 16px;
+          letter-spacing: 0.15rem;
+          color: black;
+          @include transition(background-color);
+        }
+        #landing-form-submit:hover {
+          background-color: $light-yellow;
+        }
       }
     }
   }
