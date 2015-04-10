@@ -4,7 +4,8 @@ class MangopayPayment < ActiveRecord::Base
 
   TRANSACTION_STATUSES = %w(EXPECTING_RESPONSE PAYIN_SUCCEEDED PAYIN_FAILED PAYIN_CREATED
                             TRANSFER_SUCCEEDED TRANSFER_CREATED TRANSFER_FAILED
-                            PAYOUT_SUCCEEDED PAYOUT_CREATED PAYOUT_FAILED)
+                            PAYOUT_SUCCEEDED PAYOUT_CREATED PAYOUT_FAILED
+                            REFUND_SUCCEEDED REFUND_CREATED REFUND_FAILED)
 
   validates :transaction_status, inclusion: { in: TRANSACTION_STATUSES }
 

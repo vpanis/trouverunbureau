@@ -9,7 +9,7 @@ module Payments
         return unless transfer_possible?
         @venue = @booking.space.venue
 
-        transfer = transfer_payment
+        transfer = transfer_payment(percentage)
         return save_transfer_payment_error(transfer['ResultMessage']) if
           transfer['Status'] == 'FAILED'
         save_transfer_payment(transfer)
@@ -43,19 +43,20 @@ module Payments
                                            status: 'TRANSFER_FAILED')
       end
 
-      def transfer_payment
+      def transfer_payment(percentage)
         currency = @venue.currency.upcase
         # The fee will be charged in the payout
         MangoPay::Transfer.create(
           AuthorId: @booking.owner.mangopay_payment_account.mangopay_user_id,
           CreditedUserId: @venue.collection_account.mangopay_user_id,
-           DebitedFunds: { Currency: currency, Amount: price_calculator(@booking.price) },
+          DebitedFunds: {
+            Currency: currency, Amount: price_calculator(@booking.price, percentage) },
           Fees: { Currency: currency, Amount: 0 },
           DebitedWalletID: @booking.owner.mangopay_payment_account.wallet_id,
           CreditedWalletID: @venue.collection_account.wallet_id)
       end
 
-      def price_calculator(price)
+      def price_calculator(price, percentage)
         (price * percentage * 100).to_i
       end
     end

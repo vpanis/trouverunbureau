@@ -12,7 +12,8 @@ module Payments
         @credit_card = MangopayCreditCard.find_by_id(credit_card_id)
         return unless valid_credit_card?(user_id)
 
-        save_payment(mangopay_transaction(@credit_card.credit_card_id, return_url), return_url)
+        payment = mangopay_transaction(@credit_card.credit_card_id, return_url)
+        persist_data(payment, return_url)
       rescue MangoPay::ResponseError => e
         save_payment_error(e.message, user_id)
       end
@@ -69,6 +70,12 @@ module Payments
 
       def absolute_return_url(return_url)
         Rails.configuration.base_url + return_url
+      end
+
+      def persist_data(payment, return_url)
+        return save_payment_error(payment['ResultMessage']) if
+          payment['Status'] == 'FAILED'
+        save_payment(payment, return_url)
       end
     end
   end
