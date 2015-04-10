@@ -1,7 +1,7 @@
 .verification-steps.height-100
   .status
     .status-text
-      = "#{t(edit_venue_progress.status)}:"
+      = "#{t('edit_venue_progress.status')}:"
       span = t('edit_venue_progress.incomplete')
     .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
 
@@ -26,6 +26,6 @@
       li.spaces class=('done' if step > 5) class=('selected' if step == 5)
         p = t('edit_venue_progress.spaces')
   .publish
-    a.rounded-btn.grey-fill.width-100 href="#" = t('edit_venue_progress.publish')
+    a.rounded-btn.yellow-fill.width-100 href="#" = t('edit_venue_progress.publish')
   .delete
     a href="#" = t('edit_venue_progress.delete_venue')

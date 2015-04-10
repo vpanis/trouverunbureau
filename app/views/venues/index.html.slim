@@ -30,14 +30,14 @@
               .col-md-3
                 a href=edit_space_path(space)
                   .space.pictures
-                    h2.black = space.name
+                    h2.black = t('spaces.types.' + space.s_type)
                     - if space.photos.any?
                       .img-wrapper style="background-image: url('#{space.photos.first.photo.url}');"
                     - else
                       .img-wrapper
             .col-md-3
               a href=new_space_venue_path(venue)
-                .space.pictures.add-image-container
-                  .add-space
+                .pictures.add-image-container
+                  .add-space.venues-space
                     p = t('commons.add_space')
   a.button type='button' class='rounded-btn width-100 uppercase yellow-fill margin-top margin-bottom' href= new_venue_path = t('venues.create_venue')
