@@ -2,7 +2,7 @@
 = render 'shared/profile_menu_bar', user: current_user, selected: 'wishlist'
 
 - if @current_user.present?
-  .container
+  .container style="height: 100%;"
     .spaces-list ng-controller="WishlistCtrl"
       .row
         .col-xs-12.col-sm-6.col-md-4 ng-repeat=("space in spaces")
