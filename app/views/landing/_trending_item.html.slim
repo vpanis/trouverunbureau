@@ -3,12 +3,13 @@
   .space-image-box-over
     .space-image-info
       .city-name
-        p #{city}
+        | #{city}
       .separator
-      .amount
-        p #{amount}
-      .amount-description
-        p #{t('home.your_space.workspaces')}
-      .footer
-        p #{t('home.your_space.see_all')}
+      .space-info-bottom
+        .amount
+          | #{amount}
+        .amount-description
+          | #{t('home.your_space.workspaces')}
+        .footer
+          | #{t('home.your_space.see_all')}
 
