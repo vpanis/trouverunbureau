@@ -1,7 +1,18 @@
 @import 'variables';
 @import 'mixins';
-
+html, body {
+  min-height: 100%;
+  position: relative;
+}
+html [data-action="wishlist"] {
+  height: 100%;
+  position: static;
+}
 #footer{
+  text-align: left;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
   a{
     color: white;
     text-decoration: none;

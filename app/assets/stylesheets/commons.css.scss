@@ -229,7 +229,7 @@ hr {
   margin-top: 33px;
 }
 
-[data-controller="spaces"][data-action="index"]  {
+[data-controller="spaces"] [data-action="index"] {
   #footer {
     position: fixed;
     transform: translateY(100%);
@@ -255,4 +255,8 @@ hr {
 
 .form--hidden {
   display: none;
+}
+
+.main-container {
+  padding-bottom: 325px;
 }
