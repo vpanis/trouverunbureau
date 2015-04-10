@@ -3,7 +3,7 @@ module Payments
     class PayoutPaymentWorker
       include Sidekiq::Worker
 
-      def perform(booking_id)
+      def perform(booking_id, percentage = 1)
         init_log(booking_id)
         @booking = Booking.find_by_id(booking_id)
         @venue = @booking.space.venue if @booking.present?
@@ -22,7 +22,7 @@ module Payments
 
       def init_log(booking_id)
         str = 'Payments::Mangopay::PayoutPaymentWorker on '
-        str += "booking_id: #{booking_id}"
+        str += "booking_id: #{booking_id}, percentage: #{percentage}"
         Rails.logger.info(str)
       end
 
@@ -47,10 +47,14 @@ module Payments
         # attribute BankWireRef, if we want to put some message in the bank account entry
         MangoPay::PayOut::BankWire.create(
           AuthorId: @venue.collection_account.mangopay_user_id,
-          DebitedFunds: { Currency: currency, Amount: @booking.price * 100 },
-          Fees: { Currency: currency, Amount: @booking.fee * 100 },
+          DebitedFunds: { Currency: currency, Amount: price_calculator(@booking.price) },
+          Fees: { Currency: currency, Amount: price_calculator(@booking.fee) },
           DebitedWalletID: @venue.collection_account.wallet_id,
           BankAccountId: @venue.collection_account.bank_account_id)
+      end
+
+      def price_calculator(price)
+        (price * percentage * 100).to_i
       end
     end
   end

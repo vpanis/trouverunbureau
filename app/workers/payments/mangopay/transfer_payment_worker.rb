@@ -3,7 +3,7 @@ module Payments
     class TransferPaymentWorker
       include Sidekiq::Worker
 
-      def perform(booking_id)
+      def perform(booking_id, percentage = 1)
         init_log(booking_id)
         @booking = Booking.find_by_id(booking_id)
         return unless transfer_possible?
@@ -21,7 +21,7 @@ module Payments
 
       def init_log(booking_id)
         str = 'Payments::Mangopay::TransferPaymentWorker on '
-        str += "booking_id: #{booking_id}"
+        str += "booking_id: #{booking_id}, percentage: #{percentage}"
         Rails.logger.info(str)
       end
 
@@ -34,7 +34,7 @@ module Payments
           transference_id: transfer_payment['Id'],
           transaction_status: "TRANSFER_#{transfer_payment['Status']}")
         # teorically, always, buy just in case
-        Payments::Mangopay::PayoutPaymentWorker.perform_async(@booking.id) if
+        Payments::Mangopay::PayoutPaymentWorker.perform_async(@booking.id, percentage) if
           transfer_payment['Status'] == 'SUCEEDED'
       end
 
@@ -49,10 +49,14 @@ module Payments
         MangoPay::Transfer.create(
           AuthorId: @booking.owner.mangopay_payment_account.mangopay_user_id,
           CreditedUserId: @venue.collection_account.mangopay_user_id,
-          DebitedFunds: { Currency: currency, Amount: @booking.price * 100 },
+           DebitedFunds: { Currency: currency, Amount: price_calculator(@booking.price) },
           Fees: { Currency: currency, Amount: 0 },
           DebitedWalletID: @booking.owner.mangopay_payment_account.wallet_id,
           CreditedWalletID: @venue.collection_account.wallet_id)
+      end
+
+      def price_calculator(price)
+        (price * percentage * 100).to_i
       end
     end
   end
