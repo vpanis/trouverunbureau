@@ -242,7 +242,7 @@ it:
       street: 'Street address'
       country: 'Country'
       email: 'General Email'
-      town: 'City / Neighborhood'
+      town: 'City'
       postal_code: 'Zip / Postal code'
       phone: 'Phone number'
       v_type: 'Venue type'
