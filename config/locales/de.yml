@@ -336,3 +336,13 @@ de:
     all_venues: All Venues
     current: Current bookings
     cancelled: Cancelled bookings
+  edit_venue_progress:
+    status: status
+    venue: Venue
+    details: Details
+    amenities: Amenities
+    photos: Photos
+    spaces: Spaces
+    publish: publish
+    delete_venue: Delete venue
+    incomplete: incomplete
