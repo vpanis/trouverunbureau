@@ -8,7 +8,7 @@
     box-sizing: content-box;
   }
   .left-panel {
-    width: 25%;
+    width: 350px;
   }
   .right-panel {
     width: calc(75% - 30px);
@@ -18,11 +18,13 @@
     background: $light-gray;
     margin: 0px;
     overflow: auto;
+    direction: rtl;
     height: calc(100vh - 155px);
     .booking-item{
       border-bottom: solid 1px $gray;
       border-right: solid 1px $gray;
       position: relative;
+      direction: ltr;
       padding: 15px;
       &.selected{
         background: $white;
@@ -106,12 +108,19 @@
       text-overflow: ellipsis;
       width: 150px;
     }
+    .booking-city {
+      background-image: url(/assets/i-location.png);
+      background-size: 14px 20px !important;
+      background-repeat: no-repeat;
+      background-position: left center;
+      padding-left: 20px;
+    }
     .bottom-content {
       display: inline-block;
       font-size: 12px;
       line-height: 20px;
       &.messages {
-        @include at2x('venue_profile_a_team_bookings', 20px, 20px);
+        @include at2x('globe', 20px, 20px);
         background-repeat: no-repeat;
         background-position: left center;
         padding-left: 25px;
