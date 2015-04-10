@@ -364,7 +364,6 @@ en:
     back: 'Back'
     send_inquiry: 'Send inquiry'
     month_amount: 'Number of months'
-<<<<<<< HEAD
   edit_venue_progress:
     status: status
     venue: Venue
@@ -430,5 +429,3 @@ en:
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
     button: 'Invite'
     confirmation: 'The invitation was sent correctly to'
-=======
->>>>>>> height css
