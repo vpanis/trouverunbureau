@@ -17,63 +17,27 @@
                 = text_field_tag :search, params[:search], class: 'form-control', placeholder: t('home.header.search_text')
                 = submit_tag 'search', class: 'hidden'
       ul.nav.navbar-nav.hidden-large-navbar.mobile-menu-items
-        li
-          a #{t('menu.search')}
-        li
-          a #{t('menu.profile')}
-        li
-          a #{t('menu.messages')}
-
+        = render 'shared/mobile_menu'
       ul.nav.navbar-nav.navbar-right.hidden-collapse
         - if user.present?
           li
             dropdown
               .btn.btn-default.dropdown-toggle type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"
-                a.user href=user_path(user)
+                a.user-visible href=user_path(user)
                   .avatar
                     - if user.kind_of?(User)
                       - if user.avatar.present?
                         = image_tag(user.avatar.url)
                       - else
                         = image_tag('default-avatar.png')
-
                     - elsif user.kind_of?(Organization)
-
                       - if user.logo.present?
                         = image_tag(user.logo.url)
                       - else
                         = image_tag('venue-default.png')
-
                   .name
                     p = user.name
-
-              ul.dropdown-menu.user-dropdown role="menu" aria-labelledby="dropdownMenu1"
-                - if other_members_current_represented.count >0
-                    li.user
-                      p #{t('menu.change_user')}
-                - other_members_current_represented.each do |m|
-                  li.user
-                    - if m.kind_of?(Organization)
-                      = link_to(login_as_organization_users_path(id: current_user.id, organization_id: m.id), method: :post, class: "user") do
-                        .avatar
-                          - if m.logo.present?
-                            = image_tag(m.logo.url)
-                          - else
-                            = image_tag('venue-default.png')
-                        .name
-                          p = m.name
-                    - else
-                      = link_to(reset_organization_users_path(id: m.id), method: :delete, class: "user") do
-                        .avatar
-                          - if m.avatar.present?
-                            = image_tag(m.avatar.url)
-                          - else
-                            = image_tag('default-avatar.png')
-                        .name
-                          p = m.name
-                li
-                  a.dropdown-link role="menuitem" tabindex="-1"  href="#" #{t('menu.create_organization')}
-
+              = render 'shared/menu_dropdown'
           li
             a href="#"
               .messages

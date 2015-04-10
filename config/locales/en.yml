@@ -118,11 +118,12 @@ en:
     inbox: 'Inbox'
     bookings: 'Bookings'
     venues: 'Venues'
-    wishlist: 'Wishlist'
+    wishlist: 'Wish list'
     account: 'Account'
     change_user: 'Use DeskSpotting as:'
     create_organization: 'Create organization'
     messages: Inbox
+    invite_friends: Invite friends
   search:
     count: 'Desks found'
     filters: 'Filters'

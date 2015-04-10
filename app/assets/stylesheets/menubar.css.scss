@@ -1,7 +1,7 @@
 @import 'variables';
 @import 'mixins';
 
-.menubar{
+.menubar {
   background-color: white;
   -webkit-box-shadow: 0px 0px 5px 1px $gray-text;
   -moz-box-shadow: 0px 0px 5px 1px $gray-text;
@@ -9,14 +9,14 @@
   .navbar-collapse{
     border-color: $gray-text;
   }
-  .navbar-brand{
+  .navbar-brand {
     padding: 13px 16px 6px;
     height: 57px;
     img{
       display: inline-block;
     }
   }
-  .search{
+  .search {
     height: 40px;
     margin-top: 10px;
     width: 305px;
@@ -31,7 +31,7 @@
       height: 40px;
       border: 0px;
     }
-    input[type='text'].form-control{
+    input[type='text'].form-control {
       width: 100%;
       background-color: transparent;
       padding-left: 50px;
@@ -44,53 +44,43 @@
       @include border-radius(2em);
       -webkit-box-shadow: none;
     }
-    *::-webkit-input-placeholder{
+    *::-webkit-input-placeholder {
       color: $dark-gray;
     }
-    *:-moz-placeholder{
+    *:-moz-placeholder {
       color: $dark-gray;
     }
-    *::-moz-placeholder{
+    *::-moz-placeholder {
       color: $dark-gray;
     }
-    *:-ms-input-placeholder{
+    *:-ms-input-placeholder {
       color: $dark-gray;
     }
   }
-  a.user{
-    padding-top: 0px;
-    padding-bottom: 0px;
+  a.user {
+    padding: 0;
     .name{
       display: inline-block;
       padding-left: 8px;
       letter-spacing: 0.06rem;
       font-weight: 300;
       color: $dark-gray;
-      height: 42px;
       vertical-align: bottom;
       width: 115px;
-      p{
-        margin: 0;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-        line-height: 42px;
-      }
     }
-    .avatar{
+    .avatar {
       display: inline-block;
-      width: 42px;
-      height: 42px;
+      width: 24px;
+      height: 24px;
       padding: 0px;
-      margin-top: 9px;
-      img{
+      img {
         @include border-radius(100%);
         width: 100%;
         height: 100%;
       }
     }
   }
-  a.list-space{
+  .list-space {
     @include border-radius(2em);
     border: 2px solid $yellow;
     display: inline-block;
@@ -101,20 +91,21 @@
     text-align: center;
     background-color: transparent;
     cursor: pointer;
-    padding: 10px 28px 0px;
+    padding: 10px 30px;
     font-size: 14px;
     @include transition(background-color);
-    margin-top: 9px;
-    margin-right: 10px;
-    p{
-      margin-bottom: 8px;
+    margin-top: 10px;
+    margin-right: 15px;
+    p {
+      margin-bottom: 0;
+      line-height: 1;
     }
   }
-  a.list-space:hover{
+  a.list-space:hover {
     color: $black;
     background-color: $yellow;
   }
-  .messages{
+  .messages {
     @include at2x('nav-bar-inbox', 28px, 23px);
     background-size: 28px 23px;
     background-repeat: no-repeat;
@@ -122,7 +113,7 @@
     width: 35px;
     height: 27px;
     position: relative;
-    p{
+    p {
       position: absolute;
       bottom: 13px;
       left: 16px;
@@ -140,23 +131,75 @@
   }
 }
 
-.after-menu{
+.after-menu {
   padding-top: 58px;
 }
 
-.user-dropdown{
-  width: 100%;
+.user-dropdown.dropdown-menu {
+  width: 200px;
+  padding: 6px 10px;
+  border: none;
+  margin-top: 0;
+  border-radius: 0;
+  li {
+    &.divider {
+      padding: 0;
+    }
+    a,
+    .title {
+      padding: 10px;
+      font-weight: 300;
+      font-size: 13px;
+      color: $gray-text;
+    }
+    a:hover {
+      background-color: $yellow;
+      color: $black;
+      font-size: 500;
+      p {
+        color: $black;
+      }
+    }
+    .dropdown-link {
+      color: $black;
+      font-weight: 700;
+      @include border-radius(2em);
+      border: 2px solid $yellow;
+      font-size: 13px;
+      margin: 10px;
+      padding: 5px;
+    }
+  }
 }
 
-.dropdown-menu > li > .dropdown-link{
-  color: $black;
-  font-weight: 700;
-  @include border-radius(2em);
-  border: 2px solid $yellow;
-  font-size: 13px;
-  padding: 5px 9px 5px;
-  margin-top: 9px;
-  margin-bottom: 9px;
-  margin-left: 17px;
-  margin-right: 13px;
+.navbar {
+  .dropdown-toggle.btn-default {
+    background-color: $white;
+    border: none;
+    line-height: 57px;
+    padding: 0;
+  }
+}
+
+.user-visible {
+  display: block;
+  width: 200px;
+  text-align: left;
+  .avatar,
+  .name {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .avatar {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    @include border-radius(100%);
+    overflow: hidden;
+    img{
+      width: 100%;
+      height: 100%;
+      vertical-align: initial;
+    }
+  }
 }
