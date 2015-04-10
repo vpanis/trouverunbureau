@@ -3,8 +3,8 @@ class MangopayPayment < ActiveRecord::Base
   belongs_to :user_paying, class_name: 'User'
 
   TRANSACTION_STATUSES = %w(EXPECTING_RESPONSE PAYIN_SUCCEEDED PAYIN_FAILED PAYIN_CREATED
-                            TRANSFER_SUCCEDED TRANSFER_CREATED TRANSFER_FAILED
-                            PAYOUT_SUCCEDED PAYOUT_CREATED PAYOUT_FAILED)
+                            TRANSFER_SUCCEEDED TRANSFER_CREATED TRANSFER_FAILED
+                            PAYOUT_SUCCEEDED PAYOUT_CREATED PAYOUT_FAILED)
 
   validates :transaction_status, inclusion: { in: TRANSACTION_STATUSES }
 
@@ -12,7 +12,19 @@ class MangopayPayment < ActiveRecord::Base
     transaction_status == 'EXPECTING_RESPONSE'
   end
 
-  # 'payin created' needs a mango validation before 'payin succeded'
+  def payin_succeeded?
+    transaction_status == 'PAYIN_SUCCEEDED'
+  end
+
+  def transfer_succeeded?
+    transaction_status == 'PAYIN_SUCCEEDED'
+  end
+
+  def payout_succeeded?
+    transaction_status == 'PAYIN_SUCCEEDED'
+  end
+
+  # 'payin created' needs a mango validation before 'payin succeeded'
   def payin_created?
     transaction_status == 'PAYIN_CREATED'
   end
@@ -26,6 +38,6 @@ class MangopayPayment < ActiveRecord::Base
   end
 
   def failed?
-    transaction_status.in?(%w(FAILED TRANSFER_FAILED PAYOUT_FAILED))
+    transaction_status.in?(%w(PAYIN_FAILED TRANSFER_FAILED PAYOUT_FAILED))
   end
 end

@@ -1,6 +1,6 @@
 module Payments
   module Mangopay
-    class FetchTransactionWorker
+    class FetchPayinErrorWorker
       include Sidekiq::Worker
 
       def perform(mangopay_payment_id)
@@ -17,13 +17,13 @@ module Payments
       private
 
       def init_log(mangopay_payment_id)
-        str = 'Payments::Mangopay::FetchTransactionWorker on '
+        str = 'Payments::Mangopay::FetchPayinErrorWorker on '
         str += "mangopay_payment_id: #{mangopay_payment_id}"
         Rails.logger.info(str)
       end
 
       def save_payment_error(e)
-        @mangopay_payment.update_attributes(error_message: e.to_s, status: 'FAILED')
+        @mangopay_payment.update_attributes(error_message: e.to_s, status: 'PAYIN_FAILED')
         BookingManager.change_booking_status(User.find(mp.user_paying_id), @booking,
                                              Booking.states[:pending_payment])
       end

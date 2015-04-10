@@ -33,12 +33,13 @@ module Payments
 
       def mangopay_transaction(credit_card, return_url)
         currency = @booking.space.venue.currency.upcase
+        # The fee will be charged in the payout
         MangoPay::PayIn::Card::Direct.create(
           AuthorId: @booking.owner.mangopay_payment_account.mangopay_user_id,
           DebitedFunds: {
             Currency: currency, Amount: @booking.price * 100
           }, Fees: {
-            Currency: currency, Amount: @booking.fee * 100
+            Currency: currency, Amount: 0
           }, CreditedWalletId: @booking.owner.mangopay_payment_account.wallet_id,
           CardId: credit_card, SecureMode: 'DEFAULT',
           SecureModeReturnURL: absolute_return_url(return_url))

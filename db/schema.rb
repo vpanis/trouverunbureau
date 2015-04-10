@@ -191,9 +191,13 @@ ActiveRecord::Schema.define(version: 20150501135224) do
     t.integer  "notification_date_int"
     t.string   "redirect_url"
     t.integer  "user_paying_id"
+    t.string   "transference_id"
+    t.string   "payout_id"
   end
 
+  add_index "mangopay_payments", ["payout_id"], name: "index_mangopay_payments_on_payout_id", unique: true, using: :btree
   add_index "mangopay_payments", ["transaction_id"], name: "index_mangopay_payments_on_transaction_id", unique: true, using: :btree
+  add_index "mangopay_payments", ["transference_id"], name: "index_mangopay_payments_on_transference_id", unique: true, using: :btree
   add_index "mangopay_payments", ["user_paying_id"], name: "index_mangopay_payments_on_user_paying_id", using: :btree
 
   create_table "messages", force: true do |t|
