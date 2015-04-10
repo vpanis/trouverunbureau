@@ -11,24 +11,24 @@ $yellow: #ffe111;
   }
 }
 
-@mixin transition($property, $duration : 0.2s){
+@mixin transition($property, $duration : 0.2s) {
   -webkit-transition: $property $duration;
   transition: $property $duration;
 }
 
 /* small devices */
 @media screen and (min-width: 0px) and (max-width: 767px) {
-  .company, .find-us{
+  .company, .find-us {
     padding-left: 0px !important;
     text-align: center;
     .separator{
       margin: 11px auto !important;
     }
   }
-  .tab-selector-container{
+  .tab-selector-container {
     margin: 0 auto 15px !important;
   }
-  .pagination-container{
+  .pagination-container {
     text-align: center;
   }
 }
@@ -37,10 +37,10 @@ $yellow: #ffe111;
 $grid-float-breakpoint: 950px;
 @media all and (min-width: 0px) and (max-width: $grid-float-breakpoint) {
   /* display logo in the middle of nav bar when devise is mobile*/
-  .navbar{
+  .navbar {
     border: none;
   }
-  .menubar .navbar-brand{
+  .menubar .navbar-brand {
     position: absolute;
     width: -moz-calc(100% - 120px);
     width: -webkit-calc(100% - 120px);
@@ -50,17 +50,17 @@ $grid-float-breakpoint: 950px;
     text-align: center;
     margin: auto;
     padding: 6px 16px;
-    img{
+    img {
       display: inline-block;
     }
   }
-  .hidden-collapse{
+  .hidden-collapse {
     display: none !important;
   }
-  .mobile-menu-items{
+  .mobile-menu-items {
     margin-top: 0;
     margin-bottom: 0;
-    li{
+    li {
       font-family: "Open Sans", sans-serif;
       font-weight: 700;
       letter-spacing: 0.08rem;
@@ -71,43 +71,43 @@ $grid-float-breakpoint: 950px;
       border-bottom: solid 1px $gray-text;
       @include transition(background-color);
     }
-    li:hover{
+    li:hover {
       background-color: $yellow;
     }
   }
 }
 @media all  and (min-width: 951px) {
-  .hidden-large-navbar{
+  .hidden-large-navbar {
     display: none !important;
   }
 }
 
 /* tunning venue cards for small devises */
-@media all and (max-width: 500px){
-  .space-card, .info-card{
+@media all and (max-width: 500px) {
+  .space-card, .info-card {
     width: 100%;
     margin-left: 0px;
     margin-right: 0px;
-    .professions{
+    .professions {
       -webkit-column-count: 1 !important; /* Chrome, Safari, Opera */
       -moz-column-count: 1 !important; /* Firefox */
       column-count: 1 !important;
     }
-    .amenities-list .amenity{
+    .amenities-list .amenity {
       width: 95%;
     }
-    .vertical-separator.small-hidden{
+    .vertical-separator.small-hidden {
       border-right: solid 1px white !important;
     }
-    .vertical-separator.large-hidden{
+    .vertical-separator.large-hidden {
       border-right: solid 1px $gray-text !important;
     }
   }
-  .why-card{
-    .space-info{
+  .why-card {
+    .space-info {
       margin-top: 30px !important;
     }
-    .why-deskspotting-list{
+    .why-deskspotting-list {
       display: inline-block;
       width: 100% !important;
       padding-top: 0px !important;
@@ -118,3 +118,9 @@ $grid-float-breakpoint: 950px;
     }
   }
 }
+
+.search-mobile {
+  padding: 30% 0px;
+  margin-top: -8px;
+}
+

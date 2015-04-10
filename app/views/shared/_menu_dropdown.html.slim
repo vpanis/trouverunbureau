@@ -1,0 +1,41 @@
+ul.dropdown-menu.user-dropdown role="menu" aria-labelledby="dropdownMenu1"
+  - if other_members_current_represented.count >0
+    li.user
+      p.title #{t('menu.change_user')}
+  - other_members_current_represented.each do |m|
+    li.user
+      - if m.kind_of?(Organization)
+        = link_to(login_as_organization_users_path(id: current_user.id, organization_id: m.id), method: :post, class: "user") do
+          .avatar
+            - if m.logo.present?
+              = image_tag(m.logo.url)
+            - else
+              = image_tag('venue-default.png')
+          .name
+            p = m.name
+      - else
+        = link_to(reset_organization_users_path(id: m.id), method: :delete, class: "user") do
+          .avatar
+            - if m.avatar.present?
+              = image_tag(m.avatar.url)
+            - else
+              = image_tag('default-avatar.png')
+          .name
+            p = m.name
+  li
+    = link_to(t('menu.create_organization'), '#', class: 'dropdown-link text-center', role: 'menuitem', tabindex: '-1')
+  li.divider
+  li
+    = link_to(t('menu.bookings'), paid_bookings_bookings_path)
+  li
+    = link_to(t('menu.wishlist'), wishlist_spaces_path)
+  //li
+    //= link_to(t('menu.invite_friends'), '#')
+  li
+    // TODO: if organization
+    = link_to(t('users.edit_profile'), edit_user_path(current_user))
+  li
+    = link_to(t('menu.account'), account_user_path(current_user))
+  li.divider
+  li
+    = link_to(t('session.logout'), destroy_user_session_path, method: :delete)

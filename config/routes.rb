@@ -37,6 +37,7 @@ Deskspotting::Application.routes.draw do
       post :inquiry, to: "space_booking_inquiry#create_booking_inquiry"
     end
     collection do
+      get :search_mobile
       get :wishlist
     end
   end

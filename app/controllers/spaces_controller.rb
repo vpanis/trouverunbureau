@@ -2,10 +2,11 @@ class SpacesController < ModelController
   inherit_resources
   include RepresentedHelper
   include SelectOptionsHelper
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :search_mobile]
 
   def new
-    @venue = Venue.find_by(id: params[:id])
+    @venue = Venue.find(params[:id])
+    return render_forbidden unless VenueContext.new(@venue, current_represented).owner?
     @space = Space.new(venue: @venue)
     @space_types_options = space_types_options
   end
@@ -40,6 +41,10 @@ class SpacesController < ModelController
   def index
     @professions = profession_options
     @workspaces = space_types_checkbox_options
+  end
+
+  def search_mobile
+    @space_types_options = space_types_index_options
   end
 
   private
