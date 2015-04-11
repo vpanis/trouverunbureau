@@ -11,6 +11,7 @@ on_load = ->
       $('#show_filters').click ->
         close_filters_form()
       $('.open-footer').click ->
+        $('.open-footer').toggleClass('flip')
         $('#footer').toggleClass 'open'
     show_filters_form = ->
       $('#filtersForm').addClass('visible')
@@ -23,8 +24,6 @@ on_load = ->
       filterBoxH = $('.filter-box').outerHeight()
       $('#map-canvas').height viewportH - navbarH
       $('.spaces-results').height viewportH - navbarH - filterBoxH
-
-
 
     initialize_listeners()
     set_content_height()

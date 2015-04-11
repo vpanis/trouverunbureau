@@ -237,30 +237,6 @@ hr {
   margin-top: 33px;
 }
 
-[data-controller="spaces"] [data-action="index"] {
-  #footer {
-    position: fixed;
-    transform: translateY(100%);
-    bottom: 0;
-    width: 100%;
-    transition: .25s;
-    z-index: 1;
-    &.open {
-      transform: translateY(0);
-    }
-  }
-  .open-footer {
-    background-color: $light-black;
-    position: absolute;
-    top: -40px;
-    left: 0;
-    padding: 10px 20px;
-    cursor: pointer;
-    z-index: 1000;
-    color: $white;
-  }
-}
-
 .form--hidden {
   display: none;
 }
