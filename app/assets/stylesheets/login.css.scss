@@ -19,9 +19,9 @@
   letter-spacing: 0.05em;
 }
 .login-page{
-  width: 98%;
-  margin-right: auto;
-  margin-left: auto;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px;
   h1, h2{
     text-align: center;
   }
@@ -59,7 +59,7 @@
     .fb-button-text{
       height: 19px;
       border-left: 1px solid white;
-      margin-left: 55px;
+      margin: 0 55px;
       position: relative;
       top: 13px;
       text-align: center;

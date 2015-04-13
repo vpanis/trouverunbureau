@@ -26,9 +26,13 @@ class Venue < ActiveRecord::Base
   AMENITY_TYPES = [:whiteboards, :kitchen, :security, :wifi, :printer_scanner, :chill_area,
                    :photocopier, :conference_rooms, :elevators, :outdoor_space, :team_bookings,
                    :individual_bookings, :shower, :fax, :wheelchair_access, :air_conditioning,
-                   :pets_allowed, :mail_service, :gym, :cafe_restaurant, :phone_booth]
+                   :pets_allowed, :mail_service, :gym, :cafe_restaurant, :phone_booth, :tv,
+                   :projector, :concierge, :parking, :water_fountain, :reception_service,
+                   :cleaning_service]
 
-  PROFESSIONS = [:technology, :public_relations, :entertainment, :entrepreneur]
+  PROFESSIONS = [:technology, :public_relations, :entertainment, :entrepreneur, :startup, :media,
+                 :design, :architect, :advertising, :finance, :consultant, :freelance, :journalist,
+                 :fashion, :lawyer, :professor]
 
   # Callbacks
   after_initialize :initialize_fields

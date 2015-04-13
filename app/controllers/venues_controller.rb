@@ -45,15 +45,12 @@ class VenuesController < ModelController
     @user = current_represented
     @photos = @venue.photos
     @selected_space = Space.find(params[:space_id]) if params[:space_id]
-    if @user.present?
-      @favorite_spaces_ids = @user.favorite_spaces.pluck(:id)
+    # favorites of the user
+    if current_user.present?
+      @favorite_spaces_ids = current_user.favorite_spaces.pluck(:id)
     else
       @favorite_spaces_ids = []
     end
-  end
-
-  def search
-    @current_user = current_user
   end
 
   def index

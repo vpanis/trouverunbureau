@@ -6,7 +6,8 @@ class Space < ActiveRecord::Base
   has_many :photos, class_name: 'VenuePhoto'
 
   # Constants/Enums
-  enum s_type: [:conference_room, :meeting_room, :office, :desk]
+  enum s_type: [:conference_room, :meeting_room, :private_office, :fixed_desk, :hot_desk,
+                :communal_space]
 
   # Validations
   validates :s_type, :name, :capacity, :quantity, :venue, :deposit, presence: true

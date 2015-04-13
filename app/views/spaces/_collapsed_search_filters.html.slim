@@ -1,0 +1,35 @@
+#countResultsBox.filter-box.row
+  .hidden-xs
+    .counter.col-md-2.text-center
+      .h1.count-number() {{totalSpaces}}
+      .h5.text-annotation() = t('search.count')
+
+    .filters.col-md-8
+      p.filter-colapse.refine ng-if="filters.length == 0" #{t('search.refine')}
+      ul.list-unstyled.filter-item-list
+        li.clear-filters ng-if="filters.length > 0" ng-click=("removeFilterAll()")
+          p.filter-name = t('search.clear_filters')
+        li ng-repeat=("filter in filters")
+          p.filter-name() {{filter}}
+          .filter-delete.delete-lang ng-click=("removeFilter(filter)")
+
+    .col-md-2
+      .border-circle.text-annotation.filter-button() = t('search.filters')
+  .hidden-sm.hidden-md.hidden-lg.small-devices
+    .row
+      .counter.col-xs-6.text-center
+        .h1.count-number() {{totalSpaces}}
+        .h5.text-annotation() = t('search.count')
+      .col-xs-6
+        .border-circle.text-annotation.filter-button() = t('search.filters')
+    .row
+      .filters.col-xs-12.center
+        p.filter-colapse.refine ng-if="filters.length == 0" #{t('search.refine')}
+        ul.list-unstyled.filter-item-list
+          li.clear-filters ng-if="filters.length > 0" ng-click=("removeFilterAll()")
+            p.filter-name = t('search.clear_filters')
+          li ng-repeat=("filter in filters")
+            p.filter-name() {{filter}}
+            .filter-delete.delete-lang ng-click=("removeFilter(filter)")
+
+

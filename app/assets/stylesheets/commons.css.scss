@@ -186,6 +186,10 @@ hr {
   }
 }
 
+.add-space-section {
+  height: 190px !important;
+}
+
 .add-image,
 .add-space {
   position: relative;
@@ -227,8 +231,71 @@ hr {
     text-transform: uppercase;
   }
 }
+
+.margin-top-0 {
+  margin-top: 0px !important;
+}
+
 .add-space {
-  margin-top: 70px;
+  margin-top: 33px;
+}
+
+.form--hidden {
+  display: none;
+}
+
+.main-container {
+  padding-bottom: 325px;
+}
+.add-image-container {
+  cursor: pointer;
+}
+.new-member {
+  .add-image {
+    height: 245px;
+  }
+  .hover .delete-photo {
+    position: absolute;
+    top: calc(50% - 16px);
+    width: 140px;
+  }
+  .delete-organization-link {
+    color: $gray-text;
+    &:before {
+      display: inline-block;
+      margin-right: 5px;
+      padding: 0px 3px;
+      line-height: 16px;
+      content: 'x';
+      color: #9f9f9f;
+      border-radius: 100%;
+      border: 1px solid #9f9f9f;
+    }
+  }
+}
+.organization-profile {
+  padding-bottom: 50px;
+  .name {
+    &:after {
+      left: 230px !important;
+    }
+  }
+  .members-list {
+    padding-top: 20px;
+  }
+  .user-email {
+    position: relative;
+    margin-bottom: 15px;
+    &:after {
+      position: absolute;
+      content: '';
+      width: 40px;
+      height: 2px;
+      background-color: #ffe111;
+      bottom: -7px;
+      left: 160px;
+    }
+  }
 }
 .add-image-container {
   cursor: pointer;

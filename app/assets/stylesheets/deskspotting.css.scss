@@ -17,7 +17,7 @@ a, a:hover{
   color: $red;
 }
 
-h3.yellow-title{
+h3.yellow-title {
   margin: 0;
   color: $yellow;
   text-transform: uppercase;
@@ -25,12 +25,14 @@ h3.yellow-title{
   letter-spacing: 0.25rem;
   font-weight: 700;
 }
-.small-separator{
+
+.small-separator {
   border-top: 2px solid $yellow;
   margin: 18px auto 20px;
   width: 5%;
 }
-h4.gray-subtitle{
+
+h4.gray-subtitle {
   margin: 0;
   font-weight: 300;
   font-size: 30px;
@@ -39,21 +41,23 @@ h4.gray-subtitle{
 }
 
 /* ====== LANDING ====== */
-.separator{
+
+.separator {
   border-top: 2px solid $yellow;
   margin: 40px auto 68px;
   width: 10%;
 }
-.landing-page{
-  .rounded-right{
+
+.landing-page {
+  .rounded-right {
     @include rounded-right(3px);
     @include rounded-left(0px);
   }
-  .rounded-left{
+  .rounded-left {
     @include rounded-left(3px);
     @include rounded-right(0px);
   }
-  .icon{
+  .icon {
     @include at2x('isologo-top-bar', 205px, 35px);
     background-repeat: no-repeat;
     background-position: center;
@@ -63,86 +67,97 @@ h4.gray-subtitle{
     margin-left: 14px;
     margin-top: 12px;
   }
-  #header{
+  #header {
     background: gray;
     background-image: image-url('parallax1.jpg');
     background-size: cover;
     height: 100%;
-    h1{
-      font-size: 20px;
-      text-align: center;
-      color: white;
-      letter-spacing: 0.65rem;
-      font-size: 46px;
-      margin-top: 120px;
+    background-position: 50%;
+    position: relative;
+    .header-overlay {
+      background: $translucent-black;
+      height: 100%;
+      position: absolute;
+      width: 100%;
     }
-    h4{
-      color: white;
-      font-weight: 300;
-      text-align: center;
-      margin-top: 26px;
-      letter-spacing: 0.09rem;
-      font-size: 17px;
-    }
-    .search-form{
-      margin-right: auto;
-      margin-left: auto;
-      text-align: center;
-      padding: 8px;
-      .form-group{
-        padding: 0;
+    .header-content {
+      position: relative;
+      h1 {
+        font-size: 20px;
+        text-align: center;
+        color: white;
+        letter-spacing: 0.65rem;
+        font-size: 46px;
+        margin-top: 120px;
       }
-      .form-control{
-        height: 50px;
-        width: 100%;
-        border: solid 0px;
-        box-shadow: none;
-      }
-      .styled-search{
-        background-color: white;
-        @include at2x('loupe', 26px, 26px);
-        background-repeat: no-repeat;
-        background-position-x: 12px;
-        background-position-y: 14px;
-        height: 50px;
-        border-right: 1px solid $gray;
-      }
-      .styled-select{
-        background-color: white;
-        height: 50px;
-      }
-      input[type='text'].form-control{
-        background-color: transparent;
-        padding-left: 48px;
-        font-size: 14px;
-        letter-spacing: 0.08rem;
+      h4 {
+        color: white;
         font-weight: 300;
-        padding-bottom: 2px;
+        text-align: center;
+        margin-top: 26px;
+        letter-spacing: 0.09rem;
+        font-size: 17px;
       }
-      *::-webkit-input-placeholder{
-        color: $dark-gray;
-      }
-      *:-moz-placeholder{
-        color: $dark-gray;
-      }
-      *::-moz-placeholder{
-        color: $dark-gray;
-      }
-      *:-ms-input-placeholder{
-        color: $dark-gray;
-      }
-      #landing-form-submit{
-        height: 50px;
-        background-color: $yellow;
-        border: 0;
-        @include rounded-right(3px);
-        font-size: 16px;
-        letter-spacing: 0.15rem;
-        color: black;
-        @include transition(background-color);
-      }
-      #landing-form-submit:hover{
-        background-color: $light-yellow;
+      .search-form {
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+        padding: 8px;
+        .form-group {
+          padding: 0;
+        }
+        .form-control {
+          height: 50px;
+          width: 100%;
+          border: solid 0px;
+          box-shadow: none;
+        }
+        .styled-search {
+          background-color: white;
+          @include at2x('loupe', 26px, 26px);
+          background-repeat: no-repeat;
+          background-position-x: 12px;
+          background-position-y: 14px;
+          height: 50px;
+          border-right: 1px solid $gray;
+        }
+        .styled-select {
+          background-color: white;
+          height: 50px;
+        }
+        input[type='text'].form-control {
+          background-color: transparent;
+          padding-left: 48px;
+          font-size: 14px;
+          letter-spacing: 0.08rem;
+          font-weight: 300;
+          padding-bottom: 2px;
+        }
+        *::-webkit-input-placeholder {
+          color: $dark-gray;
+        }
+        *:-moz-placeholder {
+          color: $dark-gray;
+        }
+        *::-moz-placeholder {
+          color: $dark-gray;
+        }
+        *:-ms-input-placeholder {
+          color: $dark-gray;
+        }
+        #landing-form-submit {
+          height: 50px;
+          background-color: $yellow;
+          border: 0;
+          @include rounded-right(3px);
+          font-size: 16px;
+          letter-spacing: 0.15rem;
+          color: black;
+          @include transition(background-color);
+        }
+        #landing-form-submit:hover {
+          background-color: $light-yellow;
+        }
       }
     }
   }
@@ -191,6 +206,16 @@ h4.gray-subtitle{
   a.ds-btn:hover{
     color: $black;
     background-color: $yellow;
+  }
+  #ds-home-btn {
+    padding: 10px 28px !important;
+    p {
+      color: $yellow;
+      font-weight: bold;
+    }
+    &:hover p {
+      color: grey;
+    }
   }
   .topbar .logo{
     width: 250px;
@@ -325,64 +350,60 @@ h4.gray-subtitle{
             height: 100%;
           }
         }
-        .space-image-box-over{
+        .space-image-box-over {
           opacity: 0;
           position: relative;
           width: 100%;
           @include transition(opacity);
-          .space-image-info{
+          .space-image-info {
             position: absolute;
             width: 100%;
             height: 232px;
             background-color: $transparent-yellow;
             bottom: 100%;
-            .city-name{
+            .space-info-bottom {
+              position: absolute;
+              width: 100%;
+              bottom: 20px;
+            }
+            .city-name {
               text-transform: uppercase;
               font-size: 18px;
               margin-top: 25px;
               letter-spacing: 0.1rem;
               font-weight: 300;
               padding: 0 20px;
-              p{
-                margin-bottom: 8px;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-              }
             }
-            .separator{
+            .separator {
               border-top: 2px solid white;
               width: 30px;
               margin: 0px auto;
             }
-            .price, .amount{
+            .price, .amount {
               font-weight: 700;
               font-size: 32px;
               letter-spacing: 0.25rem;
               padding-top: 24px;
-              p{
-                margin: 0;
-              }
             }
-            .desk.amount{
-              margin-top: 45px;
+            .desk.amount {
+              margin-top: 25px;
             }
-            .time, .amount-decription{
+            .time, .amount-decription {
               font-weight: 300;
               font-size: 12px;
               letter-spacing: 0.15rem;
             }
-            .currency{
+            .currency {
               text-transform: uppercase;
             }
-            .footer, .currency{
-              margin-top: 45px;
+            .footer, .currency {
+              margin-top: 25px;
               font-style: italic;
               font-weight: 100;
             }
           }
         }
-        .space-image-box-over:hover{
+        .space-image-box-over:hover {
           opacity: 1;
         }
       }
@@ -841,10 +862,10 @@ h4.gray-subtitle{
       }
     }
   }
-  .amenities-list{
+  .amenities-list {
     padding: 4px 10px;
     margin-bottom: 22px;
-    .amenity{
+    .amenity {
       background-size: 40px 40px;
       background-repeat: no-repeat;
       padding-left: 59px;
@@ -860,68 +881,89 @@ h4.gray-subtitle{
         color: $gray-text;
       }
     }
-    .amenity.whiteboards{
+    .amenity.whiteboards {
       @include at2x('venue_profile_a_whiteboards', 40px, 40px);
     }
-    .amenity.security{
+    .amenity.security {
       @include at2x('venue_profile_a_security', 40px, 40px);
     }
-    .amenity.printer{
+    .amenity.printer_scanner {
       @include at2x('venue_profile_a_printer_scanner', 40px, 40px);
     }
-    .amenity.photocopier{
+    .amenity.photocopier {
       @include at2x('venue_profile_a_photocopier', 40px, 40px);
     }
-    .amenity.elevators{
+    .amenity.elevators {
       @include at2x('venue_profile_a_elevators', 40px, 40px);
     }
-    .amenity.team{
+    .amenity.team_bookings {
       @include at2x('venue_profile_a_team_bookings', 40px, 40px);
     }
-    .amenity.shower{
+    .amenity.shower {
       @include at2x('venue_profile_a_shower', 40px, 40px);
     }
-    .amenity.wheelchair{
+    .amenity.wheelchair_access {
       @include at2x('venue_profile_a_wheelchair_access', 40px, 40px);
     }
-    .amenity.pets{
+    .amenity.pets_allowed {
       @include at2x('venue_profile_a_pets_allowed', 40px, 40px);
     }
-    .amenity.gym{
+    .amenity.gym {
       @include at2x('venue_profile_a_gym', 40px, 40px);
     }
-    .amenity.phone{
+    .amenity.phone_booth {
       @include at2x('venue_profile_a_phone_booth', 40px, 40px);
     }
-    .amenity.kitchen{
+    .amenity.kitchen {
       @include at2x('venue_profile_a_kitchen', 40px, 40px);
     }
-    .amenity.wifi{
+    .amenity.wifi {
       @include at2x('venue_profile_a_wifi', 40px, 40px);
     }
-    .amenity.chill{
+    .amenity.chill_area {
       @include at2x('venue_profile_a_chill_area', 40px, 40px);
     }
-    .amenity.conference{
+    .amenity.conference_rooms {
       @include at2x('venue_profile_a_conference_rooms', 40px, 40px);
     }
-    .amenity.outdoor{
+    .amenity.outdoor_space {
       @include at2x('venue_profile_a_outdoor-space', 40px, 40px);
     }
-    .amenity.individual{
+    .amenity.individual_bookings {
       @include at2x('venue_profile_a_individual_bookings', 40px, 40px);
     }
-    .amenity.fax{
+    .amenity.fax {
       @include at2x('venue_profile_a_fax', 40px, 40px);
     }
-    .amenity.air{
+    .amenity.air_conditioning {
       @include at2x('venue_profile_a_air_conditioning', 40px, 40px);
     }
-    .amenity.mail{
+    .amenity.mail_service {
       @include at2x('venue_profile_a_mail_service', 40px, 40px);
     }
-    .amenity.cafe{
+    .amenity.cafe_restaurant {
       @include at2x('venue_profile_a_cafe_restaurant', 40px, 40px);
+    }
+    .amenity.tv {
+      @include at2x('venue_profile_a_tv', 40px, 40px);
+    }
+    .amenity.projector {
+      @include at2x('venue_profile_a_projector', 40px, 40px);
+    }
+    .amenity.concierge {
+      @include at2x('venue_profile_a_concierge', 40px, 40px);
+    }
+    .amenity.parking {
+      @include at2x('venue_profile_a_parking', 40px, 40px);
+    }
+    .amenity.water_fountain {
+      @include at2x('venue_profile_a_water_fountain', 40px, 40px);
+    }
+    .amenity.reception_service {
+      @include at2x('venue_profile_a_reception_service', 40px, 40px);
+    }
+    .amenity.cleaning_service {
+      @include at2x('venue_profile_a_cleaning_service', 40px, 40px);
     }
   }
 }
@@ -1250,19 +1292,20 @@ li.venue-hours.active{
 }
 
 .weekday-col label{
-  width: 40px;
+  margin: 0 10px;
+  vertical-align: middle;
 }
 
-.weekday-col{
+.weekday-col {
   line-height: 42px;
   padding-top: 20px;
 }
 
-.bigstars{
+.bigstars {
   margin: 0 auto;
   width: 260px;
   margin-bottom: 40px;
-  .bigstar{
+  .bigstar {
     @include at2x('stars-sprite', 80px, 42px);
     background-size: 80px 42px;
     width: 40px;
@@ -1273,7 +1316,7 @@ li.venue-hours.active{
     vertical-align: middle;
     background-position: -40px 0px;
   }
-  .bigstar.active{
+  .bigstar.active {
     background-position: 0px 0px;
   }
 }
@@ -1295,7 +1338,7 @@ li.venue-hours.active{
   }
 }
 
-.container{
+.container {
   padding-top: 20px;
 }
 
@@ -1353,4 +1396,190 @@ li.venue-hours.active{
       height: 44px !important;
     }
   }
+}
+
+/*--booking inquiry--*/
+
+.error-wrapper {
+  margin: 0 auto;
+  width: 600px;
+  padding-top: 40px;
+}
+.inquiring-container {
+  max-width: 940px;
+  margin: 0 auto;
+  .inquiry-title-container {
+    text-align: center;
+    padding-top: 50px;
+  }
+  .workspace-detail-container {
+    text-align: center;
+    margin: 30px 0;
+    .workspace-image {
+      height: 50px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 20px;
+    }
+    .workspace-detail-wrapper {
+      display: inline-block;
+      vertical-align: middle;
+      text-align: left;
+      .workspace-title,
+      .capacity-image,
+      .workspace-capacity,
+      .location-image,
+      .location-text,
+      .venue-name {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .workspace-title {
+        font-weight: bold;
+        margin-right: 20px;
+      }
+      .capacity-image {
+        width: 20px;
+        margin-right: 5px;
+      }
+      .workspace-capacity {
+        margin-right: 20px;
+      }
+      .small-separator {
+        margin: 10px 0;
+        width: 50px;
+      }
+      .location-image {
+        margin-right: 5px;
+      }
+    }
+  }
+  .separator {
+    border-top: 1px solid $gray;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .time-select-wrapper {
+    text-align: center;
+    margin-bottom: 40px;
+    .multiple-switch-wrapper {
+      width: 600px;
+      margin: 0 auto;
+      .tab {
+        display: inline-block;
+        vertical-align: top;
+        width: 100px;
+        height: 50px;
+        border: 2px solid $light-gray;
+        border-left: none;
+        border-right: none;
+        line-height: 46px;
+        text-transform: uppercase;
+        font-size: 12px;
+        cursor: pointer;
+        &:first-child {
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
+          border-left: 2px solid $light-gray;
+        }
+        &:last-child {
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 5px;
+          border-right: 2px solid $light-gray;
+        }
+        &.tab--selected {
+          border: none;
+          font-weight: bold;
+          background: $yellow;
+          line-height: 50px;
+        }
+        &.tab--hidden {
+          display: none;
+        }
+      }
+    }
+  }
+  .message-wrapper {
+    margin-bottom: 30px;
+  }
+  .table-booking-inquiry {
+    width: 100%;
+    color: $gray-text;
+    margin-bottom: 40px;
+    tr {
+      height: 60px;
+      border-top: 1px solid $gray;
+      td {
+        padding: 0 20px;
+        &:last-child {
+          text-align: center;
+          text-transform: uppercase;
+        }
+        .base-price {
+          font-weight: bold;
+          font-size: 28px;
+          font-style: normal;
+          color: $light-black;
+        }
+      }
+      &:first-child {
+        background: $light-gray;
+        td:last-child {
+          font-size: 10px;
+          font-style: italic;
+        }
+      }
+      &:last-child {
+        background: $light-gray;
+        border-bottom: 1px solid $gray;
+        color: $light-black;
+        font-weight: bold;
+        td:last-child {
+          background: $yellow;
+        }
+      }
+    }
+  }
+  .booking-reasons-wrapper {
+    text-align: center;
+    margin-bottom: 40px;
+    h2 {
+      color: $light-black;
+    }
+    .features-wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .feature-item {
+      display: inline-block;
+      width: 300px;
+      height: 50px;
+      text-align: left;
+      padding-left: 55px;
+      .feature-icon {
+        width: 20px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px;
+      }
+      .feature-item-text {
+        color: $gray-text;
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+  }
+  .form-btn-wrapper {
+    height: 50px;
+    margin-bottom: 100px;
+    .btn-inquiry-back {
+      display: block;
+    }
+    .btn-inquiry-send {
+      width: 100%;
+    }
+  }
+}
+.navbar-right{
+  margin-right: 0px;
 }

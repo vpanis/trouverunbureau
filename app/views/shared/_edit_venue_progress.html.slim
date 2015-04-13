@@ -1,8 +1,8 @@
 .verification-steps.height-100
   .status
     .status-text
-      | status:
-      span incomplete
+      = "#{t('edit_venue_progress.status')}:"
+      span = t('edit_venue_progress.incomplete')
     .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
 
     .progress-container
@@ -12,20 +12,20 @@
   ul.verification-list
     a href=edit_venue_path(venue)
       li.venue class=('done' if step > 1) class=('selected' if step == 1)
-        p Venue
+        p = t('edit_venue_progress.venue')
     a href=details_venue_path(venue)
       li.details class=('done' if step > 2) class=('selected' if step == 2)
-        p Details
+        p = t('edit_venue_progress.details')
     a href=amenities_venue_path(venue)
       li.amenities class=('done' if step > 3) class=('selected' if step == 3)
-        p Amenities
+        p = t('edit_venue_progress.amenities')
     a href=photos_venue_path(venue)
       li.photos class=('done' if step > 4) class=('selected' if step == 4)
-        p Photos
+        p = t('edit_venue_progress.photos')
     a href=spaces_venue_path(venue)
       li.spaces class=('done' if step > 5) class=('selected' if step == 5)
-        p Spaces
+        p = t('edit_venue_progress.spaces')
   .publish
-    a.rounded-btn.grey-fill.width-100 href="#" publish
+    a.rounded-btn.yellow-fill.width-100 href="#" = t('edit_venue_progress.publish')
   .delete
-    a href="#" Delete Venue
+    a href="#" = t('edit_venue_progress.delete_venue')

@@ -1,0 +1,15 @@
+li
+  = link_to(t('menu.search'), search_mobile_spaces_path())
+- if current_user.present?
+  li
+    = link_to(t('menu.profile'), user_path(current_user))
+  li
+    = link_to(t('menu.wishlist'), wishlist_spaces_path)
+  li
+    = link_to(t('menu.account'), account_user_path(current_user))
+  li
+    = link_to(t('session.logout'), destroy_user_session_path, method: :delete)
+- else
+  li
+    = link_to(t('session.login'), new_user_session_path)
+

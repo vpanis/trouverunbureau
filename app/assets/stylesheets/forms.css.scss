@@ -56,7 +56,7 @@ label{
   color: $dark-gray;
 }
 
-.form-control:focus, input[type="checkbox"]:focus{
+.form-control:focus, input[type="checkbox"]:focus, input[type="radio"]:focus{
   -webkit-appearance: none;
   -moz-appearance:none;
   -o-appearance:none;
@@ -68,7 +68,7 @@ input[type='submit']:focus{
   background-color: $light-yellow;
 }
 
-input[type="checkbox"]{
+input[type="checkbox"], input[type="radio"]{
   height: 17px;
   width: 17px;
   margin: 0;
@@ -97,7 +97,6 @@ input[type="checkbox"]{
   }
 }
 
-
 .subtitle {
   margin-bottom: 20px;
   margin-top: 30px;
@@ -113,4 +112,12 @@ input[type="checkbox"]{
 
 .vertical-align {
   margin-top: 36px;
+}
+
+.input--hidden {
+  display: none;
+}
+
+textarea {
+  resize: none;
 }

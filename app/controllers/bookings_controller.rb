@@ -31,4 +31,5 @@ class BookingsController < ApplicationController
     @paid = booking_context.send(method_name, Booking.states.values_at(:paid))
     @canceled = booking_context.send(method_name, Booking.states.values_at(:canceled))
   end
+
 end

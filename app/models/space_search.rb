@@ -11,7 +11,7 @@ class SpaceSearch
   # Venue::PROFESSIONS array ("technology", "public_relations"...)
   attr_accessor :venue_professions
   attr_accessor :latitude_from, :latitude_to, :longitude_from, :longitude_to
-  attr_accessor :capacity, :quantity, :date, :weekday
+  attr_accessor :capacity_max, :capacity_min, :quantity, :date, :weekday
 
   # Validations
   validates :latitude_to, :latitude_from, numericality: {
@@ -45,7 +45,7 @@ class SpaceSearch
   private
 
   def initialize(attributes = {})
-    date = attributes[:date]
+    date = attributes[:date] || attributes['date']
     # wday 0 = sunday, venue_hours.weekday 0 = mon
     unless date.blank?
       date_to_utc = Time.zone.local_to_utc(Time.parse(date))
@@ -61,9 +61,19 @@ class SpaceSearch
   end
 
   def space_conditions(spaces)
-    spaces = spaces.where { capacity >= my { capacity } } unless capacity.blank?
+    spaces = capacity_conditions(spaces)
     spaces = spaces.where { quantity >= my { quantity } } unless quantity.blank?
     spaces = spaces.where { s_type.eq_any my { space_types } } unless space_types.blank?
+    spaces
+  end
+
+  def capacity_conditions(spaces)
+    if capacity_min != capacity_max
+      spaces = spaces.where { capacity >= my { capacity_min } } unless capacity_min.blank?
+      spaces = spaces.where { capacity <= my { capacity_max } } unless capacity_max.blank?
+    else
+      spaces = spaces.where { capacity == my { capacity_min } } unless capacity_min.blank?
+    end
     spaces
   end
 

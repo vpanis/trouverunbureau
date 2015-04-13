@@ -29,7 +29,7 @@ module BookingReservation
         rdc.add_time_range(element.from, element.to, element.quantity)
         break unless rdc.valid?
       end
-      custom_errors.add(:collition_errors, rdc.errors) unless rdc.errors.empty?
+      rdc.errors.each { |err| custom_errors.add(:collition_errors, err) } unless rdc.errors.empty?
       yield
     end
   end

@@ -1,0 +1,189 @@
+= render 'shared/menu_bar', user: current_user
+#venue-hours data-day-hours=@day_hours
+#venue-hour-price data-hour-price=@booking.space.hour_price
+#venue-day-price data-day-price=@booking.space.day_price
+#venue-month-price data-month-price=@booking.space.month_price
+.error-wrapper
+  - if @booking_errors.present?
+    - @booking_errors.each do |attribute, message|
+      .alert.alert-danger role="alert"
+        = message
+  - if @custom_error.present?
+    - @custom_error.messages.each do |k,v|
+      .alert.alert-danger role="alert"
+        = t(k.to_s)
+.inquiring-container  ng-controller="BookingInquiryCtrl"
+  .inquiry-title-container
+    h3.yellow-title = t('venues.show.booking_inquiry')
+    .small-separator
+  .workspace-detail-container
+    = image_tag('venue-default.png', class: 'workspace-image')
+    .workspace-detail-wrapper
+      .workspace-basic-info
+        span.workspace-title
+          = @space.name
+        = image_tag('venue_profile_a_team_bookings.png', class: 'capacity-image')
+        span.workspace-capacity
+          = @space.capacity
+        span.venue-name
+          = @space.venue.name
+      .small-separator
+      .workspace-location-wrapper
+        = image_tag('i-location.png', class: 'location-image')
+        span.location-text
+          | #{@space.venue.street}, #{@space.venue.town}, #{@space.venue.country.name}
+  .separator
+  .time-select-wrapper
+    label
+      = t('booking_inquiry.time_frame')
+    .multiple-switch-wrapper
+      - if @booking.space.hour_price.present?
+        .tab#tab-hour ng-click="swap_inquiry_type('.form-hour-booking', 'hour')" ng-class="{'tab--selected': selected_tab == 'hour'}"
+          = t('venues.show.per_hour')
+      - if @booking.space.day_price.present?
+        .tab#tab-day ng-click="swap_inquiry_type('.form-day-booking', 'day')" ng-class="{'tab--selected': selected_tab == 'day'}"
+          = t('venues.show.per_day')
+      - if @booking.space.month_price.present?
+        .tab#tab-month ng-click="swap_inquiry_type('.form-month-booking', 'month')" ng-class="{'tab--selected': selected_tab == 'month'}"
+          = t('venues.show.per_month')
+  .form-container
+    - if @booking.space.hour_price.present?
+      = form_for @booking, url: inquiry_space_path(@space), html: { id: 'hour-form'} do |f|
+        .form.form-hour-booking.form--hidden
+          .row
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              label
+                = t('booking_inquiry.date')
+              .calendar.input-group
+                .calendar-icon.input-group-addon ng-click="open($event, 'hour_opened_date')" type="button"
+                = f.text_field :from, { value: "{{booking_from | date: format}}", placeholder: 'mm-dd-aa', class: 'form-control', close_text: 'Close', datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'hour_opened_date', ng_model: "booking_from", date_disabled: "disabled(date, mode)", type: 'text', show_button_bar:'false', ng_required: 'true' }
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              label
+                = t('booking_inquiry.space_amount')
+              = f.text_field :quantity, { class: 'form-control', type: 'number', ng_model: 'space_quantity', min: '1', ng_required: 'true' }
+          .row
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              label
+                = t('venues.edit.opening_time')
+              select name='hour_booking_from' id='hour_booking_from' class='form-control hour-select' ng-model='hour_booking_begin' required='true' ng-options="hour for hour in hours_for_day() track by hour"
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              label
+                = t('venues.edit.closing_time')
+              select name='hour_booking_to' id='hour_booking_to' class='form-control hour-select' ng-model='hour_booking_end' required='true' ng-options="hour for hour in hours_for_day() track by hour"
+          input type="submit" class="input--hidden"
+          = text_field_tag :booking_type, nil, { type: 'text', 'ng-model' => "selected_tab", hidden: "" }
+          = hidden_field_tag :message, nil, { placeholder: t('booking_inquiry.message_placeholder'), class: 'form-control', hidden: "", ng_model: "booking_message" }
+    - if @booking.space.day_price.present?
+      = form_for @booking, url: inquiry_space_path(@space), html: { id: 'day-form'} do |f|
+        .form.form-day-booking.form--hidden
+          .row
+            .form-group.col-xs-12.col-sm-4.col-md-4.col-lg-4
+              label
+                = t('booking_inquiry.check_in')
+              .calendar.input-group
+                .calendar-icon.input-group-addon ng-click="open($event, 'opened_from')" type="button"
+                = f.text_field :from, { placeholder: 'mm-dd-aa', class: 'form-control', close_text: 'Close', datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened_from', ng_model: "booking_from", date_disabled: "disabled(date, mode)", type: 'text', show_button_bar:'false', ng_required: 'true' }
+            .form-group.col-xs-12.col-sm-4.col-md-4.col-lg-4
+              label
+                = t('booking_inquiry.chek_out')
+              .calendar.input-group
+                .calendar-icon.input-group-addon ng-click="open($event, 'opened_to')" type="button"
+                = f.text_field :to, { placeholder: 'mm-dd-aa', class: 'form-control', close_text: 'Close', datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened_to', ng_model: "booking_to", date_disabled: "disabled(date, mode)", type: 'text', show_button_bar:'false', ng_required: 'true' }
+            .form-group.col-xs-12.col-sm-4.col-md-4.col-lg-4
+              label
+                = t('booking_inquiry.space_amount')
+              = f.text_field :quantity, value: 1, class: 'form-control', type: 'number', ng_model: 'space_quantity', min: '1', ng_required: 'true'
+          input type="submit" class="input--hidden"
+          = text_field_tag :booking_type, nil, { type: 'text', 'ng-model' => "selected_tab", hidden: "" }
+          = hidden_field_tag :message, nil, { placeholder: t('booking_inquiry.message_placeholder'), class: 'form-control', hidden: "", ng_model: "booking_message" }
+    - if @booking.space.month_price.present?
+      = form_for @booking, url: inquiry_space_path(@space), html: { id: 'month-form'} do |f|
+        .form.form-month-booking.form--hidden
+          .row
+            .form-group.col-xs-12.col-sm-4.col-md-4.col-lg-4
+              label
+                = t('booking_inquiry.check_in')
+              .calendar.input-group
+                .calendar-icon.input-group-addon ng-click="open($event, 'opened_from')" type="button"
+                = f.text_field :from, placeholder: 'mm-dd-aa', class: 'form-control', close_text: 'Close', datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened_from', ng_model: "booking_from", date_disabled: "disabled(date, mode)", type: 'text', show_button_bar:'false', ng_required: 'true'
+            .form-group.col-xs-12.col-sm-4.col-md-4.col-lg-4
+              label
+                = t('booking_inquiry.month_amount')
+              = text_field_tag :month_quantity, nil, { class: 'form-control', type: 'number', ng_model: 'month_quantity', min: '1', ng_required: 'true' }
+            .form-group.col-xs-12.col-sm-4.col-md-4.col-lg-4
+              label
+                = t('booking_inquiry.space_amount')
+              = f.text_field :quantity, value: 1, class: 'form-control', type: 'number', ng_model: 'space_quantity', min: '1', ng_required: 'true'
+          input type="submit" class="input--hidden"
+          = text_field_tag :booking_type, nil, { type: 'text', 'ng-model' => "selected_tab", hidden: "" }
+          = hidden_field_tag :message, nil, { placeholder: t('booking_inquiry.message_placeholder'), class: 'form-control', hidden: "", ng_model: "booking_message" }
+    .row
+      .form-group.col-xs-12.col-sm-12.col-md-12.col-lg-12.message-wrapper
+        label
+          = t('booking_inquiry.your_message')
+        = text_area_tag :message, nil, { placeholder: t('booking_inquiry.message_placeholder'), class: 'form-control', ng_model: "booking_message" }
+    table.table-booking-inquiry
+      tbody
+        tr
+          td
+            | Price per {{selected_tab}}
+          td
+            span.base-price
+              | $ {{booking_type_per_price() | number:0}}
+            | (arg)
+        tr
+          td
+            | {{selected_tab}}s amount
+          td
+            | X {{amount_for_booking_type()}}
+        tr
+          td
+            = @space.name
+            | &nbsp; amount
+          td
+            | X {{space_quantity}}
+        tr
+          td
+            | DeskSpotting fee
+          td
+            | free
+        tr
+          td
+            | Total
+          td
+            | ${{booking_type_per_price() * amount_for_booking_type() * space_quantity}}(arg)
+    .booking-reasons-wrapper
+      h2
+        = t('venues.show.why_deskspotting.title')
+      .small-separator
+      .features-wrapper
+        .feature-item
+          = image_tag('venue_profile_why_book.png', class: 'feature-icon')
+          .feature-item-text
+            = t('booking_inquiry.feature_1')
+        .feature-item
+          = image_tag('venue_profile_why_book.png', class: 'feature-icon')
+          .feature-item-text
+            = t('booking_inquiry.feature_2')
+        .feature-item
+          = image_tag('venue_profile_why_book.png', class: 'feature-icon')
+          .feature-item-text
+            = t('booking_inquiry.feature_3')
+        .feature-item
+          = image_tag('venue_profile_why_book.png', class: 'feature-icon')
+          .feature-item-text
+            = t('booking_inquiry.feature_4')
+        .feature-item
+          = image_tag('venue_profile_why_book.png', class: 'feature-icon')
+          .feature-item-text
+            = t('booking_inquiry.feature_5')
+        .feature-item
+          = image_tag('venue_profile_why_book.png', class: 'feature-icon')
+          .feature-item-text
+            = t('booking_inquiry.feature_6')
+    .row
+      .form-btn-wrapper
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6.message-wrapper
+          = link_to t('booking_inquiry.back'), venue_path(@space.venue), class: "rounded-btn btn-inquiry-back"
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6.message-wrapper
+          input type="submit" value="#{t('booking_inquiry.send_inquiry')}" class="rounded-btn yellow-fill btn-inquiry-send" ng-click="submit_form()"

@@ -55,6 +55,15 @@ describe SpacesController do
         end
       end # when the space does not exist
     end # when user logged in
+
+    context 'when no user is logged in' do
+      let!(:a_space) { create(:space) }
+      it 'is redirected to login' do
+        get :edit, id: a_space.id
+        expect(response.status).to eq(302)
+        expect(response.redirect_url).to eq(new_user_session_url)
+      end
+    end # when no user is logged in
   end # GET spaces/:id/edit
 
   describe 'UPDATE spaces/:id/update' do
@@ -191,6 +200,174 @@ describe SpacesController do
       end
     end # when user logged in
 
+    context 'when no user is logged in' do
+      let!(:a_space) { create(:space) }
+      it 'is redirected to login' do
+        patch :update, id: a_space.id
+        expect(response.status).to eq(302)
+        expect(response.redirect_url).to eq(new_user_session_url)
+      end
+    end # when no user is logged in
   end # UPDATE spaces/:id/update
 
+  describe 'GET venues/:id/new_space' do
+    context 'when a user is logged in' do
+      before(:each) { sign_in user }
+
+      context 'when the venue belongs to the user' do
+        let(:venue) { create(:venue, owner: user) }
+        before do
+          get :new, id: venue.id
+        end
+
+        it 'succeeds' do
+          expect(response.status).to eq(200)
+        end
+      end
+
+      context 'when the venue does not belong to the user' do
+        let(:venue) { create(:venue) }
+
+        it 'is forbidden' do
+          get :new, id: venue.id
+          expect(response.status).to eq(403)
+        end
+      end
+
+      context 'when the venue does not exist' do
+        it 'fails' do
+          get :new, id: -1
+          expect(response.status).to eq(404)
+        end
+      end
+    end
+
+    context 'when no user is logged in' do
+      let!(:venue) { create(:venue) }
+      it 'is redirected to login' do
+        get :new, id: venue.id
+        expect(response.status).to eq(302)
+        expect(response.redirect_url).to eq(new_user_session_url)
+      end
+    end # when no user is logged in
+  end # GET venues/:id/new_space
+
+  # search spaces
+  describe 'GET index' do
+    context 'when a user is logged in' do
+      before(:each) { sign_in user }
+
+      it 'suceeds' do
+        get :index
+        expect(response.status).to eq(200)
+      end
+    end
+
+    context 'when no user is logged in' do
+      it 'suceeds' do
+        get :index
+        expect(response.status).to eq(200)
+      end
+    end
+  end # GET index
+
+  # search form
+  describe 'GET search_mobile' do
+    context 'when a user is logged in' do
+      before(:each) { sign_in user }
+
+      it 'suceeds' do
+        get :search_mobile
+        expect(response.status).to eq(200)
+      end
+    end
+
+    context 'when no user is logged in' do
+      it 'suceeds' do
+        get :search_mobile
+        expect(response.status).to eq(200)
+      end
+    end
+  end # GET search_mobile
+
+  describe 'GET wishlist' do
+    context 'when a user is logged in' do
+      before(:each) { sign_in user }
+
+      it 'suceeds' do
+        get :wishlist
+        expect(response.status).to eq(200)
+      end
+    end
+
+    context 'when no user is logged in' do
+      it 'is redirected to login' do
+        get :wishlist
+        expect(response.status).to eq(302)
+        expect(response.redirect_url).to eq(new_user_session_url)
+      end
+    end
+  end # GET wishlist
+
+  describe 'DELETE destroy' do
+    context 'when a user is logged in' do
+      before(:each) { sign_in user }
+
+      context 'when the user owns the space' do
+        let(:venue) { create(:venue, owner: user) }
+        let(:space) { create(:space, venue: venue) }
+
+        before { delete :destroy, id: space.id }
+
+        it 'suceeds' do
+          expect(response.status).to eq(302)
+        end
+
+        it 'deletes the space' do
+          spaces = Space.where(id: space.id)
+          expect(spaces.size).to eq(0)
+        end
+      end
+
+      context 'when the user does not own the space' do
+        let(:space) { create(:space) }
+
+        before { delete :destroy, id: space.id }
+
+        it 'is forbidden' do
+          expect(response.status).to eq(403)
+        end
+
+        it 'does not delete the space' do
+          spaces = Space.where(id: space.id)
+          expect(spaces.size).to eq(1)
+          expect(spaces.first).to eq(space)
+        end
+      end
+
+      context 'when the space does not exist' do
+        it 'fails' do
+          delete :destroy, id: -1
+          expect(response.status).to eq(404)
+        end
+      end
+    end # when a user is logged in
+
+    context 'when no user is logged in' do
+      let(:space) { create(:space) }
+
+      before { delete :destroy, id: space.id }
+
+      it 'is redirected to login' do
+        expect(response.status).to eq(302)
+        expect(response.redirect_url).to eq(new_user_session_url)
+      end
+
+      it 'does not delete the space' do
+        spaces = Space.where(id: space.id)
+        expect(spaces.size).to eq(1)
+        expect(spaces.first).to eq(space)
+      end
+    end
+  end # DELETE destroy
 end

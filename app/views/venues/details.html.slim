@@ -8,7 +8,7 @@
   .details-section.col-md-7.col-md-offset-1.margin-top
     .title.inline.text-center
       - if @venue.logo.present?
-        = image_tag(@venue.logo.url, width: '95px', height: '95px', id: 'venue-logo-img')
+        = image_tag(@venue.logo.url, class: 'rounded-img' , id: 'venue-logo-img')
       - else
         = image_tag('venue-default.png', width: '95px', height: '95px', id: 'venue-logo-img')
       h3.big = @venue.name

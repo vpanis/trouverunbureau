@@ -59,18 +59,13 @@ en:
     change_password: 'Change Password'
   home:
     sign_in: 'Sign in'
-    list_your_space: 'List your space'
+    list_your_space: "List your space"
+    profile: Profile
+    manage_your_venues: Manage your venues
     header:
       title: 'Everyone needs a workspace'
       subtitle: 'Rent unique offices or meeting rooms where and when you need them.'
       search_text: 'Where do you want your Desk?'
-      type_of_desk_all: 'All workspaces'
-      type_of_desk_1: 'Hot Desk'
-      type_of_desk_2: 'Dedicated Desk'
-      type_of_desk_3: 'Private Office'
-      type_of_desk_4: 'Meeting Room'
-      type_of_desk_5: 'Conference Room'
-      type_of_desk_6: 'Communal Space'
       find: 'Find'
     features:
       title: 'features'
@@ -118,21 +113,34 @@ en:
       reserved_rights: ' 2014 DeskSpotting. All rights reserved.'
       terms_of_service: 'Terms of service'
       privacy_policy: 'Privacy policy'
+      more: 'more'
   menu:
     search: 'Search'
     profile: 'Profile'
     inbox: 'Inbox'
     bookings: 'Bookings'
     venues: 'Venues'
-    wishlist: 'Wishlist'
+    wishlist: 'Wish list'
     account: 'Account'
     change_user: 'Use DeskSpotting as:'
     create_organization: 'Create organization'
+    messages: Inbox
+    invite_friends: Invite friends
   search:
     count: 'Desks found'
     filters: 'Filters'
+    workspace: 'Workspace'
+    neighbourhood: 'Neighbourhood'
+    profession: 'Profession'
+    capacity: 'Capacity'
+    check_in: 'Check In'
+    show_filters: 'Show listings'
+    clear_filters: 'Clear filters'
     limits: '%{from} - %{to} more than %{count} desks'
     no_results: "No spaces matched your search"
+    refine: 'Refine your search using the filters'
+    teams: 'Teams'
+    individual: 'Individual'
   venues:
     types:
       coworking_space: 'Coworking space'
@@ -147,74 +155,51 @@ en:
       cafe: 'Cafe'
       restaurant: 'Restaurant'
     amenities:
-      whiteboards:
-        name: whiteboards
-        css: whiteboards
-      kitchen:
-        name: kitchen
-        css: kitchen
-      security:
-        name: security
-        css: security
-      wifi:
-        name: 'internet speed (wifi)'
-        css: wifi
-      printer_scanner:
-        name: 'printers/scanner'
-        css: printer
-      chill_area:
-        name: chill area
-        css: chill
-      photocopier:
-        name: photocopier
-        css: photocopier
-      conference_rooms:
-        name: conference rooms
-        css: conference
-      elevators:
-        name: elevators
-        css: elevators
-      outdoor_space:
-        name: outdoor space
-        css: outdoor
-      team_bookings:
-        name: team bookings
-        css: team
-      individual_bookings:
-        name: individual bookings
-        css: individual
-      shower:
-        name: shower
-        css: shower
-      fax:
-        name: fax
-        css: fax
-      wheelchair_access:
-        name: wheelchair access
-        css: wheelchair
-      air_conditioning:
-        name: air conditioning
-        css: air
-      pets_allowed:
-        name: pets allowed
-        css: pets
-      mail_service:
-        name: mail service
-        css: mail
-      gym:
-        name: gym
-        css: gym
-      cafe_restaurant:
-        name: cafe/restaurant
-        css: cafe
-      phone_booth:
-        name: phone booth
-        css: phone
+      whiteboards: whiteboards
+      kitchen: kitchen
+      security: security
+      wifi: 'internet speed (wifi)'
+      printer_scanner: 'printers/scanner'
+      chill_area: chill area
+      photocopier: photocopier
+      conference_rooms: conference rooms
+      elevators: elevators
+      outdoor_space: outdoor space
+      team_bookings: team bookings
+      individual_bookings: individual bookings
+      shower: shower
+      fax: fax
+      wheelchair_access: wheelchair access
+      air_conditioning: air conditioning
+      pets_allowed: pets allowed
+      mail_service: mail service
+      gym: gym
+      cafe_restaurant: cafe/restaurant
+      phone_booth: phone booth
+      tv: tv
+      projector: projector
+      concierge: concierge
+      parking: parking
+      water_fountain: water fountain
+      reception_service: reception service
+      cleaning_service: cleaning service
     professions:
       technology: technology
       public_relations: public relations
       entertainment: entertainment
       entrepreneur: entrepreneur
+      startup: startup
+      media: media
+      design: design
+      architect: architect
+      advertising: advertising
+      finance: finance
+      consultant: consultant
+      freelance: freelance
+      journalist: journalist
+      fashion: fashion
+      lawyer: lawyer
+      professor: professor
       all: All professions are welcome
     show:
       share: 'Share'
@@ -253,14 +238,14 @@ en:
       standard_times: 'Standard times?'
       custom_times: 'Custom times?'
       opening_time: 'Opening Time'
-      closing_time: 'Closting Time'
+      closing_time: 'Closing Time'
       add_venue_logo: 'Add venue logo'
       change_logo: 'Change logo'
       name: 'Venue name'
       street: 'Street address'
       country: 'Country'
       email: 'General Email'
-      town: 'City / Neighborhood'
+      town: 'City'
       postal_code: 'Zip / Postal code'
       phone: 'Phone number'
       v_type: 'Venue type'
@@ -341,8 +326,11 @@ en:
     types:
       conference_room: 'Conference room'
       meeting_room: 'Meeting room'
-      office: 'Office'
-      desk: 'Desk'
+      private_office: 'Private office'
+      fixed_desk: 'Fixed desk'
+      hot_desk: Hot desk
+      communal_space: Communal space
+      all: 'All workspaces'
     type: 'Workspace type'
     name: 'Name'
     capacity: 'Capacity'
@@ -374,4 +362,30 @@ en:
     all_venues: All Venues
     current: Current bookings
     cancelled: Cancelled bookings
-
+  booking_inquiry:
+    time_frame: 'Select Time Frame'
+    check_in: 'Check in'
+    check_out: 'Check_out'
+    spaces_amount: 'Number of spaces'
+    date: 'Date'
+    your_message: 'Your message'
+    message_placeholder: 'Tell the host more about yourself and your professional interests.'
+    feature_1: 'No booking fees.'
+    feature_2: 'Deposits held in scrows.'
+    feature_3: 'Book only the time you need.'
+    feature_4: 'Verified venues.'
+    feature_5: 'Secure payments.'
+    feature_6: 'Flexible cancelations.'
+    back: 'Back'
+    send_inquiry: 'Send inquiry'
+    month_amount: 'Number of months'
+  edit_venue_progress:
+    status: status
+    venue: Venue
+    details: Details
+    amenities: Amenities
+    photos: Photos
+    spaces: Spaces
+    publish: publish
+    delete_venue: Delete venue
+    incomplete: incomplete

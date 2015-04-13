@@ -5,6 +5,7 @@
   'deskSpotting.venue_reviews',
   'deskSpotting.client_reviews',
   'deskSpotting.wishlist',
+  'deskSpotting.booking_inquiry'
   'deskSpotting.search',
   'deskSpotting.user_profile',
   'deskSpotting.organization_edit',

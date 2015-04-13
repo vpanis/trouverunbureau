@@ -4,6 +4,7 @@
 // amenities
 .amenity-checkbox {
   margin-bottom: 23px;
+  text-transform: capitalize;
 }
 
 #venue-list {
@@ -47,6 +48,12 @@
         transform-origin: 50% 50%;
       }
     }
+    &.open {
+      .arrow {
+        transform: rotate(-180deg);
+        transform-origin: 50% 50%;
+      }
+    }
     .venue-bar {
       .basic-info{
         padding-bottom: 15px;
@@ -81,7 +88,19 @@
     &.add-image-container{
       background-color: $yellow;
       height: 250px;
+      background-image: none;
     }
   }
 }
 
+.rounded-img {
+  border-radius: 100%;
+  width: 95px;
+  height: 95px;
+  border: 3px solid $yellow;
+}
+
+.venues-space {
+  height: 250px;
+  margin-top: 15px;
+}

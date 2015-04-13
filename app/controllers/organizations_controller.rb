@@ -60,9 +60,8 @@ class OrganizationsController < ApplicationController
   end
 
   def show_represented(id, organization)
-    user = User.find(id) unless organization
-    user = Organization.find(id) if organization
-    user
+    return User.find(id) unless organization
+    Organization.find(id)
   end
 
   def new_organization_params

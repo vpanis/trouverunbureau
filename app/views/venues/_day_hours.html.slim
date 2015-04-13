@@ -16,6 +16,7 @@
         = render 'standard_time_item', day_label: Date::ABBR_DAYNAMES[(6 + 1) % 7], weekday: 'sunday', index: 6, options: options_for_hours
       #custom-times.tab-pane role="tabpanel" class=('active' if @custom_hours)
         = form.fields_for :day_hours, @modify_day_hours do |ff|
+          - options_for_hours = (0..48).collect { |n| [  "#{(n/2).to_s.rjust(2, '0')}:#{(30 * (n%2)).to_s.rjust(2, '0')}", (n/2)*100 + 30 * (n%2) ] }
           .row
             .form-group.venue-description-input.weekday-col.col-md-4.vertical-align
               label = Date::ABBR_DAYNAMES[(ff.index + 1) % 7]
@@ -23,9 +24,9 @@
               = t('commons.open')
               = ff.hidden_field :weekday, class: 'form-control'
               = ff.check_box :_destroy, class: 'form-control hidden'
-            .form-group.venue-description-input.col-md-4
+            .form-group.venue-description-input.col-md-4.vertical-align
               label = t('venues.edit.opening_time')
               = ff.select(:from, options_for_hours, {}, {class: 'form-control hour-select'})
-            .form-group.venue-description-input.col-md-4
+            .form-group.venue-description-input.col-md-4.vertical-align
               label = t('venues.edit.closing_time')
               = ff.select(:to, options_for_hours, {}, {class: 'form-control hour-select'})

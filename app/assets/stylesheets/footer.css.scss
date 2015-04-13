@@ -1,7 +1,18 @@
 @import 'variables';
 @import 'mixins';
-
+html, body {
+  min-height: 100%;
+  position: relative;
+}
+html [data-action="wishlist"] {
+  height: 100%;
+  position: static;
+}
 #footer{
+  text-align: left;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
   a{
     color: white;
     text-decoration: none;
@@ -126,3 +137,58 @@
     }
   }
 }
+
+.open-footer{
+  display: none;
+}
+
+[data-controller="spaces"][data-action="index"] {
+  #footer {
+    position: fixed;
+    transform: translateY(100%);
+    bottom: 0;
+    width: 100%;
+    transition: .25s;
+    z-index: 1;
+    &.open {
+      transform: translateY(0);
+    }
+  }
+  .open-footer {
+    display: block;
+    background-color: $light-black;
+    position: absolute;
+    top: -50px;
+    left: 8px;
+    padding: 8px 8px;
+    cursor: pointer;
+    z-index: 1000;
+    color: $white;
+    .footer-arrow{
+      width: 40px;
+      height: 40px;
+      background-repeat: no-repeat;
+      @include at2x('arrows-circle-down', 80px, 40px);
+      -moz-transform: scaleY(-1);
+      -o-transform: scaleY(-1);
+      -webkit-transform: scaleY(-1);
+      transform: scaleY(-1);
+      filter: FlipV;
+      -ms-filter: "FlipV";
+      &:hover{
+        background-position: -40px 0px;
+      }
+    }
+    &.flip{
+      .footer-arrow{
+        -moz-transform: scaleY(1);
+        -o-transform: scaleY(1);
+        -webkit-transform: scaleY(1);
+        transform: scaleY(1);
+        filter: FlipV;
+        -ms-filter: "FlipV";
+      }
+    }
+  }
+}
+
