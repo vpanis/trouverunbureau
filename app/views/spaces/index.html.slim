@@ -25,8 +25,8 @@
                     span.glyphicon.left-carousel-arrow aria-hidden="true"
                   a.right.carousel-control data-slide="next" href="#space-carousel-{{space.id}}" role="button"
                     span.glyphicon.right-carousel-arrow aria-hidden="true"
-              .space-info
-                a.name ng-href="/venues/{{space.venue_id}}?space_id={{space.id}}" {{space.name}}
+              a.space-info ng-href="/venues/{{space.venue_id}}?space_id={{space.id}}"
+                .name() {{space.name}}
                 .city() {{space.city}}
                 .bottom-line
                   .currency() {{space.currency}}
