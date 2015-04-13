@@ -111,7 +111,7 @@
 .pictures {
   .img-wrapper {
     position: relative;
-    height: 155px;
+    min-height: 155px;
     background-size: cover;
     margin-bottom: 20px;
     .hover {
@@ -124,6 +124,7 @@
       padding: 40px;
       background-color: transparentize($aqua, 0.5);
       a {
+        cursor: pointer;
         color: $white;
         display: block;
         padding-left: 30%;

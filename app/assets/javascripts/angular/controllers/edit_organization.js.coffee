@@ -2,23 +2,31 @@ angular.module('deskSpotting.organization_edit', []).controller "OrganizationEdi
   '$scope'
   'Restangular'
   ($scope, Restangular) ->
-    $scope.future_members = []
+    $scope.members = {}
+
+    Restangular.one('organizations', $scope.organization_id).getList('organization_users').then (members) ->
+      console.log members
+      angular.forEach members, (member, key) ->
+        $scope.members[member.id] = member
 
     $scope.open = ($event) ->
       $event.preventDefault()
       $event.stopPropagation()
       $scope.opened = true
-      return
 
-    $scope.addManager = ()->
-      email = $('#email_field').val()
-      role = $('#role_select').val()
-      Restangular.one('users/info').get(email: email).then (result) ->
-        result.user.role = role
-        $scope.future_members.push(result.user)
-      return
+    $scope.addManager = ->
+      newManager = {
+        role: $scope.role,
+        email: $scope.email
+      }
+      Restangular.one('organizations', $scope.organization_id).all('organization_users').post(newManager).then ((member) ->
+        debugger
+        $scope.members[member.id] = member
+      ), ->
+        console.log 'the user does not exist' # TODO: Sent email
 
-      return
+    $scope.deleteMember = (member) ->
+      Restangular.one('organizations', $scope.organization_id).one('organization_users', member.id).remove().then (result) ->
+        delete $scope.members[member.id]
 
-    return
 ]
