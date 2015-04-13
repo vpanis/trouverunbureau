@@ -11,22 +11,18 @@
         </div>
 
         <div>
-          <p><%= "#{t('guest_review_email.hi')} #{@resource.email}," %></p>
-          <p><%= t('reset_password_email.forgot_password') %></p>
-          <p><%= "#{t('reset_password_email.dont_worry')}!" %></p>
+          <p><%= "#{t('new_message_email.hi')} George," %></p> <!-- TODO: Change name -->
+          <p><%= "#{t('new_message_email.got_new_message')} " %><span style="color: black; font-weight: bold;">Luciano Zemin</span> on Thursday at 19pm.</p><!-- TODO: Change name and hours -->
         </div>
       </div>
 
-      <div style="background-color: #f6f6f6; text-align: center; padding: 10px 0 30px 0;">
-        <div style="max-width: 650px; margin: 0 auto;">
-          <p style="text-align: left; margin-bottom: 30px;"><%= "#{t('reset_password_email.new_password')}!" %></p>
-          <%= link_to t('reset_password_email.this_link'), edit_password_url(@resource, reset_password_token: @token), style: "background-color: rgb(255, 225, 17); padding: 10px 70px; border-radius: 25px; color: black; font-weight: bold; text-decoration:none; text-transform: uppercase; margin: 20px 0;" %>
-        </div>
+      <div style="padding: 25px 10px; background-color: #f6f6f6">
+        <p style="max-width: 650px; margin: 0 auto; text-align: justify; font-style: italic; font-size: 14px; line-height: 22px;">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p><!-- TODO: Change message -->
       </div>
 
-      <div style="max-width: 650px; margin: 0 auto;">
-        <p><%= t('reset_password_email.not_request') %></p>
-        <p><%= t('reset_password_email.stay_same') %></p>
+      <div style="max-width: 650px; margin: 0 auto; text-align: center; margin-top: 35px;">
+        <a href="" style="background-color: rgb(255, 225, 17); padding: 15px 70px; border-radius: 25px; color: black; font-weight: bold; text-decoration:none;"><%= t('new_message_email.view_on_deskspotting') %></a>
+        <p style="margin-top: 25px;"><%= t('new_message_email.reply') %></p>
       </div>
 
       <div style="min-width: 650px; margin: 0 auto; display: table; border-bottom: 1px solid #ccc; padding-bottom: 15px;">
@@ -40,6 +36,7 @@
           <div class="instagram social-icon" style="width: 40px; height: 40px; display: inline-block; margin-right: 14px; background-image: url(/assets/email-social-icons-sprite.png); background-size: 170px 80px !important; background-position: -130px 0px;"></div>
         </div>
       </div>
+
     </div>
   </div>
 </div>

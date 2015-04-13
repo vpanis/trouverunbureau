@@ -346,3 +346,48 @@ it:
     publish: publish
     delete_venue: Delete venue
     incomplete: incomplete
+  new_message_email:
+    hi: Hi
+    got_new_message: Got a new message from
+    reply: Or reply directly on this mail.
+    view_on_deskspotting: View on DeskSpotting
+    team: The DeskSpotting Team
+  host_cancellation_email:
+    sorry_cancel: Sorry to see you had to cancel your booking of
+    unfortunately: "Unfortunately your guest, %{name}, had to cancel is booking with you for"
+    space: Space
+    date: Date
+    spaces: Spaces
+    check_in: Check In
+    check_out: Check Out
+    payout: You will receive a payout of
+    transferred: transferred to
+    bank_name: Bank Name
+    account_number: Account Number
+    holder: Holder
+    funds: Funds transferred On
+    refunded: "Your guest %{name} will be refunded"
+    terms1: If you have any questions about our
+    terms2: feel free to read
+    cancellation_policy: cancellation policy
+    terms_of_service: our terms of service
+  guest_review_email:
+    hi: Hi
+    checked_out: You have checked out of
+    at: at
+    check_in: Check In
+    check_out: Check Out
+    days: Days
+    date: Date
+    rate_stay: rate your stay
+  host_review_email:
+    rate_guest: rate your guest
+    your_guest: Your Guest
+    checked_in: has checked in of
+  reset_password_email:
+    this_link: just use this link
+    forgot_password:  It seems like you forgot your DeskSpotting password.
+    dont_worry: Don't worry it happens to the best of us
+    new_password: To create the new password and your back in business
+    not_request: If you did not make this request, all good, just disregard
+    stay_same: this email and your password will stay the same.
