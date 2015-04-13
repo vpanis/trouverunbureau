@@ -1,14 +1,15 @@
 = render 'shared/menu_bar', user: current_represented
 .landing-page
   .section#header.search-mobile
-    .search-form.row
-      = form_tag spaces_path, method: 'get', class: 'form-inline' do |f|
-        .form-group.col-xs-10.col-sm-5.col-md-4.col-lg-3.col-xs-offset-1.col-sm-offset-1.col-md-offset-2.col-lg-offset-3
-          .styled-search.rounded-left
-            label.sr-only #{t('home.header.search_text')}
-            = text_field_tag :search, params[:search], class: 'form-control no-borders', placeholder: t('home.header.search_text')
-        .form-group.col-xs-7.col-sm-3.col-md-3.col-lg-2.col-xs-offset-1.col-sm-offset-0
-          label.sr-only type
-          .styled-select
-            = select_tag(:s_type, options_for_select(@space_types_options), {include_blank: t('spaces.types.all'), class: 'form-control no-borders workspaces-select'})
-        = submit_tag t('home.header.find'), id: 'landing-form-submit', class: "col-xs-3 col-sm-2 col-md-1 col-lg-1"
+    .header-content
+      .search-form.row
+        = form_tag spaces_path, method: 'get', class: 'form-inline' do |f|
+          .form-group.col-xs-10.col-sm-5.col-md-4.col-lg-3.col-xs-offset-1.col-sm-offset-1.col-md-offset-2.col-lg-offset-3
+            .styled-search.rounded-left
+              label.sr-only #{t('home.header.search_text')}
+              = text_field_tag :search, params[:search], class: 'form-control no-borders', placeholder: t('home.header.search_text')
+          .form-group.col-xs-7.col-sm-3.col-md-3.col-lg-2.col-xs-offset-1.col-sm-offset-0
+            label.sr-only type
+            .styled-select
+              = select_tag(:s_type, options_for_select(@space_types_options), {include_blank: t('spaces.types.all'), class: 'form-control no-borders workspaces-select'})
+          = submit_tag t('home.header.find'), id: 'landing-form-submit', class: "col-xs-3 col-sm-2 col-md-1 col-lg-1"

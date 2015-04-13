@@ -31,6 +31,9 @@ $yellow: #ffe111;
   .pagination-container {
     text-align: center;
   }
+  .main-container{
+    padding-bottom: 720px !important;
+  }
 }
 
 /* Customizing the collapse menu width*/
@@ -122,5 +125,6 @@ $grid-float-breakpoint: 950px;
 .search-mobile {
   padding: 30% 0px;
   margin-top: -8px;
+  height: 700px;
 }
 
