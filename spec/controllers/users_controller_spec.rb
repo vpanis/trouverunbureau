@@ -17,8 +17,8 @@ describe UsersController do
           expect(assigns(:can_edit)).to eq(false)
         end
 
-        it 'sets @can_view_reiews' do
-          expect(assigns(:can_view_reiews)).to eq(false)
+        it 'sets @can_view_reviews' do
+          expect(assigns(:can_view_reviews)).to eq(false)
         end
 
         it 'renders the show template' do
@@ -52,8 +52,8 @@ describe UsersController do
           expect(assigns(:can_edit)).to eq(false)
         end
 
-        it 'sets @can_view_reiews' do
-          expect(assigns(:can_view_reiews)).to eq(false)
+        it 'sets @can_view_reviews' do
+          expect(assigns(:can_view_reviews)).to eq(false)
         end
 
         it 'renders the show template' do
@@ -71,8 +71,8 @@ describe UsersController do
           expect(assigns(:can_edit)).to eq(true)
         end
 
-        it 'sets @can_view_reiews' do
-          expect(assigns(:can_view_reiews)).to eq(true)
+        it 'sets @can_view_reviews' do
+          expect(assigns(:can_view_reviews)).to eq(true)
         end
 
         it 'renders the show template' do
@@ -96,8 +96,8 @@ describe UsersController do
           expect(assigns(:can_edit)).to eq(false)
         end
 
-        it 'sets @can_view_reiews' do
-          expect(assigns(:can_view_reiews)).to eq(true)
+        it 'sets @can_view_reviews' do
+          expect(assigns(:can_view_reviews)).to eq(true)
         end
 
         it 'renders the show template' do

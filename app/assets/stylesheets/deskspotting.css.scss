@@ -1146,18 +1146,15 @@ h4.gray-subtitle {
         width: 20px;
         height: 20px;
         &.languages{
-          /* TODO: get real assets */
-          @include at2x('venue-default', 20px, 20px);
+          @include at2x('profile_languages', 20px, 20px);
           background-size: 20px 20px;
         }
         &.company{
-          /* TODO: get real assets */
-          @include at2x('venue-default', 20px, 20px);
+          @include at2x('profile_job', 20px, 20px);
           background-size: 20px 20px;
         }
         &.profession{
-          /* TODO: get real assets */
-          @include at2x('venue-default', 20px, 20px);
+          @include at2x('profile_degree', 20px, 20px);
           background-size: 20px 20px;
         }
       }
