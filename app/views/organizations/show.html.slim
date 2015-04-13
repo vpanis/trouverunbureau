@@ -1,6 +1,6 @@
 = render 'shared/menu_bar', user: current_represented
 = render 'shared/profile_menu_bar', user: current_represented, selected: 'profile'
-.user-profile.container
+.user-profile.container.organization-profile
     - if @can_edit
       = link_to t("users.edit_organization_profile"), edit_organization_path(@user), class: " rounded-btn green pull-right"
     .row.col-md-2.center-block.no-float
@@ -11,8 +11,8 @@
               = image_tag('venue-default.png', width: '150px', height: '150px')
     .row.col-md-6.center-block.no-float
       .basic-info.col-md-12.center-block.no-float
-        .user-header
-          h1.name = @user.name
+        .user-header.text-center
+          h1.name.no-float = @user.name
           .row
             .col-md-12
               p.location
@@ -25,16 +25,16 @@
       h1.members-title.center = t('users.organization_members')
     .row.col-md-3.center-block.no-float
       p.center = t('users.organization_members_text')
-    .row
+    .row.members-list
       - @organization_members.each do |m|
-        .col-md-3.center-block.no-float
+        .col-md-4.center-block
           .user-avatar
             - if m.user.avatar.present?
               = image_tag(m.user.avatar.url, width: '150px', height: '150px', class: "center-block no-float")
             - else
               = image_tag('default-avatar.png', width: '150px', height: '150px', class: "center-block no-float")
           h3.center = m.user.name
-          p.center = m.user.email
-          .col-md-6.center-block.no-float
+          p.center.user-email = m.user.email
+          .col-md-6.center-block.no-float.text-center
             .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus"
             label = t('users.'+m.role.to_s)

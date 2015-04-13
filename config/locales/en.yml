@@ -35,6 +35,7 @@ en:
     add_image: 'Add an image'
     add_space: 'Create new space'
     create: 'Create'
+    delete_organization: Delete organization
   session:
     email: 'Email address'
     password: 'Password'
