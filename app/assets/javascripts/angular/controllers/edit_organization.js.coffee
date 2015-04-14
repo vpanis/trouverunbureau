@@ -5,7 +5,6 @@ angular.module('deskSpotting.organization_edit', []).controller "OrganizationEdi
     $scope.members = {}
 
     Restangular.one('organizations', $scope.organization_id).getList('organization_users').then (members) ->
-      console.log members
       angular.forEach members, (member, key) ->
         $scope.members[member.id] = member
 
@@ -20,7 +19,6 @@ angular.module('deskSpotting.organization_edit', []).controller "OrganizationEdi
         email: $scope.email
       }
       Restangular.one('organizations', $scope.organization_id).all('organization_users').post(newManager).then ((member) ->
-        debugger
         $scope.members[member.id] = member
       ), ->
         console.log 'the user does not exist' # TODO: Sent email
@@ -28,5 +26,6 @@ angular.module('deskSpotting.organization_edit', []).controller "OrganizationEdi
     $scope.deleteMember = (member) ->
       Restangular.one('organizations', $scope.organization_id).one('organization_users', member.id).remove().then (result) ->
         delete $scope.members[member.id]
+        window.location.href = result.redirect_url if result && result.redirect_url
 
 ]

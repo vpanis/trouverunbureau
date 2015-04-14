@@ -2,17 +2,17 @@
 = render 'shared/profile_menu_bar', user: current_represented, selected: 'profile'
 .user-profile.container.organization-profile
     - if @can_edit
-      = link_to t("users.edit_organization_profile"), edit_organization_path(@user), class: " rounded-btn green pull-right"
+      = link_to t("users.edit_organization_profile"), edit_organization_path(@organization), class: " rounded-btn green pull-right"
     .row.col-md-2.center-block.no-float
       .user-avatar
-            - if @user.logo.present?
-              = image_tag(@user.logo.url, width: '150px', height: '150px')
+            - if @organization.logo.present?
+              = image_tag(@organization.logo.url, width: '150px', height: '150px')
             - else
               = image_tag('venue-default.png', width: '150px', height: '150px')
     .row.col-md-6.center-block.no-float
       .basic-info.col-md-12.center-block.no-float
         .user-header.text-center
-          h1.name.no-float = @user.name
+          h1.name.no-float = @organization.name
           .row
             .col-md-12
               p.location

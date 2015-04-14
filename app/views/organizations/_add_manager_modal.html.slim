@@ -11,7 +11,6 @@
           input.form-control placeholder="#{t('organizations.email_member_placeholder')}" ng-model='email'
         .form-group
           label = t('organizations.role')
-          / select ng-options="" ng="model"
           = select_tag('role_select', options_for_select(member_roles, nil), {class: 'form-control multi-lang-select', ng_model: "role"})
         a#add-manager-link ng-click=("addManager()")
           button.width-100.rounded-btn.bold.yellow-fill.uppercase  = t('organizations.add_manager_action')

@@ -5,10 +5,10 @@ class OrganizationsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
 
   def show
-    @user = Organization.find(params[:id])
+    @organization = Organization.find(params[:id])
     @organization_members = organization_members
     @owner = @organization_members.where(role: 0).first.user
-    @can_edit = @user.eql?(current_represented)
+    @can_edit = @organization.eql?(current_represented)
   end
 
   def new
@@ -22,17 +22,17 @@ class OrganizationsController < ApplicationController
   end
 
   def update
-    @user = Organization.find(params[:id])
-    return render_forbidden unless @user.eql?(current_represented)
-    @user.update_attributes!(user_params)
-    redirect_to organization_path(@user)
+    @organization = Organization.find(params[:id])
+    return render_forbidden unless @organization.eql?(current_represented)
+    @organization.update_attributes!(user_params)
+    redirect_to organization_path(@organization)
   end
 
   def edit
-    @user = Organization.find(params[:id])
+    @organization = Organization.find(params[:id])
     @organization_members = organization_members
     @member_roles = OrganizationUser.roles.to_a
-    return render_forbidden unless @user.eql?(current_represented)
+    return render_forbidden unless @organization.eql?(current_represented)
   end
 
   def destroy
@@ -52,7 +52,7 @@ class OrganizationsController < ApplicationController
   end
 
   def organization_members
-    OrganizationUser.where { organization_id.in [my { @user.id }] }.includes { [user] }
+    OrganizationUser.where { organization_id.in [my { @organization.id }] }.includes { [user] }
   end
 
   def organization_member(id, member_id)

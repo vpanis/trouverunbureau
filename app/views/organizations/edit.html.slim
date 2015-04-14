@@ -2,14 +2,14 @@
 = render 'shared/profile_menu_bar', user: current_user, selected: 'profile'
 = render 'shared/image_modal', modal_id: 'avatar-modal', title: t('organizations.change_picture'), image_link_id: 'avatar-link', save_button_id: 'save-avatar'
 
-.user.container ng-init="organization_id = #{@user.id}"
+.user.container ng-init="organization_id = #{@organization.id}"
   .user-title
     h3.yellow-title = t('organizations.edit_profile')
     .small-separator
     h4.gray-subtitle = t('organizations.required_fields')
     .user-avatar
-      - if @user.logo?
-        = image_tag(@user.logo.url, width: '95px', height: '95px', id: 'user-avatar-img')
+      - if @organization.logo?
+        = image_tag(@organization.logo.url, width: '95px', height: '95px', id: 'user-avatar-img')
       - else
         = image_tag('venue-default.png', width: '95px', height: '95px', id: 'user-avatar-img')
       a#edit-avatar.add.organization.block.aqua href="#" data-toggle="modal" data-target="#avatar-modal" = t('organizations.change_picture')
@@ -17,7 +17,7 @@
     .col-xs-12.col-sm-8.col-md-8.col-lg-8.col-xs-offset-0.col-sm-offset-2
       .edit-profile-form.dashboard-form ng-controller="OrganizationEditCtrl"
         = render 'add_manager_modal', modal_id: 'add-manager-modal', title: t('organizations.add_manager'), image_link_id: 'avatar-link', save_button_id: 'save-avatar', member_roles: @member_roles
-        = form_for @user do |f|
+        = form_for @organization do |f|
           = f.file_field :logo, class: 'hidden'
           .row
             .form-group.center-block.no-float.col-xs-12.col-sm-6.col-md-6.col-lg-6
@@ -62,10 +62,10 @@
                 p = t('commons.add_new_manager')
             .buttons
               .col-md-3.center-block.no-float
-                = link_to(t('commons.delete_organization'), organization_path(@user), method: :delete, class: 'delete-organization-link')
+                = link_to(t('commons.delete_organization'), organization_path(@organization), method: :delete, class: 'delete-organization-link')
           .buttons
             .col-xs-6
-              a href=(organization_path(@user))
+              a href=(organization_path(@organization))
                 button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
             .col-xs-6
               = f.submit t('commons.save'), class: 'rounded-btn yellow-fill width-100 uppercase'
