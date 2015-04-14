@@ -13,7 +13,7 @@ module Api
         user = User.find_by(email: params[:email])
         organization = Organization.find(params[:organization_id])
         return record_not_found unless user.present?
-        unless current_represented == organization || organization.user_in_organization?(user)
+        unless available_to_create(organization)
           return render status: 403, nothing: true
         end
         member = OrganizationUser.create!(user: user, organization: organization,
@@ -36,7 +36,11 @@ module Api
       private
 
       def organization_members
-        OrganizationUser.where { organization_id.in [my { @organization.id }] }.includes { [user] }
+        OrganizationUser.where { organization_id.eq my { @organization.id } }.includes { [user] }
+      end
+
+      def available_to_create(organization)
+        current_represented == organization || organization.user_in_organization(current_user)
       end
     end
   end

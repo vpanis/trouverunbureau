@@ -35,16 +35,6 @@ class OrganizationsController < ApplicationController
     return render_forbidden unless @organization.eql?(current_represented)
   end
 
-  def destroy
-    organization = Organization.find(params[:id])
-    member = organization_member(params[:id], current_user.id).first
-    owner = member.present? && member.owner?
-    return render_forbidden unless organization.eql?(current_represented) && owner
-    organization.destroy!
-    session[:current_organization_id] = nil
-    redirect_to user_path(current_user)
-  end
-
   private
 
   def user_params
@@ -52,11 +42,11 @@ class OrganizationsController < ApplicationController
   end
 
   def organization_members
-    OrganizationUser.where { organization_id.in [my { @organization.id }] }.includes { [user] }
+    OrganizationUser.where { organization_id.eq my { @organization.id } }.includes { [user] }
   end
 
   def organization_member(id, member_id)
-    OrganizationUser.where { (organization_id.in [my { id }]) & (user_id.in [my { member_id }]) }
+    OrganizationUser.where { (organization_id.eq my { id }) & (user_id.eq my { member_id }) }
   end
 
   def show_represented(id, organization)

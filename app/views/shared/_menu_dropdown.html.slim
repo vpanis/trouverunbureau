@@ -32,8 +32,10 @@ ul.dropdown-menu.user-dropdown role="menu" aria-labelledby="dropdownMenu1"
   //li
     //= link_to(t('menu.invite_friends'), '#')
   li
-    // TODO: if organization
-    = link_to(t('users.edit_profile'), edit_user_path(current_user))
+    - if current_represented.is_a?(Organization)
+      = link_to t('users.edit_profile'), edit_organization_path(current_represented)
+    - else
+      = link_to t('users.edit_profile'), edit_user_path(current_represented)
   li
     = link_to(t('menu.account'), account_user_path(current_user))
   li.divider

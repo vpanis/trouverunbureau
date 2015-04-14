@@ -60,9 +60,6 @@
             .col-md-4.add-image-container data-toggle="modal" data-target="#add-manager-modal"
               .add-image
                 p = t('commons.add_new_manager')
-            .buttons
-              .col-md-3.center-block.no-float
-                = link_to(t('commons.delete_organization'), organization_path(@organization), method: :delete, class: 'delete-organization-link')
           .buttons
             .col-xs-6
               a href=(organization_path(@organization))
