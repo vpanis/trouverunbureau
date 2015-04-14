@@ -9,9 +9,9 @@ module Payments
         return unless @payment.present? # impossible, but...
 
         # Can't release a fund if the transaction is not held
-        if @payment.escrow_status == Braintree::Transaction::EscrowStatus::Held
+        if @payment.escrow_status == ::Braintree::Transaction::EscrowStatus::Held
           release_from_escrow
-        elsif @payment.escrow_status == Braintree::Transaction::EscrowStatus::HoldPending
+        elsif @payment.escrow_status == ::Braintree::Transaction::EscrowStatus::HoldPending
           # retries in 2 * the time waited to ask if the escrow is held or not
           Payments::Braintree::ReleaseEscrowWorker.perform_in(escrow_polling_time * 2, payment_id)
         else
@@ -38,7 +38,7 @@ module Payments
       end
 
       def release_from_escrow
-        release_result = Braintree::Transaction.release_from_escrow(@payment.transaction_id)
+        release_result = ::Braintree::Transaction.release_from_escrow(@payment.transaction_id)
         # If it tries to release the same payment 2 times
         return unless release_result.success?
         @payment.update_attributes(escrow_status: release_result.transaction.escrow_status)

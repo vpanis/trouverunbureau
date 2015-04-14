@@ -8,7 +8,7 @@ module Payments
         @booking = Booking.includes(:payment).find_by_id(booking_id)
         return unless @booking.present? && User.exists?(user_id) # impossible, but...
 
-        transaction = Braintree::Transaction.find(@booking.payment.transaction_id).transaction
+        transaction = ::Braintree::Transaction.find(@booking.payment.transaction_id).transaction
         return_money(transaction)
       end
 
@@ -39,7 +39,8 @@ module Payments
       def return_money(transaction)
         type = refund_or_void(transaction)
         if type.present?
-          transaction_wrapper = Braintree::Transaction.send(type, @booking.payment.transaction_id)
+          transaction_wrapper = ::Braintree::Transaction.send(type,
+                                                              @booking.payment.transaction_id)
           change_payment(transaction_wrapper)
         else
           no_refund_or_void_possible(transaction)
@@ -65,11 +66,11 @@ module Payments
       end
 
       def refund_or_void(transaction)
-        if transaction.status == Braintree::Transaction::Status::Settled ||
-          transaction.status == Braintree::Transaction::Status::Settling
+        if transaction.status == ::Braintree::Transaction::Status::Settled ||
+          transaction.status == ::Braintree::Transaction::Status::Settling
           'refund'
-        elsif transaction.status == Braintree::Transaction::Status::SubmittedForSettlement ||
-          transaction.status == Braintree::Transaction::Status::Authorized
+        elsif transaction.status == ::Braintree::Transaction::Status::SubmittedForSettlement ||
+          transaction.status == ::Braintree::Transaction::Status::Authorized
           'void'
         else
           nil # The doc doesn't say anything about this case...

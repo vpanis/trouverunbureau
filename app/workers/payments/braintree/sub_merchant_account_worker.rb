@@ -21,9 +21,9 @@ module Payments
 
       def create_or_update_merchant(data)
         if !@collection_account.braintree_persisted
-          merchant_wrapper = Braintree::MerchantAccount.create(creation_data(data))
+          merchant_wrapper = ::Braintree::MerchantAccount.create(creation_data(data))
         else
-          merchant_wrapper = Braintree::MerchantAccount.update(
+          merchant_wrapper = ::Braintree::MerchantAccount.update(
             @collection_account.merchant_account_id, data)
         end
         process_response(merchant_wrapper)
@@ -54,7 +54,7 @@ module Payments
         technical_data = { status: merchant_wrapper.merchant_account.status,
                            braintree_persisted: true, expecting_braintree_response: false }
         if !@collection_account.braintree_persisted
-          merchant_account = Braintree::MerchantAccount.find(
+          merchant_account = ::Braintree::MerchantAccount.find(
                                @collection_account.merchant_account_id)
         else
           merchant_account = merchant_wrapper.merchant_account

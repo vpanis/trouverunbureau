@@ -5,11 +5,12 @@ module Api
         class HooksController < ApiController
 
           def verify_url
-            render status: 200, json: Braintree::WebhookNotification.verify(params['bt_challenge'])
+            render status: 200, json: ::Braintree::WebhookNotification.verify(
+                                        params['bt_challenge'])
           end
 
           def notification
-            webhook_notification = Braintree::WebhookNotification.parse(
+            webhook_notification = ::Braintree::WebhookNotification.parse(
               params['bt_signature'], params['bt_payload'])
             send(webhook_notification.kind, webhook_notification)
           end

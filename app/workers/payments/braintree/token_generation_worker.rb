@@ -21,10 +21,10 @@ module Payments
 
       def braintree_token
         if @represented.braintree_payment_account.present?
-          token = Braintree::ClientToken.generate(
+          token = ::Braintree::ClientToken.generate(
                     customer_id: @represented.braintree_payment_account.braintree_customer_id)
         else
-          token = Braintree::ClientToken.generate
+          token = ::Braintree::ClientToken.generate
         end
         @payment.update_attributes(payment_nonce_token: token,
                                    payment_nonce_expire: Time.new.advance(hours: 12))

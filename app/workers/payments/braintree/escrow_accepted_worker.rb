@@ -16,7 +16,8 @@ module Payments
       private
 
       def init_log(booking_id, user_id)
-        str = "BraintreeEscrowAcceptedWorker on booking_id: #{booking_id}, user_id: #{user_id}"
+        str = "Payments::Braintree::EscrowAcceptedWorker on booking_id: #{booking_id}, "
+        str += "user_id: #{user_id}"
         Rails.logger.info(str)
       end
 
@@ -28,7 +29,7 @@ module Payments
       end
 
       def braintree_transaction_find(transaction_id)
-        Braintree::Transaction.find(transaction_id)
+        ::Braintree::Transaction.find(transaction_id)
       end
 
       def accept_payment(transaction, user_id)
@@ -44,19 +45,20 @@ module Payments
           not_accepted_payment_log(@booking.id, transaction)
           invalid_payment(attributes_to_update, transaction, user_id)
         else
-          BraintreeEscrowAcceptedWorker.perform_in(escrow_polling_time, @booking.id, user_id)
+          Payments::Braintree::EscrowAcceptedWorker.perform_in(escrow_polling_time, @booking.id,
+                                                               user_id)
         end
         @booking.payment.update_attributes(attributes_to_update)
       end
 
       def accepted_status?(transaction)
-        transaction.status == Braintree::Transaction::Status::Settled &&
-          transaction.escrow_status == Braintree::Transaction::EscrowStatus::Held
+        transaction.status == ::Braintree::Transaction::Status::Settled &&
+          transaction.escrow_status == ::Braintree::Transaction::EscrowStatus::Held
       end
 
       def failed_status?(transaction)
-        transaction.status == Braintree::Transaction::Status::GatewayRejected &&
-          transaction.status == Braintree::Transaction::Status::Failed
+        transaction.status == ::Braintree::Transaction::Status::GatewayRejected &&
+          transaction.status == ::Braintree::Transaction::Status::Failed
       end
 
       def escrow_polling_time

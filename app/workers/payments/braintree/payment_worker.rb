@@ -71,7 +71,7 @@ module Payments
         attributes = payment_atributes(payment_token)
         add_new_customer_attributes(attributes, generate_customer_id) unless
           @represented.braintree_payment_account.present?
-        Braintree::Transaction.sale(attributes)
+        ::Braintree::Transaction.sale(attributes)
       end
 
       def payment_atributes(payment_token)
