@@ -10,15 +10,15 @@
             .favourite.active ng-click=("removeFavorite(space.id, true)")
             .carousel-container
               .carousel.slide id="space-carousel-{{space.id}}"
-                ol.carousel-indicators
+                ol.carousel-indicators ng-hide="space.photos.length < 2"
                   li data-target="space-carousel-{{space.id}}" data-slide-to="{{index}}" ng-repeat=("photo in space.photos track by $index") ng-class="{active: $index == 0}"
                 .carousel-inner role="listbox"
                   .item ng-class="{active: $index == 0}" ng-repeat=("photo in space.photos track by $index")
                     .full-image style="background-image: url('{{photo}}')"
                 a.left.carousel-control data-slide="prev" href="#space-carousel-{{space.id}}" role="button"
-                  span.glyphicon.left-carousel-arrow aria-hidden="true"
+                  span.glyphicon.left-carousel-arrow aria-hidden="true" ng-hide="space.photos.length < 2"
                 a.right.carousel-control data-slide="next" href="#space-carousel-{{space.id}}" role="button"
-                  span.glyphicon.right-carousel-arrow aria-hidden="true"
+                  span.glyphicon.right-carousel-arrow aria-hidden="true" ng-hide="space.photos.length < 2"
             a.space-info ng-href="/venues/{{space.venue_id}}?space_id={{space.id}}"
               .name() {{space.name}}
               .city() {{space.city}}
