@@ -1,0 +1,22 @@
+= render 'shared/menu_bar', user: current_user
+= render 'shared/profile_menu_bar', user: current_user, selected: 'bookings'
+
+.elements
+  .first-title
+    | Invite Friends
+  .separator.white
+  .second-title
+    | Invite your friends to join DeskSpotting
+  .text
+    | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  .invitation
+    .styled-input
+      = image_tag('nav-bar-inbox.png')
+      input.rounded-left(placeholder=("e.g. info@deskpotting.com"))
+    button.btn.btn-default
+      | Invite
+  .alert
+    span
+      | The invitation was sent correctly to
+    span.mail
+      | info@deskpotting.com
