@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @can_edit = @user.eql?(current_user)
-    @can_view_reiews = user_can_read_client_reviews?(User, @user.id)
+    @can_view_reviews = user_can_read_client_reviews?(User, @user.id)
   end
 
   def edit
