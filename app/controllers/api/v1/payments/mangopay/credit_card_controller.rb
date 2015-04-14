@@ -9,11 +9,14 @@ module Api
           # POST /mangopay/card_registration
           def card_registration
             return render nothing: true, status: 400 unless params[:currency].present?
+            return render json: { error: 'user has no payment account' }, status: 412 unless
+              current_represented.mangopay_payment_account.present?
             mcc = current_represented.mangopay_payment_account.mangopay_credit_cards
-              .create!(status: MangopayCreditCard.statuses[:registering],
-                       currency: params[:currency].upcase,
-                       registration_expiration_date: Time.new.advance(hours: 6))
-            Payments::Mangopay::CardRegistrationWorker.perform_async(mcc.id)
+              .create(status: MangopayCreditCard.statuses[:registering],
+                      currency: params[:currency].upcase,
+                      registration_expiration_date: Time.new.advance(hours: 6))
+            return render json: { errors: mcc.errors }, status: 400 unless mcc.valid?
+            ::Payments::Mangopay::CardRegistrationWorker.perform_async(mcc.id)
             render json: { mangopay_credit_card_id: mcc.id }, status: 200
           end
 

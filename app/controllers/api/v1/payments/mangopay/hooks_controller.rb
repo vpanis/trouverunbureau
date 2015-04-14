@@ -21,7 +21,7 @@ module Api
             # This update is not performed in the worker because, if the same hook is
             # triggered before the worker starts, will trigger a duplicate worker.
             mp.update_attributes(notification_date_int: params[:Date])
-            Payments::Mangopay::FetchPayinErrorWorker.perform_async(mp.id)
+            ::Payments::Mangopay::FetchPayinErrorWorker.perform_async(mp.id)
           end
 
           # GET /mangopay/payout_succeeded?RessourceId&EventType=PAYOUT_NORMAL_SUCCEEDED&Date
@@ -39,7 +39,7 @@ module Api
             # This update is not performed in the worker because, if the same hook is
             # triggered before the worker starts, will trigger a duplicate worker.
             mp.update_attributes(notification_date_int: params[:Date])
-            Payments::Mangopay::FetchPayoutErrorWorker.perform_async(mp.id)
+            ::Payments::Mangopay::FetchPayoutErrorWorker.perform_async(mp.id)
           end
         end
       end
