@@ -1,0 +1,150 @@
+= render 'shared/menu_bar', user: current_user
+= render 'shared/profile_menu_bar', user: current_user, selected: 'bookings'
+
+.left-container
+  .customer-receipt
+    .title
+      | Customer Receipt
+    .separator.long
+    .date
+      = @booking.created_at
+    .receipt-number
+      | receipt #201565051
+    .contact
+      | www.deskspotting.com/help/contact
+  .host
+    .title
+      | Host
+    .separator.long
+    .venue-name
+      .subtitle
+        | Vanue name:
+      span
+        = @booking.space.venue.name
+    .street-adress
+      .subtitle
+        | Street address:
+      span
+        = @booking.space.venue.street
+    .country
+      .subtitle
+        | Country:
+      span
+        = @booking.space.venue.country.name
+    .province
+      .subtitle
+        | Province:
+      span
+        = @booking.space.venue.town
+    .zip-code
+      .subtitle
+        | Zip / Postal code:
+      span
+        = @booking.space.venue.postal_code
+    .email
+      .subtitle
+        | Email:
+      span
+        = @booking.space.venue.email
+    .phone
+      .subtitle
+        | Phone-number:
+      span
+        = @booking.space.venue.phone
+.right-container
+  .row.header
+    .col-md-9.detail
+      .row
+        .col-md-6
+          .icon.info.icon-black.pointer#gender-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
+          p.concept space rental
+          p.value() ${{selected_booking.price}}({{selected_booking.space.currency}})
+        .col-md-6.plus
+          .icon.info.icon-black.pointer#gender-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
+          p.concept deposit
+          p.value() ${{selected_booking.space.deposit}}({{selected_booking.space.currency}})
+    .col-md-3.total
+      p.concept total rental
+      p.value() ${{selected_booking.price + selected_booking.space.deposit}}({{selected_booking.space.currency}})
+  .booking-info
+    .space-type
+      .title
+        | Space Type:
+      span
+        | Meeting room
+    .confirmation
+      span
+        | Confirmation code:
+      .code
+        | PZY4KB
+    .separator.long
+    .check
+      .column
+        .subtitle
+          | 1
+        span
+          | Spaces
+      .bar
+      .column
+        .subtitle
+          | 01/16/15 08:00
+        span
+          | Check in
+      .bar
+      .column
+        .subtitle
+          | 01/26/15 08:00
+        span
+          | Check out
+  .guest-payment-container
+    .guest
+      .title
+        | Guest
+      .separator.long
+      .box
+        = image_tag('venue_profile_a_individual_bookings.png')
+        .right-info
+          div
+            .subtitle
+              | First name:
+            span
+              = current_user.first_name
+          div
+            .subtitle
+              | Last name:
+            span
+              = current_user.last_name
+          div
+            .subtitle
+              | Street address:
+            span
+              = current_user.location
+    .payment
+      .title
+          | Payment Type
+      .separator.long
+      .box
+        = image_tag('receipt_card_visa.png')
+        .right-info
+          div
+            .subtitle
+              | Card:
+            span
+              | MASTER xxxx xxxx xxxx 1869
+          div
+            .subtitle
+              | First name:
+            span
+              | George
+          div
+            .subtitle
+              | Last name:
+            span
+              | Yates
+          div
+            .subtitle
+              | Expires:
+            span
+              | 05/15
+  .rounded-btn.green.print
+    | Print
