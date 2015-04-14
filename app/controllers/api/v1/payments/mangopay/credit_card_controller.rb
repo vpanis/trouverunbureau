@@ -8,9 +8,9 @@ module Api
 
           # POST /mangopay/card_registration
           def card_registration
-            return render nothing: true, status: 400 unless params[:currency].present?
             return render json: { error: 'user has no payment account' }, status: 412 unless
               current_represented.mangopay_payment_account.present?
+            return render nothing: true, status: 400 unless params[:currency].present?
             mcc = current_represented.mangopay_payment_account.mangopay_credit_cards
               .create(status: MangopayCreditCard.statuses[:registering],
                       currency: params[:currency].upcase,
@@ -22,6 +22,8 @@ module Api
 
           # GET /mangopay/new_card_info?mangopay_credit_card_id
           def new_card_info
+            return render json: { error: 'user has no payment account' }, status: 412 unless
+              current_represented.mangopay_payment_account.present?
             mcc = MangopayCreditCard.find_by_id(params[:mangopay_credit_card_id])
             return render nothing: true, status: 400 unless mcc.present?
             return render nothing: true, status: 403 unless
@@ -48,8 +50,8 @@ module Api
           end
 
           def render_mangopay_credit_card_cases(mcc)
-            return render json: nil, status: 200 if mcc.registering?
-            return render json: { error: mcc.error_message }, status: 500 if mcc.failed?
+            return render nothing: true, status: 202 if mcc.registering?
+            return render json: { error: mcc.error_message }, status: 412 if mcc.failed?
             render json: {
               registration_id: mcc.registration_id,
               registration_access_key: mcc.registration_access_key,

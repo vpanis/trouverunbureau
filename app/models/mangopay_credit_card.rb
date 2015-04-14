@@ -8,4 +8,6 @@ class MangopayCreditCard < ActiveRecord::Base
   CURRENCIES = %w(EUR USD GBP PLN CHF NOK SEK DKK)
 
   validates :currency, inclusion: { in: CURRENCIES }
+  validates :mangopay_payment_account, :registration_expiration_date, :status,
+            presence: true
 end

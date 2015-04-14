@@ -25,7 +25,7 @@ module Api
             return render nothing: true, status: 400 unless @payment.present?
             return render nothing: true, status: 403 unless
               @payment.booking.owner == current_represented
-            return render json: nil, status: 200 if @payment.expecting_response?
+            return render nothing: true, status: 202 if @payment.expecting_response?
             return render json: { error: @payment.error_message }, status: 412 if @payment.failed?
             render json: { redirect_url: @payment.redirect_url }, status: 200
           end
@@ -48,7 +48,7 @@ module Api
             @booking.payment.update_attributes(transaction_status: 'EXPECTING_RESPONSE',
                                                user_paying: current_user)
             ::Payments::Mangopay::PaymentWorker.perform_async(@booking.id, credit_card_id,
-                                                            current_user.id, root_path)
+                                                              current_user.id, root_path)
             @booking.payment
           end
 
