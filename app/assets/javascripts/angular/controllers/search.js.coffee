@@ -19,6 +19,7 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
     $scope.capacity = null
     $scope.filters = []
     $scope.marker_icon = document.getElementById('controller').dataset.markerIcon
+    $scope.active_icon = document.getElementById('controller').dataset.activeMarkerIcon
     $scope.markers = []
     $scope.dateOptions =
       formatYear: 'yy'
@@ -111,6 +112,14 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
       $scope.getSpaces()
       return
 
+    $scope.leaveSpace = (space) ->
+      $scope.selectedMarker.setMap(null)
+
+    $scope.selectSpace = (space) ->
+      marker = build_marker(space)
+      marker.icon.url = $scope.active_icon
+      $scope.selectedMarker = new (google.maps.Marker)(marker)
+
     calculate_bounds = (results) ->
       if results[0].geometry.bounds
         ne = results[0].geometry.bounds.getNorthEast()
@@ -146,7 +155,6 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
           lng: 0
         scrollwheel: false
       $scope.map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions)
-      return
 
     bounds_changed_handler = ->
       console.log('bounds changed')
@@ -172,6 +180,10 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
       space_position = new google.maps.LatLng(parseFloat(space.latitude), parseFloat(space.longitude))
       marker = build_marker(space)
       $scope.markers[i] = new (google.maps.Marker)(marker)
+      google.maps.event.addListener $scope.markers[i], 'mouseover', ->
+        $scope.markers[i].setIcon $scope.active_icon
+      google.maps.event.addListener $scope.markers[i], 'mouseout', ->
+        $scope.markers[i].setIcon $scope.marker_icon
       return space_position
 
     remove_markers = ->

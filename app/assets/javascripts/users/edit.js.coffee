@@ -91,6 +91,7 @@ on_load = ->
       $('#phone-popover').popover(options)
       $('#emergency-popover').popover(options)
 
+    new google.maps.places.Autocomplete(document.getElementById('user_location'))
     initialize_selects()
     initialize_listeners()
     initialize_popovers()

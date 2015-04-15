@@ -1,7 +1,7 @@
 = render 'shared/menu_bar', user: current_represented
 
 .space-search.container-fluid
-  .row#controller ng-controller="SearchCtrl" data-marker-icon=image_url('venue_profile_pin_map@2x.png')
+  .row#controller ng-controller="SearchCtrl" data-marker-icon=image_url('pin_negro.png') data-active-marker-icon=image_url('venue_profile_pin_map.png')
     #map-canvas.venue-map-container.col-lg-4.hidden-md.hidden-sm.hidden-xs
     .col-md-8.results
       = render 'search_filters'
@@ -9,7 +9,7 @@
       .spaces-results
         .spaces-list
           .col-md-4 ng-repeat=("space in spaces")
-            .favorite-space
+            .favorite-space ng-mouseenter="selectSpace(space)" ng-mouseleave="leaveSpace(space)"
               - if current_user.present?
                 .favourite ng-class="{active: space.favorite}" ng-click=("toggleFavorite(space.id, false)") data-is-favorite="{{space.favorite}}"
               - else
