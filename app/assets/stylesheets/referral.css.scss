@@ -1,9 +1,14 @@
 @import 'variables';
 
-.elements, .main-container {
-  // background-image: image-url();
-  background-color: $yellow;
+.main-container {
+  background-image: url('bkg_invite_friends.jpg');
   text-align: center;
+}
+
+.elements {
+  padding-top: 30px;
+  text-align: center;
+  position: relative;
 }
 
 .first-title {
@@ -12,7 +17,14 @@
   color: white;
   text-transform: uppercase;
   font-weight: bold;
-  margin-top: 50px;
+  padding-top: 50px;
+}
+
+.background {
+  height: calc(100% - 120px);
+  width: 100%;
+  background: $yellow-background;
+  position: absolute;
 }
 
 .second-title {
@@ -80,11 +92,13 @@ span.example {
 }
 
 .alert {
-  display: block;
   padding: 0;
   border: 1px solid $aqua;
   width: 450px;
   margin: 0 auto;
+  &.alert--hidden {
+    display: none;
+  }
   span {
     color: $light-black;
     padding: 10px 5px;

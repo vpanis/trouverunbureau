@@ -1,6 +1,7 @@
 = render 'shared/menu_bar', user: current_user
 = render 'shared/profile_menu_bar', user: current_user, selected: 'bookings'
 
+.background
 .elements
   .first-title
     | Invite Friends
@@ -11,12 +12,11 @@
     | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
   .invitation
     .styled-input
-      = image_tag('nav-bar-inbox.png')
-      input.rounded-left(placeholder=("e.g. info@deskpotting.com"))
-    button.btn.btn-default
+      = image_tag('venue_profile_a_mail_service.png')
+      input.rounded-left#input-mail type="email" placeholder="e.g. info@deskpotting.com"
+    button.btn.btn-default#submit-invitation
       | Invite
-  .alert
+  #alert.alert.alert--hidden
     span
       | The invitation was sent correctly to
-    span.mail
-      | info@deskpotting.com
+    span.mail#mail
