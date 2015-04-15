@@ -87,6 +87,8 @@ gem 'active_model_serializers', '~>0.9.3'
 
 gem 'will_paginate', '~>3.0.7'
 
+# If required only for development, stage and production will EXPLODE
+gem "mail_view", "~> 2.0.4"
 
 gem 'resque', '~>1.25.2'
 
@@ -103,8 +105,6 @@ group :development do
 
   # Lints
   gem 'rubocop', '~>0.26.1'
-
-  gem "mail_view", "~> 2.0.4"
 end
 
 group :debugging, :development, :test do
