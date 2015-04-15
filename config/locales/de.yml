@@ -392,3 +392,7 @@ de:
     new_password: To create the new password and your back in business
     not_request: If you did not make this request, all good, just disregard
     stay_same: this email and your password will stay the same.
+  new_space:
+    list_new_space: List new space
+    space_photos: Space photos
+    save_to_add_photos: Save space to start adding photos

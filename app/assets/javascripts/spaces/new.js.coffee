@@ -7,7 +7,8 @@ on_load = ->
       $('.space-types-select').select2({minimumResultsForSearch: -1})
       return
     initialize_listeners = ->
-      return
+      $('#new_space').submit ->
+        validate_price()
 
     initialize_popovers = ->
       options = {
@@ -19,14 +20,23 @@ on_load = ->
               return "right"
           if (position.top < 110)
               return "bottom"
-          return "top"
+          "top"
       }
-      # $('#one-popover').popover(options)
-      return
+
+    validate_price = ->
+      checked_price = $('.price-checkbox').is(':checked')
+      values = $.map($('.price-checkbox:checked').closest('.row').find('input[type=number]'),
+        (e) -> $(e).val())
+      valid_price = $.inArray("", values) != 1
+      return true if checked_price && valid_price
+      showErrorMessage()
+      false
+
+    showErrorMessage = ->
+      $('.pricing .form-group').addClass 'has-error'
 
     initialize_selects()
     initialize_listeners()
     initialize_popovers()
 
-  return
 $(document).ready on_load
