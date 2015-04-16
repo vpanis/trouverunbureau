@@ -32,9 +32,17 @@
     top: 0px;
     width: 100%;
     height: 232px;
-    @include at2x('space-no-photo', 90px, 90px);
     background-repeat: no-repeat;
     background-position: center;
+    .carousel.slide {
+      cursor: inherit;
+    }
+    .no-photos {
+      @include at2x('space-no-photo', 90px, 90px);
+      height: 232px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
   }
   .space-info {
     left: 0;
