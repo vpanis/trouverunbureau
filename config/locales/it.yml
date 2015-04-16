@@ -34,6 +34,7 @@ it:
     delete: 'delete'
     add_image: 'Add an image'
     add_space: 'Create new space'
+    pay: pay
   session:
     email: 'Email address'
     password: 'Password'
@@ -476,4 +477,25 @@ it:
     members_subtitle: 'Managers subtitle'
     create_profile: 'Create organization'
     create_title: 'Create title'
-
+  payment:
+    payment: payment
+    welcome: "Hello %{name}. It's payment time!"
+    space_type: space type
+    capacity: Capacity
+    days: Days
+    spaces: Spaces
+    check_in: Check In
+    check_out: Check Out
+    price: price
+    used_credit_card: used credit card
+    new_credit_card: new credit card
+    last_digits:  Last four digits
+    type: Type
+    expiration: Expiration date
+    currency: Currency
+    register_credit_card: register credit card
+    create_credit_card: create credit card
+    cvx: CVX
+    expiration_month: Expiration month(mm)
+    expiration_year: Expiration year(yy)
+    card_number: Credit card number

@@ -1,0 +1,11 @@
+.modal.fade aria-hidden="true" aria-labelledby="newCreditCardLabel" role="dialog" tabindex="-1" id="new-credit-card"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close aria-label="#{t('commons.close')}" data-dismiss="modal" type="button"
+          span aria-hidden="true"  &times;
+        h4.modal-title id="newCreditCardLabel" = t('payment.new_credit_card')
+      .modal-body
+        = select_tag(:credit_card, options_for_select(['Euro', 'Dollar']), {class: 'form-control no-borders credit-cards-select'})
+        a id="#"
+          button#register-credit-card.width-100.rounded-btn.bold.yellow-fill.uppercase = t('payment.register_credit_card')

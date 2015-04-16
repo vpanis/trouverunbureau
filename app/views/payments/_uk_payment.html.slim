@@ -1,0 +1,41 @@
+= render 'new_credit_card_modal'
+= render 'create_credit_card_modal'
+.uk-payment-container
+  .credit-cards-title
+    .title
+      = t('payment.used_credit_card')
+    .new-credit-card data-toggle="modal" data-target="#new-credit-card"
+      span = t('payment.new_credit_card')
+  .credit-cards-container
+    .credit-card.col-md-4
+      .radio-container
+        input type="radio" name="credit_card"
+      .credit-card-info
+        p
+          span = "#{t('payment.last_digits')}: "
+          | 1245
+        p
+          span = "#{t('payment.type')}: "
+          | Visa
+        p
+          span = "#{t('payment.expiration')}: "
+          | 05/15
+        p
+          span = "#{t('payment.currency')}: "
+          | Euro
+    .credit-card.col-md-4
+      .radio-container
+        input type="radio" name="credit_card"
+      .credit-card-info
+        p
+          span = "#{t('payment.last_digits')}: "
+          | 1245
+        p
+          span = "#{t('payment.type')}: "
+          | Visa
+        p
+          span = "#{t('payment.expiration')}: "
+          | 05/15
+        p
+          span = "#{t('payment.currency')}: "
+          | Euro

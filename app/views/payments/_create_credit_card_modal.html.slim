@@ -1,0 +1,25 @@
+.modal.fade aria-hidden="true" aria-labelledby="createCreditCardLabel" role="dialog" tabindex="-1" id="create-credit-card"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close aria-label="#{t('commons.close')}" data-dismiss="modal" type="button"
+          span aria-hidden="true"  &times;
+        h4.modal-title id="createCreditCardLabel" = t('payment.new_credit_card')
+      .modal-body
+        .form-group.col-md-12
+          label = t('payment.card_number')
+          = text_field_tag :card_number, nil, class: 'form-control'
+        .form-group.col-md-12
+          label = t('payment.expiration_month')
+          = text_field_tag :expiration_month, nil, class: 'form-control'
+        .form-group.col-md-12
+          label = t('payment.expiration_year')
+          = text_field_tag :expiration_year, nil, class: 'form-control'
+        .form-group.col-md-12
+          label = t('payment.cvx')
+          = text_field_tag :cvx, nil, class: 'form-control'
+        .form-group.col-md-12
+          label = t('payment.type')
+          = select_tag(:type, options_for_select(['Visa', 'MasterCard']), {class: 'form-control no-borders credit-cards-type-select'})
+        a id="#"
+          button#register-credit-card.width-100.rounded-btn.bold.yellow-fill.uppercase = t('payment.create_credit_card')

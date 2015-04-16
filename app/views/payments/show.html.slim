@@ -1,0 +1,58 @@
+= render 'shared/menu_bar', user: current_represented
+.container
+  .user-title
+    h3.yellow-title = t('payment.payment')
+    .small-separator
+    h4.gray-subtitle = t('payment.welcome', name: 'Robert De Niro')
+  .payment-info-container
+    .payment-info
+      = image_tag('venue-default.png', width: '75px', height: '75px')
+      p.space-name The palace Ayacucho
+      p.space-type
+        span = "#{t('payment.space_type')}: "
+        | personal desk
+    .table-data
+      .table-field
+        p
+          span.bold 10
+          br
+          span = t('payment.capacity')
+      .info-separator |
+      .table-field
+        p
+          span.bold 10
+          br
+          span = t('payment.days')
+      .info-separator |
+      .table-field
+        p
+          span.bold 10
+          br
+          span = t('payment.spaces')
+      .info-separator |
+      .table-field
+        p
+          span.bold 10/05/15
+          br
+          span = t('payment.check_in')
+      .info-separator |
+      .table-field
+        p
+          span.bold 12/05/15
+          br
+          span = t('payment.check_out')
+    .payment-price
+      p
+        span = t('payment.price')
+        br
+        span.bold $480 (USD)
+    - if false
+      = render 'usa_payment'
+    - else
+      = render 'uk_payment'
+    .buttons
+      .col-xs-6
+        a href=()
+          button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
+      .col-xs-6
+       button.rounded-btn.yellow-fill.width-100.uppercase = t('commons.pay')
