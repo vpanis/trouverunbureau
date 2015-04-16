@@ -26,7 +26,10 @@ on_load = ->
               return "bottom"
           return "top"
       }
-      return
+      $('#email-popover').popover(options)
+      $('#phone-popover').popover(options)
+      $('#street-popover').popover(options)
+      $('#postal-code-popover').popover(options)
       #$('#emergency-popover').popover(options)
 
     getLatLong = ->
