@@ -294,6 +294,7 @@ de:
     spoken_languages: 'Spoken Languages'
     add_languages: 'Add languages'
     info_no_share: 'we will never share this information with anyone'
+    info_share_street: 'we will only share your street address with a host/guest once a booking has been made'
     info_share_phone: 'we will only share your phone number with a host/guest once a booking has been made'
     info_share_street: 'we will only share your street address with a host/guest once a booking has been made'
     info_share_email: 'we will only share your email with a host/guest once a booking has been made'
@@ -516,3 +517,19 @@ de:
     payment_verification: We are verifying the payment.
     refunding: The money has been refunded.
     error_refunding: We are having problems with the refunding.
+  payment_methods:
+    personal: personal
+    business: business
+    first_name: First name
+    last_name: Last name
+    email: Email
+    date_of_birth: Date of birth
+    ssn: Ssn
+    locality: Locality
+    street: Street address
+    required_legal: Required legal representative fields
+    required_fundings: Required fundings fields
+    routing_number: Routing number
+    account_number: Account number
+    legal_name: Business legal name
+    tax_id: Tax id

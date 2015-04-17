@@ -17,6 +17,7 @@ Deskspotting::Application.routes.draw do
       patch :amenities, to: 'venue_amenities#save_amenities'
       get :photos
       get :spaces
+      get :payment_methods
       get :new_space, to: "spaces#new"
       get :collection_account_info, to: "venue_collection_accounts#collection_account_info"
       patch :collection_account_info, to: "venue_collection_accounts#edit_collection_account"

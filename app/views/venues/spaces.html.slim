@@ -2,7 +2,7 @@
 = render 'shared/profile_menu_bar', user: current_user, selected: 'venues'
 
 #venue.main-content.dashboard-form.clearfix.overflow-hidden
-  = render 'shared/edit_venue_progress', venue: @venue, progress: 60, step: 5
+  = render 'shared/edit_venue_progress', venue: @venue, progress: 60, step: 6
   .details-section.col-md-7.col-md-offset-1.margin-top
     = render 'venue_heading', subtitle: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
     - @venue.spaces.each do |space|
