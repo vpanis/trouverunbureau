@@ -94,20 +94,6 @@ ActiveRecord::Schema.define(version: 20150317161020) do
 
   add_index "organizations", ["email"], name: "index_organizations_on_email", unique: true, using: :btree
 
-  create_table "receipts", force: true do |t|
-    t.integer  "booking_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "guest_first_name"
-    t.string   "guest_last_name"
-    t.string   "guest_avatar"
-    t.string   "guest_location"
-    t.string   "guest_email"
-    t.string   "guest_phone"
-  end
-
-  add_index "receipts", ["booking_id"], name: "index_receipts_on_booking_id", using: :btree
-
   create_table "spaces", force: true do |t|
     t.integer  "s_type"
     t.string   "name"

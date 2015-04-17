@@ -4,9 +4,10 @@ class MessageSerializer < ActiveModel::Serializer
   has_one :user, serializer: UserSerializer
 
   def represented
-    return VenueSerializer.new(object.booking.space.venue) if
-      object.represented != object.booking.owner
-    return nil if object.booking.owner == object.user
+    if object.represented != object.booking.owner
+      return VenueSerializer.new(object.booking.space.venue)
+    end
+    return nil if object.booking.owner == object.represented
     OrganizationSerializer.new(object.booking.owner)
   end
 

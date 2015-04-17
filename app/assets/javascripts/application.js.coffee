@@ -25,3 +25,4 @@
 #= require_tree ./users/
 #= require_tree ./venues/
 #= require_tree ./angular/controllers
+#= require angular-translate

@@ -1,0 +1,17 @@
+#newOfferModal.modal.fade aria-hidden="true" aria-labelledby="languageModalLabel" role="dialog" tabindex="-1"
+  .modal-dialog
+    form#price-form.form.modal-content.modal-aqua
+      .modal-header
+        button.close aria-label="#{t('commons.close')}" data-dismiss="modal" type="button"
+          span aria-hidden="true"  &times;
+        h4#languageModalLabel.modal-title
+          = t('inbox.enter_new_offer')
+      .modal-body
+        .row
+          .form-group.col-xs-12.col-sm-12.col-md-12.col-lg-12
+            label
+              = t('inbox.price')
+            = text_field_tag :name, "{{selected_booking.price}}", class: 'form-control', min: '1', type: 'number', id: 'price-input'
+      .modal-footer
+        button.rounded-btn.aqua-fill.width-100.bold.uppercase#save-languages  data-dismiss="modal" ng-click="sendNewOffer()"
+          = t('inbox.send_offer')

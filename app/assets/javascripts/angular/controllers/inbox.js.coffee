@@ -32,6 +32,7 @@ angular.module('deskSpotting.inbox', []).controller "InboxCtrl", [
 
     $scope.selectBooking = (booking) ->
       $scope.selected_booking = booking
+      $('#price-input')[0].value = $scope.selected_booking.price
       reload_messages()
       return
 
@@ -50,6 +51,67 @@ angular.module('deskSpotting.inbox', []).controller "InboxCtrl", [
         reload_messages()
         return
       return
+
+    $scope.getCorrectDate = (booking, date) ->
+      if booking.b_type != 'hour'
+        date.split(" ")[0]
+      else
+        separateDate = date.split(" ")
+        displayDate = separateDate[0].split("-")
+        displayHour = separateDate[1].split(":")
+        displayDate[2] + "-" + displayDate[1] + "-" + displayDate[0] + " " + displayHour[0] + ":" + displayHour[1]
+
+    $scope.showDecline = (booking) ->
+      if booking.state == 'pending_authorization' or booking.state == 'pending_payment' or booking.state == 'paid' or booking.state == 'expired'
+        return true
+      return false
+    $scope.showBookIt = (booking) ->
+      if booking.state == 'pending_payment' and booking.client.id == parseInt($scope.user_id)
+        return true
+      return false
+    $scope.showApprove = (booking) ->
+      if (booking.state == 'pending_authorization' or booking.state == 'expired') and booking.client.id != parseInt($scope.user_id)
+        return true
+      return false
+    $scope.showNewOffer = (booking) ->
+      if (booking.state == 'pending_authorization' or booking.state == 'expired')  and booking.client.id != parseInt($scope.user_id)
+        return true
+      return false
+
+    $scope.showGuest = (booking) ->
+      return booking.client.id != parseInt($scope.user_id)
+
+    $scope.declineBoooking = () ->
+      if $scope.selected_booking.client.id != parseInt($scope.user_id)
+        Restangular.one('inquiries', $scope.selected_booking.id).one('deny').customPUT().then (result) ->
+          $scope.selected_booking.state = 'denied'
+          reload_messages()
+          return
+      else
+        Restangular.one('inquiries', $scope.selected_booking.id).one('cancel').customPUT().then (result) ->
+          $scope.selected_booking.state = 'canceled'
+          reload_messages()
+          return
+
+    $scope.payBoooking = () ->
+      console.log 'approved'
+
+    $scope.approveBoooking = () ->
+      Restangular.one('inquiries', $scope.selected_booking.id).one('accept').customPUT().then (result) ->
+        $scope.selected_booking.state = 'pending_payment'
+        reload_messages()
+        return
+
+    $scope.sendNewOffer = () ->
+      if not $('#price-form')[0].checkValidity()
+        $('#price-form')[0].submit()
+      else
+        price = $('#price-input')[0].value
+        Restangular.one('inquiries', $scope.selected_booking.id).one('edit').customPUT({price: price}).then (result) ->
+          reload_messages()
+          $scope.selected_booking.price = parseInt(price)
+          return
+
 
     $scope.getBookings()
 ]

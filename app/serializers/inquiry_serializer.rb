@@ -1,7 +1,7 @@
 class InquirySerializer < ActiveModel::Serializer
   include RepresentedHelper
-  attributes :id, :space, :state, :from, :to, :price, :quantity, :message_count, :last_message_at,
-             :client
+  attributes :id, :space, :state, :from, :to, :b_type, :price, :quantity, :message_count,
+             :last_message_at, :client
 
   def space
     SpaceSerializer.new(object.space, only: [:id, :name, :city, :currency, :capacity, :venue_name,
@@ -25,9 +25,7 @@ class InquirySerializer < ActiveModel::Serializer
     object.to.to_s
   end
 
-  def state
-    I18n.t("bookings.state.#{object.state}")
-  end
+  delegate :state, to: :object
 
   def last_message_at
     object.messages.last.created_at.to_s if object.messages.last.present?

@@ -1,23 +1,27 @@
 @import 'variables';
 @import 'mixins';
 
-.modal-dialog{
+.modal-dialog {
   width: 365px;
-  .modal-content{
+  .modal-content {
     border-left: none;
     border-right: none;
     border-top: solid 4px $yellow;
     border-bottom: solid 4px $yellow;
     @include border-radius(0px);
-    .modal-header{
+    &.modal-aqua {
+      border-top: solid 4px $aqua;
+      border-bottom: solid 4px $aqua;
+    }
+    .modal-header {
       border-bottom: 0px;
-      .close{
+      .close {
         margin-top: -11px;
         font-size: 24px;
         opacity: 1;
         color: $light-black;
       }
-      h4{
+      h4 {
         text-transform: uppercase;
         font-size: 14px;
         font-weight: 700;
@@ -27,7 +31,7 @@
         color: $light-black;
       }
     }
-    .modal-footer{
+    .modal-footer {
       border-top: 0px;
       text-align: center;
       button{

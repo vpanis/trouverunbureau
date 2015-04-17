@@ -123,6 +123,7 @@ fr:
     change_user: 'Use DeskSpotting as:'
     create_organization: 'Create organization'
     messages: Inbox
+    invite_friends: Invite friends
   search:
     count: 'Desks found'
     filters: 'Filters'
@@ -322,7 +323,20 @@ fr:
     deposit: 'Deposit'
   inbox:
     messages: 'Messages'
-    write_message: 'write message'
+    write_message: 'write a message...'
+    inquiry: 'inquiry'
+    decline: 'decline'
+    book_it: 'book it'
+    approve: 'approve'
+    new_offer: 'new offer'
+    guest: 'Guest'
+    total_rental: 'total rental'
+    ds_commission: 'DS Commission'
+    deposit: 'deposit'
+    space_rental: 'space rental'
+    enter_new_offer: 'Enter your new offer'
+    send_offer: 'Send offer'
+    price: 'Price'
   reviews:
     guest_review: 'Guest review'
     space_review: 'Space review'
@@ -348,6 +362,23 @@ fr:
       canceled: 'cancelled'
       denied: 'denied'
       expired: 'expired'
+  booking_inquiry:
+    time_frame: 'Select Time Frame'
+    check_in: 'Check in'
+    check_out: 'Check out'
+    spaces_amount: 'Number of spaces'
+    date: 'Date'
+    your_message: 'Your message'
+    message_placeholder: 'Tell the host more about yourself and your professional interests.'
+    feature_1: 'No booking fees.'
+    feature_2: 'Deposits held in scrows.'
+    feature_3: 'Book only the time you need.'
+    feature_4: 'Verified venues.'
+    feature_5: 'Secure payments.'
+    feature_6: 'Flexible cancelations.'
+    back: 'Back'
+    send_inquiry: 'Send inquiry'
+    month_amount: 'Number of months'
   edit_venue_progress:
     status: status
     venue: Venue
