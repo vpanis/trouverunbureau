@@ -54,9 +54,8 @@ describe Api::V1::BookingInquiriesController do
         b1_json = JSON.parse(InquirySerializer.new(@booking1).to_json)
         b2_json = JSON.parse(InquirySerializer.new(@booking2).to_json)
         b3_json = JSON.parse(InquirySerializer.new(@booking3).to_json)
-        expect(JSON.parse(body['inquiries'])).to match_array([b3_json['inquiry'],
-                                                              b1_json['inquiry'],
-                                                              b2_json['inquiry']])
+        expect(body['inquiries']).to match_array([b3_json['inquiry'], b1_json['inquiry'],
+                                                  b2_json['inquiry']])
       end
 
       it 'should paginate inquiries' do
@@ -68,7 +67,7 @@ describe Api::V1::BookingInquiriesController do
         expect(body['count']).to eql(3)
         expect(body['items_per_page']).to eql(amount)
         expect(body['current_page']).to eql(page)
-        expect(JSON.parse(body['inquiries']).size).to eql(amount)
+        expect(body['inquiries'].size).to eql(amount)
       end
     end
 
@@ -120,9 +119,8 @@ describe Api::V1::BookingInquiriesController do
         b1_json = JSON.parse(InquirySerializer.new(@booking1).to_json)
         b2_json = JSON.parse(InquirySerializer.new(@booking2).to_json)
         b3_json = JSON.parse(InquirySerializer.new(@booking3).to_json)
-        expect(JSON.parse(body['inquiries'])).to match_array([b3_json['inquiry'],
-                                                              b1_json['inquiry'],
-                                                              b2_json['inquiry']])
+        expect(body['inquiries']).to match_array([b3_json['inquiry'], b1_json['inquiry'],
+                                                  b2_json['inquiry']])
       end
 
       it 'should paginate inquiries' do
@@ -133,7 +131,7 @@ describe Api::V1::BookingInquiriesController do
         expect(body['count']).to eql(3)
         expect(body['items_per_page']).to eql(amount)
         expect(body['current_page']).to eql(page)
-        expect(JSON.parse(body['inquiries']).size).to eql(amount)
+        expect(body['inquiries'].size).to eql(amount)
       end
 
       it 'doesn\' let the user retrieve other users inquiries' do
@@ -193,8 +191,7 @@ describe Api::V1::BookingInquiriesController do
             current_organization_id: organization.id
         b2_json = JSON.parse(InquirySerializer.new(@booking2).to_json)
         b3_json = JSON.parse(InquirySerializer.new(@booking3).to_json)
-        expect(JSON.parse(body['inquiries'])).to match_array([b3_json['inquiry'],
-                                                              b2_json['inquiry']])
+        expect(body['inquiries']).to match_array([b3_json['inquiry'], b2_json['inquiry']])
       end
 
       it 'should paginate inquiries' do
@@ -206,7 +203,7 @@ describe Api::V1::BookingInquiriesController do
         expect(body['count']).to eql(2)
         expect(body['items_per_page']).to eql(amount)
         expect(body['current_page']).to eql(page)
-        expect(JSON.parse(body['inquiries']).size).to eql(amount)
+        expect(body['inquiries'].size).to eql(amount)
       end
     end
 
@@ -259,8 +256,7 @@ describe Api::V1::BookingInquiriesController do
         get :user_inquiries_with_news, id: @user_logged.id
         b2_json = JSON.parse(InquirySerializer.new(@booking2).to_json)
         b3_json = JSON.parse(InquirySerializer.new(@booking3).to_json)
-        expect(JSON.parse(body['inquiries'])).to match_array([b3_json['inquiry'],
-                                                              b2_json['inquiry']])
+        expect(body['inquiries']).to match_array([b3_json['inquiry'], b2_json['inquiry']])
       end
 
       it 'should paginate inquiries' do
@@ -271,7 +267,7 @@ describe Api::V1::BookingInquiriesController do
         expect(body['count']).to eql(2)
         expect(body['items_per_page']).to eql(amount)
         expect(body['current_page']).to eql(page)
-        expect(JSON.parse(body['inquiries']).size).to eql(amount)
+        expect(body['inquiries'].size).to eql(amount)
       end
 
       it 'doesn\' let the user retrieve other users inquiries' do
@@ -285,7 +281,7 @@ describe Api::V1::BookingInquiriesController do
         @booking2.save
         get :user_inquiries_with_news, id: @user_logged.id
         b3_json = JSON.parse(InquirySerializer.new(@booking3).to_json)
-        expect(JSON.parse(body['inquiries'])).to match_array([b3_json['inquiry']])
+        expect(body['inquiries']).to match_array([b3_json['inquiry']])
       end
     end
 
@@ -432,9 +428,8 @@ describe Api::V1::BookingInquiriesController do
         m1_json = JSON.parse(MessageSerializer.new(@message1).to_json)
         m2_json = JSON.parse(MessageSerializer.new(@message2).to_json)
         m3_json = JSON.parse(MessageSerializer.new(@message3).to_json)
-        expect(JSON.parse(body['messages'])).to match_array([m3_json['message'],
-                                                             m2_json['message'],
-                                                             m1_json['message']])
+        expect(body['messages']).to match_array([m3_json['message'], m2_json['message'],
+                                                 m1_json['message']])
       end
 
       it 'should paginate messages' do
@@ -445,30 +440,28 @@ describe Api::V1::BookingInquiriesController do
         expect(body['count']).to eql(3)
         expect(body['items_per_page']).to eql(amount)
         expect(body['current_page']).to eql(page)
-        expect(JSON.parse(body['messages']).size).to eql(amount)
+        expect(body['messages'].size).to eql(amount)
       end
 
       it 'should get messages from a minimum date (not_included)' do
         get :messages, id: @booking.id, from: @message1.created_at.advance(seconds: 1)
         m2_json = JSON.parse(MessageSerializer.new(@message2).to_json)
         m3_json = JSON.parse(MessageSerializer.new(@message3).to_json)
-        expect(JSON.parse(body['messages'])).to match_array([m3_json['message'],
-                                                             m2_json['message']])
+        expect(body['messages']).to match_array([m3_json['message'], m2_json['message']])
       end
 
       it 'should get messages from a maximum date (not included)' do
         get :messages, id: @booking.id, to: @message2.created_at.advance(seconds: 1)
         m1_json = JSON.parse(MessageSerializer.new(@message1).to_json)
         m2_json = JSON.parse(MessageSerializer.new(@message2).to_json)
-        expect(JSON.parse(body['messages'])).to match_array([m2_json['message'],
-                                                             m1_json['message']])
+        expect(body['messages']).to match_array([m2_json['message'], m1_json['message']])
       end
 
       it 'should get messages from a date range (not included)' do
         get :messages, id: @booking.id, from: @message1.created_at.advance(seconds: 1),
             to: @message2.created_at.advance(seconds: 1)
         m2_json = JSON.parse(MessageSerializer.new(@message2).to_json)
-        expect(JSON.parse(body['messages'])).to match_array([m2_json['message']])
+        expect(body['messages']).to match_array([m2_json['message']])
       end
 
       it 'doesn\' let the user retrieve other users messages' do
@@ -487,117 +480,4 @@ describe Api::V1::BookingInquiriesController do
       end
     end
   end
-
-  describe 'PUT inquiries/:id/accept' do
-    before(:each) do
-      @venue = FactoryGirl.create(:venue, :with_venue_hours, owner: @user_logged)
-      @space = FactoryGirl.create(:space, venue: @venue, month_price: 300, quantity: 3)
-      @booking = FactoryGirl.create(:booking, space: @space, b_type: Booking.b_types[:month])
-    end
-
-    it 'succeeds' do
-      put :accept, id: @booking
-      expect(response.status).to eq(201)
-    end
-
-    it 'changes the status of the booking, to pending payment' do
-      put :accept, id: @booking
-      @booking.reload
-      expect(@booking.pending_payment?).to eq(true)
-    end
-
-    it 'adds a new message to the inquiry' do
-      old_messages_count = @booking.messages.count
-      put :accept, id: @booking
-      @booking.reload
-      expect(@booking.messages.count).to eq(old_messages_count + 1)
-      expect(@booking.messages.last.pending_payment?).to eq(true)
-    end
-
-    it 'fails if the state it\'s not pending_authorization' do
-      @booking.update_attributes(state: Booking.states[:paid])
-      put :accept, id: @booking
-      expect(response.status).to eq(400)
-    end
-
-    it 'fails if the booking\'s owner tries to accept it' do
-      @booking = FactoryGirl.create(:booking, owner: @user_logged)
-      put :accept, id: @booking
-      expect(response.status).to eq(400)
-    end
-  end
-
-  describe 'PUT inquiries/:id/cancel' do
-    before(:each) do
-      @venue = FactoryGirl.create(:venue, :with_venue_hours)
-      @space = FactoryGirl.create(:space, venue: @venue, month_price: 300, quantity: 3)
-      @booking = FactoryGirl.create(:booking, owner: @user_logged, space: @space,
-                                    b_type: Booking.b_types[:month])
-    end
-
-    it 'succeeds' do
-      put :cancel, id: @booking
-      expect(response.status).to eq(201)
-    end
-
-    it 'changes the status of the booking, to cancel' do
-      put :cancel, id: @booking
-      @booking.reload
-      expect(@booking.canceled?).to eq(true)
-    end
-
-    it 'adds a new message to the inquiry' do
-      old_messages_count = @booking.messages.count
-      put :cancel, id: @booking
-      @booking.reload
-      expect(@booking.messages.count).to eq(old_messages_count + 1)
-      expect(@booking.messages.last.canceled?).to eq(true)
-    end
-
-    it 'fails if the venue\'s owner tries to cancel it' do
-      @venue = FactoryGirl.create(:venue, :with_venue_hours, owner: @user_logged)
-      @space = FactoryGirl.create(:space, venue: @venue, month_price: 300, quantity: 3)
-      @booking = FactoryGirl.create(:booking, space: @space,
-                                              b_type: Booking.b_types[:month])
-      put :cancel, id: @booking
-      expect(response.status).to eq(400)
-    end
-  end
-
-  describe 'PUT inquiries/:id/deny' do
-    before(:each) do
-      @venue = FactoryGirl.create(:venue, :with_venue_hours, owner: @user_logged)
-      @space = FactoryGirl.create(:space, venue: @venue, month_price: 300, quantity: 3)
-      @booking = FactoryGirl.create(:booking, space: @space, b_type: Booking.b_types[:month])
-    end
-
-    it 'succeeds' do
-      put :deny, id: @booking
-      expect(response.status).to eq(201)
-    end
-
-    it 'changes the status of the booking, to cancel' do
-      put :deny, id: @booking
-      @booking.reload
-      expect(@booking.denied?).to eq(true)
-    end
-
-    it 'adds a new message to the inquiry' do
-      old_messages_count = @booking.messages.count
-      put :deny, id: @booking
-      @booking.reload
-      expect(@booking.messages.count).to eq(old_messages_count + 1)
-      expect(@booking.messages.last.denied?).to eq(true)
-    end
-
-    it 'fails if the booking\'s owner tries to cancel it' do
-      @venue = FactoryGirl.create(:venue, :with_venue_hours)
-      @space = FactoryGirl.create(:space, venue: @venue, month_price: 300, quantity: 3)
-      @booking = FactoryGirl.create(:booking, space: @space, owner: @user_logged,
-                                    b_type: Booking.b_types[:month])
-      put :deny, id: @booking
-      expect(response.status).to eq(400)
-    end
-  end
-
 end

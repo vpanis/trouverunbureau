@@ -40,7 +40,7 @@ class Booking < ActiveRecord::Base
     def all_bookings_for(owner_client)
       joins { space.venue }.where do
         (owner == my { owner_client }) | (space.venue.owner ==  my { owner_client })
-      end.distinct.order('bookings.state ASC', 'bookings.updated_at DESC')
+      end.distinct.order('bookings.updated_at DESC')
     end
   end
 

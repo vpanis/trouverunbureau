@@ -35,6 +35,7 @@ CarrierWave.configure do |config|
     config.storage = :file
     config.enable_processing = false
     config.root = "#{Rails.root}/public"
+    config.asset_host = 'http://localhost:3000'
   else
     amazons3 = AppConfiguration.for(:amazons3)
     config.fog_credentials = {

@@ -1176,10 +1176,13 @@ h4.gray-subtitle {
   background-repeat: no-repeat;
   background-position: center;
   vertical-align: text-bottom;
-  &.info{
+  &.info {
     @include at2x('ic_profile_info', 16px, 16px);
+    &.icon-black {
+      @include at2x('ic_profile_info_black', 16px, 16px);
+    }
   }
-  &.lock{
+  &.lock {
     @include at2x('ic_profile_lock', 16px, 16px);
   }
 }

@@ -50,9 +50,11 @@
     width: 100%;
   }
 }
+
 .green {
   border-color: $aqua;
 }
+
 .yellow-fill{
   border-color: $yellow;
   background-color: $yellow;
@@ -62,6 +64,18 @@
     border-color: darken($yellow, 5%);
   }
 }
+
+.aqua-fill{
+  border-color: $aqua;
+  background-color: $aqua;
+  color: $white;
+  &:hover {
+    background-color: darken($aqua, 5%);
+    border-color: darken($aqua, 5%);
+    color: $white;
+  }
+}
+
 .grey-fill {
   border-color: $gray;
   background-color: $gray;

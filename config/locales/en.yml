@@ -321,6 +321,22 @@ en:
     day_price: 'Day price'
     month_price: 'Month price'
     deposit: 'Deposit'
+  inbox:
+    messages: 'Messages'
+    write_message: 'write a message...'
+    inquiry: 'inquiry'
+    decline: 'decline'
+    book_it: 'book it'
+    approve: 'approve'
+    new_offer: 'new offer'
+    guest: 'Guest'
+    total_rental: 'total rental'
+    ds_commission: 'DS Commission'
+    deposit: 'deposit'
+    space_rental: 'space rental'
+    enter_new_offer: 'Enter your new offer'
+    send_offer: 'Send offer'
+    price: 'Price'
   reviews:
     guest_review: 'Guest review'
     space_review: 'Space review'
@@ -338,10 +354,18 @@ en:
     all_venues: All Venues
     current: Current bookings
     cancelled: Cancelled bookings
+    no_bookings: 'There are no bookings'
+    state:
+      pending_authorization: 'pending'
+      pending_payment: 'approved'
+      paid: 'paid'
+      canceled: 'cancelled'
+      denied: 'denied'
+      expired: 'expired'
   booking_inquiry:
     time_frame: 'Select Time Frame'
     check_in: 'Check in'
-    check_out: 'Check_out'
+    check_out: 'Check out'
     spaces_amount: 'Number of spaces'
     date: 'Date'
     your_message: 'Your message'

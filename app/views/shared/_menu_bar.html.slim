@@ -39,7 +39,7 @@
                     p = user.name
               = render 'shared/menu_dropdown'
           li
-            a href="#"
+            = link_to inbox_user_path(user) do
               .messages
                 p 0
           li

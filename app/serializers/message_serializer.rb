@@ -4,10 +4,11 @@ class MessageSerializer < ActiveModel::Serializer
   has_one :user, serializer: UserSerializer
 
   def represented
-    return VenueSerializer.new(object.booking.space.venue).to_json if
-      object.represented != object.booking.owner
-    return nil if object.booking.owner == object.user
-    OrganizationSerializer.new(object.booking.owner).to_json
+    if object.represented != object.booking.owner
+      return VenueSerializer.new(object.booking.space.venue)
+    end
+    return nil if object.booking.owner == object.represented
+    OrganizationSerializer.new(object.booking.owner)
   end
 
   def date
