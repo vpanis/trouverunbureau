@@ -88,7 +88,7 @@ class SpaceBookingInquiryController < ModelController
                                       from: @from_date,
                                       to: @to_date,
                                       space_id: params[:id].to_i,
-                                      b_type: Booking.b_types[:month],
+                                      b_type: @b_type,
                                       quantity: params[:booking][:quantity])
   end
 end
