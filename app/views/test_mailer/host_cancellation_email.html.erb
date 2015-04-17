@@ -1,0 +1,133 @@
+<style>
+    @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,700,300,400);
+</style>
+<div lang="es" style="min-width: 320px; margin: 0; padding: 20px 0; font-family: Open Sans, sans-serif;">
+  <div style="max-width: 720px; margin: 0 auto;">
+    <!-- body -->
+    <div class="body" style="color: #9f9f9f">
+      <div style="max-width: 650px; margin: 0 auto;">
+        <div style="padding: 20px 50px; border-bottom: 1px solid #ccc; text-align: center;">
+          <%= image_tag 'isologotipo-login.png' %>
+        </div>
+
+        <div>
+          <p><%= "George," %></p> <!-- TODO: Change name -->
+
+          <!-- TODO: If sorry cancel or unfortunately -->
+          <p><%= "#{t('host_cancellation_email.sorry_cancel')}:" %></p>
+          <p><%= "#{t('host_cancellation_email.unfortunately', name: 'JP')}:" %></p><!-- TODO: Change name -->
+
+        </div>
+      </div>
+
+      <div style="background-color: #f6f6f6; text-align: center; padding: 35px 0;">
+        <%= image_tag 'venue-default.png', style: 'width: 65px;' %>
+        <p style="color: black; font-size: 25px; margin: 10px 0;">Venue name</p><!-- TODO: Change venue namne -->
+
+        <p style="color: black; margin: 10px 0;">
+          <span style="font-weight: 300;"><%= "#{t('host_cancellation_email.space')}: " %></span>
+          <span style="font-weight: bold;">Meeting Room</span><!-- TODO: Change space -->
+        </p>
+
+        <div style="display: table; margin: 0 auto; padding-top: 20px;">
+          <div style="padding: 0 15px; text-align: center; display: table-cell;">
+            <p style="line-height: 25px;">
+              <span style="font-weight: bold;">01/02/16</span><!-- TODO: Change date -->
+              <br>
+              <span style="font-size: 14px;"><%= t('host_cancellation_email.date') %></span>
+            </p>
+          </div>
+          <div style="text-align: center; display: table-cell; font-size: 20px; vertical-align: middle; font-weight: 100;">|</div>
+          <div style="padding: 0 15px; text-align: center; display: table-cell;">
+            <p style="line-height: 25px;">
+              <span style="font-weight: bold;">1</span><!-- TODO: Change spaces -->
+              <br>
+              <span style="font-size: 14px;"><%= t('host_cancellation_email.spaces') %></span>
+            </p>
+          </div>
+          <div style="text-align: center; display: table-cell; font-size: 20px; vertical-align: middle; font-weight: 100;">|</div>
+          <div style="padding: 0 15px; text-align: center; display: table-cell;">
+            <p style="line-height: 25px;">
+              <span style="font-weight: bold;">14:00 PM</span><!-- TODO: Change time -->
+              <br>
+              <span style="font-size: 14px;"><%= t('host_cancellation_email.check_in') %></span>
+            </p>
+          </div>
+          <div style="text-align: center; display: table-cell; font-size: 20px; vertical-align: middle; font-weight: 100;">|</div>
+          <div style="padding: 0 15px; text-align: center; display: table-cell;">
+            <p style="line-height: 25px;">
+              <span style="font-weight: bold;">16:00 PM</span><!-- TODO: Change time -->
+              <br>
+              <span style="font-size: 14px;"><%= t('host_cancellation_email.check_out') %></span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div style="max-width: 650px; margin: 0 auto;">
+        <!-- TODO: Create if for this sections -->
+
+        <!-- refunded section -->
+        <p>
+          <%= t('host_cancellation_email.refunded', name: 'JP') %><!-- TODO: Change guest name -->
+          <span style="color: black; font-weight: bold;">
+            <%= " $#{'234'}." %><!-- TODO: Change amount -->
+          </span>
+        </p>
+        <!-- END refunded section -->
+
+        <!-- Receive payout section -->
+        <p>
+          <%= t('host_cancellation_email.payout') %>
+          <span style="color: black; font-weight: bold;">
+            <%= " $#{'234'} " %><!-- TODO: Change amount -->
+          </span>
+          <%= "#{t('host_cancellation_email.transferred')}:" %>
+        </p>
+
+        <p>
+          <span style="font-weight: bold;"><%= "#{t('host_cancellation_email.bank_name')}: " %></span>
+          Lorem ipsum <!-- TODO: Change bank name -->
+        </p>
+        <p>
+          <span style="font-weight: bold;"><%= "#{t('host_cancellation_email.account_number')}: " %></span>
+          xxxxxxxxxxxxxxxx2342 <!-- TODO: Change account number -->
+        </p>
+        <p>
+          <span style="font-weight: bold;"><%= "#{t('host_cancellation_email.holder')}: " %></span>
+          Lorem ipsum <!-- TODO: Change holder -->
+        </p>
+        <p>
+          <span style="font-weight: bold;"><%= "#{t('host_cancellation_email.funds')}: " %></span>
+          23/10/14 <!-- TODO: Change funds date -->
+        </p>
+        <!-- END Receive payout section -->
+
+
+        <p style="line-height: 30px; padding: 25px 0;">
+          <%= t('host_cancellation_email.terms1') %>
+          <a href="" style="color: rgba(255,225,17,0.9); font-weight: bold; text-decoration: none;"><!-- TODO: Change policy link -->
+            <%= " #{t('host_cancellation_email.cancellation_policy')} " %>
+          </a>
+          <%= t('host_cancellation_email.terms2') %>
+          <a href="" style="color: rgba(255,225,17,0.9); font-weight: bold; text-decoration: none;"><!-- TODO: Change terms link -->
+            <%= " #{t('host_cancellation_email.terms_of_service')}." %>
+          </a>
+        </p>
+      </div>
+
+      <div style="min-width: 650px; margin: 0 auto; display: table; border-bottom: 1px solid #ccc; padding-bottom: 15px;">
+        <p style="display: table-cell; vertical-align: middle; font-weight: 100;">
+          <%= t('new_message_email.team') %>
+        </p>
+        <div class="social-icons" style="min-width: 216px; display: table-cell; vertical-align: middle; text-align: right;">
+          <div class="twitter social-icon" style="width: 40px; height: 40px; display: inline-block; margin-right: 14px; background-image: url(/assets/email-social-icons-sprite.png); background-size: 170px 80px !important; background-position: -1px 0px;"></div>
+          <div class="facebook social-icon" style="width: 40px; height: 40px; display: inline-block; margin-right: 14px; background-image: url(/assets/email-social-icons-sprite.png); background-size: 170px 80px !important; background-position: -44px 0px;"></div>
+          <div class="linkedin social-icon" style="width: 40px; height: 40px; display: inline-block; margin-right: 14px; background-image: url(/assets/email-social-icons-sprite.png); background-size: 170px 80px !important; background-position: -87px 0px;"></div>
+          <div class="instagram social-icon" style="width: 40px; height: 40px; display: inline-block; margin-right: 14px; background-image: url(/assets/email-social-icons-sprite.png); background-size: 170px 80px !important; background-position: -130px 0px;"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

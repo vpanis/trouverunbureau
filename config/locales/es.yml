@@ -58,7 +58,7 @@ es:
     change_password: 'Change Password'
   home:
     sign_in: 'Sign in'
-    list_your_space: 'List your space'
+    list_your_space: 'Lista tu espacio'
     profile: Profile
     manage_your_venues: Manage your venues
     header:
@@ -124,6 +124,7 @@ es:
     change_user: 'Use DeskSpotting as:'
     create_organization: 'Create organization'
     messages: Inbox
+    invite_friends: Invite friends
   search:
     count: 'Desks found'
     filters: 'Filters'
@@ -259,6 +260,7 @@ es:
     hour: 'hour'
     week: 'week'
   users:
+    user_since: User since
     edit_profile: 'Edit profile'
     edit_organization_profile: 'Edit organization'
     owner: 'Owner'
@@ -341,6 +343,22 @@ es:
     day_price: 'Day price'
     month_price: 'Month price'
     deposit: 'Deposit'
+  inbox:
+    messages: 'Messages'
+    write_message: 'write a message...'
+    inquiry: 'inquiry'
+    decline: 'decline'
+    book_it: 'book it'
+    approve: 'approve'
+    new_offer: 'new offer'
+    guest: 'Guest'
+    total_rental: 'total rental'
+    ds_commission: 'DS Commission'
+    deposit: 'deposit'
+    space_rental: 'space rental'
+    enter_new_offer: 'Enter your new offer'
+    send_offer: 'Send offer'
+    price: 'Price'
   reviews:
     guest_review: 'Guest review'
     space_review: 'Space review'
@@ -358,6 +376,31 @@ es:
     all_venues: All Venues
     current: Current bookings
     cancelled: Cancelled bookings
+    no_bookings: 'There are no bookings'
+    state:
+      pending_authorization: 'pending'
+      pending_payment: 'approved'
+      paid: 'paid'
+      canceled: 'cancelled'
+      denied: 'denied'
+      expired: 'expired'
+  booking_inquiry:
+    time_frame: 'Select Time Frame'
+    check_in: 'Check in'
+    check_out: 'Check out'
+    spaces_amount: 'Number of spaces'
+    date: 'Date'
+    your_message: 'Your message'
+    message_placeholder: 'Tell the host more about yourself and your professional interests.'
+    feature_1: 'No booking fees.'
+    feature_2: 'Deposits held in scrows.'
+    feature_3: 'Book only the time you need.'
+    feature_4: 'Verified venues.'
+    feature_5: 'Secure payments.'
+    feature_6: 'Flexible cancelations.'
+    back: 'Back'
+    send_inquiry: 'Send inquiry'
+    month_amount: 'Number of months'
   edit_venue_progress:
     status: status
     venue: Venue
@@ -368,3 +411,52 @@ es:
     publish: publish
     delete_venue: Delete venue
     incomplete: incomplete
+  new_message_email:
+    hi: Hi
+    got_new_message: Got a new message from
+    reply: Or reply directly on this mail.
+    view_on_deskspotting: View on DeskSpotting
+    team: The DeskSpotting Team
+  host_cancellation_email:
+    sorry_cancel: Sorry to see you had to cancel your booking of
+    unfortunately: "Unfortunately your guest, %{name}, had to cancel is booking with you for"
+    space: Space
+    date: Date
+    spaces: Spaces
+    check_in: Check In
+    check_out: Check Out
+    payout: You will receive a payout of
+    transferred: transferred to
+    bank_name: Bank Name
+    account_number: Account Number
+    holder: Holder
+    funds: Funds transferred On
+    refunded: "Your guest %{name} will be refunded"
+    terms1: If you have any questions about our
+    terms2: feel free to read
+    cancellation_policy: cancellation policy
+    terms_of_service: our terms of service
+  guest_review_email:
+    hi: Hi
+    checked_out: You have checked out of
+    at: at
+    check_in: Check In
+    check_out: Check Out
+    days: Days
+    date: Date
+    rate_stay: rate your stay
+  host_review_email:
+    rate_guest: rate your guest
+    your_guest: Your Guest
+    checked_in: has checked in of
+  reset_password_email:
+    this_link: just use this link
+    forgot_password:  It seems like you forgot your DeskSpotting password.
+    dont_worry: Don't worry it happens to the best of us
+    new_password: To create the new password and your back in business
+    not_request: If you did not make this request, all good, just disregard
+    stay_same: this email and your password will stay the same.
+  new_space:
+    list_new_space: List new space
+    space_photos: Space photos
+    save_to_add_photos: Save space to start adding photos

@@ -17,6 +17,7 @@
 #= require angular-ui-bootstrap-tpls
 #= require select2
 #= require_directory .
+#= require google_places
 #= require_tree ./bookings/
 #= require_tree ./landing/
 #= require_tree ./organizations/
@@ -25,5 +26,4 @@
 #= require_tree ./users/
 #= require_tree ./venues/
 #= require_tree ./angular/controllers
-
-
+#= require angular-translate

@@ -25,7 +25,7 @@
                 - else
                   strong.black = t('commons.unknown')
               p.since
-                | User since
+                = t('users.user_since')
                 span = @user.created_at.strftime('%B, %Y')
                 p.text = @user.interests
 
@@ -45,5 +45,5 @@
           .icon.profession
           p = t("venue.professions.#{@user.profession}")
     .right-panel.col-md-9
-      - if @can_view_reiews
+      - if @can_view_reviews
         = render 'reviews', user: @user

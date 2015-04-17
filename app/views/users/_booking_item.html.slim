@@ -1,0 +1,17 @@
+.booking-item-wrapper ng-click="selectBooking(booking)"
+  button.delete-item hidden="" x
+  .avatar-wrapper
+    img ng-src="{{booking.space.logo || defaultLogo}}"
+  .wrapper
+    h3
+      | {{booking.space.name}}
+    h4
+      | {{booking.space.venue_name}}
+    p.booking-city
+      | {{booking.space.city}}
+    p.bottom-content.status class="{{booking.state}}"
+      | {{ booking.state | translate }}
+    p.bottom-content.messages
+      | {{booking.message_count}}
+    p.bottom-content.date.pull-right
+      | yesterday

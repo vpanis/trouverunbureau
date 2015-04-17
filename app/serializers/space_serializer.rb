@@ -1,6 +1,7 @@
 class SpaceSerializer < ActiveModel::Serializer
   attributes :id, :name, :city, :currency, :hour_price, :day_price, :week_price, :month_price,
-             :favorite, :latitude, :longitude, :photos, :capacity, :venue_id
+             :favorite, :latitude, :longitude, :photos, :capacity, :venue_id, :venue_name,
+             :deposit, :logo
 
   def city
     object.venue.town
@@ -20,6 +21,15 @@ class SpaceSerializer < ActiveModel::Serializer
 
   def venue_id
     object.venue.id
+  end
+
+  def venue_name
+    object.venue.name
+  end
+
+  def logo
+    return object.venue.logo.url if object.venue.logo.present?
+    nil
   end
 
   def favorite

@@ -17,8 +17,8 @@ describe UsersController do
           expect(assigns(:can_edit)).to eq(false)
         end
 
-        it 'sets @can_view_reiews' do
-          expect(assigns(:can_view_reiews)).to eq(false)
+        it 'sets @can_view_reviews' do
+          expect(assigns(:can_view_reviews)).to eq(false)
         end
 
         it 'renders the show template' do
@@ -52,8 +52,8 @@ describe UsersController do
           expect(assigns(:can_edit)).to eq(false)
         end
 
-        it 'sets @can_view_reiews' do
-          expect(assigns(:can_view_reiews)).to eq(false)
+        it 'sets @can_view_reviews' do
+          expect(assigns(:can_view_reviews)).to eq(false)
         end
 
         it 'renders the show template' do
@@ -71,8 +71,8 @@ describe UsersController do
           expect(assigns(:can_edit)).to eq(true)
         end
 
-        it 'sets @can_view_reiews' do
-          expect(assigns(:can_view_reiews)).to eq(true)
+        it 'sets @can_view_reviews' do
+          expect(assigns(:can_view_reviews)).to eq(true)
         end
 
         it 'renders the show template' do
@@ -96,8 +96,8 @@ describe UsersController do
           expect(assigns(:can_edit)).to eq(false)
         end
 
-        it 'sets @can_view_reiews' do
-          expect(assigns(:can_view_reiews)).to eq(true)
+        it 'sets @can_view_reviews' do
+          expect(assigns(:can_view_reviews)).to eq(true)
         end
 
         it 'renders the show template' do
@@ -114,16 +114,18 @@ describe UsersController do
 
         before { get :edit, id: user.id }
 
-        it 'is forbidden' do
-          expect(response.status).to be(403)
+        it 'is redirected to login' do
+          expect(response.status).to eq(302)
+          expect(response.redirect_url).to eq(new_user_session_url)
         end
       end # when the user exists
 
       context 'when the user does not exist' do
         before { get :edit, id: -1 }
 
-        it 'fails' do
-          expect(response.status).to be(404)
+        it 'is redirected to login' do
+          expect(response.status).to eq(302)
+          expect(response.redirect_url).to eq(new_user_session_url)
         end
       end # when the user does not exist
     end # when no user is logged in
@@ -175,18 +177,19 @@ describe UsersController do
 
         before { patch :update, id: user.id }
 
-        it 'is forbidden' do
-          expect(response.status).to be(403)
+        it 'is redirected to login' do
+          expect(response.status).to eq(302)
+          expect(response.redirect_url).to eq(new_user_session_url)
         end
       end # when the user exists
 
       context 'when the user does not exist' do
         before { patch :update, id: -1 }
 
-        it 'fails' do
-          expect(response.status).to be(404)
+        it 'is redirected to login' do
+          expect(response.status).to eq(302)
+          expect(response.redirect_url).to eq(new_user_session_url)
         end
-
       end # when the user does not exist
     end # when no user is logged in
 

@@ -2,11 +2,12 @@ class UsersController < ApplicationController
   inherit_resources
   include RepresentedHelper
   include SelectOptionsHelper
+  before_action :authenticate_user!, except: [:show]
 
   def show
     @user = User.find(params[:id])
     @can_edit = @user.eql?(current_represented)
-    @can_view_reiews = user_can_read_client_reviews?(User, @user.id)
+    @can_view_reviews = user_can_read_client_reviews?(User, @user.id)
   end
 
   def edit
@@ -39,6 +40,9 @@ class UsersController < ApplicationController
     session[:current_organization_id] = nil
     flash[:redirect_if_403] = user_path(current_represented)
     redirect_to session[:previous_url] || root_path
+  end
+
+  def inbox
   end
 
   # TODO: implement account form and email notifications accordingly

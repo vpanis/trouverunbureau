@@ -1159,18 +1159,15 @@ h4.gray-subtitle {
         width: 20px;
         height: 20px;
         &.languages{
-          /* TODO: get real assets */
-          @include at2x('venue-default', 20px, 20px);
+          @include at2x('profile_languages', 20px, 20px);
           background-size: 20px 20px;
         }
         &.company{
-          /* TODO: get real assets */
-          @include at2x('venue-default', 20px, 20px);
+          @include at2x('profile_job', 20px, 20px);
           background-size: 20px 20px;
         }
         &.profession{
-          /* TODO: get real assets */
-          @include at2x('venue-default', 20px, 20px);
+          @include at2x('profile_degree', 20px, 20px);
           background-size: 20px 20px;
         }
       }
@@ -1192,10 +1189,13 @@ h4.gray-subtitle {
   background-repeat: no-repeat;
   background-position: center;
   vertical-align: text-bottom;
-  &.info{
+  &.info {
     @include at2x('ic_profile_info', 16px, 16px);
+    &.icon-black {
+      @include at2x('ic_profile_info_black', 16px, 16px);
+    }
   }
-  &.lock{
+  &.lock {
     @include at2x('ic_profile_lock', 16px, 16px);
   }
 }
@@ -1582,4 +1582,7 @@ li.venue-hours.active{
 }
 .navbar-right{
   margin-right: 0px;
+}
+.pac-container {
+  z-index: 1050;
 }

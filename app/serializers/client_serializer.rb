@@ -1,5 +1,5 @@
 class ClientSerializer < ActiveModel::Serializer
-  attributes :id, :type, :name, :avatar
+  attributes :id, :type, :name, :avatar, :rating, :quantity_reviews
 
   def type
     object.class.to_s
@@ -14,4 +14,5 @@ class ClientSerializer < ActiveModel::Serializer
     return object.first_name if object.class == User
     object.name
   end
+
 end

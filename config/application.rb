@@ -65,5 +65,32 @@ module Deskspotting
       Devise::RegistrationsController.layout "session"
       Devise::PasswordsController.layout "session"
     end
+
+    # Mailer configuration
+    mail = AppConfiguration.for :mail
+    config.action_mailer.default_url_options = { host: mail.address, only_path: false }
+    config.action_mailer.asset_host = mail.host
+    # ActionMailer Config
+    # Setup for production - deliveries, no errors raised
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.perform_deliveries = mail.perform_deliveries == 'true'
+    config.action_mailer.raise_delivery_errors =  mail.raise_delivery_errors == 'true'
+    config.action_mailer.default :charset => "utf-8"
+    config.action_mailer.smtp_settings = {
+      openssl_verify_mode: mail.openssl_verify_mode,
+      enable_starttls_auto: mail.enable_starttls_auto == 'true',
+      address: mail.address,
+      port: mail.port.to_i,
+      domain: mail.domain,
+      user_name: mail.user_name,
+      password: mail.password,
+      authentication: mail.authentication
+    }
+
+    #config.middleware.use ExceptionNotification::Rack, email: {
+    #  email_prefix: "[DESKSPOTTING - #{Rails.env}] ",
+    #  sender_address: mail.user_name,
+    #  exception_recipients: mail.notifications_account
+    #}
   end
 end

@@ -7,6 +7,10 @@ Deskspotting::Application.routes.draw do
 
   mount Resque::Server, at: "/resque"
 
+  if Rails.env.development?
+    mount MailPreview => 'mail_view'
+  end
+
   root to: 'landing#index'
 
   resources :venues, only: [:new, :create, :edit, :update, :show, :index] do
@@ -24,6 +28,7 @@ Deskspotting::Application.routes.draw do
   resources :users, only: [:show, :edit, :update] do
     member do
       get :account
+      get :inbox
     end
     collection do
       post :login_as_organization, to: 'users#login_as_organization'
@@ -81,20 +86,21 @@ Deskspotting::Application.routes.draw do
       end
     end
 
-    resources :venues do
+    resources :venues, only: [] do
       member do
         get :reviews, to: 'reviews#venue_reviews'
       end
     end
 
-    resources :inquiries do
+    resources :inquiries, only: [] do
       member do
         put :last_seen_message, to: 'booking_inquiries#last_seen_message'
+        put :edit, to: 'bookings#update_booking'
         post :messages, to: 'booking_inquiries#add_message'
         get :messages, to: 'booking_inquiries#messages'
-        put :accept, to: 'booking_inquiries#accept'
-        put :cancel, to: 'booking_inquiries#cancel'
-        put :deny, to: 'booking_inquiries#deny'
+        put :accept, to: 'bookings#accept'
+        put :cancel, to: 'bookings#cancel'
+        put :deny, to: 'bookings#deny'
       end
     end
 

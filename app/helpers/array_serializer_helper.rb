@@ -13,7 +13,7 @@ module ArraySerializerHelper
     json = { count: result.total_entries,
              current_page: result.current_page,
              items_per_page: result.per_page }
-    json[array_name] = serializer_result.to_json
+    json[array_name] = serializer_result.as_json
     json
   end
 end

@@ -7,7 +7,7 @@
         - else
           = link_to(t('menu.profile'), user_path(user), class: ('active' if selected.eql?('profile')))
       li
-        a(href="#") = t('menu.inbox')
+        = link_to(t('menu.inbox'), inbox_user_path(user), class: ('active' if selected.eql?('inbox')))
       li
         = link_to(t('menu.bookings'), paid_bookings_bookings_path, class: ('active' if selected.eql?('bookings')))
       li

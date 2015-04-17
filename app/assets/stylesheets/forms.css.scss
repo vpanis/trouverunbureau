@@ -13,6 +13,11 @@
   -webkit-transition: none;
 }
 
+.form-group.has-error {
+  .form-control {
+    border: 2px solid $dark-red;
+  }
+}
 .form-group{
   margin-bottom: 8px;
   .form-control{

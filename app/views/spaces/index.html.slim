@@ -1,7 +1,7 @@
 = render 'shared/menu_bar', user: current_represented
 
 .space-search.container-fluid
-  .row#controller ng-controller="SearchCtrl" data-marker-icon=image_url('venue_profile_pin_map@2x.png')
+  .row#controller ng-controller="SearchCtrl" data-marker-icon=image_url('pin_negro.png') data-active-marker-icon=image_url('venue_profile_pin_map.png')
     #map-canvas.venue-map-container.col-lg-4.hidden-md.hidden-sm.hidden-xs
     .col-md-8.results
       = render 'search_filters'
@@ -9,24 +9,25 @@
       .spaces-results
         .spaces-list
           .col-md-4 ng-repeat=("space in spaces")
-            .favorite-space
+            .favorite-space ng-mouseenter="selectSpace(space)" ng-mouseleave="leaveSpace(space)"
               - if current_user.present?
                 .favourite ng-class="{active: space.favorite}" ng-click=("toggleFavorite(space.id, false)") data-is-favorite="{{space.favorite}}"
               - else
                 .favourite
               .carousel-container
                 .carousel.slide id="space-carousel-{{space.id}}"
-                  ol.carousel-indicators
+                  ol.carousel-indicators ng-hide="space.photos.length < 2"
                     li data-target="space-carousel-{{space.id}}" data-slide-to="{{index}}" ng-repeat=("photo in space.photos track by $index") ng-class="{active: $index == 0}"
                   .carousel-inner role="listbox"
+                    .no-photos ng-if="space.photos.length == 0"
                     .item ng-class="{active: $index == 0}" ng-repeat=("photo in space.photos track by $index")
                       .full-image style="background-image: url('{{photo}}')"
-                  a.left.carousel-control data-slide="prev" href="#space-carousel-{{space.id}}" role="button"
+                  a.left.carousel-control data-slide="prev" href="#space-carousel-{{space.id}}" role="button" ng-hide="space.photos.length < 2"
                     span.glyphicon.left-carousel-arrow aria-hidden="true"
-                  a.right.carousel-control data-slide="next" href="#space-carousel-{{space.id}}" role="button"
+                  a.right.carousel-control data-slide="next" href="#space-carousel-{{space.id}}" role="button" ng-hide="space.photos.length < 2"
                     span.glyphicon.right-carousel-arrow aria-hidden="true"
-              .space-info
-                a.name ng-href="/venues/{{space.venue_id}}?space_id={{space.id}}" {{space.name}}
+              a.space-info ng-href="/venues/{{space.venue_id}}?space_id={{space.id}}"
+                .name() {{space.name}}
                 .city() {{space.city}}
                 .bottom-line
                   .currency() {{space.currency}}
