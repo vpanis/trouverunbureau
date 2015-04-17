@@ -34,6 +34,7 @@ de:
     delete: 'delete'
     add_image: 'Add an image'
     add_space: 'Create new space'
+    create: 'Create'
   session:
     email: 'Email address'
     password: 'Password'
@@ -261,6 +262,9 @@ de:
   users:
     user_since: User since
     edit_profile: 'Edit profile'
+    edit_organization_profile: 'Edit organization'
+    owner: 'Owner'
+    admin: 'Admin'
     about_me: 'About me'
     required_fields: 'Required fields'
     optional_fields: 'Optional fields'
@@ -298,6 +302,24 @@ de:
       outstanding_booking: 'My outstanding booking inquiry is accepted or declined.'
       booking_inquiry: 'I receive a booking inquiry.'
       account_changes: 'Changes are made to my DeskSpotting account or listing.'
+  organizations:
+    edit_profile: 'Edit organization profile'
+    required_fields: 'Required fields'
+    change_picture: 'Change Organization logo'
+    name: 'Organization name'
+    name_placeholder: 'Enter your organization name'
+    email: 'General e-mail'
+    email_placeholder: 'e.g. info@deskspotting.com'
+    email_member_placeholder: 'e.g. george.yates@deskspotting.com'
+    phone: 'Phone Number'
+    members: 'Members'
+    members_text: 'Add people in your organization to help you manage your DeskSpotting account'
+    create_profile: 'List your organization'
+    create_title: 'Start by telling us about your organization...'
+    add_manager: 'Add new manager'
+    add_manager_action: 'Add manager'
+    email: 'Email'
+    role: 'Role'
   spaces:
     types:
       conference_room: 'Conference room'

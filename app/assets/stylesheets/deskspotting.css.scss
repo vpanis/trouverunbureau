@@ -1074,6 +1074,7 @@ h4.gray-subtitle {
       left: 0;
     }
   }
+
   .review-container {
     margin: 35px 0 0 10px;
   }
@@ -1103,6 +1104,18 @@ h4.gray-subtitle {
       margin-right: 20px;
     }
   }
+}
+
+.members-title{
+  font-size: 28px;
+}
+
+.no-float{
+  float: none !important;
+}
+
+.center{
+  text-align: center;
 }
 
 .user-title{

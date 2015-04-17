@@ -9,6 +9,7 @@
   'deskSpotting.booking_inquiry'
   'deskSpotting.search',
   'deskSpotting.user_profile',
+  'deskSpotting.organization_edit',
   'pascalprecht.translate'
 ]).config (RestangularProvider) ->
   RestangularProvider.setBaseUrl '/api/v1'

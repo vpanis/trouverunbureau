@@ -1,6 +1,5 @@
 = render 'shared/menu_bar', user: current_represented
 = render 'shared/profile_menu_bar', user: current_user, selected: 'profile'
-
 = render 'language_modal'
 = render 'shared/image_modal', modal_id: 'avatar-modal', title: t('users.change_picture'), image_link_id: 'avatar-link', save_button_id: 'save-avatar'
 
@@ -10,11 +9,11 @@
     .small-separator
     h4.gray-subtitle = t('users.required_fields')
     .user-avatar
-      - if @user.avatar?
-        = image_tag(@user.avatar.url, width: '95px', height: '95px', id: 'user-avatar-img')
-      - else
-        = image_tag('default-avatar.png', width: '95px', height: '95px', id: 'user-avatar-img')
-      a#edit-avatar.add.block.aqua href="#" data-toggle="modal" data-target="#avatar-modal" = t('users.change_picture')
+        - if @user.avatar?
+          = image_tag(@user.avatar.url, width: '95px', height: '95px', id: 'user-avatar-img')
+        - else
+          = image_tag('default-avatar.png', width: '95px', height: '95px', id: 'user-avatar-img')
+        a#edit-avatar.add.block.aqua href="#" data-toggle="modal" data-target="#avatar-modal" = t('users.change_picture')
   .row
     .col-xs-12.col-sm-8.col-md-8.col-lg-8.col-xs-offset-0.col-sm-offset-2
       .edit-profile-form.dashboard-form ng-controller="UserProfileCtrl"
@@ -46,7 +45,6 @@
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               label = t('users.company_name')
               = f.text_field :company_name, placeholder: t('users.company_name'), class: 'form-control', required: true
-
           .row
             .small-title
               .small-separator
@@ -61,7 +59,7 @@
               .calendar.input-group
                 .calendar-icon.input-group-addon ng-click="open($event)" type="button"
                 - value = @user.date_of_birth.strftime("%d-%m-%Y") if @user.date_of_birth.present?
-                = f.text_field :date_of_birth, value: value, placeholder: 'mm-dd-aa', class: 'form-control', close_text: 'Close', datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened', ng_model:'user_date_of_birth', ng_required: 'true', type: 'text', show_button_bar:'false'
+                = f.text_field :date_of_birth, value: value, placeholder: t('users.date_of_birth'), class: 'form-control', close_text: t('commons.close'), datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened', ng_model:'user_date_of_birth', ng_required: 'true', type: 'text', show_button_bar:'false'
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               label = t('users.location')
               = f.text_field :location, placeholder: t('users.location'), class: 'form-control'
@@ -98,9 +96,9 @@
               .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
                 label = t('users.emergency_relationship')
                 = f.text_field :emergency_relationship, placeholder: t('users.emergency_relationship'), class: 'form-control'
-            .buttons
-              .col-xs-6
-                a href=(user_path(@user))
-                  button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
-              .col-xs-6
-                = f.submit t('commons.save'), class: 'rounded-btn yellow-fill width-100 uppercase'
+          .buttons
+            .col-xs-6
+              a href=(user_path(@user))
+                button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
+            .col-xs-6
+              = f.submit t('commons.save'), class: 'rounded-btn yellow-fill width-100 uppercase'

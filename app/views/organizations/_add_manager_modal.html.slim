@@ -1,0 +1,16 @@
+.modal.fade aria-hidden="true" aria-labelledby="#{modal_id}Label" role="dialog" tabindex="-1" id=modal_id
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close aria-label="#{t('commons.close')}" data-dismiss="modal" type="button"
+          span aria-hidden="true"  &times;
+        h4.modal-title id="#{modal_id}Label" = title
+      .modal-body
+        .form-group
+          label = t('organizations.email')
+          input.form-control placeholder="#{t('organizations.email_member_placeholder')}" ng-model='email'
+        .form-group
+          label = t('organizations.role')
+          = select_tag('role_select', options_for_select(member_roles, nil), {class: 'form-control multi-lang-select', ng_model: "role"})
+        a#add-manager-link ng-click=("addManager()")
+          button.width-100.rounded-btn.bold.yellow-fill.uppercase  = t('organizations.add_manager_action')

@@ -6,13 +6,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @can_edit = @user.eql?(current_user)
+    @can_edit = @user.eql?(current_represented)
     @can_view_reviews = user_can_read_client_reviews?(User, @user.id)
   end
 
   def edit
     @user = User.find(params[:id])
-    return render_forbidden unless @user.eql?(current_user)
+    return render_forbidden unless @user.eql?(current_represented)
     @gender_options = gender_options
     @profession_options = profession_options
     @language_options = language_options
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    return render_forbidden unless @user.eql?(current_user)
+    return render_forbidden unless @user.eql?(current_represented)
     @user.update_attributes!(user_params)
     update_languages_spoken!
     redirect_to user_path(@user)
@@ -31,12 +31,14 @@ class UsersController < ApplicationController
     return render_forbidden unless current_user.id == params[:id].to_i &&
     current_user.user_can_write_in_name_of(organization)
     session[:current_organization_id] = organization.id
+    flash[:redirect_if_403] = organization_path(current_represented)
     redirect_to session[:previous_url] || root_path
   end
 
   def reset_organization
     return render_forbidden unless current_user.id == params[:id].to_i
     session[:current_organization_id] = nil
+    flash[:redirect_if_403] = user_path(current_represented)
     redirect_to session[:previous_url] || root_path
   end
 
@@ -63,4 +65,7 @@ class UsersController < ApplicationController
     @user.update_attributes!(languages_spoken: languages)
   end
 
+  def organization_members
+    OrganizationUser.where { organization_id.in [my { @user.id }] }.includes { [user] }
+  end
 end
