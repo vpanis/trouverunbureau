@@ -15,34 +15,33 @@
       a#edit-logo.add.block.aqua href="#" data-toggle="modal" data-target="#logo-modal" = t('venues.edit.add_venue_logo')
 
     = form_for(@venue) do |f|
-      = f.file_field :logo, class: 'hidden'
       .form-group.col-md-6
         label = t('venues.edit.name')
-        = f.text_field :name, placeholder: t('venues.edit.name'), class: 'form-control'
+        = f.text_field :name, placeholder: t('venues.edit.name'), class: 'form-control', required: true
       .form-group.col-md-6
         label = t('venues.edit.street')
-        = f.text_field :street, placeholder: t('venues.edit.street'), class: 'form-control'
+        = f.text_field :street, placeholder: t('venues.edit.street'), class: 'form-control', required: true
       .form-group.col-md-6
         label = t('venues.edit.country')
-        = f.select(:country_id, @countries_options, {}, {class: 'form-control country-select'})
+        = f.select(:country_id, @countries_options, {}, {class: 'form-control country-select', required: true})
       .form-group.col-md-6
         label = t('venues.edit.town')
-        = f.text_field :town, placeholder: t('venues.edit.town'), class: 'form-control'
+        = f.text_field :town, placeholder: t('venues.edit.town'), class: 'form-control', required: true
       .form-group.col-md-6
         label = t('venues.edit.postal_code')
-        = f.text_field :postal_code, placeholder: t('venues.edit.postal_code'), class: 'form-control'
+        = f.text_field :postal_code, placeholder: t('venues.edit.postal_code'), class: 'form-control', required: true
       .form-group.col-md-6
         label = t('venues.edit.email')
-        = f.text_field :email, placeholder: t('venues.edit.email'), class: 'form-control'
+        = f.text_field :email, placeholder: t('venues.edit.email'), class: 'form-control', required: true
       .form-group.col-md-6
         label = t('venues.edit.phone')
         = f.text_field :phone, placeholder: t('venues.edit.phone'), class: 'form-control'
       .form-group.col-md-6
         label = t('venues.edit.v_type')
-        = f.select(:v_type, @v_types_options, {}, {class: 'form-control venue-types-select'})
+        = f.select(:v_type, @v_types_options, {}, {class: 'form-control venue-types-select', required: true})
       .form-group.col-md-6
         label = t('venues.edit.currency')
-        = f.select(:currency, @currency_options, {}, {class: 'form-control currency-select'})
+        = f.select(:currency, @currency_options, {}, {class: 'form-control currency-select', required: true})
         = f.hidden_field :latitude, value: '-34.6001'
         = f.hidden_field :longitude, value: '-58.4001'
 

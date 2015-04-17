@@ -32,6 +32,8 @@ on_load = ->
       $('.space-types-select').select2({minimumResultsForSearch: -1})
       return
     initialize_listeners = ->
+      $('.edit_space').submit ->
+        validate_price()
       $('.delete-photo').click (event) ->
         delete_photo(event, this)
       $('.add-image').click ->
@@ -70,8 +72,18 @@ on_load = ->
               return "bottom"
           return "top"
       }
-      # $('#one-popover').popover(options)
-      return
+
+    validate_price = ->
+      checked_price = $('.price-checkbox').is(':checked')
+      values = $.map($('.price-checkbox:checked').closest('.row').find('input[type=number]'),
+        (e) -> $(e).val())
+      valid_price = $.inArray("", values) != 1
+      return true if checked_price && valid_price
+      showErrorMessage()
+      false
+
+    showErrorMessage = ->
+      $('.pricing .form-group').addClass 'has-error'
 
     initialize_selects()
     initialize_listeners()

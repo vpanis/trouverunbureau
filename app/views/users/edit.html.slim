@@ -23,29 +23,29 @@
           .row
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               label = t('users.first_name')
-              = f.text_field :first_name, placeholder: t('users.first_name'), class: 'form-control'
+              = f.text_field :first_name, placeholder: t('users.first_name'), class: 'form-control', required: true
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               .icon.lock.pointer#last-name-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
               label = t('users.last_name')
-              = f.text_field :last_name, placeholder: t('users.last_name'), class: 'form-control'
+              = f.text_field :last_name, placeholder: t('users.last_name'), class: 'form-control', required: true
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               .icon.lock.pointer#gender-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
               label = t('users.gender')
-              = f.select(:gender, @gender_options, {}, {class: 'form-control gender-select'})
+              = f.select(:gender, @gender_options, {}, {class: 'form-control gender-select', required: true})
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               .icon.info.pointer#phone-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_share_phone')}"
               label = t('users.phone')
-              = f.text_field :phone, placeholder: t('users.phone'), class: 'form-control'
+              = f.text_field :phone, placeholder: t('users.phone'), class: 'form-control', required: true
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               label = t('users.profession')
-              = f.select(:profession, @profession_options, {}, {class: 'form-control profession-select'})
+              = f.select(:profession, @profession_options, {}, {class: 'form-control profession-select', required: true})
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               .icon.lock.pointer#email-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
               label = t('users.email')
-              = f.text_field :email, placeholder: t('users.email'), class: 'form-control'
+              = f.text_field :email, placeholder: t('users.email'), class: 'form-control', required: true
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               label = t('users.company_name')
-              = f.text_field :company_name, placeholder: t('users.company_name'), class: 'form-control'
+              = f.text_field :company_name, placeholder: t('users.company_name'), class: 'form-control', required: true
 
           .row
             .small-title
