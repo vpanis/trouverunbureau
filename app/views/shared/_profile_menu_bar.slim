@@ -3,7 +3,7 @@
     ul.nav.navbar-nav
       li
         - if current_represented.is_a?(Organization)
-          = link_to(t('menu.profile'), organization_path(user), class: ('active' if selected.eql?('profile')))
+          = link_to(t('menu.profile'), organization_path(current_represented), class: ('active' if selected.eql?('profile')))
         - else
           = link_to(t('menu.profile'), user_path(user), class: ('active' if selected.eql?('profile')))
       li
