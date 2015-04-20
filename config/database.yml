@@ -14,14 +14,15 @@
 # Configure Using Gemfile
 # gem 'pg'
 #
-development:
+development: &default
   adapter: postgresql
   encoding: unicode
   database: deskspotting_development
   pool: 5
-  username: deskspotting
-  password: deskspotting
-  host: localhost
+  username: <%= ENV.fetch('DB_USERNAME', 'deskspotting') %>
+  password: <%= ENV.fetch('DB_PASSWORD', 'deskspotting') %>
+  host: <%= ENV.fetch('DB_1_PORT_5432_TCP_ADDR', 'localhost') %>
+  port: <%= ENV.fetch('DB_1_PORT_5432_TCP_PORT', '5432') %>
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -45,13 +46,8 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test: &test
-  adapter: postgresql
-  encoding: unicode
+  <<: *default
   database: deskspotting_test
-  pool: 5
-  username: deskspotting
-  password: deskspotting
-  host: localhost
 
 staging:
   adapter: postgresql

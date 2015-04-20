@@ -47,7 +47,7 @@ gem 'select2-rails'
 gem 'fog'
 gem 'carrierwave', '~>0.10.0'
 
-gem 'rmagick', '~>2.13.4'
+gem 'rmagick', git: 'git://github.com/gemhome/rmagick.git'
 
 gem 'turbolinks' , '~>2.3.0'
 
