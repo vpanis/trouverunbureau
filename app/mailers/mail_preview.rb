@@ -18,4 +18,8 @@ class MailPreview < MailView
   def receipt_email
     TestMailer.receipt_email('test@asd.com')
   end
+
+  def receipt_email_host
+    TestMailer.receipt_email_host ('test@asd.com')
+  end
 end
