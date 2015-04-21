@@ -9,7 +9,6 @@
     .pagination-container.bookings-pagination
       pagination.pagination-sm ng-change="getBookings()" total-items="totalBookings" ng-model="currentPage" max-size="3" rotate="false" boundary-links="true" previous-text="‹" next-text="›" first-text="«" last-text="»" items-per-page="itemsPerPage"
     .no-bookings ng-if="totalBookings == 0" #{t('bookings.no_bookings')}
-
   .right-panel ng-if="totalBookings > 0"
     = render 'inbox_booking_detail'
     = render 'inbox_messages'

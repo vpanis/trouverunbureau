@@ -34,8 +34,6 @@ en:
     delete: 'delete'
     add_image: 'Add an image'
     add_space: 'Create new space'
-    create: 'Create'
-    delete_organization: Delete organization
   session:
     email: 'Email address'
     password: 'Password'
@@ -120,12 +118,11 @@ en:
     inbox: 'Inbox'
     bookings: 'Bookings'
     venues: 'Venues'
-    wishlist: 'Wish list'
+    wishlist: 'Wishlist'
     account: 'Account'
     change_user: 'Use DeskSpotting as:'
     create_organization: 'Create organization'
     messages: Inbox
-    invite_friends: Invite friends
   search:
     count: 'Desks found'
     filters: 'Filters'
@@ -245,7 +242,7 @@ en:
       street: 'Street address'
       country: 'Country'
       email: 'General Email'
-      town: 'City'
+      town: 'City / Neighborhood'
       postal_code: 'Zip / Postal code'
       phone: 'Phone number'
       v_type: 'Venue type'
@@ -261,13 +258,7 @@ en:
     hour: 'hour'
     week: 'week'
   users:
-    user_since: User since
     edit_profile: 'Edit profile'
-    edit_organization_profile: 'Edit organization'
-    owner: 'Owner'
-    admin: 'Admin'
-    organization_members: 'Members'
-    organization_members_text: 'People in your organization'
     about_me: 'About me'
     required_fields: 'Required fields'
     optional_fields: 'Optional fields'
@@ -305,24 +296,6 @@ en:
       outstanding_booking: 'My outstanding booking inquiry is accepted or declined.'
       booking_inquiry: 'I receive a booking inquiry.'
       account_changes: 'Changes are made to my DeskSpotting account or listing.'
-  organizations:
-    edit_profile: 'Edit organization profile'
-    required_fields: 'Required fields'
-    change_picture: 'Change Organization logo'
-    name: 'Organization name'
-    name_placeholder: 'Enter your organization name'
-    email: 'General e-mail'
-    email_placeholder: 'e.g. info@deskspotting.com'
-    email_member_placeholder: 'e.g. george.yates@deskspotting.com'
-    phone: 'Phone Number'
-    members: 'Members'
-    members_text: 'Add people in your organization to help you manage your DeskSpotting account'
-    create_profile: 'List your organization'
-    create_title: 'Start by telling us about your organization...'
-    add_manager: 'Add new manager'
-    add_manager_action: 'Add manager'
-    email: 'Email'
-    role: 'Role'
   spaces:
     types:
       conference_room: 'Conference room'
@@ -348,20 +321,7 @@ en:
     deposit: 'Deposit'
   inbox:
     messages: 'Messages'
-    write_message: 'write a message...'
-    inquiry: 'inquiry'
-    decline: 'decline'
-    book_it: 'book it'
-    approve: 'approve'
-    new_offer: 'new offer'
-    guest: 'Guest'
-    total_rental: 'total rental'
-    ds_commission: 'DS Commission'
-    deposit: 'deposit'
-    space_rental: 'space rental'
-    enter_new_offer: 'Enter your new offer'
-    send_offer: 'Send offer'
-    price: 'Price'
+    write_message: 'write message'
   reviews:
     guest_review: 'Guest review'
     space_review: 'Space review'
@@ -390,7 +350,7 @@ en:
   booking_inquiry:
     time_frame: 'Select Time Frame'
     check_in: 'Check in'
-    check_out: 'Check out'
+    check_out: 'Check_out'
     spaces_amount: 'Number of spaces'
     date: 'Date'
     your_message: 'Your message'

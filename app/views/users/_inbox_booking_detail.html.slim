@@ -3,80 +3,64 @@
     .col-md-9.detail
       .row
         .col-md-3
-          p.title
-            = t('inbox.inquiry')
+          p.title Inquiry
         .col-md-3
           .icon.info.icon-black.pointer#gender-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
-          p.concept
-            = t('inbox.space_rental')
-          p.value
-            | ${{selected_booking.price}}({{selected_booking.space.currency}})
+          p.concept space rental
+          p.value() ${{selected_booking.price}}({{selected_booking.space.currency}})
         .col-md-3.plus
           .icon.info.icon-black.pointer#gender-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
-          p.concept
-            = t('inbox.deposit')
-          p.value
-            | ${{selected_booking.space.deposit}}({{selected_booking.space.currency}})
+          p.concept deposit
+          p.value() ${{selected_booking.space.deposit}}({{selected_booking.space.currency}})
         .col-md-3.minus
           .icon.info.icon-black.pointer#gender-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
-          p.concept
-            = t('inbox.ds_commission')
-          p.value
-            | ${{selected_booking.space.deposit}}({{selected_booking.space.currency}})
+          p.concept DS Commission
+          p.value() ${{selected_booking.space.deposit}}({{selected_booking.space.currency}})
     .col-md-3.total
-      p.concept
-        = t('inbox.total_rental')
-      p.value
-        | ${{selected_booking.price + selected_booking.space.deposit}}({{selected_booking.space.currency}})
+      p.concept total rental
+      p.value() ${{selected_booking.price + selected_booking.space.deposit}}({{selected_booking.space.currency}})
 .inbox-header
-  .booking-data-container
-    .space-data
+  .row
+    .space-data.col-md-8
       img.avatar ng-src="{{selected_booking.space.logo || defaultLogo}}"
       .wrapper
-        h1.space-name
-          | {{selected_booking.space.name}}
-        p.capacity
-          | {{selected_booking.space.capacity}}
-        p.venue-name
-          | {{selected_booking.space.venue_name}}
-        p.city
-          | {{selected_booking.space.city}}
-      .margin-top
+        h1.space-name() {{selected_booking.space.name}}
+        p.capacity() {{selected_booking.space.capacity}}
+        p.venue-name() {{selected_booking.space.venue_name}}
+        p.city() {{selected_booking.space.city}}
+      .row.margin-top
         .date
-          span
-            | {{selected_booking.quantity}}
-          span
-            = t('reviews.spaces')
+          span 8
+          span Days
         .date
-          span
-            | {{getCorrectDate(selected_booking, selected_booking.from)}}
-          span
-            = t('booking_inquiry.check_in')
+          span 1
+          span spaces
         .date
-          span
-            | {{getCorrectDate(selected_booking, selected_booking.to)}}
-          span
-            = t('booking_inquiry.check_out')
-    .guest-data ng-if="showGuest(selected_booking)"
+          span 01/16/15
+          span from
+        .date
+          span 01/16/15
+          span to
+    .guest-data.col-md-4
       .clearfix.margin-bottom
-        h3.title
-          = t('inbox.guest')
+        h3.title Guest
       img.avatar ng-src="{{selected_booking.client.avatar || defaultAvatar}}"
       .wrapper
-        p.name
-          | {{selected_booking.client.name}}
+        p.name() {{selected_booking.client.name}}
+        /p.description entrepreneur
       div
         .review-container
           .stars
             .star ng-repeat="n in [1, 2, 3, 4, 5]" ng-class="{active: selected_booking.client.rating > n}"
-          .reviews
-            | {{selected_booking.client.quantity_reviews}}
-  .inbox-buttons
-    button.rounded-btn.uppercase ng-if="showDecline(selected_booking)" ng-click="declineBoooking(selected_booking)"
-      = t('inbox.decline')
-    button.rounded-btn.uppercase.default ng-if="showBookIt(selected_booking)" ng-click="payBoooking(selected_booking)"
-      = t('inbox.book_it')
-    button.rounded-btn.uppercase.default ng-if="showApprove(selected_booking)" ng-click="approveBoooking(selected_booking)"
-      = t('inbox.approve')
-    button.rounded-btn.uppercase.green data-target="#newOfferModal" data-toggle="modal"ng-if="showNewOffer(selected_booking)"
-      = t('inbox.new_offer')
+          .reviews() ({{selected_booking.client.quantity_reviews}})
+  .row
+    .buttons
+      .col-md-3
+        button.rounded-btn.width-100.uppercase decline
+      .col-md-3
+        button.rounded-btn.width-100.uppercase.default book it
+      .col-md-3
+        button.rounded-btn.width-100.uppercase.default approve
+      .col-md-3
+        button.rounded-btn.width-100.uppercase.green new offer
+
