@@ -28,10 +28,10 @@ class ApplicationController < ActionController::Base
     cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
   end
 
-  def after_sign_in_path_for(resource)
-    path = request.env['omniauth.origin'] || session[:previous_url] || root_path
-    # TODO: change this for search view
-    return edit_user_path(resource) if path == root_path
+  def after_sign_in_path_for(_resource)
+    path = session[:previous_url] || root_path
+
+    return spaces_path if path == root_path
     path
   end
 

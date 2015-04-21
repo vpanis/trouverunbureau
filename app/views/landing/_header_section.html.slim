@@ -4,7 +4,7 @@
     .icon
     .right-topbar-content
       - if user_signed_in?
-       a.nav-btn href=new_user_session_path()
+       a.nav-btn href=user_path(current_user)
           p #{t('home.profile')}
       - else
         a.nav-btn href=new_user_session_path()
