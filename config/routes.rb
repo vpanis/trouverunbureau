@@ -12,6 +12,7 @@ Deskspotting::Application.routes.draw do
   end
 
   root to: 'landing#index'
+  resources :referrals, only: [:new]
 
   resources :venues, only: [:new, :create, :edit, :update, :show, :index] do
     member do

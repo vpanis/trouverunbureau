@@ -26,4 +26,5 @@
 #= require_tree ./users/
 #= require_tree ./venues/
 #= require_tree ./angular/controllers
+#= require_tree ./referral/
 #= require angular-translate

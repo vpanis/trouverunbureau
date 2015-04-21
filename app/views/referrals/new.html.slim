@@ -1,0 +1,22 @@
+= render 'shared/menu_bar', user: current_user
+= render 'shared/profile_menu_bar', user: current_user, selected: 'bookings'
+
+.background
+.elements
+  .first-title
+    = t('referral.invite_friends')
+  .separator.white
+  .second-title
+    = t('referral.join')
+  .text
+    = t('referral.text')
+  .invitation
+    .styled-input
+      = image_tag('venue_profile_a_mail_service.png')
+      input.rounded-left#input-mail type="email" placeholder="e.g. info@deskpotting.com"
+    button.btn.btn-default#submit-invitation
+      = t('referral.button')
+  #alert.alert.alert--hidden
+    span
+      = t('referral.confirmation')
+    span.mail#mail

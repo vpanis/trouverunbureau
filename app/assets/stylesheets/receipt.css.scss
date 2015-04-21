@@ -1,0 +1,217 @@
+@import 'variables';
+
+.title, .code, .price {
+  text-transform: uppercase;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.subtitle {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  display: inline-block;
+  margin: 5px 5px 5px 0px;
+  color: $dark-gray;
+}
+
+.left-container {
+  vertical-align: top;
+  display: inline-block;
+  width: 500px;
+  padding: 40px;
+}
+
+.right-container{
+  display: inline-block;
+  min-width: 900px;
+  padding: 40px;
+  margin-bottom: 40px;
+}
+
+.long {
+  width: 100%;
+  margin: 15px 0;
+}
+
+.main-container,
+.customer-receipt,
+.host,
+.resume,
+.booking.info
+.guest-payment-container,  {
+  display: block;
+}
+
+span {
+  display: inline-block;
+}
+
+.print {
+  margin-top: 40px;
+  width: 250px;
+}
+
+/* CUSTOMER RECEIPT */
+
+span, .date, .receipt-number, .contact {
+  color: $gray-text;
+  margin: 5px 0px;
+}
+
+.customer-receipt {
+  margin-bottom: 50px;
+}
+
+/* RESUME */
+
+.plus {
+  display: inline-block;
+  padding: 20px;
+  background-color: $yellow;
+  line-height: 40px;
+}
+
+.total-payout {
+  display: inline-block;
+  padding: 20px;
+  background-color: $light-gray;
+  width: 270px;
+}
+
+.space-rental, .deposit {
+  display: inline-block;
+  padding: 20px;
+  background-color: $yellow;
+  width: 30%;
+  img {
+    padding: 0 5px;
+  }
+}
+
+.resume {
+  text-align: center;
+  display: block;
+  margin-bottom: 30px;
+  height: 80px;
+  div {
+    height: 100%;
+    vertical-align: top;
+  }
+}
+
+/* BOOKING INFO */
+
+.space-type {
+  display: inline-block;
+  .title {
+    display: inline-block;
+  }
+  span {
+    display: inline-block;
+    text-transform: uppercase;
+  }
+}
+
+.confirmation {
+  display: inline-block;
+  float: right;
+}
+
+.code {
+  display: inline-block;
+}
+
+.column {
+  display: inline-block;
+  margin: 10px 50px;
+  text-align: center;
+  .subtitle {
+    display: block;
+    text-align: center;
+  }
+  span {
+    display: block;
+    text-align: center;
+  }
+}
+
+.bar {
+  display: inline-block;
+  width: 2px;
+ background-color: $light-gray;
+  height: 25px;
+}
+
+.check {
+  display: block;
+  text-align: center;
+}
+
+/* GUEST AND PAYMENT */
+
+.guest-payment-container {
+  margin-top: 25px;
+}
+
+.guest, .payment {
+  display: inline-block;
+}
+
+.guest {
+  display: inline-block;
+  padding-right: 20px;
+  width: 50%
+}
+
+.payment {
+  display: inline-block;
+  padding-left: 20px;
+  width: 50%
+}
+
+.right-info {
+  max-width: 350px;
+  margin-left: 30px;
+}
+
+.box {
+  display: block;
+  img {
+    display: inline-block;
+    vertical-align: top;
+  }
+  .right-info {
+    display: inline-block;
+    max-width: 320px;
+    margin-left: 20px;
+  }
+}
+
+/* MEDIA */
+
+@media screen and (max-width: 1500px) {
+  .left-containter {
+    display: block;
+  }
+
+  .print {
+    display: block;
+    margin: 0px auto;
+    margin-top: 50px;
+  }
+
+  .right-container {
+    margin: 0 auto;
+    margin-bottom: 50px;
+    display: block;
+  }
+
+  .left-container {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+}

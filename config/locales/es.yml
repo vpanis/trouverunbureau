@@ -460,3 +460,9 @@ es:
     list_new_space: List new space
     space_photos: Space photos
     save_to_add_photos: Save space to start adding photos
+  referral:
+    invite_friends: 'Invite Friends'
+    join: 'Invite your friends to join DeskSpotting'
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+    button: 'Invite'
+    confirmation: 'The invitation was sent correctly to'
