@@ -17,4 +17,12 @@ class TestMailer < ActionMailer::Base # Remove this file when create the mailers
     mail(to: email, subject: 'test')
   end
 
+  def receipt_email(email)
+    mail(to: email, subject: 'test')
+  end
+
+  def receipt_email_host(email)
+    mail(to: email, subject: 'test')
+  end
+
 end
