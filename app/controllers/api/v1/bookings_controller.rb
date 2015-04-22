@@ -13,7 +13,7 @@ module Api
 
       # PUT /inquiries/:id/cancel
       def cancel
-        state_change(Booking.states[:canceled])
+        state_change(Booking.states[:cancelled])
       end
 
       # PUT /inquiries/:id/deny

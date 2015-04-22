@@ -69,7 +69,7 @@ describe Api::V1::BookingsController do
     it 'changes the status of the booking, to cancel' do
       put :cancel, id: @booking
       @booking.reload
-      expect(@booking.canceled?).to eq(true)
+      expect(@booking.cancelled?).to eq(true)
     end
 
     it 'adds a new message to the inquiry' do
@@ -77,7 +77,7 @@ describe Api::V1::BookingsController do
       put :cancel, id: @booking
       @booking.reload
       expect(@booking.messages.count).to eq(old_messages_count + 1)
-      expect(@booking.messages.last.canceled?).to eq(true)
+      expect(@booking.messages.last.cancelled?).to eq(true)
     end
 
     it 'fails if the venue\'s owner tries to cancel it' do

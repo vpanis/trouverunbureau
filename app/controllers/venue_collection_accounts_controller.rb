@@ -48,7 +48,8 @@ class VenueCollectionAccountsController < VenuesController
                                                   force_submit: true)
       BraintreeSubMerchantAccountWorker.perform_async(@venue.collection_account.id, data)
     end
-    redirect_to collection_account_info_venue_path(@venue)
+    @collection_account = @venue.collection_account
+    render :collection_account_info, status: 201
   end
 
   def braintree_collection_params
