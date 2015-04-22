@@ -1,53 +1,86 @@
-.card class=(card_class) class=('selected' if selected)
-  .card-top-bar.space
-    - if selected
-      h4 #{t('venues.show.chosen_workspace')}
-    h3 = space.name
-    .separator
-    .favourite class=('active' if is_favorite)
-    .space-options id="space-option-#{space.id}" ...
-    .space-popover class="space-popover-#{space.id}"
-      .arrow
-      a.report-space href="#" Report Space
-  .carousel.slide id="space-carousel-#{space.id}"
-    ol.carousel-indicators
-      - space.photos.each_with_index do |item, index|
-        li data-target="#space-carousel-#{space.id}" data-slide-to="#{index}" class=('active' if index == 0)
-    .carousel-inner role="listbox"
-      - space.photos.each_with_index do |item, index|
-        .item class=('active' if index == 0)
-          .full-image style='background-image: url(#{item.photo.url})'
-    a.left.carousel-control data-slide="prev" href="#space-carousel-#{space.id}" role="button"
-      span.glyphicon.left-carousel-arrow aria-hidden="true"
-    a.right.carousel-control data-slide="next" href="#space-carousel-#{space.id}" role="button"
-      span.glyphicon.right-carousel-arrow aria-hidden="true"
-  .space-info
-    .description
-      p = space.description
-    .prices
-      - if space.hour_price.present?
-        .price
-          p
-            = "$#{space.hour_price.round}"
-            span.currency = "(#{space.venue.currency})"
-          p.time #{t('venues.show.per_hour')}
-      - if space.day_price.present?
-        .price
-          p
-            = "$#{space.day_price.round}"
-            span.currency = "(#{space.venue.currency})"
-          p.time #{t('venues.show.per_day')}
-      - if space.week_price.present?
-        .price
-          p
-            = "$#{space.week_price.round}"
-            span.currency = "(#{space.venue.currency})"
-          p.time #{t('venues.show.per_week')}
-      - if space.month_price.present?
-        .price
-          p
-            = "$#{space.month_price.round}"
-            span.currency = "(#{space.venue.currency})"
-          p.time #{t('venues.show.per_month')}
-    .booking-inquiry
-      a href="#" #{t('venues.show.booking_inquiry')}
+h2
+  span Persisted: #{ (@collection_account.braintree_persisted)? "true": "false" }
+  br
+  span Active: #{ @collection_account.active? }
+  br
+  span Status: #{ @collection_account.status }
+  br
+  -if @collection_account.error?
+    span Error Message: #{ @collection_account.error_message }
+    br
+  span Expecting Braintree Response: #{ @collection_account.expecting_braintree_response }
+
+= form_for(@collection_account, url: collection_account_info_venue_path(@venue)) do |f|
+  .main-content
+    #venue
+      .row
+        .collection_account-section
+          .form-group
+            label #{t('venues.collection_account.individual')}
+            .form-group#venue-first_name-input
+              label #{t('venues.collection_account.first_name')} (*)
+              = f.text_field :first_name
+            .form-group#venue-last_name-input
+              label #{t('venues.collection_account.last_name')} (*)
+              = f.text_field :last_name
+            .form-group#venue-email-input
+              label #{t('venues.collection_account.email')} (*)
+              = f.text_field :email
+            .form-group#venue-phone-input
+              label #{t('venues.collection_account.phone')}
+              = f.text_field :phone
+            .form-group#venue-date_of_birth-input
+              label #{t('venues.collection_account.date_of_birth')} (*)
+              = f.text_field :date_of_birth
+            .form-group#venue-ssn-input
+              label #{t('venues.collection_account.ssn')} #{" ( #{t('venues.collection_account.previous_last_4')}: #{@collection_account.ssn_last_4} )" if @collection_account.ssn_last_4.present?}
+              = f.text_field :ssn
+            .form-group#venue-individual_street_address-input
+              label #{t('venues.collection_account.street_address')} (*)
+              = f.text_field :individual_street_address
+            .form-group#venue-individual_locality-input
+              label #{t('venues.collection_account.locality')} (*)
+              = f.text_field :individual_locality
+            .form-group#venue-individual_region-input
+              label #{t('venues.collection_account.region')} (*)
+              = f.text_field :individual_region
+            .form-group#venue-individual_postal_code-input
+              label #{t('venues.collection_account.postal_code')} (*)
+              = f.text_field :individual_postal_code
+          .form-group
+            label #{t('venues.collection_account.business')}
+            .form-group#venue-legal_name-input
+              label #{t('venues.collection_account.legal_name')} (*)(#{t('venues.collection_account.only_tax_id_present')})
+              = f.text_field :legal_name
+            .form-group#venue-tax_id-input
+              label #{t('venues.collection_account.tax_id')} (*)(#{t('venues.collection_account.only_legal_name_present')})
+              = f.text_field :tax_id
+            .form-group#venue-dba_name-input
+              label #{t('venues.collection_account.dba_name')}
+              = f.text_field :dba_name
+            .form-group#venue-business_street_address-input
+              label #{t('venues.collection_account.street_address')}
+              = f.text_field :business_street_address
+            .form-group#venue-business_locality-input
+              label #{t('venues.collection_account.locality')}
+              = f.text_field :business_locality
+            .form-group#venue-business_region-input
+              label #{t('venues.collection_account.region')}
+              = f.text_field :business_region
+            .form-group#venue-business_postal_code-input
+              label #{t('venues.collection_account.postal_code')}
+              = f.text_field :business_postal_code
+          .form-group
+            label #{t('venues.collection_account.funding')}
+            .form-group#venue-descriptor-input
+              label #{t('venues.collection_account.descriptor')}
+              = f.text_field :descriptor
+            .form-group#venue-account_number-input
+              label #{t('venues.collection_account.account_number')} #{" ( #{t('venues.collection_account.previous_last_4')}: #{@collection_account.account_number_last_4} )" if @collection_account.account_number_last_4.present?} (*)
+              = f.text_field :account_number
+            .form-group#venue-routing_number-input
+              label #{t('venues.routing_number')} (*)
+              = f.text_field :routing_number
+    span() #{t('venues.collection_account.required')} = (*)
+  .full-width-submit-button
+    = f.submit 'Save', class: 'submit-button', id: 'save-collection_account'

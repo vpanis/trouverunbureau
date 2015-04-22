@@ -20,6 +20,7 @@ Deskspotting::Application.routes.draw do
       get :new_space, to: "spaces#new"
       get :collection_account_info, to: "venue_collection_accounts#collection_account_info"
       patch :collection_account_info, to: "venue_collection_accounts#edit_collection_account"
+      post :collection_account_info, to: "venue_collection_accounts#edit_collection_account"
     end
   end
 

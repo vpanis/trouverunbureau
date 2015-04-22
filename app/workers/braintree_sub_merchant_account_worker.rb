@@ -5,7 +5,6 @@ class BraintreeSubMerchantAccountWorker
     init_log(collection_account_id)
     @collection_account = BraintreeCollectionAccount.find_by_id(collection_account_id)
     return unless @collection_account.present? && !data.empty? # impossible, but...
-
     create_or_update_merchant(data)
   end
 
@@ -70,6 +69,7 @@ class BraintreeSubMerchantAccountWorker
     json = individual_details_json(merchant_account)
       .merge(business_details_json(merchant_account))
       .merge(funding_details_json(merchant_account))
+    json = json.symbolize_keys
     json = json.merge(extra_data) unless extra_data.empty?
     json
   end
