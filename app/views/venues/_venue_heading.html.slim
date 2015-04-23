@@ -1,0 +1,9 @@
+.title.inline.text-center.margin-bottom
+  - if @venue.logo.present?
+    = image_tag(@venue.logo.url, class: 'rounded-img')
+  - else
+    = image_tag('venue-default.png', width: '95px', height: '95px')
+  h3.big = @venue.name
+  .small-separator
+  - if subtitle.present?
+    p.text-center = subtitle

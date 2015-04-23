@@ -4,14 +4,7 @@
 #venue.main-content.dashboard-form.clearfix.overflow-hidden
   = render 'shared/edit_venue_progress', venue: @venue, progress: 60, step: 5
   .details-section.col-md-7.col-md-offset-1.margin-top
-    .title.inline.text-center.margin-bottom
-      - if @venue.logo.present?
-        = image_tag(@venue.logo.url, class: 'rounded-img')
-      - else
-        = image_tag('venue-default.png', width: '95px', height: '95px')
-      h3.big = @venue.name
-      .small-separator
-      p.text-center  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+    = render 'venue_heading', subtitle: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
     - @venue.spaces.each do |space|
       .space.pictures.col-md-4
         h2 = t('spaces.types.' + space.s_type)
