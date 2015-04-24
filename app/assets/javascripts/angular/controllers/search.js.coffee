@@ -2,7 +2,7 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
   '$scope'
   'Restangular'
   ($scope, Restangular) ->
-    MAX_MOBILE_PIXELS_WIDE = 768
+    MAX_MOBILE_PIXELS_WIDE = 991
     $scope.spaces = []
     $scope.totalSpaces = ""
     $scope.currentPage = 1
@@ -33,20 +33,22 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
         $scope.spaces = result.spaces
         $scope.totalSpaces = result.count
         $scope.currentPage = result.current_page
-        $scope.from = ($scope.itemsPerPage)*($scope.currentPage-1) + 1
-        $scope.to = Math.min(($scope.itemsPerPage)*($scope.currentPage), $scope.totalSpaces)
+        if $scope.totalSpaces == 0
+          $scope.from = 0
+          $scope.to = 0
+        else
+          $scope.from = ($scope.itemsPerPage)*($scope.currentPage-1) + 1
+          $scope.to = Math.min(($scope.itemsPerPage)*($scope.currentPage), $scope.totalSpaces)
         $(".search-pagination").hide()
         if $scope.totalSpaces > 0
           $(".search-pagination").show()
-        console.log("mobile:"+ is_mobile())
         if !is_mobile()
           update_map($scope.first_load && $scope.load_count > 2)
-          $scope.load_count = $scope.load_count + 1
-          if $scope.first_load
-            $scope.first_load = false
           google.maps.event.addListenerOnce $scope.map, 'bounds_changed', ->
             bounds_changed_handler()
-          return
+        $scope.load_count = $scope.load_count + 1
+        if $scope.first_load
+          $scope.first_load = false
       return
 
     is_mobile = ->
@@ -156,6 +158,8 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
       return new google.maps.LatLngBounds(from, to)
 
     initialize_map = ->
+      if is_mobile()
+        return
       bounds = calc_initial_bounds()
       mapOptions =
         center: bounds.getCenter()
@@ -169,7 +173,6 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
       $scope.map.fitBounds(bounds)
 
     bounds_changed_handler = ->
-      console.log('bounds changed')
       ne = $scope.map.getBounds().getNorthEast()
       sw = $scope.map.getBounds().getSouthWest()
       setBoundsToScope(ne, sw)
@@ -223,7 +226,6 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
       return
 
     $scope.showFilters = ->
-      console.log($scope.check_in)
       $scope.filters = []
       if $scope.workspaces.length > 0
         $scope.filters.push('workspaces')

@@ -294,4 +294,12 @@
   .filters{
     margin-top: 0px;
   }
+  .hidden-xs{
+    .counter, .filters, .open-filters-button{
+      height: 105px;
+    }
+    .filters{
+      padding-top: 36px;
+    }
+  }
 }

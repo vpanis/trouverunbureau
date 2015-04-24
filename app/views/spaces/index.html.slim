@@ -2,13 +2,13 @@
 
 .space-search.container-fluid
   .row#controller ng-controller="SearchCtrl" data-marker-icon=image_url('pin_negro.png') data-active-marker-icon=image_url('venue_profile_pin_map.png')
-    #map-canvas.venue-map-container.col-lg-4.hidden-md.hidden-sm.hidden-xs
-    .col-md-8.results
+    #map-canvas.venue-map-container.col-lg-4.col-md-3.hidden-sm.hidden-xs
+    .col-lg-8.col-md-9.results
       = render 'search_filters'
       = render 'collapsed_search_filters'
       .spaces-results
         .spaces-list
-          .col-md-4 ng-repeat=("space in spaces")
+          .col-md-4.col-sm-6 ng-repeat=("space in spaces")
             .favorite-space ng-mouseenter="selectSpace(space)" ng-mouseleave="leaveSpace(space)"
               - if current_user.present?
                 .favourite ng-class="{active: space.favorite}" ng-click=("toggleFavorite(space.id, false)") data-is-favorite="{{space.favorite}}"

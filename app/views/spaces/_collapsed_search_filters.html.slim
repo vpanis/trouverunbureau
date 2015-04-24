@@ -1,10 +1,10 @@
 #countResultsBox.filter-box.row
   .hidden-xs
-    .counter.col-md-2.text-center
+    .counter.col-md-2.col-sm-3.text-center
       .h1.count-number() {{totalSpaces}}
       .h5.text-annotation() = t('search.count')
 
-    .filters.col-md-8
+    .filters.col-md-8.col-sm-6
       p.filter-colapse.refine ng-if="filters.length == 0" #{t('search.refine')}
       ul.list-unstyled.filter-item-list
         li.clear-filters ng-if="filters.length > 0" ng-click=("removeFilterAll()")
@@ -13,7 +13,7 @@
           p.filter-name() {{filter}}
           .filter-delete.delete-lang ng-click=("removeFilter(filter)")
 
-    .col-md-2
+    .col-md-2.col-sm-3.open-filters-button
       .border-circle.text-annotation.filter-button() = t('search.filters')
   .hidden-sm.hidden-md.hidden-lg.small-devices
     .row
@@ -23,7 +23,7 @@
       .col-xs-6
         .border-circle.text-annotation.filter-button() = t('search.filters')
     .row
-      .filters.col-xs-12.center
+      .filters.col-xs-10.col-xs-offset-1.center
         p.filter-colapse.refine ng-if="filters.length == 0" #{t('search.refine')}
         ul.list-unstyled.filter-item-list
           li.clear-filters ng-if="filters.length > 0" ng-click=("removeFilterAll()")
