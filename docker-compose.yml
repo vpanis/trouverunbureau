@@ -23,20 +23,20 @@ web:
     - db
     - redis
 
-resque:
-  build: .
-  command: TERM_CHILD=1 QUEUES=* bundle exec rake resque:work
-  links:
-    - db
-    - redis
-  volumes:
-    - .:/usr/src/service
-
-# sidekiq:
+# resque:
 #   build: .
-#   command: bundle exec sidekiq
+#   command: TERM_CHILD=1 QUEUES=* bundle exec rake resque:work
 #   links:
 #     - db
 #     - redis
 #   volumes:
 #     - .:/usr/src/service
+
+sidekiq:
+  build: .
+  command: bundle exec sidekiq
+  links:
+    - db
+    - redis
+  volumes:
+    - .:/usr/src/service
