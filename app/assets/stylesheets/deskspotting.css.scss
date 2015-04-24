@@ -173,6 +173,7 @@ h4.gray-subtitle {
   }
   .topbar{
     width: 100%;
+    height: 50px;
   }
   a{
     color: white;
@@ -620,6 +621,7 @@ h4.gray-subtitle {
     }
     .location{
       background: none;
+      background-repeat: no-repeat;
       height: auto;
       padding: 0;
       display: inline-flex;
@@ -1086,6 +1088,7 @@ h4.gray-subtitle {
     display: inline-block;
     &:after {
       @include at2x('i-location', 14px, 20px);
+      background-repeat: no-repeat;
       content: '';
       position: absolute;
       left: 0;

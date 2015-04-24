@@ -19,7 +19,7 @@
   .search {
     height: 40px;
     margin-top: 10px;
-    width: 305px;
+    width: 260px;
     .styled-search{
       background-color: $dark-white;
       @include border-radius(2em);
@@ -183,7 +183,7 @@
 
 .user-visible {
   display: block;
-  width: 200px;
+  width: 160px;
   text-align: left;
   .avatar,
   .name {
@@ -201,5 +201,49 @@
       height: 100%;
       vertical-align: initial;
     }
+  }
+}
+
+/* transparent menu bar for landing */
+[data-controller="landing"]{
+  .navbar-fixed-top{
+    position: absolute;
+  }
+  .menubar{
+    border-color: transparent;
+    -webkit-box-shadow: 0px 0px 0px 0px transparent;
+    -moz-box-shadow: 0px 0px 0px 0px transparent;
+    box-shadow: 0px 0px 0px 0px transparent;
+    background-color: transparent;
+    .navbar-brand {
+      img{
+        display: none;
+      }
+      @include at2x('isologo-top-bar', 205px, 35px);
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 232px;
+    }
+    li .search{
+      display: none;
+    }
+    li a.list-space p{
+      color: white;
+    }
+    ul.nav.mobile-menu-items li{
+      background-color: white;
+      &:hover{
+        background-color: $yellow;
+      }
+    }
+  }
+  .navbar .dropdown-toggle.btn-default{
+    background: transparent;
+    .user-visible .name p{
+      color: white;
+    }
+  }
+  .after-menu{
+    padding-top: 0px;
   }
 }
