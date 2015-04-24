@@ -9,8 +9,6 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
     $scope.itemsPerPage = 12
     $scope.from = 1
     $scope.to = 12
-    $scope.first_load = true
-    $scope.load_count = 0
     $scope.latitude_from = -90
     $scope.latitude_to = 90
     $scope.longitude_from = -180
@@ -43,12 +41,7 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
         if $scope.totalSpaces > 0
           $(".search-pagination").show()
         if !is_mobile()
-          update_map($scope.first_load && $scope.load_count > 2)
-          google.maps.event.addListenerOnce $scope.map, 'bounds_changed', ->
-            bounds_changed_handler()
-        $scope.load_count = $scope.load_count + 1
-        if $scope.first_load
-          $scope.first_load = false
+          update_map()
       return
 
     is_mobile = ->
@@ -113,7 +106,9 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
       address = getUrlVars()['search']
       if address
         return getLatLongFromAddress(address.replace(RegExp(' ', 'g'), '+').replace(RegExp('%2C', 'g'), '+'))
-      $scope.getSpaces()
+      else
+        initialize_map()
+        $scope.getSpaces()
       return
 
     $scope.leaveSpace = (space) ->
@@ -208,21 +203,18 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
         i++
       $scope.markers = []
 
-    add_markers = (fitbounds)->
+    add_markers = ()->
       i = 0
-      bounds = new google.maps.LatLngBounds();
       while i < $scope.spaces.length
         space_position = add_marker_to_map(i)
-        if !(bounds.contains(space_position))
-          bounds.extend(space_position)
         i++
-      if ($scope.spaces.length > 0 && fitbounds)
-        $scope.map.fitBounds(bounds)
       return
 
-    update_map = (fitbounds)->
+    update_map = ()->
       remove_markers()
-      add_markers(fitbounds)
+      add_markers()
+      google.maps.event.addListenerOnce $scope.map, 'bounds_changed', ->
+        bounds_changed_handler()
       return
 
     $scope.showFilters = ->
