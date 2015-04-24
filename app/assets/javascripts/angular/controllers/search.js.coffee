@@ -10,6 +10,7 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
     $scope.from = 1
     $scope.to = 12
     $scope.first_load = true
+    $scope.load_count = 0
     $scope.latitude_from = -90
     $scope.latitude_to = 90
     $scope.longitude_from = -180
@@ -39,7 +40,8 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
           $(".search-pagination").show()
         console.log("mobile:"+ is_mobile())
         if !is_mobile()
-          update_map($scope.first_load)
+          update_map($scope.first_load && $scope.load_count > 2)
+          $scope.load_count = $scope.load_count + 1
           if $scope.first_load
             $scope.first_load = false
           google.maps.event.addListenerOnce $scope.map, 'bounds_changed', ->
@@ -108,7 +110,7 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
     $scope.getLatLong = ->
       address = getUrlVars()['search']
       if address
-        return getLatLongFromAddress(address.replace(RegExp(' ', 'g'), '+'))
+        return getLatLongFromAddress(address.replace(RegExp(' ', 'g'), '+').replace(RegExp('%2C', 'g'), '+'))
       $scope.getSpaces()
       return
 
@@ -143,18 +145,28 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
           calculate_bounds(results)
         else
           console.log('Geocode was not successful for the following reason: ' + status)
+        initialize_map()
         $scope.getSpaces()
         return
       return
 
+    calc_initial_bounds = () ->
+      from = new google.maps.LatLng(parseFloat($scope.latitude_from), parseFloat($scope.longitude_from))
+      to =  new google.maps.LatLng(parseFloat($scope.latitude_to), parseFloat($scope.longitude_to))
+      return new google.maps.LatLngBounds(from, to)
+
     initialize_map = ->
+      bounds = calc_initial_bounds()
       mapOptions =
-        zoom: 2
-        center:
-          lat: 0
-          lng: 0
+        center: bounds.getCenter()
         scrollwheel: false
+        streetViewControl: false
+        zoomControl: true
+        zoomControlOptions:
+          style: google.maps.ZoomControlStyle.DEFAULT
+          position: google.maps.ControlPosition.RIGHT_TOP
       $scope.map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions)
+      $scope.map.fitBounds(bounds)
 
     bounds_changed_handler = ->
       console.log('bounds changed')
@@ -274,7 +286,6 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
         return $scope.removeFavorite(id, refresh_list, element)
       return $scope.addToFavorites(id, element)
 
-    initialize_map()
     $scope.getSpaceType()
     $scope.getLatLong()
 ]
