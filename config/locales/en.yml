@@ -251,6 +251,30 @@ en:
       professions: 'Preferred professions'
       select_professions: 'Select preferred professions'
       add_professions: 'Add professions'
+    collection_account:
+      individual: Individual
+      business: Business
+      funding: Funding
+      first_name: First Name
+      last_name: Last Name
+      email: Email
+      phone: Phone
+      date_of_birth: Date of Birth
+      ssn: SSN
+      street_address: Street Address
+      locality: Locality
+      region: Region
+      postal_code: Postal Code
+      legal_name: Legal Name
+      dba_name: DBA Name
+      tax_id: Tax ID
+      descriptor: Descriptor
+      account_number: Account Number
+      routing_number: Routing Number
+      previous_last_4: Previous Last 4
+      required: Required
+      only_tax_id_present: Only if tax id present
+      only_legal_name_present: Only if legal name present
   wishlist:
     no_favourites: "You don't have any favorite spaces"
     day: 'day'

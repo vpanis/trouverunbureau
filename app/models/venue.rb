@@ -9,10 +9,10 @@ class Venue < ActiveRecord::Base
   has_many :spaces, dependent: :destroy
   has_many :day_hours, class_name: 'VenueHour', dependent: :destroy
   has_many :photos, class_name: 'VenuePhoto', dependent: :destroy
+  belongs_to :collection_account, polymorphic: true, dependent: :destroy
 
-  accepts_nested_attributes_for :day_hours,
-                                allow_destroy: true,
-                                reject_if: proc { |e| e[:from].blank? || e[:to].blank? }
+  accepts_nested_attributes_for :day_hours, allow_destroy: true, reject_if:
+                                            proc { |e| e[:from].blank? || e[:to].blank? }
 
   # Uploaders
   mount_uploader :logo, LogoUploader
@@ -22,6 +22,8 @@ class Venue < ActiveRecord::Base
                 :design_studio, :loft, :apartment, :house, :cafe, :restaurant]
 
   enum space_unit: [:square_mts, :square_foots]
+
+  enum status: [:creating, :active, :reported, :closed]
 
   AMENITY_TYPES = [:whiteboards, :kitchen, :security, :wifi, :printer_scanner, :chill_area,
                    :photocopier, :conference_rooms, :elevators, :outdoor_space, :team_bookings,
@@ -99,11 +101,16 @@ class Venue < ActiveRecord::Base
     self.desks ||= 0
     self.space ||= 0
     self.vat_tax_rate ||= 0
+    self.amenities ||= []
+    self.professions ||= []
+    self.status ||= Venue.statuses[:creating]
+    initialize_reviews_data
+  end
+
+  def initialize_reviews_data
     self.quantity_reviews ||= 0
     self.reviews_sum ||= 0
     self.rating ||= 0
-    self.amenities ||= []
-    self.professions ||= []
   end
 
   def erase_logo

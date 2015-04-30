@@ -27,16 +27,67 @@ ActiveRecord::Schema.define(version: 20150317161020) do
     t.datetime "updated_at"
     t.integer  "owner_id"
     t.string   "owner_type"
-    t.float    "price"
+    t.integer  "price"
     t.datetime "owner_last_seen"
     t.datetime "venue_last_seen"
     t.datetime "approved_at"
     t.boolean  "owner_delete",       default: false
     t.boolean  "venue_owner_delete", default: false
+    t.integer  "payment_id"
+    t.string   "payment_type"
+    t.integer  "fee"
+    t.boolean  "owner_delete",       default: false
+    t.boolean  "venue_owner_delete", default: false
   end
 
   add_index "bookings", ["owner_id", "owner_type"], name: "index_bookings_on_owner_id_and_owner_type", using: :btree
+  add_index "bookings", ["payment_id", "payment_type"], name: "index_bookings_on_payment_id_and_payment_type", using: :btree
   add_index "bookings", ["space_id"], name: "index_bookings_on_space_id", using: :btree
+
+  create_table "braintree_collection_accounts", force: true do |t|
+    t.boolean  "active",                       default: false
+    t.string   "status"
+    t.text     "error_message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "merchant_account_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "phone"
+    t.date     "date_of_birth"
+    t.string   "ssn_last_4"
+    t.string   "individual_street_address"
+    t.string   "individual_locality"
+    t.string   "individual_region"
+    t.string   "individual_postal_code"
+    t.string   "legal_name"
+    t.string   "dba_name"
+    t.string   "tax_id"
+    t.string   "business_street_address"
+    t.string   "business_locality"
+    t.string   "business_region"
+    t.string   "business_postal_code"
+    t.string   "descriptor"
+    t.string   "account_number_last_4"
+    t.string   "routing_number"
+    t.boolean  "braintree_persisted"
+    t.boolean  "expecting_braintree_response"
+  end
+
+  create_table "braintree_payments", force: true do |t|
+    t.string   "transaction_status"
+    t.string   "escrow_status"
+    t.string   "transaction_id"
+    t.text     "error_message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "payment_nonce_token"
+    t.datetime "payment_nonce_expire"
+    t.string   "card_type"
+    t.string   "card_last_4"
+    t.string   "card_expiration_date"
+  end
 
   create_table "client_reviews", force: true do |t|
     t.text     "message"
@@ -90,6 +141,7 @@ ActiveRecord::Schema.define(version: 20150317161020) do
     t.integer  "quantity_reviews"
     t.integer  "reviews_sum"
     t.string   "logo"
+    t.string   "payment_customer_id"
   end
 
   add_index "organizations", ["email"], name: "index_organizations_on_email", unique: true, using: :btree
@@ -103,11 +155,11 @@ ActiveRecord::Schema.define(version: 20150317161020) do
     t.integer  "venue_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.float    "hour_price"
-    t.float    "day_price"
-    t.float    "week_price"
-    t.float    "month_price"
     t.integer  "deposit"
+    t.integer  "hour_price"
+    t.integer  "day_price"
+    t.integer  "week_price"
+    t.integer  "month_price"
   end
 
   add_index "spaces", ["venue_id"], name: "index_spaces_on_venue_id", using: :btree
@@ -146,6 +198,7 @@ ActiveRecord::Schema.define(version: 20150317161020) do
     t.string   "emergency_email"
     t.string   "emergency_phone"
     t.string   "emergency_relationship"
+    t.string   "payment_customer_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -215,7 +268,7 @@ ActiveRecord::Schema.define(version: 20150317161020) do
     t.integer  "rooms"
     t.integer  "desks"
     t.float    "vat_tax_rate"
-    t.text     "amenities",        default: [], array: true
+    t.text     "amenities",               default: [], array: true
     t.datetime "created_at"
     t.datetime "updated_at"
     t.decimal  "rating"
@@ -225,9 +278,13 @@ ActiveRecord::Schema.define(version: 20150317161020) do
     t.string   "owner_type"
     t.text     "professions",      default: [], array: true
     t.integer  "country_id"
+    t.integer  "collection_account_id"
+    t.string   "collection_account_type"
+    t.integer  "status"
   end
 
   add_index "venues", ["country_id"], name: "index_venues_on_country_id", using: :btree
+  add_index "venues", ["collection_account_id", "collection_account_type"], name: "index_venues_on_polymorphic_collection_account", unique: true, using: :btree
   add_index "venues", ["owner_id", "owner_type"], name: "index_venues_on_owner_id_and_owner_type", using: :btree
 
 end

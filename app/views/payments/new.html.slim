@@ -1,0 +1,49 @@
+= javascript_include_tag "braintree_payment/braintree_dropin"
+#hidden-data data-payment-id="#{@payment.id}"
+h2
+  span Hello #{current_represented.name}
+  br
+  span It's Payment Time
+
+h4
+  span Venue: #{@booking.space.venue.name}
+  br
+  span Space: #{@booking.space.name}
+  br
+  span Description: #{@booking.space.description}
+  br
+  span Capacity: #{@booking.space.capacity}
+  br
+  span Quantity: #{@booking.quantity}
+  br
+  span From: #{@booking.from}
+  br
+  span To: #{@booking.to}
+
+h3
+  span Price: #{@booking.price}
+
+= form_tag(payments_path, method: "post")
+  = hidden_field_tag :booking_id, @booking.id
+  = hidden_field_tag :mode, "braintree"
+  #js-dropin
+  = submit_tag("Pay")
+
+h3
+  span BOOKING STATE: #{@booking.state}
+  br
+  - if @booking.payment.present?
+    span Transaction Status: #{@booking.payment.transaction_status}
+    br
+    span Escrow Status: #{@booking.payment.escrow_status}
+    br
+    span Transaction Id: #{@booking.payment.transaction_id}
+    br
+    span Error Message: #{@booking.payment.error_message}
+    br
+    span Card Type: #{@booking.payment.card_type}
+    br
+    span Card Last 4: #{@booking.payment.card_last_4}
+    br
+    span Card Expiration: #{@booking.payment.card_expiration_date}
+    br

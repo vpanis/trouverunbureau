@@ -16,6 +16,7 @@
 #= require restangular
 #= require angular-ui-bootstrap-tpls
 #= require select2
+#= require braintree
 #= require_directory .
 #= require google_places
 #= require_tree ./bookings/

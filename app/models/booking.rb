@@ -2,6 +2,7 @@ class Booking < ActiveRecord::Base
   attr_accessor :user
   # Relations
   belongs_to :owner, polymorphic: true
+  belongs_to :payment, polymorphic: true
 
   belongs_to :space
 
@@ -10,12 +11,15 @@ class Booking < ActiveRecord::Base
   # Constants/Enums
   enum b_type: [:hour, :day, :week, :month]
 
-  enum state: [:pending_authorization, :pending_payment, :paid,
-               :canceled, :denied, :expired]
+  # Beware: tye Messages m_types must contain the Booking states
+  enum state: [:pending_authorization, :pending_payment, :paid, :cancelled, :denied, :expired,
+               :payment_verification, :refunding, :error_refunding]
 
   # Callbacks
   after_initialize :initialize_fields
   before_validation :calculate_price, unless: :price?
+
+  before_validation :calculate_fee, if: :price_changed?
 
   # Validations
   validates :owner, :space, :b_type, :quantity, :from, :to, :price, presence: true
@@ -25,7 +29,7 @@ class Booking < ActiveRecord::Base
     greater_than_or_equal_to: 1
   }
 
-  validates :price, numericality: {
+  validates :price, :fee, numericality: {
     greater_than_or_equal_to: 0
   }
 
@@ -52,6 +56,24 @@ class Booking < ActiveRecord::Base
   def to=(to)
     to = Time.zone.local_to_utc(to) if to.is_a? Time
     super(to)
+  end
+
+  def price
+    self[:price] / 100.0 if self[:price].present?
+  end
+
+  def price=(hp)
+    super(hp)
+    return self[:price] = (hp * 100).to_i if hp.is_a? Numeric
+  end
+
+  def fee
+    self[:fee] / 100.0 if self[:fee].present?
+  end
+
+  def fee=(hp)
+    super(hp)
+    return self[:fee] = (hp * 100).to_i if hp.is_a? Numeric
   end
 
   private
@@ -82,5 +104,9 @@ class Booking < ActiveRecord::Base
 
   def calculate_months
     (to.year * 12 + to.month) - (from.year * 12 + from.month) + ((to.day >= from.day) ? 1 : 0)
+  end
+
+  def calculate_fee
+    self.fee = price * Rails.configuration.payment.deskspotting_fee
   end
 end

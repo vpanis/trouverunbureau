@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
   after_action :set_csrf_cookie_for_ng, :store_location
 
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+  rescue_from(ActionController::ParameterMissing) do |parameter_missing_exception|
+    render text: "Required parameter missing: #{parameter_missing_exception.param}",
+           status: :bad_request
+  end
 
   after_action :set_user_language
 

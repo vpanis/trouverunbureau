@@ -1,11 +1,6 @@
-require 'resque/server'
-
 Deskspotting::Application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks"}
-                                    # sessions: "users/sessions"}
-
-  mount Resque::Server, at: "/resque"
 
   if Rails.env.development?
     mount MailPreview => 'mail_view'
@@ -23,6 +18,9 @@ Deskspotting::Application.routes.draw do
       get :photos
       get :spaces
       get :new_space, to: "spaces#new"
+      get :collection_account_info, to: "venue_collection_accounts#collection_account_info"
+      patch :collection_account_info, to: "venue_collection_accounts#edit_collection_account"
+      post :collection_account_info, to: "venue_collection_accounts#edit_collection_account"
     end
   end
 
@@ -64,10 +62,12 @@ Deskspotting::Application.routes.draw do
     end
   end
 
+  resources :payments, only: [:new, :create]
+
   api_version(module: "api/v1", path: { value: 'api/v1' }) do
     resources :spaces, only: [:index]
 
-    resources :users do
+    resources :users, only: [] do
       member do
         post :login_as_organization, to: 'users#login_as_organization'
         delete :reset_organization, to: 'users#reset_organization'
@@ -92,6 +92,12 @@ Deskspotting::Application.routes.draw do
       member do
         get :reviews, to: 'reviews#venue_reviews'
       end
+    end
+
+    resource :braintree, only: [] do
+      get :webhooks, to: 'braintree#verify_url'
+      get :customer_nonce_token, to: 'braintree#customer_nonce_token'
+      post :webhooks, to: 'braintree#notification'
     end
 
     resources :inquiries, only: [] do
