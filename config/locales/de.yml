@@ -57,7 +57,7 @@ de:
     change_password: 'Change Password'
   home:
     sign_in: 'Sign in'
-    list_your_space: 'List your space'
+    list_your_space: "List your space"
     profile: Profile
     manage_your_venues: Manage your venues
     header:
@@ -143,7 +143,7 @@ de:
       coworking_space: 'Coworking space'
       startup_office: 'Startup office'
       hotel: 'Hotel'
-      corporate_office: 'Corportate office'
+      corporate_office: 'Corporate office'
       business_center: 'Business Center'
       design_studio: 'Design Studio'
       loft: 'Loft'
@@ -235,7 +235,7 @@ de:
       standard_times: 'Standard times?'
       custom_times: 'Custom times?'
       opening_time: 'Opening Time'
-      closing_time: 'Closting Time'
+      closing_time: 'Closing Time'
       add_venue_logo: 'Add venue logo'
       change_logo: 'Change logo'
       name: 'Venue name'
@@ -252,6 +252,30 @@ de:
       professions: 'Preferred professions'
       select_professions: 'Select preferred professions'
       add_professions: 'Add professions'
+    collection_account:
+      individual: Individual
+      business: Business
+      funding: Funding
+      first_name: First Name
+      last_name: Last Name
+      email: Email
+      phone: Phone
+      date_of_birth: Date of Birth
+      ssn: SSN
+      street_address: Street Address
+      locality: Locality
+      region: Region
+      postal_code: Postal Code
+      legal_name: Legal Name
+      dba_name: DBA Name
+      tax_id: Tax ID
+      descriptor: Descriptor
+      account_number: Account Number
+      routing_number: Routing Number
+      previous_last_4: Previous Last 4
+      required: Required
+      only_tax_id_present: Only if tax id present
+      only_legal_name_present: Only if legal name present
   wishlist:
     no_favourites: "You don't have any favorite spaces"
     day: 'day'
@@ -305,6 +329,7 @@ de:
       fixed_desk: 'Fixed desk'
       hot_desk: Hot desk
       communal_space: Communal space
+      home_office: 'Home Office'
       all: 'All workspaces'
     type: 'Workspace type'
     name: 'Name'
@@ -351,7 +376,7 @@ de:
   booking_inquiry:
     time_frame: 'Select Time Frame'
     check_in: 'Check in'
-    check_out: 'Check out'
+    check_out: 'Check_out'
     spaces_amount: 'Number of spaces'
     date: 'Date'
     your_message: 'Your message'

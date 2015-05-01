@@ -25,6 +25,8 @@
         span.glyphicon.right-carousel-arrow aria-hidden="true"
   .space-info
     .description
+      - if space.s_type.present?
+        p.venue-type = t("spaces.types.#{space.s_type}")
       p = space.description
     .prices
       - if space.hour_price.present?
