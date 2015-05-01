@@ -8,9 +8,12 @@
   .details-section.col-md-7.col-md-offset-1.margin-top
     = render 'venue_heading', subtitle: nil
     = form_for @venue, url: {action: "details"} do |f|
-      .form-group#venue-description-input.col-md-12
+      .form-group.col-md-12
         label = t('venues.edit.description')
         = f.text_area :description, class: 'form-control'
+      .form-group.col-md-12
+        label = t('venues.edit.office_rules')
+        = f.text_area :office_rules, class: 'form-control'
       .subtitle
         .col-md-12
           .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""

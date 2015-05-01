@@ -79,6 +79,7 @@ describe VenueDetailsController do
         let!(:venue) { create(:venue, owner: user) }
         let(:new_description) { 'new description' }
         let(:new_professions) { "#{Venue::PROFESSIONS.first},#{Venue::PROFESSIONS.last}" }
+        let(:new_rules) { 'new rules' }
         let(:venue_hour) do
           create(:venue_hour, weekday: 1, from: 1600, to: 1700,  venue_id: venue.id)
         end
@@ -96,7 +97,7 @@ describe VenueDetailsController do
         context 'venue hours are valid' do
           before do
             params = { id: venue.id, description: new_description, professions: new_professions,
-                       day_hours_attributes: day_hours_attributes }
+                       day_hours_attributes: day_hours_attributes, office_rules: new_rules }
             patch :save_details, id: venue.id, venue: params
             venue.reload
           end
@@ -107,6 +108,7 @@ describe VenueDetailsController do
 
           it 'updates normal venue attributes' do
             expect(venue.description).to eq(new_description)
+            expect(venue.office_rules).to eq(new_rules)
             expect(venue.professions).to include(Venue::PROFESSIONS.first.to_s)
             expect(venue.professions).to include(Venue::PROFESSIONS.last.to_s)
           end
