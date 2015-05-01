@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    meta content="width=device-width, initial-scale=1.0" name="viewport" /
+    title DeskSpotting
+    = favicon_link_tag 'favicon.ico'
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"
+    = csrf_meta_tags
+    style
+
+  body ng-app="deskSpotting" data-controller="#{controller.controller_name}" data-action="#{controller.action_name}"
+    = render 'layouts/staging_alert'
+    .main-container.static-page
+      = render 'shared/menu_bar', user: current_represented
+      = yield
+      h1 = @title
+      .separator
+      .content
+        p = @content
+    = render '/layouts/footer'
