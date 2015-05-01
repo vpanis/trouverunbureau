@@ -3,16 +3,17 @@ section#footer
     .footer-arrow
   .row.info
     .col-xs-12.col-sm-12.col-md-4.col-lg-4
-      .icon
+      a href='/'
+        .icon
     .col-xs-12.col-sm-6.col-md-4.col-lg-4
       .company
         h4 #{t('home.footer.company')}
         .separator
-        a href="#" #{t('home.footer.about_us')}
-        a href="#" #{t('home.footer.our_terms')}
-        a href="#" #{t('home.footer.how_it_works')}
-        a href="#" #{t('home.footer.faq')}
-        a href="#" #{t('home.footer.contact')}
+        = link_to(t('home.footer.about_us'), about_us_path)
+        = link_to(t('home.footer.our_terms'), our_terms_path)
+        = link_to(t('home.footer.how_it_works'), how_it_works_path)
+        = link_to(t('home.footer.faq'), faq_path)
+        = link_to(t('home.footer.contact'), contact_path)
     .col-xs-12.col-sm-6.col-md-4.col-lg-4
       .find-us
         h4 #{t('home.footer.find_us')}
@@ -29,6 +30,6 @@ section#footer
     .rights
       p
         | &copy; #{t('home.footer.reserved_rights')}
-        a href="#"  #{t('home.footer.terms_of_service')}
+        = link_to(t('home.footer.terms_of_service'), terms_of_service_path)
         |  -
-        a href="#"  #{t('home.footer.privacy_policy')}
+        = link_to(t('home.footer.privacy_policy'), privacy_policy_path)

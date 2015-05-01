@@ -64,6 +64,14 @@ Deskspotting::Application.routes.draw do
 
   resources :payments, only: [:new, :create]
 
+  get :about_us, to: 'landing#about_us'
+  get :our_terms, to: 'landing#our_terms'
+  get :how_it_works, to: 'landing#how_it_works'
+  get :faq, to: 'landing#faq'
+  get :contact, to: 'landing#contact'
+  get :terms_of_service, to: 'landing#terms_of_service'
+  get :privacy_policy, to: 'landing#privacy_policy'
+
   api_version(module: "api/v1", path: { value: 'api/v1' }) do
     resources :spaces, only: [:index]
 

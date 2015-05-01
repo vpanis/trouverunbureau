@@ -205,7 +205,7 @@
 }
 
 /* transparent menu bar for landing */
-[data-controller="landing"]{
+[data-controller="landing"][data-action="index"]{
   .navbar-fixed-top{
     position: absolute;
   }
