@@ -4,4 +4,6 @@
     .separator
   .space-info
     .description
+      - if venue.v_type.present?
+        p.venue-type = t("venues.types.#{venue.v_type}")
       p = venue.description

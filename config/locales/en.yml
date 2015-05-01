@@ -143,7 +143,7 @@ en:
       coworking_space: 'Coworking space'
       startup_office: 'Startup office'
       hotel: 'Hotel'
-      corporate_office: 'Corportate office'
+      corporate_office: 'Corporate office'
       business_center: 'Business Center'
       design_studio: 'Design Studio'
       loft: 'Loft'
@@ -329,6 +329,7 @@ en:
       fixed_desk: 'Fixed desk'
       hot_desk: Hot desk
       communal_space: Communal space
+      home_office: 'Home Office'
       all: 'All workspaces'
     type: 'Workspace type'
     name: 'Name'
