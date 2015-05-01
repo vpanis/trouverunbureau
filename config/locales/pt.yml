@@ -252,6 +252,7 @@ pt:
       professions: 'Preferred professions'
       select_professions: 'Select preferred professions'
       add_professions: 'Add professions'
+      info_professions: 'Share with guests the professions that are welcome in your venue'
     collection_account:
       individual: Individual
       business: Business
@@ -293,6 +294,8 @@ pt:
     add_languages: 'Add languages'
     info_no_share: 'we will never share this information with anyone'
     info_share_phone: 'we will only share your phone number with a host/guest once a booking has been made'
+    info_share_street: 'we will only share your street address with a host/guest once a booking has been made'
+    info_share_email: 'we will only share your email with a host/guest once a booking has been made'
     info_share_emergency: 'we will only share your emergency contact information with a host once a booking has been made'
     emergency_contact: 'Emergency Contact'
     genders:
@@ -345,6 +348,12 @@ pt:
     day_price: 'Day price'
     month_price: 'Month price'
     deposit: 'Deposit'
+    info_capacity: How many people can work in this space?
+    info_quantity: Number of these spaces you would you like to list on DeskSpotting
+    info_description: Describe this workspace and tell potential guests why it is a good place to work
+    info_photos:  THE BETTER THE PHOTOS THE MORE INTEREST YOU WILL GENERATE IN YOUR SPACE. SHARE PICTURES THAT ACCURATELY REFLECT THE OVERALL ATMOSPHERE OF YOUR SPACE
+    info_pricing: Set the target price you would like your space to be offered at for different time frames. Pricing can always be modified at any time and on a case by case basis
+    info_deposit: All deposits are held in escrow for the security of the host and guest
   inbox:
     messages: 'Messages'
     write_message: 'write message'

@@ -78,8 +78,7 @@ on_load = ->
               return "bottom"
           return "top"
       }
-      return
-      #$('#emergency-popover').popover(options)
+      $('#professions-popover').popover(options)
 
     is_closed = (index) ->
       !($('#open_'+index)[0].checked)

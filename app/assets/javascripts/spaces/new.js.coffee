@@ -22,6 +22,12 @@ on_load = ->
               return "bottom"
           "top"
       }
+      $('#capacity-popover').popover(options)
+      $('#quantity-popover').popover(options)
+      $('#description-popover').popover(options)
+      $('#photos-popover').popover(options)
+      $('#price-popover').popover(options)
+      $('#deposit-popover').popover(options)
 
     validate_price = ->
       checked_price = $('.price-checkbox').is(':checked')

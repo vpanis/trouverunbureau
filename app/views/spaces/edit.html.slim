@@ -17,21 +17,21 @@
         = f.select(:s_type, @space_types_options, {}, {class: 'form-control space-types-select', required: true})
 
       .form-group.col-md-3#space-capacity-input
-        .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
+        .icon.info.pointer#capacity-popover data-content=t('spaces.info_capacity') data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
         label #{t('space.capacity')}
         = f.number_field :capacity, class: 'form-control', required: true, min: 1
       .form-group.col-md-3#space-quantity-input
-        .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
+        .icon.info.pointer#quantity-popover data-content=t('spaces.info_quantity') data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
         label #{t('space.quantity')}
         = f.number_field :quantity, class: 'form-control', required: true, min: 1
       .form-group.col-md-12#space-description-input
-        .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
+        .icon.info.pointer#description-popover data-content=t('spaces.info_description') data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
         label #{t('space.description')}
         = f.text_area :description, class: 'form-control'
       .pictures.col-md-12
         .subtitle.row
           .col-md-12
-            .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
+            .icon.info.pointer#photos-popover data-content=t('spaces.info_photos') data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
             p = t('spaces.space_photos')
             hr
         .row.pictures
@@ -46,7 +46,7 @@
       .pricing.col-md-12
         .subtitle.row
           .col-md-12
-            .icon.info.pointer data-content=("some text") data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
+            .icon.info.pointer#price-popover data-content=t('spaces.info_pricing') data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
             p = t('spaces.pricing_in', currency: @space.venue.currency)
             hr
         .row
@@ -75,7 +75,7 @@
             = f.number_field :month_price, class: 'form-control', min: 0
       .row
         .form-group.col-md-2
-          .icon.info.pointer
+          .icon.info.pointer#deposit-popover data-content=t('spaces.info_deposit') data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0"
           label = t('spaces.deposit')
           = f.number_field :deposit, class: 'form-control', min: 0, required: true
 
