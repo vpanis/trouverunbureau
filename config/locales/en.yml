@@ -248,6 +248,7 @@ en:
       v_type: 'Venue type'
       currency: 'Currency'
       description: 'Description'
+      office_rules: 'Office Rules'
       professions: 'Preferred professions'
       select_professions: 'Select preferred professions'
       add_professions: 'Add professions'

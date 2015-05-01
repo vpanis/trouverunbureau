@@ -19,7 +19,7 @@ class VenueDetailsController < VenuesController
   private
 
   def venue_params
-    params.require(:venue).permit(:description, :professions,
+    params.require(:venue).permit(:description, :professions, :office_rules,
                                   day_hours_attributes: [:id, :from, :to, :weekday, :_destroy])
   end
 

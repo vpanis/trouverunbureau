@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150317161020) do
+ActiveRecord::Schema.define(version: 20150501135224) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,8 +36,6 @@ ActiveRecord::Schema.define(version: 20150317161020) do
     t.integer  "payment_id"
     t.string   "payment_type"
     t.integer  "fee"
-    t.boolean  "owner_delete",       default: false
-    t.boolean  "venue_owner_delete", default: false
   end
 
   add_index "bookings", ["owner_id", "owner_type"], name: "index_bookings_on_owner_id_and_owner_type", using: :btree
@@ -155,11 +153,11 @@ ActiveRecord::Schema.define(version: 20150317161020) do
     t.integer  "venue_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "deposit"
     t.integer  "hour_price"
     t.integer  "day_price"
     t.integer  "week_price"
     t.integer  "month_price"
+    t.integer  "deposit"
   end
 
   add_index "spaces", ["venue_id"], name: "index_spaces_on_venue_id", using: :btree
@@ -276,15 +274,16 @@ ActiveRecord::Schema.define(version: 20150317161020) do
     t.integer  "reviews_sum"
     t.integer  "owner_id"
     t.string   "owner_type"
-    t.text     "professions",      default: [], array: true
+    t.text     "professions",             default: [], array: true
     t.integer  "country_id"
     t.integer  "collection_account_id"
     t.string   "collection_account_type"
     t.integer  "status"
+    t.text     "office_rules"
   end
 
-  add_index "venues", ["country_id"], name: "index_venues_on_country_id", using: :btree
   add_index "venues", ["collection_account_id", "collection_account_type"], name: "index_venues_on_polymorphic_collection_account", unique: true, using: :btree
+  add_index "venues", ["country_id"], name: "index_venues_on_country_id", using: :btree
   add_index "venues", ["owner_id", "owner_type"], name: "index_venues_on_owner_id_and_owner_type", using: :btree
 
 end
