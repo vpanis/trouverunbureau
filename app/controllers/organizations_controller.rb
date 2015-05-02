@@ -18,6 +18,7 @@ class OrganizationsController < ApplicationController
   def create
     organization = Organization.create(new_organization_params)
     organization.update_attributes!(user: current_user)
+    create_mangopay_payment_account(organization)
     redirect_to user_path(current_user)
   end
 
@@ -56,6 +57,12 @@ class OrganizationsController < ApplicationController
 
   def new_organization_params
     params.require(:organization).permit(:logo, :name, :email, :phone, :force_submit)
+  end
+
+  def create_mangopay_payment_account(organization)
+    mpa = MangopayPaymentAccount.create(buyer: organization,
+                                        status: MangopayPaymentAccount.statuses[:processing])
+    Payments::Mangopay::PaymentAccountWorker.perform_async(current_user.id, mpa.id)
   end
 
 end

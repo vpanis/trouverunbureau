@@ -23,7 +23,7 @@
   /         = t('payment_methods.personal')
   /       .tab#tab-business class="#{'tab--selected' unless @collection_account.person?}"
   /         = t('payment_methods.business')
-  .personal-section
+  .personal-section ng-controller= "UserProfileCtrl"
     = form_for @collection_account, url: collection_account_info_venue_path(@venue) do |f|
       = f.hidden_field :legal_person_type
       / .row.business-section.none
@@ -53,9 +53,9 @@
           .icon.lock.pointer#date-of-birth-popover.lock-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
           label = t('payment_methods.date_of_birth')
           .calendar.input-group
-            .calendar-icon.input-group-addon type="button"
-            / TODO fix date picker
-            = f.text_field :date_of_birth, placeholder: 'mm-dd-aa', class: 'form-control', close_text: 'Close', datepicker_options: {}, datepicker_popup: 'dd-MM-yyyy', is_open: 'true', type: 'text', show_button_bar:'false', ng_model: 'date_of_birth'
+            .calendar-icon.input-group-addon ng-click="open($event)" type="button"
+            - value = @collection_account.date_of_birth.strftime("%d-%m-%Y") if @collection_account.date_of_birth.present?
+            = f.text_field :date_of_birth, value: value, id: 'user_date_of_birth', placeholder: 'mm-dd-aa', class: 'form-control', close_text: t('commons.close'), datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened', type: 'text', show_button_bar:'false', ng_model: 'user_date_of_birth'
         .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
           .icon.lock.pointer#nationality-popover.lock-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
           label = t('payment_methods.nationality')

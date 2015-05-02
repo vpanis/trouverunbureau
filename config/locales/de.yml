@@ -56,6 +56,9 @@ de:
     reset_password_help: 'Enter the e-mail address associated with your account.'
     change_your_password: 'Change your Password'
     change_password: 'Change Password'
+    date_of_birth: Date of birth
+    country_of_residence: Country of residence
+    nationality: Nationality
   home:
     sign_in: 'Sign in'
     list_your_space: "List your space"

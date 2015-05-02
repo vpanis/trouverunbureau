@@ -35,7 +35,8 @@ class User < ActiveRecord::Base
   after_initialize :initialize_fields
 
   # Validations
-  validates :first_name, :last_name, presence: true
+  validates :first_name, :last_name, :date_of_birth, :nationality, :country_of_residence,
+            presence: true
   validates :password, presence: true, unless: :created_at
 
   validates :email, :emergency_email, format: {

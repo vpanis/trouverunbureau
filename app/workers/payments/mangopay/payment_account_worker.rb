@@ -41,9 +41,9 @@ module Payments
         MangoPay::NaturalUser.create(
           firstName: @user.first_name,
           lastName: @user.last_name,
-          birthday: Time.new.advance(years: -23).to_i, # fixed for testing
-          nationality: 'GB', # fixed for testing
-          countryOfResidence: 'GB', # fixed for testing
+          birthday: @user.date_of_birth.to_i,
+          nationality: @user.nationality,
+          countryOfResidence: @user.country_of_residence,
           email: @user.email)
       end
 
