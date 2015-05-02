@@ -91,11 +91,24 @@ class SpaceSearch
   end
 
   def latitude_longitude_conditions(spaces)
+    spaces = longitude_conditions(spaces)
     spaces = spaces.where { venue.latitude >= my { latitude_from } } unless latitude_from.blank?
     spaces = spaces.where { venue.latitude <= my { latitude_to } } unless latitude_to.blank?
-    spaces = spaces.where { venue.longitude >= my { longitude_from } } unless longitude_from.blank?
-    spaces = spaces.where { venue.longitude <= my { longitude_to } } unless longitude_to.blank?
     spaces
+  end
+
+  # if i look at russia and alaska, longitude_from is 124 and longitude_to is -10
+  # the spaces should be (between 124 and 180) or (between -180 and -10)
+  def longitude_conditions(spaces)
+    return spaces unless longitude_from.present? && longitude_to.present?
+    if longitude_from <= longitude_to
+      return spaces.where do
+        (venue.longitude >= my { longitude_from }) & (venue.longitude <= my { longitude_to })
+      end
+    end
+    spaces.where do
+      (venue.longitude >= my { longitude_from }) | (venue.longitude <= my { longitude_to })
+    end
   end
 
   def each_amenity_inclusion
