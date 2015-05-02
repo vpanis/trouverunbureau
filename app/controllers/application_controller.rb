@@ -33,10 +33,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(_resource)
-    path = session[:previous_url] || root_path
-
-    return spaces_path if path == root_path
-    path
+    root_path
   end
 
   private

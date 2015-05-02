@@ -1,5 +1,9 @@
 = render 'shared/menu_bar', user: current_represented, previous_url: user_path
-= render 'shared/profile_menu_bar', user: current_represented, selected: 'profile'
+- if @user.eql?(current_represented)
+  = render 'shared/profile_menu_bar', user: current_represented, selected: 'profile'
+- else
+  = render 'shared/profile_menu_bar', user: current_represented, selected: 'nil'
+
 .user-profile.container
   .row
     .left-panel.col-md-3
