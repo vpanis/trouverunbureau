@@ -25,8 +25,7 @@ angular.module('deskSpotting.inbox', []).controller "InboxCtrl", [
         $scope.totalBookings = result.count
         $scope.currentPage = result.current_page
         if $scope.totalBookings > 0
-          $scope.selected_booking = $scope.bookings[0]
-          reload_messages()
+          $scope.selectBooking($scope.bookings[0])
           $(".bookings-pagination").show()
       return
 
@@ -34,11 +33,19 @@ angular.module('deskSpotting.inbox', []).controller "InboxCtrl", [
       $scope.selected_booking = booking
       $('#price-input')[0].value = $scope.selected_booking.price
       reload_messages()
+
       return
 
+    mark_booking_as_read = (booking_id, message_id) ->
+      Restangular.one('inquiries', booking_id).one('last_seen_message').customPUT({message_id: message_id}).then (result) ->
+        return
+
     reload_messages = () ->
-      Restangular.one('inquiries', $scope.selected_booking.id).customGET('messages').then (result) ->
+      booking_id = $scope.selected_booking.id
+      Restangular.one('inquiries', booking_id).customGET('messages').then (result) ->
         $scope.messages = result.messages
+        if $scope.messages.length > 0
+          mark_booking_as_read(booking_id, $scope.messages[0].id)
 
     $scope.sendMessage = () ->
       text = this.message_text

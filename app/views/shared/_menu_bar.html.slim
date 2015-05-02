@@ -41,7 +41,8 @@
           li
             = link_to inbox_user_path(user) do
               .messages
-                p 0
+                - if new_messages > 0
+                  p = new_messages
           li
             = link_to venues_path(), class: 'list-space'
               - if user_signed_in? && !current_user.venues.empty?

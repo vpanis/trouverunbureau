@@ -1,5 +1,7 @@
 class InquirySerializer < ActiveModel::Serializer
   include RepresentedHelper
+  include ActionView::Helpers::DateHelper
+
   attributes :id, :space, :state, :from, :to, :b_type, :price, :quantity, :message_count,
              :last_message_at, :client
 
@@ -28,7 +30,8 @@ class InquirySerializer < ActiveModel::Serializer
   delegate :state, to: :object
 
   def last_message_at
-    object.messages.last.created_at.to_s if object.messages.last.present?
+    return time_ago_in_words(object.messages.last.created_at.to_s) if object.messages.last.present?
+    time_ago_in_words(object.created_at)
   end
 
   def with_news
