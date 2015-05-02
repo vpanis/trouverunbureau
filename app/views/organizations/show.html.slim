@@ -13,15 +13,8 @@
       .basic-info.col-md-12.center-block.no-float
         .user-header.text-center
           h1.name.no-float = @organization.name
-          .row
-            .col-md-12
-              p.location
-                - if @owner.location.present?
-                  strong.black = @owner.location
-                - else
-                  strong.black = t('commons.unknown')
 
-    .row.col-md-2.center-block.no-float
+    .row.col-md-6.center-block.no-float
       h1.members-title.center = t('users.organization_members')
     .row.col-md-3.center-block.no-float
       p.center = t('users.organization_members_text')
