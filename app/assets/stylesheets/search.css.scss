@@ -303,3 +303,23 @@
     }
   }
 }
+
+/*  google maps auto complete customization */
+.pac-container{
+  font-family: "Open Sans", sans-serif;
+  .pac-icon{
+    display: none;
+  }
+  .pac-item{
+    color: $desk-black;
+  }
+  .pac-item-query{
+    color: $desk-black;
+    .pac-matched{
+      color: $desk-black;
+    }
+  }
+  .pac-item:hover{
+    background-color: $yellow;
+  }
+}

@@ -91,29 +91,32 @@ class SpaceSearch
   end
 
   def latitude_longitude_conditions(spaces)
-    spaces = longitude_conditions(spaces)
-    spaces = spaces.where { venue.latitude >= my { latitude_from } } unless latitude_from.blank?
-    spaces = spaces.where { venue.latitude <= my { latitude_to } } unless latitude_to.blank?
+    spaces = longitude_conditions(spaces) if longitude_from.present? && longitude_to.present?
+    spaces = latitude_conditions(spaces) if latitude_from.present? && latitude_to.present?
     spaces
+  end
+
+  def latitude_conditions(spaces)
+    spaces.where { venue.latitude >= my { latitude_from } }
+          .where { venue.latitude <= my { latitude_to } }
   end
 
   # if i look at russia and alaska, longitude_from is 124 and longitude_to is -10
   # the spaces should be (between 124 and 180) or (between -180 and -10)
   def longitude_conditions(spaces)
-    return spaces unless longitude_from.present? && longitude_to.present?
-    if longitude_from <= longitude_to
-      return spaces.where do
-        (venue.longitude >= my { longitude_from }) & (venue.longitude <= my { longitude_to })
-      end
-    end
+    return normal_longitude_conditions(spaces) if longitude_from.to_f <= longitude_to.to_f
     spaces.where do
       (venue.longitude >= my { longitude_from }) | (venue.longitude <= my { longitude_to })
     end
   end
 
+  def normal_longitude_conditions(spaces)
+    spaces.where { venue.longitude >= my { longitude_from } }
+          .where { venue.longitude <= my { longitude_to } }
+  end
+
   def each_amenity_inclusion
     return unless venue_amenities.present?
-
     invalid_amenities = venue_amenities - Venue::AMENITY_TYPES.map(&:to_s)
     invalid_amenities.each do |amenity|
       errors.add(:venue_amenity, amenity + ' is not a valid amenity')
