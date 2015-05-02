@@ -10,7 +10,8 @@ class PaymentsController < ApplicationController
     # TODO: custom 404 page
     return redirect_to root_path unless booking_is_payable?
     @venue = @booking.space.venue
-    return unless active_collection_account?(@venue.collection_account)
+    return redirect_to inbox_user_path(@current_represented) unless
+      active_collection_account?(@venue.collection_account)
     @payment_method = which_payment_method(@venue.collection_account)
     payment_requeriments
   end
@@ -22,7 +23,8 @@ class PaymentsController < ApplicationController
     # TODO: custom 404 page
     return redirect_to root_path unless @booking.present? && @booking.pending_payment?
     @venue = @booking.space.venue
-    return unless active_collection_account?(@venue.collection_account)
+    return redirect_to inbox_user_path(@current_represented) unless
+      active_collection_account?(@venue.collection_account)
     @payment_method = which_payment_method(@venue.collection_account)
     return redirect_to root_path if @payment_method == 'invalid_collection_account' ||
       !send("payment_#{@payment_method}_verification")

@@ -99,6 +99,7 @@ saveNewCard = (creditCardId, currency) ->
         $("#js-create-credit-card").remove()
         selectedCreditCardId = creditCardId
         $('.js-credit-cards').append(creditCardTemplate(creditCardId, cardData.cardNumber.substring(cardData.cardNumber.length - 4), expiration, currency))
+        $('.js-credit-card').last().on 'click', select_card
         $('#create-credit-card').modal('hide')
         return
       error: (response) ->
