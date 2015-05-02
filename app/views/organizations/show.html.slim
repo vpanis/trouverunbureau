@@ -1,5 +1,9 @@
 = render 'shared/menu_bar', user: current_represented
-= render 'shared/profile_menu_bar', user: current_represented, selected: 'profile'
+- if @organization.eql?(current_represented)
+  = render 'shared/profile_menu_bar', user: current_represented, selected: 'profile'
+- else
+  = render 'shared/profile_menu_bar', user: current_represented, selected: 'nil'
+
 .user-profile.container.organization-profile
     - if @can_edit
       = link_to t("users.edit_organization_profile"), edit_organization_path(@organization), class: " rounded-btn green pull-right"
