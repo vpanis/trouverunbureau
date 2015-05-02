@@ -11,7 +11,6 @@ class VenueCollectionAccountsController < VenuesController
   end
 
   def edit_collection_account
-    binding.pry
     @venue = Venue.includes(:collection_account).find_by(id: params[:id])
     return render nothing: true, status: 404 unless @venue.present?
     return render nothing: true, status: 403 unless current_represented == @venue.owner
@@ -19,10 +18,11 @@ class VenueCollectionAccountsController < VenuesController
     # it should pass first through collection_account_info, but just in case (and testing purpose)
     create_collection_account_if_nil
 
-    @venue.collection_account.assign_attributes(braintree_collection_params)
-    return create_update_collection_account_in_braintree if @venue.collection_account.valid?
+    @venue.collection_account.assign_attributes(collection_params)
+    return create_update_collection_account if @venue.collection_account.valid?
 
-    render json: @venue.collection_account.errors, status: 400
+    @collection_account = @venue.collection_account
+    render :collection_account_info
   end
 
   private
@@ -52,7 +52,9 @@ class VenueCollectionAccountsController < VenuesController
   def set_mangopay_collection_account
     @collection_account = MangopayCollectionAccount.new(basic_info_only: true,
                                                         expecting_mangopay_response: false,
-                                                        mangopay_persisted: false)
+                                                        mangopay_persisted: false,
+                                                        legal_person_type: 'PERSON',
+                                                        bank_type: 'IBAN')
   end
 
   def create_collection_account_if_nil
@@ -61,20 +63,43 @@ class VenueCollectionAccountsController < VenuesController
     set_collection_account
     @venue.collection_account = @collection_account
     @venue.save
-    @venue.collection_account.force_submit = false
+    # manually resets the non-persisted field
+    collection_account_force_submit(false)
+  end
+
+  def collection_account_force_submit(flag)
+    return @venue.collection_account.force_submit = flag if @collection_method == 'braintree'
+    @venue.collection_account.basic_info_only = flag
+  end
+
+  def create_update_collection_account
+    send("create_update_collection_account_in_#{@collection_method}")
+    @collection_account = @venue.collection_account
+    render :collection_account_info, status: 201
   end
 
   def create_update_collection_account_in_braintree
     data = @venue.collection_account.braintree_merchant_account_json
-    unless data.empty?
-      @venue.collection_account.reload
-      @venue.collection_account.update_attributes(expecting_braintree_response: true,
-                                                  force_submit: true)
-      Payments::Braintree::SubMerchantAccountWorker.perform_async(@venue.collection_account.id,
-                                                                  data)
-    end
-    @collection_account = @venue.collection_account
-    render :collection_account_info, status: 201
+    return if data.empty?
+    @venue.collection_account.reload
+    @venue.collection_account.update_attributes(expecting_braintree_response: true,
+                                                force_submit: true)
+    Payments::Braintree::SubMerchantAccountWorker.perform_async(@venue.collection_account.id,
+                                                                data)
+  end
+
+  def create_update_collection_account_in_mangopay
+    data = @venue.collection_account.json_data_for_mangopay
+    return if data.empty?
+    @venue.collection_account.reload
+    @venue.collection_account.update_attributes(expecting_mangopay_response: true,
+                                                basic_info_only: true)
+    Payments::Mangopay::CollectionAccountWorker.perform_async(@venue.collection_account.id,
+                                                              data)
+  end
+
+  def collection_params
+    send("#{@collection_method}_collection_params")
   end
 
   def braintree_collection_params
@@ -84,5 +109,13 @@ class VenueCollectionAccountsController < VenuesController
               :ssn, :legal_name, :dba_name, :tax_id, :business_street_address,
               :business_locality, :business_region, :business_postal_code, :descriptor,
               :account_number, :routing_number)
+  end
+
+  def mangopay_collection_params
+    params.require(:mangopay_collection_account)
+      .permit(:first_name, :last_name, :email, :date_of_birth, :address,
+              :business_name, :business_email, :nationality, :country_of_residence, :bank_type,
+              :iban, :bic, :sort_code, :bank_name, :bank_country, :institution_number,
+              :account_number, :branch_code)
   end
 end

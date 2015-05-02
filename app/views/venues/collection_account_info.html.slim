@@ -6,6 +6,6 @@
   .details-section.col-md-7.col-md-offset-1.margin-top
     - case @collection_method
     - when "mangopay"
-      = render "mangopay_payment"
+      = render 'mangopay_payout_methods'
     - when "braintree"
       = render 'braintree_payout_methods'

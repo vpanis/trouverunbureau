@@ -57,7 +57,7 @@ RSpec.describe VenueCollectionAccountsController, type: :controller do
     context 'when user logged in' do
       before(:each) do
         @user_logged = FactoryGirl.create(:user)
-        @venue = FactoryGirl.create(:venue, owner: @user_logged)
+        @venue = FactoryGirl.create(:venue, owner: @user_logged, country_code: 'US')
         sign_in @user_logged
       end
 

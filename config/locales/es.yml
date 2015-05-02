@@ -538,3 +538,13 @@ es:
     account_number: Account number
     legal_name: Business legal name
     tax_id: Tax id
+    nationality: Nationality
+    country_of_residence: Country of residence
+    address: Address
+    type_of_account: Select type of account
+    other: Other
+    bank_country: Bank country
+    bank_name: Bank name
+    institution_number: Institution number
+    branch_code: Branch code
+    sort_code: Sort code

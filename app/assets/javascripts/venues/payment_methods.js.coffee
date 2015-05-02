@@ -1,19 +1,32 @@
 on_load = ->
   load
     controllers:
-      venue_collection_accounts: ["collection_account_info"]
+      venue_collection_accounts: ["collection_account_info", "edit_collection_account"]
   , (controller, action) ->
 
-    initialize_listeners = ->
+    initializeListeners = ->
       $('#tab-business').click ->
-        $(this).toggleClass 'tab--selected'
-        $('#tab-personal').toggleClass 'tab--selected'
-        $('.business-section').toggleClass 'none'
+        $(this).addClass 'tab--selected'
+        $('#tab-personal').removeClass 'tab--selected'
+        $('.business-section').removeClass 'none'
       $('#tab-personal').click ->
-        $(this).toggleClass 'tab--selected'
-        $('#tab-business').toggleClass 'tab--selected'
-        $('.business-section').toggleClass 'none'
-    initialize_popovers = ->
+        $(this).addClass 'tab--selected'
+        $('#tab-business').removeClass 'tab--selected'
+        $('.business-section').addClass 'none'
+      $('.js-tab').click ->
+        $('.js-tab').removeClass('tab--selected')
+        $(this).addClass('tab--selected')
+        type = $(this).attr('data-type')
+        changeLegalPersonType(type)
+        showAccountTypeFieldAndEraseTheOthers(type)
+
+    showAccountTypeFieldAndEraseTheOthers = (type) ->
+      $('.js-account-field').not(".js-" + type.toLowerCase()).addClass('none').find('input').val('')
+      $('.js-account-field.js-' + type.toLowerCase()).removeClass('none')
+    changeLegalPersonType = (type) ->
+      $('#mangopay_collection_account_bank_type').val(type)
+
+    initializePopovers = ->
       options = {
         placement: (context, source) ->
           position = $(source).offset()
@@ -25,22 +38,10 @@ on_load = ->
               return "bottom"
           return "top"
       }
-      $('#legal-name-popover').popover(options)
-      $('#tax-id-popover').popover(options)
-      $('#first-name-popover').popover(options)
-      $('#email-popover').popover(options)
-      $('#last-name-popover').popover(options)
-      $('#ssn-popover').popover(options)
-      $('#street-popover').popover(options)
-      $('#locality-popover').popover(options)
-      $('#region-popover').popover(options)
-      $('#postal-code-popover').popover(options)
-      $('#birth-of-date-popover').popover(options)
-      $('#account-number-code-popover').popover(options)
-      $('#routing-number-popover').popover(options)
+      $('.lock-popover').popover(options)
 
-
-    initialize_popovers()
-    initialize_listeners()
+    initializePopovers()
+    initializeListeners()
+    showAccountTypeFieldAndEraseTheOthers($('#mangopay_collection_account_bank_type').val())
 
 $(document).ready on_load
