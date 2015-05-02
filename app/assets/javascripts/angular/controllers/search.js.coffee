@@ -37,8 +37,11 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
         else
           $scope.from = ($scope.itemsPerPage)*($scope.currentPage-1) + 1
           $scope.to = Math.min(($scope.itemsPerPage)*($scope.currentPage), $scope.totalSpaces)
+
+        $('.pagination-container').hide()
         $(".search-pagination").hide()
         if $scope.totalSpaces > 0
+          $('.pagination-container').show()
           $(".search-pagination").show()
         if !is_mobile()
           update_map()
