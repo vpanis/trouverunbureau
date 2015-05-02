@@ -15,7 +15,7 @@ module BookingsHelper
   end
 
   def can_delete?(booking, own = true)
-    owner?(booking, own) && !deleted?(booking, own) && (booking.canceled? || finished?(booking))
+    owner?(booking, own) && !deleted?(booking, own) && (booking.cancelled? || finished?(booking))
   end
 
   private

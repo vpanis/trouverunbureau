@@ -26,4 +26,10 @@ module RepresentedHelper
     current_user.organizations + [current_user] - [@current_represented]
   end
 
+  def new_messages
+    return @new_messages if @new_messages
+    return 0 unless current_user.present?
+    @new_messages = BookingManager.bookings_with_news(current_represented).size
+  end
+
 end

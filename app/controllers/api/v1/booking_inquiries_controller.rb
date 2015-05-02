@@ -71,7 +71,7 @@ module Api
         return unless represented_data_validation
         render status: 200,
                json: serialized_paginated_array(Booking.includes(:space, :owner)
-                                                  .all_bookings_for(current_represented),
+                                                       .all_bookings_for(current_represented),
                                                 :inquiries, InquirySerializer).as_json
       end
 
