@@ -53,6 +53,7 @@
         height: 80px;
         margin: 7px auto;
         padding: 2px;
+        @include border-radius(100%);
         img{
           @include border-radius(100%);
           width: 100%;

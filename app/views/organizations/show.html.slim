@@ -13,15 +13,8 @@
       .basic-info.col-md-12.center-block.no-float
         .user-header.text-center
           h1.name.no-float = @organization.name
-          .row
-            .col-md-12
-              p.location
-                - if @owner.location.present?
-                  strong.black = @owner.location
-                - else
-                  strong.black = t('commons.unknown')
 
-    .row.col-md-2.center-block.no-float
+    .row.col-md-6.center-block.no-float
       h1.members-title.center = t('users.organization_members')
     .row.col-md-3.center-block.no-float
       p.center = t('users.organization_members_text')
@@ -30,9 +23,9 @@
         .col-md-4.center-block
           .user-avatar
             - if m.user.avatar.present?
-              = image_tag(m.user.avatar.url, width: '150px', height: '150px', class: "center-block no-float")
+              = image_tag(m.user.avatar.url, width: '95px', height: '95px', class: "center-block no-float")
             - else
-              = image_tag('default-avatar.png', width: '150px', height: '150px', class: "center-block no-float")
+              = image_tag('default-avatar.png', width: '95px', height: '95px', class: "center-block no-float")
           h3.center = m.user.name
           p.center.user-email = m.user.email
           .col-md-6.center-block.no-float.text-center
