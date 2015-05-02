@@ -3,7 +3,6 @@ on_load = ->
     controllers:
       landing: ["index"]
   , (controller, action) ->
-    new google.maps.places.Autocomplete(document.getElementById('search'))
     $(".workspaces-select").select2({minimumResultsForSearch: -1})
     $(".nav a[href^=\"#\"]").on "click", (event) ->
       target = $($(this).attr("href"))
