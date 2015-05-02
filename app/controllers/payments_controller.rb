@@ -63,7 +63,7 @@ class PaymentsController < ApplicationController
     # Error handling for collition in booking
     return redirect_to root_path unless @booking.valid? && custom_errors.empty?
     send("payment_#{@payment_method}")
-    redirect_to new_payment_path(booking_id: @booking.id)
+    redirect_to inbox_user_path(@current_represented)
   end
 
   def payment_braintree_verification

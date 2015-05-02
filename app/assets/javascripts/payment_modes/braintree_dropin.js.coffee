@@ -9,7 +9,7 @@ retrieve_token = (paymentId) ->
   $.ajax
     url: '/api/v1/braintree/customer_nonce_token?payment_id=' + paymentId
     success: (response) ->
-      if response.token == null
+      if response.token == null || response.token.trim() == ''
         setTimeout (->
           retrieve_token paymentId
           return

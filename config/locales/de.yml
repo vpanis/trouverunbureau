@@ -483,6 +483,7 @@ de:
     space_type: space type
     capacity: Capacity
     days: Days
+    hours: Hours
     spaces: Spaces
     check_in: Check In
     check_out: Check Out
@@ -499,3 +500,19 @@ de:
     expiration_month: Expiration month(mm)
     expiration_year: Expiration year(yy)
     card_number: Credit card number
+    invalid_card_number: Invalid Card Number format
+    invalid_expiration_date: Invalid Expiration Date format
+    invalid_cvv: Invalid CVV format
+    all_required: All field are required!
+    choose_credit_card: You have to choose a credit card first
+  messages:
+    booking_change: The booking info has changed!
+    pending_authorization: The booking needs the venue authorization.
+    pending_payment: "Booking accepted. Pending payment. This booking will be reserved for 24hs. If you don't pay in that time, you could lost the booking."
+    paid: The booking has been successfully paid.
+    cancelled: The booking has been cancelled.
+    denied: The booking has been cancelled by the venue's owner.
+    expired: The 24hs to pay the booking has expire.
+    payment_verification: We are verifying the payment.
+    refunding: The money has been refunded.
+    error_refunding: We are having problems with the refunding.

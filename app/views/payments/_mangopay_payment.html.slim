@@ -1,129 +1,39 @@
 = javascript_include_tag "payment_modes/mangopay_dropin"
+= render 'new_credit_card_modal'
+= render 'create_credit_card_modal'
 #js-mangopay-config data-base-url="#{Rails.configuration.payment.mangopay.base_url}" data-client-id="#{Rails.configuration.payment.mangopay.client_id}"
+.uk-payment-container
+  .credit-cards-title
+    .title
+      = t('payment.used_credit_card')
+    .new-credit-card data-toggle="modal" data-target="#new-credit-card"
+      span = t('payment.new_credit_card')
+  - active_credit_cards = @payment_account.mangopay_credit_cards.activated
+  - unless active_credit_cards.empty?
+    .credit-cards-container.js-credit-cards
+      - active_credit_cards.each do |credit_card|
+        .js-credit-card data-credit-card-id="#{credit_card.id}"
+          .credit-card.col-md-4
+            .radio-container
+              input type="radio" name="credit_card"
+            .credit-card-info
+              p
+                span = "#{t('payment.last_digits')}: "
+                = credit_card.last_4
+              p
+                span = "#{t('payment.type')}: "
+                | CB/VISA/MASTERCARD
+              p
+                span = "#{t('payment.expiration')}: "
+                = "#{credit_card.expiration.first(2)}/#{credit_card.expiration.last(2)}"
+              p
+                span = "#{t('payment.currency')}: "
+                = currency_options.find { |c| c[1] == credit_card.currency.downcase }[0]
 
-- active_credit_cards = @payment_account.mangopay_credit_cards.activated
-- unless active_credit_cards.empty?
-  label Used Credit Cards
-
-  - active_credit_cards.each do |credit_card|
-    .js-credit-card data-credit-card-id="#{credit_card.id}"
-      div
-        span Last four digits:
-        span.last_4 #{ credit_card.last_4 }
-      div
-        span Type:
-        span.card_type CB/VISA/MASTERCARD
-      div
-        span Expiration Date:
-        span.expiration #{ credit_card.expiration }
-      div
-        span Currency:
-        span.currency #{ currency_options.find { |c| c[1] == credit_card.currency.downcase }[0] }
-
-#new-credit-card
-  label New Credit Card
-  form#js-card-pre-registration-data
-    .form-group
-      select#js-card_currency
-        = options_for_select(currency_options, 'eur')
-    button#js-create-card-registration Register Credit Card
-  form#js-card-info.hidden
-    .form-group#card-number
-      label Credit Card Number
-      input type='text' id='js-card_number'
-      span.js-card-errors.js-card-format.hidden Invalid Card Number format
-    .form-group#card-exp-month
-      label Expiration Month (mm)
-      input type='text' id='js-card_exp_date_month'
-    .form-group#card-exp-year
-      label Expiration Year (yy)
-      input type='text' id='js-card_exp_date_year'
-      span.js-card-errors.js-expiration-format.hidden Invalid Expiry Date format
-    .form-group#card-cvx
-      label CVX
-      input type='text' id='js-card_cvx'
-      span.js-card-errors.js-cvx-format.hidden Invalid CVV format
-    .form-grout#card-type
-      label Type
-      select#js-card_type
-        option selected=true label="CB/VISA/MASTERCARD" value="CB_VISA_MASTERCARD"
-    label#required-label.hidden All field are required!!!
-    button#js-create-credit-card Create Card
-
-#payment.hidden
-  button#js-pay Pay
-
-/ = form_for(@collection_account, url: collection_account_info_venue_path(@venue)) do |f|
-/   .main-content
-/     #venue
-/       .row
-/         .collection_account-section
-/           .form-group
-/             label #{t('venues.collection_account.individual')}
-/             .form-group#venue-first_name-input
-/               label #{t('venues.collection_account.first_name')} (*)
-/               = f.text_field :first_name
-/             .form-group#venue-last_name-input
-/               label #{t('venues.collection_account.last_name')} (*)
-/               = f.text_field :last_name
-/             .form-group#venue-email-input
-/               label #{t('venues.collection_account.email')} (*)
-/               = f.text_field :email
-/             .form-group#venue-phone-input
-/               label #{t('venues.collection_account.phone')}
-/               = f.text_field :phone
-/             .form-group#venue-date_of_birth-input
-/               label #{t('venues.collection_account.date_of_birth')} (*)
-/               = f.text_field :date_of_birth
-/             .form-group#venue-ssn-input
-/               label #{t('venues.collection_account.ssn')} #{" ( #{t('venues.collection_account.previous_last_4')}: #{@collection_account.ssn_last_4} )" if @collection_account.ssn_last_4.present?}
-/               = f.text_field :ssn
-/             .form-group#venue-individual_street_address-input
-/               label #{t('venues.collection_account.street_address')} (*)
-/               = f.text_field :individual_street_address
-/             .form-group#venue-individual_locality-input
-/               label #{t('venues.collection_account.locality')} (*)
-/               = f.text_field :individual_locality
-/             .form-group#venue-individual_region-input
-/               label #{t('venues.collection_account.region')} (*)
-/               = f.text_field :individual_region
-/             .form-group#venue-individual_postal_code-input
-/               label #{t('venues.collection_account.postal_code')} (*)
-/               = f.text_field :individual_postal_code
-/           .form-group
-/             label #{t('venues.collection_account.business')}
-/             .form-group#venue-legal_name-input
-/               label #{t('venues.collection_account.legal_name')} (*)(#{t('venues.collection_account.only_tax_id_present')})
-/               = f.text_field :legal_name
-/             .form-group#venue-tax_id-input
-/               label #{t('venues.collection_account.tax_id')} (*)(#{t('venues.collection_account.only_legal_name_present')})
-/               = f.text_field :tax_id
-/             .form-group#venue-dba_name-input
-/               label #{t('venues.collection_account.dba_name')}
-/               = f.text_field :dba_name
-/             .form-group#venue-business_street_address-input
-/               label #{t('venues.collection_account.street_address')}
-/               = f.text_field :business_street_address
-/             .form-group#venue-business_locality-input
-/               label #{t('venues.collection_account.locality')}
-/               = f.text_field :business_locality
-/             .form-group#venue-business_region-input
-/               label #{t('venues.collection_account.region')}
-/               = f.text_field :business_region
-/             .form-group#venue-business_postal_code-input
-/               label #{t('venues.collection_account.postal_code')}
-/               = f.text_field :business_postal_code
-/           .form-group
-/             label #{t('venues.collection_account.funding')}
-/             .form-group#venue-descriptor-input
-/               label #{t('venues.collection_account.descriptor')}
-/               = f.text_field :descriptor
-/             .form-group#venue-account_number-input
-/               label #{t('venues.collection_account.account_number')} #{" ( #{t('venues.collection_account.previous_last_4')}: #{@collection_account.account_number_last_4} )" if @collection_account.account_number_last_4.present?} (*)
-/               = f.text_field :account_number
-/             .form-group#venue-routing_number-input
-/               label #{t('venues.routing_number')} (*)
-/               = f.text_field :routing_number
-/     span() #{t('venues.collection_account.required')} = (*)
-/   .full-width-submit-button
-/     = f.submit 'Save', class: 'submit-button', id: 'save-collection_account'
+  span.js-no-card-error.hidden = t('payment.choose_credit_card')
+  .buttons
+    .col-xs-6
+      = link_to(inbox_user_path(current_represented))
+        button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
+    .col-xs-6
+     button#js-pay.rounded-btn.yellow-fill.width-100.uppercase = t('commons.pay')

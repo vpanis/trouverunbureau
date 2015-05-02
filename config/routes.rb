@@ -9,8 +9,6 @@ Deskspotting::Application.routes.draw do
   root to: 'landing#index'
   resources :referrals, only: [:new]
 
-  resources :payments, only: [:show]
-
   resources :venues, only: [:new, :create, :edit, :update, :show, :index] do
     member do
       get :details, to: 'venue_details#details'

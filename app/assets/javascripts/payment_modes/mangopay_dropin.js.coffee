@@ -4,7 +4,7 @@ onLoad = ->
   mangopayConfiguration = $("#js-mangopay-config")[0].dataset
   mangoPay.cardRegistration.baseURL = mangopayConfiguration.baseUrl
   mangoPay.cardRegistration.clientId = mangopayConfiguration.clientId
-  $('#js-create-card-registration').on 'click', (event) ->
+  $('.js-create-card-registration').on 'click', (event) ->
     $("#new-credit-card").addClass("loading")
     createNewCardRegistration $('#js-card_currency').val().toUpperCase()
   $('.js-credit-card').on 'click', select_card
@@ -22,14 +22,15 @@ onLoad = ->
 select_card = (event) ->
   selectedCreditCardId = this.dataset.creditCardId
   $('.js-credit-card').removeClass('active')
-  $("#js-card-info").removeClass('active')
   $(this).addClass('active')
-  $("#payment").removeClass('hidden')
+  $(this).find('input').prop("checked", true)
+  $('.js-no-card-error').addClass('hidden')
   return
 
 createNewCardRegistration = (currency) ->
   selectedCreditCardId = null
   $('.js-credit-card').removeClass('active')
+  $('#register-credit-card').attr('disabled', 'disabled')
   $.ajax
     url: '/api/v1/mangopay/card_registration'
     method: 'POST'
@@ -37,17 +38,17 @@ createNewCardRegistration = (currency) ->
       currency: currency
     success: (response) ->
       setTimeout (->
-        retrieveNewCardInfo response.mangopay_credit_card_id
+        retrieveNewCardInfo response.mangopay_credit_card_id, currency
         return
       ), timeBetweenRetrievesMS
 
-retrieveNewCardInfo = (creditCardId) ->
+retrieveNewCardInfo = (creditCardId, currency) ->
   $.ajax
     url: '/api/v1/mangopay/new_card_info?mangopay_credit_card_id=' + creditCardId
     success: (response) ->
-      if response == null
+      if response == null || ((typeof response == 'string' || response instanceof String) && response.trim() == '')
         setTimeout (->
-          retrieveNewCardInfo creditCardId
+          retrieveNewCardInfo creditCardId, currency
           return
         ), timeBetweenRetrievesMS
       else
@@ -56,19 +57,18 @@ retrieveNewCardInfo = (creditCardId) ->
           preregistrationData: response.pre_registration_data
           accessKey: response.registration_access_key
           Id: response.registration_id
+        $('#register-credit-card').removeAttr('disabled')
         $("#new-credit-card").removeClass("loading")
-        $("#js-card-pre-registration-data").remove()
-        $("#js-card-info").removeClass("hidden")
-        $('#js-create-credit-card').on 'click', (event) ->
-          saveNewCard(creditCardId)
+        $('.js-create-credit-card').on 'click', (event) ->
+          saveNewCard(creditCardId, currency)
 
-saveNewCard = (creditCardId) ->
+saveNewCard = (creditCardId, currency) ->
   $(".js-card-errors").addClass("hidden")
   $("#required-label").addClass("hidden")
-  nonEmptyVal = _.reduce $('#js-card-info input'), ((acc, input) ->
+  nonEmptyVal = _.reduce $('.js-card-info input'), ((acc, input) ->
     acc and $(input).val() != ''
   ), true
-  if !nonEmptVal
+  if !nonEmptyVal
     $("#required-label").removeClass("hidden")
     return
   $("#new-credit-card").addClass("loading")
@@ -78,8 +78,10 @@ saveNewCard = (creditCardId) ->
     cardCvx: $("#js-card_cvx").val()
     cardType: $("#js-card_type").val()
 
-  $("#js-card-info :input").attr('disabled', true)
+  $('.js-create-credit-card').attr('disabled', 'disabled')
+  $(".js-card-info :input").attr('disabled', true)
   mangoPay.cardRegistration.registerCard cardData, ((response) ->
+    expiration = $("#js-card_exp_date_month").val() + '/' + $("#js-card_exp_date_year").val()
     # Success, you can use res.CardId now that points to registered card
     $.ajax
       url: '/api/v1/mangopay/save_credit_card'
@@ -89,23 +91,24 @@ saveNewCard = (creditCardId) ->
           id: creditCardId
           credit_card_id: response.CardId
           last_4: cardData.cardNumber.substring(cardData.cardNumber.length - 4)
-          expiration: $("#js-card_exp_date_month").val() + '/' + $("#js-card_exp_date_year").val()
+          expiration: expiration
           card_type: cardData.cardType
       success: (response) ->
+        $('.js-create-credit-card').removeAttr('disabled')
         $("#new-credit-card").removeClass("loading")
-        $("#js-card-info").addClass('active').attr('data-credit-card-id', creditCardId).on 'click', select_card
         $("#js-create-credit-card").remove()
         selectedCreditCardId = creditCardId
+        $('.js-credit-cards').append(creditCardTemplate(creditCardId, cardData.cardNumber.substring(cardData.cardNumber.length - 4), expiration, currency))
+        $('#create-credit-card').modal('hide')
         return
       error: (response) ->
+        $('.js-create-credit-card').attr('disabled')
         $("#new-credit-card").removeClass("loading")
-        $("#js-card-info :input").attr('disabled', false)
         console.log(response)
 
     return
   ), (response) ->
     $("#new-credit-card").removeClass("loading")
-    $("#js-card-info :input").attr('disabled', false)
     switch response.ResultCode
       when "105202"
         $(".js-card-format").removeClass("hidden")
@@ -116,14 +119,19 @@ saveNewCard = (creditCardId) ->
     # Handle error, see res.ResultCode and res.ResultMessage
     return
 
+creditCardTemplate = (creditCardId, creditCardLast4, expiration, currency) ->
+  '<div class="js-credit-card" data-credit-card-id="' + creditCardId + '"><div class="credit-card col-md-4"><div class="radio-container"><input name="credit_card" type="radio"></div><div class="credit-card-info"><p><span>Last four digits: </span>' + creditCardLast4 + '</p><p><span>Type: </span>CB/VISA/MASTERCARD</p><p><span>Expiration date: </span>' + expiration + '</p><p><span>Currency: </span>' + currency + '</p></div></div></div>'
+
 disableCardSelection = ->
   $("#js-pay").attr('disabled', true)
   $('.js-credit-card').attr('disabled', true)
-  $("#js-card-info").attr('disabled', true)
 
 pay = (card_id) ->
   disableCardSelection()
   bookingId = $("#hidden-data")[0].dataset.bookingId
+  if selectedCreditCardId == null
+    $('.js-no-card-error').removeClass('hidden')
+    return
   $.ajax
     url: '/api/v1/mangopay/start_payment'
     method: 'PUT'
@@ -140,7 +148,7 @@ retrievePaymentInfo = (paymentId) ->
   $.ajax
     url: '/api/v1/mangopay/payment_info?payment_id=' + paymentId
     success: (response) ->
-      if response == null
+      if response == null || ((typeof response == 'string' || response instanceof String) && response.trim() == '')
         setTimeout (->
           retrievePaymentInfo paymentId
           return
