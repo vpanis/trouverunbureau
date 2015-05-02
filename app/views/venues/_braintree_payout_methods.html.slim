@@ -1,0 +1,88 @@
+.title.inline.text-center
+  - if @venue.logo.present?
+    = image_tag(@venue.logo.url, class: 'rounded-img')
+  - else
+    = image_tag('venue-default.png', width: '95px', height: '95px')
+  h3.big = @venue.name
+  .small-separator
+-if @collection_account.error?
+  span #{ @collection_account.error_message }
+  br
+-if @collection_account.expecting_braintree_response || @collection_account.pending?
+  span = t('venues.collection_account.verifying_data')
+-else
+  .inquiring-container
+    .time-select-wrapper
+      .multiple-switch-wrapper
+        .tab#tab-personal.tab--selected
+          = t('payment_methods.personal')
+        .tab#tab-business
+          = t('payment_methods.business')
+  .personal-section
+    = form_for @collection_account, url: collection_account_info_venue_path(@venue) do |f|
+      .row.business-section.none
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+          .icon.lock.pointer#legal-name-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
+          label = t('payment_methods.legal_name')
+          = f.text_field :legal_name, class: 'form-control'
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+          .icon.lock.pointer#tax-id-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
+          label = t('payment_methods.tax_id')
+          = f.text_field :tax_id, class: 'form-control'
+      p.text-center = t('payment_methods.required_legal')
+      .row
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+          .icon.lock.pointer#first-name-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
+          label = t('payment_methods.first_name')
+          = f.text_field :first_name, class: 'form-control'
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+          .icon.lock.pointer#last-name-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
+          label = t('payment_methods.last_name')
+          = f.text_field :last_name, class: 'form-control'
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+          .icon.lock.pointer#email-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
+          label = t('payment_methods.email')
+          = f.text_field :email, class: 'form-control'
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+          .icon.lock.pointer#date-of-birth-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
+          label = t('payment_methods.date_of_birth')
+          .calendar.input-group
+            .calendar-icon.input-group-addon type="button"
+            / TODO fix date picker
+            = f.text_field :date_of_birth, placeholder: 'mm-dd-aa', class: 'form-control', close_text: 'Close', datepicker_options: {}, datepicker_popup: 'dd-MM-yyyy', is_open: 'true', type: 'text', show_button_bar:'false', ng_model: 'date_of_birth'
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+          .icon.lock.pointer#ssn-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
+          label = t('payment_methods.ssn')
+          = f.text_field :ssn, class: 'form-control'
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+          .icon.lock.pointer#locality-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
+          label = t('payment_methods.locality')
+          = f.text_field :individual_locality, class: 'form-control'
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+          .icon.lock.pointer#street-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
+          label = t('payment_methods.street')
+          = f.text_field :individual_street_address, class: 'form-control'
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+          .icon.lock.pointer#region-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
+          label = t('payment_methods.region')
+          = f.text_field :individual_region, class: 'form-control'
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+          .icon.lock.pointer#postal-code-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
+          label = t('payment_methods.postal_code')
+          = f.text_field :individual_postal_code, class: 'form-control'
+      .small-separator
+      p.text-center = t('payment_methods.required_fundings')
+      .row
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+          .icon.lock.pointer#account-number-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
+          label #{t('venues.collection_account.account_number')} #{" ( #{t('venues.collection_account.previous_last_4')}: #{@collection_account.account_number_last_4} )" if @collection_account.account_number_last_4.present?}
+          = f.text_field :account_number, class: 'form-control'
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+          .icon.lock.pointer#routing-number-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
+          label = t('payment_methods.routing_number')
+          = f.text_field :routing_number, class: 'form-control'
+        .buttons
+          .col-md-6
+            a href="#" type='button' class='rounded-btn width-100 uppercase' = t('commons.cancel')
+          .col-md-6
+            = f.submit t('commons.save'), class: 'rounded-btn yellow-fill width-100 uppercase'

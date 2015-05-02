@@ -4,5 +4,8 @@
 #venue.main-content.dashboard-form.clearfix.overflow-hidden
   = render 'shared/edit_venue_progress', venue: @venue, progress: 60, step: 5
   .details-section.col-md-7.col-md-offset-1.margin-top
-    - if true
-      = render 'usa_payment_methods'
+    - case @collection_method
+    - when "mangopay"
+      = render "mangopay_payment"
+    - when "braintree"
+      = render 'braintree_payout_methods'

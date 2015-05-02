@@ -278,6 +278,7 @@ en:
       required: Required
       only_tax_id_present: Only if tax id present
       only_legal_name_present: Only if legal name present
+      verifying_data: We are verifying your bank account data. This could take a few minutes.
   wishlist:
     no_favourites: "You don't have any favorite spaces"
     day: 'day'
@@ -411,6 +412,8 @@ en:
     publish: publish
     delete_venue: Delete venue
     incomplete: incomplete
+    collection_account: Collection Account
+    payout_method: Payout Method
   new_message_email:
     hi: Hi
     got_new_message: Got a new message from
@@ -527,6 +530,8 @@ en:
     ssn: Ssn
     locality: Locality
     street: Street address
+    region: Region
+    postal_code: Postal code
     required_legal: Required legal representative fields
     required_fundings: Required fundings fields
     routing_number: Routing number

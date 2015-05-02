@@ -40,11 +40,6 @@ class VenuesController < ModelController
     return unless can_edit?
   end
 
-  def payment_methods
-    @venue = Venue.find(params[:id])
-    return unless can_edit?
-  end
-
   def show
     @venue = Venue.find(params[:id])
     @user = current_represented

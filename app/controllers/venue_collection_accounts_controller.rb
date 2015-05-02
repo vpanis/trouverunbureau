@@ -6,16 +6,12 @@ class VenueCollectionAccountsController < VenuesController
     return render nothing: true, status: 404 unless @venue.present?
     return render nothing: true, status: 403 unless current_represented == @venue.owner
 
-    if @venue.collection_account.present?
-      @collection_account = @venue.collection_account
-    else
-      @collection_account = BraintreeCollectionAccount.new(force_submit: true,
-                                                           expecting_braintree_response: false,
-                                                           braintree_persisted: false)
-    end
+    select_collection_method
+    set_collection_account
   end
 
   def edit_collection_account
+    binding.pry
     @venue = Venue.includes(:collection_account).find_by(id: params[:id])
     return render nothing: true, status: 404 unless @venue.present?
     return render nothing: true, status: 403 unless current_represented == @venue.owner
@@ -31,11 +27,39 @@ class VenueCollectionAccountsController < VenuesController
 
   private
 
+  def select_collection_method
+    if @venue.country_code == 'US'
+      @collection_method = 'braintree'
+    else
+      @collection_method = 'mangopay'
+    end
+  end
+
+  def set_collection_account
+    if @venue.collection_account.present?
+      @collection_account = @venue.collection_account
+    else
+      send("set_#{@collection_method}_collection_account")
+    end
+  end
+
+  def set_braintree_collection_account
+    @collection_account = BraintreeCollectionAccount.new(force_submit: true,
+                                                         expecting_braintree_response: false,
+                                                         braintree_persisted: false)
+  end
+
+  def set_mangopay_collection_account
+    @collection_account = MangopayCollectionAccount.new(basic_info_only: true,
+                                                        expecting_mangopay_response: false,
+                                                        mangopay_persisted: false)
+  end
+
   def create_collection_account_if_nil
+    select_collection_method
     return if @venue.collection_account.present?
-    @venue.collection_account =
-      BraintreeCollectionAccount.new(force_submit: true, expecting_braintree_response: false,
-                                     braintree_persisted: false)
+    set_collection_account
+    @venue.collection_account = @collection_account
     @venue.save
     @venue.collection_account.force_submit = false
   end

@@ -1,7 +1,7 @@
 on_load = ->
   load
     controllers:
-      venues: ["payment_methods"]
+      venue_collection_accounts: ["collection_account_info"]
   , (controller, action) ->
 
     initialize_listeners = ->
@@ -25,11 +25,20 @@ on_load = ->
               return "bottom"
           return "top"
       }
+      $('#legal-name-popover').popover(options)
+      $('#tax-id-popover').popover(options)
       $('#first-name-popover').popover(options)
       $('#email-popover').popover(options)
       $('#last-name-popover').popover(options)
       $('#ssn-popover').popover(options)
       $('#street-popover').popover(options)
+      $('#locality-popover').popover(options)
+      $('#region-popover').popover(options)
+      $('#postal-code-popover').popover(options)
+      $('#birth-of-date-popover').popover(options)
+      $('#account-number-code-popover').popover(options)
+      $('#routing-number-popover').popover(options)
+
 
     initialize_popovers()
     initialize_listeners()
