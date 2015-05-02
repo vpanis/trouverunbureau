@@ -1,14 +1,31 @@
-.col-xs-10.col-sm-5.col-md-3.col-lg-3.space-image-wrapper class="#{offset}"
-  .space-image-box style="background-image: url(#{ asset_path img_file_name});"
+- if offset
+  - offset_classes = 'col-xs-offset-1 col-sm-offset-0 col-md-offset-0'
+- else
+  - offset_classes = 'col-xs-offset-1 col-sm-offset-1 col-md-offset-0'
+.col-xs-10.col-sm-5.col-md-3.col-lg-3.space-image-wrapper class=offset_classes
+
+  - if venue.photos.size > 0
+    .space-image-box style="background-image: url(#{venue.photos.first.photo.url});"
+  - else
+    .space-image-box style="background-image: url(#{ asset_path 'venue-default.png'});"
   .space-image-box-over
     .space-image-info
-      .city-name
-        | #{city}
+      .city-name = venue.town
       .separator
       .space-info-bottom
-        .price
-          | #{price}
-        .time
-          | #{time}
-        .currency
-          | #{currency}
+        - space = venue.spaces.first
+        - if space.hour_price.present?
+          - price = space.hour_price
+          - time = t('venues.show.per_hour')
+        - elsif space.day_price.present?
+          - price = space.day_price
+          - time = t('venues.show.per_day')
+        - elsif space.week_price.present?
+          - price = space.week_price
+          - time = t('venues.show.per_week')
+        - else
+          - price = space.month_price
+          - time = t('venues.show.per_month')
+        .price = price.to_i
+        .time = time
+        .currency = venue.currency

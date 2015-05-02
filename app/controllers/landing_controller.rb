@@ -5,6 +5,8 @@ class LandingController < ApplicationController
 
   def index
     @space_types_options = space_types_index_options
+    # TODO: que tengan al menos una foto y esten publicados
+    @featured_venues = Venue.all.order(reviews_sum: :desc).limit(8)
   end
 
   def about_us
