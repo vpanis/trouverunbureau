@@ -23,9 +23,9 @@
         .col-md-4.center-block
           .user-avatar
             - if m.user.avatar.present?
-              = image_tag(m.user.avatar.url, width: '150px', height: '150px', class: "center-block no-float")
+              = image_tag(m.user.avatar.url, width: '95px', height: '95px', class: "center-block no-float")
             - else
-              = image_tag('default-avatar.png', width: '150px', height: '150px', class: "center-block no-float")
+              = image_tag('default-avatar.png', width: '95px', height: '95px', class: "center-block no-float")
           h3.center = m.user.name
           p.center.user-email = m.user.email
           .col-md-6.center-block.no-float.text-center
