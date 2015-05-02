@@ -14,7 +14,7 @@ es:
     gbp:
       short_name: 'gbp'
       long_name: 'Pound Sterling'
-    euro:
+    eur:
       short_name: 'eur'
       long_name: 'Euro'
     cad:

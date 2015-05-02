@@ -17,7 +17,7 @@
               .venue-name
                 h1 = venue.name
               .location
-                p = "#{venue.town}, #{venue.country.name}"
+                p = "#{venue.town}, #{Country.new(venue.country_code).name}"
           .right-wrapper
             .icon.info.pointer
             a.edit.gray href=edit_venue_path(venue) = t('venues.edit_venue')

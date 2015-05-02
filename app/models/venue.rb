@@ -4,7 +4,6 @@ class Venue < ActiveRecord::Base
 
   # Relations
   belongs_to :owner, polymorphic: true
-  belongs_to :country
 
   has_many :spaces, dependent: :destroy
   has_many :day_hours, class_name: 'VenueHour', dependent: :destroy
@@ -27,10 +26,13 @@ class Venue < ActiveRecord::Base
 
   AMENITY_TYPES = [:whiteboards, :kitchen, :security, :wifi, :printer_scanner, :chill_area,
                    :photocopier, :conference_rooms, :elevators, :outdoor_space, :team_bookings,
-                   :individual_bookings, :shower, :fax, :wheelchair_access, :air_conditioning,
-                   :pets_allowed, :mail_service, :gym, :cafe_restaurant, :phone_booth, :tv,
-                   :projector, :concierge, :parking, :water_fountain, :reception_service,
-                   :cleaning_service]
+                   :individual_bookings, :shower, :fax, :wheelchair_access, :air_conditioning, :tv,
+                   :pets_allowed, :mail_service, :gym, :cafe_restaurant, :phone_booth, :projector,
+                   :concierge, :parking, :water_fountain, :reception_service, :cleaning_service]
+
+  SUPPORTED_CURRENCIES = %w(usd gbp eur cad aud)
+  SUPPORTED_COUNTRIES = %w(US CA AU DE AD AT BE HR DK ES FI FR GR IE IS IT NO SE CH GB PL PT NL CY
+                           EE LV LT LU MT SK SI)
 
   PROFESSIONS = [:technology, :public_relations, :entertainment, :entrepreneur, :startup, :media,
                  :design, :architect, :advertising, :finance, :consultant, :freelance, :journalist,
@@ -38,13 +40,14 @@ class Venue < ActiveRecord::Base
 
   # Callbacks
   after_initialize :initialize_fields
-  before_destroy :erase_logo
 
   # Validations
-  validates :town, :street, :postal_code, :country, :email, :latitude, :longitude,
+  validates :town, :street, :postal_code, :email, :latitude, :longitude,
             :currency, :v_type, :owner, presence: true, unless: :force_submit
+  validates :currency, inclusion: { in: SUPPORTED_CURRENCIES }, unless: :force_submit
   validates :description, presence: true, unless: proc { |e| e.force_submit || e.force_submit_upd }
-  validates :name, :country, presence: true
+  validates :name, :country_code, presence: true
+  validates :country_code, inclusion: { in: SUPPORTED_COUNTRIES }
 
   validates :email, format: {
     with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create
@@ -111,10 +114,6 @@ class Venue < ActiveRecord::Base
     self.quantity_reviews ||= 0
     self.reviews_sum ||= 0
     self.rating ||= 0
-  end
-
-  def erase_logo
-    self.remove_logo!
   end
 
   def each_amenity_inclusion

@@ -12,7 +12,7 @@ FactoryGirl.define do
     longitude { Faker::Address.longitude }
     name { Faker::Name.name }
     description { Faker::Lorem.sentence }
-    currency :ars
+    currency 'eur'
     v_type { Venue.v_types.values.sample }
     space 1.5
     space_unit { Venue.space_units.values.sample }
@@ -26,7 +26,7 @@ FactoryGirl.define do
       Rails.root, '/spec/fixtures/dropkick.png')))
 
     owner { FactoryGirl.build(:user) }
-    country { FactoryGirl.build(:country) }
+    country_code 'FR'
     trait :with_spaces do
       spaces { FactoryGirl.build_list(:space, rand(3) + 1) }
     end

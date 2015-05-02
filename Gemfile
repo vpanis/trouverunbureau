@@ -91,6 +91,10 @@ gem 'will_paginate', '~>3.0.7'
 gem "mail_view", "~> 2.0.4"
 
 gem 'angular-translate-rails'
+
+gem 'countries'
+
+# Payment Methods
 gem 'braintree', '~>2.40.0'
 gem 'mangopay', '~>3.0.0'
 

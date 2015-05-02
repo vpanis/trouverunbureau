@@ -30,7 +30,7 @@
       .subtitle
         | Country:
       span
-        = @booking.space.venue.country.name
+        = Country.new(@booking.space.venue.country_code).name
     .province
       .subtitle
         | Province:

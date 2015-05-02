@@ -1,7 +1,7 @@
 module SelectOptionsHelper
 
   def countries_options
-    Country.all.order(:name).map { |c| [c.name, c.id] }
+    Venue::SUPPORTED_COUNTRIES.map { |country| [Country.new(country).name, country] }
   end
 
   def venue_types_options
@@ -10,9 +10,7 @@ module SelectOptionsHelper
 
   def currency_options
     # TODO: define currency list
-    [[t('currency.usd.long_name'), 'usd'], [t('currency.gbp.long_name'), 'gbp'],
-     [t('currency.euro.long_name'), 'eur'], [t('currency.cad.long_name'), 'cad'],
-     [t('currency.aud.long_name'), 'aud']]
+    Venue::SUPPORTED_CURRENCIES.map { |currency| [t("currency.#{currency}.long_name"), currency] }
   end
 
   def gender_options

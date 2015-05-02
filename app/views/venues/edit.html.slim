@@ -25,7 +25,7 @@
         = f.text_field :street, placeholder: t('venues.edit.street'), class: 'form-control', required: true
       .form-group.col-md-6
         label = t('venues.edit.country')
-        = f.select(:country_id, @countries_options, {}, {class: 'form-control country-select', required: true})
+        = f.select(:country_code, @countries_options, {}, {class: 'form-control country-select', required: true})
       .form-group.col-md-6
         label = t('venues.edit.town')
         = f.text_field :town, placeholder: t('venues.edit.town'), class: 'form-control', required: true
