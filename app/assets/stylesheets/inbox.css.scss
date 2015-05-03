@@ -294,7 +294,7 @@
     }
   }
   .buttons{
-    margin: 60px 0 20px;
+    margin: 25px 0 0;
   }
 }
 
@@ -321,7 +321,7 @@
 
 .messages-wrapper {
   min-height: 100px;
-  height: calc(100vh - 600px);
+  height: calc(100vh - 570px);
   overflow-y: auto;
   .who {
     display: inline-block;

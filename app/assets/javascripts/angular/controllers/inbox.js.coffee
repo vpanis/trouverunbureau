@@ -46,6 +46,10 @@ angular.module('deskSpotting.inbox', []).controller "InboxCtrl", [
         $scope.messages = result.messages
         if $scope.messages.length > 0
           mark_booking_as_read(booking_id, $scope.messages[0].id)
+          scroll_to_last_message()
+
+    scroll_to_last_message = ->
+      $('.messages-wrapper').stop().animate({scrollTop: 10000}, 800);
 
     $scope.sendMessage = () ->
       text = this.message_text
