@@ -27,11 +27,6 @@ class InquirySerializer < ActiveModel::Serializer
     object.to.to_s
   end
 
-  def deposit
-    # TODO: ponti fix me
-    4
-  end
-
   def venue_owner
     object.space.venue.owner.eql?(scope)
   end

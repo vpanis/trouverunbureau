@@ -52,7 +52,7 @@ RSpec.describe Space, type: :model do
 
   it do
     should validate_numericality_of(:deposit)
-    .only_integer.is_greater_than_or_equal_to(0)
+    .is_greater_than_or_equal_to(0)
   end
 
   it 'should have at least one price' do

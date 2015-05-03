@@ -38,7 +38,7 @@ module Payments
         MangoPay::PayIn::Card::Direct.create(
           AuthorId: @booking.owner.mangopay_payment_account.mangopay_user_id,
           DebitedFunds: {
-            Currency: currency, Amount: @booking.price * 100
+            Currency: currency, Amount: (@booking.price + @booking.deposit) * 100
           }, Fees: {
             Currency: currency, Amount: 0
           }, CreditedWalletId: @booking.owner.mangopay_payment_account.wallet_id,

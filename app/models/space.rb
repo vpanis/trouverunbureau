@@ -12,8 +12,12 @@ class Space < ActiveRecord::Base
   # Validations
   validates :s_type, :name, :capacity, :quantity, :venue, :deposit, presence: true
 
-  validates :capacity, :quantity, :deposit, numericality: {
+  validates :capacity, :quantity, numericality: {
     only_integer: true,
+    greater_than_or_equal_to: 0
+  }
+
+  validates :deposit, numericality: {
     greater_than_or_equal_to: 0
   }
 
@@ -65,6 +69,15 @@ class Space < ActiveRecord::Base
   def month_price=(hp)
     super(hp)
     return self[:month_price] = (hp * 100).to_i if hp.is_a? Numeric
+  end
+
+  def deposit
+    self[:deposit] / 100.0 if self[:deposit].present?
+  end
+
+  def deposit=(hp)
+    super(hp)
+    return self[:deposit] = (hp * 100).to_i if hp.is_a? Numeric
   end
 
   private
