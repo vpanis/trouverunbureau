@@ -33,7 +33,6 @@ angular.module('deskSpotting.inbox', []).controller "InboxCtrl", [
       $scope.selected_booking = booking
       $('#price-input')[0].value = $scope.selected_booking.price
       reload_messages()
-
       return
 
     mark_booking_as_read = (booking_id, message_id) ->
@@ -44,8 +43,13 @@ angular.module('deskSpotting.inbox', []).controller "InboxCtrl", [
       booking_id = $scope.selected_booking.id
       Restangular.one('inquiries', booking_id).customGET('messages').then (result) ->
         $scope.messages = result.messages
+        initialize_popovers()
         if $scope.messages.length > 0
           mark_booking_as_read(booking_id, $scope.messages[0].id)
+          scroll_to_last_message()
+
+    scroll_to_last_message = ->
+      $('.messages-wrapper').stop().animate({scrollTop: 10000}, 800);
 
     $scope.sendMessage = () ->
       text = this.message_text
@@ -118,6 +122,24 @@ angular.module('deskSpotting.inbox', []).controller "InboxCtrl", [
           reload_messages()
           $scope.selected_booking.price = parseInt(price)
           return
+
+    initialize_popovers = ->
+      options = {
+        placement: (context, source) ->
+          position = $(source).offset()
+          if (position.left > 160)
+              return "left"
+          if (position.left < 160)
+              return "right"
+          if (position.top < 110)
+              return "bottom"
+          return "top"
+      }
+      $('#space-rental-popover').popover(options)
+      $('#deposit-popover').popover(options)
+      $('#fee-popover').popover(options)
+      $('#client-space-rental-popover').popover(options)
+      $('#client-deposit-popover').popover(options)
 
     $scope.getBookings()
 ]

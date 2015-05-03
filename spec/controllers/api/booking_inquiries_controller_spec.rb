@@ -45,7 +45,7 @@ describe Api::V1::BookingInquiriesController do
       # in the specs, is sendind the current_organization_id in the session (2nd hash)
       it 'doesn\'t retrieve the organization inquiries if is not logged as it' do
         get :organization_inquiries, id: organization.id
-        expect(response.status).to eq(403)
+        expect(response.status).to eq(200)
       end
 
       it 'should retrieve inquiries ordered desc by the last message date' do
@@ -72,20 +72,20 @@ describe Api::V1::BookingInquiriesController do
     end
 
     context 'when the logged user does not belongs to the organization' do
-      it 'doesn\'t retrieve the organization inquiries' do
+      it 'retrieves the user inquiries' do
         organization2 = FactoryGirl.create(:organization)
         get :organization_inquiries, { id: organization2.id },
             current_organization_id: organization2.id
-        expect(response.status).to eq(403)
+        expect(response.status).to eq(200)
       end
     end
 
     context 'when the user belongs to the organization but is logged as another one' do
-      it 'doesn\'t retrieve the organization inquiries' do
+      it 'retrieves the current organization inquiries' do
         organization2 = FactoryGirl.create(:organization, user: @user_logged)
         get :organization_inquiries, { id: organization.id },
             current_organization_id: organization2.id
-        expect(response.status).to eq(403)
+        expect(response.status).to eq(200)
       end
     end
   end
@@ -134,18 +134,18 @@ describe Api::V1::BookingInquiriesController do
         expect(body['inquiries'].size).to eql(amount)
       end
 
-      it 'doesn\' let the user retrieve other users inquiries' do
+      it 'retrieve his  owninquiries' do
         user2 = FactoryGirl.create(:user)
         get :user_inquiries, id: user2.id
-        expect(response.status).to eq(403)
+        expect(response.status).to eq(200)
       end
     end
 
     context 'when the user is logged as an organization' do
-      it 'doesn\'t retrieve the user inquiries' do
+      it 'retrieve the organization inquiries' do
         organization = FactoryGirl.create(:organization, user: @user_logged)
         get :user_inquiries, { id: @user_logged.id }, current_organization_id: organization.id
-        expect(response.status).to eq(403)
+        expect(response.status).to eq(200)
       end
     end
   end
@@ -181,9 +181,9 @@ describe Api::V1::BookingInquiriesController do
 
       # The login is tested in the user_as_organization_spec, the way to logged as one
       # in the specs, is sendind the current_organization_id in the session (2nd hash)
-      it 'doesn\'t retrieve the organization inquiries if is not logged as it' do
+      it 'retrieves the users inquiries if is not logged as it' do
         get :organization_inquiries_with_news, id: organization.id
-        expect(response.status).to eq(403)
+        expect(response.status).to eq(200)
       end
 
       it 'should retrieve inquiries ordered desc by the last message date' do
@@ -208,20 +208,20 @@ describe Api::V1::BookingInquiriesController do
     end
 
     context 'when the logged user does not belongs to the organization' do
-      it 'doesn\'t retrieve the organization inquiries' do
+      it 'retrieves the user inquiries' do
         organization2 = FactoryGirl.create(:organization)
         get :organization_inquiries_with_news, { id: organization2.id },
             current_organization_id: organization2.id
-        expect(response.status).to eq(403)
+        expect(response.status).to eq(200)
       end
     end
 
     context 'when the user belongs to the organization but is logged as another one' do
-      it 'doesn\'t retrieve the organization inquiries' do
+      it 'retrieve the current organization inquiries' do
         organization2 = FactoryGirl.create(:organization, user: @user_logged)
         get :organization_inquiries_with_news, { id: organization.id },
             current_organization_id: organization2.id
-        expect(response.status).to eq(403)
+        expect(response.status).to eq(200)
       end
     end
   end
@@ -270,10 +270,10 @@ describe Api::V1::BookingInquiriesController do
         expect(body['inquiries'].size).to eql(amount)
       end
 
-      it 'doesn\' let the user retrieve other users inquiries' do
+      it 'retrieve his own inquiries' do
         user2 = FactoryGirl.create(:user)
         get :user_inquiries_with_news, id: user2.id
-        expect(response.status).to eq(403)
+        expect(response.status).to eq(200)
       end
 
       it 'shouldn\'t retrieve the inquiries that have been read' do
@@ -286,11 +286,11 @@ describe Api::V1::BookingInquiriesController do
     end
 
     context 'when the user is logged as an organization' do
-      it 'doesn\'t retrieve the user inquiries' do
+      it 'retrieves the organization inquiries' do
         organization = FactoryGirl.create(:organization, user: @user_logged)
         get :user_inquiries_with_news, { id: @user_logged.id },
             current_organization_id: organization.id
-        expect(response.status).to eq(403)
+        expect(response.status).to eq(200)
       end
     end
   end

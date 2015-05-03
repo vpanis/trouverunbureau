@@ -8,25 +8,21 @@ module Api
 
       # GET /organizations/:id/inquiries
       def organization_inquiries
-        params[:entity] = Organization
         inquiries
       end
 
       # GET /users/:id/inquiries
       def user_inquiries
-        params[:entity] = User
         inquiries
       end
 
       # GET /organizations/:id/inquiries_with_news
       def organization_inquiries_with_news
-        params[:entity] = Organization
         inqueries_with_news
       end
 
       # GET /users/:id/inquiries_with_news
       def user_inquiries_with_news
-        params[:entity] = User
         inqueries_with_news
       end
 
@@ -76,7 +72,8 @@ module Api
         render status: 200,
                json: serialized_paginated_array(Booking.includes(:space, :owner)
                                                        .all_bookings_for(current_represented),
-                                                :inquiries, InquirySerializer).as_json
+                                                :inquiries, InquirySerializer,
+                                                scope: current_represented).as_json
       end
 
       def inqueries_with_news
@@ -86,12 +83,9 @@ module Api
       end
 
       def represented_data_validation
-        if params[:id].to_i != current_represented.id ||
-          params[:entity] != current_represented.class
-          render status: 403, nothing: true
-          return false
-        end
-        true
+        return true if current_represented.present?
+        render status: 403, nothing: true
+        false
       end
     end
   end

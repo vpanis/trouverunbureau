@@ -117,7 +117,8 @@
         padding-left: 25px;
       }
     }
-    .pending,
+    .pending_authorization,
+    .pending_payment,
     .approved,
     .paid,
     .cancelled,
@@ -127,10 +128,10 @@
       font-weight: 700;
       width: 90px;
     }
-    .pending {
+    .pending_authorization {
       color: $red;
     }
-    .approved {
+    .approved, .pending_payment {
       color: $aqua;
     }
     .paid {
@@ -294,7 +295,7 @@
     }
   }
   .buttons{
-    margin: 60px 0 20px;
+    margin: 25px 0 0;
   }
 }
 
@@ -321,7 +322,7 @@
 
 .messages-wrapper {
   min-height: 100px;
-  height: calc(100vh - 600px);
+  height: calc(100vh - 570px);
   overflow-y: auto;
   .who {
     display: inline-block;
