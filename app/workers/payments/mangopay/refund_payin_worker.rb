@@ -3,13 +3,13 @@ module Payments
     class RefundPayinWorker
       include Sidekiq::Worker
 
-      def perform(booking_id, user_id, percentage = 1)
+      def perform(booking_id, user_id, percentage = 1, deposit = false)
         init_log(booking_id, user_id)
         @booking = Booking.includes(:payment).find_by_id(booking_id)
         return unless refund_possible(user_id)
         @venue = @booking.space.venue
 
-        refund = mangopay_refund(percentage)
+        refund = mangopay_refund(price_calculator(percentage, deposit))
         return save_refund_error(refund['ResultMessage']) if
             refund['Status'] == 'FAILED'
         save_refund(refund)
@@ -37,23 +37,26 @@ module Payments
                                              Booking.states[:error_refunding])
       end
 
-      def mangopay_refund
+      def mangopay_refund(price)
         currency = @venue.currency.upcase
         MangoPay::PayIn.refund(@booking.payment.transaction_id,
                                AuthorId: @booking.owner.mangopay_payment_account.mangopay_user_id,
                                DebitedFunds: {
-                                 Currency: currency, Amount: price_calculator(@booking.price) },
+                                 Currency: currency, Amount: price },
                                Fees: { Currency: currency, Amount: 0 })
       end
 
       def save_refund(transaction)
         @booking.payment.update_attributes(transaction_status: "REFUND_#{transaction['Status']}")
         BookingManager.change_booking_status(User.find(user_id), @booking,
-                                             Booking.states[:cancelled])
+                                             Booking.states[:cancelled]) unless percentage == 0 &&
+                                                                                deposit
       end
 
-      def price_calculator(price)
-        (price * percentage * 100).to_i
+      def price_calculator(percentage, deposit)
+        price = @booking.price * percentage
+        price += @booking.deposit if deposit
+        (price * 100).to_i
       end
     end
   end
