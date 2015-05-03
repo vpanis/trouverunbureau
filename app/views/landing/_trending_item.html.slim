@@ -1,15 +1,18 @@
-.col-xs-10.col-sm-5.col-md-3.col-lg-3.space-image-wrapper class="#{offset}"
-  .space-image-box style="background-image: url(#{ asset_path img_file_name});"
-  .space-image-box-over
-    .space-image-info
-      .city-name
-        | #{city}
-      .separator
-      .space-info-bottom
-        .amount
-          | #{amount}
-        .amount-description
-          | #{t('home.your_space.workspaces')}
-        .footer
-          | #{t('home.your_space.see_all')}
+- if offset
+  - offset_classes = 'col-xs-offset-1 col-sm-offset-1 col-md-offset-0'
+- else
+  - offset_classes = 'col-xs-offset-1 col-sm-offset-0 col-md-offset-0'
+- city_name = @trending_cities[index].first
+
+= link_to spaces_path(search: city_name) do
+  .col-xs-10.col-sm-5.col-md-3.col-lg-3.space-image-wrapper class="#{offset_classes}"
+    .space-image-box style="background-image: url(#{ asset_path img_file_name});"
+    .space-image-box-over
+      .space-image-info
+        .city-name = city_name
+        .separator
+        .space-info-bottom
+          .amount = @trending_cities[index].last
+          .amount-description = t('home.your_space.workspaces')
+          .footer = t('home.your_space.see_all')
 
