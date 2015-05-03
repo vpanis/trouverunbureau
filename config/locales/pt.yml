@@ -318,6 +318,8 @@ pt:
     language: 'Language'
     date_of_birth: 'Date of birth'
     location: 'Location'
+    nationality: 'Nationality'
+    country_of_residence: 'Country of residence'
     emergency_name: 'Name'
     emergency_phone: 'Phone number'
     emergency_email: 'Email'

@@ -90,6 +90,9 @@ on_load = ->
       $('#email-popover').popover(options)
       $('#phone-popover').popover(options)
       $('#emergency-popover').popover(options)
+      $('#nationality-popover').popover(options)
+      $('#country_of_residence-popover').popover(options)
+
 
     new google.maps.places.Autocomplete(document.getElementById('user_location'))
     initialize_selects()
