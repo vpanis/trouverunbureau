@@ -12,8 +12,12 @@ class Space < ActiveRecord::Base
   # Validations
   validates :s_type, :name, :capacity, :quantity, :venue, :deposit, presence: true
 
-  validates :capacity, :quantity, :deposit, numericality: {
+  validates :capacity, :quantity, numericality: {
     only_integer: true,
+    greater_than_or_equal_to: 0
+  }
+
+  validates :deposit, numericality: {
     greater_than_or_equal_to: 0
   }
 

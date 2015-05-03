@@ -29,7 +29,7 @@ class Booking < ActiveRecord::Base
     greater_than_or_equal_to: 1
   }
 
-  validates :price, :fee, numericality: {
+  validates :price, :fee, :deposit, numericality: {
     greater_than_or_equal_to: 0
   }
 
@@ -89,6 +89,7 @@ class Booking < ActiveRecord::Base
 
   def initialize_fields
     self.state ||= Booking.states[:pending_authorization]
+    self.deposit ||= 0
   end
 
   def calculate_price
