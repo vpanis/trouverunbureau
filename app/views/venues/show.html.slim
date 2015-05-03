@@ -17,7 +17,7 @@
         .venue-name
           h1 = @venue.name
         .location
-          p = @venue.town + ', ' + @venue.country.name
+          p = @venue.town + ', ' + Country.new(@venue.country_code).name
     .visible-xs-block
       .row
         .venue-avatar
@@ -32,7 +32,7 @@
             h1 = @venue.name
           .location
             .location-icon
-            p = @venue.town + ', ' + @venue.country.name
+            p = @venue.town + ', ' + Country.new(@venue.country_code).name
   .col-xs-12.col-sm-5.col-md-5.col-lg-4
     .row.tab-selector-container
       .col-xs-6.tab-selector.active#venue-info-selector

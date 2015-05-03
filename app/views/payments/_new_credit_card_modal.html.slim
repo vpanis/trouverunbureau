@@ -1,0 +1,12 @@
+.modal.fade aria-hidden="true" aria-labelledby="newCreditCardLabel" role="dialog" tabindex="-1" id="new-credit-card"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close aria-label="#{t('commons.close')}" data-dismiss="modal" type="button"
+          span aria-hidden="true"  &times;
+        h4.modal-title id="newCreditCardLabel" = t('payment.new_credit_card')
+      .modal-body
+        #js-card-pre-registration-data
+          = select_tag(:credit_card, options_for_select(currency_options, 'eur'), {id: 'js-card_currency', class: 'form-control no-borders credit-cards-select'})
+          a id="#"
+            button#registration-credit-card.js-create-card-registration.width-100.rounded-btn.bold.yellow-fill.uppercase data-dismiss="modal" data-toggle="modal" data-target="#create-credit-card" = t('payment.register_credit_card')

@@ -1,49 +1,54 @@
-= javascript_include_tag "braintree_payment/braintree_dropin"
-#hidden-data data-payment-id="#{@payment.id}"
-h2
-  span Hello #{current_represented.name}
-  br
-  span It's Payment Time
-
-h4
-  span Venue: #{@booking.space.venue.name}
-  br
-  span Space: #{@booking.space.name}
-  br
-  span Description: #{@booking.space.description}
-  br
-  span Capacity: #{@booking.space.capacity}
-  br
-  span Quantity: #{@booking.quantity}
-  br
-  span From: #{@booking.from}
-  br
-  span To: #{@booking.to}
-
-h3
-  span Price: #{@booking.price}
-
-= form_tag(payments_path, method: "post")
-  = hidden_field_tag :booking_id, @booking.id
-  = hidden_field_tag :mode, "braintree"
-  #js-dropin
-  = submit_tag("Pay")
-
-h3
-  span BOOKING STATE: #{@booking.state}
-  br
-  - if @booking.payment.present?
-    span Transaction Status: #{@booking.payment.transaction_status}
-    br
-    span Escrow Status: #{@booking.payment.escrow_status}
-    br
-    span Transaction Id: #{@booking.payment.transaction_id}
-    br
-    span Error Message: #{@booking.payment.error_message}
-    br
-    span Card Type: #{@booking.payment.card_type}
-    br
-    span Card Last 4: #{@booking.payment.card_last_4}
-    br
-    span Card Expiration: #{@booking.payment.card_expiration_date}
-    br
+= render 'shared/menu_bar', user: current_represented
+.container
+  .user-title
+    h3.yellow-title = t('payment.payment')
+    .small-separator
+    h4.gray-subtitle = t('payment.welcome', name: current_represented.name)
+  .payment-info-container
+    #hidden-data data-payment-id="#{@payment.id if @payment.present?}" data-payment-state="#{@payment.transaction_status if @payment.present?}" data-booking-id="#{@booking.id}" data-booking-state="#{@booking.state}"
+    .payment-info
+      = image_tag('venue-default.png', width: '75px', height: '75px')
+      p.space-name = @booking.space.name
+      p.space-type
+        span = "#{t('payment.space_type')}: "
+        = ' ' + t("spaces.types.#{@booking.space.s_type}")
+    .table-data
+      .table-field
+        p
+          span.bold = @booking.space.capacity
+          br
+          span = t('payment.capacity')
+      .info-separator |
+      .table-field
+        p
+          span.bold = (@booking.hour?)? (@booking.to.advance(minutes: -1).hour - @booking.from.hour + 1) : ((@booking.to.to_date - @booking.from.to_date + 1).to_i)
+          br
+          span = t("payment.#{(@booking.hour?)? 'hours' : 'days'}")
+      .info-separator |
+      .table-field
+        p
+          span.bold = @booking.quantity
+          br
+          span = t('payment.spaces')
+      .info-separator |
+      .table-field
+        p
+          span.bold = @booking.from.to_formatted_s("custom_#{(@booking.hour?)? 'with_hours' : 'only_day'}".to_sym)
+          br
+          span = t('payment.check_in')
+      .info-separator |
+      .table-field
+        p
+          span.bold = @booking.to.to_formatted_s("custom_#{(@booking.hour?)? 'with_hours' : 'only_day'}".to_sym)
+          br
+          span = t('payment.check_out')
+    .payment-price
+      p
+        span = t('payment.price')
+        br
+        span.bold = "$#{number_with_precision(@booking.price, precision: 2)} (#{@booking.space.venue.currency.upcase})"
+    - case @payment_method
+    - when "mangopay"
+        = render "mangopay_payment"
+    - when "braintree"
+        = render "braintree_payment"

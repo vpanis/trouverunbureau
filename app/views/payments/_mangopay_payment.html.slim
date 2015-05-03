@@ -1,0 +1,39 @@
+= javascript_include_tag "payment_modes/mangopay_dropin"
+= render 'new_credit_card_modal'
+= render 'create_credit_card_modal'
+#js-mangopay-config data-base-url="#{Rails.configuration.payment.mangopay.base_url}" data-client-id="#{Rails.configuration.payment.mangopay.client_id}"
+.uk-payment-container
+  .credit-cards-title
+    .title
+      = t('payment.used_credit_card')
+    .new-credit-card data-toggle="modal" data-target="#new-credit-card"
+      span = t('payment.new_credit_card')
+  - active_credit_cards = @payment_account.mangopay_credit_cards.activated
+  - unless active_credit_cards.empty?
+    .credit-cards-container.js-credit-cards
+      - active_credit_cards.each do |credit_card|
+        .js-credit-card data-credit-card-id="#{credit_card.id}"
+          .credit-card.col-md-4
+            .radio-container
+              input type="radio" name="credit_card"
+            .credit-card-info
+              p
+                span = "#{t('payment.last_digits')}: "
+                = credit_card.last_4
+              p
+                span = "#{t('payment.type')}: "
+                | CB/VISA/MASTERCARD
+              p
+                span = "#{t('payment.expiration')}: "
+                = "#{credit_card.expiration.first(2)}/#{credit_card.expiration.last(2)}"
+              p
+                span = "#{t('payment.currency')}: "
+                = currency_options.find { |c| c[1] == credit_card.currency.downcase }[0]
+
+  span.js-no-card-error.hidden = t('payment.choose_credit_card')
+  .buttons
+    .col-xs-6
+      = link_to(inbox_user_path(current_represented))
+        button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
+    .col-xs-6
+     button#js-pay.rounded-btn.yellow-fill.width-100.uppercase = t('commons.pay')

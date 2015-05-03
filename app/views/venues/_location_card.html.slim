@@ -4,7 +4,7 @@
     .separator
     .address
       .street = @venue.street
-      .country = "#{@venue.town}, #{@venue.country.name}"
+      .country = "#{@venue.town}, #{Country.new(@venue.country_code).name}"
   .venue-map#map-canvas
   .venue-coordinates.hidden
     .latitude = @venue.latitude

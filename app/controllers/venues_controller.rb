@@ -69,17 +69,17 @@ class VenuesController < ModelController
     params.require(:venue).permit(:town, :street, :postal_code, :phone, :email, :website,
                                   :latitude, :longitude, :name, :description, :currency, :v_type,
                                   :space, :space_unit, :floors, :rooms, :desks, :vat_tax_rate,
-                                  :amenities, :rating, :professions, :country,
+                                  :amenities, :rating, :professions, :country_code,
                                   day_hours_attributes: [:id, :from, :to, :weekday, :_destroy])
   end
 
   def new_venue_params
-    params.require(:venue).permit(:name, :country_id, :logo, :force_submit)
+    params.require(:venue).permit(:name, :country_code, :logo, :force_submit)
   end
 
   def edit_venue_params
-    params.require(:venue).permit(:name, :street, :country_id, :town, :postal_code, :email, :phone,
-                                  :v_type, :currency, :latitude, :longitude, :logo,
+    params.require(:venue).permit(:name, :street, :country_code, :town, :postal_code, :email,
+                                  :phone, :v_type, :currency, :latitude, :longitude, :logo,
                                   :force_submit_upd)
   end
 end

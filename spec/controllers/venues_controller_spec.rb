@@ -27,14 +27,14 @@ describe VenuesController do
 
   describe 'POST venues/create' do
     context 'the user is logged in' do
-      let(:country) { create(:country) }
+      let(:country) { 'US' }
       let(:name) { 'a name' }
       before { sign_in user }
 
-      context 'name and country are present' do
+      context 'name and country_code are present' do
         before do
           @previous_venue = Venue.last
-          params = { name: name, country_id: country.id, force_submit: true }
+          params = { name: name, country_code: country, force_submit: true }
           post :create, venue: params
           @venue = Venue.last
         end
@@ -47,22 +47,22 @@ describe VenuesController do
           expect(response.redirect_url).to eq(edit_venue_url(@venue.id))
         end
 
-        it 'creates a venue with only name, logo and country' do
+        it 'creates a venue with only name, logo and country_code' do
           expect(@venue).not_to eq(@previous_venue)
           expect(@venue.id).to be_present
           expect(@venue.name).to eq(name)
-          expect(@venue.country).to eq(country)
+          expect(@venue.country_code).to eq(country)
         end
       end
 
       context 'name is not present' do
         it 'fails with record invalid' do
-          params = { country_id: country.id, force_submit: true }
+          params = { country_code: country, force_submit: true }
           expect { post :create, venue: params }.to raise_error(ActiveRecord::RecordInvalid)
         end
       end
 
-      context 'country is not present' do
+      context 'country_code is not present' do
         it 'fails with record invalid' do
           params = { name: name, force_submit: true }
           expect { post :create, venue: params }.to raise_error(ActiveRecord::RecordInvalid)
@@ -145,7 +145,7 @@ describe VenuesController do
                          amenities: [Venue::AMENITY_TYPES.last.to_s],
                          professions: [Venue::PROFESSIONS.last.to_s])
         end
-        let(:new_country) { create(:country) }
+        let(:new_country) { 'US' }
         let(:new_town) { 'new town' }
         let(:new_street) { 'new_street' }
         let(:new_postal_code) { 'aa123' }
@@ -157,7 +157,6 @@ describe VenuesController do
         let(:new_description) { 'new description' }
         let(:new_currency) { 'gbp' }
         let(:new_v_type) { 'restaurant' }
-        let(:new_country_id) { new_country.id }
         let(:new_amenities) { [Venue::AMENITY_TYPES.first.to_s, Venue::AMENITY_TYPES.second.to_s] }
         let(:new_professions) { [Venue::PROFESSIONS.first.to_s, Venue::PROFESSIONS.second.to_s] }
 
@@ -165,7 +164,7 @@ describe VenuesController do
           params = { town: new_town, street: new_street, postal_code: new_postal_code,
                      email: new_email, phone: new_phone, latitude: new_latitude,
                      longitude: new_longitude, name: new_name, description: new_description,
-                     currency: new_currency, v_type: new_v_type, country_id: new_country_id }
+                     currency: new_currency, v_type: new_v_type, country_code: new_country }
           patch :update, id: venue.id, venue: params
           venue.reload
         end
@@ -181,7 +180,7 @@ describe VenuesController do
           expect(venue.name).to eq(new_name)
           expect(venue.currency).to eq(new_currency)
           expect(venue.v_type).to eq(new_v_type)
-          expect(venue.country).to eq(new_country)
+          expect(venue.country_code).to eq(new_country)
         end
 
         it 'does not update unpermited params' do

@@ -21,8 +21,11 @@
     a href=photos_venue_path(venue)
       li.photos class=('done' if step > 4) class=('selected' if step == 4)
         p = t('edit_venue_progress.photos')
-    a href=spaces_venue_path(venue)
+    a href=collection_account_info_venue_path(venue)
       li.spaces class=('done' if step > 5) class=('selected' if step == 5)
+        p = t('edit_venue_progress.payout_method')
+    a href=spaces_venue_path(venue)
+      li.spaces class=('done' if step > 6) class=('selected' if step == 6)
         p = t('edit_venue_progress.spaces')
   .publish
     a.rounded-btn.grey-fill.width-100 href="#" = t('edit_venue_progress.publish')

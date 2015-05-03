@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150501135224) do
+ActiveRecord::Schema.define(version: 20150502184839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,10 +31,10 @@ ActiveRecord::Schema.define(version: 20150501135224) do
     t.datetime "owner_last_seen"
     t.datetime "venue_last_seen"
     t.datetime "approved_at"
-    t.boolean  "owner_delete",       default: false
-    t.boolean  "venue_owner_delete", default: false
     t.integer  "payment_id"
     t.string   "payment_type"
+    t.boolean  "owner_delete",       default: false
+    t.boolean  "venue_owner_delete", default: false
     t.integer  "fee"
   end
 
@@ -73,6 +73,16 @@ ActiveRecord::Schema.define(version: 20150501135224) do
     t.boolean  "expecting_braintree_response"
   end
 
+  create_table "braintree_payment_accounts", force: true do |t|
+    t.integer  "buyer_id"
+    t.string   "buyer_type"
+    t.string   "braintree_customer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "braintree_payment_accounts", ["buyer_id", "buyer_type"], name: "index_braintree_payment_accounts_on_buyer_id_and_buyer_type", using: :btree
+
   create_table "braintree_payments", force: true do |t|
     t.string   "transaction_status"
     t.string   "escrow_status"
@@ -98,11 +108,91 @@ ActiveRecord::Schema.define(version: 20150501135224) do
 
   add_index "client_reviews", ["booking_id"], name: "index_client_reviews_on_booking_id", using: :btree
 
-  create_table "countries", force: true do |t|
-    t.string   "name"
+  create_table "mangopay_collection_accounts", force: true do |t|
+    t.boolean  "active",                      default: false
+    t.string   "status"
+    t.text     "error_message"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "nationality"
+    t.string   "country_of_residence"
+    t.date     "date_of_birth"
+    t.string   "address"
+    t.string   "legal_person_type"
+    t.string   "business_name"
+    t.string   "business_email"
+    t.string   "bank_type"
+    t.string   "iban_last_4"
+    t.string   "bic"
+    t.string   "account_number_last_4"
+    t.string   "sort_code"
+    t.string   "bank_name"
+    t.string   "institution_number"
+    t.string   "branch_code"
+    t.string   "bank_country"
+    t.string   "mangopay_user_id"
+    t.string   "wallet_id"
+    t.string   "bank_account_id"
+    t.boolean  "mangopay_persisted"
+    t.boolean  "expecting_mangopay_response"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "mangopay_credit_cards", force: true do |t|
+    t.string   "credit_card_id"
+    t.string   "last_4"
+    t.string   "expiration"
+    t.string   "card_type"
+    t.integer  "mangopay_payment_account_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "status"
+    t.string   "currency"
+    t.string   "card_registration_url"
+    t.string   "pre_registration_data"
+    t.string   "registration_access_key"
+    t.string   "registration_id"
+    t.datetime "registration_expiration_date"
+    t.text     "error_message"
+  end
+
+  add_index "mangopay_credit_cards", ["mangopay_payment_account_id"], name: "index_mangopay_credit_cards_on_mangopay_payment_account_id", using: :btree
+
+  create_table "mangopay_payment_accounts", force: true do |t|
+    t.integer  "buyer_id"
+    t.string   "buyer_type"
+    t.string   "mangopay_user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "status"
+    t.text     "error_message"
+    t.string   "wallet_id"
+  end
+
+  add_index "mangopay_payment_accounts", ["buyer_id", "buyer_type"], name: "index_mangopay_payment_accounts_on_buyer_id_and_buyer_type", using: :btree
+
+  create_table "mangopay_payments", force: true do |t|
+    t.string   "transaction_status"
+    t.string   "transaction_id"
+    t.text     "error_message"
+    t.string   "card_type"
+    t.string   "card_last_4"
+    t.string   "card_expiration_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "notification_date_int"
+    t.string   "redirect_url"
+    t.integer  "user_paying_id"
+    t.string   "transference_id"
+    t.string   "payout_id"
+  end
+
+  add_index "mangopay_payments", ["payout_id"], name: "index_mangopay_payments_on_payout_id", unique: true, using: :btree
+  add_index "mangopay_payments", ["transaction_id"], name: "index_mangopay_payments_on_transaction_id", unique: true, using: :btree
+  add_index "mangopay_payments", ["transference_id"], name: "index_mangopay_payments_on_transference_id", unique: true, using: :btree
+  add_index "mangopay_payments", ["user_paying_id"], name: "index_mangopay_payments_on_user_paying_id", using: :btree
 
   create_table "messages", force: true do |t|
     t.integer  "booking_id"
@@ -139,7 +229,6 @@ ActiveRecord::Schema.define(version: 20150501135224) do
     t.integer  "quantity_reviews"
     t.integer  "reviews_sum"
     t.string   "logo"
-    t.string   "payment_customer_id"
   end
 
   add_index "organizations", ["email"], name: "index_organizations_on_email", unique: true, using: :btree
@@ -196,7 +285,8 @@ ActiveRecord::Schema.define(version: 20150501135224) do
     t.string   "emergency_email"
     t.string   "emergency_phone"
     t.string   "emergency_relationship"
-    t.string   "payment_customer_id"
+    t.string   "nationality"
+    t.string   "country_of_residence"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -275,15 +365,14 @@ ActiveRecord::Schema.define(version: 20150501135224) do
     t.integer  "owner_id"
     t.string   "owner_type"
     t.text     "professions",             default: [], array: true
-    t.integer  "country_id"
     t.integer  "collection_account_id"
     t.string   "collection_account_type"
     t.integer  "status"
     t.text     "office_rules"
+    t.string   "country_code"
   end
 
   add_index "venues", ["collection_account_id", "collection_account_type"], name: "index_venues_on_polymorphic_collection_account", unique: true, using: :btree
-  add_index "venues", ["country_id"], name: "index_venues_on_country_id", using: :btree
   add_index "venues", ["owner_id", "owner_type"], name: "index_venues_on_owner_id_and_owner_type", using: :btree
 
 end

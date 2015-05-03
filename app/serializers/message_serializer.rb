@@ -15,4 +15,9 @@ class MessageSerializer < ActiveModel::Serializer
     object.created_at.to_s
   end
 
+  def text
+    return object.text if object.text?
+    I18n.t("messages.#{object.m_type}")
+  end
+
 end

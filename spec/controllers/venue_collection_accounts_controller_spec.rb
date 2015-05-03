@@ -57,7 +57,7 @@ RSpec.describe VenueCollectionAccountsController, type: :controller do
     context 'when user logged in' do
       before(:each) do
         @user_logged = FactoryGirl.create(:user)
-        @venue = FactoryGirl.create(:venue, owner: @user_logged)
+        @venue = FactoryGirl.create(:venue, owner: @user_logged, country_code: 'US')
         sign_in @user_logged
       end
 
@@ -95,19 +95,19 @@ RSpec.describe VenueCollectionAccountsController, type: :controller do
             expect(@venue.collection_account.present?).to eq(false)
           end
 
-          it 'if succeeds, enqueue a BraintreeSubMerchantAccountWorker\'s job' do
-            assert_equal 0, BraintreeSubMerchantAccountWorker.jobs.size
+          it 'if succeeds, enqueue a Payments::Braintree::SubMerchantAccountWorker\'s job' do
+            assert_equal 0, Payments::Braintree::SubMerchantAccountWorker.jobs.size
             patch :edit_collection_account, id: @venue.id,
                                             braintree_collection_account: valid_params
             expect(response.status).to eq(201)
-            assert_equal 1, BraintreeSubMerchantAccountWorker.jobs.size
+            assert_equal 1, Payments::Braintree::SubMerchantAccountWorker.jobs.size
           end
 
-          it 'if fails, doesn\'t enqueue a BraintreeSubMerchantAccountWorker\'s job' do
-            assert_equal 0, BraintreeSubMerchantAccountWorker.jobs.size
+          it 'if fails, doesn\'t enqueue a Payments::Braintree::SubMerchantAccountWorker\'s job' do
+            assert_equal 0, Payments::Braintree::SubMerchantAccountWorker.jobs.size
             patch :edit_collection_account, id: @venue.id
             expect(response.status).to eq(400)
-            assert_equal 0, BraintreeSubMerchantAccountWorker.jobs.size
+            assert_equal 0, Payments::Braintree::SubMerchantAccountWorker.jobs.size
           end
         end
       end

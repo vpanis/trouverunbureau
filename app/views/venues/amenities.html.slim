@@ -5,6 +5,13 @@
   = render 'shared/edit_venue_progress', venue: @venue, progress: 40, step: 3
   .details-section.col-md-7.col-md-offset-1.margin-top
     = render 'venue_heading', subtitle: nil
+    .title.inline.text-center
+      - if @venue.logo.present?
+        = image_tag(@venue.logo.url, class: 'rounded-img')
+      - else
+        = image_tag('venue-default.png', width: '95px', height: '95px')
+      h3.big = @venue.name
+      .small-separator
     = form_for @venue, url: {action: "amenities"} do |f|
       = hidden_field_tag 'venue[amenities][]'
       - Venue::AMENITY_TYPES.each do |amenity|

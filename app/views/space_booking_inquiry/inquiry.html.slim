@@ -31,7 +31,7 @@
       .workspace-location-wrapper
         = image_tag('i-location.png', class: 'location-image')
         span.location-text
-          | #{@space.venue.street}, #{@space.venue.town}, #{@space.venue.country.name}
+          | #{@space.venue.street}, #{@space.venue.town}, #{Country.new(@space.venue.country_code).name}
   .separator
   .time-select-wrapper
     label
@@ -130,7 +130,7 @@
           td
             span.base-price
               | $ {{booking_type_per_price() | number:0}}
-            | (arg)
+            = "(#{@space.venue.currency})"
         tr
           td
             | {{selected_tab}}s amount
@@ -151,7 +151,8 @@
           td
             | Total
           td
-            | ${{booking_type_per_price() * amount_for_booking_type() * space_quantity}}(arg)
+            | ${{booking_type_per_price() * amount_for_booking_type() * space_quantity}}
+            = "(#{@space.venue.currency})"
     .booking-reasons-wrapper
       h2
         = t('venues.show.why_deskspotting.title')

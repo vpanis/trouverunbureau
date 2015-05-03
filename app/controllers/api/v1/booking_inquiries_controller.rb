@@ -1,6 +1,10 @@
 module Api
   module V1
     class BookingInquiriesController < BookingsController
+      include RepresentedHelper
+      include ArraySerializerHelper
+
+      before_action :authenticate_user!
 
       # GET /organizations/:id/inquiries
       def organization_inquiries

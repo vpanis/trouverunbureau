@@ -1,0 +1,163 @@
+@import 'variables';
+
+.payment-info-container {
+  width: 850px;
+  margin: 0 auto;
+  .payment-info {
+    text-align: center;
+    border-bottom: 2px solid $yellow;
+    padding-bottom: 20px;
+    img {
+      margin-top: 25px;
+    }
+    p {
+      margin-top: 15px;
+    }
+    .space-name {
+      font-weight: bold;
+      color: black;
+    }
+    .space-type {
+      text-transform: uppercase;
+      span {
+        color: black;
+        font-weight: bold;
+      }
+    }
+  }
+  .table-data {
+    display: table;
+    margin: 0 auto;
+    padding-top: 20px;
+    .info-separator {
+      text-align: center;
+      display: table-cell;
+      font-size: 16px;
+      vertical-align: middle;
+      font-weight: 100;
+    }
+    .table-field {
+      padding: 0 25px;
+      text-align: center;
+      display: table-cell;
+      p {
+        line-height: 25px;
+        font-size: 17px;
+      }
+    }
+  }
+  .payment-price {
+    text-align: center;
+    background: $light-gray;
+    margin-top: 25px;
+    padding: 10px;
+    border-bottom: 2px solid $yellow;
+    p {
+      font-size: 16px;
+      color: black;
+      text-transform: uppercase;
+    }
+  }
+  .usa-payment-container {
+    border-bottom: 2px solid $light-gray;
+    padding: 15px;
+  }
+  .uk-payment-container {
+    .credit-cards-title {
+      border-bottom: 2px solid $yellow;
+      display: table;
+      width: 100%;
+      .title {
+        display: table-cell;
+        color: black;
+        font-weight: bold;
+        padding: 15px 0;
+        text-transform: uppercase;
+      }
+      .new-credit-card {
+        display: table-cell;
+        background: $yellow;
+        width: 25%;
+        text-align: center;
+        cursor: pointer;
+        position: relative;
+        &:before {
+          font-size: 30px;
+          font-weight: 700;
+          line-height: 30px;
+          position: absolute;
+          top: calc(50% - 15px);
+          left: 15px;
+          width: 30px;
+          height: 30px;
+          content: '+';
+          text-align: center;
+          color: #ffe111;
+          border-radius: 100%;
+          background-color: black;
+        }
+        span {
+          padding-left: 30px;
+          color: black;
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+      }
+    }
+    .credit-cards-container {
+      margin-top: 20px;
+      .credit-card {
+        display: table;
+        border-right: 1px solid $gray;
+        .credit-card-info {
+          display: table-cell;
+          p {
+            span {
+              font-weight: bold;
+            }
+          }
+        }
+        .radio-container {
+          display: table-cell;
+          vertical-align: middle;
+          input[type="radio"]{
+            height: 22px;
+            width: 22px;
+            margin: 0;
+            margin-right: 5px;
+            cursor: pointer;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -o-appearance: none;
+            box-shadow: none;
+            -moz-box-shadow: none;
+            -webkit-box-shadow: none;
+            background-color: white;
+            border: 1px solid black !important;
+            border-radius: 100% !important;
+            padding: 5px;
+            display: inline-block;
+            position: relative;
+            border-radius: 3px;
+            vertical-align: middle;
+            &:checked:after {
+              border-radius: 100% !important;
+              content: "";
+              background-color: $yellow;
+              height: 24px;
+              width: 24px;
+              left: -2px;
+              top: -2px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.bold {
+  font-weight: bold;
+}
+.credit-cards-select, .credit-cards-type-select {
+  margin-bottom: 15px;
+}
