@@ -3,11 +3,11 @@ class InquirySerializer < ActiveModel::Serializer
   include ActionView::Helpers::DateHelper
 
   attributes :id, :space, :state, :from, :to, :b_type, :price, :quantity, :message_count,
-             :last_message_at, :client
+             :last_message_at, :client, :deposit, :fee, :venue_owner
 
   def space
     SpaceSerializer.new(object.space, only: [:id, :name, :city, :currency, :capacity, :venue_name,
-                                             :deposit, :logo],
+                                             :logo],
                                       root: false)
   end
 
@@ -27,6 +27,15 @@ class InquirySerializer < ActiveModel::Serializer
     object.to.to_s
   end
 
+  def deposit
+    # TODO: ponti fix me
+    4
+  end
+
+  def venue_owner
+    object.space.venue.owner.eql?(scope)
+  end
+
   delegate :state, to: :object
 
   def last_message_at
@@ -35,6 +44,6 @@ class InquirySerializer < ActiveModel::Serializer
   end
 
   def with_news
-    BookingManager.booking_with_news?(object, current_represented) if current_represented
+    BookingManager.booking_with_news?(object, scope) if scope
   end
 end

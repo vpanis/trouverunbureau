@@ -117,7 +117,8 @@
         padding-left: 25px;
       }
     }
-    .pending,
+    .pending_authorization,
+    .pending_payment,
     .approved,
     .paid,
     .cancelled,
@@ -127,10 +128,10 @@
       font-weight: 700;
       width: 90px;
     }
-    .pending {
+    .pending_authorization {
       color: $red;
     }
-    .approved {
+    .approved, .pending_payment {
       color: $aqua;
     }
     .paid {

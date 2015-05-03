@@ -1,24 +1,5 @@
 .container-fluid
-  .row.header
-    .col-md-9.detail
-      .row
-        .col-md-3
-          p.title Inquiry
-        .col-md-3
-          .icon.info.icon-black.pointer#gender-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
-          p.concept space rental
-          p.value() ${{selected_booking.price}}({{selected_booking.space.currency}})
-        .col-md-3.plus
-          .icon.info.icon-black.pointer#gender-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
-          p.concept deposit
-          p.value() ${{selected_booking.space.deposit}}({{selected_booking.space.currency}})
-        .col-md-3.minus
-          .icon.info.icon-black.pointer#gender-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
-          p.concept DS Commission
-          p.value() ${{selected_booking.space.deposit}}({{selected_booking.space.currency}})
-    .col-md-3.total
-      p.concept total rental
-      p.value() ${{selected_booking.price + selected_booking.space.deposit}}({{selected_booking.space.currency}})
+  = render 'booking_detail_header'
 .inbox-header
   .row
     .space-data.col-md-8
@@ -47,7 +28,6 @@
       img.avatar ng-src="{{selected_booking.client.avatar || defaultAvatar}}"
       .wrapper
         p.name() {{selected_booking.client.name}}
-        /p.description entrepreneur
       div
         .review-container
           .stars

@@ -364,7 +364,18 @@ es:
     info_deposit: All deposits are held in escrow for the security of the host and guest
   inbox:
     messages: 'Messages'
-    write_message: 'write message'
+    write_message: 'Write a Message'
+    inquiry: 'Inquiry'
+    space_rental: 'Space rental'
+    deposit: 'Deposit'
+    ds_commission: 'DS commission'
+    total_rental: 'Total Rental'
+    total_payout: 'Total Payout'
+    info_space_rental: The amount you earn. It's held in escrow until check in time. 24 hours later it's in your account
+    info_deposit: It will be held in escrow until 72 hours after the guest's checkout
+    info_fee: It's always 15%
+    info_client_space_rental: The space rental amount. It will be held in escrow until checkin time
+    info_client_deposit: It will be held in escrow and then reimbursed to you 72 hours after checkout
   reviews:
     guest_review: 'Guest review'
     space_review: 'Space review'
