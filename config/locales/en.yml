@@ -60,7 +60,7 @@ en:
     country_of_residence: Country of residence
     nationality: Nationality
   home:
-    sign_in: 'Sign in'
+    sign_in: 'Log in'
     list_your_space: "List your space"
     profile: Profile
     manage_your_venues: Manage your venues
@@ -104,7 +104,7 @@ en:
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
     footer:
       company: 'Company'
-      find_us: 'Find us'
+      join_us: 'Join us'
       about_us: 'About us'
       our_terms: 'Our Terms'
       how_it_works: 'How it works'

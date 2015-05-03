@@ -43,14 +43,14 @@
               .messages
                 - if new_messages > 0
                   p = new_messages
-          li
-            = link_to venues_path(), class: 'list-space'
-              - if user_signed_in? && !current_user.venues.empty?
-                p #{t('home.manage_your_venues')}
-              - else
-                p #{t('home.list_your_space')}
         - else
           li
-            a.list-space href=new_user_session_path
-              p #{t('home.sign_in')}
+            a href=new_user_session_path
+              p.sign-in-text #{t('home.sign_in')}
+        li
+          = link_to venues_path(), class: 'list-space'
+            - if user_signed_in? && !current_user.venues.empty?
+              p #{t('home.manage_your_venues')}
+            - else
+              p #{t('home.list_your_space')}
 .after-menu
