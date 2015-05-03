@@ -7,6 +7,8 @@ class LandingController < ApplicationController
     @space_types_options = space_types_index_options
     # TODO: que tengan al menos una foto y esten publicados
     @featured_venues = Venue.all.order(reviews_sum: :desc).limit(8)
+    # TODO: where sean de un venue valido y tengan foto
+    @workspaces = Space.all.group(:s_type).count
   end
 
   def about_us

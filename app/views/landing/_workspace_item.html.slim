@@ -1,13 +1,11 @@
-.col-xs-10.col-sm-6.col-md-4.col-lg-4.space-image-wrapper class="#{offset}"
-  .space-image-box style="background-image: url(#{ asset_path img_file_name});"
-  .space-image-box-over
-    .space-image-info
-      .amount.desk
-        | #{amount}
-      .amount-description
-        | #{desk_type}
-      .separator
-      .space-info-bottom
-        .footer
-          | #{t('home.your_space.see_all')}
+= link_to spaces_path(s_type: index) do
+  .col-xs-10.col-sm-6.col-md-4.col-lg-4.col-xs-offset-1.col-sm-offset-0.col-md-offset-0.space-image-wrapper
+    .space-image-box style="background-image: url(#{ asset_path img_file_name});"
+    .space-image-box-over
+      .space-image-info
+        .amount.desk = @workspaces[index] || 0
+        .amount-description = t("spaces.types.#{Space.s_types.key(index)}")
+        .separator
+        .space-info-bottom
+          .footer = t('home.your_space.see_all')
 

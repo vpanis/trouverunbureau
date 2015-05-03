@@ -26,12 +26,12 @@ div role="tabpanel"
           = render 'featured_item', venue: venue, offset: index.odd?
     .tab-pane.fade#workspaces-content role="tabpanel" aria-labelledby="workspaces-tab"
       .row
-        = render 'workspace_item', img_file_name: 'stub-1.png', amount: '129', desk_type: t('spaces.types.conference_room'), offset: 'col-xs-offset-1 col-sm-offset-0 col-md-offset-0'
-        = render 'workspace_item', img_file_name: 'stub-2.png', amount: '250', desk_type: t('spaces.types.meeting_room'), offset: 'col-xs-offset-1 col-sm-offset-0 col-md-offset-0'
-        = render 'workspace_item', img_file_name: 'stub-3.png', amount: '750', desk_type: t('spaces.types.private_office'), offset: 'col-xs-offset-1 col-sm-offset-0 col-md-offset-0'
-        = render 'workspace_item', img_file_name: 'stub-4.png', amount: '130', desk_type: t('spaces.types.fixed_desk'), offset: 'col-xs-offset-1 col-sm-offset-0 col-md-offset-0'
-        = render 'workspace_item', img_file_name: 'stub-5.png', amount: '550', desk_type: t('spaces.types.hot_desk'), offset: 'col-xs-offset-1 col-sm-offset-0 col-md-offset-0'
-        = render 'workspace_item', img_file_name: 'stub-6.png', amount: '1250', desk_type: t('spaces.types.communal_space'), offset: 'col-xs-offset-1 col-sm-offset-0 col-md-offset-0'
+        = render 'workspace_item', img_file_name: 'stub-1.png', index: 0
+        = render 'workspace_item', img_file_name: 'stub-2.png', index: 1
+        = render 'workspace_item', img_file_name: 'stub-3.png', index: 2
+        = render 'workspace_item', img_file_name: 'stub-4.png', index: 3
+        = render 'workspace_item', img_file_name: 'stub-5.png', index: 4
+        = render 'workspace_item', img_file_name: 'stub-6.png', index: 5
     .tab-pane.fade#trending-content role="tabpanel" aria-labelledby="trending-tab"
       .row
         = render 'trending_item', img_file_name: 'stub-1.png', city: 'new york', amount: '129', offset: 'col-xs-offset-1 col-sm-offset-1 col-md-offset-0'
