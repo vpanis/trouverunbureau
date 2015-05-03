@@ -5,6 +5,7 @@
 #venue-hour-price data-hour-price=@booking.space.hour_price
 #venue-day-price data-day-price=@booking.space.day_price
 #venue-month-price data-month-price=@booking.space.month_price
+#space-deposit data-amount=@space.deposit
 .error-wrapper
   - if @booking_errors.present?
     - @booking_errors.each do |attribute, message|
@@ -146,6 +147,11 @@
             | X {{space_quantity}}
         tr
           td
+            | Deposit
+          td
+            = "+ $#{number_with_precision(@space.deposit, precision: 2)} (#{@space.venue.currency})"
+        tr
+          td
             | DeskSpotting fee
           td
             | free
@@ -153,7 +159,7 @@
           td
             | Total
           td
-            | ${{booking_type_per_price() * amount_for_booking_type() * space_quantity}}
+            | ${{booking_type_per_price() * amount_for_booking_type() * space_quantity + space_deposit }}
             = "(#{@space.venue.currency})"
     .booking-reasons-wrapper
       h2

@@ -67,6 +67,15 @@ class Space < ActiveRecord::Base
     return self[:month_price] = (hp * 100).to_i if hp.is_a? Numeric
   end
 
+  def deposit
+    self[:deposit] / 100.0 if self[:deposit].present?
+  end
+
+  def deposit=(hp)
+    super(hp)
+    return self[:deposit] = (hp * 100).to_i if hp.is_a? Numeric
+  end
+
   private
 
   def initialize_fields
