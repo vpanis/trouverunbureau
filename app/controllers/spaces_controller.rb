@@ -1,4 +1,4 @@
-class SpacesController < ModelController
+class SpacesController < ApplicationController
   inherit_resources
   include RepresentedHelper
   include SelectOptionsHelper

@@ -1,4 +1,4 @@
-class VenuesController < ModelController
+class VenuesController < ApplicationController
   inherit_resources
   include RepresentedHelper
   include SelectOptionsHelper
