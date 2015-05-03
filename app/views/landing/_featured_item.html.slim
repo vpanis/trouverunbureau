@@ -16,18 +16,19 @@
         .separator
         .space-info-bottom
           - space = venue.spaces.first
-          - if space.hour_price.present?
-            - price = space.hour_price
-            - time = t('venues.show.per_hour')
-          - elsif space.day_price.present?
-            - price = space.day_price
-            - time = t('venues.show.per_day')
-          - elsif space.week_price.present?
-            - price = space.week_price
-            - time = t('venues.show.per_week')
-          - else
-            - price = space.month_price
-            - time = t('venues.show.per_month')
-          .price = price.to_i
-          .time = time
-          .currency = venue.currency
+          - if space.present?
+            - if space.hour_price.present?
+              - price = space.hour_price
+              - time = t('venues.show.per_hour')
+            - elsif space.day_price.present?
+              - price = space.day_price
+              - time = t('venues.show.per_day')
+            - elsif space.week_price.present?
+              - price = space.week_price
+              - time = t('venues.show.per_week')
+            - else
+              - price = space.month_price
+              - time = t('venues.show.per_month')
+            .price = price.to_i
+            .time = time
+            .currency = venue.currency
