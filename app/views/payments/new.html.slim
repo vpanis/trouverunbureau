@@ -48,7 +48,7 @@
       p
         span = t('payment.price')
         br
-        span.bold = "$#{number_with_precision(@booking.price, precision: 2)} (#{@booking.space.venue.currency.upcase})"
+        span.bold = "$#{number_with_precision(@booking.price + @booking.deposit, precision: 2)} (#{@booking.space.venue.currency.upcase})"
     - case @payment_method
     - when "mangopay"
         = render "mangopay_payment"

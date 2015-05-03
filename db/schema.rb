@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150502184839) do
+ActiveRecord::Schema.define(version: 20150503073816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,11 +31,12 @@ ActiveRecord::Schema.define(version: 20150502184839) do
     t.datetime "owner_last_seen"
     t.datetime "venue_last_seen"
     t.datetime "approved_at"
-    t.boolean  "owner_delete",       default: false
-    t.boolean  "venue_owner_delete", default: false
     t.integer  "payment_id"
     t.string   "payment_type"
+    t.boolean  "owner_delete",       default: false
+    t.boolean  "venue_owner_delete", default: false
     t.integer  "fee"
+    t.integer  "deposit"
   end
 
   add_index "bookings", ["owner_id", "owner_type"], name: "index_bookings_on_owner_id_and_owner_type", using: :btree
@@ -368,8 +369,8 @@ ActiveRecord::Schema.define(version: 20150502184839) do
     t.integer  "collection_account_id"
     t.string   "collection_account_type"
     t.integer  "status"
-    t.text     "office_rules"
     t.string   "country_code"
+    t.text     "office_rules"
   end
 
   add_index "venues", ["collection_account_id", "collection_account_type"], name: "index_venues_on_polymorphic_collection_account", unique: true, using: :btree

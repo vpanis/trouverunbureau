@@ -10,13 +10,13 @@ class SpaceBookingInquiryController < ApplicationController
 
   def create_booking_inquiry
     return render :inquiry, status: 400 unless handle_booking_type
+    @space = Space.includes(:venue).find(params[:id])
     @booking, @custom_error = create_booking
     if @booking.valid? && @custom_error.empty?
       create_booking_message
       return redirect_to inbox_user_path(current_represented)
     end
     @booking_errors = @booking.errors
-    @space = Space.includes(:venue).find(params[:id])
     @day_hours = @space.venue.day_hours.to_json(only: [:weekday, :from, :to])
     render :inquiry, status: 400
   end
@@ -86,7 +86,8 @@ class SpaceBookingInquiryController < ApplicationController
     BookingManager.book(current_user, owner: current_represented,
                                       from: @from_date,
                                       to: @to_date,
-                                      space_id: params[:id].to_i,
+                                      space: @space,
+                                      deposit: @space.deposit,
                                       b_type: @b_type,
                                       quantity: params[:booking][:quantity])
   end

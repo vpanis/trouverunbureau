@@ -146,6 +146,7 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
     $scope.format = 'dd-MM-yyyy'
     $scope.initialize_dates()
     $scope.space_quantity = 1
+    $scope.space_deposit = parseFloat($("#space-deposit").attr('data-amount'))
     close_all
     deselect_all_tabs();
     if $('.multiple-switch-wrapper .tab').attr('id') == 'tab-hour'

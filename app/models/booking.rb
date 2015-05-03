@@ -29,7 +29,7 @@ class Booking < ActiveRecord::Base
     greater_than_or_equal_to: 1
   }
 
-  validates :price, :fee, numericality: {
+  validates :price, :fee, :deposit, numericality: {
     greater_than_or_equal_to: 0
   }
 
@@ -76,10 +76,20 @@ class Booking < ActiveRecord::Base
     return self[:fee] = (hp * 100).to_i if hp.is_a? Numeric
   end
 
+  def deposit
+    self[:deposit] / 100.0 if self[:deposit].present?
+  end
+
+  def deposit=(hp)
+    super(hp)
+    return self[:deposit] = (hp * 100).to_i if hp.is_a? Numeric
+  end
+
   private
 
   def initialize_fields
     self.state ||= Booking.states[:pending_authorization]
+    self.deposit ||= 0
   end
 
   def calculate_price

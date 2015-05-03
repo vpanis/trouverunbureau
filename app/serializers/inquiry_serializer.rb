@@ -3,11 +3,11 @@ class InquirySerializer < ActiveModel::Serializer
   include ActionView::Helpers::DateHelper
 
   attributes :id, :space, :state, :from, :to, :b_type, :price, :quantity, :message_count,
-             :last_message_at, :client
+             :last_message_at, :client, :fee, :deposit
 
   def space
     SpaceSerializer.new(object.space, only: [:id, :name, :city, :currency, :capacity, :venue_name,
-                                             :deposit, :logo],
+                                             :logo],
                                       root: false)
   end
 

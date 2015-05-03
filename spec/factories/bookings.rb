@@ -7,6 +7,7 @@ FactoryGirl.define do
     to { Time.now.at_end_of_hour.advance(hour: 1) }
     b_type Booking.b_types[:hour]
     quantity 1
+    deposit 0
 
     owner { FactoryGirl.build(:user) }
     space { FactoryGirl.build(:space) }
