@@ -48,7 +48,7 @@
       - if @booking.space.month_price.present?
         .tab#tab-month ng-click="swap_inquiry_type('.form-month-booking', 'month')" ng-class="{'tab--selected': selected_tab == 'month'}"
           = t('venues.show.per_month')
-  .form-container
+  .form-container.dashboard-form
     - if @booking.space.hour_price.present?
       = form_for @booking, url: inquiry_space_path(@space), html: { id: 'hour-form'} do |f|
         .form.form-hour-booking.form--hidden
@@ -61,7 +61,7 @@
                 = f.text_field :from, { value: "{{booking_from | date: format}}", placeholder: 'mm-dd-aa', class: 'form-control', close_text: 'Close', datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'hour_opened_date', ng_model: "booking_from", date_disabled: "disabled(date, mode)", type: 'text', show_button_bar:'false', ng_required: 'true' }
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               label
-                = t('booking_inquiry.space_amount')
+                = t('booking_inquiry.spaces_amount')
               = f.text_field :quantity, { class: 'form-control', type: 'number', ng_model: 'space_quantity', min: '1', ng_required: 'true' }
           .row
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
@@ -87,13 +87,13 @@
                 = f.text_field :from, { placeholder: 'mm-dd-aa', class: 'form-control', close_text: 'Close', datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened_from', ng_model: "booking_from", date_disabled: "disabled(date, mode)", type: 'text', show_button_bar:'false', ng_required: 'true' }
             .form-group.col-xs-12.col-sm-4.col-md-4.col-lg-4
               label
-                = t('booking_inquiry.chek_out')
+                = t('booking_inquiry.check_out')
               .calendar.input-group
                 .calendar-icon.input-group-addon ng-click="open($event, 'opened_to')" type="button"
                 = f.text_field :to, { placeholder: 'mm-dd-aa', class: 'form-control', close_text: 'Close', datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened_to', ng_model: "booking_to", date_disabled: "disabled(date, mode)", type: 'text', show_button_bar:'false', ng_required: 'true' }
             .form-group.col-xs-12.col-sm-4.col-md-4.col-lg-4
               label
-                = t('booking_inquiry.space_amount')
+                = t('booking_inquiry.spaces_amount')
               = f.text_field :quantity, value: 1, class: 'form-control', type: 'number', ng_model: 'space_quantity', min: '1', ng_required: 'true'
           input type="submit" class="input--hidden"
           = text_field_tag :booking_type, nil, { type: 'text', 'ng-model' => "selected_tab", hidden: "" }
@@ -114,7 +114,7 @@
               = text_field_tag :month_quantity, nil, { class: 'form-control', type: 'number', ng_model: 'month_quantity', min: '1', ng_required: 'true' }
             .form-group.col-xs-12.col-sm-4.col-md-4.col-lg-4
               label
-                = t('booking_inquiry.space_amount')
+                = t('booking_inquiry.spaces_amount')
               = f.text_field :quantity, value: 1, class: 'form-control', type: 'number', ng_model: 'space_quantity', min: '1', ng_required: 'true'
           input type="submit" class="input--hidden"
           = text_field_tag :booking_type, nil, { type: 'text', 'ng-model' => "selected_tab", hidden: "" }
@@ -187,6 +187,6 @@
     .row
       .form-btn-wrapper
         .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6.message-wrapper
-          = link_to t('booking_inquiry.back'), venue_path(@space.venue), class: "rounded-btn btn-inquiry-back"
+          = link_to t('booking_inquiry.back'), venue_path(@space.venue), class: "rounded-btn btn-inquiry-back uppercase"
         .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6.message-wrapper
-          input type="submit" value="#{t('booking_inquiry.send_inquiry')}" class="rounded-btn yellow-fill btn-inquiry-send" ng-click="submit_form()"
+          input type="submit" value="#{t('booking_inquiry.send_inquiry')}" class="rounded-btn yellow-fill btn-inquiry-send uppercase" ng-click="submit_form()"
