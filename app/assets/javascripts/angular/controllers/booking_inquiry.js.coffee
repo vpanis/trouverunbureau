@@ -54,6 +54,7 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
         $('form .hour-select').prop('disabled', true);
       else
         $('form .hour-select').prop('disabled', false);
+        initialize_selects();
         $scope.hour_booking_begin = available_hours[0] unless $scope.hour_booking_begin?
         $scope.hour_booking_end = available_hours[(available_hours.length) - 1] unless $scope.hour_booking_end?
         $('#hour_booking_to').val($scope.hour_booking_end) unless $scope.hour_booking_end?
@@ -160,6 +161,16 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
     per_day_price = $("#venue-day-price").attr('data-day-price')
     per_month_price = $("#venue-month-price").attr('data-month-price')
     $scope.month_quantity = 1
+
+    #initializers
+    initialize_selects = ->
+      $('#hour_booking_from').select2()
+      $('#hour_booking_to').select2()
+      return
+
+    destroy_selects = ->
+      $('#hour_booking_from').select2("destroy")
+      $('#hour_booking_to').select2("destroy")
 ]
 
 angular.module("deskSpotting.booking_inquiry").directive "datepickerPopup", (dateFilter, datepickerPopupConfig) ->

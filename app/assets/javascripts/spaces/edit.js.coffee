@@ -29,7 +29,7 @@ on_load = ->
           return
       return
     initialize_selects = ->
-      $('.space-types-select').select2({minimumResultsForSearch: -1})
+      $('.space-types-select').select2()
       return
     initialize_listeners = ->
       $('.edit_space').submit ->

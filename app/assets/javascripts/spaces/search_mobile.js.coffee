@@ -3,6 +3,6 @@ on_load = ->
     controllers:
       spaces: ["search_mobile"]
   , (controller, action) ->
-    $(".workspaces-select").select2({minimumResultsForSearch: -1})
+    $(".workspaces-select").select2()
     return
 $(document).ready on_load

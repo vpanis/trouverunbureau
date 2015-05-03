@@ -55,9 +55,9 @@ on_load = ->
 
     initialize_selects = ->
       $('.gender-select').select2({minimumResultsForSearch: -1})
-      $('.language-select').select2({minimumResultsForSearch: -1})
-      $('.profession-select').select2({minimumResultsForSearch: -1})
-      $('.multi-lang-select').select2({minimumResultsForSearch: -1})
+      $('.language-select').select2()
+      $('.profession-select').select2()
+      $('.multi-lang-select').select2()
 
     initialize_listeners = ->
       $('#save-languages').click ->

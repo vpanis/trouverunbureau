@@ -3,7 +3,7 @@ on_load = ->
     controllers:
       landing: ["index"]
   , (controller, action) ->
-    $(".workspaces-select").select2({minimumResultsForSearch: -1})
+    $(".workspaces-select").select2()
     $(".nav a[href^=\"#\"]").on "click", (event) ->
       target = $($(this).attr("href"))
       $('.nav li a.active').removeClass('active')

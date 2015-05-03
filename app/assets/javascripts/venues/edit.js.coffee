@@ -4,8 +4,8 @@ on_load = ->
       venues: ["edit"]
   , (controller, action) ->
     initialize_selects = ->
-      $('.venue-types-select').select2({minimumResultsForSearch: -1})
-      $('.currency-select').select2({minimumResultsForSearch: -1})
+      $('.venue-types-select').select2()
+      $('.currency-select').select2()
       new google.maps.places.Autocomplete(document.getElementById('venue_town'), { types: ['(cities)']})
       new google.maps.places.Autocomplete(document.getElementById('venue_street'))
 

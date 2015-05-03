@@ -4,7 +4,7 @@ on_load = ->
       spaces: ["new"]
   , (controller, action) ->
     initialize_selects = ->
-      $('.space-types-select').select2({minimumResultsForSearch: -1})
+      $('.space-types-select').select2()
       return
     initialize_listeners = ->
       $('#new_space').submit ->
