@@ -61,7 +61,7 @@ class VenuesController < ModelController
 
   def can_edit?
     return true if VenueContext.new(@venue, current_represented).owner?
-    render nothing: true, status: 403
+    render_forbidden
     false
   end
 

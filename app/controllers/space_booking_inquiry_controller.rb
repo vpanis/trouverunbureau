@@ -13,8 +13,7 @@ class SpaceBookingInquiryController < ModelController
     @booking, @custom_error = create_booking
     if @booking.valid? && @custom_error.empty?
       create_booking_message
-      # TODO, go to chat
-      return redirect_to root_path
+      return redirect_to inbox_user_path(current_represented)
     end
     @booking_errors = @booking.errors
     @space = Space.includes(:venue).find(params[:id])

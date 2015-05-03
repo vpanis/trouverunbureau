@@ -1,4 +1,6 @@
-= render 'shared/menu_bar', user: current_user
+= render 'shared/menu_bar'
+= render 'shared/profile_menu_bar', selected: 'nil'
+
 #venue-hours data-day-hours=@day_hours
 #venue-hour-price data-hour-price=@booking.space.hour_price
 #venue-day-price data-day-price=@booking.space.day_price

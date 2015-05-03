@@ -23,7 +23,7 @@ ul.dropdown-menu.user-dropdown role="menu" aria-labelledby="dropdownMenu1"
           .name
             p = m.name
   li
-    = link_to(t('menu.create_organization'), '#', class: 'dropdown-link text-center', role: 'menuitem', tabindex: '-1')
+    = link_to(t('menu.create_organization'), new_organization_path, class: 'dropdown-link text-center', role: 'menuitem', tabindex: '-1')
   li.divider
   li
     = link_to(t('menu.bookings'), paid_bookings_bookings_path)
