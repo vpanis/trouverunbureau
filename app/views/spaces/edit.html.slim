@@ -9,6 +9,7 @@
     .small-separator
     = form_for(@space) do |f|
       = f.hidden_field :venue_id, class: 'form-control'
+      = hidden_field_tag 'previous_page', @previous_page
       .form-group.col-md-12#space-name-input
         label #{t('space.name')}
         = f.text_field :name, class: 'form-control', required: true
@@ -83,7 +84,7 @@
           .col-md-6
             a href="#" type='button' class='rounded-btn width-100 uppercase' = t('commons.cancel')
           .col-md-6
-            = f.submit t('commons.save'), class: 'rounded-btn default width-100 yellow uppercase', id: 'save-space'
+            = f.submit t('commons.save'), class: 'rounded-btn default width-100 yellow-fill  uppercase', id: 'save-space'
 
 .hidden
   = form_tag api_v1_venue_photos_path, id: 'venue-photo-form'

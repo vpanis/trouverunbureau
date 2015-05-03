@@ -5,30 +5,34 @@
 
   .count-number{
     font-weight: 700;
+    margin-top: 15px;
+    margin-bottom: 0px;
   }
 
   .text-annotation{
     font-weight: 300;
+    margin-top: 0px;
   }
 
   .filter-button{
     text-transform: uppercase;
     cursor: pointer;
-    width: 75px;
-    height: 75px;
-    border-radius: 100%;
+    width: 65px;
+    height: 65px;
+    @include border-radius(100%);
     border: 2px solid $yellow;
     text-align: center;
-    line-height: 75px;
-    font-weight: 700;
-    margin: 15px auto;
+    line-height: 65px;
+    font-weight: 400;
+    margin-top: 8px;
+    font-size: 13px;
   }
 
   .pagination-box{
     margin-left: 0;
     margin: 15px 0;
     clear: both;
-    display: inline-block !important;
+    display: inline-block;
   }
 
   .pagination-pages{
@@ -101,7 +105,7 @@
 
   .filter-colapse.refine{
     text-align: right;
-    font-weight: 700;
+    font-weight: 300;
     color: #333;
     line-height: 34px;
   }
@@ -296,10 +300,10 @@
   }
   .hidden-xs{
     .counter, .filters, .open-filters-button{
-      height: 105px;
+      height: 80px;
     }
     .filters{
-      padding-top: 36px;
+      padding-top: 25px;
     }
   }
 }
