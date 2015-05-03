@@ -7,8 +7,7 @@ class PaymentsController < ApplicationController
   def new
     @booking = Booking.includes(:payment, space: [:venue])
                  .where(id: params[:booking_id], owner: current_represented).first
-    # TODO: custom 404 page
-    return redirect_to root_path unless booking_is_payable?
+    return record_not_found unless booking_is_payable?
     @venue = @booking.space.venue
     return redirect_to inbox_user_path(@current_represented) unless
       active_collection_account?(@venue.collection_account)
@@ -20,8 +19,7 @@ class PaymentsController < ApplicationController
   def create
     @booking = Booking.includes(:payment, space: [:venue])
                  .where(id: params[:booking_id], owner: current_represented).first
-    # TODO: custom 404 page
-    return redirect_to root_path unless @booking.present? && @booking.pending_payment?
+    return record_not_found unless @booking.present? && @booking.pending_payment?
     @venue = @booking.space.venue
     return redirect_to inbox_user_path(@current_represented) unless
       active_collection_account?(@venue.collection_account)

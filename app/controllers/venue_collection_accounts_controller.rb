@@ -2,18 +2,16 @@ class VenueCollectionAccountsController < VenuesController
   before_action :authenticate_user!
 
   def collection_account_info
-    @venue = Venue.find_by(id: params[:id])
-    return render nothing: true, status: 404 unless @venue.present?
-    return render nothing: true, status: 403 unless current_represented == @venue.owner
+    @venue = Venue.find(params[:id])
+    return render_forbidden unless current_represented == @venue.owner
 
     select_collection_method
     set_collection_account
   end
 
   def edit_collection_account
-    @venue = Venue.includes(:collection_account).find_by(id: params[:id])
-    return render nothing: true, status: 404 unless @venue.present?
-    return render nothing: true, status: 403 unless current_represented == @venue.owner
+    @venue = Venue.includes(:collection_account).find(params[:id])
+    return render_forbidden unless current_represented == @venue.owner
 
     # it should pass first through collection_account_info, but just in case (and testing purpose)
     create_collection_account_if_nil
