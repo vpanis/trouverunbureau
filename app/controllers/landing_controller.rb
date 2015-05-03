@@ -5,10 +5,12 @@ class LandingController < ApplicationController
 
   def index
     @space_types_options = space_types_index_options
-    # TODO: que tengan al menos una foto y esten publicados
+    # TODO: que tengan al menos una foto y esten publicados.
+    #       where sean de un venue valido y tengan foto
     @featured_venues = Venue.all.order(reviews_sum: :desc).limit(8)
-    # TODO: where sean de un venue valido y tengan foto
-    @workspaces = Space.all.group(:s_type).count
+    @trending_cities = Space.limit(8).joins(:venue).group(venues: :town)
+                            .order('count_town desc').count(:town).to_a
+    @workspaces = workspaces_count
   end
 
   def about_us
@@ -40,6 +42,13 @@ class LandingController < ApplicationController
   end
 
   private
+
+  def workspaces_count
+    type_count = Space.all.group(:s_type).count
+    results = []
+    (0..5).each { |n| results[n] = type_count[n] }
+    results
+  end
 
   def show_static_page(name)
     @title = t("home.footer.#{name}")
