@@ -1,5 +1,5 @@
-= render 'shared/menu_bar', user: current_represented
-= render 'shared/profile_menu_bar', user: current_user, selected: 'wishlist'
+= render 'shared/menu_bar'
+= render 'shared/profile_menu_bar', selected: 'wishlist'
 
 - if @current_user.present?
   .container style="height: 100%;"

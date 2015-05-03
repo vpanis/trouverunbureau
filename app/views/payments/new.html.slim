@@ -1,4 +1,6 @@
-= render 'shared/menu_bar', user: current_represented
+= render 'shared/menu_bar'
+= render 'shared/profile_menu_bar', selected: 'nil'
+
 .container
   .user-title
     h3.yellow-title = t('payment.payment')

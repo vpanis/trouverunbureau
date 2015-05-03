@@ -1,8 +1,8 @@
-= render 'shared/menu_bar', user: current_represented
+= render 'shared/menu_bar'
 - if @organization.eql?(current_represented)
-  = render 'shared/profile_menu_bar', user: current_represented, selected: 'profile'
+  = render 'shared/profile_menu_bar', selected: 'profile'
 - else
-  = render 'shared/profile_menu_bar', user: current_represented, selected: 'nil'
+  = render 'shared/profile_menu_bar', selected: 'nil'
 
 .user-profile.container.organization-profile
     - if @can_edit

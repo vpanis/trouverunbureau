@@ -1,5 +1,5 @@
-= render 'shared/menu_bar', user: current_represented
-= render 'shared/profile_menu_bar', user: current_user, selected: 'profile'
+= render 'shared/menu_bar'
+= render 'shared/profile_menu_bar', selected: 'profile'
 = render 'shared/image_modal', modal_id: 'avatar-modal', title: t('organizations.change_picture'), image_link_id: 'avatar-link', save_button_id: 'save-avatar'
 
 .user.container ng-init="organization_id = #{@organization.id}"

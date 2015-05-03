@@ -1,4 +1,5 @@
-= render 'shared/menu_bar', user: current_represented
+= render 'shared/menu_bar'
+= render 'shared/profile_menu_bar', selected: 'venues'
 
 #space.main-content.dashboard-form.clearfix.overflow-hidden
   = render 'shared/edit_venue_progress', venue: @space.venue, progress: 70, step: 5

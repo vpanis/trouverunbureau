@@ -19,27 +19,27 @@
       ul.nav.navbar-nav.hidden-large-navbar.mobile-menu-items
         = render 'shared/mobile_menu'
       ul.nav.navbar-nav.navbar-right.hidden-collapse
-        - if user.present?
+        - if current_represented.present?
           li
             dropdown
               .btn.btn-default.dropdown-toggle type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"
-                a.user-visible href=user_path(user)
+                a.user-visible href=user_path(current_represented)
                   .avatar
-                    - if user.kind_of?(User)
-                      - if user.avatar.present?
-                        = image_tag(user.avatar.url)
+                    - if current_represented.kind_of?(User)
+                      - if current_represented.avatar.present?
+                        = image_tag(current_represented.avatar.url)
                       - else
                         = image_tag('default-avatar.png')
-                    - elsif user.kind_of?(Organization)
-                      - if user.logo.present?
-                        = image_tag(user.logo.url)
+                    - elsif current_represented.kind_of?(Organization)
+                      - if current_represented.logo.present?
+                        = image_tag(current_represented.logo.url)
                       - else
                         = image_tag('venue-default.png')
                   .name
-                    p = user.name
+                    p = current_represented.name
               = render 'shared/menu_dropdown'
           li
-            = link_to inbox_user_path(user) do
+            = link_to inbox_user_path(current_represented) do
               .messages
                 - if new_messages > 0
                   p = new_messages
