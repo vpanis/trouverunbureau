@@ -45,6 +45,21 @@
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               label = t('users.company_name')
               = f.text_field :company_name, placeholder: t('users.company_name'), class: 'form-control', required: true
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              label = t('users.date_of_birth')
+              .calendar.input-group
+                .calendar-icon.input-group-addon ng-click="open($event)" type="button"
+                - value = @user.date_of_birth.strftime("%d-%m-%Y") if @user.date_of_birth.present?
+                = f.text_field :date_of_birth, value: value, placeholder: t('users.date_of_birth'), class: 'form-control', close_text: t('commons.close'), datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened', ng_model:'user_date_of_birth', ng_required: 'true', type: 'text', show_button_bar:'false'
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              .icon.lock.pointer#nationality-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
+              label = t('users.nationality')
+              = f.select(:nationality, countries_options, {}, {class: 'form-control country-select', required: true})
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              .icon.lock.pointer#country_of_residence-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
+              label = t('users.country_of_residence')
+              = f.select(:country_of_residence, countries_options, {}, {class: 'form-control country-select', required: true})
+              / = f.text_field :country_of_residence, placeholder: t('users.country_of_residence'), class: 'form-control', required: true
           .row
             .small-title
               .small-separator
@@ -54,12 +69,6 @@
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               label = t('users.language')
               = f.select(:language, @language_options, {}, {class: 'form-control language-select'})
-            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
-              label = t('users.date_of_birth')
-              .calendar.input-group
-                .calendar-icon.input-group-addon ng-click="open($event)" type="button"
-                - value = @user.date_of_birth.strftime("%d-%m-%Y") if @user.date_of_birth.present?
-                = f.text_field :date_of_birth, value: value, placeholder: t('users.date_of_birth'), class: 'form-control', close_text: t('commons.close'), datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened', ng_model:'user_date_of_birth', ng_required: 'true', type: 'text', show_button_bar:'false'
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               label = t('users.location')
               = f.text_field :location, placeholder: t('users.location'), class: 'form-control'
