@@ -119,7 +119,9 @@ class RangeDateCollider
   def time_to_range_number(time)
     return 0 if time <= first_date
 
-    (((time - first_date) * 1.0 / 1.minute) / minute_granularity).floor
+    # 1440 = 60*24, DateTime - DateTime its in hour unit, with * 1440 we are taking the
+    # result to minutes
+    ((time.to_datetime - first_date.to_datetime) * 1440 / minute_granularity).floor
   end
 
   def range_number_to_time(range_number)

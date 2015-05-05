@@ -12,7 +12,7 @@ FactoryGirl.define do
     gender { 'f' }
     nationality 'FR'
     country_of_residence 'FR'
-    date_of_birth { Time.new.advance(years: -21) }
+    date_of_birth { Time.current.advance(years: -21) }
 
     trait :with_venues do
       venues { FactoryGirl.build_list(:venue, rand(3) + 1) }

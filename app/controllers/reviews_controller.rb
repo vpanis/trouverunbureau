@@ -47,12 +47,12 @@ class ReviewsController < ApplicationController
 
   # TODO: take into a count timezone
   def can_do_client_review?
-    current_represented.eql?(@booking.space.venue.owner) && @booking.from < DateTime.now &&
+    current_represented.eql?(@booking.space.venue.owner) && @booking.from < Time.current &&
       @booking.paid? && ClientReview.where(booking: @booking).empty?
   end
 
   def can_do_venue_review?
-    current_represented.eql?(@booking.owner) && @booking.from < DateTime.now &&
+    current_represented.eql?(@booking.owner) && @booking.from < Time.current &&
       @booking.paid? && VenueReview.where(booking: @booking).empty?
   end
 

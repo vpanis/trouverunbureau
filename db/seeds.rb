@@ -38,7 +38,7 @@ case Rails.env
     OrganizationUser.create!(user: user3, organization: org1, role: OrganizationUser.roles[:admin])
 
 
-    beginning_of_day = Time.new.at_beginning_of_day
+    beginning_of_day = Time.current.at_beginning_of_day
     # puts 'creating countries'
     # country1 = Country.create!(name:"United States")
     # country2 = Country.create!(name:"Canada")
@@ -306,7 +306,7 @@ case Rails.env
     UsersFavorite.create!(user: user10, space: v4_sp4)
 
     # Valid Venue Hour's Bookings (Next Monday, 10am)
-    next_monday = Time.new.next_week(day = :monday).advance(hours: 10)
+    next_monday = Time.current.next_week(day = :monday).advance(hours: 10)
     next_tuesday = next_monday.advance(days: 1)
     next_wednesday = next_monday.advance(days: 2)
     next_thursday = next_monday.advance(days: 3)

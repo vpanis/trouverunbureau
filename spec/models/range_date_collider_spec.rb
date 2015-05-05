@@ -6,7 +6,7 @@ RSpec.describe RangeDateCollider, type: :model do
            granularity 30 min and ordered_and_clean in true' do
 
     before(:each) do
-      @beginning_of_day = Time.new.at_beginning_of_day
+      @beginning_of_day = Time.current.at_beginning_of_day
       @rdc = RangeDateCollider.new(max_collition_permited: 4,
                                    first_date: @beginning_of_day,
                                    minute_granularity: 30)

@@ -411,19 +411,19 @@ RSpec.describe SpaceSearch, type: :model do
   context 'search setting only date' do
 
     it 'returns the spaces with venue hours with weekday monday' do
-      next_monday = Time.new.next_week
+      next_monday = Time.current.next_week
       ss = SpaceSearch.new(date: next_monday.to_s)
       expect(ss.find_spaces).to contain_exactly(@s1_v1, @s2_v1, @s1_v4, @s2_v4)
     end
 
     it 'returns the spaces with venue hours with weekday tuesday' do
-      next_monday = Time.new.next_week
+      next_monday = Time.current.next_week
       ss = SpaceSearch.new(date: next_monday.advance(days: 1).to_s)
       expect(ss.find_spaces).to contain_exactly(@s1_v2, @s2_v2, @s1_v8, @s1_v11, @s1_v12)
     end
 
     it 'returns an empty array when there are no spaces with weekday sunday' do
-      next_monday = Time.new.next_week
+      next_monday = Time.current.next_week
       ss = SpaceSearch.new(date: next_monday.advance(days: 6).to_s)
       expect(ss.find_spaces).to contain_exactly
     end
@@ -440,7 +440,7 @@ RSpec.describe SpaceSearch, type: :model do
   context 'search setting multiple fields' do
 
     it 'returns the spaces with weekday monday, startup_office, \'wifi\', and a conference_room' do
-      next_monday = Time.new.next_week
+      next_monday = Time.current.next_week
       ss = SpaceSearch.new(date: next_monday.to_s,
                            venue_types: [Venue.v_types[:startup_office]],
                            venue_amenities: ['wifi'],

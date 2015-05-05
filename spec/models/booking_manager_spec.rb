@@ -7,7 +7,7 @@ RSpec.describe BookingManager, type: :model do
       @user = FactoryGirl.create(:user)
       @venue = FactoryGirl.create(:venue, :with_venue_hours)
       @space = FactoryGirl.create(:space, venue: @venue, quantity: 4)
-      @next_monday_at_beginning = Time.new.next_week(:monday).at_beginning_of_day
+      @next_monday_at_beginning = Time.current.next_week(:monday).at_beginning_of_day
       @next_monday_at_beginning = Time.zone.local_to_utc(@next_monday_at_beginning)
       @booking_h_1 = FactoryGirl.create(:booking, state: Booking.states[:paid],
         from: @next_monday_at_beginning.advance(hours: 8),
@@ -247,7 +247,7 @@ RSpec.describe BookingManager, type: :model do
       @venue2 = FactoryGirl.create(:venue, :with_venue_hours, owner: @owner2)
       @space2 = FactoryGirl.create(:space, venue: @venue2, quantity: 4)
 
-      @next_monday_at_beginning = Time.new.next_week(:monday).at_beginning_of_day
+      @next_monday_at_beginning = Time.current.next_week(:monday).at_beginning_of_day
       @next_monday_at_beginning = Time.zone.local_to_utc(@next_monday_at_beginning)
 
       @from = @next_monday_at_beginning.advance(hours: 8)
@@ -294,7 +294,7 @@ RSpec.describe BookingManager, type: :model do
 
       it 'don\'t return the booking if the user already read the messages' do
         expect(BookingManager.bookings_with_news(@owner2)).to include(@booking1)
-        BookingManager.change_last_seen(@booking1, @owner2, Time.now)
+        BookingManager.change_last_seen(@booking1, @owner2, Time.current)
         expect(BookingManager.bookings_with_news(@owner2)).not_to include(@booking1)
       end
 

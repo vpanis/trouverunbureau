@@ -4,8 +4,8 @@ module Payments
       include Sidekiq::Worker
 
       def perform
-        MangopayCreditCard.not_activated.where('registration_expiration_date <= :t', t: Time.new)
-          .destroy_all
+        MangopayCreditCard.not_activated.where('registration_expiration_date <= :t',
+                                               t: Time.current).destroy_all
       end
     end
   end

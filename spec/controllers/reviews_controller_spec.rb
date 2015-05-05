@@ -10,7 +10,7 @@ describe ReviewsController do
       before(:each) { sign_in user }
       context 'the user is the booking\'s client' do
         context 'booking\'s from date is before now' do
-          let(:from_date) { DateTime.now - 1.second }
+          let(:from_date) { Time.current.advance(seconds: -1) }
 
           context 'booking\'s state is PAID' do
             let(:booking) do
@@ -63,7 +63,7 @@ describe ReviewsController do
         end # booking's from date is before now
 
         context 'booking\'s from date is after now' do
-          let(:from_date) { DateTime.now + 1.second }
+          let(:from_date) { Time.current.advance(seconds: 1) }
           let(:booking) do
             create(:booking, owner: user, state: Booking.states[:paid], from: from_date)
           end
@@ -111,7 +111,7 @@ describe ReviewsController do
         let(:space) { create(:space, venue: venue) }
         context 'booking\'s from date is before now' do
           context 'booking\'s state is PAID' do
-            let(:from_date) { DateTime.now - 1.second }
+            let(:from_date) { Time.current.advance(seconds: -1) }
             let(:booking) do
               create(:booking, space: space, state: Booking.states[:paid], from: from_date)
             end
@@ -148,7 +148,7 @@ describe ReviewsController do
           end # booking's state is PAID
 
           context 'booking\'s state is not PAID' do
-            let(:from_date) { DateTime.now + 1.second }
+            let(:from_date) { Time.current.advance(seconds: 1) }
             let(:booking) do
               create(:booking, space: space, state: Booking.states[:pending_payment],
                                from: from_date)
@@ -162,7 +162,7 @@ describe ReviewsController do
         end # booking's from date is before now
 
         context 'booking\'s from date is after now' do
-          let(:from_date) { DateTime.now + 1.second }
+          let(:from_date) { Time.current.advance(seconds: 1) }
           let(:booking) do
             create(:booking, space: space, state: Booking.states[:paid], from: from_date)
           end
@@ -207,7 +207,7 @@ describe ReviewsController do
       before(:each) { sign_in user }
       context 'the user is the booking\'s client' do
         context 'booking\'s from date is before now' do
-          let(:from_date) { DateTime.now - 1.second }
+          let(:from_date) { Time.current.advance(seconds: -1) }
 
           context 'booking\'s state is PAID' do
             let(:booking) do
@@ -281,7 +281,7 @@ describe ReviewsController do
         end # booking's from date is before now
 
         context 'booking\'s from date is after now' do
-          let(:from_date) { DateTime.now + 1.second }
+          let(:from_date) { Time.current.advance(seconds: 1) }
           let(:booking) do
             create(:booking, owner: user, state: Booking.states[:paid], from: from_date)
           end
@@ -329,7 +329,7 @@ describe ReviewsController do
         let(:space) { create(:space, venue: venue) }
 
         context 'booking\'s from date is before now' do
-          let(:from_date) { DateTime.now - 1.second }
+          let(:from_date) { Time.current.advance(seconds: -1) }
 
           context 'booking\'s state is PAID' do
             let(:booking) do
@@ -403,7 +403,7 @@ describe ReviewsController do
         end # booking's from date is before now
 
         context 'booking\'s from date is after now' do
-          let(:from_date) { DateTime.now + 1.second }
+          let(:from_date) { Time.current.advance(seconds: 1) }
           let(:booking) do
             create(:booking, space: space, state: Booking.states[:paid], from: from_date)
           end

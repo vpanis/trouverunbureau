@@ -2,7 +2,7 @@ module BookingsHelper
 
   def can_review?(booking, own = true)
     # TODO, use venue's timezone (not implemented yet)
-    now = Time.zone.now
+    now = Time.current
     owner?(booking, own) && now >= booking.from
   end
 
@@ -26,7 +26,7 @@ module BookingsHelper
 
   def finished?(booking)
     # TODO, use venue's timezone (not implemented yet)
-    now = Time.zone.now
+    now = Time.current
     now > (booking.to + 1)
   end
 

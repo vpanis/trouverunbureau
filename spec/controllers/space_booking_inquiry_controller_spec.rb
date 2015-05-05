@@ -48,8 +48,8 @@ describe SpaceBookingInquiryController do
       before(:each) do
         @user_logged = FactoryGirl.create(:user)
         sign_in @user_logged
-        @from = Time.new.next_week(:monday).strftime('%d-%m-%Y')
-        @to = Time.new.next_week(:monday).advance(days: 2).strftime('%d-%m-%Y')
+        @from = Time.current.next_week(:monday).strftime('%d-%m-%Y')
+        @to = Time.current.next_week(:monday).advance(days: 2).strftime('%d-%m-%Y')
       end
 
       after(:each) do

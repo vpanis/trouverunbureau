@@ -105,8 +105,8 @@ describe SpacesController do
             context 'when there are bookings' do
               let!(:a_booking) do
                 create(:booking, space: a_space,
-                                 from: Time.zone.now.at_beginning_of_day,
-                                 to: Time.zone.now.advance(minutes: 1))
+                                 from: Time.current.at_beginning_of_day,
+                                 to: Time.current.advance(minutes: 1))
               end
               before do
                 new_capacity = a_space.capacity - 1
@@ -122,8 +122,8 @@ describe SpacesController do
 
             context 'where there arent bookings of that space' do
               let!(:a_booking) do
-                create(:booking, from: Time.zone.now.at_beginning_of_day,
-                                 to: Time.zone.now.advance(minutes: 1))
+                create(:booking, from: Time.current.at_beginning_of_day,
+                                 to: Time.current.advance(minutes: 1))
               end
               before do
                 new_capacity = a_space.capacity - 1
@@ -144,8 +144,8 @@ describe SpacesController do
             context 'when it is not bookable' do
               let!(:a_booking) do
                 create(:booking, state: Booking.states[:paid], space: a_space,
-                                 from: Time.zone.now.at_beginning_of_day,
-                                 to: Time.zone.now.at_end_of_day, quantity: a_space.quantity)
+                                 from: Time.current.at_beginning_of_day,
+                                 to: Time.current.at_end_of_day, quantity: a_space.quantity)
               end
               before do
                 new_quantity = a_space.quantity - 1

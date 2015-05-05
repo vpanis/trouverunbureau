@@ -48,7 +48,7 @@ RSpec.describe Booking, type: :model do
       @venue.day_hours.create(weekday: 4, from: 800, to: 2000)
       @space = FactoryGirl.create(:space, venue: @venue, hour_price: 2, day_price: 20,
                                   week_price: 100, month_price: 400)
-      @monday = Time.new.next_week(:monday).at_beginning_of_day
+      @monday = Time.current.next_week(:monday).at_beginning_of_day
     end
 
     it 'returns the calculated hour price for 10 hours, 1 space' do
