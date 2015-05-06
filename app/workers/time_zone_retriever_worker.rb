@@ -1,0 +1,14 @@
+class TimeZoneRetrieverWorker
+  include Sidekiq::Worker
+
+  def perform(venue_id)
+    venue = Venue.find(venue_id)
+    timezone = Timezone::Zone.new(lat: venue.latitude, lon: venue.longitude)
+    t = TimeZone.find_or_initialize_by(zone_identifier: timezone.zone)
+    t.minute_utc_difference = timezone.utc_offset / 60
+    t.save
+    venue.update_attributes(time_zone: t)
+  rescue Timezone::Error::NilZone
+    Rails.logger.error("Venue: #{venue_id} has an invalid latitude/longitude")
+  end
+end

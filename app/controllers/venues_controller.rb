@@ -20,13 +20,18 @@ class VenuesController < ApplicationController
   def create
     venue = Venue.create(new_venue_params)
     venue.update_attributes!(owner: current_represented, email: current_represented.email)
+    TimeZoneRetrieverWorker.perform_async(venue.id) if venue.latitude.present? &&
+                                                       venue.longitude.present?
     redirect_to edit_venue_path(venue)
   end
 
   def update
     @venue = Venue.find(params[:id])
     return unless can_edit?
-    @venue.update_attributes!(edit_venue_params)
+    @venue.assign_attributes(edit_venue_params)
+    lat_lon_changed = @venue.latitude_changed? || @venue.longitude_changed?
+    @venue.save!
+    TimeZoneRetrieverWorker.perform_async(@venue.id) if lat_lon_changed
     redirect_to details_venue_path(@venue)
   end
 
