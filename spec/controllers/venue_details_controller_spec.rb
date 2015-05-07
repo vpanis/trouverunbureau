@@ -76,7 +76,7 @@ describe VenueDetailsController do
       after(:each) { sign_out user }
 
       context 'the venue belongs to the user' do
-        let!(:venue) { create(:venue, owner: user) }
+        let!(:venue) { create(:venue, :with_time_zone, owner: user) }
         let(:new_description) { 'new description' }
         let(:new_professions) { "#{Venue::PROFESSIONS.first},#{Venue::PROFESSIONS.last}" }
         let(:new_rules) { 'new rules' }

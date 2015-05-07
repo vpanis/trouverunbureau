@@ -1,9 +1,8 @@
 module BookingsHelper
 
   def can_review?(booking, own = true)
-    # TODO, use venue's timezone (not implemented yet)
     now = Time.current
-    owner?(booking, own) && now >= booking.from
+    owner?(booking, own) && now >= booking.space.venue.time_zone.from_zone_to_utc(booking.from)
   end
 
   def can_view_receipt?(booking, own = true)
@@ -25,9 +24,7 @@ module BookingsHelper
   end
 
   def finished?(booking)
-    # TODO, use venue's timezone (not implemented yet)
-    now = Time.current
-    now > (booking.to + 1)
+    Time.current > booking.space.venue.time_zone.from_zone_to_utc(booking.to)
   end
 
   def deleted?(booking, own = true)

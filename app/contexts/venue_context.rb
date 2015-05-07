@@ -23,8 +23,7 @@ class VenueContext
 
   def valid_venue_hours?(new_days_hours)
     return true unless reduce_venue_hours?(new_days_hours)
-    # TODO, use venue's timezone (not implemented yet)
-    date_from = Time.zone.now.at_beginning_of_day - 1.day
+    date_from = @venue.time_zone.from_zone_to_utc(Time.current)
     no_bookings?(date_from)
   end
 
