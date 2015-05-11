@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150506182501) do
+ActiveRecord::Schema.define(version: 20150511195500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -254,7 +254,7 @@ ActiveRecord::Schema.define(version: 20150506182501) do
 
   create_table "time_zones", force: true do |t|
     t.string   "zone_identifier"
-    t.integer  "minute_utc_difference"
+    t.integer  "seconds_utc_difference"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

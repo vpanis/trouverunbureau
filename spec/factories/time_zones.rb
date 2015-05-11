@@ -6,6 +6,6 @@ FactoryGirl.define do
     zone_identifier do
       Timezone::Zone.list.select { |z| z[:offset] == 0 }.map { |z| z[:zone] }.sample
     end
-    minute_utc_difference 0
+    seconds_utc_difference 0
   end
 end
