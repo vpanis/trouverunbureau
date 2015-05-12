@@ -134,8 +134,10 @@ Deskspotting::Application.routes.draw do
 
         get :payin_succeeded, to: 'hooks#payin_succeeded'
         get :payin_failed, to: 'hooks#payin_failed'
-        get :payin_succeeded, to: 'hooks#payout_succeeded'
-        get :payin_failed, to: 'hooks#payout_failed'
+        get :payout_succeeded, to: 'hooks#payout_succeeded'
+        get :payout_failed, to: 'hooks#payout_failed'
+        get :refund_succeeded, to: 'hooks#refund_succeeded'
+        get :refund_failed, to: 'hooks#refund_failed'
       end
     end
   end # api/v1

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150511195500) do
+ActiveRecord::Schema.define(version: 20150511230243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20150511195500) do
     t.boolean  "venue_owner_delete", default: false
     t.integer  "fee"
     t.integer  "deposit"
+    t.boolean  "hold_deposit",       default: false
   end
 
   add_index "bookings", ["owner_id", "owner_type"], name: "index_bookings_on_owner_id_and_owner_type", using: :btree
@@ -186,14 +187,31 @@ ActiveRecord::Schema.define(version: 20150511195500) do
     t.integer  "notification_date_int"
     t.string   "redirect_url"
     t.integer  "user_paying_id"
-    t.string   "transference_id"
-    t.string   "payout_id"
+    t.integer  "price_amount_in_wallet"
+    t.integer  "deposit_amount_in_wallet"
   end
 
-  add_index "mangopay_payments", ["payout_id"], name: "index_mangopay_payments_on_payout_id", unique: true, using: :btree
   add_index "mangopay_payments", ["transaction_id"], name: "index_mangopay_payments_on_transaction_id", unique: true, using: :btree
-  add_index "mangopay_payments", ["transference_id"], name: "index_mangopay_payments_on_transference_id", unique: true, using: :btree
   add_index "mangopay_payments", ["user_paying_id"], name: "index_mangopay_payments_on_user_paying_id", using: :btree
+
+  create_table "mangopay_payouts", force: true do |t|
+    t.integer  "p_types"
+    t.string   "transaction_id"
+    t.string   "transference_id"
+    t.string   "transaction_status"
+    t.text     "error_message"
+    t.integer  "mangopay_payment_id"
+    t.integer  "notification_date_int"
+    t.integer  "amount"
+    t.integer  "fee"
+    t.integer  "retries"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "mangopay_payouts", ["mangopay_payment_id"], name: "index_mangopay_payouts_on_mangopay_payment_id", using: :btree
+  add_index "mangopay_payouts", ["transaction_id"], name: "index_mangopay_payouts_on_transaction_id", unique: true, using: :btree
+  add_index "mangopay_payouts", ["transference_id"], name: "index_mangopay_payouts_on_transference_id", unique: true, using: :btree
 
   create_table "messages", force: true do |t|
     t.integer  "booking_id"
