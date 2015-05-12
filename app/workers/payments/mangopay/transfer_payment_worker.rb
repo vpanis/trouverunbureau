@@ -34,7 +34,7 @@ module Payments
           transference_id: transfer_payment['Id'],
           transaction_status: "TRANSFER_#{transfer_payment['Status']}")
         # teorically, always, buy just in case
-        Payments::Mangopay::PayoutPaymentWorker.perform_async(@booking.id, percentage) if
+        Payments::Mangopay::PayoutPaymentWorker.perform_async(@booking.id, @payout.id) if
           transfer_payment['Status'] == 'SUCEEDED'
       end
 

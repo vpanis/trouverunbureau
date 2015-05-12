@@ -8,4 +8,9 @@ namespace :scheduler do
   task destroy_mangopay_invalid_cards: :environment do
     Payments::Mangopay::DestroyInvalidCreditCardWorker.perform_async()
   end
+
+  desc 'Performs the payments of every booking that have started in the last hour'
+  task perform_payments: :environment do
+    Payments::PerformPaymentsWorker.perform_async()
+  end
 end
