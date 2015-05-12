@@ -85,6 +85,12 @@ class Booking < ActiveRecord::Base
     return self[:deposit] = (hp * 100).to_i if hp.is_a? Numeric
   end
 
+  def state_if_represented_cancels(represented)
+    return Booking.states[:cancelled] if owner == represented
+    return Booking.states[:denied] if space.venue.owner == represented
+    nil
+  end
+
   private
 
   def initialize_fields

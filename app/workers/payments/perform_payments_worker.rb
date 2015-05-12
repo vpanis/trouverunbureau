@@ -4,10 +4,10 @@ class PerformPaymentsWorker
   def perform
     bookings = bookings_to_pay
     bookings.each do |booking|
-      payout = booking.payment.mangopay_payouts.create(amount: booking.price, fee: booking.fee)
+      payout = booking.payment.mangopay_payouts.create(amount: booking.price, fee: booking.fee,
+                 p_type: MangopayPayout.p_types[:payout_to_user])
       booking.payment.update_attributes(
-        price_amount_in_wallet: booking.payment.price_amount_in_wallet - payout.amount,
-        deposit_amount_in_wallet: booking.payment.deposit_amount_in_wallet - payout.fee)
+        price_amount_in_wallet: booking.payment.price_amount_in_wallet - payout.amount)
       Payments::Mangopay::TransferPaymentWorker.perform_async(booking.id, payout.id)
     end
   end
