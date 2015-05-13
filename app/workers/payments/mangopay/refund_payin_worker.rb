@@ -3,10 +3,11 @@ module Payments
     class RefundPayinWorker
       include Sidekiq::Worker
 
-      def perform(booking_id, user_id, payout_id)
+      def perform(booking_id, payout_id, user_id, represented_id, represented_type)
         init_log(booking_id, user_id)
         @booking = Booking.includes(:payment).find_by_id(booking_id)
         @payout = MangopayPayout.find_by_id(payout_id)
+        @represented = represented_type.constantize.find_by_id(represented_id)
         return unless refund_possible(user_id)
         @venue = @booking.space.venue
 
@@ -26,7 +27,7 @@ module Payments
 
       def refund_possible?(user_id)
         @booking.present? && User.exists?(user_id) && @booking.payment.present? &&
-          @booking.payment.payin_succeeded? && @payout.present?
+          @booking.payment.payin_succeeded? && @payout.present? && @represented.present?
       end
 
       def save_refund_error(e, user_id)
@@ -49,8 +50,7 @@ module Payments
         @booking.payment.update_attributes(
           transaction_status: "TRANSACTION_#{transaction['Status']}")
         BookingManager.change_booking_status(User.find(user_id), @booking,
-                                             Booking.states[:cancelled]) unless percentage == 0 &&
-                                                                                deposit
+                                             @booking.state_if_represented_cancels(@represented))
       end
 
       def persist_data(refund)
