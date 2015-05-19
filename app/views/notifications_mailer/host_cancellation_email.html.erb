@@ -11,22 +11,22 @@
         </div>
 
         <div>
-          <p><%= "George," %></p> <!-- TODO: Change name -->
+          <p><%= "#{@message.recipient_name}," %></p> <!-- TODO: Change name -->
 
           <!-- TODO: If sorry cancel or unfortunately -->
           <p><%= "#{t('host_cancellation_email.sorry_cancel')}:" %></p>
-          <p><%= "#{t('host_cancellation_email.unfortunately', name: 'JP')}:" %></p><!-- TODO: Change name -->
+          <p><%= "#{t('host_cancellation_email.unfortunately', name: @message.from)}:" %></p>
 
         </div>
       </div>
 
       <div style="background-color: #f6f6f6; text-align: center; padding: 35px 0;">
         <%= image_tag 'venue-default.png', style: 'width: 65px;' %>
-        <p style="color: black; font-size: 25px; margin: 10px 0;">Venue name</p><!-- TODO: Change venue namne -->
+        <p style="color: black; font-size: 25px; margin: 10px 0;">@message.boooking.space.venue.name</p>
 
         <p style="color: black; margin: 10px 0;">
           <span style="font-weight: 300;"><%= "#{t('host_cancellation_email.space')}: " %></span>
-          <span style="font-weight: bold;">Meeting Room</span><!-- TODO: Change space -->
+          <span style="font-weight: bold;">@message.boooking.space.name</span><!-- TODO: Change space -->
         </p>
 
         <div style="display: table; margin: 0 auto; padding-top: 20px;">
@@ -40,7 +40,7 @@
           <div style="text-align: center; display: table-cell; font-size: 20px; vertical-align: middle; font-weight: 100;">|</div>
           <div style="padding: 0 15px; text-align: center; display: table-cell;">
             <p style="line-height: 25px;">
-              <span style="font-weight: bold;">1</span><!-- TODO: Change spaces -->
+              <span style="font-weight: bold;">@message.boooking.quantity</span><!-- TODO: Change spaces -->
               <br>
               <span style="font-size: 14px;"><%= t('host_cancellation_email.spaces') %></span>
             </p>

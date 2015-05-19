@@ -49,6 +49,7 @@ module Api
         message = Message.new(message_params)
         return render status: 400, json: { error: message.errors } unless message.valid?
         message.save
+        NewMessageService.new(message).send_notifications
         render status: 200, json: MessageSerializer.new(message)
       end
 

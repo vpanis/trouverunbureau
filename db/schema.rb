@@ -396,9 +396,9 @@ ActiveRecord::Schema.define(version: 20150511230243) do
     t.integer  "collection_account_id"
     t.string   "collection_account_type"
     t.integer  "status"
-    t.string   "country_code"
     t.text     "office_rules"
     t.integer  "time_zone_id"
+    t.string   "country_code"
   end
 
   add_index "venues", ["collection_account_id", "collection_account_type"], name: "index_venues_on_polymorphic_collection_account", unique: true, using: :btree

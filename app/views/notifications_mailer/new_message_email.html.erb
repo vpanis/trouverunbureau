@@ -11,13 +11,13 @@
         </div>
 
         <div>
-          <p><%= "#{t('new_message_email.hi')} George," %></p> <!-- TODO: Change name -->
-          <p><%= "#{t('new_message_email.got_new_message')} " %><span style="color: black; font-weight: bold;">Luciano Zemin</span> on Thursday at 19pm.</p><!-- TODO: Change name and hours -->
+          <p><%= "#{t('new_message_email.hi')} #{@message.recipient_name}," %></p> <!-- TODO: Change name -->
+          <p><%= "#{t('new_message_email.got_new_message')} " %><span style="color: black; font-weight: bold;"><%="#{@message.from}"%></span> on <%=I18n.l(@message.created_at, format: :long) %></p>
         </div>
       </div>
 
       <div style="padding: 25px 10px; background-color: #f6f6f6">
-        <p style="max-width: 650px; margin: 0 auto; text-align: justify; font-style: italic; font-size: 14px; line-height: 22px;">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p><!-- TODO: Change message -->
+        <p style="max-width: 650px; margin: 0 auto; text-align: justify; font-style: italic; font-size: 14px; line-height: 22px;"><%=@message.message_text%></p>
       </div>
 
       <div style="max-width: 650px; margin: 0 auto; text-align: center; margin-top: 35px;">
