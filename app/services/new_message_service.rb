@@ -19,7 +19,6 @@ class NewMessageService < SimpleDelegator
 
   class CancelledMessageNotifier < SimpleDelegator
     def match?
-      # TODO: Remove this "or". It should only be cancelled
       %w(cancelled denied refunded).any? { |a| m_type == a }
     end
 
