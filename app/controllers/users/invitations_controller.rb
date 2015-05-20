@@ -3,6 +3,7 @@ module Users
     include RepresentedHelper
 
     protected
+
     def current_inviter
       current_represented
     end

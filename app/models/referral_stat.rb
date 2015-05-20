@@ -9,5 +9,5 @@ class ReferralStat < ActiveRecord::Base
   def self.refresh_view
     connection = ActiveRecord::Base.connection
     connection.execute('REFRESH MATERIALIZED VIEW referral_stats')
- end
+  end
 end

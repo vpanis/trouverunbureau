@@ -56,15 +56,11 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) do |u|
-      u.permit(:email, :first_name, :last_name, :password, :remember_me, :date_of_birth,
-               :nationality, :country_of_residence, :provider)
-    end
+    allow = [:email, :first_name, :last_name, :password, :remember_me, :date_of_birth,
+             :nationality, :country_of_residence]
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(allow) }
 
-    devise_parameter_sanitizer.for(:accept_invitation) do |u|
-      u.permit(:email, :first_name, :last_name, :password, :remember_me, :date_of_birth,
-               :nationality, :country_of_residence, :invitation_token)
-    end
+    devise_parameter_sanitizer.for(:accept_invitation) { |u| u.permit(allow << :invitation_token) }
 
     devise_parameter_sanitizer.for(:sign_in) do |u|
       u.permit(:email, :password, :remember_me)

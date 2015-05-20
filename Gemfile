@@ -11,7 +11,7 @@ gem 'google-webfonts-rails', '~>0.0.4'
 gem 'pg', '~>0.17.1'
 
 # To extract sensitive configuration
-gem 'app_configuration' , '~>0.0.3'
+gem 'app_configuration', '~>0.0.3'
 
 # Use unicorn as the app server
 gem 'unicorn', '~>4.8.3'
@@ -36,9 +36,9 @@ gem 'jquery-rails', '~>3.1.2'
 
 gem 'loadjs', '~>0.0.6'
 
-gem 'inherited_resources' , '~>1.4.1'
+gem 'inherited_resources', '~>1.4.1'
 
-#angularjs
+# angularjs
 gem 'angularjs-rails'
 gem 'angular-ui-bootstrap-rails'
 
@@ -49,7 +49,7 @@ gem 'carrierwave', '~>0.10.0'
 
 gem 'rmagick', git: 'git://github.com/gemhome/rmagick.git'
 
-gem 'turbolinks' , '~>2.3.0'
+gem 'turbolinks', '~>2.3.0'
 
 gem 'jquery-turbolinks', '~>2.1.0'
 
@@ -66,7 +66,7 @@ gem 'simplecov', require: false, group: :test
 
 # Active Admin
 gem 'activeadmin', github: 'activeadmin'
-gem 'formtastic' , '~>2.3.1'
+gem 'formtastic', '~>2.3.1'
 gem 'ransack', '~>1.4.1'
 gem 'polyamorous', '~>1.1.0'
 
@@ -88,7 +88,7 @@ gem 'active_model_serializers', '~>0.9.3'
 gem 'will_paginate', '~>3.0.7'
 
 # If required only for development, stage and production will EXPLODE
-gem "mail_view", "~> 2.0.4"
+gem 'mail_view', '~> 2.0.4'
 
 gem 'angular-translate-rails'
 
@@ -103,18 +103,16 @@ gem 'mangopay', '~>3.0.0'
 
 gem 'devise_invitable'
 
-gem 'schema_plus'
-
 group :development do
   gem 'better_errors', '~>2.0.0'
   gem 'binding_of_caller', '~>0.7.2'
   gem 'spring', '~>1.1.3'
 
   # Livereload
-  gem "guard", ">= 2.2.2",       :require => false
-  gem "guard-livereload",        :require => false
-  gem "rack-livereload"
-  gem "rb-fsevent",              :require => false
+  gem 'guard', '>= 2.2.2',       require: false
+  gem 'guard-livereload',        require: false
+  gem 'rack-livereload'
+  gem 'rb-fsevent',              require: false
 
   # Lints
   gem 'rubocop', '~>0.26.1'

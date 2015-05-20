@@ -10,7 +10,7 @@ class CreateMangopayCollectionAccounts < ActiveRecord::Migration
       t.string :email
       t.string :nationality
       t.string :country_of_residence
-      t.date   :date_of_birth
+      t.date :date_of_birth
       t.string :address
       t.string :legal_person_type
 

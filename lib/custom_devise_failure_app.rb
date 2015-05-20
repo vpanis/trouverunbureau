@@ -1,5 +1,5 @@
 class CustomDeviseFailureApp < Devise::FailureApp
-  
+
   # Used to know when the sign in error (invalid pass and user) and skip the
   # other devise alerts
   def recall

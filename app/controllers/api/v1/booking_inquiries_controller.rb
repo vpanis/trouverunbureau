@@ -72,6 +72,14 @@ module Api
 
       private
 
+      def build_message
+        message_params = { m_type: Message.m_types[:text], user: current_user,
+          represented: current_represented, booking_id: params[:id]
+        }
+        message_params[:text] = params[:message][:text] if params.include?(:message)
+        Message.new(message_params)
+      end
+
       def inquiries
         return unless represented_data_validation
         render status: 200,

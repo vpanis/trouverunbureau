@@ -47,7 +47,6 @@ case Rails.env
     # user3 works for org1
     OrganizationUser.create!(user: user3, organization: org1, role: OrganizationUser.roles[:admin])
 
-
     beginning_of_day = Time.current.at_beginning_of_day
     # puts 'creating countries'
     # country1 = Country.create!(name:"United States")
@@ -256,7 +255,6 @@ case Rails.env
     venue13.collection_account = BraintreeCollectionAccount.new(merchant_account_id: "0000000000000000-13", force_submit: true, braintree_persisted: true, active: true, status: "active")
     venue13.status = Venue.statuses[:active]
     venue13.save!
-
 
     # user1 has access to venue1, venue2 and venue3
     # user2 has access to venue4

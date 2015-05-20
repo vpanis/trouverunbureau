@@ -1,13 +1,13 @@
 class CreateReferralStats < ActiveRecord::Migration
   def self.up
-   create_view :referral_stats, <<-SQL
+    execute <<-SQL
     CREATE MATERIALIZED VIEW referral_stats
     AS (
         SELECT venues.id as venue_id,
                CASE
                 WHEN owner_stats.total_invitations_count = 0 THEN 1
                 WHEN owner_stats.total_invitations_count IS NULL THEN 1
-                ELSE (owner_stats.accepted_count / owner_stats.total_invitations_count) + 1
+                ELSE (owner_stats.accepted_count::float / owner_stats.total_invitations_count::float) + 1
                END as multiplier
         FROM venues
         LEFT JOIN (
@@ -32,6 +32,8 @@ class CreateReferralStats < ActiveRecord::Migration
    SQL
   end
   def self.down
-    drop_view :referral_stats, if_exists: true
+    execute <<-SQL
+      DROP MATERIALIZED VIEW IF EXISTS referral_stats
+    SQL
   end
 end
