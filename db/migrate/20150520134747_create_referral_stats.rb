@@ -1,6 +1,6 @@
 class CreateReferralStats < ActiveRecord::Migration
   def self.up
-   execute <<-SQL
+   create_view :referral_stats, <<-SQL
     CREATE MATERIALIZED VIEW referral_stats
     AS (
         SELECT venues.id as venue_id,
@@ -32,8 +32,6 @@ class CreateReferralStats < ActiveRecord::Migration
    SQL
   end
   def self.down
-    execute <<-SQL
-      DROP MATERIALIZED VIEW IF EXISTS referral_stats
-    SQL
+    drop_view :referral_stats, if_exists: true
   end
 end

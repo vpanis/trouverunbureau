@@ -78,7 +78,7 @@ class SpaceSearch
   end
 
   def venue_conditions(spaces)
-    spaces = spaces.joins { venue }.order('venues.quantity_reviews DESC, venues.rating DESC')
+    spaces = spaces.joins(:venue, venue: :referral_stat).order('venues.quantity_reviews DESC, (venues.rating * referral_stats.multiplier)  DESC')
     spaces = latitude_longitude_conditions(spaces)
     spaces = spaces.where { venue.v_type.eq_any my { venue_types } } unless venue_types.blank?
     spaces = spaces.where('venues.status IN (?)', venue_states) if venue_states.present?
