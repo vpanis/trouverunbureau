@@ -2,7 +2,7 @@ class RefreshReferralStatsJob
   include Sidekiq::Worker
   include Sidetiq::Schedulable
 
-   recurrence { hourly }
+  recurrence { hourly }
 
   def perform
     ReferralStat.refresh_view
