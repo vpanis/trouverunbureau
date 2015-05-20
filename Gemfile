@@ -101,6 +101,8 @@ gem 'timezone'
 gem 'braintree', '~>2.40.0'
 gem 'mangopay', '~>3.0.0'
 
+gem 'devise_invitable'
+
 group :development do
   gem 'better_errors', '~>2.0.0'
   gem 'binding_of_caller', '~>0.7.2'

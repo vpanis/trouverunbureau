@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   include OwnerActions
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :omniauthable,
+  devise :invitable, :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable,
          :async, omniauth_providers: [:facebook]
   # Relations
