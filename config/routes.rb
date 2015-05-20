@@ -149,4 +149,7 @@ Deskspotting::Application.routes.draw do
     end
   end # api/v1
 
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+
 end

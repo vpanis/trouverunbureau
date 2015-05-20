@@ -1,0 +1,28 @@
+= render 'shared/menu_bar'
+= render 'shared/profile_menu_bar', selected: 'nil'
+= form_for resource, as: resource_name, url: invitation_path(resource_name), html: {method: :post} do |f|
+  .background
+  = devise_error_messages!
+  .elements
+    .first-title
+      = t('referral.invite_friends')
+    .separator.white
+    .second-title
+      = t('referral.join')
+    .text
+      = t('referral.text')
+    .invitation
+      - resource.class.invite_key_fields.each do |field|
+        .styled-input
+          = image_tag('venue_profile_a_mail_service.png')
+          = f.text_field(field, class: 'rounded-left', id: 'input-mail',  placeholder: 'e.g. info@deskpotting.com')
+      = f.button(t('referral.button'), class: 'btn btn-default')
+    - if flash['notice'].present?
+      #alert.alert
+        span
+          = t('referral.confirmation')
+    - elsif flash['error'].present?
+      #alert.alert
+        span
+          = t('errors.email_taken')
+      span.mail#mail

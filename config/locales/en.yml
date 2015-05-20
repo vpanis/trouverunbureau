@@ -1,5 +1,7 @@
 #ENGLISH
 en:
+  errors:
+    email_taken: 'The user already exists'
   languages:
     es: 'Español'
     en: 'English'
@@ -485,7 +487,7 @@ en:
     join: 'Invite your friends to join DeskSpotting'
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
     button: 'Invite'
-    confirmation: 'The invitation was sent correctly to'
+    confirmation: 'The invitation was sent correctly'
   organizations:
     edit_profile: 'Edit profile'
     required_fields: 'Required fields'
