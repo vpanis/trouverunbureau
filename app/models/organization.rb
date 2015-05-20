@@ -3,6 +3,8 @@ class Organization < ActiveRecord::Base
   # Only for creation purpose
   attr_accessor :user, :user_id
 
+  devise :invitable
+
   # Relations
   has_many :organization_users
   has_many :users, through: :organization_users

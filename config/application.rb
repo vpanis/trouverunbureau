@@ -68,7 +68,7 @@ module Deskspotting
 
     # Mailer configuration
     mail = AppConfiguration.for :mail
-    config.action_mailer.default_url_options = { host: mail.address, only_path: false }
+    config.action_mailer.default_url_options = { host: mail.host, only_path: false }
     config.action_mailer.asset_host = mail.host
     # ActionMailer Config
     # Setup for production - deliveries, no errors raised

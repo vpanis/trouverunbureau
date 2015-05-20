@@ -61,6 +61,11 @@ class ApplicationController < ActionController::Base
                :nationality, :country_of_residence, :provider)
     end
 
+    devise_parameter_sanitizer.for(:accept_invitation) do |u|
+      u.permit(:email, :first_name, :last_name, :password, :remember_me, :date_of_birth,
+               :nationality, :country_of_residence, :invitation_token)
+    end
+
     devise_parameter_sanitizer.for(:sign_in) do |u|
       u.permit(:email, :password, :remember_me)
     end

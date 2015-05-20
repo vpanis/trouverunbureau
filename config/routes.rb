@@ -2,7 +2,9 @@ Deskspotting::Application.routes.draw do
 
   devise_for :users, controllers: {
     omniauth_callbacks: "users/omniauth_callbacks",
-    registrations: "users/registrations" }
+    invitations: 'users/invitations',
+    registrations: "users/registrations"
+  }
 
   if Rails.env.development?
     mount MailPreview => 'mail_view'
