@@ -5,12 +5,8 @@ class SpaceSearch
   # Space.s_types (:desk, :office...)
   attr_accessor :space_types
   # Venue.v_types (:startup_office, :studio...)
-  attr_accessor :venue_types
-  # Venue::AMENITY_TYPES array ("wifi", "cafe_restaurant"...)
-  attr_accessor :venue_amenities
-  attr_accessor :venue_states
+  attr_accessor :venue_types, :venue_amenities, :venue_professions, :venue_states
   # Venue::PROFESSIONS array ("technology", "public_relations"...)
-  attr_accessor :venue_professions
   attr_accessor :latitude_from, :latitude_to, :longitude_from, :longitude_to
   attr_accessor :capacity_max, :capacity_min, :quantity, :date, :weekday
 
@@ -77,8 +73,7 @@ class SpaceSearch
   end
 
   def venue_conditions(spaces)
-    spaces = spaces.joins(:venue, venue: :referral_stat)
-          .order('venues.quantity_reviews DESC, (venues.rating * referral_stats.multiplier)  DESC')
+    spaces = spaces_with_venues(spaces)
     spaces = latitude_longitude_conditions(spaces)
     spaces = spaces.where { venue.v_type.eq_any my { venue_types } } unless venue_types.blank?
     spaces = spaces.where('venues.status IN (?)', venue_states) if venue_states.present?
@@ -89,6 +84,13 @@ class SpaceSearch
     return spaces if weekday.blank?
     # day_hours is the name of the relation in venue, venue_hours the name of the table
     spaces.joins { venue.day_hours } .where { venue_hours.weekday == my { weekday } }
+  end
+
+  def spaces_with_venues(spaces)
+    spaces.joins(:venue)
+          .joins('LEFT OUTER JOIN referral_stats on referral_stats.venue_id = venues.id')
+          .order('venues.quantity_reviews DESC,
+                 (venues.rating * COALESCE(referral_stats.multiplier, 1))  DESC')
   end
 
   def latitude_longitude_conditions(spaces)
@@ -119,9 +121,7 @@ class SpaceSearch
   def each_amenity_inclusion
     return unless venue_amenities.present?
     invalid_amenities = venue_amenities - Venue::AMENITY_TYPES.map(&:to_s)
-    invalid_amenities.each do |amenity|
-      errors.add(:venue_amenity, amenity + ' is not a valid amenity')
-    end
+    invalid_amenities.each { |a| errors.add(:venue_amenity, a + ' is not a valid amenity') }
   end
 
   def each_profession_inclusion
