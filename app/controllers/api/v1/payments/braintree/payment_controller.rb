@@ -11,7 +11,7 @@ module Api
             @payment = BraintreePayment.find_by_id(params[:payment_id])
             return render json: { token: token }, status: 400 unless @payment.present?
             token = @payment.payment_nonce_token if @payment.payment_nonce_expire.present? &&
-              Time.new < @payment.payment_nonce_expire
+              Time.current < @payment.payment_nonce_expire
             @payment.update_attributes(payment_nonce_token: nil, payment_nonce_expire: nil) unless
               token.present?
             render json: { token: token }, status: 200

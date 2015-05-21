@@ -76,7 +76,7 @@ describe VenueDetailsController do
       after(:each) { sign_out user }
 
       context 'the venue belongs to the user' do
-        let!(:venue) { create(:venue, owner: user) }
+        let!(:venue) { create(:venue, :with_time_zone, owner: user) }
         let(:new_description) { 'new description' }
         let(:new_professions) { "#{Venue::PROFESSIONS.first},#{Venue::PROFESSIONS.last}" }
         let(:new_rules) { 'new rules' }
@@ -162,8 +162,8 @@ describe VenueDetailsController do
           context 'when there are bookings' do
             let!(:booking) do
               create(:booking, space: space,
-                               from: Time.zone.now.advance(minutes: 2),
-                               to: Time.zone.now.advance(minutes: 10), state: :paid)
+                               from: Time.current.advance(minutes: 2),
+                               to: Time.current.advance(minutes: 10), state: :paid)
             end
 
             before do

@@ -54,9 +54,9 @@ class SpaceBookingInquiryController < ApplicationController
   end
 
   def hour_date_generator
-    @from_date = Time.parse(params[:booking][:from] + ' ' + params[:hour_booking_from]) if
+    @from_date = Time.zone.parse(params[:booking][:from] + ' ' + params[:hour_booking_from]) if
       valid_date?(:from)
-    @to_date = Time.parse(params[:booking][:from] + ' ' + params[:hour_booking_to]) if
+    @to_date = Time.zone.parse(params[:booking][:from] + ' ' + params[:hour_booking_to]) if
       valid_date?(:to)
   end
 
@@ -66,16 +66,16 @@ class SpaceBookingInquiryController < ApplicationController
 
   def day_type_booking
     return false unless params[:booking][:from].present? && params[:booking][:to].present?
-    @from_date = Time.parse(params[:booking][:from]).at_beginning_of_day
-    @to_date = Time.parse(params[:booking][:to]).at_end_of_day
+    @from_date = Time.zone.parse(params[:booking][:from]).at_beginning_of_day
+    @to_date = Time.zone.parse(params[:booking][:to]).at_end_of_day
     @b_type = Booking.b_types[:day]
     true
   end
 
   def month_type_booking
     return false unless params[:booking][:from].present? && params[:month_quantity].to_i > 0
-    @from_date = Time.parse(params[:booking][:from]).at_beginning_of_day
-    @to_date = Time.parse(params[:booking][:from])
+    @from_date = Time.zone.parse(params[:booking][:from]).at_beginning_of_day
+    @to_date = Time.zone.parse(params[:booking][:from])
                 .advance(months: params[:month_quantity].to_i)
                 .at_end_of_day
     @b_type = Booking.b_types[:month]

@@ -72,7 +72,8 @@ class BookingManager
     def change_to_pending_payment(booking, custom_errors)
       [check_if_can_book_and_perform(booking, 'FOR UPDATE', custom_errors) do
         if custom_errors.empty?
-          booking.update_attributes(state: Booking.states[:pending_payment], approved_at: Time.new)
+          booking.update_attributes(state: Booking.states[:pending_payment],
+                                    approved_at: Time.current)
         end
       end, custom_errors]
     end

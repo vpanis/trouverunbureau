@@ -6,15 +6,17 @@ describe ReviewsController do
   let!(:user) { create(:user) }
 
   describe 'GET bookings/:id/venue_review' do
+    let(:venue) { create(:venue, :with_time_zone, :with_spaces) }
     context 'a user is logged in' do
       before(:each) { sign_in user }
       context 'the user is the booking\'s client' do
         context 'booking\'s from date is before now' do
-          let(:from_date) { DateTime.now - 1.second }
+          let(:from_date) { Time.current.advance(seconds: -1) }
 
           context 'booking\'s state is PAID' do
             let(:booking) do
-              create(:booking, owner: user, state: Booking.states[:paid], from: from_date)
+              create(:booking, owner: user, state: Booking.states[:paid], from: from_date,
+                               space: venue.spaces.first)
             end
 
             context 'a venue review does not exist for that booking' do
@@ -52,7 +54,7 @@ describe ReviewsController do
           context 'booking\'s state is not PAID' do
             let(:booking) do
               create(:booking, owner: user, state: Booking.states[:pending_payment],
-                               from: from_date)
+                               from: from_date, space: venue.spaces.first)
             end
 
             it 'is forbidden' do
@@ -63,9 +65,10 @@ describe ReviewsController do
         end # booking's from date is before now
 
         context 'booking\'s from date is after now' do
-          let(:from_date) { DateTime.now + 1.second }
+          let(:from_date) { Time.current.advance(seconds: 1) }
           let(:booking) do
-            create(:booking, owner: user, state: Booking.states[:paid], from: from_date)
+            create(:booking, owner: user, state: Booking.states[:paid], from: from_date,
+                             space: venue.spaces.first)
           end
 
           it 'is forbidden' do
@@ -76,7 +79,7 @@ describe ReviewsController do
       end # the user is the booking's client
 
       context 'the user is not the booking\'s client' do
-        let(:booking) { create(:booking) }
+        let(:booking) { create(:booking, space: venue.spaces.first) }
 
         it 'is forbidden' do
           get :new_venue_review, id: booking.id
@@ -93,7 +96,7 @@ describe ReviewsController do
     end # a user is logged in
 
     context 'no user is logged in' do
-      let(:booking) { create(:booking) }
+      let(:booking) { create(:booking, space: venue.spaces.first) }
 
       it 'is redirected to login' do
         get :new_venue_review, id: booking.id
@@ -107,11 +110,11 @@ describe ReviewsController do
     context 'a user is logged in' do
       before(:each) { sign_in user }
       context 'the user is the venue\'s owner' do
-        let(:venue) { create(:venue, owner: user) }
+        let(:venue) { create(:venue, :with_time_zone, owner: user) }
         let(:space) { create(:space, venue: venue) }
         context 'booking\'s from date is before now' do
           context 'booking\'s state is PAID' do
-            let(:from_date) { DateTime.now - 1.second }
+            let(:from_date) { Time.current.advance(seconds: -1) }
             let(:booking) do
               create(:booking, space: space, state: Booking.states[:paid], from: from_date)
             end
@@ -148,7 +151,7 @@ describe ReviewsController do
           end # booking's state is PAID
 
           context 'booking\'s state is not PAID' do
-            let(:from_date) { DateTime.now + 1.second }
+            let(:from_date) { Time.current.advance(seconds: 1) }
             let(:booking) do
               create(:booking, space: space, state: Booking.states[:pending_payment],
                                from: from_date)
@@ -162,7 +165,7 @@ describe ReviewsController do
         end # booking's from date is before now
 
         context 'booking\'s from date is after now' do
-          let(:from_date) { DateTime.now + 1.second }
+          let(:from_date) { Time.current.advance(seconds: 1) }
           let(:booking) do
             create(:booking, space: space, state: Booking.states[:paid], from: from_date)
           end
@@ -203,15 +206,17 @@ describe ReviewsController do
   end # GET bookings/:id/client_review
 
   describe 'POST bookings/:id/venue_review' do
+    let(:venue) { create(:venue, :with_time_zone, :with_spaces) }
     context 'a user is logged in' do
       before(:each) { sign_in user }
       context 'the user is the booking\'s client' do
         context 'booking\'s from date is before now' do
-          let(:from_date) { DateTime.now - 1.second }
+          let(:from_date) { Time.current.advance(seconds: -1) }
 
           context 'booking\'s state is PAID' do
             let(:booking) do
-              create(:booking, owner: user, state: Booking.states[:paid], from: from_date)
+              create(:booking, owner: user, state: Booking.states[:paid], from: from_date,
+                               space: venue.spaces.first)
             end
             let(:stars) { 4 }
             let(:message) { 'My opinion' }
@@ -270,7 +275,7 @@ describe ReviewsController do
           context 'booking\'s state is not PAID' do
             let(:booking) do
               create(:booking, owner: user, state: Booking.states[:pending_payment],
-                               from: from_date)
+                               from: from_date, space: venue.spaces.first)
             end
 
             it 'is forbidden' do
@@ -281,9 +286,10 @@ describe ReviewsController do
         end # booking's from date is before now
 
         context 'booking\'s from date is after now' do
-          let(:from_date) { DateTime.now + 1.second }
+          let(:from_date) { Time.current.advance(seconds: 1) }
           let(:booking) do
-            create(:booking, owner: user, state: Booking.states[:paid], from: from_date)
+            create(:booking, owner: user, state: Booking.states[:paid], from: from_date,
+                             space: venue.spaces.first)
           end
 
           it 'is forbidden' do
@@ -294,7 +300,7 @@ describe ReviewsController do
       end # the user is the booking's client
 
       context 'the user is not the booking\'s client' do
-        let(:booking) { create(:booking) }
+        let(:booking) { create(:booking, space: venue.spaces.first) }
 
         it 'is forbidden' do
           post :create_venue_review, id: booking.id
@@ -311,7 +317,7 @@ describe ReviewsController do
     end # a user is logged in
 
     context 'no user is logged in' do
-      let(:booking) { create(:booking) }
+      let(:booking) { create(:booking, space: venue.spaces.first) }
 
       it 'is redirected to login' do
         post :create_venue_review, id: booking.id
@@ -322,14 +328,14 @@ describe ReviewsController do
   end # POST bookings/:id/venue_review
 
   describe 'POST bookings/:id/client_review' do
+    let(:venue) { create(:venue, :with_time_zone, owner: user) }
+    let(:space) { create(:space, venue: venue) }
     context 'a user is logged in' do
       before(:each) { sign_in user }
       context 'the user is the venue\'s owner' do
-        let(:venue) { create(:venue, owner: user) }
-        let(:space) { create(:space, venue: venue) }
 
         context 'booking\'s from date is before now' do
-          let(:from_date) { DateTime.now - 1.second }
+          let(:from_date) { Time.current.advance(seconds: -1) }
 
           context 'booking\'s state is PAID' do
             let(:booking) do
@@ -403,7 +409,7 @@ describe ReviewsController do
         end # booking's from date is before now
 
         context 'booking\'s from date is after now' do
-          let(:from_date) { DateTime.now + 1.second }
+          let(:from_date) { Time.current.advance(seconds: 1) }
           let(:booking) do
             create(:booking, space: space, state: Booking.states[:paid], from: from_date)
           end
@@ -416,7 +422,7 @@ describe ReviewsController do
       end # the user is the venues's owner
 
       context 'the user is not the venue\'s owner' do
-        let(:booking) { create(:booking) }
+        let(:booking) { create(:booking, space: space) }
 
         it 'is forbidden' do
           post :create_client_review, id: booking.id
@@ -433,7 +439,7 @@ describe ReviewsController do
     end # a user is logged in
 
     context 'no user is logged in' do
-      let(:booking) { create(:booking) }
+      let(:booking) { create(:booking, space: space) }
 
       it 'is redirected to login' do
         post :create_client_review, id: booking.id

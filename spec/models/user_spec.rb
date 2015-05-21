@@ -51,7 +51,7 @@ RSpec.describe User, type: :model do
   it 'should accept a nil email if the provider is present' do
     user = User.create(first_name: 'test', last_name: 'master', password: 'testtest',
                        provider: 'test', gender: 'f', nationality: 'FR',
-                       country_of_residence: 'FR', date_of_birth: Time.new.advance(years: -23),
+                       country_of_residence: 'FR', date_of_birth: Time.current.advance(years: -23),
                        profession: Venue::PROFESSIONS.first.to_s, company_name: 'Wolox')
     expect(user.valid?).to be(true)
   end

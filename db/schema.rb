@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150503073816) do
+ActiveRecord::Schema.define(version: 20150506182501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -252,6 +252,15 @@ ActiveRecord::Schema.define(version: 20150503073816) do
 
   add_index "spaces", ["venue_id"], name: "index_spaces_on_venue_id", using: :btree
 
+  create_table "time_zones", force: true do |t|
+    t.string   "zone_identifier"
+    t.integer  "minute_utc_difference"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "time_zones", ["zone_identifier"], name: "index_time_zones_on_zone_identifier", unique: true, using: :btree
+
   create_table "users", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -371,9 +380,11 @@ ActiveRecord::Schema.define(version: 20150503073816) do
     t.integer  "status"
     t.string   "country_code"
     t.text     "office_rules"
+    t.integer  "time_zone_id"
   end
 
   add_index "venues", ["collection_account_id", "collection_account_type"], name: "index_venues_on_polymorphic_collection_account", unique: true, using: :btree
   add_index "venues", ["owner_id", "owner_type"], name: "index_venues_on_owner_id_and_owner_type", using: :btree
+  add_index "venues", ["time_zone_id"], name: "index_venues_on_time_zone_id", using: :btree
 
 end

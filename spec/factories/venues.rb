@@ -31,6 +31,12 @@ FactoryGirl.define do
       spaces { FactoryGirl.build_list(:space, rand(3) + 1) }
     end
 
+    trait :with_time_zone do
+      after(:build) do |venue|
+        venue.time_zone = TimeZone.first || FactoryGirl.create(:time_zone)
+      end
+    end
+
     # Only for Factorygirl.CREATE, nested_attributes issues
     trait :with_venue_hours do
       after(:create) do |venue|

@@ -45,14 +45,15 @@ class ReviewsController < ApplicationController
     params.require(:venue_review).permit(:stars, :message)
   end
 
-  # TODO: take into a count timezone
   def can_do_client_review?
-    current_represented.eql?(@booking.space.venue.owner) && @booking.from < DateTime.now &&
+    current_represented.eql?(@booking.space.venue.owner) &&
+      @booking.space.venue.time_zone.from_zone_to_utc(@booking.from) < Time.current &&
       @booking.paid? && ClientReview.where(booking: @booking).empty?
   end
 
   def can_do_venue_review?
-    current_represented.eql?(@booking.owner) && @booking.from < DateTime.now &&
+    current_represented.eql?(@booking.owner) &&
+      @booking.space.venue.time_zone.from_zone_to_utc(@booking.from) < Time.current &&
       @booking.paid? && VenueReview.where(booking: @booking).empty?
   end
 

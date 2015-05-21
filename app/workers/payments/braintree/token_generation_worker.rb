@@ -27,7 +27,7 @@ module Payments
           token = ::Braintree::ClientToken.generate
         end
         @payment.update_attributes(payment_nonce_token: token,
-                                   payment_nonce_expire: Time.new.advance(hours: 12))
+                                   payment_nonce_expire: Time.current.advance(hours: 12))
       end
     end
   end

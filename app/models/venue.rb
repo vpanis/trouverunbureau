@@ -4,6 +4,7 @@ class Venue < ActiveRecord::Base
 
   # Relations
   belongs_to :owner, polymorphic: true
+  belongs_to :time_zone
 
   has_many :spaces, dependent: :destroy
   has_many :day_hours, class_name: 'VenueHour', dependent: :destroy

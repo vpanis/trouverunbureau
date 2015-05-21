@@ -11,7 +11,7 @@ module ParametersHelper
 
   def convert_strings_to_dates(*args)
     args.each do |arg|
-      params[arg] = DateTime.parse(params[arg]) if params[arg].present?
+      params[arg] = Time.zone.parse(params[arg]) if params[arg].present?
     end
   end
 end

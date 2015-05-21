@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :users_favorite do
-    since { Faker::Time.between(2.days.ago, Time.now) }
+    since { Faker::Time.between(2.days.ago, Time.current) }
 
     user { FactoryGirl.build(:user) }
     space { FactoryGirl.build(:space) }

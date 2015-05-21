@@ -94,6 +94,9 @@ gem 'angular-translate-rails'
 
 gem 'countries'
 
+# Timezone from geonames
+gem 'timezone'
+
 # Payment Methods
 gem 'braintree', '~>2.40.0'
 gem 'mangopay', '~>3.0.0'
