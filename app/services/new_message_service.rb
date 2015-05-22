@@ -1,7 +1,6 @@
 class NewMessageService < SimpleDelegator
 
   def send_notifications
-    byebug
     notifiers.find { |n| n.match? }.notify
   end
 
@@ -20,11 +19,12 @@ class NewMessageService < SimpleDelegator
 
   class CancelledMessageNotifier < SimpleDelegator
     def match?
-      m_type == 'cancelled'
+      # TODO: Remove this "or". It should only be cancelled
+      ['cancelled', 'denied', 'refunded'].any? { |a| m_type == a}
     end
 
     def notify
-      NotificationsMailer.delay.host_cancellation_email(id)
+        NotificationsMailer.delay.host_cancellation_email(id)
     end
   end
 

@@ -18,11 +18,11 @@ class MessageNotificationWrapper < SimpleDelegator
     text || I18n.t("messages.#{m_type}")
   end
 
-  private
-
   def venue_recipients
     booking.space.venue.owner.is_a?(User) ? booking.space.venue.owner.email : organization_members
   end
+
+  private
 
   def organization_members
     booking.space.venue.owner.organization_users.joins(:user).pluck('users.email')

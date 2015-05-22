@@ -11,11 +11,14 @@
         </div>
 
         <div>
-          <p><%= "#{@message.recipient_name}," %></p> <!-- TODO: Change name -->
+          <p><%= "#{@message.recipient_name}," %></p>
 
           <!-- TODO: If sorry cancel or unfortunately -->
-          <p><%= "#{t('host_cancellation_email.sorry_cancel')}:" %></p>
-          <p><%= "#{t('host_cancellation_email.unfortunately', name: @message.from)}:" %></p>
+          <% if @message.venue_recipients.include? user.email? %>
+            <p><%= "#{t('host_cancellation_email.unfortunately', name: @message.from)}:" %></p>
+          <% else %>
+            <p><%= "#{t('host_cancellation_email.sorry_cancel')}:" %></p>
+          <% end %>
 
         </div>
       </div>
@@ -26,82 +29,111 @@
 
         <p style="color: black; margin: 10px 0;">
           <span style="font-weight: 300;"><%= "#{t('host_cancellation_email.space')}: " %></span>
-          <span style="font-weight: bold;">@message.boooking.space.name</span><!-- TODO: Change space -->
+          <span style="font-weight: bold;">@message.boooking.space.name</span>
         </p>
 
-        <div style="display: table; margin: 0 auto; padding-top: 20px;">
-          <div style="padding: 0 15px; text-align: center; display: table-cell;">
-            <p style="line-height: 25px;">
-              <span style="font-weight: bold;">01/02/16</span><!-- TODO: Change date -->
-              <br>
-              <span style="font-size: 14px;"><%= t('host_cancellation_email.date') %></span>
-            </p>
+        <% if @message.booking.from.to_date == @message.booking.to.to_date %>
+          <div style="display: table; margin: 0 auto; padding-top: 20px;">
+            <div style="padding: 0 15px; text-align: center; display: table-cell;">
+              <p style="line-height: 25px;">
+                <span style="font-weight: bold;"><%= @message.booking.from.to_date %></span>
+                <br>
+                <span style="font-size: 14px;"><%= t('host_cancellation_email.date') %></span>
+              </p>
+            </div>
+            <div style="text-align: center; display: table-cell; font-size: 20px; vertical-align: middle; font-weight: 100;">|</div>
+            <div style="padding: 0 15px; text-align: center; display: table-cell;">
+              <p style="line-height: 25px;">
+                <span style="font-weight: bold;"><%= @message.boooking.quantity %></span>
+                <br>
+                <span style="font-size: 14px;"><%= t('host_cancellation_email.spaces') %></span>
+              </p>
+            </div>
+            <div style="text-align: center; display: table-cell; font-size: 20px; vertical-align: middle; font-weight: 100;">|</div>
+            <div style="padding: 0 15px; text-align: center; display: table-cell;">
+              <p style="line-height: 25px;">
+                <span style="font-weight: bold;"><%= @message.booking.from.strftime("%H:%M") %></span>
+                <br>
+                <span style="font-size: 14px;"><%= t('host_cancellation_email.check_in') %></span>
+              </p>
+            </div>
+            <div style="text-align: center; display: table-cell; font-size: 20px; vertical-align: middle; font-weight: 100;">|</div>
+            <div style="padding: 0 15px; text-align: center; display: table-cell;">
+              <p style="line-height: 25px;">
+                <span style="font-weight: bold;"><%= @message.booking.to.strftime("%H:%M") %></span>
+                <br>
+                <span style="font-size: 14px;"><%= t('host_cancellation_email.check_out') %></span>
+              </p>
+            </div>
           </div>
-          <div style="text-align: center; display: table-cell; font-size: 20px; vertical-align: middle; font-weight: 100;">|</div>
-          <div style="padding: 0 15px; text-align: center; display: table-cell;">
-            <p style="line-height: 25px;">
-              <span style="font-weight: bold;">@message.boooking.quantity</span><!-- TODO: Change spaces -->
-              <br>
-              <span style="font-size: 14px;"><%= t('host_cancellation_email.spaces') %></span>
-            </p>
+        <% else %>
+            <div style="padding: 0 15px; text-align: center; display: table-cell;">
+              <p style="line-height: 25px;">
+                <span style="font-weight: bold;"><%= @message.boooking.quantity %></span>
+                <br>
+                <span style="font-size: 14px;"><%= t('host_cancellation_email.spaces') %></span>
+              </p>
+            </div>
+            <div style="text-align: center; display: table-cell; font-size: 20px; vertical-align: middle; font-weight: 100;">|</div>
+            <div style="padding: 0 15px; text-align: center; display: table-cell;">
+              <p style="line-height: 25px;">
+                <span style="font-weight: bold;"><%= @message.booking.from.strftime("%m-%d-%Y") %></span>
+                <br>
+                <span style="font-size: 14px;"><%= t('host_cancellation_email.check_in') %></span>
+              </p>
+            </div>
+            <div style="text-align: center; display: table-cell; font-size: 20px; vertical-align: middle; font-weight: 100;">|</div>
+            <div style="padding: 0 15px; text-align: center; display: table-cell;">
+              <p style="line-height: 25px;">
+                <span style="font-weight: bold;"><%= @message.booking.to.strftime("%m-%d-%Y") %></span>
+                <br>
+                <span style="font-size: 14px;"><%= t('host_cancellation_email.check_out') %></span>
+              </p>
+            </div>
           </div>
-          <div style="text-align: center; display: table-cell; font-size: 20px; vertical-align: middle; font-weight: 100;">|</div>
-          <div style="padding: 0 15px; text-align: center; display: table-cell;">
-            <p style="line-height: 25px;">
-              <span style="font-weight: bold;">14:00 PM</span><!-- TODO: Change time -->
-              <br>
-              <span style="font-size: 14px;"><%= t('host_cancellation_email.check_in') %></span>
-            </p>
-          </div>
-          <div style="text-align: center; display: table-cell; font-size: 20px; vertical-align: middle; font-weight: 100;">|</div>
-          <div style="padding: 0 15px; text-align: center; display: table-cell;">
-            <p style="line-height: 25px;">
-              <span style="font-weight: bold;">16:00 PM</span><!-- TODO: Change time -->
-              <br>
-              <span style="font-size: 14px;"><%= t('host_cancellation_email.check_out') %></span>
-            </p>
-          </div>
-        </div>
+        <% end %>
       </div>
 
       <div style="max-width: 650px; margin: 0 auto;">
         <!-- TODO: Create if for this sections -->
+        <% if @message.m_type == 'refunded' %>
+          <!-- refunded section -->
+          <p>
+            <%= t('host_cancellation_email.refunded', name: 'JP') %><!-- TODO: Change guest name -->
+            <span style="color: black; font-weight: bold;">
+              <%= " $#{'234'}." %><!-- TODO: Change amount -->
+            </span>
+          </p>
+          <!-- END refunded section -->
+        <% end %>
+        <% if @message.m_type == 'paid' %>
+          <!-- Receive payout section -->
+          <p>
+            <%= t('host_cancellation_email.payout') %>
+            <span style="color: black; font-weight: bold;">
+              <%= " $#{'234'} " %><!-- TODO: Change amount -->
+            </span>
+            <%= "#{t('host_cancellation_email.transferred')}:" %>
+          </p>
 
-        <!-- refunded section -->
-        <p>
-          <%= t('host_cancellation_email.refunded', name: 'JP') %><!-- TODO: Change guest name -->
-          <span style="color: black; font-weight: bold;">
-            <%= " $#{'234'}." %><!-- TODO: Change amount -->
-          </span>
-        </p>
-        <!-- END refunded section -->
-
-        <!-- Receive payout section -->
-        <p>
-          <%= t('host_cancellation_email.payout') %>
-          <span style="color: black; font-weight: bold;">
-            <%= " $#{'234'} " %><!-- TODO: Change amount -->
-          </span>
-          <%= "#{t('host_cancellation_email.transferred')}:" %>
-        </p>
-
-        <p>
-          <span style="font-weight: bold;"><%= "#{t('host_cancellation_email.bank_name')}: " %></span>
-          Lorem ipsum <!-- TODO: Change bank name -->
-        </p>
-        <p>
-          <span style="font-weight: bold;"><%= "#{t('host_cancellation_email.account_number')}: " %></span>
-          xxxxxxxxxxxxxxxx2342 <!-- TODO: Change account number -->
-        </p>
-        <p>
-          <span style="font-weight: bold;"><%= "#{t('host_cancellation_email.holder')}: " %></span>
-          Lorem ipsum <!-- TODO: Change holder -->
-        </p>
-        <p>
-          <span style="font-weight: bold;"><%= "#{t('host_cancellation_email.funds')}: " %></span>
-          23/10/14 <!-- TODO: Change funds date -->
-        </p>
-        <!-- END Receive payout section -->
+          <p>
+            <span style="font-weight: bold;"><%= "#{t('host_cancellation_email.bank_name')}: " %></span>
+            Lorem ipsum <!-- TODO: Change bank name -->
+          </p>
+          <p>
+            <span style="font-weight: bold;"><%= "#{t('host_cancellation_email.account_number')}: " %></span>
+            xxxxxxxxxxxxxxxx2342 <!-- TODO: Change account number -->
+          </p>
+          <p>
+            <span style="font-weight: bold;"><%= "#{t('host_cancellation_email.holder')}: " %></span>
+            Lorem ipsum <!-- TODO: Change holder -->
+          </p>
+          <p>
+            <span style="font-weight: bold;"><%= "#{t('host_cancellation_email.funds')}: " %></span>
+            23/10/14 <!-- TODO: Change funds date -->
+          </p>
+          <!-- END Receive payout section -->
+        <% end %>
 
 
         <p style="line-height: 30px; padding: 25px 0;">

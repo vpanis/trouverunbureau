@@ -9,6 +9,10 @@ class NotificationsMailer < ActionMailer::Base
     send_email(fetch_message(message_id), 'hola')
   end
 
+  def guest_cancellation_email(message_id)
+    send_email(fetch_message(message_id), 'hola')
+  end
+
   def guest_review_email(message_id)
     send_email(fetch_message(message_id), 'hola')
   end
