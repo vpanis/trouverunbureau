@@ -54,7 +54,8 @@ module Payments
           redirect_url: redirect, error_message: nil,
           price_amount_in_wallet: @booking.price, deposit_amount_in_wallet: @booking.deposit,
           card_type: @credit_card.card_type, card_last_4: @credit_card.last_4,
-          card_expiration_date: @credit_card.expiration)
+          card_expiration_date: @credit_card.expiration,
+          next_payout_at: @booking.from)
       end
 
       def save_payment_error(e, user_id)

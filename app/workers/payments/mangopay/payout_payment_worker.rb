@@ -3,8 +3,9 @@ module Payments
     class PayoutPaymentWorker
       include Sidekiq::Worker
 
-      def perform(booking_id, payout_id)
+      def perform(booking_id, payout_id, user_id = nil)
         init_log(booking_id, payout_id)
+        @user_id = user_id
         @booking = Booking.find_by_id(booking_id)
         @payout = MangopayPayout.find_by_id(payout_id)
         @venue = @booking.space.venue if @booking.present?
@@ -33,6 +34,9 @@ module Payments
         @payout.update_attributes(
           payout_id: transaction['Id'],
           transaction_status: "TRANSACTION_#{transaction['Status']}")
+        BookingManager.change_booking_status(User.find(@user_id), @booking,
+                                             Booking.states[:denied]) if
+          @booking.state == 'refunding' && User.exists?(@user_id)
       end
 
       def save_pay_out_error(e)

@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20150527122118) do
     t.boolean  "hold_deposit",       default: false
     t.string   "main_guest_email"
     t.string   "main_guest_name"
+    t.datetime "cancelled_at"
   end
 
   add_index "bookings", ["owner_id", "owner_type"], name: "index_bookings_on_owner_id_and_owner_type", using: :btree
@@ -192,6 +193,7 @@ ActiveRecord::Schema.define(version: 20150527122118) do
     t.integer  "user_paying_id"
     t.integer  "price_amount_in_wallet"
     t.integer  "deposit_amount_in_wallet"
+    t.datetime "next_payout_at"
   end
 
   add_index "mangopay_payments", ["transaction_id"], name: "index_mangopay_payments_on_transaction_id", unique: true, using: :btree

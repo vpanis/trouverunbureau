@@ -49,8 +49,9 @@ module Payments
       def save_refund(transaction)
         @booking.payment.update_attributes(
           transaction_status: "TRANSACTION_#{transaction['Status']}")
-        BookingManager.change_booking_status(User.find(user_id), @booking,
-                                             @booking.state_if_represented_cancels(@represented))
+        BookingManager.change_booking_status(
+          User.find(user_id), @booking, @booking.state_if_represented_cancels(@represented)) if
+            @booking.state == 'refunding'
       end
 
       def persist_data(refund)

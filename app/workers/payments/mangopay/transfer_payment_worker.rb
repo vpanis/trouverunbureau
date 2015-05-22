@@ -3,8 +3,9 @@ module Payments
     class TransferPaymentWorker
       include Sidekiq::Worker
 
-      def perform(booking_id, payout_id)
+      def perform(booking_id, payout_id, user_id = nil)
         init_log(booking_id)
+        @user_id = user_id
         @booking = Booking.find_by_id(booking_id)
         @payout = MangopayPayout.find_by_id(payout_id)
         return unless transfer_possible?
@@ -34,7 +35,7 @@ module Payments
           transference_id: transfer_payment['Id'],
           transaction_status: "TRANSFER_#{transfer_payment['Status']}")
         # teorically, always, buy just in case
-        Payments::Mangopay::PayoutPaymentWorker.perform_async(@booking.id, @payout.id) if
+        Payments::Mangopay::PayoutPaymentWorker.perform_async(@booking.id, @payout.id, @user_id) if
           transfer_payment['Status'] == 'SUCEEDED'
       end
 
