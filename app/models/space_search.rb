@@ -90,7 +90,7 @@ class SpaceSearch
     spaces.joins(:venue)
           .joins('LEFT OUTER JOIN referral_stats on referral_stats.venue_id = venues.id')
           .order('venues.quantity_reviews DESC,
-                 (venues.rating * COALESCE(referral_stats.multiplier, 1))  DESC')
+                 ((venues.rating + 1) * COALESCE(referral_stats.multiplier, 1))  DESC')
   end
 
   def latitude_longitude_conditions(spaces)
