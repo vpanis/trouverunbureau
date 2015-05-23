@@ -20,7 +20,7 @@
     - if flash['notice'].present?
       #alert.alert
         span
-          = t('referral.confirmation')
+          = flash['notice']
     - elsif flash['error'].present?
       #alert.alert
         span

@@ -77,8 +77,7 @@ module Deskspotting
     config.action_mailer.raise_delivery_errors =  mail.raise_delivery_errors == 'true'
     config.action_mailer.default :charset => "utf-8"
     config.action_mailer.smtp_settings = {
-      openssl_verify_mode: mail.openssl_verify_mode,
-      enable_starttls_auto: mail.enable_starttls_auto == 'true',
+      enable_starttls_auto: true,
       address: mail.address,
       port: mail.port.to_i,
       domain: mail.domain,
