@@ -1,5 +1,7 @@
 #GERMAN
 de:
+  errors:
+    email_taken: 'The user already exists'
   languages:
     es: 'Español'
     en: 'English'
