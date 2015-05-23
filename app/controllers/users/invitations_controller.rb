@@ -3,7 +3,7 @@ module Users
     include RepresentedHelper
 
     def create
-      if user_exists?
+      if user_exists? || organization_exists?
         flash['error'] = 'user_exists'
         self.resource = resource_class.new(email: params[:user][:email])
       else
@@ -15,6 +15,10 @@ module Users
 
     def user_exists?
       User.exists?(email: params[:user][:email])
+    end
+
+    def organization_exists?
+      Organization.exists?(email: params[:user][:email])
     end
 
     def current_inviter

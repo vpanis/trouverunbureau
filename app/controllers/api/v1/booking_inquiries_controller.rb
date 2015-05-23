@@ -49,14 +49,6 @@ module Api
         render status: 200, json: MessageSerializer.new(message)
       end
 
-      def build_message
-        message_params = { m_type: Message.m_types[:text], user: current_user,
-          represented: current_represented, booking_id: params[:id]
-        }
-        message_params[:text] = params[:message][:text] if params.include?(:message)
-        Message.new(message_params)
-      end
-
       # GET /inquiries/:id/messages[?from=x&to=x&amount=x&page=x]
       def messages
         booking = Booking.find_by_id(params[:id])
