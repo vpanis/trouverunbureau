@@ -1,10 +1,7 @@
 module Users
   class RegistrationsController < Devise::RegistrationsController
-    after_action :create_mangopay_user_account
-
-    protected
-
-    def create_mangopay_user_account
+    def create
+      super
       return unless resource.persisted? # user is created successfuly
       mpa = MangopayPaymentAccount.create(buyer: resource,
                                           status: MangopayPaymentAccount.statuses[:processing])
