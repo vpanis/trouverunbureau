@@ -1,7 +1,7 @@
 class NewMessageService < SimpleDelegator
 
   def send_notifications
-    notifiers.find { |n| n.match? }.notify
+    notifiers.find(&:match?).notify
   end
 
   private
@@ -12,7 +12,6 @@ class NewMessageService < SimpleDelegator
      DefaultMessageNotifier.new(self)]
   end
 
-
   # While the ammount of notifiers stays small and the actions taken by the notifiers are few,
   # i'd rather keep them as inner classes
   # If the number of notifiers grows, we can extract them to a module and keep this class simple
@@ -20,11 +19,11 @@ class NewMessageService < SimpleDelegator
   class CancelledMessageNotifier < SimpleDelegator
     def match?
       # TODO: Remove this "or". It should only be cancelled
-      ['cancelled', 'denied', 'refunded'].any? { |a| m_type == a}
+      %w(cancelled denied refunded).any? { |a| m_type == a }
     end
 
     def notify
-        NotificationsMailer.delay.host_cancellation_email(id)
+      NotificationsMailer.delay.host_cancellation_email(id)
     end
   end
 
