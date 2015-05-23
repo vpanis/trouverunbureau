@@ -42,6 +42,7 @@ module BookingInquiry
     message = booking.messages.create(represented: booking.owner,
                                       user: user,
                                       m_type: booking_state_to_message_state(state))
+    NewMessageService.new(message).send_notifications
     change_last_seen(booking, booking.owner, message.created_at)
   end
 
