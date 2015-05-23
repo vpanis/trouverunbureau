@@ -38,7 +38,7 @@ module Payments
         MangoPay::PayIn::Card::Direct.create(
           AuthorId: @booking.owner.mangopay_payment_account.mangopay_user_id,
           DebitedFunds: {
-            Currency: currency, Amount: (@booking.price + @booking.deposit) * 100
+            Currency: currency, Amount: amount_price
           }, Fees: {
             Currency: currency, Amount: 0
           }, CreditedWalletId: @booking.owner.mangopay_payment_account.wallet_id,
@@ -52,6 +52,7 @@ module Payments
           transaction_id: transaction_data['Id'],
           transaction_status: "PAYIN_#{transaction_data['Status']}",
           redirect_url: redirect, error_message: nil,
+          price_amount_in_wallet: @booking.price, deposit_amount_in_wallet: @booking.deposit,
           card_type: @credit_card.card_type, card_last_4: @credit_card.last_4,
           card_expiration_date: @credit_card.expiration)
       end
@@ -76,6 +77,10 @@ module Payments
         return save_payment_error(payment['ResultMessage']) if
           payment['Status'] == 'FAILED'
         save_payment(payment, return_url)
+      end
+
+      def amount_price
+        (@booking.price + @booking.deposit) * 100
       end
     end
   end
