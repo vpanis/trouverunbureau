@@ -136,6 +136,12 @@
     "SECRET_KEY_BASE":{
       "required":true
     },
+    "SIDEKIQ_USER":{
+      "required":true
+    },
+    "SIDEKIQ_PASSWORD":{
+      "required":true
+    },
     "TRELLO_URL":{
       "required":true
     }
