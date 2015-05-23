@@ -59,12 +59,12 @@ module Payments
     end
 
     def all_refund?(from_in_current, current)
-      return from_in_current > current.advance(hours: cancellation.less_that_24_hours_in_hours) if
+      return from_in_current > current.advance(hours: cancellation.less_than_24_hours_in_hours) if
         @booking.hour?
       # month in booking is from dd/mm 00:00:00 to dd/(mm+1) 23:59:59
-      return from_in_current > current.advance(hours: cancellation.less_that_a_month_in_hours) if
+      return from_in_current > current.advance(hours: cancellation.less_than_a_month_in_hours) if
         @booking.from.advance(months: 1, seconds: -1) > @booking.to
-      from_in_current > current.advance(hours: cancellation.more_that_a_month_in_hours)
+      from_in_current > current.advance(hours: cancellation.more_than_a_month_in_hours)
     end
 
     def cancellation

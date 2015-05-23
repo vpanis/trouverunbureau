@@ -10,8 +10,8 @@ if Rails.env.test?
     payouts_attempts: 3,
     cancellation: {
       "penalty_fee" => 0.15,
-      "less_that_24_hours_in_hours" => 24,
-      "less_that_a_month_in_hours" => 120,
+      "less_than_24_hours_in_hours" => 24,
+      "less_than_a_month_in_hours" => 120,
       "more_than_a_month_in_hours" => 240,
       "percentage_to_the_venue_in_more_than_a_month" => 0.5 })
   mangopay = OpenStruct.new(
@@ -40,8 +40,8 @@ Deskspotting::Application.configure do
     ),
     cancellation: OpenStruct.new(
       penalty_fee: deskspotting.cancellation["penalty_fee"].to_f,
-      less_that_24_hours_in_hours: deskspotting.cancellation["less_that_24_hours_in_hours_to_i"],
-      less_that_a_month_in_hours: deskspotting.cancellation["less_that_a_month_in_hours"].to_i,
+      less_than_24_hours_in_hours: deskspotting.cancellation["less_than_24_hours_in_hours_to_i"],
+      less_than_a_month_in_hours: deskspotting.cancellation["less_than_a_month_in_hours"].to_i,
       more_than_a_month_in_hours: deskspotting.cancellation["more_than_a_month_in_hours"].to_i,
       percentage_to_the_venue_in_more_than_a_month: deskspotting.cancellation["percentage_to_the_venue_in_more_than_a_month"].to_f
     ),
