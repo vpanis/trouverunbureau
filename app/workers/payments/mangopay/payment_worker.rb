@@ -58,9 +58,7 @@ module Payments
           next_payout_at: @booking.from)
       end
 
-      def save_payment_error(e, user_id)
-        @booking, _cerr = BookingManager.change_booking_status(User.find(user_id), @booking,
-                                                               Booking.states[:pending_payment])
+      def save_payment_error(e)
         @booking.payment.update_attributes(error_message: e.to_s,
                                            transaction_status: 'PAYIN_FAILED')
       end

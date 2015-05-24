@@ -21,7 +21,7 @@ module Payments
       current = Time.current
       return refund(@booking.price, user_id, true) if all_refund?(from_in_current, current)
       return more_than_a_month_cancellation(user_id) if partial_refund?(from_in_current, current)
-      return payout_to_user(@booking.price, @booking.fee) if
+      return payout_to_user(@booking.price, @booking.fee, user_id) if
         state_if_represented_cancels(@represented) == Booking.states[:cancelled]
       refund(@booking.payment.price_amount_in_wallet, user_id, false) if
         @booking.payment.price_amount_in_wallet > 0 # To not enqueue a refund of 0
@@ -41,7 +41,8 @@ module Payments
 
     def refund(amount, user_id, with_deposit)
       amount += @booking.deposit if with_deposit
-      payout = @booking.payment.mangopay_payouts.create(amount: amount, fee: 0,
+      payout = @booking.payment.mangopay_payouts.create(amount: amount, fee: 0, user_id: user_id,
+                                                        represented: @represented,
                                                         p_type: MangopayPayout.p_types[:refund])
       payment_attributes = {
         price_amount_in_wallet: booking.payment.price_amount_in_wallet - payout.amount }
@@ -51,9 +52,9 @@ module Payments
                                                           @represented.id, @represented.class.to_s)
     end
 
-    def payout_to_user(amount, fee)
-      payout = @booking.payment.mangopay_payouts.create(amount: amount, fee: fee,
-                 p_type: MangopayPayout.p_types[:payout_to_user])
+    def payout_to_user(amount, fee, user_id)
+      payout = @booking.payment.mangopay_payouts.create(amount: amount, fee: fee, user_id: user_id,
+                 p_type: MangopayPayout.p_types[:payout_to_user], represented: @represented)
       @booking.payment.update_attributes(
         price_amount_in_wallet: booking.payment.price_amount_in_wallet - payout.amount)
       Payments::Mangopay::TransferPaymentWorker.perform_async(@booking.id, payout.id, user_id)

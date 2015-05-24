@@ -24,8 +24,6 @@ module Payments
 
       def save_payment_error(e)
         @mangopay_payment.update_attributes(error_message: e.to_s, status: 'PAYIN_FAILED')
-        BookingManager.change_booking_status(User.find(mp.user_paying_id), @booking,
-                                             Booking.states[:pending_payment])
       end
 
       def fetch_transaction

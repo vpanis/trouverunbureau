@@ -3,38 +3,34 @@ module Payments
     class RefundPayinWorker
       include Sidekiq::Worker
 
-      def perform(booking_id, payout_id, user_id, represented_id, represented_type)
-        init_log(booking_id, user_id)
-        @booking = Booking.includes(:payment).find_by_id(booking_id)
+      def perform(payout_id)
+        init_log(payout_id)
         @payout = MangopayPayout.find_by_id(payout_id)
-        @represented = represented_type.constantize.find_by_id(represented_id)
-        return unless refund_possible(user_id)
+        return unless refund_possible?
+        @booking = @payout.mangopay_payment.booking
         @venue = @booking.space.venue
 
         refund = mangopay_refund
         persist_data(refund)
       rescue MangoPay::ResponseError => e
-        save_refund_error(e.message, user_id)
+        save_refund_error(e.message)
       end
 
       private
 
-      def init_log(booking_id, user_id, payout_id)
-        str = "Payments::Mangopay::RefundPayingWorker on booking_id: #{booking_id}, "
-        str += "user_id: #{user_id}, payout_id: #{payout_id}"
+      def init_log(payout_id)
+        str = "Payments::Mangopay::RefundPayingWorker on payout_id: #{payout_id}"
         Rails.logger.info(str)
       end
 
-      def refund_possible?(user_id)
-        @booking.present? && User.exists?(user_id) && @booking.payment.present? &&
-          @booking.payment.payin_succeeded? && @payout.present? && @represented.present?
+      def refund_possible?
+        @payout.present? && @payout.mangopay_payment.present? &&
+          @payout.mangopay_payment.payin_succeeded? && @payout.mangopay_payment.booking.present?
       end
 
-      def save_refund_error(e, user_id)
-        @booking.payment.update_attributes(error_message: e.to_s,
-                                           transaction_status: 'TRANSACTION_FAILED')
-        BookingManager.change_booking_status(User.find(user_id), @booking,
-                                             Booking.states[:error_refunding])
+      def save_refund_error(e, refund_id)
+        @payout.update_attributes(error_message: e.to_s, transaction_status: 'TRANSACTION_FAILED',
+                                  transaction_id: refund_id)
       end
 
       def mangopay_refund
@@ -47,15 +43,13 @@ module Payments
       end
 
       def save_refund(transaction)
-        @booking.payment.update_attributes(
+        @payout.update_attributes(
+          transaction_id: transaction['Id'],
           transaction_status: "TRANSACTION_#{transaction['Status']}")
-        BookingManager.change_booking_status(
-          User.find(user_id), @booking, @booking.state_if_represented_cancels(@represented)) if
-            @booking.state == 'refunding'
       end
 
       def persist_data(refund)
-        return save_refund_error(refund['ResultMessage']) if
+        return save_refund_error(refund['ResultMessage'], refund['Id']) if
             refund['Status'] == 'FAILED'
         save_refund(refund)
       end

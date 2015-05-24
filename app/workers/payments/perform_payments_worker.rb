@@ -16,7 +16,7 @@ module Payments
 
     # Mangopay for now.
     def bookings_to_pay
-      Booking.includes(:payment)
+      Booking.includes(:payment, :owner)
         .joins("INNER JOIN mangopay_payments ON mangopay_payments.id = bookings.payment_id
                                                 AND bookings.payment_type = 'MangopayPayment'")
         .joins('INNER JOIN spaces ON spaces.id = bookings.space_id')
@@ -34,6 +34,8 @@ module Payments
       amount = calculate_amount(booking, future_payout_at)
       [{ amount: amount,
          fee: calculate_fee(amount),
+         user_id: booking.payment.user_paying_id,
+         represented: booking.owner,
          p_type: MangopayPayout.p_types[:payout_to_user] },
        future_payout_at]
     end

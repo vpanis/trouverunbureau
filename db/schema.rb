@@ -212,11 +212,16 @@ ActiveRecord::Schema.define(version: 20150527122118) do
     t.integer  "retries"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "represented_id"
+    t.string   "represented_type"
   end
 
   add_index "mangopay_payouts", ["mangopay_payment_id"], name: "index_mangopay_payouts_on_mangopay_payment_id", using: :btree
+  add_index "mangopay_payouts", ["represented_id", "represented_type"], name: "index_mangopay_payouts_on_represented_id_and_represented_type", using: :btree
   add_index "mangopay_payouts", ["transaction_id"], name: "index_mangopay_payouts_on_transaction_id", unique: true, using: :btree
   add_index "mangopay_payouts", ["transference_id"], name: "index_mangopay_payouts_on_transference_id", unique: true, using: :btree
+  add_index "mangopay_payouts", ["user_id"], name: "index_mangopay_payouts_on_user_id", using: :btree
 
   create_table "messages", force: true do |t|
     t.integer  "booking_id"
