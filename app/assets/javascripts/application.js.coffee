@@ -18,6 +18,7 @@
 #= require select2
 #= require braintree
 #= require mangopay-kit
+#= require ./payment_modes/mangopay_dropin
 #= require_directory .
 #= require google_places
 #= require_tree ./bookings/
