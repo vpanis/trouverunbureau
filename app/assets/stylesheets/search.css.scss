@@ -179,11 +179,15 @@
     padding: 10px 15px;
     position: absolute;
     top: 0;
+    -ms-transform: translateY(-100%);
+    -webkit-transform: translateY(-100%);
     transform: translateY(-100%);
     z-index: 90;
     background-color: $white;
     transition: .5s;
     &.visible {
+      -ms-transform: translateY(0);
+      -webkit-transform: translateY(0);
       transform: translateY(0);
     }
     -webkit-box-shadow: 0px 0px 5px 1px $gray-text;
@@ -230,12 +234,16 @@
   }
   #footer {
     position: fixed;
+    -ms-transform: translateY(100%);
+    -webkit-transform: translateY(100%);
     transform: translateY(100%);
     bottom: 0;
     width: 100%;
     transition: .25s;
     z-index: 91;
     &.open {
+      -ms-transform: translateY(0);
+      -webkit-transform: translateY(0);
       transform: translateY(0);
     }
   }
@@ -275,6 +283,8 @@
           position: absolute;
           content: '▼';
           top: 50%;
+          -ms-transform: translateY(-50%);
+          -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
           right: 15px;
         }

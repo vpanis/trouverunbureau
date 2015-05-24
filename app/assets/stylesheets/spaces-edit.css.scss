@@ -61,6 +61,8 @@
         top: 50%;
         width: 22px;
         height: 22px;
+        -ms-transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
         transform: translateY(-50%);
         @include at2x('check', 22px, 22px);
       }

@@ -145,12 +145,16 @@ html [data-action="wishlist"], html [data-controller="referrals"]{
 [data-controller="spaces"][data-action="index"] {
   #footer {
     position: fixed;
+    -ms-transform: translateY(100%);
+    -webkit-transform: translateY(100%);
     transform: translateY(100%);
     bottom: 0;
     width: 100%;
     transition: .25s;
     z-index: 1;
     &.open {
+      -ms-transform: translateY(0);
+      -webkit-transform: translateY(0);
       transform: translateY(0);
     }
   }
