@@ -1,3 +1,6 @@
+town_autocomplete = {}
+street_autocomplete = {}
+
 on_load = ->
   load
     controllers:
@@ -6,12 +9,32 @@ on_load = ->
     initialize_selects = ->
       $('.venue-types-select').select2()
       $('.currency-select').select2()
-      new google.maps.places.Autocomplete(document.getElementById('venue_town'), { types: ['(cities)']})
-      new google.maps.places.Autocomplete(document.getElementById('venue_street'))
+      country = $("#venue_country_code").val()
+      town_autocomplete = new google.maps.places.Autocomplete(document.getElementById('venue_town'), { types: ['(cities)'], componentRestrictions: {country: country} })
+      street_autocomplete = new google.maps.places.Autocomplete(document.getElementById('venue_street'), { types: ['address'], componentRestrictions: {country: country} })
+
+      google.maps.event.addListener town_autocomplete, 'place_changed', ->
+        town = town_autocomplete.getPlace().address_components[0]
+        if town
+          $('#venue_town').val(town.long_name)
+
+      google.maps.event.addListener street_autocomplete, 'place_changed', ->
+        street = street_autocomplete.getPlace().address_components[0]
+        if street
+          $('#venue_street').val(street.long_name)
+
+
 
     initialize_listeners = ->
       $('#venue_postal_code, #venue_country_id, #venue_street, #venue_town').change ->
         getLatLong()
+
+      $("#venue_country_code").change (event, value) ->
+        country = $(event.target).val()
+        town_autocomplete.setComponentRestrictions({country: country})
+        street_autocomplete.setComponentRestrictions({country: country})
+        $('#venue_street').val("")
+        $('#venue_town').val("")
       return
 
     initialize_popovers = ->
