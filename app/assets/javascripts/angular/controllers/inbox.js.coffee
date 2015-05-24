@@ -104,8 +104,8 @@ angular.module('deskSpotting.inbox', []).controller "InboxCtrl", [
           reload_messages()
           return
 
-    $scope.payBoooking = () ->
-      console.log 'approved'
+    $scope.payBoooking = (selected_booking) ->
+      window.location = "/payments/new?booking_id=" + selected_booking.id
 
     $scope.approveBoooking = () ->
       Restangular.one('inquiries', $scope.selected_booking.id).one('accept').customPUT().then (result) ->
