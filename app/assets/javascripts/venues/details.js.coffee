@@ -1,7 +1,7 @@
 on_load = ->
   load
     controllers:
-      venue_details: ["details"]
+      venue_details: ["details", "save_details"]
   , (controller, action) ->
     initialize_selects = ->
       $('.hour-select').select2()

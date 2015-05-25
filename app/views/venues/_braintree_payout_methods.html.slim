@@ -21,66 +21,105 @@
   .personal-section
     = form_for @collection_account, url: collection_account_info_venue_path(@venue) do |f|
       .row.business-section class="#{'none' if @collection_account.legal_name.present? && @collection_account.tax_id.present?}"
-        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6 class=(@collection_account.errors.messages[:legal_name].present? ? 'has-error' : '')
           .icon.lock.pointer#legal-name-popover.lock-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
           label = t('payment_methods.legal_name')
           = f.text_field :legal_name, class: 'form-control'
-        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+          - if @collection_account.errors.messages[:legal_name].present?
+            label
+              = @collection_account.errors.messages[:legal_name].first
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6 class=(@collection_account.errors.messages[:tax_id].present? ? 'has-error' : '')
           .icon.lock.pointer#tax-id-popover.lock-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
           label = t('payment_methods.tax_id')
           = f.text_field :tax_id, class: 'form-control'
+          - if @collection_account.errors.messages[:tax_id].present?
+            label
+              = @collection_account.errors.messages[:tax_id].first
       p.text-center = t('payment_methods.required_legal')
       .row
-        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6 class=(@collection_account.errors.messages[:first_name].present? ? 'has-error' : '')
           .icon.lock.pointer#first-name-popover.lock-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
           label = t('payment_methods.first_name')
           = f.text_field :first_name, class: 'form-control'
-        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+          - if @collection_account.errors.messages[:first_name].present?
+            label
+              = @collection_account.errors.messages[:first_name].first
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6 class=(@collection_account.errors.messages[:last_name].present? ? 'has-error' : '')
           .icon.lock.pointer#last-name-popover.lock-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
           label = t('payment_methods.last_name')
           = f.text_field :last_name, class: 'form-control'
-        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+          - if @collection_account.errors.messages[:last_name].present?
+            label
+              = @collection_account.errors.messages[:last_name].first
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6 class=(@collection_account.errors.messages[:email].present? ? 'has-error' : '')
           .icon.lock.pointer#email-popover.lock-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
           label = t('payment_methods.email')
           = f.text_field :email, class: 'form-control'
-        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+          - if @collection_account.errors.messages[:email].present?
+            label
+              = @collection_account.errors.messages[:email].first
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6 class=(@collection_account.errors.messages[:date_of_birth].present? ? 'has-error' : '')
           .icon.lock.pointer#date-of-birth-popover.lock-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
           label = t('payment_methods.date_of_birth')
           .calendar.input-group
             .calendar-icon.input-group-addon type="button"
             / TODO fix date picker
             = f.text_field :date_of_birth, placeholder: 'dd-mm-aa', class: 'form-control', close_text: 'Close', datepicker_options: {}, datepicker_popup: 'dd-MM-yyyy', is_open: 'true', type: 'text', show_button_bar:'false', ng_model: 'date_of_birth'
-        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+            - if @collection_account.errors.messages[:date_of_birth].present?
+              label
+                = @collection_account.errors.messages[:date_of_birth].first
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6 class=(@collection_account.errors.messages[:ssn].present? ? 'has-error' : '')
           .icon.lock.pointer#ssn-popover.lock-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
           label = t('payment_methods.ssn')
           = f.text_field :ssn, class: 'form-control'
-        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+          - if @collection_account.errors.messages[:ssn].present?
+            label
+              = @collection_account.errors.messages[:ssn].first
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6 class=(@collection_account.errors.messages[:individual_locality].present? ? 'has-error' : '')
           .icon.lock.pointer#locality-popover.lock-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
           label = t('payment_methods.locality')
           = f.text_field :individual_locality, class: 'form-control'
-        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+          - if @collection_account.errors.messages[:individual_locality].present?
+            label
+              = @collection_account.errors.messages[:individual_locality].first
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6 class=(@collection_account.errors.messages[:individual_street_address].present? ? 'has-error' : '')
           .icon.lock.pointer#street-popover.lock-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
           label = t('payment_methods.street')
           = f.text_field :individual_street_address, class: 'form-control'
-        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+          - if @collection_account.errors.messages[:individual_street_address].present?
+            label
+              = @collection_account.errors.messages[:individual_street_address].first
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6 class=(@collection_account.errors.messages[:individual_region].present? ? 'has-error' : '')
           .icon.lock.pointer#region-popover.lock-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
           label = t('payment_methods.region')
           = f.text_field :individual_region, class: 'form-control'
-        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+          - if @collection_account.errors.messages[:individual_region].present?
+            label
+              = @collection_account.errors.messages[:individual_region].first
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6 class=(@collection_account.errors.messages[:individual_postal_code].present? ? 'has-error' : '')
           .icon.lock.pointer#postal-code-popover.lock-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
           label = t('payment_methods.postal_code')
           = f.text_field :individual_postal_code, class: 'form-control'
+          - if @collection_account.errors.messages[:individual_postal_code].present?
+            label
+              = @collection_account.errors.messages[:individual_postal_code].first
       .small-separator
       p.text-center = t('payment_methods.required_fundings')
       .row
-        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6 class=(@collection_account.errors.messages[:account_number].present? ? 'has-error' : '')
           .icon.lock.pointer#account-number-popover.lock-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
           label #{t('venues.collection_account.account_number')} #{" ( #{t('venues.collection_account.previous_last_4')}: #{@collection_account.account_number_last_4} )" if @collection_account.account_number_last_4.present?}
           = f.text_field :account_number, class: 'form-control'
-        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+          - if @collection_account.errors.messages[:account_number].present?
+            label
+              = @collection_account.errors.messages[:account_number].first
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6 class=(@collection_account.errors.messages[:routing_number].present? ? 'has-error' : '')
           .icon.lock.pointer#routing-number-popover.lock-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
           label = t('payment_methods.routing_number')
           = f.text_field :routing_number, class: 'form-control'
+          - if @collection_account.errors.messages[:routing_number].present?
+            label
+              = @collection_account.errors.messages[:routing_number].first
         .buttons
           .col-md-6
             a href="#" type='button' class='rounded-btn width-100 uppercase' = t('commons.cancel')

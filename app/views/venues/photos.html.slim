@@ -19,7 +19,7 @@
         a href='#'
           button type='button' class='rounded-btn width-100 uppercase' = t('commons.cancel')
       .col-xs-6
-        = link_to t('commons.save'), spaces_venue_path(@venue), class: 'rounded-btn yellow-fill width-100 uppercase'
+        = link_to t('commons.save'), spaces_venue_path(@venue), class: 'rounded-btn yellow-fill width-100 uppercase', id: 'save-photos'
 
 .hidden
   = form_tag api_v1_venue_photos_path, id: 'venue-photo-form'

@@ -52,6 +52,7 @@ class Venue < ActiveRecord::Base
   validates :description, presence: true, unless: proc { |e| e.force_submit || e.force_submit_upd }
   validates :name, :country_code, presence: true
   validates :country_code, inclusion: { in: SUPPORTED_COUNTRIES }
+  validate  :at_least_one_day_hour
 
   validates :email, format: {
     with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create
@@ -100,7 +101,11 @@ class Venue < ActiveRecord::Base
     end.count
   end
 
-  private
+  protected
+
+  def at_least_one_day_hour
+    errors.add(:day_hours, "you must select at least one") if day_hours.size == 0
+  end
 
   def initialize_fields
     self.floors ||= 0
