@@ -116,7 +116,7 @@ ActiveRecord::Schema.define(version: 20150527122118) do
 
   create_table "mangopay_collection_accounts", force: true do |t|
     t.boolean  "active",                      default: false
-    t.string   "status"
+    t.integer  "status"
     t.text     "error_message"
     t.string   "first_name"
     t.string   "last_name"
