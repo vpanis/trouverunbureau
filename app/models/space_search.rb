@@ -64,7 +64,7 @@ class SpaceSearch
     spaces = capacity_conditions(spaces)
     spaces = spaces.where { quantity >= my { quantity } } unless quantity.blank?
     spaces = spaces.where { s_type.eq_any my { space_types } } unless space_types.blank?
-    spaces
+    spaces.where(active: true)
   end
 
   def capacity_conditions(spaces)
