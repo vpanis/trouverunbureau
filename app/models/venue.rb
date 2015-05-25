@@ -52,7 +52,7 @@ class Venue < ActiveRecord::Base
   validates :description, presence: true, unless: proc { |e| e.force_submit || e.force_submit_upd }
   validates :name, :country_code, presence: true
   validates :country_code, inclusion: { in: SUPPORTED_COUNTRIES }
-  validate  :at_least_one_day_hour
+  validate  :at_least_one_day_hour, unless: :force_submit
 
   validates :email, format: {
     with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create
