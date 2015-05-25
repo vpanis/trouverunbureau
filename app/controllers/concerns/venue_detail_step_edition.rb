@@ -2,7 +2,7 @@ class VenueDetailStepEdition < SimpleDelegator
   include ActiveModel::Validations
 
   validates :description, presence: true
-  validate :each_profession_inclusion
+  validate  :each_profession_inclusion
   validate  :at_least_one_day_hour
 
   def at_least_one_day_hour
