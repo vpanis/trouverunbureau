@@ -8,6 +8,7 @@ if Rails.env.test?
   deskspotting = OpenStruct.new(
     fee: 0.15,
     payouts_attempts: 3,
+    notification_attempts: 3,
     deposit_days: 3,
     cancellation_penalty_fee: 0.15,
     cancellation_less_than_24_hours_in_hours: 24,
@@ -46,6 +47,7 @@ Deskspotting::Application.configure do
       percentage_to_the_venue_in_more_than_a_month: deskspotting.cancellation_percentage_to_the_venue_in_more_than_a_month.to_f
     ),
     payouts_attempts: deskspotting.payouts_attempts.to_i,
+    notification_attempts: deskspotting.notification_attempts.to_i,
     deposit_days: 3.to_i
   )
 end
