@@ -15,7 +15,7 @@
         = f.text_field :name, class: 'form-control', required: true
       .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
         label = t('space.type')
-        = f.select(:s_type, @space_types_options, {}, {class: 'form-control space-types-select', required: true})
+        = f.select(:s_type, @space_types_options, {include_blank: false, required: true}, {class: 'form-control space-types-select'})
 
       .form-group.col-md-3#space-capacity-input
         .icon.info.pointer#capacity-popover data-content=t('spaces.info_capacity') data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
