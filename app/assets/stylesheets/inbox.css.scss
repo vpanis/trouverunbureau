@@ -24,8 +24,11 @@
       border-right: solid 1px $gray;
       position: relative;
       padding: 15px;
+      &.has_news{
+        background: #C2DFFF;
+      }
       &.selected{
-        background: $white;
+        background: $white !important;
         border-right: solid 1px $white;
         &:before {
           content: '';

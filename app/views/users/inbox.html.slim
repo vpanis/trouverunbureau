@@ -4,7 +4,7 @@
 .inbox.clearfix ng-controller="InboxCtrl" data-user-id=(current_user.id) data-logo=(image_url('venue-default.png')) data-avatar=(image_url('default-avatar.png')) data-organization-id=(current_represented.id if current_represented.is_a? Organization)
   .left-panel
     .booking-list
-      .booking-item ng-repeat=("booking in bookings") ng-class="{selected: booking.id == selected_booking.id}"
+      .booking-item ng-repeat=("booking in bookings") ng-class="{selected: booking.id == selected_booking.id, has_news: booking.with_news}" ng-click="booking.with_news = false"
         = render 'booking_item'
     .pagination-container.bookings-pagination
       pagination.pagination-sm ng-change="getBookings()" total-items="totalBookings" ng-model="currentPage" max-size="3" rotate="false" boundary-links="true" previous-text="‹" next-text="›" first-text="«" last-text="»" items-per-page="itemsPerPage"
