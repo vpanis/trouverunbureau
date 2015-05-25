@@ -145,6 +145,9 @@
     "SIDEKIQ_PASSWORD":{
       "required":true
     },
+    "TIMEZONE_GEONAMES_USERNAME":{
+      "required":true
+    },
     "TRELLO_URL":{
       "required":true
     }

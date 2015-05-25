@@ -36,6 +36,7 @@ coverage/*
 .braintree.yml
 .mangopay.yml
 .deskspotting.yml
+.timezone.yml
 
 # Vagrant
 .vagrant/
