@@ -10,28 +10,52 @@ on_load = ->
 
     id = $('.verification-list a').attr('href').split('/')[2]
     BASEURL = '/api/v1/venues/' + id + '/'
+    publishEnabled = false
 
-    checkStep = (endpoint, context) ->
+    checkStatus = (callback) ->
       $.ajax({
-        url: BASEURL + endpoint
+        url: BASEURL + 'status'
         success: (response) ->
-          if response.done == true
-            $(context).addClass('done')
+          callback(response)
       })
 
-    checkStep('first_step', $('.verification-list li')[0])
-    checkStep('second_step', $('.verification-list li')[1])
-    checkStep('third_step', $('.verification-list li')[2])
-    checkStep('fourth_step', $('.verification-list li')[3])
-    checkStep('fifth_step', $('.verification-list li')[4])
-    checkStep('sixth_step', $('.verification-list li')[5])
+    addTicks = (response) ->
+      $($('.verification-list li')[0]).addClass('done') if response.first_step
+      $($('.verification-list li')[1]).addClass('done') if response.second_step
+      $($('.verification-list li')[2]).addClass('done') if response.third_step
+      $($('.verification-list li')[3]).addClass('done') if response.fourth_step
+      $($('.verification-list li')[4]).addClass('done') if response.fifth_step
+      $($('.verification-list li')[5]).addClass('done') if response.sixth_step
 
-    $.ajax({
-      url: BASEURL + 'percentage'
-      success: (response)->
-        percentage = parseInt(response.percentage).toString()
-        $('.progress-container .progress').width(percentage + '%')
-        $('.progress-counter').text(percentage + '%')
-    })
+    setPercentage = (response) ->
+      percentage = parseInt(response.percentage).toString()
+      $('.progress-container .progress').width(percentage + '%')
+      $('.progress-counter').text(percentage + '%')
+      if percentage == 100
+        $('.status-text span').text('Complete')
+        $('.status-text span').css('color: green;')
+      else
+        $('.status-text span').text('Incomplete')
+        $('.status-text span').css('color: red;')
+
+    canPublish = (stepsStatus) ->
+      publishEnabled = stepsStatus.first_step && stepsStatus.second_step && stepsStatus.third_step &&
+      stepsStatus.fourth_step && stepsStatus.fifth_step && stepsStatus.sixth_step
+      return publishEnabled
+
+    enablePublishIfPossible = (response) ->
+      if canPublish(response)
+        $('#publish-container input').css('background-color', '#ffe111')
+        $('#publish-container input').css('border-color', '#ffe111')
+
+    $('#publish-venue').submit((event) ->
+      event.preventDefault() if !publishEnabled
+    )
+
+    checkStatus((response) ->
+      addTicks(response)
+      setPercentage(response)
+      enablePublishIfPossible(response)
+    )
 
 $(document).ready on_load

@@ -62,6 +62,13 @@ class VenuesController < ApplicationController
     @venues = current_represented.venues
   end
 
+  def publish
+    @venue = Venue.find(params[:id])
+    redirect_to edit_venue_path(@venue) unless @venue.valid?
+    @venue.update_attributes!(status: Venue.statuses[:active])
+    redirect_to venue_path(@venue)
+  end
+
   private
 
   def update_venue
