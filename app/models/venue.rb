@@ -31,9 +31,9 @@ class Venue < ActiveRecord::Base
                    :pets_allowed, :mail_service, :gym, :cafe_restaurant, :phone_booth, :projector,
                    :concierge, :parking, :water_fountain, :reception_service, :cleaning_service]
 
-  #SUPPORTED_CURRENCIES = %w(usd gbp eur cad aud)
-  #SUPPORTED_COUNTRIES = %w(US CA AU DE AD AT BE HR DK ES FI FR GR IE IS IT NO SE CH GB PL PT NL CY
-  #                         EE LV LT LU MT SK SI)
+  # SUPPORTED_CURRENCIES = %w(usd gbp eur cad aud)
+  # SUPPORTED_COUNTRIES = %w(US CA AU DE AD AT BE HR DK ES FI FR GR IE IS IT NO SE CH GB PL PT NL
+  #                         CY EE LV LT LU MT SK SI)
 
   SUPPORTED_COUNTRIES = %w(FR)
   SUPPORTED_CURRENCIES = %w(eur)
