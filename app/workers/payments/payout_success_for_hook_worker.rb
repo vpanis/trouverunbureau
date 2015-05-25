@@ -29,7 +29,7 @@ module Payments
     end
 
     def retry_worker(transaction_id, date_i, retry_count, refund)
-      PayoutSuccessForHookWorker.perform_in((retry_count + 1).minutes, transaction_id, date_i,
+      PayoutSuccessForHookWorker.perform_in(retry_count.minutes + 1.second, transaction_id, date_i,
                                             retry_count + 1, refund) if
         retry_count < Rails.configuration.payment.notification_attempts
     end

@@ -5,7 +5,8 @@ module Payments
     def perform
       bookings = bookings_to_return_deposit
       bookings.each do |booking|
-        payout = booking.payment.mangopay_payouts.create(amount: deposit_amount_in_wallet,
+        payout = booking.payment.mangopay_payouts.create(
+          amount: booking.payment.deposit_amount_in_wallet,
           fee: 0, p_type: MangopayPayout.p_types[:refund], represented: booking.space.venue.owner,
           user: represented_user(booking.space.venue.owner))
         booking.payment.update_attributes(
