@@ -3,6 +3,7 @@ module Payments
     include Sidekiq::Worker
 
     def perform(booking_id, user_id, represented_id, represented_type)
+      init_log(booking_id, user_id, represented_id, represented_type)
       @booking = Booking.find_by(id: booking_id, state: Booking.states[:refunding])
       @represented = represented_type.constantize.find_by_id(represented_id)
       return unless valid_data?
@@ -12,8 +13,16 @@ module Payments
 
     private
 
+    def init_log(booking_id, user_id, represented_id, represented_type)
+      str = "Payments::CancellationWorker on booking_id: #{booking_id}, "
+      str += "user_id: #{user_id}, represented_id: #{represented_id}, "
+      str += "represented_type: #{represented_type}"
+      Rails.logger.info(str)
+    end
+
     def valid_data?
-      @booking.present? && @represented.present? && @booking.payment.present?
+      @booking.present? && @represented.present? && @booking.payment.present? &&
+        @booking.payment.payin_succeeded?
     end
 
     def return_the_payment(user_id)
