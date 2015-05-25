@@ -200,7 +200,7 @@ ActiveRecord::Schema.define(version: 20150527122118) do
   add_index "mangopay_payments", ["user_paying_id"], name: "index_mangopay_payments_on_user_paying_id", using: :btree
 
   create_table "mangopay_payouts", force: true do |t|
-    t.integer  "p_types"
+    t.integer  "p_type"
     t.string   "transaction_id"
     t.string   "transference_id"
     t.string   "transaction_status"
