@@ -2,7 +2,7 @@
 = render 'shared/profile_menu_bar', selected: 'venues'
 
 #venue.main-content.dashboard-form.clearfix.overflow-hidden
-  = render 'shared/edit_venue_progress', venue: @venue, progress: 60, step: 5
+  = render 'shared/edit_venue_progress', venue: @venue, step: 5
   .details-section.col-md-7.col-md-offset-1.margin-top
     - case @collection_method
     - when "mangopay"

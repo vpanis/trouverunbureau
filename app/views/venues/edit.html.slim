@@ -4,7 +4,7 @@
 = render 'shared/image_modal', modal_id: 'logo-modal', title: t('venues.edit.change_logo'), image_link_id: 'logo-link', save_button_id: 'save-logo'
 
 #venue.main-content.dashboard-form.clearfix.overflow-hidden
-  = render 'shared/edit_venue_progress', venue: @venue, progress: 0, step: 1
+  = render 'shared/edit_venue_progress', venue: @venue, step: 1
   .details-section.col-md-7.col-md-offset-1.margin-top
     h4.gray-subtitle.text-center = @venue.name
     .user-avatar.text-center

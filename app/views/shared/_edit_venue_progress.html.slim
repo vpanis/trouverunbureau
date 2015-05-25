@@ -5,27 +5,27 @@
       span = t('edit_venue_progress.incomplete')
 
     .progress-container
-      .progress [style = "width: #{progress}%"]
-    .progress-counter = "#{progress}%"
+      .progress [style = "width: 0%"]
+    .progress-counter = "0%"
 
   ul.verification-list
     a href=edit_venue_path(venue)
-      li.venue
+      li.venue class=('selected' if step == 1)
         p = t('edit_venue_progress.venue')
     a href=details_venue_path(venue)
-      li.details
+      li.details class=('selected' if step == 2)
         p = t('edit_venue_progress.details')
     a href=amenities_venue_path(venue)
-      li.amenities
+      li.amenities class=('selected' if step == 3)
         p = t('edit_venue_progress.amenities')
     a href=photos_venue_path(venue)
-      li.photos
+      li.photos class=('selected' if step == 4)
         p = t('edit_venue_progress.photos')
     a href=collection_account_info_venue_path(venue)
-      li.spaces
+      li.spaces class=('selected' if step == 5)
         p = t('edit_venue_progress.payout_method')
     a href=spaces_venue_path(venue)
-      li.spaces
+      li.spaces class=('selected' if step == 6)
         p = t('edit_venue_progress.spaces')
   .publish
     a.rounded-btn.grey-fill.width-100 href="#" = t('edit_venue_progress.publish')

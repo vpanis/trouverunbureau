@@ -4,7 +4,7 @@
 = render 'profession_modal'
 
 #venue.main-content.dashboard-form.clearfix.overflow-hidden
-  = render 'shared/edit_venue_progress', venue: @venue, progress: 20, step: 2
+  = render 'shared/edit_venue_progress', venue: @venue, step: 2
   .details-section.col-md-7.col-md-offset-1.margin-top
     = render 'venue_heading', subtitle: nil
     = form_for @venue, url: {action: "details"} do |f|

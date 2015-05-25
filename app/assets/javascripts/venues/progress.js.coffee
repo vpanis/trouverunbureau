@@ -1,10 +1,11 @@
 on_load = ->
   load
     controllers:
-      venues: ['edit', 'update']
+      venues: ['edit', 'update', 'photos', 'spaces']
       venue_amenities: ['amenities', 'save_amenities']
       venue_collection_accounts_controller: ['collection_account_info', 'edit_collection_account']
       venue_details: ['details', 'save_details']
+      spaces: ['new', 'edit']
   , (controller, action) ->
 
     id = $('.verification-list a').attr('href').split('/')[2]
