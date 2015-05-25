@@ -40,9 +40,9 @@ module Api
         @booking.update_attributes(cancelled_at: Time.current)
         return state_change(booking_state) unless @booking.paid?
         state_change(Booking.states[:refunding])
-        Payments::CancellationWorker.perform_async(@booking.id, current_user.id,
-                                                   current_represented.id,
-                                                   current_represented.class.to_s) if
+        ::Payments::CancellationWorker.perform_async(@booking.id, current_user.id,
+                                                     current_represented.id,
+                                                     current_represented.class.to_s) if
             @booking.valid? && @custom_errors.empty?
       end
 
