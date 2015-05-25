@@ -1,7 +1,8 @@
 module Api
   module V1
     class VenueStatusController < ApiController
-      # This controller will simply tell if each of the steps in the validation process are done or not
+      # This controller will simply tell if each of the steps in the validation process are
+      # done or not
 
       def first_step
         render json: { done: first_step_done }
@@ -30,7 +31,7 @@ module Api
       def percentage
         arr = [first_step_done, second_step_done, third_step_done, fourth_step_done,
                fifth_step_done, sixth_step_done].map { |val| val ? 1 : 0 }
-        percentage = arr.inject{ |sum, el| sum + el }.to_f / arr.size
+        percentage = arr.reduce(&:+).to_f / arr.size
         render json: { percentage: percentage * 100 }
       end
 

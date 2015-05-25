@@ -8,10 +8,10 @@
 -if @collection_account.error_updating?
   span #{ @collection_account.error_message }
   br
--unless @collection_account.valid?
-  -@collection_account.errors.to_a.each do |error|
-    span = error
-    br
+/ -unless @collection_account.valid?
+/   -@collection_account.errors.to_a.each do |error|
+/     span = error
+/     br
   br
 -if @collection_account.expecting_mangopay_response || @collection_account.processing?
   span = t('venues.collection_account.verifying_data')

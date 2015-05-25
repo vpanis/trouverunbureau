@@ -3,7 +3,7 @@ on_load = ->
     controllers:
       venues: ['edit', 'update', 'photos', 'spaces']
       venue_amenities: ['amenities', 'save_amenities']
-      venue_collection_accounts_controller: ['collection_account_info', 'edit_collection_account']
+      venue_collection_accounts: ['collection_account_info', 'edit_collection_account']
       venue_details: ['details', 'save_details']
       spaces: ['new', 'edit']
   , (controller, action) ->
