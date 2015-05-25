@@ -89,7 +89,7 @@ module Payments
 
     def pay_the_user_whats_left(user_id)
       payout_to_user(@booking.payment.price_amount_in_wallet,
-        calculate_fee(booking.payment.price_amount_in_wallet), user_id)
+                     calculate_fee(booking.payment.price_amount_in_wallet), user_id)
     end
 
     def cancellation

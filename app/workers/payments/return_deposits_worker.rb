@@ -25,14 +25,14 @@ module Payments
         .joins('INNER JOIN spaces ON spaces.id = bookings.space_id')
         .joins('INNER JOIN venues ON venues.id = spaces.venue_id')
         .joins('INNER JOIN time_zones ON time_zones.id = venues.time_zone_id')
-        .where('(NOT bookings.hold_dispute) AND mangopay_payments.deposit_amount_in_wallet > 0')
+        .where('(NOT bookings.hold_deposit) AND mangopay_payments.deposit_amount_in_wallet > 0')
       verify_dates(bookings)
     end
 
     def verify_dates(bookings)
-      bookings.where("(state = :paid AND booking.to +
+      bookings.where("(state = :paid AND (bookings.to +
         (interval '1 second' * time_zones.seconds_utc_difference)) <= :t) OR (
-        (state = :cancelled OR state = :denied) AND booking.cancelled_at +
+        (state = :cancelled OR state = :denied) AND (bookings.cancelled_at +
         (interval '1 second' * time_zones.seconds_utc_difference)) <= :t)",
                      paid: Booking.states[:paid], cancelled: Booking.states[:cancelled],
                      denied: Booking.states[:denied],
