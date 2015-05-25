@@ -48,8 +48,7 @@ module Payments
         price_amount_in_wallet: booking.payment.price_amount_in_wallet - payout.amount }
       payment_attributes[:deposit_amount_in_wallet] = 0 if with_deposit
       @booking.payment.update_attributes(payment_attributes)
-      Payments::Mangopay::RefundPayinWorker.perform_async(@booking.id, payout.id, user_id,
-                                                          @represented.id, @represented.class.to_s)
+      Payments::Mangopay::RefundPayinWorker.perform_async(payout.id)
     end
 
     def payout_to_user(amount, fee, user_id)
@@ -57,7 +56,7 @@ module Payments
                  p_type: MangopayPayout.p_types[:payout_to_user], represented: @represented)
       @booking.payment.update_attributes(
         price_amount_in_wallet: booking.payment.price_amount_in_wallet - payout.amount)
-      Payments::Mangopay::TransferPaymentWorker.perform_async(@booking.id, payout.id, user_id)
+      Payments::Mangopay::TransferPaymentWorker.perform_async(payout.id)
     end
 
     def partial_refund?(from_in_current, current)

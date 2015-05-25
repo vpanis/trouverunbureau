@@ -26,7 +26,7 @@ module Payments
         @booking = @payout.mangopay_payment.booking
         bool_acc &&= @booking.present?
         @venue = @booking.space.venue
-        bool_acc &&= @venue.collection_account.respond_to(:accepted?) &&
+        bool_acc &&= @venue.collection_account.respond_to?(:accepted?) &&
           @venue.collection_account.accepted?
         bool_acc
       end

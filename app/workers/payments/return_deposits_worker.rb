@@ -10,7 +10,7 @@ module Payments
           user: represented_user(booking.space.venue.owner))
         booking.payment.update_attributes(
           deposit_amount_in_wallet: booking.payment.deposit_amount_in_wallet - payout.amount)
-        Payments::Mangopay::TransferPaymentWorker.perform_async(booking.id, payout.id)
+        Payments::Mangopay::TransferPaymentWorker.perform_async(payout.id)
       end
     end
 

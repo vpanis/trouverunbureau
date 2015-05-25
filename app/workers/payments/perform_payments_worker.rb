@@ -10,7 +10,7 @@ module Payments
         booking.payment.update_attributes(
           next_payout_at: next_payout_at,
           price_amount_in_wallet: booking.payment.price_amount_in_wallet - payout.amount)
-        Payments::Mangopay::TransferPaymentWorker.perform_async(booking.id, payout.id)
+        Payments::Mangopay::TransferPaymentWorker.perform_async(payout.id)
       end
     end
 
