@@ -31,10 +31,10 @@ ActiveRecord::Schema.define(version: 20150511230243) do
     t.datetime "owner_last_seen"
     t.datetime "venue_last_seen"
     t.datetime "approved_at"
-    t.integer  "payment_id"
-    t.string   "payment_type"
     t.boolean  "owner_delete",       default: false
     t.boolean  "venue_owner_delete", default: false
+    t.integer  "payment_id"
+    t.string   "payment_type"
     t.integer  "fee"
     t.integer  "deposit"
     t.boolean  "hold_deposit",       default: false
@@ -397,8 +397,8 @@ ActiveRecord::Schema.define(version: 20150511230243) do
     t.string   "collection_account_type"
     t.integer  "status"
     t.text     "office_rules"
-    t.integer  "time_zone_id"
     t.string   "country_code"
+    t.integer  "time_zone_id"
   end
 
   add_index "venues", ["collection_account_id", "collection_account_type"], name: "index_venues_on_polymorphic_collection_account", unique: true, using: :btree

@@ -1,3 +1,6 @@
+#town_autocomplete = {}
+street_autocomplete = {}
+
 on_load = ->
   load
     controllers:
@@ -6,12 +9,34 @@ on_load = ->
     initialize_selects = ->
       $('.venue-types-select').select2()
       $('.currency-select').select2()
-      new google.maps.places.Autocomplete(document.getElementById('venue_town'), { types: ['(cities)']})
-      new google.maps.places.Autocomplete(document.getElementById('venue_street'))
+      country = $("#venue_country_code").val()
+      street_autocomplete = new google.maps.places.Autocomplete(document.getElementById('venue_street'), { types: ['address'], componentRestrictions: {country: country} })
+
+      google.maps.event.addListener street_autocomplete, 'place_changed', ->
+        geometry = street_autocomplete.getPlace().geometry
+
+        if geometry
+          lat = geometry.location.lat()
+          lng = geometry.location.lng()
+          $('#venue_latitude').val(lat)
+          $('#venue_longitude').val(lng)
+
+          place = street_autocomplete.getPlace()
+
+          i = 0
+          while i < place.address_components.length
+            type = place.address_components[i].types[0]
+            if type == "locality" || type == "administrative_area_level_3"
+              $("#venue_town").val(place.address_components[i].long_name)
+            i++
+
 
     initialize_listeners = ->
-      $('#venue_postal_code, #venue_country_id, #venue_street, #venue_town').change ->
-        getLatLong()
+
+      $("#venue_country_code").change (event, value) ->
+        country = $(event.target).val()
+        street_autocomplete.setComponentRestrictions({country: country})
+        $('#venue_street').val("")
       return
 
     initialize_popovers = ->
@@ -30,13 +55,13 @@ on_load = ->
       $('#phone-popover').popover(options)
       $('#street-popover').popover(options)
       $('#postal-code-popover').popover(options)
-      #$('#emergency-popover').popover(options)
 
     getLatLong = ->
       country = $('#s2id_venue_country_id  .select2-chosen').html()
       street = $('#venue_street').val()
       town = $('#venue_town').val()
       address = street + ' ' + town + ' ' + country
+      console.log("address: "+address)
       if country == "" || street == "" || town == ""
         return
       getLatLongFromAddress(address.replace(RegExp(' ', 'g'), '+'))

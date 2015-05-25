@@ -27,7 +27,7 @@ describe VenuesController do
 
   describe 'POST venues/create' do
     context 'the user is logged in' do
-      let(:country) { 'US' }
+      let(:country) { 'FR' }
       let(:name) { 'a name' }
       before { sign_in user }
 
@@ -145,7 +145,7 @@ describe VenuesController do
                          amenities: [Venue::AMENITY_TYPES.last.to_s],
                          professions: [Venue::PROFESSIONS.last.to_s])
         end
-        let(:new_country) { 'US' }
+        let(:new_country) { 'FR' }
         let(:new_town) { 'new town' }
         let(:new_street) { 'new_street' }
         let(:new_postal_code) { 'aa123' }
@@ -155,7 +155,7 @@ describe VenuesController do
         let(:new_longitude) { '-3.5' }
         let(:new_name) { 'new name' }
         let(:new_description) { 'new description' }
-        let(:new_currency) { 'gbp' }
+        let(:new_currency) { 'eur' }
         let(:new_v_type) { 'restaurant' }
         let(:new_amenities) { [Venue::AMENITY_TYPES.first.to_s, Venue::AMENITY_TYPES.second.to_s] }
         let(:new_professions) { [Venue::PROFESSIONS.first.to_s, Venue::PROFESSIONS.second.to_s] }
