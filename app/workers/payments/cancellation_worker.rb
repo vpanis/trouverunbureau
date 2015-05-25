@@ -30,7 +30,7 @@ module Payments
       current = Time.current
       return refund(@booking.price, user_id, true) if all_refund?(from_in_current, current)
       return more_than_a_month_cancellation(user_id) if partial_refund?(from_in_current, current)
-      return payout_to_user(@booking.price, @booking.fee, user_id) if
+      return pay_the_user_whats_left(user_id) if
         @booking.state_if_represented_cancels(@represented) == Booking.states[:cancelled]
       return refund(@booking.payment.price_amount_in_wallet, user_id, false) if
         @booking.payment.price_amount_in_wallet > 0 # To not enqueue a refund of 0
@@ -83,11 +83,21 @@ module Payments
       # month in booking is from dd/mm 00:00:00 to dd/(mm+1) 23:59:59
       return from_in_current > current.advance(hours: cancellation.less_than_a_month_in_hours) if
         @booking.from.advance(months: 1, seconds: -1) > @booking.to
-      from_in_current > current.advance(hours: cancellation.more_than_a_month_in_hours)
+      from_in_current > current.advance(hours: cancellation.more_than_a_month_in_hours) ||
+        (from_in_current > current && @represented != @booking.owner)
+    end
+
+    def pay_the_user_whats_left(user_id)
+      payout_to_user(@booking.payment.price_amount_in_wallet,
+        calculate_fee(booking.payment.price_amount_in_wallet), user_id)
     end
 
     def cancellation
       Rails.configuration.payment.cancellation
+    end
+
+    def calculate_fee(price)
+      floor_2d(price * Rails.configuration.payment.deskspotting_fee)
     end
 
     def ceil_2d(float)

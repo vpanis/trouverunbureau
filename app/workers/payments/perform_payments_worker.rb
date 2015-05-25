@@ -42,8 +42,6 @@ module Payments
 
     def calculate_amount(booking, future_payout_at)
       return booking.payment.price_amount_in_wallet if booking.to <= future_payout_at
-      percentage_price(booking.payment.next_payout_at, booking.to, future_payout_at,
-                       booking.payment.price_amount_in_wallet)
       # In more than one variable to clarify things
       days_left_to_pay = (booking.to - booking.payment.next_payout_at) / 1.day
       days_in_this_payout = (future_payout_at - booking.payment.next_payout_at) / 1.day
