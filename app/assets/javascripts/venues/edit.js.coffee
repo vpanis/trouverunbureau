@@ -20,7 +20,6 @@ on_load = ->
           lng = geometry.location.lng()
           $('#venue_latitude').val(lat)
           $('#venue_longitude').val(lng)
-          console.log("lat: "+lat + ", lng:"+lng)
 
           place = street_autocomplete.getPlace()
 
@@ -28,7 +27,6 @@ on_load = ->
           while i < place.address_components.length
             type = place.address_components[i].types[0]
             if type == "locality" || type == "administrative_area_level_3"
-              console.log("place.address_components[i].long_name: "+ place.address_components[i].long_name)
               $("#venue_town").val(place.address_components[i].long_name)
             i++
 
@@ -71,7 +69,6 @@ on_load = ->
 
     getLatLongFromAddress = (address) ->
       geocoder = new google.maps.Geocoder();
-      console.log(address)
       geocoder.geocode { 'address': address }, (results, status) ->
         if status == google.maps.GeocoderStatus.OK
           lat = results[0].geometry.location.lat()
