@@ -51,9 +51,9 @@ describe Api::V1::BookingInquiriesController do
       it 'should retrieve inquiries ordered desc by the last message date' do
         get :organization_inquiries, { id: organization.id },
             current_organization_id: organization.id
-        b1_json = JSON.parse(InquirySerializer.new(@booking1).to_json)
-        b2_json = JSON.parse(InquirySerializer.new(@booking2).to_json)
-        b3_json = JSON.parse(InquirySerializer.new(@booking3).to_json)
+        b1_json = JSON.parse(InquirySerializer.new(@booking1, scope: organization).to_json)
+        b2_json = JSON.parse(InquirySerializer.new(@booking2, scope: organization).to_json)
+        b3_json = JSON.parse(InquirySerializer.new(@booking3, scope: organization).to_json)
         expect(body['inquiries']).to match_array([b3_json['inquiry'], b1_json['inquiry'],
                                                   b2_json['inquiry']])
       end
@@ -116,9 +116,9 @@ describe Api::V1::BookingInquiriesController do
 
       it 'should retrieve inquiries ordered desc by the last message date' do
         get :user_inquiries, id: @user_logged.id
-        b1_json = JSON.parse(InquirySerializer.new(@booking1).to_json)
-        b2_json = JSON.parse(InquirySerializer.new(@booking2).to_json)
-        b3_json = JSON.parse(InquirySerializer.new(@booking3).to_json)
+        b1_json = JSON.parse(InquirySerializer.new(@booking1, scope: @user_logged).to_json)
+        b2_json = JSON.parse(InquirySerializer.new(@booking2, scope: @user_logged).to_json)
+        b3_json = JSON.parse(InquirySerializer.new(@booking3, scope: @user_logged).to_json)
         expect(body['inquiries']).to match_array([b3_json['inquiry'], b1_json['inquiry'],
                                                   b2_json['inquiry']])
       end
@@ -189,8 +189,8 @@ describe Api::V1::BookingInquiriesController do
       it 'should retrieve inquiries ordered desc by the last message date' do
         get :organization_inquiries_with_news, { id: organization.id },
             current_organization_id: organization.id
-        b2_json = JSON.parse(InquirySerializer.new(@booking2).to_json)
-        b3_json = JSON.parse(InquirySerializer.new(@booking3).to_json)
+        b2_json = JSON.parse(InquirySerializer.new(@booking2, scope: organization).to_json)
+        b3_json = JSON.parse(InquirySerializer.new(@booking3, scope: organization).to_json)
         expect(body['inquiries']).to match_array([b3_json['inquiry'], b2_json['inquiry']])
       end
 
@@ -254,8 +254,8 @@ describe Api::V1::BookingInquiriesController do
 
       it 'should retrieve inquiries ordered desc by the last message date' do
         get :user_inquiries_with_news, id: @user_logged.id
-        b2_json = JSON.parse(InquirySerializer.new(@booking2).to_json)
-        b3_json = JSON.parse(InquirySerializer.new(@booking3).to_json)
+        b2_json = JSON.parse(InquirySerializer.new(@booking2, scope: @user_logged).to_json)
+        b3_json = JSON.parse(InquirySerializer.new(@booking3, scope: @user_logged).to_json)
         expect(body['inquiries']).to match_array([b3_json['inquiry'], b2_json['inquiry']])
       end
 
@@ -280,7 +280,7 @@ describe Api::V1::BookingInquiriesController do
         @booking2.owner_last_seen = @message1_b2.created_at
         @booking2.save
         get :user_inquiries_with_news, id: @user_logged.id
-        b3_json = JSON.parse(InquirySerializer.new(@booking3).to_json)
+        b3_json = JSON.parse(InquirySerializer.new(@booking3, scope: @user_logged).to_json)
         expect(body['inquiries']).to match_array([b3_json['inquiry']])
       end
     end

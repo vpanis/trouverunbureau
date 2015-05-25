@@ -84,7 +84,8 @@ module Api
       def inqueries_with_news
         return unless represented_data_validation
         render status: 200, json: serialized_paginated_array(BookingManager.bookings_with_news(
-          current_represented).includes(:space, :owner), :inquiries, InquirySerializer)
+          current_represented).includes(:space, :owner), :inquiries, InquirySerializer,
+                                                             scope: current_represented)
       end
 
       def represented_data_validation
