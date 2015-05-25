@@ -50,7 +50,7 @@
               .calendar.input-group
                 .calendar-icon.input-group-addon ng-click="open($event)" type="button"
                 - value = @user.date_of_birth.strftime("%d-%m-%Y") if @user.date_of_birth.present?
-                = f.text_field :date_of_birth, value: value, placeholder: t('users.date_of_birth'), class: 'form-control', close_text: t('commons.close'), datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened', ng_model:'user_date_of_birth', ng_required: 'true', type: 'text', show_button_bar:'false'
+                = f.text_field :date_of_birth, value: value, placeholder: t('users.date_of_birth'), class: 'form-control', close_text: t('commons.close'), datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened', ng_model:'user_date_of_birth', ng_required: 'true', type: 'text', show_button_bar:'false', ng_click: "open($event)"
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               .icon.lock.pointer#nationality-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
               label = t('users.nationality')
