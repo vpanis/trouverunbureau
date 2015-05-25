@@ -122,7 +122,7 @@ it:
     inbox: 'Inbox'
     bookings: 'Bookings'
     venues: 'Venues'
-    wishlist: 'Wishlist'
+    wishlist: 'Wish List'
     account: 'Account'
     change_user: 'Use DeskSpotting as:'
     create_organization: 'Create organization'

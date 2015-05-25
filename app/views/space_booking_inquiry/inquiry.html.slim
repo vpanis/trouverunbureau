@@ -59,7 +59,7 @@
                 = t('booking_inquiry.date')
               .calendar.input-group
                 .calendar-icon.input-group-addon ng-click="open($event, 'hour_opened_date')" type="button"
-                = f.text_field :from, { value: "{{booking_from | date: format}}", placeholder: 'mm-dd-aa', class: 'form-control', close_text: 'Close', datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'hour_opened_date', ng_model: "booking_from", date_disabled: "disabled(date, mode)", type: 'text', show_button_bar:'false', ng_required: 'true' }
+                = f.text_field :from, { value: "{{booking_from | date: format}}", placeholder: 'dd-mm-aa', class: 'form-control', close_text: 'Close', datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'hour_opened_date', ng_model: "booking_from", date_disabled: "disabled(date, mode)", type: 'text', show_button_bar:'false', ng_required: 'true' }
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               label
                 = t('booking_inquiry.spaces_amount')
