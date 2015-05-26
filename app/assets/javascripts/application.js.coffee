@@ -31,3 +31,4 @@
 #= require_tree ./angular/controllers
 #= require_tree ./referral/
 #= require angular-translate
+#= require footer

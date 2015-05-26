@@ -36,15 +36,6 @@ class ApplicationController < ActionController::Base
     session[:previous_url] || root_path
   end
 
-  def change_language
-    params[:languange] = params[:languange].to_sym if params[:languange].present?
-    current_user.update_attributes(params[:language]) if
-      User::LANGUAGES.include?(params[:languange])
-    session[:locale] = params[:language]
-    expire_now()
-    redirect_to :back
-  end
-
   private
 
   # store last url - this is needed for post-login redirect to whatever the user last visited.

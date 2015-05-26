@@ -25,8 +25,7 @@ section#footer
           .instagram.social-icon
         .language
           = form_tag(change_language_path , :method => :put, :remote => true, id: 'change_language')
-            = select_tag(:language, options_from_collection_for_select(User::LANGUAGES, :to_s, :to_s, selected: I18n.locale),  :onchange => ("javascript: $('#change_language').submit();"))
-            / = submit_tag "select language"
+            = select_tag :language, options_from_collection_for_select(User::LANGUAGES, :to_s, :to_s, selected: I18n.locale)
           p.yellow #{t('home.footer.language.en')}
           p.white-arrow &#x25B2;
   .row
