@@ -42,14 +42,18 @@ class UsersController < ApplicationController
     redirect_to session[:previous_url] || root_path
   end
 
-  def inbox
-  end
-
-  # TODO: implement account form and email notifications accordingly
-  def account
+  def update_account_settings
+    current_user.update_attributes!(settings: settings_params[:settings])
+    redirect_to account_user_path(current_user)
   end
 
   private
+
+  def settings_params
+    params.require(:user).permit(
+      settings: [:person_message, :incoming_inquiry, :accepted_inquiry, :account_changes]
+    )
+  end
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :phone, :language, :avatar,
