@@ -188,7 +188,7 @@ describe VenueDetailsController do
               fewer_hours = { '0' => { id: venue.day_hours.first.id, from: '', to: '', weekday: '',
                                        _destroy: true },
                               '1' => { from: '', to: '', weekday: '', _destroy: true },
-                              '2' => { id: day_hour_2.id, from: '0800', to: '1800', weekday: 2},
+                              '2' => { id: day_hour_2.id, from: '0800', to: '1800', weekday: 2 },
                               '3' => { from: '', to: '', weekday: '', _destroy: true },
                               '4' => { from: '', to: '', weekday: '', _destroy: true },
                               '5' => { from: '', to: '', weekday: '', _destroy: true },

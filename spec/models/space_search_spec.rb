@@ -8,7 +8,8 @@ RSpec.describe SpaceSearch, type: :model do
     @v1 = FactoryGirl.create(:venue, v_type: Venue.v_types[:startup_office], latitude: 10,
                              longitude: 10, amenities: ['wifi'],
                              professions: %w(technology public_relations),
-                             rating: 4, quantity_reviews: 10, day_hours: [create(:venue_hour, weekday: 0)])
+                             rating: 4, quantity_reviews: 10,
+                             day_hours: [create(:venue_hour, weekday: 0)])
     @v2 = FactoryGirl.create(:venue, v_type: Venue.v_types[:design_studio], latitude: 20,
                              longitude: 20, amenities: ['cafe_restaurant'],
                              professions: ['public_relations'],
@@ -23,7 +24,8 @@ RSpec.describe SpaceSearch, type: :model do
                              longitude: 40, amenities: %w(wifi gym),
                              professions: %w(public_relations technology),
                              rating: 4, quantity_reviews: 20,
-                             day_hours: [create(:venue_hour, weekday: 0), create(:venue_hour, weekday: 3)])
+                             day_hours: [create(:venue_hour, weekday: 0),
+                                         create(:venue_hour, weekday: 3)])
     @v5 = FactoryGirl.create(:venue, v_type: Venue.v_types[:corporate_office], latitude: 50,
                              longitude: 50, amenities: ['cafe_restaurant'],
                              professions: ['public_relations'],
