@@ -12,7 +12,7 @@ describe VenueAmenitiesController do
 
       context 'when the venue exists' do
         context 'when user owns the venue' do
-          let!(:venue) { create(:venue, owner: user) }
+          let!(:venue) { create(:venue, :with_venue_hours, owner: user) }
 
           it 'succeeds' do
             get :amenities, id: venue.id

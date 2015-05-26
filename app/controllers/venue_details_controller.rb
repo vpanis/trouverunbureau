@@ -14,14 +14,14 @@ class VenueDetailsController < VenuesController
       update_venue
     else
       options
-      render action: :details
+      render action: :details, status: 400
     end
   end
 
   private
 
   def update_venue
-    @venue.update_attributes!(venue_params)
+    @venue.save!
     update_professions!
     redirect_to amenities_venue_path(@venue)
   end
@@ -44,7 +44,7 @@ class VenueDetailsController < VenuesController
   end
 
   def load_day_hours
-    day_hours = []
+    day_hours = {}
     @venue.day_hours.each { |dh| day_hours[dh.weekday] = dh }
     (0..6).each do |index|
       day_hours[index] = VenueHour.new(weekday: index) unless day_hours[index].present?

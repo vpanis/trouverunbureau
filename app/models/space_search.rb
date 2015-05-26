@@ -39,7 +39,6 @@ class SpaceSearch
 
   def find_spaces
     fill_conditions(Space.all)
-
   end
 
   private

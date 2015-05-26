@@ -27,6 +27,13 @@ FactoryGirl.define do
 
     owner { FactoryGirl.build(:user) }
     country_code 'FR'
+
+    after(:build) do |venue|
+      unless venue.day_hours.present?
+        venue.day_hours << FactoryGirl.build(:venue_hour, venue: venue, weekday: 0)
+      end
+    end
+
     trait :with_spaces do
       spaces { FactoryGirl.build_list(:space, rand(3) + 1) }
     end
@@ -39,12 +46,11 @@ FactoryGirl.define do
 
     # Only for Factorygirl.CREATE, nested_attributes issues
     trait :with_venue_hours do
-      after(:create) do |venue|
-        FactoryGirl.create(:venue_hour, venue: venue, weekday: 0)
-        FactoryGirl.create(:venue_hour, venue: venue, weekday: 1)
-        FactoryGirl.create(:venue_hour, venue: venue, weekday: 2)
-        FactoryGirl.create(:venue_hour, venue: venue, weekday: 3)
-        FactoryGirl.create(:venue_hour, venue: venue, weekday: 4)
+      after(:build) do |venue|
+        venue.day_hours << FactoryGirl.build(:venue_hour, venue: venue, weekday: 1)
+        venue.day_hours << FactoryGirl.build(:venue_hour, venue: venue, weekday: 2)
+        venue.day_hours << FactoryGirl.build(:venue_hour, venue: venue, weekday: 3)
+        venue.day_hours << FactoryGirl.build(:venue_hour, venue: venue, weekday: 4)
       end
     end
   end

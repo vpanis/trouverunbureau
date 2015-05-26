@@ -10,7 +10,7 @@ class VenueAmenitiesController < VenuesController
     return unless can_edit?
     @venue.assign_attributes(amenities: amenities_params)
     if @venue.valid?
-      @venue.update_attributes!(amenities: amenities_params)
+      @venue.save!
       redirect_to photos_venue_path(@venue)
     else
       render :amenities
