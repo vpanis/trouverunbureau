@@ -15,10 +15,10 @@ class ApplicationController < ActionController::Base
            status: :bad_request
   end
 
-  after_action :set_user_language
+  before_action :set_user_language
 
   def set_user_language
-    return I18n.locale = params[:locale] if params[:locale].present? && current_user.nil?
+    return I18n.locale = session[:locale] if session[:locale].present? && current_user.nil?
     I18n.locale = current_user.language if current_user.present? && current_user.language.present?
   end
 
@@ -36,6 +36,15 @@ class ApplicationController < ActionController::Base
     session[:previous_url] || root_path
   end
 
+  def change_language
+    params[:languange] = params[:languange].to_sym if params[:languange].present?
+    current_user.update_attributes(params[:language]) if
+      User::LANGUAGES.include?(params[:languange])
+    session[:locale] = params[:language]
+    expire_now()
+    redirect_to :back
+  end
+
   private
 
   # store last url - this is needed for post-login redirect to whatever the user last visited.
@@ -47,7 +56,7 @@ class ApplicationController < ActionController::Base
   def ignorable_request?
     request.path == '/users/sign_in' || request.path == '/users/sign_up' ||
     request.path == '/users/password/new' || request.path == '/users/sign_out' ||
-    request.path == '/users/password/edit'
+    request.path == '/users/password/edit' || request.path == '/change_language'
   end
 
   def api_request?

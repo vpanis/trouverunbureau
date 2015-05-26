@@ -9,6 +9,7 @@
     span.select2-chosen{
       background-color: white;
       height: 50px;
+      margin: 0;
       @include border-radius(0px);
       border: 0;
       background: white;
@@ -24,6 +25,7 @@
       background-image: none;
       border-left: none;
       width: 30px;
+      margin: 0;
       b{
         @include at2x('arrow-dropdown', 14px, 10px);
         background-repeat: no-repeat;

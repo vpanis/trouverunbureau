@@ -10,7 +10,7 @@
       p.name.pull-left = booking.space.venue.name
     p.city = booking.space.venue.street.to_s + ', ' + booking.space.venue.town.to_s \
         + ', ' + Country.new(booking.space.venue.country_code).name
-  .col-md-4.margin-top
+  .col-md-4
     .date
       span 8
       span Days
