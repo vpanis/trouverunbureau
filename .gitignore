@@ -44,3 +44,6 @@ coverage/*
 # Images
 public/uploads
 .test_user.yml
+
+# Extra ignored files
+dump.rdb

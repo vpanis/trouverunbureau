@@ -76,7 +76,7 @@ class SpaceBookingInquiryController < ApplicationController
     return false unless params[:booking][:from].present? && params[:month_quantity].to_i > 0
     @from_date = Time.zone.parse(params[:booking][:from]).at_beginning_of_day
     @to_date = Time.zone.parse(params[:booking][:from])
-                .advance(months: params[:month_quantity].to_i)
+                .advance(days: -1, months: params[:month_quantity].to_i)
                 .at_end_of_day
     @b_type = Booking.b_types[:month]
     true
