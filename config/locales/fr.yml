@@ -431,6 +431,7 @@ fr:
     collection_account: Collection Account
     payout_method: Payout Method
   new_message_email:
+    subject: 'You have a new message from %{from}'
     hi: Hi
     got_new_message: Got a new message from
     reply: Or reply directly on this mail.
