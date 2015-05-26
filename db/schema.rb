@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150511230243) do
+ActiveRecord::Schema.define(version: 20150520134747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,10 +31,10 @@ ActiveRecord::Schema.define(version: 20150511230243) do
     t.datetime "owner_last_seen"
     t.datetime "venue_last_seen"
     t.datetime "approved_at"
-    t.boolean  "owner_delete",       default: false
-    t.boolean  "venue_owner_delete", default: false
     t.integer  "payment_id"
     t.string   "payment_type"
+    t.boolean  "owner_delete",       default: false
+    t.boolean  "venue_owner_delete", default: false
     t.integer  "fee"
     t.integer  "deposit"
     t.boolean  "hold_deposit",       default: false
@@ -290,7 +290,7 @@ ActiveRecord::Schema.define(version: 20150511230243) do
     t.decimal  "rating"
     t.integer  "quantity_reviews"
     t.integer  "reviews_sum"
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "encrypted_password",     default: ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -315,9 +315,20 @@ ActiveRecord::Schema.define(version: 20150511230243) do
     t.string   "emergency_relationship"
     t.string   "nationality"
     t.string   "country_of_residence"
+    t.string   "invitation_token"
+    t.datetime "invitation_created_at"
+    t.datetime "invitation_sent_at"
+    t.datetime "invitation_accepted_at"
+    t.integer  "invitation_limit"
+    t.integer  "invited_by_id"
+    t.string   "invited_by_type"
+    t.integer  "invitations_count",      default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["invitation_token"], name: "index_users_on_invitation_token", unique: true, using: :btree
+  add_index "users", ["invitations_count"], name: "index_users_on_invitations_count", using: :btree
+  add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "users_favorites", force: true do |t|

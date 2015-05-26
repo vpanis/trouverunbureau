@@ -20,6 +20,7 @@ FactoryGirl.define do
     rooms 5
     desks 40
     vat_tax_rate 1.5
+    status Venue.statuses[:active]
     amenities { Venue::AMENITY_TYPES.sample(3).map(&:to_s) }
     professions { Venue::PROFESSIONS.sample(2).map(&:to_s) }
     logo Rack::Test::UploadedFile.new(File.open(File.join(

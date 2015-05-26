@@ -16,7 +16,7 @@ module Api
         params.each do |key, value|
           filters.update(key => value) if filter_parameter?(key, value)
         end
-        filters
+        filters.merge(venue_states: [Venue.statuses[:active]])
       end
 
       def filter_parameter?(param, value)
