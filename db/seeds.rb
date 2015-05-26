@@ -84,7 +84,7 @@ case Rails.env
 
     # Venues
     puts 'creating venues'
-    venue1 = Venue.create!(owner: org1, town: "Buenos Aires", street: "Ayacucho", postal_code: "6541", phone: "68731388", email: Helper.next_email, website: "www.theplaceayacucho.com", latitude: -34.601, longitude: -58.45, name: "The Place Ayacucho", description: Faker::Lorem.paragraph(20), currency: "usd", v_type: Venue.v_types[:corporate_office], space: 400, space_unit: Venue.space_units[:square_mts], floors: 2, rooms: 7, desks: 14, vat_tax_rate: 0, amenities: ["wifi", "cafe_restaurant"], country_code: 'US')
+    venue1 = Venue.create!(owner: org1, town: "Buenos Aires", street: "Ayacucho", postal_code: "6541", phone: "68731388", email: Helper.next_email, website: "www.theplaceayacucho.com", latitude: -34.601, longitude: -58.45, name: "The Place Ayacucho", description: Faker::Lorem.paragraph(20), currency: "eur", v_type: Venue.v_types[:corporate_office], space: 400, space_unit: Venue.space_units[:square_mts], floors: 2, rooms: 7, desks: 14, vat_tax_rate: 0, amenities: ["wifi", "cafe_restaurant"], country_code: 'FR')
     v1_sp1 = Space.create!(venue: venue1, s_type: Space.s_types[:hot_desk], name: "Personal Desk", capacity: 1, quantity: 8, hour_price: 40, day_price: 250, month_price: 4500, description: Faker::Lorem.paragraph(10))
     v1_sp2 = Space.create!(venue: venue1, s_type: Space.s_types[:meeting_room], name: "Meeting Place", capacity: 5, quantity: 2, hour_price: 200, day_price: 1500, description: Faker::Lorem.paragraph(10))
     v1_sp3 = Space.create!(venue: venue1, s_type: Space.s_types[:conference_room], name: "Conference Place", capacity: 40, quantity: 1, hour_price: 1000, description: Faker::Lorem.paragraph(10))
@@ -98,7 +98,7 @@ case Rails.env
     venue1.status = Venue.statuses[:active]
     venue1.save!
 
-    venue2 = Venue.create!(owner: org2, town: "Buenos Aires", street: "Rivadavia", postal_code: "3121", phone: "571687666", email: Helper.next_email, website: "www.thebestplace.com/buenosaires", latitude: -34.602, longitude: -58.434, name: "The Best Place Buenos Aires", description: Faker::Lorem.paragraph(20), currency: "usd", v_type: Venue.v_types[:business_center], space: 300, space_unit: Venue.space_units[:square_mts], floors: 2, rooms: 4, desks: 14, vat_tax_rate: 0.1, amenities: ["wifi", "cafe_restaurant", "mail_service", "wheelchair_access"], country_code: 'CA')
+    venue2 = Venue.create!(owner: org2, town: "Buenos Aires", street: "Rivadavia", postal_code: "3121", phone: "571687666", email: Helper.next_email, website: "www.thebestplace.com/buenosaires", latitude: -34.602, longitude: -58.434, name: "The Best Place Buenos Aires", description: Faker::Lorem.paragraph(20), currency: "eur", v_type: Venue.v_types[:business_center], space: 300, space_unit: Venue.space_units[:square_mts], floors: 2, rooms: 4, desks: 14, vat_tax_rate: 0.1, amenities: ["wifi", "cafe_restaurant", "mail_service", "wheelchair_access"], country_code: 'FR')
     v2_sp1 = Space.create!(venue: venue2, s_type: Space.s_types[:hot_desk], name: "Desk", capacity: 1, quantity: 4, hour_price: 38, day_price: 240, month_price: 4200, description: Faker::Lorem.paragraph(10))
     v2_sp2 = Space.create!(venue: venue2, s_type: Space.s_types[:meeting_room], name: "Meeting Place", capacity: 7, quantity: 2, hour_price: 185, day_price: 1450, description: Faker::Lorem.paragraph(10))
     v2_sp3 = Space.create!(venue: venue2, s_type: Space.s_types[:private_office], name: "Blue Office", capacity: 12, quantity: 1, hour_price: 400, day_price: 2700, month_price: 50000, description: Faker::Lorem.paragraph(10))
@@ -112,7 +112,7 @@ case Rails.env
     venue2.status = Venue.statuses[:active]
     venue2.save!
 
-    venue3 = Venue.create!(owner: org2, town: "Madrid", street: "Malasaña", postal_code: "6511", phone: "66876064", email: Helper.next_email, website: "www.thebestplace.com/madrid", latitude: -34.603, longitude: -58.46, name: "The Best Place Madrid", description: Faker::Lorem.paragraph(20), currency: "eur", v_type: Venue.v_types[:design_studio], space: 800, space_unit: Venue.space_units[:square_mts], floors: 3, rooms: 10, desks: 30, vat_tax_rate: 0.2, amenities: ["wifi", "cafe_restaurant", "mail_service", "wheelchair_access"], country_code: 'AU')
+    venue3 = Venue.create!(owner: org2, town: "Madrid", street: "Malasaña", postal_code: "6511", phone: "66876064", email: Helper.next_email, website: "www.thebestplace.com/madrid", latitude: -34.603, longitude: -58.46, name: "The Best Place Madrid", description: Faker::Lorem.paragraph(20), currency: "eur", v_type: Venue.v_types[:design_studio], space: 800, space_unit: Venue.space_units[:square_mts], floors: 3, rooms: 10, desks: 30, vat_tax_rate: 0.2, amenities: ["wifi", "cafe_restaurant", "mail_service", "wheelchair_access"], country_code: 'FR')
     v3_sp1 = Space.create!(venue: venue3, s_type: Space.s_types[:hot_desk], name: "Desk", capacity: 1, quantity: 25, hour_price: 10, day_price: 25, month_price: 450, description: Faker::Lorem.paragraph(10))
     v3_sp2 = Space.create!(venue: venue3, s_type: Space.s_types[:meeting_room], name: "Meeting Place", capacity: 10, quantity: 1, hour_price: 25, description: Faker::Lorem.paragraph(10))
     v3_sp3 = Space.create!(venue: venue3, s_type: Space.s_types[:conference_room], name: "Conference Place", capacity: 100, quantity: 1, hour_price: 170, description: Faker::Lorem.paragraph(10))
@@ -125,7 +125,7 @@ case Rails.env
     venue3.status = Venue.statuses[:active]
     venue3.save!
 
-    venue4 = Venue.create!(owner: org3, town: "Berlin", street: "Bla strasse", postal_code: "5155", phone: "89040648", email: Helper.next_email, website: "www.desklirium.com", latitude: -34.604, longitude: -58.35, name: "Desklirium", description: Faker::Lorem.paragraph(20), currency: "eur", v_type: Venue.v_types[:design_studio], space: 200, space_unit: Venue.space_units[:square_mts], floors: 1, rooms: 3, desks: 20, vat_tax_rate: 0.1, amenities: ["wifi", "cafe_restaurant"], country_code: 'DE')
+    venue4 = Venue.create!(owner: org3, town: "Berlin", street: "Bla strasse", postal_code: "5155", phone: "89040648", email: Helper.next_email, website: "www.desklirium.com", latitude: -34.604, longitude: -58.35, name: "Desklirium", description: Faker::Lorem.paragraph(20), currency: "eur", v_type: Venue.v_types[:design_studio], space: 200, space_unit: Venue.space_units[:square_mts], floors: 1, rooms: 3, desks: 20, vat_tax_rate: 0.1, amenities: ["wifi", "cafe_restaurant"], country_code: 'FR')
     v4_sp1 = Space.create!(venue: venue4, s_type: Space.s_types[:hot_desk], name: "Normal Desk", capacity: 1, quantity: 10, hour_price: 4, day_price: 30, month_price: 600, description: Faker::Lorem.paragraph(10))
     v4_sp2 = Space.create!(venue: venue4, s_type: Space.s_types[:hot_desk], name: "Super Desk", capacity: 1, quantity: 8, hour_price: 5, day_price: 38, month_price: 700, description: Faker::Lorem.paragraph(10))
     v4_sp3 = Space.create!(venue: venue4, s_type: Space.s_types[:meeting_room], name: "Meeting Place", capacity: 5, quantity: 4, hour_price: 40, description: Faker::Lorem.paragraph(10))
@@ -141,7 +141,7 @@ case Rails.env
     venue4.status = Venue.statuses[:active]
     venue4.save!
 
-    venue5 = Venue.create!(owner: user6, town: "London", street: "Ble street", postal_code: "8911", phone: "998723488", email: Helper.next_email, website: "www.myvenue.com", latitude: -34.605, longitude: -58.38, name: "My Place", description: Faker::Lorem.paragraph(20), currency: "eur", v_type: Venue.v_types[:startup_office], space: 500, space_unit: Venue.space_units[:square_foots], floors: 2, rooms: 6, desks: 10, vat_tax_rate: 0, amenities: ["wifi", "pets_allowed", "kitchen", "cafe_restaurant"], country_code: 'AD')
+    venue5 = Venue.create!(owner: user6, town: "London", street: "Ble street", postal_code: "8911", phone: "998723488", email: Helper.next_email, website: "www.myvenue.com", latitude: -34.605, longitude: -58.38, name: "My Place", description: Faker::Lorem.paragraph(20), currency: "eur", v_type: Venue.v_types[:startup_office], space: 500, space_unit: Venue.space_units[:square_foots], floors: 2, rooms: 6, desks: 10, vat_tax_rate: 0, amenities: ["wifi", "pets_allowed", "kitchen", "cafe_restaurant"], country_code: 'FR')
     v5_sp1 = Space.create!(venue: venue5, s_type: Space.s_types[:hot_desk], name: "Your Desk", capacity: 1, quantity: 6, hour_price: 4, description: Faker::Lorem.paragraph(10))
     v5_sp2 = Space.create!(venue: venue5, s_type: Space.s_types[:meeting_room], name: "Meeting Place", capacity: 5, quantity: 1, hour_price: 15, description: Faker::Lorem.paragraph(10))
     VenueHour.create!(venue: venue5, weekday: 0, from: 800, to: 1900)
@@ -153,7 +153,7 @@ case Rails.env
     venue5.status = Venue.statuses[:active]
     venue5.save!
 
-    venue6 = Venue.create!(owner: user7, town: "Dublin", street: "Temple str", postal_code: "6166", phone: "516166646", email: Helper.next_email, website: "www.otherdesk.com", latitude: -34.61, longitude: -58.39, name: "The Other Desk", description: Faker::Lorem.paragraph(20), currency: "eur", v_type: Venue.v_types[:startup_office], space: 100, space_unit: Venue.space_units[:square_mts], floors: 1, rooms: 2, desks: 4, vat_tax_rate: 0, amenities: ["wifi", "pets_allowed", "kitchen", "fax"], country_code: 'AT')
+    venue6 = Venue.create!(owner: user7, town: "Dublin", street: "Temple str", postal_code: "6166", phone: "516166646", email: Helper.next_email, website: "www.otherdesk.com", latitude: -34.61, longitude: -58.39, name: "The Other Desk", description: Faker::Lorem.paragraph(20), currency: "eur", v_type: Venue.v_types[:startup_office], space: 100, space_unit: Venue.space_units[:square_mts], floors: 1, rooms: 2, desks: 4, vat_tax_rate: 0, amenities: ["wifi", "pets_allowed", "kitchen", "fax"], country_code: 'FR')
     v6_sp1 = Space.create!(venue: venue6, s_type: Space.s_types[:hot_desk], name: "Home Desk", capacity: 1, quantity: 5, hour_price: 3.5, description: Faker::Lorem.paragraph(10))
     VenueHour.create!(venue: venue6, weekday: 0, from: 800, to: 1200)
     VenueHour.create!(venue: venue6, weekday: 0, from: 1400, to: 2300)
@@ -169,7 +169,7 @@ case Rails.env
     venue6.status = Venue.statuses[:active]
     venue6.save!
 
-    venue7 = Venue.create!(owner: user7, town: "Dublin", street: "Temple str", postal_code: "6166", phone: "516166646", email: Helper.next_email, website: "www.otherdesk.com", latitude: -34.62, longitude: -58.41, name: "The Other Desk", description: Faker::Lorem.paragraph(20), currency: "eur", v_type: Venue.v_types[:hotel], space: 100, space_unit: Venue.space_units[:square_mts], floors: 1, rooms: 2, desks: 4, vat_tax_rate: 0, amenities: ["wifi", "pets_allowed", "kitchen", "mail_service"], country_code: 'BE')
+    venue7 = Venue.create!(owner: user7, town: "Dublin", street: "Temple str", postal_code: "6166", phone: "516166646", email: Helper.next_email, website: "www.otherdesk.com", latitude: -34.62, longitude: -58.41, name: "The Other Desk", description: Faker::Lorem.paragraph(20), currency: "eur", v_type: Venue.v_types[:hotel], space: 100, space_unit: Venue.space_units[:square_mts], floors: 1, rooms: 2, desks: 4, vat_tax_rate: 0, amenities: ["wifi", "pets_allowed", "kitchen", "mail_service"], country_code: 'FR')
     v7_sp1 = Space.create!(venue: venue7, s_type: Space.s_types[:hot_desk], name: "Home Desk", capacity: 1, quantity: 5, hour_price: 3.5, description: Faker::Lorem.paragraph(10))
     VenueHour.create!(venue: venue7, weekday: 0, from: 800, to: 1200)
     VenueHour.create!(venue: venue7, weekday: 0, from: 1400, to: 2300)
@@ -185,7 +185,7 @@ case Rails.env
     venue7.status = Venue.statuses[:active]
     venue7.save!
 
-    venue8 = Venue.create!(owner: user8, town: "London", street: "Ble street", postal_code: "8911", phone: "998723488", email: Helper.next_email, website: "www.myvenue.com", latitude: -34.56, longitude: -58.498, name: "My Place", description: Faker::Lorem.paragraph(20), currency: "eur", v_type: Venue.v_types[:loft], space: 500, space_unit: Venue.space_units[:square_foots], floors: 2, rooms: 6, desks: 10, vat_tax_rate: 0, amenities: ["wifi", "pets_allowed", "kitchen", "cafe_restaurant", "security"], country_code: 'HR')
+    venue8 = Venue.create!(owner: user8, town: "London", street: "Ble street", postal_code: "8911", phone: "998723488", email: Helper.next_email, website: "www.myvenue.com", latitude: -34.56, longitude: -58.498, name: "My Place", description: Faker::Lorem.paragraph(20), currency: "eur", v_type: Venue.v_types[:loft], space: 500, space_unit: Venue.space_units[:square_foots], floors: 2, rooms: 6, desks: 10, vat_tax_rate: 0, amenities: ["wifi", "pets_allowed", "kitchen", "cafe_restaurant", "security"], country_code: 'FR')
     v8_sp1 = Space.create!(venue: venue8, s_type: Space.s_types[:hot_desk], name: "Your Desk", capacity: 1, quantity: 6, hour_price: 4, description: Faker::Lorem.paragraph(10))
     v8_sp2 = Space.create!(venue: venue8, s_type: Space.s_types[:meeting_room], name: "Meeting Place", capacity: 5, quantity: 1, hour_price: 15, description: Faker::Lorem.paragraph(10))
     VenueHour.create!(venue: venue8, weekday: 0, from: 800, to: 1900)
@@ -197,7 +197,7 @@ case Rails.env
     venue8.status = Venue.statuses[:active]
     venue8.save!
 
-    venue9 = Venue.create!(owner: user7, town: "Bohn", street: "Ble street", postal_code: "8911", phone: "998723488", email: Helper.next_email, website: "www.myvenuebohn.com", latitude: -34.63, longitude: -58.459, name: "Bohn My Place", description: Faker::Lorem.paragraph(20), currency: "eur", v_type: Venue.v_types[:house], space: 500, space_unit: Venue.space_units[:square_foots], floors: 2, rooms: 6, desks: 10, vat_tax_rate: 0, amenities: ["wifi", "pets_allowed", "kitchen", "cafe_restaurant", "security"], country_code: 'DK')
+    venue9 = Venue.create!(owner: user7, town: "Bohn", street: "Ble street", postal_code: "8911", phone: "998723488", email: Helper.next_email, website: "www.myvenuebohn.com", latitude: -34.63, longitude: -58.459, name: "Bohn My Place", description: Faker::Lorem.paragraph(20), currency: "eur", v_type: Venue.v_types[:house], space: 500, space_unit: Venue.space_units[:square_foots], floors: 2, rooms: 6, desks: 10, vat_tax_rate: 0, amenities: ["wifi", "pets_allowed", "kitchen", "cafe_restaurant", "security"], country_code: 'FR')
     v9_sp1 = Space.create!(venue: venue9, s_type: Space.s_types[:hot_desk], name: "Bohn Your Desk", capacity: 1, quantity: 6, hour_price: 4, description: Faker::Lorem.paragraph(10))
     v9_sp2 = Space.create!(venue: venue9, s_type: Space.s_types[:meeting_room], name: "Bohn Meeting Place", capacity: 5, quantity: 1, hour_price: 15, description: Faker::Lorem.paragraph(10))
     VenueHour.create!(venue: venue9, weekday: 0, from: 800, to: 1900)
@@ -209,7 +209,7 @@ case Rails.env
     venue9.status = Venue.statuses[:active]
     venue9.save!
 
-    venue10 = Venue.create!(owner: user9, town: "Oslo", street: "Ble street", postal_code: "8911", phone: "998723488", email: Helper.next_email, website: "www.myvenueoslo.com", latitude: -34.64, longitude: -58.467, name: "My Place Oslo", description: Faker::Lorem.paragraph(20), currency: "eur", v_type: Venue.v_types[:cafe], space: 500, space_unit: Venue.space_units[:square_foots], floors: 2, rooms: 6, desks: 10, vat_tax_rate: 0, amenities: ["wifi", "pets_allowed", "kitchen", "cafe_restaurant", "security"], country_code: 'ES')
+    venue10 = Venue.create!(owner: user9, town: "Oslo", street: "Ble street", postal_code: "8911", phone: "998723488", email: Helper.next_email, website: "www.myvenueoslo.com", latitude: -34.64, longitude: -58.467, name: "My Place Oslo", description: Faker::Lorem.paragraph(20), currency: "eur", v_type: Venue.v_types[:cafe], space: 500, space_unit: Venue.space_units[:square_foots], floors: 2, rooms: 6, desks: 10, vat_tax_rate: 0, amenities: ["wifi", "pets_allowed", "kitchen", "cafe_restaurant", "security"], country_code: 'FR')
     v10_sp1 = Space.create!(venue: venue10, s_type: Space.s_types[:hot_desk], name: "Your Desk Oslo", capacity: 1, quantity: 6, hour_price: 4, description: Faker::Lorem.paragraph(10))
     v10_sp2 = Space.create!(venue: venue10, s_type: Space.s_types[:meeting_room], name: "Oslo Meeting Place", capacity: 5, quantity: 1, hour_price: 15, description: Faker::Lorem.paragraph(10))
     VenueHour.create!(venue: venue10, weekday: 0, from: 800, to: 1900)
@@ -221,7 +221,7 @@ case Rails.env
     venue10.status = Venue.statuses[:active]
     venue10.save!
 
-    venue11 = Venue.create!(owner: user7, town: "Estambul", street: "Ble street", postal_code: "8911", phone: "998723488", email: Helper.next_email, website: "www.myvenueestambul.com", latitude: -34.54, longitude: -58.40, name: "My Place Estambul", description: Faker::Lorem.paragraph(20), currency: "eur", v_type: Venue.v_types[:restaurant], space: 500, space_unit: Venue.space_units[:square_foots], floors: 2, rooms: 6, desks: 10, vat_tax_rate: 0, amenities: ["wifi", "pets_allowed", "kitchen", "cafe_restaurant", "security"], country_code: 'FI')
+    venue11 = Venue.create!(owner: user7, town: "Estambul", street: "Ble street", postal_code: "8911", phone: "998723488", email: Helper.next_email, website: "www.myvenueestambul.com", latitude: -34.54, longitude: -58.40, name: "My Place Estambul", description: Faker::Lorem.paragraph(20), currency: "eur", v_type: Venue.v_types[:restaurant], space: 500, space_unit: Venue.space_units[:square_foots], floors: 2, rooms: 6, desks: 10, vat_tax_rate: 0, amenities: ["wifi", "pets_allowed", "kitchen", "cafe_restaurant", "security"], country_code: 'FR')
     v11_sp1 = Space.create!(venue: venue11, s_type: Space.s_types[:hot_desk], name: "Your Desk Estambul", capacity: 1, quantity: 6, hour_price: 4, description: Faker::Lorem.paragraph(10))
     v11_sp2 = Space.create!(venue: venue11, s_type: Space.s_types[:meeting_room], name: "Meeting Place Estambul", capacity: 5, quantity: 1, hour_price: 15, description: Faker::Lorem.paragraph(10))
     VenueHour.create!(venue: venue11, weekday: 0, from: 800, to: 1900)
@@ -245,7 +245,7 @@ case Rails.env
     venue12.status = Venue.statuses[:active]
     venue12.save!
 
-    venue13 = Venue.create!(owner: user10, town: "Kabul", street: "Ble street", postal_code: "8911", phone: "998723488", email: Helper.next_email, website: "www.myvenuekabul.com", latitude: -34.609, longitude: -58.41, name: "My Place Kabul", description: Faker::Lorem.paragraph(20), currency: "eur", v_type: Venue.v_types[:coworking_space], space: 500, space_unit: Venue.space_units[:square_foots], floors: 2, rooms: 6, desks: 10, vat_tax_rate: 0, amenities: ["wifi", "pets_allowed", "kitchen", "cafe_restaurant", "security"], country_code: 'GR')
+    venue13 = Venue.create!(owner: user10, town: "Kabul", street: "Ble street", postal_code: "8911", phone: "998723488", email: Helper.next_email, website: "www.myvenuekabul.com", latitude: -34.609, longitude: -58.41, name: "My Place Kabul", description: Faker::Lorem.paragraph(20), currency: "eur", v_type: Venue.v_types[:coworking_space], space: 500, space_unit: Venue.space_units[:square_foots], floors: 2, rooms: 6, desks: 10, vat_tax_rate: 0, amenities: ["wifi", "pets_allowed", "kitchen", "cafe_restaurant", "security"], country_code: 'FR')
     v13_sp1 = Space.create!(venue: venue13, s_type: Space.s_types[:hot_desk], name: "Good Morning Kabul", capacity: 1, quantity: 6, hour_price: 4, description: Faker::Lorem.paragraph(10))
     v13_sp2 = Space.create!(venue: venue13, s_type: Space.s_types[:meeting_room], name: "Meeting Place Kabul", capacity: 5, quantity: 1, hour_price: 15, description: Faker::Lorem.paragraph(10))
     VenueHour.create!(venue: venue13, weekday: 0, from: 800, to: 1900)

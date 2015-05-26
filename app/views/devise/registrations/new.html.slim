@@ -51,6 +51,7 @@ div
         p
           = check_box_tag :remember_me
           span.small-italic #{t('session.keep_session')}
+      = f.hidden_field :provider
       = f.submit t('session.signup'), id: 'signup-form-submit', class: 'rounded-button'
   div.form-footer
     div.left

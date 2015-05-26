@@ -78,9 +78,9 @@ class User < ActiveRecord::Base
     private
 
     def create_provider_user(auth)
-      create(provider: auth.provider, uid: auth.id, email: auth.info.email,
-             password: Devise.friendly_token[0, 20], first_name: auth.info.first_name,
-             last_name: auth.info.last_name)
+      new(provider: auth.provider, uid: auth.id, email: auth.info.email,
+          password: Devise.friendly_token[0, 20], first_name: auth.info.first_name,
+          last_name: auth.info.last_name)
     end
 
     def add_provider_if_necessary(user, auth)
