@@ -86,9 +86,28 @@
     letter-spacing: 0.05em;
     color: $dark-gray;
   }
-  #login-form, #sigunp-form, #reset-password-form{
+  #login-form, #signup-form, #reset-password-form{
     color: $dark-gray;
   }
+
+  #signup-form {
+    .small-italic {
+      line-height: 16px;
+      margin: 5px 0;
+      display: inline-block;
+    }
+    .right {
+      text-align: right;
+      .error {
+        color: $red;
+        font-size: 10px;
+        &.error--hidden {
+          display: none;
+        }
+      }
+    }
+  }
+
   .rounded-button{
     width: 100%;
   }
