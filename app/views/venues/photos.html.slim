@@ -2,7 +2,7 @@
 = render 'shared/profile_menu_bar', selected: 'venues'
 
 #venue.main-content.dashboard-form.clearfix.overflow-hidden
-  = render 'shared/edit_venue_progress', venue: @venue, progress: 60, step: 4
+  = render 'shared/edit_venue_progress', venue: @venue, step: 4
   .details-section.col-md-7.col-md-offset-1.margin-top
     = render 'venue_heading', subtitle: nil
     .row.pictures
@@ -19,7 +19,7 @@
         a href='#'
           button type='button' class='rounded-btn width-100 uppercase' = t('commons.cancel')
       .col-xs-6
-        = link_to t('commons.save'), spaces_venue_path(@venue), class: 'rounded-btn yellow-fill width-100 uppercase'
+        = link_to t('commons.save'), collection_account_info_venue_path(@venue), class: 'rounded-btn yellow-fill width-100 uppercase', id: 'save-photos'
 
 .hidden
   = form_tag api_v1_venue_photos_path, id: 'venue-photo-form'

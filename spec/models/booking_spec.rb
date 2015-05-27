@@ -41,11 +41,12 @@ RSpec.describe Booking, type: :model do
 
   context 'price calculation' do
     before(:each) do
-      @venue = FactoryGirl.create(:venue)
+      @venue = FactoryGirl.create(:venue,
+                                  day_hours: [create(:venue_hour, weekday: 1, from: 800, to: 2000),
+                                              create(:venue_hour, weekday: 2, from: 800, to: 2000),
+                                              create(:venue_hour, weekday: 4, from: 800, to: 2000)]
+                                  )
       # open: tuesday, wednesday and friday
-      @venue.day_hours.create(weekday: 1, from: 800, to: 2000)
-      @venue.day_hours.create(weekday: 2, from: 800, to: 2000)
-      @venue.day_hours.create(weekday: 4, from: 800, to: 2000)
       @space = FactoryGirl.create(:space, venue: @venue, hour_price: 2, day_price: 20,
                                   week_price: 100, month_price: 400)
       @monday = Time.current.next_week(:monday).at_beginning_of_day

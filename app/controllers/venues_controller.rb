@@ -7,9 +7,7 @@ class VenuesController < ApplicationController
   def edit
     @venue = Venue.find(params[:id])
     return unless can_edit?
-    @countries_options = countries_options
-    @v_types_options = venue_types_options
-    @currency_options = currency_options
+    options
   end
 
   def new
@@ -26,13 +24,15 @@ class VenuesController < ApplicationController
   end
 
   def update
-    @venue = Venue.find(params[:id])
+    @venue = VenueFirstStepEdition.new(Venue.find(params[:id]))
     return unless can_edit?
     @venue.assign_attributes(edit_venue_params)
-    lat_lon_changed = @venue.latitude_changed? || @venue.longitude_changed?
-    @venue.save!
-    TimeZoneRetrieverWorker.perform_async(@venue.id) if lat_lon_changed
-    redirect_to details_venue_path(@venue)
+    if @venue.valid?
+      update_venue
+    else
+      options
+      render action: :edit
+    end
   end
 
   def photos
@@ -62,7 +62,27 @@ class VenuesController < ApplicationController
     @venues = current_represented.venues
   end
 
+  def publish
+    @venue = Venue.find(params[:id])
+    redirect_to edit_venue_path(@venue) unless @venue.valid?
+    @venue.update_attributes!(status: Venue.statuses[:active])
+    redirect_to venue_path(@venue)
+  end
+
   private
+
+  def update_venue
+    lat_lon_changed = @venue.latitude_changed? || @venue.longitude_changed?
+    @venue.save!
+    TimeZoneRetrieverWorker.perform_async(@venue.id) if lat_lon_changed
+    redirect_to details_venue_path(@venue)
+  end
+
+  def options
+    @countries_options = countries_options
+    @v_types_options = venue_types_options
+    @currency_options = currency_options
+  end
 
   def can_edit?
     return true if VenueContext.new(@venue, current_represented).owner?

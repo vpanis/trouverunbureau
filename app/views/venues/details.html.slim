@@ -4,16 +4,22 @@
 = render 'profession_modal'
 
 #venue.main-content.dashboard-form.clearfix.overflow-hidden
-  = render 'shared/edit_venue_progress', venue: @venue, progress: 20, step: 2
+  = render 'shared/edit_venue_progress', venue: @venue, step: 2
   .details-section.col-md-7.col-md-offset-1.margin-top
     = render 'venue_heading', subtitle: nil
     = form_for @venue, url: {action: "details"} do |f|
-      .form-group.col-md-12
+      .form-group.col-md-12 class=(@venue.errors.messages[:description].present? ? 'has-error' : '')
         label = t('venues.edit.description')
-        = f.text_area :description, class: 'form-control', required: true
-      .form-group.col-md-12
+        = f.text_area :description, class: 'form-control'
+        - if @venue.errors.messages[:description].present?
+          label
+            = @venue.errors.messages[:description].first
+      .form-group.col-md-12 class=(@venue.errors.messages[:office_rules].present? ? 'has-error' : '')
         label = t('venues.edit.office_rules')
-        = f.text_area :office_rules, class: 'form-control', required: true
+        = f.text_area :office_rules, class: 'form-control'
+        - if @venue.errors.messages[:office_rules].present?
+          label
+            = @venue.errors.messages[:office_rules].first
       .subtitle
         .col-md-12
           .icon.info.pointer#professions-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('venues.edit.info_professions')}"
@@ -23,6 +29,9 @@
             = check_box_tag 'all-professions', t('venues.professions.all')
             = t('venues.professions.all')
           hr
+          - if @venue.errors.messages[:professions].present?
+            label
+              = @venue.errors.messages[:professions].first
           = f.hidden_field :professions
           ul.spoken-languages-container
             - Venue::PROFESSIONS.each do |prof|
@@ -32,6 +41,9 @@
                 .delete-lang href="#" data-prof=prof
       .subtitle
         = render 'day_hours', form: f
+        - if @venue.errors.messages[:day_hours].present?
+            label
+              = @venue.errors.messages[:day_hours].first
       .row.buttons
         .col-xs-6
           a href='#'

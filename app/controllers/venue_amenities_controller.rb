@@ -6,10 +6,15 @@ class VenueAmenitiesController < VenuesController
   end
 
   def save_amenities
-    @venue = Venue.find(params[:id])
+    @venue = VenueAmenitiesValidator.new(Venue.find(params[:id]))
     return unless can_edit?
-    @venue.update_attributes!(amenities: amenities_params)
-    redirect_to photos_venue_path(@venue)
+    @venue.assign_attributes(amenities: amenities_params)
+    if @venue.valid?
+      @venue.save!
+      redirect_to photos_venue_path(@venue)
+    else
+      render :amenities
+    end
   end
 
   private

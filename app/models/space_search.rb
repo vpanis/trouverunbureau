@@ -8,6 +8,7 @@ class SpaceSearch
   attr_accessor :venue_types
   # Venue::AMENITY_TYPES array ("wifi", "cafe_restaurant"...)
   attr_accessor :venue_amenities
+  attr_accessor :venue_states
   # Venue::PROFESSIONS array ("technology", "public_relations"...)
   attr_accessor :venue_professions
   attr_accessor :latitude_from, :latitude_to, :longitude_from, :longitude_to
@@ -39,7 +40,6 @@ class SpaceSearch
 
   def find_spaces
     fill_conditions(Space.all)
-
   end
 
   private
@@ -81,6 +81,7 @@ class SpaceSearch
     spaces = spaces.joins { venue }.order('venues.quantity_reviews DESC, venues.rating DESC')
     spaces = latitude_longitude_conditions(spaces)
     spaces = spaces.where { venue.v_type.eq_any my { venue_types } } unless venue_types.blank?
+    spaces = spaces.where('venues.status IN (?)', venue_states) if venue_states.present?
     spaces = spaces.where('ARRAY[:amenities] <@ venues.amenities',
                           amenities: venue_amenities) unless venue_amenities.blank?
     spaces = spaces.where('ARRAY[:venue_professions] && venues.professions',
@@ -125,8 +126,6 @@ class SpaceSearch
 
   def each_profession_inclusion
     invalid_professions = venue_professions - Venue::PROFESSIONS.map(&:to_s)
-    invalid_professions.each do |profession|
-      errors.add(:profession_list, profession + ' is not a valid amenity')
-    end
+    invalid_professions.each { |p| errors.add(:profession_list, p + ' is not a valid amenity') }
   end
 end

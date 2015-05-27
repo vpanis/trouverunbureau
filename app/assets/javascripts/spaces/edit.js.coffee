@@ -3,6 +3,13 @@ on_load = ->
     controllers:
       spaces: ["edit"]
   , (controller, action) ->
+
+    $('#save-space').click (event) ->
+      # there is always one child because of the upload form
+      if($('.row.pictures').children().size() < 2)
+        event.preventDefault()
+        $('.row.pictures').prepend('<div class="photo-errors"> You must add at least one picture </div>')
+
     add_photo = (data) ->
       photo_html = "<div class=\"col-md-4\"><div class=\"img-wrapper\" style=\"background-image: url("+data.photo+");\"><div class=\"hover\"><a class=\"delete-photo\" data-photo-id=\""+data.id+"\" href=\"#\">delete</a></div></div></div>"
       $('.add-image-container').before(photo_html)

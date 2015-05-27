@@ -2,11 +2,14 @@
 = render 'shared/profile_menu_bar', selected: 'venues'
 
 #venue.main-content.dashboard-form.clearfix.overflow-hidden
-  = render 'shared/edit_venue_progress', venue: @venue, progress: 40, step: 3
+  = render 'shared/edit_venue_progress', venue: @venue, step: 3
   .details-section.col-md-7.col-md-offset-1.margin-top
     = render 'venue_heading', subtitle: nil
     = form_for @venue, url: {action: "amenities"} do |f|
       = hidden_field_tag 'venue[amenities][]'
+      - if @venue.errors.messages[:amenities].present?
+          label
+            = @venue.errors.messages[:amenities].first
       - Venue::AMENITY_TYPES.each do |amenity|
         div.amenity-checkbox.col-md-4
           label

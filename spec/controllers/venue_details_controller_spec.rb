@@ -80,13 +80,10 @@ describe VenueDetailsController do
         let(:new_description) { 'new description' }
         let(:new_professions) { "#{Venue::PROFESSIONS.first},#{Venue::PROFESSIONS.last}" }
         let(:new_rules) { 'new rules' }
-        let(:venue_hour) do
-          create(:venue_hour, weekday: 1, from: 1600, to: 1700,  venue_id: venue.id)
-        end
         let(:space) { create(:space, capacity: 2, venue: venue) }
         let(:day_hours_attributes) do
           { '0' => { from: '1500', to: '1700', weekday: 0 },
-            '1' => { id: venue_hour.id, from: '', to: '', weekday: '', _destroy: true },
+            '1' => { id: venue.day_hours.first.id, from: '', to: '', weekday: '', _destroy: true },
             '2' => { from: '1600', to: '1700', weekday: 2 },
             '3' => { from: '', to: '', weekday: '', _destroy: true },
             '4' => { from: '', to: '', weekday: '', _destroy: true },
@@ -152,9 +149,8 @@ describe VenueDetailsController do
           it 'fails' do
             params = { id: venue.id, description: nil, professions: new_professions,
                        day_hours_attributes: day_hours_attributes }
-            expect do
-              patch :save_details, id: venue.id, venue: params
-            end.to raise_error(ActiveRecord::RecordInvalid)
+            patch :save_details, id: venue.id, venue: params
+            expect(response.status).to eq(400)
           end
         end
 
@@ -185,17 +181,14 @@ describe VenueDetailsController do
           end # when there are bookings
 
           context 'where there aren\'t bookings of venue\' spaces' do
-            let(:day_hour_0) do
-              create(:venue_hour, weekday: 0, from: 1600, to: 1700,  venue_id: venue.id)
-            end
             let(:day_hour_2) do
               create(:venue_hour, weekday: 2, from: 1600, to: 1700,  venue_id: venue.id)
             end
             before do
-              fewer_hours = { '0' => { id: day_hour_0.id, from: '1600', to: '1700', weekday: 0 },
-                              '1' => { from: '', to: '', weekday: '', _destroy: true },
-                              '2' => { id: day_hour_2.id, from: '', to: '', weekday: 2,
+              fewer_hours = { '0' => { id: venue.day_hours.first.id, from: '', to: '', weekday: '',
                                        _destroy: true },
+                              '1' => { from: '', to: '', weekday: '', _destroy: true },
+                              '2' => { id: day_hour_2.id, from: '0800', to: '1800', weekday: 2 },
                               '3' => { from: '', to: '', weekday: '', _destroy: true },
                               '4' => { from: '', to: '', weekday: '', _destroy: true },
                               '5' => { from: '', to: '', weekday: '', _destroy: true },

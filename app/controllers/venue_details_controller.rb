@@ -3,20 +3,34 @@ class VenueDetailsController < VenuesController
   def details
     @venue = Venue.find(params[:id])
     return unless can_edit?
-    @modify_day_hours = load_day_hours
-    @custom_hours = custom_hours?
-    @professions_options = profession_options
+    options
   end
 
   def save_details
-    @venue = Venue.find(params[:id])
+    @venue = VenueDetailStepEdition.new(Venue.find(params[:id]))
     return unless can_save_details?
-    @venue.update_attributes!(venue_params)
+    @venue.assign_attributes(venue_params)
+    if @venue.valid?
+      update_venue
+    else
+      options
+      render action: :details, status: 400
+    end
+  end
+
+  private
+
+  def update_venue
+    @venue.save!
     update_professions!
     redirect_to amenities_venue_path(@venue)
   end
 
-  private
+  def options
+    @modify_day_hours = load_day_hours
+    @custom_hours = custom_hours?
+    @professions_options = profession_options
+  end
 
   def venue_params
     params.require(:venue).permit(:description, :professions, :office_rules,
@@ -30,7 +44,7 @@ class VenueDetailsController < VenuesController
   end
 
   def load_day_hours
-    day_hours = []
+    day_hours = {}
     @venue.day_hours.each { |dh| day_hours[dh.weekday] = dh }
     (0..6).each do |index|
       day_hours[index] = VenueHour.new(weekday: index) unless day_hours[index].present?

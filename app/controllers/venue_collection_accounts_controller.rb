@@ -73,7 +73,7 @@ class VenueCollectionAccountsController < VenuesController
   def create_update_collection_account
     send("create_update_collection_account_in_#{@collection_method}")
     @collection_account = @venue.collection_account
-    render :collection_account_info, status: 201
+    redirect_to collection_account_info_venue_path(@venue)
   end
 
   def create_update_collection_account_in_braintree

@@ -8,70 +8,70 @@ RSpec.describe SpaceSearch, type: :model do
     @v1 = FactoryGirl.create(:venue, v_type: Venue.v_types[:startup_office], latitude: 10,
                              longitude: 10, amenities: ['wifi'],
                              professions: %w(technology public_relations),
-                             rating: 4, quantity_reviews: 10)
-    FactoryGirl.create(:venue_hour, venue: @v1, weekday: 0)
+                             rating: 4, quantity_reviews: 10,
+                             day_hours: [create(:venue_hour, weekday: 0)])
     @v2 = FactoryGirl.create(:venue, v_type: Venue.v_types[:design_studio], latitude: 20,
                              longitude: 20, amenities: ['cafe_restaurant'],
                              professions: ['public_relations'],
-                             rating: 5, quantity_reviews: 10)
-    FactoryGirl.create(:venue_hour, venue: @v2, weekday: 1)
+                             rating: 5, quantity_reviews: 10,
+                             day_hours: [create(:venue_hour, weekday: 1)])
     @v3 = FactoryGirl.create(:venue, v_type: Venue.v_types[:business_center], latitude: 30,
                              longitude: 30, amenities: ['kitchen'],
                              professions: ['entertainment'],
-                             rating: 5, quantity_reviews: 3)
-    FactoryGirl.create(:venue_hour, venue: @v3, weekday: 2)
+                             rating: 5, quantity_reviews: 3,
+                             day_hours: [create(:venue_hour, weekday: 2)])
     @v4 = FactoryGirl.create(:venue, v_type: Venue.v_types[:startup_office], latitude: 40,
                              longitude: 40, amenities: %w(wifi gym),
                              professions: %w(public_relations technology),
-                             rating: 4, quantity_reviews: 20)
-    FactoryGirl.create(:venue_hour, venue: @v4, weekday: 0)
-    FactoryGirl.create(:venue_hour, venue: @v4, weekday: 3)
+                             rating: 4, quantity_reviews: 20,
+                             day_hours: [create(:venue_hour, weekday: 0),
+                                         create(:venue_hour, weekday: 3)])
     @v5 = FactoryGirl.create(:venue, v_type: Venue.v_types[:corporate_office], latitude: 50,
                              longitude: 50, amenities: ['cafe_restaurant'],
                              professions: ['public_relations'],
-                             rating: 4, quantity_reviews: 10)
-    FactoryGirl.create(:venue_hour, venue: @v5, weekday: 2)
+                             rating: 4, quantity_reviews: 10,
+                             day_hours: [create(:venue_hour, weekday: 2)])
     @v6 = FactoryGirl.create(:venue, v_type: Venue.v_types[:hotel], latitude: 60,
                              longitude: 60, amenities: ['cafe_restaurant'],
                              professions: ['public_relations'],
-                             rating: 4, quantity_reviews: 40)
-    FactoryGirl.create(:venue_hour, venue: @v6, weekday: 2)
+                             rating: 4, quantity_reviews: 40,
+                             day_hours: [create(:venue_hour, weekday: 2)])
 
     @v7 = FactoryGirl.create(:venue, v_type: Venue.v_types[:loft], latitude: 60,
                              longitude: 60, amenities: ['wifi'],
                              professions: ['public_relations'],
-                             rating: 4, quantity_reviews: 30)
-    FactoryGirl.create(:venue_hour, venue: @v7, weekday: 2)
+                             rating: 4, quantity_reviews: 30,
+                             day_hours: [create(:venue_hour, weekday: 2)])
 
     @v8 = FactoryGirl.create(:venue, v_type: Venue.v_types[:coworking_space], latitude: 60,
                              longitude: 60, amenities: ['kitchen'],
                              professions: ['public_relations'],
-                             rating: 4, quantity_reviews: 40)
-    FactoryGirl.create(:venue_hour, venue: @v8, weekday: 1)
+                             rating: 4, quantity_reviews: 40,
+                             day_hours: [create(:venue_hour, weekday: 1)])
 
     @v9 = FactoryGirl.create(:venue, v_type: Venue.v_types[:apartment], latitude: 55,
                              longitude: 60, amenities: ['wifi'],
                              professions: ['public_relations'],
-                             rating: 4, quantity_reviews: 20)
-    FactoryGirl.create(:venue_hour, venue: @v9, weekday: 4)
+                             rating: 4, quantity_reviews: 20,
+                             day_hours: [create(:venue_hour, weekday: 4)])
 
     @v10 = FactoryGirl.create(:venue, v_type: Venue.v_types[:house], latitude: 60,
                              longitude: 60, amenities: ['kitchen'],
                              professions: ['public_relations'],
-                             rating: 4, quantity_reviews: 40)
-    FactoryGirl.create(:venue_hour, venue: @v10, weekday: 5)
+                             rating: 4, quantity_reviews: 40,
+                             day_hours: [create(:venue_hour, weekday: 5)])
 
     @v11 = FactoryGirl.create(:venue, v_type: Venue.v_types[:cafe], latitude: 60,
                              longitude: 60, amenities: ['cafe_restaurant'],
                              professions: ['public_relations'],
-                             rating: 4, quantity_reviews: 40)
-    FactoryGirl.create(:venue_hour, venue: @v11, weekday: 1)
+                             rating: 4, quantity_reviews: 40,
+                             day_hours: [create(:venue_hour, weekday: 1)])
 
     @v12 = FactoryGirl.create(:venue, v_type: Venue.v_types[:restaurant], latitude: 60,
                              longitude: 60, amenities: ['cafe_restaurant'],
                              professions: ['public_relations'],
-                             rating: 4, quantity_reviews: 40)
-    FactoryGirl.create(:venue_hour, venue: @v12, weekday: 1)
+                             rating: 4, quantity_reviews: 40,
+                             day_hours: [create(:venue_hour, weekday: 1)])
 
     @s1_v1 = FactoryGirl.create(:space, venue: @v1, s_type: Space.s_types[:hot_desk],
                                 capacity: 1, quantity: 1)

@@ -52,6 +52,7 @@ class Venue < ActiveRecord::Base
   validates :description, presence: true, unless: proc { |e| e.force_submit || e.force_submit_upd }
   validates :name, :country_code, presence: true
   validates :country_code, inclusion: { in: SUPPORTED_COUNTRIES }
+  validate :at_least_one_day_hour, unless: proc { |e| e.force_submit || e.force_submit_upd }
 
   validates :email, format: {
     with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create
@@ -76,8 +77,7 @@ class Venue < ActiveRecord::Base
     greater_than_or_equal_to: 0, less_than_or_equal_to: 5
   }, unless: :force_submit
 
-  validate :each_amenity_inclusion, unless: :force_submit
-  validate :each_profession_inclusion, unless: :force_submit
+  validate :each_amenity_inclusion, :each_profession_inclusion, unless: :force_submit
 
   def opens_at_least_one_day_from_to?(from, to)
     weekdays = VenueHour.days_covered(from, to)
@@ -100,7 +100,11 @@ class Venue < ActiveRecord::Base
     end.count
   end
 
-  private
+  protected
+
+  def at_least_one_day_hour
+    errors.add(:day_hours, 'you must select at least one') if day_hours.size == 0
+  end
 
   def initialize_fields
     self.floors ||= 0
@@ -131,8 +135,6 @@ class Venue < ActiveRecord::Base
   def each_inclusion(attribute, error_list, enum_list, error_message)
     attribute = [] if attribute.nil?
     invalid_items = attribute - enum_list.map(&:to_s)
-    invalid_items.each do |item|
-      errors.add(error_list, item + error_message)
-    end
+    invalid_items.each { |item| errors.add(error_list, item + error_message) }
   end
 end

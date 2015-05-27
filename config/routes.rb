@@ -21,6 +21,7 @@ Deskspotting::Application.routes.draw do
       get :collection_account_info, to: "venue_collection_accounts#collection_account_info"
       patch :collection_account_info, to: "venue_collection_accounts#edit_collection_account"
       post :collection_account_info, to: "venue_collection_accounts#edit_collection_account"
+      post :publish
     end
   end
 
@@ -99,6 +100,7 @@ Deskspotting::Application.routes.draw do
     resources :venues, only: [] do
       member do
         get :reviews, to: 'reviews#venue_reviews'
+        get :status, to: 'venue_status#status'
       end
     end
 

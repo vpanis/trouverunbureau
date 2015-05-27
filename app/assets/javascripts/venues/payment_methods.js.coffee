@@ -17,12 +17,14 @@ on_load = ->
         $('.js-tab').removeClass('tab--selected')
         $(this).addClass('tab--selected')
         type = $(this).attr('data-type')
-        changeLegalPersonType(type)
-        showAccountTypeFieldAndEraseTheOthers(type)
+        if type
+          changeLegalPersonType(type)
+          showAccountTypeFieldAndEraseTheOthers(type)
 
     showAccountTypeFieldAndEraseTheOthers = (type) ->
-      $('.js-account-field').not(".js-" + type.toLowerCase()).addClass('none').find('input').val('')
-      $('.js-account-field.js-' + type.toLowerCase()).removeClass('none')
+      if type
+        $('.js-account-field').not(".js-" + type.toLowerCase()).addClass('none').find('input').val('')
+        $('.js-account-field.js-' + type.toLowerCase()).removeClass('none')
     changeLegalPersonType = (type) ->
       $('#mangopay_collection_account_bank_type').val(type)
 
