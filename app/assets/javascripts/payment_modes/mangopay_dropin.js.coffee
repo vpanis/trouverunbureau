@@ -1,23 +1,28 @@
 timeBetweenRetrievesMS = 1000
 selectedCreditCardId = null
+
 onLoad = ->
-  mangopayConfiguration = $("#js-mangopay-config")[0].dataset
-  mangoPay.cardRegistration.baseURL = mangopayConfiguration.baseUrl
-  mangoPay.cardRegistration.clientId = mangopayConfiguration.clientId
-  $('.js-create-card-registration').on 'click', (event) ->
-    $("#new-credit-card").addClass("loading")
-    createNewCardRegistration $('#js-card_currency').val().toUpperCase()
-  $('.js-credit-card').on 'click', select_card
-  $('#js-pay').on 'click', (event) ->
-    if selectedCreditCardId != null
-      pay(selectedCreditCardId)
-  # If the payment is in a expected response status
-  bookingPaymentData = $("#hidden-data")[0].dataset
-  if bookingPaymentData.bookingState == "payment_verification" and
-    (bookingPaymentData.paymentState == 'EXPECTING_RESPONSE' or
-      bookingPaymentData.paymentState == 'PAYING_CREATED')
-    disableCardSelection()
-    retrievePaymentInfo(bookingPaymentData.paymentId)
+  load
+    controllers:
+      payments: ["new", "create"]
+  , ->
+    mangopayConfiguration = $("#js-mangopay-config")[0].dataset
+    mangoPay.cardRegistration.baseURL = mangopayConfiguration.baseUrl
+    mangoPay.cardRegistration.clientId = mangopayConfiguration.clientId
+    $('.js-create-card-registration').on 'click', (event) ->
+      $("#new-credit-card").addClass("loading")
+      createNewCardRegistration $('#js-card_currency').val().toUpperCase()
+    $('.js-credit-card').on 'click', select_card
+    $('#js-pay').on 'click', (event) ->
+      if selectedCreditCardId != null
+        pay(selectedCreditCardId)
+    # If the payment is in a expected response status
+    bookingPaymentData = $("#hidden-data")[0].dataset
+    if bookingPaymentData.bookingState == "payment_verification" and
+      (bookingPaymentData.paymentState == 'EXPECTING_RESPONSE' or
+        bookingPaymentData.paymentState == 'PAYING_CREATED')
+      disableCardSelection()
+      retrievePaymentInfo(bookingPaymentData.paymentId)
 
 select_card = (event) ->
   selectedCreditCardId = this.dataset.creditCardId

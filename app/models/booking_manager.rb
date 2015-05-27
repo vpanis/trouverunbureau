@@ -61,8 +61,10 @@ class BookingManager
 
     def verify_states_changes(user, booking, state, custom_errors)
       verify_valid_states_transitions(booking, state, custom_errors)
-      if state == Booking.states[:paid] || state == Booking.states[:cancelled] ||
-        state == Booking.states[:payment_verification]
+      return verify_user_in_both(user, booking, custom_errors) if
+        [Booking.states[:refunding], Booking.states[:error_refunding]].include?(state)
+      if [Booking.states[:paid], Booking.states[:cancelled],
+          Booking.states[:payment_verification]].include?(state)
         verify_user(user, booking.owner, custom_errors)
       else
         verify_user(user, booking.space.venue.owner, custom_errors)
@@ -76,6 +78,12 @@ class BookingManager
                                     approved_at: Time.current)
         end
       end, custom_errors]
+    end
+
+    def verify_user_in_both(user, booking, custom_errors)
+      return if user.user_can_write_in_name_of(booking.owner) ||
+        user.user_can_write_in_name_of(booking.space.venue.owner)
+      custom_errors.add(:not_allowed_user, user_id: user.id)
     end
 
     def verify_user(user, owner, custom_errors)
@@ -95,16 +103,11 @@ class BookingManager
     end
 
     def invalid_transition?(state, booking)
-      case state
-      when Booking.states[:pending_payment]
-        !booking.pending_authorization? && !booking.payment_verification?
-      when Booking.states[:payment_verification]
-        !booking.pending_payment?
-      when Booking.states[:paid]
-        !booking.payment_verification?
-      else
-        false
-      end
+      return !booking.pending_authorization? && !booking.payment_verification? if
+        state == Booking.states[:pending_payment]
+      return !booking.pending_payment? if state == Booking.states[:payment_verification]
+      return !booking.payment_verification? if state == Booking.states[:paid]
+      false
     end
   end
 

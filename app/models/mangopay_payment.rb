@@ -6,6 +6,8 @@ class MangopayPayment < ActiveRecord::Base
   TRANSACTION_STATUSES = %w(EXPECTING_RESPONSE PAYIN_SUCCEEDED PAYIN_FAILED PAYIN_CREATED)
 
   validates :transaction_status, inclusion: { in: TRANSACTION_STATUSES }
+  validates :price_amount_in_wallet, :deposit_amount_in_wallet,
+            presence: true, if: :payin_succeeded?
 
   def price_amount_in_wallet
     self[:price_amount_in_wallet] / 100.0 if self[:price_amount_in_wallet].present?

@@ -3,13 +3,10 @@ module Payments
     class PayoutPaymentWorker
       include Sidekiq::Worker
 
-      def perform(booking_id, payout_id)
-        init_log(booking_id, payout_id)
-        @booking = Booking.find_by_id(booking_id)
+      def perform(payout_id)
+        init_log(payout_id)
         @payout = MangopayPayout.find_by_id(payout_id)
-        @venue = @booking.space.venue if @booking.present?
         return unless payout_possible?
-
         transaction = pay_out
         persist_data(transaction)
       rescue MangoPay::ResponseError => e
@@ -18,25 +15,31 @@ module Payments
 
       private
 
-      def init_log(booking_id, payout_id)
-        str = 'Payments::Mangopay::PayoutPaymentWorker on '
-        str += "booking_id: #{booking_id}, payout_id: #{payout_id}"
+      def init_log(payout_id)
+        str = "Payments::Mangopay::PayoutPaymentWorker on payout_id: #{payout_id}"
         Rails.logger.info(str)
       end
 
       def payout_possible?
-        @booking.present? && @payout.present? && @payout.transfer_succeeded? &&
-          @venue.collection_account.present? && @venue.collection_account.bank_account_id.present?
+        bool_acc = @payout.present? && @payout.mangopay_payment.present? &&
+          @payout.mangopay_payment.payin_succeeded?
+        @booking = @payout.mangopay_payment.booking
+        bool_acc &&= @booking.present?
+        @venue = @booking.space.venue
+        bool_acc &&= @venue.collection_account.respond_to?(:accepted?) &&
+          @venue.collection_account.accepted?
+        bool_acc
       end
 
       def save_pay_out(transaction)
         @payout.update_attributes(
-          payout_id: transaction['Id'],
+          transaction_id: transaction['Id'],
           transaction_status: "TRANSACTION_#{transaction['Status']}")
       end
 
-      def save_pay_out_error(e)
-        @payout.update_attributes(error_message: e, status: 'TRANSACTION_FAILED')
+      def save_pay_out_error(e, transaction_id = nil)
+        @payout.update_attributes(error_message: e, status: 'TRANSACTION_FAILED',
+                                  transaction_id: transaction_id)
       end
 
       def pay_out
@@ -53,7 +56,7 @@ module Payments
 
       def persist_data(transaction)
         return save_pay_out_error(
-          transaction['ResultCode'] + ': ' + transaction['ResultMessage']) if
+          transaction['ResultCode'] + ': ' + transaction['ResultMessage'], transaction['Id']) if
             transaction['Status'] == 'FAILED'
         save_pay_out(transaction)
       end

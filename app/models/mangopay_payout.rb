@@ -1,6 +1,8 @@
 class MangopayPayout < ActiveRecord::Base
   # Relations
   belongs_to :mangopay_payment
+  belongs_to :user
+  belongs_to :represented, polymorphic: true
 
   # Constants/Enums
   TRANSACTION_STATUSES = %w(EXPECTING_RESPONSE TRANSFER_SUCCEEDED TRANSFER_CREATED TRANSFER_FAILED
@@ -58,6 +60,6 @@ class MangopayPayout < ActiveRecord::Base
   private
 
   def initialize_fields
-    self.state ||= 'EXPECTING_RESPONSE'
+    self.transaction_status ||= 'EXPECTING_RESPONSE'
   end
 end

@@ -3,13 +3,10 @@ module Payments
     class TransferPaymentWorker
       include Sidekiq::Worker
 
-      def perform(booking_id, payout_id)
-        init_log(booking_id)
-        @booking = Booking.find_by_id(booking_id)
+      def perform(payout_id)
+        init_log(payout_id)
         @payout = MangopayPayout.find_by_id(payout_id)
         return unless transfer_possible?
-        @venue = @booking.space.venue
-
         transfer = transfer_payment
         persist_data(transfer)
       rescue MangoPay::ResponseError => e
@@ -18,28 +15,32 @@ module Payments
 
       private
 
-      def init_log(booking_id, payout_id)
-        str = 'Payments::Mangopay::TransferPaymentWorker on '
-        str += "booking_id: #{booking_id}, payout_id: #{payout_id}"
+      def init_log(payout_id)
+        str = "Payments::Mangopay::TransferPaymentWorker on payout_id: #{payout_id}"
         Rails.logger.info(str)
       end
 
       def transfer_possible?
-        @booking.present? && @booking.payment.present? && @booking.payment.payin_succeeded? &&
-          @payout.present?
+        bool_acc = @payout.present? && @payout.mangopay_payment.present? &&
+          @payout.mangopay_payment.payin_succeeded?
+        @booking = @payout.mangopay_payment.booking
+        bool_acc &&= @booking.present?
+        @venue = @booking.space.venue
+        bool_acc &&= @venue.collection_account.respond_to?(:accepted?) &&
+          @venue.collection_account.accepted?
+        bool_acc
       end
 
       def save_transfer_payment(transfer_payment)
         @payout.update_attributes(
           transference_id: transfer_payment['Id'],
           transaction_status: "TRANSFER_#{transfer_payment['Status']}")
-        # teorically, always, buy just in case
-        Payments::Mangopay::PayoutPaymentWorker.perform_async(@booking.id, @payout.id) if
-          transfer_payment['Status'] == 'SUCEEDED'
+        Payments::Mangopay::PayoutPaymentWorker.perform_async(@payout.id)
       end
 
-      def save_transfer_payment_error(e)
-        @payout.update_attributes(error_message: e.to_s, status: 'TRANSFER_FAILED')
+      def save_transfer_payment_error(e, transference_id = nil)
+        @payout.update_attributes(error_message: e.to_s, transaction_status: 'TRANSFER_FAILED',
+                                  transference_id: transference_id)
       end
 
       def transfer_payment
@@ -56,7 +57,7 @@ module Payments
       end
 
       def persist_data(transfer)
-        return save_transfer_payment_error(transfer['ResultMessage']) if
+        return save_transfer_payment_error(transfer['ResultMessage'], transfer['Id']) if
           transfer['Status'] == 'FAILED'
         save_transfer_payment(transfer)
       end

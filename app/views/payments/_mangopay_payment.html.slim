@@ -1,4 +1,3 @@
-= javascript_include_tag "payment_modes/mangopay_dropin"
 = render 'new_credit_card_modal'
 = render 'create_credit_card_modal'
 #js-mangopay-config data-base-url="#{Rails.configuration.payment.mangopay.base_url}" data-client-id="#{Rails.configuration.payment.mangopay.client_id}"
@@ -9,8 +8,8 @@
     .new-credit-card data-toggle="modal" data-target="#new-credit-card"
       span = t('payment.new_credit_card')
   - active_credit_cards = @payment_account.mangopay_credit_cards.activated
-  - unless active_credit_cards.empty?
-    .credit-cards-container.js-credit-cards
+  .credit-cards-container.js-credit-cards
+    - unless active_credit_cards.empty?
       - active_credit_cards.each do |credit_card|
         .js-credit-card data-credit-card-id="#{credit_card.id}"
           .credit-card.col-md-4
