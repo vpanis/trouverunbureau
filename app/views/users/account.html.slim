@@ -9,23 +9,24 @@
     p.center = t('users.account.you_can_disable')
 
   .col-md-6.col-md-offset-3.margin-top
-    form
+
+    = form_tag account_user_path(current_user) do |f|
       .row
         .col-md-12.margin-bottom
           label
-            input type="checkbox" /
+            = check_box_tag 'user[settings][person_message]', current_user.settings['person_message'].present?, current_user.settings['person_message'].present?
             | #{t('users.account.person_message')}
         .col-md-12.margin-bottom
           label
-            input type="checkbox" /
+            = check_box_tag 'user[settings][accepted_inquiry]', current_user.settings['accepted_inquiry'].present?, current_user.settings['accepted_inquiry'].present?
             | #{t('users.account.outstanding_booking')}
         .col-md-12.margin-bottom
           label
-            input type="checkbox" /
+            = check_box_tag 'user[settings][incoming_inquiry]', current_user.settings['incoming_inquiry'].present?, current_user.settings['incoming_inquiry'].present?
             | #{t('users.account.booking_inquiry')}
         .col-md-12.margin-bottom
           label
-            input type="checkbox" /
+            = check_box_tag 'user[settings][account_changes]', current_user.settings['account_changes'].present?, current_user.settings['account_changes'].present?
             | #{t('users.account.account_changes')}
         .col-md-6.col-md-offset-3.margin-top.margin-bottom
           input.rounded-btn.yellow-fill.width-100.uppercase name="commit" type="submit" value="Save" /

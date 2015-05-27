@@ -28,6 +28,7 @@ Deskspotting::Application.routes.draw do
   resources :users, only: [:show, :edit, :update] do
     member do
       get :account
+      post :account, to: 'users#update_account_settings'
       get :inbox
     end
     collection do
