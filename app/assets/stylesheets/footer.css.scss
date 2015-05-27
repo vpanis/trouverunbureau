@@ -109,19 +109,28 @@ html [data-action="wishlist"], html [data-controller="referrals"]{
     .language{
       margin-top: 5px;
       border-bottom: solid 1px white;
-      p{
-        text-transform: uppercase;
-        font-size: 14px;
-        font-weight: 700;
-        letter-spacing: 0.1rem;
-        display: inline-block;
-        width: 90%;
-        text-align: left;
-      }
-      p.white-arrow{
-        text-align: right;
-        width: 14px;
-        color: white;
+      form {
+        border-bottom: 1px solid $white;
+        select {
+          width: calc(100% - 50px);
+          color: $yellow;
+          font-weight: bold;
+          text-transform: uppercase;
+          border: none;
+          background: transparent;
+          -webkit-appearance: none;
+          outline-color: transparent;
+          cursor: pointer;
+          option {
+            background: $light-black;
+          }
+        }
+        p.white-arrow{
+          text-align: right;
+          width: 14px;
+          color: white;
+          display: inline-block;
+        }
       }
     }
   }

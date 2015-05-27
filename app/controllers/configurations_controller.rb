@@ -5,6 +5,6 @@ class ConfigurationsController < ApplicationController
     current_user.update_attributes(params[:language]) if
       User::LANGUAGES.include?(params[:languange])
     session[:locale] = params[:language]
-    redirect_to :back
+    redirect_to :back, status: 303
   end
 end
