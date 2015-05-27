@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150520134747) do
+ActiveRecord::Schema.define(version: 20150525174004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -266,6 +266,7 @@ ActiveRecord::Schema.define(version: 20150520134747) do
     t.integer  "week_price"
     t.integer  "month_price"
     t.integer  "deposit"
+    t.boolean  "active",      default: false, null: false
   end
 
   add_index "spaces", ["venue_id"], name: "index_spaces_on_venue_id", using: :btree
@@ -408,8 +409,8 @@ ActiveRecord::Schema.define(version: 20150520134747) do
     t.string   "collection_account_type"
     t.integer  "status"
     t.text     "office_rules"
-    t.string   "country_code"
     t.integer  "time_zone_id"
+    t.string   "country_code"
   end
 
   add_index "venues", ["collection_account_id", "collection_account_type"], name: "index_venues_on_polymorphic_collection_account", unique: true, using: :btree
