@@ -56,27 +56,22 @@ class Venue < ActiveRecord::Base
   validate :at_least_one_day_hour, unless: proc { |e| e.force_submit || e.force_submit_upd }
 
   validates :email, format: {
-    with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create
-  }, unless: :force_submit
+    with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }, unless: :force_submit
 
   validates :latitude, numericality: {
-    greater_than_or_equal_to: -90, less_than_or_equal_to: 90
-  }, unless: :force_submit
+    greater_than_or_equal_to: -90, less_than_or_equal_to: 90 }, unless: :force_submit
 
   validates :longitude, numericality: {
-    greater_than_or_equal_to: -180, less_than_or_equal_to: 180
-  }, unless: :force_submit
+    greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }, unless: :force_submit
 
   validates :space, :vat_tax_rate,
             numericality: { greater_than_or_equal_to: 0 }, unless: :force_submit
 
   validates :floors, :rooms, :desks, :quantity_reviews, :reviews_sum, numericality: {
-    only_integer: true, greater_than_or_equal_to: 0
-  }, unless: :force_submit
+    only_integer: true, greater_than_or_equal_to: 0 }, unless: :force_submit
 
   validates :rating, numericality: {
-    greater_than_or_equal_to: 0, less_than_or_equal_to: 5
-  }, unless: :force_submit
+    greater_than_or_equal_to: 0, less_than_or_equal_to: 5 }, unless: :force_submit
 
   validate :each_amenity_inclusion, :each_profession_inclusion, unless: :force_submit
 
