@@ -10,6 +10,7 @@ FactoryGirl.define do
     hour_price 20
     day_price 150
     deposit 50
+    active true
 
     venue { FactoryGirl.build(:venue) }
   end

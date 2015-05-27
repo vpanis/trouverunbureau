@@ -9,13 +9,13 @@ class VenueDetailsController < VenuesController
   def save_details
     @venue = VenueDetailStepEdition.new(Venue.find(params[:id]))
     return unless can_save_details?
+    @venue.force_submit = true
     @venue.assign_attributes(venue_params)
-    if @venue.valid?
-      update_venue
-    else
-      options
-      render action: :details, status: 400
-    end
+    return update_venue if @venue.valid?
+
+    @venue.reload
+    options
+    render action: :details, status: 400
   end
 
   private
@@ -44,7 +44,7 @@ class VenueDetailsController < VenuesController
   end
 
   def load_day_hours
-    day_hours = {}
+    day_hours = []
     @venue.day_hours.each { |dh| day_hours[dh.weekday] = dh }
     (0..6).each do |index|
       day_hours[index] = VenueHour.new(weekday: index) unless day_hours[index].present?

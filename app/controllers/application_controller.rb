@@ -33,7 +33,8 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(_resource)
-    return root_path if session[:previous_url].start_with?('/users/auth/facebook')
+    return root_path if
+      session[:previous_url].nil? || session[:previous_url].start_with?('/users/auth/facebook')
     session[:previous_url] || root_path
   end
 
