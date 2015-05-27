@@ -33,6 +33,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(_resource)
+    return root_path if session[:previous_url].start_with?('/users/auth/facebook')
     session[:previous_url] || root_path
   end
 
@@ -57,7 +58,7 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) do |u|
       u.permit(:email, :first_name, :last_name, :password, :remember_me, :date_of_birth,
-               :nationality, :country_of_residence)
+               :nationality, :country_of_residence, :provider)
     end
 
     devise_parameter_sanitizer.for(:sign_in) do |u|
