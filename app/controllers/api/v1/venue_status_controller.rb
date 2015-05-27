@@ -41,7 +41,8 @@ module Api
       end
 
       def fifth_step_done
-        Venue.find(params[:id]).collection_account.present?
+        account = Venue.find(params[:id]).collection_account
+        account.present? && account.respond_to?(:accepted?) && account.accepted?
       end
 
       def sixth_step_done
