@@ -109,13 +109,13 @@ RSpec.describe BookingManager, type: :model do
       end
 
       context 'booking for days' do
-        it 'fails when the venue is not open in one day of the range' do
+        it 'success when the venue is not open in one day of the range' do
           from = @next_monday_at_beginning.advance(days: 1, hours: 7)
           to = @next_monday_at_beginning.advance(days: 5, hours: 19).at_end_of_hour
           _booking, errors = BookingManager.book(@user, owner: @user, space: @space,
                                                  b_type: Booking.b_types[:day],
                                                  from: from, to: to, quantity: 1)
-          expect(errors[:invalid_venue_hours]).to be_present
+          expect(errors[:invalid_venue_hours]).not_to be_present
         end
       end
     end
