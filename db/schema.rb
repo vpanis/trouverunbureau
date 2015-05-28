@@ -326,7 +326,6 @@ ActiveRecord::Schema.define(version: 20150527122118) do
     t.string   "emergency_relationship"
     t.string   "nationality"
     t.string   "country_of_residence"
-    t.hstore   "settings",               default: {}, null: false
     t.string   "invitation_token"
     t.datetime "invitation_created_at"
     t.datetime "invitation_sent_at"
@@ -335,6 +334,7 @@ ActiveRecord::Schema.define(version: 20150527122118) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.integer  "invitations_count",      default: 0
+    t.hstore   "settings",               default: {}, null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -419,8 +419,8 @@ ActiveRecord::Schema.define(version: 20150527122118) do
     t.integer  "collection_account_id"
     t.string   "collection_account_type"
     t.integer  "status"
-    t.string   "country_code"
     t.text     "office_rules"
+    t.string   "country_code"
     t.integer  "time_zone_id"
   end
 
