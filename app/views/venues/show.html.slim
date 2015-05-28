@@ -3,7 +3,8 @@
 
 .venue-bar.row
   .row.actions-on-venue
-      a#report-venue #{t('venues.show.report_venue')}
+      = form_tag report_api_v1_venue_path(@venue), remote: true, class: 'report-venue-form'
+        = submit_tag t('venues.show.report_venue'), id: 'report-venue'
   .col-xs-12.col-sm-7.col-md-7.col-lg-8
     .hidden-xs
       .venue-avatar

@@ -8,7 +8,8 @@
     .space-options id="space-option-#{space.id}" ...
     .space-popover class="space-popover-#{space.id}"
       .arrow
-      a.report-space href="#" Report Space
+      = form_tag report_api_v1_venue_path(@venue), remote: true, class: 'report-venue-form'
+        = submit_tag t('venues.show.report_venue'), class: 'report-space'
   .carousel.slide id="space-carousel-#{space.id}"
     - if @venue.photos.size > 1
       ol.carousel-indicators

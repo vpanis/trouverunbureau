@@ -93,6 +93,12 @@ Deskspotting::Application.routes.draw do
 
     resources :wishlist, only: [:index, :create, :destroy]
 
+    resources :venues do
+      member do
+        post :report
+      end
+    end
+
     resources :organizations, only:[] do
       resources :organization_users, only: [:create, :index, :destroy]
       member do

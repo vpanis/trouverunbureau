@@ -3,6 +3,15 @@ on_load = ->
     controllers:
       venues: ["show"]
   , (controller, action) ->
+
+    $(".report-venue-form").on("ajax:success", (e, data, status, xhr) ->
+      $(".actions-on-venue form").hide()
+      $(".actions-on-venue").append '<p>Reported</p>'
+      console.log('success')
+    ).on "ajax:error", (e, xhr, status, error) ->
+      $(".report-venue-form").append "<p>ERROR</p>"
+      console.log('error')
+
     initialize_listeners = ->
       $('#venue-info-selector').click ->
         set_info_tab()
@@ -14,7 +23,7 @@ on_load = ->
           space_id = this.id.split('-')[2]
           show_options_modal(space_id)
         opened = !opened
-      $('a.report-space').click (event) ->
+      $('button.report-space').click (event) ->
         event.preventDefault()
         $('.space-popover').hide()
 
