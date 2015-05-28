@@ -47,7 +47,7 @@ module BookingReservation
     when Booking.b_types[:hour]
       booking.space.venue.opens_hours_from_to?(booking.from, booking.to)
     when Booking.b_types[:day]
-      booking.space.venue.opens_days_from_to?(booking.from, booking.to)
+      booking.space.venue.opens_at_least_one_day_from_to?(booking.from, booking.to)
     else
       # if the venue opens at least 1 hour, 1 day per week, the user can book for week and month
       !booking.space.venue.day_hours.empty?
