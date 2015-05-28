@@ -17,23 +17,8 @@ class MangopayPayout < ActiveRecord::Base
   validates :transaction_status, inclusion: { in: TRANSACTION_STATUSES }
   validates :amount, :fee, presence: true
 
-  def amount
-    self[:amount] / 100.0 if self[:amount].present?
-  end
-
-  def amount=(hp)
-    super(hp)
-    return self[:amount] = (hp * 100).to_i if hp.is_a? Numeric
-  end
-
-  def fee
-    self[:fee] / 100.0 if self[:fee].present?
-  end
-
-  def fee=(hp)
-    super(hp)
-    return self[:fee] = (hp * 100).to_i if hp.is_a? Numeric
-  end
+  acts_as_decimal :amount, decimals: 2
+  acts_as_decimal :fee, decimals: 2
 
   def transfer_succeeded?
     transaction_status == 'TRANSFER_SUCCEEDED'

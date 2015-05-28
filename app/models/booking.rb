@@ -34,6 +34,10 @@ class Booking < ActiveRecord::Base
   scope :not_deleted_owner, -> { where(owner_delete: false) }
   scope :not_deleted_venue_owner, -> { where(venue_owner_delete: false) }
 
+  acts_as_decimal :price, decimals: 2
+  acts_as_decimal :fee, decimals: 2
+  acts_as_decimal :deposit, decimals: 2
+
   class << self
     def administered_bookings(represented)
       joins { space.venue }.where { space.venue.owner == my { represented } }
@@ -54,33 +58,6 @@ class Booking < ActiveRecord::Base
   def to=(to)
     to = Time.zone.local_to_utc(to) if to.is_a? Time
     super(to)
-  end
-
-  def price
-    self[:price] / 100.0 if self[:price].present?
-  end
-
-  def price=(hp)
-    super(hp)
-    return self[:price] = (hp * 100).to_i if hp.is_a? Numeric
-  end
-
-  def fee
-    self[:fee] / 100.0 if self[:fee].present?
-  end
-
-  def fee=(hp)
-    super(hp)
-    return self[:fee] = (hp * 100).to_i if hp.is_a? Numeric
-  end
-
-  def deposit
-    self[:deposit] / 100.0 if self[:deposit].present?
-  end
-
-  def deposit=(hp)
-    super(hp)
-    return self[:deposit] = (hp * 100).to_i if hp.is_a? Numeric
   end
 
   def state_if_represented_cancels(represented)

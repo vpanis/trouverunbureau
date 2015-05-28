@@ -9,23 +9,8 @@ class MangopayPayment < ActiveRecord::Base
   validates :price_amount_in_wallet, :deposit_amount_in_wallet,
             presence: true, if: :payin_succeeded?
 
-  def price_amount_in_wallet
-    self[:price_amount_in_wallet] / 100.0 if self[:price_amount_in_wallet].present?
-  end
-
-  def price_amount_in_wallet=(hp)
-    super(hp)
-    return self[:price_amount_in_wallet] = (hp * 100).to_i if hp.is_a? Numeric
-  end
-
-  def deposit_amount_in_wallet
-    self[:deposit_amount_in_wallet] / 100.0 if self[:deposit_amount_in_wallet].present?
-  end
-
-  def deposit_amount_in_wallet=(hp)
-    super(hp)
-    return self[:deposit_amount_in_wallet] = (hp * 100).to_i if hp.is_a? Numeric
-  end
+  acts_as_decimal :price_amount_in_wallet, decimals: 2
+  acts_as_decimal :deposit_amount_in_wallet, decimals: 2
 
   def expecting_response?
     transaction_status == 'EXPECTING_RESPONSE'
