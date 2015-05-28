@@ -91,10 +91,11 @@ RSpec.describe BookingManager, type: :model do
       it 'fails when \'from\' is greater than \'to\'' do
         from = @next_monday_at_beginning.advance(days: 2, hours: 8)
         to = @next_monday_at_beginning.advance(days: 1, hours: 19).at_end_of_hour
-        _booking, errors = BookingManager.book(@user, owner: @user, space: @space,
+        booking, _errors = BookingManager.book(@user, owner: @user, space: @space,
                                                b_type: Booking.b_types[:hour],
                                                from: from, to: to, quantity: 1)
-        expect(errors[:from_date_bigger_than_to]).to be_present
+        booking.valid?
+        expect(booking.errors[:from_date_bigger_than_to]).to be_present
       end
 
       context 'booking for hours' do

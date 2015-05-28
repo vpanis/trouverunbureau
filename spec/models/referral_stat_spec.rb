@@ -1,13 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe ReferralStat, type: :model do
+  before(:each) do
+    Venue.destroy_all
+  end
 
   let!(:user1)   { create(:user) }
   let!(:venue1)  { create(:venue, :with_spaces, :with_venue_hours, owner: user1) }
 
   context 'When no invitations have been made' do
     context 'When the user has only one venue' do
-      before(:each) { ReferralStat.refresh_view }
+      before(:each) do
+        ReferralStat.refresh_view
+      end
 
       it 'contains a stat with a multiplier equal to 1' do
         expect(venue1.referral_stat.multiplier).to eq(1)

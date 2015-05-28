@@ -162,4 +162,71 @@ RSpec.describe Booking, type: :model do
       expect(booking.fee).to eq(booking.price * Rails.configuration.payment.deskspotting_fee)
     end
   end
+
+  context 'minimum unity' do
+    it 'returns an error if the space minimum hours is not reached' do
+      space = FactoryGirl.create(:space, hour_minimum_unity: 5)
+      from = Time.current.at_beginning_of_day
+      to = from.advance(hours: 1).at_end_of_hour
+      booking = FactoryGirl.build(:booking, space: space, b_type: Booking.b_types[:hour],
+                                  from: from, to: to)
+      expect(booking.valid?).to be(false)
+      expect(booking.errors[:minimum_time]).to be_present
+    end
+
+    it 'returns an error if the space minimum days is not reached' do
+      space = FactoryGirl.create(:space, day_minimum_unity: 5)
+      from = Time.current.at_beginning_of_day
+      to = from.advance(days: 1).at_end_of_day
+      booking = FactoryGirl.build(:booking, space: space, b_type: Booking.b_types[:day],
+                                  from: from, to: to)
+      expect(booking.valid?).to be(false)
+      expect(booking.errors[:minimum_time]).to be_present
+    end
+
+    it 'returns an error if the space minimum days is not reached with open days' do
+      from = Time.current.at_beginning_of_day
+      to = from.advance(days: 6).at_end_of_day
+      venue = FactoryGirl.create(:venue, day_hours: [])
+      expect(venue.day_hours.size).to be(1)
+      venue.day_hours.first.update_attributes(weekday: (from.wday - 1) % 7)
+      space = FactoryGirl.create(:space, venue: venue, day_minimum_unity: 2)
+      booking = FactoryGirl.build(:booking, space: space, b_type: Booking.b_types[:day],
+                                  from: from, to: to)
+      expect(booking.valid?).to be(false)
+      expect(booking.errors[:minimum_time]).to be_present
+    end
+
+    it 'returns no error if the space minimum days is reached with open days' do
+      from = Time.current.at_beginning_of_day
+      to = from.advance(days: 7).at_end_of_day
+      venue = FactoryGirl.create(:venue, day_hours: [])
+      expect(venue.day_hours.size).to be(1)
+      venue.day_hours.first.update_attributes(weekday: (from.wday - 1) % 7)
+      space = FactoryGirl.create(:space, venue: venue, day_minimum_unity: 2)
+      booking = FactoryGirl.build(:booking, space: space, b_type: Booking.b_types[:day],
+                                  from: from, to: to)
+      expect(booking.valid?).to be(true)
+    end
+
+    it 'returns an error if the space minimum weeks is not reached' do
+      space = FactoryGirl.create(:space, week_minimum_unity: 5)
+      from = Time.current.at_beginning_of_day
+      to = from.advance(weeks: 1).at_end_of_day
+      booking = FactoryGirl.build(:booking, space: space, b_type: Booking.b_types[:week],
+                                  from: from, to: to)
+      expect(booking.valid?).to be(false)
+      expect(booking.errors[:minimum_time]).to be_present
+    end
+
+    it 'returns an error if the space minimum months is not reached' do
+      space = FactoryGirl.create(:space, month_minimum_unity: 5)
+      from = Time.current.at_beginning_of_day
+      to = from.advance(months: 1).at_end_of_day
+      booking = FactoryGirl.build(:booking, space: space, b_type: Booking.b_types[:month],
+                                  from: from, to: to)
+      expect(booking.valid?).to be(false)
+      expect(booking.errors[:minimum_time]).to be_present
+    end
+  end
 end

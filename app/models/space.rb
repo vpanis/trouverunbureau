@@ -12,18 +12,15 @@ class Space < ActiveRecord::Base
   # Validations
   validates :s_type, :name, :capacity, :quantity, :venue, :deposit, presence: true
 
-  validates :capacity, :quantity, numericality: {
-    only_integer: true,
-    greater_than_or_equal_to: 0
-  }
+  validates :capacity, :quantity, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
-  validates :deposit, numericality: {
-    greater_than_or_equal_to: 0
-  }
+  validates :deposit, numericality: { greater_than_or_equal_to: 0 }
 
   validates :hour_price, :day_price, :week_price, :month_price, numericality: {
-    greater_than: 0
-  }, allow_nil: true
+    greater_than: 0 }, allow_nil: true
+
+  validates :hour_minimum_unity, :day_minimum_unity, :week_minimum_unity, :month_minimum_unity,
+            numericality: { only_integer: true, greater_than_or_equal_to: 1 }
 
   validate :at_least_one_price
 
@@ -84,5 +81,9 @@ class Space < ActiveRecord::Base
 
   def initialize_fields
     self.deposit ||= 0
+    self.hour_minimum_unity ||= 1
+    self.day_minimum_unity ||= 1
+    self.week_minimum_unity ||= 1
+    self.month_minimum_unity ||= 1
   end
 end
