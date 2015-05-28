@@ -13,6 +13,8 @@ Deskspotting::Application.routes.draw do
   root to: 'landing#index'
   resources :referrals, only: [:new]
 
+  put 'change_language', to: 'configurations#change_language'
+
   resources :venues, only: [:new, :create, :edit, :update, :show, :index] do
     member do
       get :details, to: 'venue_details#details'

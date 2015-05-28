@@ -21,3 +21,6 @@
         h1 = t('bookings.cancelled')
       - @canceled.each do |booking|
         = render 'booking_item', booking: booking, own: false
+  - unless @paid.any? || @canceled.any?
+    h3
+      | You have no paid nor cancelled bookings yet.

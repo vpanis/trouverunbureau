@@ -252,6 +252,8 @@ hr {
 
 .main-container {
   padding-bottom: 325px;
+  min-height: 100%;
+  position: relative;
 }
 .add-image-container {
   cursor: pointer;
