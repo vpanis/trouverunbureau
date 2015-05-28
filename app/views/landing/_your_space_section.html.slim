@@ -26,8 +26,8 @@ div role="tabpanel"
           = render 'featured_item', venue: venue, offset: index.odd?
     .tab-pane.fade#workspaces-content role="tabpanel" aria-labelledby="workspaces-tab"
       .row
-        - @workspaces.each_with_index do |w, index|
-          = render 'workspace_item', img_file_name: "stub-#{(index)%6+1}.png", index: index
+        - @workspaces.each do |index, w|
+          = render 'workspace_item', img_file_name: "home_workspaces_#{Space.s_types.keys[index]}.jpg", index: index
     .tab-pane.fade#trending-content role="tabpanel" aria-labelledby="trending-tab"
       .row
         - @trending_cities.each_with_index do |city, index|

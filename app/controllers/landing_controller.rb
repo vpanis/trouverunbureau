@@ -44,10 +44,7 @@ class LandingController < ApplicationController
   private
 
   def workspaces_count
-    type_count = Space.all.group(:s_type).count
-    results = []
-    (0..5).each { |n| results[n] = type_count[n] }
-    results
+    Space.all.group(:s_type).count
   end
 
   def show_static_page(name)
