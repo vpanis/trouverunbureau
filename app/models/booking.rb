@@ -24,14 +24,12 @@ class Booking < ActiveRecord::Base
   # Validations
   validates :owner, :space, :b_type, :quantity, :from, :to, :price, presence: true
 
-  validates :quantity, numericality: {
-    only_integer: true,
-    greater_than_or_equal_to: 1
-  }
+  validates :quantity, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
 
-  validates :price, :fee, :deposit, numericality: {
-    greater_than_or_equal_to: 0
-  }
+  validates :price, :fee, :deposit, numericality: { greater_than_or_equal_to: 0 }
+
+  validate :from_smaller_than_to
+  validate :minimum_time_reached
 
   scope :not_deleted_owner, -> { where(owner_delete: false) }
   scope :not_deleted_venue_owner, -> { where(venue_owner_delete: false) }
@@ -106,23 +104,34 @@ class Booking < ActiveRecord::Base
   end
 
   def unit_price_quantity
-    return 0 unless space.present? && space.venue.present? && from <= to
+    return 0 unless valid_for_calculate_time_quantity? && space.venue.present?
     case b_type
     when 'day'
       venue_not_open_days = [0, 1, 2, 3, 4, 5, 6] - space.venue.day_hours.pluck(:weekday)
       (VenueHour.weekdays_array(from, to) - venue_not_open_days).length
     when 'month'
-      calculate_months
+      (to.year * 12 + to.month) - (from.year * 12 + from.month) + ((to.day >= from.day) ? 1 : 0)
     else
       ((to - from) / 1.send(b_type)).ceil
     end
   end
 
-  def calculate_months
-    (to.year * 12 + to.month) - (from.year * 12 + from.month) + ((to.day >= from.day) ? 1 : 0)
-  end
-
   def calculate_fee
     self.fee = price * Rails.configuration.payment.deskspotting_fee
+  end
+
+  def minimum_time_reached
+    return unless b_type.present? && valid_for_calculate_time_quantity?
+    errors.add(:minimum_time, 'you must at least reach the minimum time') if
+      space.send("#{b_type}_minimum_unity") > unit_price_quantity
+  end
+
+  def from_smaller_than_to
+    return if from.blank? || to.blank?
+    errors.add(:from_date_bigger_than_to, 'from must be smaller than to') if from > to
+  end
+
+  def valid_for_calculate_time_quantity?
+    space.present? && !from.blank? && !to.blank? && from <= to
   end
 end

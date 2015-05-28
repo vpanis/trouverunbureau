@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150527122118) do
+ActiveRecord::Schema.define(version: 20150527230944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -276,7 +276,11 @@ ActiveRecord::Schema.define(version: 20150527122118) do
     t.integer  "week_price"
     t.integer  "month_price"
     t.integer  "deposit"
-    t.boolean  "active",      default: false, null: false
+    t.boolean  "active",              default: false, null: false
+    t.integer  "hour_minimum_unity",  default: 1,     null: false
+    t.integer  "day_minimum_unity",   default: 1,     null: false
+    t.integer  "week_minimum_unity",  default: 1,     null: false
+    t.integer  "month_minimum_unity", default: 1,     null: false
   end
 
   add_index "spaces", ["venue_id"], name: "index_spaces_on_venue_id", using: :btree
@@ -326,7 +330,6 @@ ActiveRecord::Schema.define(version: 20150527122118) do
     t.string   "emergency_relationship"
     t.string   "nationality"
     t.string   "country_of_residence"
-    t.hstore   "settings",               default: {}, null: false
     t.string   "invitation_token"
     t.datetime "invitation_created_at"
     t.datetime "invitation_sent_at"
@@ -335,6 +338,7 @@ ActiveRecord::Schema.define(version: 20150527122118) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.integer  "invitations_count",      default: 0
+    t.hstore   "settings",               default: {}, null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -419,8 +423,8 @@ ActiveRecord::Schema.define(version: 20150527122118) do
     t.integer  "collection_account_id"
     t.string   "collection_account_type"
     t.integer  "status"
-    t.string   "country_code"
     t.text     "office_rules"
+    t.string   "country_code"
     t.integer  "time_zone_id"
   end
 
