@@ -1,9 +1,8 @@
 class ConfigurationsController < ApplicationController
 
   def change_language
-    params[:languange] = params[:languange].to_sym if params[:languange].present?
-    current_user.update_attributes(params[:language]) if
-      User::LANGUAGES.include?(params[:languange])
+    return unless User::LANGUAGES.map(&:to_s).include?(params[:language].to_s)
+    current_user.update_attributes(language: params[:language]) if current_user.present?
     session[:locale] = params[:language]
     redirect_to :back, status: 303
   end
