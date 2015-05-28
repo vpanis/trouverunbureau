@@ -61,6 +61,7 @@ fr:
     date_of_birth: Date of birth
     country_of_residence: Country of residence
     nationality: Nationality
+    terms: 'I accept the'
   home:
     sign_in: 'Log in'
     list_your_space: "List your space"

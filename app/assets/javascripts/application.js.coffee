@@ -20,6 +20,7 @@
 #= require mangopay-kit
 #= require ./payment_modes/mangopay_dropin
 #= require_directory .
+#= require signup
 #= require google_places
 #= require_tree ./bookings/
 #= require_tree ./landing/

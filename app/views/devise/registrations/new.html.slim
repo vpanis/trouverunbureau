@@ -8,26 +8,26 @@ div
   .section-separator
     .separator-text
       p.uppercase #{t('session.or')}
-  #sigunp-form ng-controller= "UserProfileCtrl"
+  #signup-form ng-controller= "UserProfileCtrl"
     = form_for resource, as: resource_name, url: registration_path(resource_name) do |f|
       .form-group
         label #{t('session.first_name')}
-        = f.text_field :first_name, class: 'form-control'
+        = f.text_field :first_name, class: 'form-control', required: 'required'
         -if resource.errors.present? && resource.errors[:first_name].present?
           span.field-error-message #{t('session.first_name')} #{resource.errors[:first_name][0]}
       .form-group
         label #{t('session.last_name')}
-        = f.text_field :last_name, class: 'form-control'
+        = f.text_field :last_name, class: 'form-control', required: 'required'
         -if resource.errors.present? && resource.errors[:last_name].present?
           span.field-error-message #{t('session.last_name')} #{resource.errors[:last_name][0]}
       .form-group
         label #{t('session.email')}
-        = f.text_field :email, class: 'form-control'
+        = f.text_field :email, class: 'form-control', required: 'required'
         -if resource.errors.present? && resource.errors[:email].present?
           span.field-error-message #{t('session.email')} #{resource.errors[:email][0]}
       .form-group
         label #{t('session.choose_password')}
-        = f.password_field :password, class: 'form-control'
+        = f.password_field :password, class: 'form-control', required: 'required'
         -if resource.errors.present? && resource.errors[:password].present?
           span.field-error-message #{t('session.password')} #{resource.errors[:password][0]}
       .form-group
@@ -44,15 +44,25 @@ div
         label = t('session.date_of_birth')
         .calendar.input-group
           .calendar-icon.input-group-addon ng-click="open($event)" type="button"
-          = f.text_field :date_of_birth, id: 'user_date_of_birth', placeholder: 'dd-mm-aa', class: 'form-control', close_text: t('commons.close'), datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened', type: 'text', show_button_bar:'false', ng_model: 'user_date_of_birth', ng_click: "open($event)"
+          = f.text_field :date_of_birth, id: 'user_date_of_birth', placeholder: 'dd-mm-aa', class: 'form-control', close_text: t('commons.close'), datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened', type: 'text', show_button_bar:'false', ng_model: 'user_date_of_birth', ng_click: "open($event)", required: 'required'
           -if resource.errors.present? && resource.errors[:date_of_birth].present?
             span.field-error-message #{t('session.date_of_birth')} #{resource.errors[:date_of_birth][0]}
-      div.left
+      .left
         p
           = check_box_tag :remember_me
           span.small-italic #{t('session.keep_session')}
+      .right
+        span#unaccepted_terms.error.error--hidden
+          | you must accept the terms and conditions to continue.
+        p
+          = check_box_tag :terms_accepted, required: 'required'
+          span.small-italic
+            | #{t('session.terms')} &nbsp;
+          = link_to t('home.footer.terms_of_service'), terms_of_service_path, class: 'small-italic'
+      button#signup-form-submit.rounded-button type='button'
+        = t('session.signup')
       = f.hidden_field :provider
-      = f.submit t('session.signup'), id: 'signup-form-submit', class: 'rounded-button'
+      = f.submit t('session.signup'), class: 'hidden'
   div.form-footer
     div.left
       p
