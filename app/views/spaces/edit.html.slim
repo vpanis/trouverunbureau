@@ -57,7 +57,7 @@
               = t('spaces.per_hour')
           .form-group.col-md-2
             label #{t('space.hour_price')}
-            = f.number_field :hour_price, class: 'form-control', min: 0
+            = f.number_field :hour_price, value: @space.hour_price, class: 'form-control', min: 0
         .row
           .checkbox.vertical-align.col-md-3
             label
@@ -65,7 +65,7 @@
               = t('spaces.per_day')
           .form-group.col-md-2
             label #{t('space.day_price')}
-            = f.number_field :day_price, class: 'form-control', min: 0
+            = f.number_field :day_price, value: @space.day_price, class: 'form-control', min: 0
         .row
           .checkbox.vertical-align.col-md-3
             label
@@ -73,12 +73,12 @@
               = t('spaces.per_month')
           .form-group.col-md-2
             label #{t('space.month_price')}
-            = f.number_field :month_price, class: 'form-control', min: 0
+            = f.number_field :month_price, value: @space.month_price, class: 'form-control', min: 0
       .row
         .form-group.col-md-2
           .icon.info.pointer#deposit-popover data-content=t('spaces.info_deposit') data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0"
           label = t('spaces.deposit')
-          = f.number_field :deposit, class: 'form-control', min: 0, required: true
+          = f.number_field :deposit, value: @space.deposit, class: 'form-control', min: 0, required: true
 
       .buttons
           .col-md-6

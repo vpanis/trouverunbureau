@@ -29,55 +29,16 @@ class Space < ActiveRecord::Base
 
   after_initialize :initialize_fields
 
+  acts_as_decimal :hour_price, decimals: 2
+  acts_as_decimal :day_price, decimals: 2
+  acts_as_decimal :week_price, decimals: 2
+  acts_as_decimal :month_price, decimals: 2
+  acts_as_decimal :deposit, decimals: 2
+
   def at_least_one_price
     return if hour_price.present? ||
       day_price.present? || week_price.present? || month_price.present?
     errors.add(:price, 'Needs at least one price')
-  end
-
-  def hour_price
-    self[:hour_price] / 100.0 if self[:hour_price].present?
-  end
-
-  def hour_price=(hp)
-    super(hp)
-    return self[:hour_price] = (hp * 100).to_i if hp.is_a? Numeric
-  end
-
-  def day_price
-    self[:day_price] / 100.0 if self[:day_price].present?
-  end
-
-  def day_price=(hp)
-    super(hp)
-    return self[:day_price] = (hp * 100).to_i if hp.is_a? Numeric
-  end
-
-  def week_price
-    self[:week_price] / 100.0 if self[:week_price].present?
-  end
-
-  def week_price=(hp)
-    super(hp)
-    return self[:week_price] = (hp * 100).to_i if hp.is_a? Numeric
-  end
-
-  def month_price
-    self[:month_price] / 100.0 if self[:month_price].present?
-  end
-
-  def month_price=(hp)
-    super(hp)
-    return self[:month_price] = (hp * 100).to_i if hp.is_a? Numeric
-  end
-
-  def deposit
-    self[:deposit] / 100.0 if self[:deposit].present?
-  end
-
-  def deposit=(hp)
-    super(hp)
-    return self[:deposit] = (hp * 100).to_i if hp.is_a? Numeric
   end
 
   private

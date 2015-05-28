@@ -26,12 +26,6 @@ RSpec.describe Booking, type: :model do
     .only_integer.is_greater_than_or_equal_to(1)
   end
 
-  it { should validate_numericality_of(:price).is_greater_than_or_equal_to(0) }
-
-  it { should validate_numericality_of(:fee).is_greater_than_or_equal_to(0) }
-
-  it { should validate_numericality_of(:deposit).is_greater_than_or_equal_to(0) }
-
   it 'should fail if the space don\'t have the booking type price' do
     space = FactoryGirl.create(:space, day_price: 10, month_price: nil)
     booking = FactoryGirl.build(:booking, space: space, b_type: Booking.b_types[:month])
