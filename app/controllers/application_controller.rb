@@ -38,6 +38,18 @@ class ApplicationController < ActionController::Base
     session[:previous_url] || root_path
   end
 
+  def authenticate_active_admin_user!
+    authenticate_user!
+    return if current_user.admin?
+    flash[:alert] = 'This area is restricted to administrators only.'
+    redirect_to root_path
+  end
+
+  def current_admin_user
+    return nil if user_signed_in? && !current_user.admin?
+    current_user
+  end
+
   private
 
   # store last url - this is needed for post-login redirect to whatever the user last visited.
