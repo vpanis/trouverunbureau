@@ -3,6 +3,7 @@ class MangopayPayout < ActiveRecord::Base
   belongs_to :mangopay_payment
   belongs_to :user
   belongs_to :represented, polymorphic: true
+  has_one :receipt, as: :payment
 
   # Constants/Enums
   TRANSACTION_STATUSES = %w(EXPECTING_RESPONSE TRANSFER_SUCCEEDED TRANSFER_CREATED TRANSFER_FAILED

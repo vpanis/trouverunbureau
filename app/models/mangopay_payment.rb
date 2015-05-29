@@ -1,5 +1,6 @@
 class MangopayPayment < ActiveRecord::Base
   has_one :booking, as: :payment
+  has_one :receipt, as: :payment
   has_many :mangopay_payouts
   belongs_to :user_paying, class_name: 'User'
 

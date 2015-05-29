@@ -3,12 +3,12 @@ module Payments
     include Sidekiq::Worker
 
     def perform
-      bookings = bookings_to_return_deposit
-      bookings.each do |booking|
+      bookings_to_return_deposit.each do |booking|
         payout = booking.payment.mangopay_payouts.create(
           amount: booking.payment.deposit_amount_in_wallet,
           fee: 0, p_type: MangopayPayout.p_types[:refund], represented: booking.space.venue.owner,
           user: represented_user(booking.space.venue.owner))
+        fill_receipt(payout, booking)
         booking.payment.update_attributes(
           deposit_amount_in_wallet: booking.payment.deposit_amount_in_wallet - payout.amount)
         Payments::Mangopay::TransferPaymentWorker.perform_async(payout.id)
@@ -19,7 +19,7 @@ module Payments
 
     # Mangopay for now.
     def bookings_to_return_deposit
-      bookings = Booking.includes(:payment, space: [venue: [:owner]])
+      bookings = Booking.includes(:payment, space: [venue: [:owner, :collection_account]])
         .joins("INNER JOIN mangopay_payments ON mangopay_payments.id = bookings.payment_id
                                                 AND bookings.payment_type = 'MangopayPayment'")
         .joins('INNER JOIN spaces ON spaces.id = bookings.space_id')
@@ -46,6 +46,12 @@ module Payments
     def represented_user(represented)
       return represented if represented.is_a?(User)
       represented.users.first
+    end
+
+    def fill_receipt(payout, booking)
+      cc = booking.space.venue.collection_account
+      Receipt.create(payment: payout, bank_type: cc.bank_type,
+                     account_last_4: cc.generic_account_last_4)
     end
   end
 end

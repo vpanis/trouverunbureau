@@ -56,6 +56,7 @@ module Payments
           card_type: @credit_card.card_type, card_last_4: @credit_card.last_4,
           card_expiration_date: @credit_card.expiration,
           next_payout_at: @booking.from)
+        fill_receipt
       end
 
       def save_payment_error(e)
@@ -80,6 +81,30 @@ module Payments
 
       def amount_price
         (@booking.price + @booking.deposit) * 100
+      end
+
+      def fill_receipt
+        attributes = user_data if @represented.is_a?(User)
+        attributes = organization_data if @represented.is_a?(Organization)
+        Receipt.create(attributes)
+      end
+
+      def user_data
+        { payment: @booking.payment,
+          guest_first_name: @represented.first_name,
+          guest_last_name: @represented.last_name,
+          guest_location: @represented.location,
+          guest_email: @represented.email,
+          guest_phone: @represented.phone,
+          guest_avatar: @represented.avatar }
+      end
+
+      def organization_data
+        { payment: @booking.payment,
+          guest_first_name: @represented.name,
+          guest_email: @represented.email,
+          guest_phone: @represented.phone,
+          guest_avatar: @represented.logo }
       end
     end
   end

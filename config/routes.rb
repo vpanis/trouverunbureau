@@ -63,7 +63,7 @@ Deskspotting::Application.routes.draw do
       get :venue_review, to: "reviews#new_venue_review"
       post :client_review, to: "reviews#create_client_review"
       post :venue_review, to: "reviews#create_venue_review"
-      get :receipt, to: "receipts#show"
+      get :receipts, to: "receipts#show"
     end
     collection do
       get :paid_bookings, to: "bookings#paid_bookings"
@@ -155,13 +155,6 @@ Deskspotting::Application.routes.draw do
         get :refund_succeeded, to: 'hooks#refund_succeeded'
         get :refund_failed, to: 'hooks#refund_failed'
       end
-    end
-
-    resources :bookings do
-        member do
-          post :create_receipt, to: 'receipt#create'
-          get :show_receipt, to: 'receipt#show'
-        end
     end
   end # api/v1
 

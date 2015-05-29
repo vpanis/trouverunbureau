@@ -7,6 +7,7 @@ module Payments
       bookings.each do |booking|
         payout_attributes, next_payout_at = payout_attributes_and_next_payout(booking)
         payout = booking.payment.mangopay_payouts.create(payout_attributes)
+        fill_receipt(payout, booking)
         booking.payment.update_attributes(
           next_payout_at: next_payout_at,
           price_amount_in_wallet: booking.payment.price_amount_in_wallet - payout.amount)
@@ -16,7 +17,7 @@ module Payments
 
     # Mangopay for now.
     def bookings_to_pay
-      Booking.includes(:payment, :owner)
+      Booking.includes(:payment, :owner, space: [venue: [:collection_account]])
         .joins("INNER JOIN mangopay_payments ON mangopay_payments.id = bookings.payment_id
                                                 AND bookings.payment_type = 'MangopayPayment'")
         .joins('INNER JOIN spaces ON spaces.id = bookings.space_id')
@@ -55,6 +56,12 @@ module Payments
 
     def floor_2d(float)
       (float * 100).floor / 100.0
+    end
+
+    def fill_receipt(payout, booking)
+      cc = booking.space.venue.collection_account
+      Receipt.create(payment: payout, bank_type: cc.bank_type,
+                     account_last_4: cc.generic_account_last_4)
     end
   end
 end
