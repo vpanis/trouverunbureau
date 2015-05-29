@@ -6,23 +6,27 @@
   .col-md-5
     .clearfix
       p.type.pull-left = booking.space.name
-      p.quantity.pull-left = booking.quantity
+      p.quantity.pull-left = booking.space.capacity
       p.name.pull-left = booking.space.venue.name
     p.city = booking.space.venue.street.to_s + ', ' + booking.space.venue.town.to_s \
         + ', ' + Country.new(booking.space.venue.country_code).name
   .col-md-4
     .date
-      span 8
-      span Days
+      - if booking.hour?
+        span = booking.to.to_s(format = :custom_only_day)
+        span = t('booking_inquiry.date')
+      - else
+        span = ((booking.to - booking.from) / 1.day).round
+        span = t('payment.days')
     .date
-      span 1
-      span spaces
+      span = booking.quantity
+      span = t('reviews.spaces')
     .date
-      span = booking.from.strftime('%d/%m/%y')
-      span from
+      span = booking.from.to_s(format = (booking.hour?)? :custom_only_hours : :custom_only_day)
+      span = t('reviews.check_in')
     .date
-      span = booking.to.strftime('%d/%m/%y')
-      span to
+      span = booking.to.to_s(format = (booking.hour?)? :custom_only_hours : :custom_only_day)
+      span = t('reviews.check_out')
   .col-md-2
     - if can_review?(booking, own) && own && VenueReview.where(booking: booking).empty?
       = link_to t('bookings.review'), venue_review_booking_path(booking), class: 'review'

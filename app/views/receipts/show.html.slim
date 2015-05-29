@@ -94,6 +94,17 @@
     .separator.long
     .check
       .column
+        - if @booking.hour?
+          .subtitle
+            = @booking.to.to_s(format = :custom_only_day)
+          span
+            = t('booking_inquiry.date')
+        - else
+          .subtitle
+            = ((@booking.to - @booking.from) / 1.day).round
+          span
+            = t('payment.days')
+      .column
         .subtitle
           = @booking.quantity
         span
@@ -101,13 +112,13 @@
       .bar
       .column
         .subtitle
-          = @booking.from.to_s(format = (@booking.hour?)? :custom_with_hours : :custom_only_day)
+          = @booking.from.to_s(format = (@booking.hour?)? :custom_only_hours : :custom_only_day)
         span
           = t('receipt.check_in')
       .bar
       .column
         .subtitle
-          = @booking.to.to_s(format = (@booking.hour?)? :custom_with_hours : :custom_only_day)
+          = @booking.to.to_s(format = (@booking.hour?)? :custom_only_hours : :custom_only_day)
         span
           = t('receipt.check_out')
   .guest-payment-container
