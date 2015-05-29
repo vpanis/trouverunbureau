@@ -8,7 +8,9 @@
 #= require jquery_ujs
 #= require loadjs
 #= require jquery.turbolinks
+#= require active_admin
 #= require twitter/bootstrap
+#= require bootstrap
 #= require retina
 #= require masonry.pkgd
 #= require angular
