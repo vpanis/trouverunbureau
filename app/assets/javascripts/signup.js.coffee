@@ -2,6 +2,7 @@ on_load = ->
   load
     controllers:
       registrations: ["new"]
+      omniauth_callbacks: ['facebook']
   , (controller, action) ->
     $("#signup-form-submit").click( ->
       $('#unaccepted_terms').addClass('error--hidden')
