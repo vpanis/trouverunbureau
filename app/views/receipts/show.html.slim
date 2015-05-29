@@ -4,147 +4,228 @@
 .left-container
   .customer-receipt
     .title
-      | Customer Receipt
+      - if @booking.owner == current_represented
+        = t('receipt.customer_title')
+      - else
+        = t('receipt.venue_title')
     .separator.long
     .date
-      = @booking.created_at
+      = @booking.created_at.to_date
     .receipt-number
-      | receipt #201565051
+      = t('receipt.receipt_number')
+      = @payment.receipt.id
     .contact
       | www.deskspotting.com/help/contact
   .host
     .title
-      | Host
+      = t('receipt.venue_host')
     .separator.long
     .venue-name
       .subtitle
-        | Vanue name:
+        = t('receipt.venue_name') + ':'
       span
         = @booking.space.venue.name
     .street-adress
       .subtitle
-        | Street address:
+        = t('receipt.street_address') + ':'
       span
         = @booking.space.venue.street
     .country
       .subtitle
-        | Country:
+        = t('receipt.country') + ':'
       span
         = Country.new(@booking.space.venue.country_code).name
     .province
       .subtitle
-        | Province:
+        = t('receipt.province') + ':'
       span
         = @booking.space.venue.town
     .zip-code
       .subtitle
-        | Zip / Postal code:
+        = t('receipt.zip_code') + ':'
       span
         = @booking.space.venue.postal_code
     .email
       .subtitle
-        | Email:
+        = t('receipt.email') + ':'
       span
         = @booking.space.venue.email
     .phone
       .subtitle
-        | Phone-number:
+        = t('receipt.phone_number') + ':'
       span
         = @booking.space.venue.phone
 .right-container
   .row.header
     .col-md-9.detail
       .row
-        .col-md-6
-          .icon.info.icon-black.pointer#gender-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
-          p.concept space rental
-          p.value() ${{selected_booking.price}}({{selected_booking.space.currency}})
-        .col-md-6.plus
-          .icon.info.icon-black.pointer#gender-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
-          p.concept deposit
-          p.value() ${{selected_booking.space.deposit}}({{selected_booking.space.currency}})
+        div class="col-md-#{(@booking.owner == current_represented)? '6' : '4'}"
+          p.concept
+            = t('receipt.space_rental')
+          p.value
+            = "$#{@booking.price} (#{@booking.space.venue.currency})"
+        div.plus class="col-md-#{(@booking.owner == current_represented)? '6' : '4'}"
+          p.concept
+            = t('receipt.deposit')
+          p.value
+            = "$#{@booking.deposit} (#{@booking.space.venue.currency})"
+        - unless @booking.owner == current_represented
+          div.minus class="col-md-#{(@booking.owner == current_represented)? '6' : '4'}"
+            p.concept
+              = t('receipt.commission')
+            p.value
+              = "$#{@booking.fee} (#{@booking.space.venue.currency})"
     .col-md-3.total
-      p.concept total rental
-      p.value() ${{selected_booking.price + selected_booking.space.deposit}}({{selected_booking.space.currency}})
+      p.concept
+        = t('receipt.total_rental')
+      p.value
+        = "$#{@booking.price + @booking.deposit - ((current_represented == @booking.owner)? 0 : @booking.fee) } (#{@booking.space.venue.currency})"
   .booking-info
     .space-type
       .title
-        | Space Type:
+        = t('receipt.space_type') + ':'
       span
-        | Meeting room
+        = t("spaces.types.#{@booking.space.s_type}")
     .confirmation
       span
-        | Confirmation code:
+        = t('receipt.confirmation_code') + ':'
       .code
-        | PZY4KB
+        = @booking.confirmation_code
     .separator.long
     .check
       .column
         .subtitle
-          | 1
+          = @booking.quantity
         span
-          | Spaces
+          = t('receipt.spaces')
       .bar
       .column
         .subtitle
-          | 01/16/15 08:00
+          = @booking.from.to_s(format = (@booking.hour?)? :custom_with_hours : :custom_only_day)
         span
-          | Check in
+          = t('receipt.check_in')
       .bar
       .column
         .subtitle
-          | 01/26/15 08:00
+          = @booking.to.to_s(format = (@booking.hour?)? :custom_with_hours : :custom_only_day)
         span
-          | Check out
+          = t('receipt.check_out')
   .guest-payment-container
     .guest
       .title
-        | Guest
+        = t('receipt.guest')
       .separator.long
       .box
-        = image_tag('venue_profile_a_individual_bookings.png')
+        - if @payment.receipt.guest_avatar.present?
+          = image_tag(@payment.receipt.guest_avatar)
+        - else
+          = image_tag('default-avatar.png')
         .right-info
           div
             .subtitle
-              | First name:
+              - if @payment.receipt.guest_last_name.present?
+                = t('receipt.first_name') + ':'
+              - else
+                = t('receipt.name') + ':'
             span
-              = current_user.first_name
+              = @payment.receipt.guest_first_name
+          - if @payment.receipt.guest_last_name.present?
+            div
+              .subtitle
+                = t('receipt.last_name') + ':'
+              span
+                = @payment.receipt.guest_last_name
+          - if @payment.receipt.guest_location
+            div
+              .subtitle
+                = t('receipt.street_address') + ':'
+              span
+                = @payment.receipt.guest_location
           div
             .subtitle
-              | Last name:
+              = t('receipt.email') + ':'
             span
-              = current_user.last_name
+              = @payment.receipt.guest_email
           div
             .subtitle
-              | Street address:
+              = t('receipt.phone_number') + ':'
             span
-              = current_user.location
+              = @payment.receipt.guest_phone
     .payment
-      .title
-          | Payment Type
-      .separator.long
-      .box
-        = image_tag('receipt_card_visa.png')
-        .right-info
+      - if current_represented == @booking.owner
+        .title
+          = t('receipt.payment_type')
+        .separator.long
+        .box
           div
-            .subtitle
-              | Card:
-            span
-              | MASTER xxxx xxxx xxxx 1869
-          div
-            .subtitle
-              | First name:
-            span
-              | George
-          div
-            .subtitle
-              | Last name:
-            span
-              | Yates
-          div
-            .subtitle
-              | Expires:
-            span
-              | 05/15
-  .rounded-btn.green.print
-    | Print
+            = image_tag('receipt_card_carte_blue.png')
+            = image_tag('receipt_card_visa.png')
+            = image_tag('receipt_card_marster.png')
+          .right-info
+            div
+              .subtitle
+                = t('receipt.card') + ':'
+              span
+                = "xxxx xxxx xxxx #{@payment.card_last_4}"
+            div
+              .subtitle
+                = t('receipt.expires') + ':'
+              span
+                = @payment.card_expiration_date
+        - unless @refunds.empty?
+          br
+          .separator.long
+          .title
+            = t('receipt.refunds')
+          - @refunds.each do |refund|
+            .separator.long
+            .box
+              div
+                .subtitle
+                  = t('receipt.date') + ':'
+                span
+                  = refund.updated_at.to_date
+              div
+                .subtitle
+                  = t('receipt.amount') + ':'
+                span
+                  = refund.amount
+              div
+                .subtitle
+                  = t('receipt.receipt_number') + ':'
+                span
+                  = refund.receipt.id
+      - else
+        - unless @payouts_to_user.empty?
+          .title
+            = t('receipt.payout_type')
+          - @payouts_to_user.each do |payout_to_user|
+            .separator.long
+            .box
+              div
+                .subtitle
+                  = t('receipt.account_type') + ':'
+                span
+                  = payout_to_user.receipt.bank_type
+              div
+                .subtitle
+                  = "#{(payout_to_user.receipt.bank_type != 'IBAN')? t('receipt.account_number') : t('receipt.iban')}:"
+                span
+                  = "xxxx xxxx xxxx #{payout_to_user.receipt.account_last_4}"
+              div
+                .subtitle
+                  = t('receipt.funds_transferred_on') + ':'
+                span
+                  = payout_to_user.update_at
+              div
+                .subtitle
+                  = t('receipt.amount') + ':'
+                span
+                  = payout_to_user.amount - payout_to_user.fee
+              div
+                .subtitle
+                  = t('receipt.receipt_number') + ':'
+                span
+                  = payout_to_user.receipt.id
+  / .rounded-btn.green.print
+  /   | Print

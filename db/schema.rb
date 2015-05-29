@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150528193537) do
+ActiveRecord::Schema.define(version: 20150529013324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20150528193537) do
     t.datetime "cancelled_at"
     t.string   "main_guest_email"
     t.string   "main_guest_name"
+    t.string   "confirmation_code"
   end
 
   add_index "bookings", ["owner_id", "owner_type"], name: "index_bookings_on_owner_id_and_owner_type", using: :btree
@@ -276,6 +277,23 @@ ActiveRecord::Schema.define(version: 20150528193537) do
   end
 
   add_index "organizations", ["email"], name: "index_organizations_on_email", unique: true, using: :btree
+
+  create_table "receipts", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "guest_first_name"
+    t.string   "guest_last_name"
+    t.string   "guest_avatar"
+    t.string   "guest_location"
+    t.string   "guest_email"
+    t.string   "guest_phone"
+    t.integer  "payment_id"
+    t.string   "payment_type"
+    t.string   "bank_type"
+    t.string   "account_last_4"
+  end
+
+  add_index "receipts", ["payment_id", "payment_type"], name: "index_receipts_on_payment_id_and_payment_type", using: :btree
 
   create_table "spaces", force: true do |t|
     t.integer  "s_type"

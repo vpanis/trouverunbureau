@@ -22,7 +22,8 @@ module Payments
 
     def valid_data?
       @booking.present? && @represented.present? && @booking.payment.present? &&
-        @booking.payment.payin_succeeded?
+        @booking.payment.payin_succeeded? && @booking.space.venue.collection_account.present? &&
+        @booking.space.venue.collection_account.accepted?
     end
 
     def return_the_payment(user_id)
@@ -52,9 +53,9 @@ module Payments
 
     def refund(amount, user_id, with_deposit)
       amount += @booking.deposit if with_deposit
-      payout = @booking.payment.mangopay_payouts.create(
-        amount: amount, fee: 0, user_id: user_id, represented: @represented,
-        p_type: MangopayPayout.p_types[:refund])
+      payout = @booking.payment.mangopay_payouts.create(amount: amount, fee: 0, user_id: user_id,
+        represented: @represented, p_type: MangopayPayout.p_types[:refund])
+      fill_receipt(payout)
       payment_attributes = {
         price_amount_in_wallet: @booking.payment.price_amount_in_wallet - payout.amount }
       payment_attributes[:deposit_amount_in_wallet] = 0 if with_deposit
@@ -66,6 +67,7 @@ module Payments
     def payout_to_user(amount, fee, user_id)
       payout = @booking.payment.mangopay_payouts.create(amount: amount, fee: fee, user_id: user_id,
                  p_type: MangopayPayout.p_types[:payout_to_user], represented: @represented)
+      fill_receipt(payout)
       @booking.payment.update_attributes(
         price_amount_in_wallet: @booking.payment.price_amount_in_wallet - payout.amount)
       Payments::Mangopay::TransferPaymentWorker.perform_async(payout.id)
@@ -106,6 +108,12 @@ module Payments
 
     def floor_2d(float)
       (float * 100).floor / 100.0
+    end
+
+    def fill_receipt(payout)
+      cc = @booking.space.venue.collection_account
+      Receipt.create(payment: payout, bank_type: cc.bank_type,
+                     account_last_4: cc.generic_account_last_4)
     end
   end
 end

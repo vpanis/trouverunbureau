@@ -71,6 +71,7 @@ class Booking < ActiveRecord::Base
   def initialize_fields
     self.state ||= Booking.states[:pending_authorization]
     self.deposit ||= 0
+    self.confirmation_code ||= SecureRandom.hex(4)
   end
 
   def calculate_price

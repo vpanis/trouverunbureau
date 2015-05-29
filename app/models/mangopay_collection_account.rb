@@ -58,6 +58,11 @@ class MangopayCollectionAccount < ActiveRecord::Base
     legal_person_type == 'PERSON'
   end
 
+  def generic_account_last_4
+    return iban_last_4 if bank_type == 'IBAN'
+    account_number_last_4
+  end
+
   protected
 
   def account_number_valid?

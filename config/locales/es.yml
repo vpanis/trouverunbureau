@@ -568,3 +568,39 @@ es:
     institution_number: Institution number
     branch_code: Branch code
     sort_code: Sort code
+  receipt:
+    customer_title: Customer Receipt
+    venue_title: Venue Owner Receipt
+    receipt_number: 'Receipt #'
+    venue_host: Host
+    venue_name: Venue Name
+    street_address: Street Address
+    country: Country
+    province: Province
+    zip_code:  'Zip / Postal code'
+    email: Email
+    phone_number: 'Phone Number'
+    space_rental: Space Rental
+    deposit: Deposit
+    commission: Commission
+    total_rental: Total Rental
+    space_type: Space Type
+    confirmation_code: Confirmation Code
+    spaces: Spaces
+    check_in: Check In
+    check_out: Check Out
+    guest: Guest
+    first_name: First Name
+    name: Name
+    last_name: Last Name
+    payment_type: Payment Type
+    card: Card
+    expires: Expires
+    refunds: Refunds
+    date: Date
+    amount: Amount
+    payout_type: Payout Type
+    account_type: Account Type
+    account_number: Account Number
+    iban: IBAN
+    funds_trasferred_on: Funds Transferred On
