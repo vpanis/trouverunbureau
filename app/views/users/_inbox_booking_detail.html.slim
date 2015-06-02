@@ -15,6 +15,16 @@
           p.city
             | {{selected_booking.space.city}}
         .row.margin-top
+          .date ng-if="selected_booking.b_type == 'hour'"
+            span
+              | {{getDateDays(selected_booking.from)}}
+            span
+              = t('booking_inquiry.date')
+          .date ng-if="selected_booking.b_type != 'hour'"
+            span
+              | {{daysInBooking(selected_booking)}}
+            span
+              = t('payment.days')
           .date
             span
               | {{selected_booking.quantity}}

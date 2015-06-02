@@ -7,6 +7,8 @@ class Booking < ActiveRecord::Base
   belongs_to :space
 
   has_many :messages
+  has_one :client_review
+  has_one :venue_review
 
   # Constants/Enums
   enum b_type: [:hour, :day, :week, :month]

@@ -40,6 +40,9 @@
     "DESKSPOTTING_BASE_URL":{
       "required":true
     },
+    "DESKSPOTTING_HOURS_FROM_CHECK_IN_OUT_FOR_RATE":{
+      "required":true
+    },
     "DESKSPOTTING_FEE":{
       "required":true
     },

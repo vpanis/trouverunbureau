@@ -8,6 +8,8 @@ if Rails.env.test?
   deskspotting = OpenStruct.new(
     fee: 0.15,
     payouts_attempts: 3,
+    base_url: "http://localhost:3000",
+    hours_from_check_in_out_for_rate: 1,
     notification_attempts: 3,
     deposit_days: 3,
     cancellation_penalty_fee: 0.15,
@@ -26,7 +28,8 @@ else
 end
 
 Deskspotting::Application.configure do
-  config.base_url = AppConfiguration.for(:deskspotting).base_url
+  config.hours_from_check_in_out_for_rate = deskspotting.hours_from_check_in_out_for_rate.to_i
+  config.base_url = deskspotting.base_url
   config.payment = OpenStruct.new(
     deskspotting_fee: deskspotting.fee.to_f,
     braintree: OpenStruct.new(

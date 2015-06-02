@@ -13,4 +13,9 @@ namespace :scheduler do
   task perform_payments: :environment do
     Payments::PerformPaymentsWorker.perform_async()
   end
+
+  desc 'Send reviews mails for every booking that have started or endend in the last hour'
+  task perform_payments: :environment do
+    SendReviewsMailWorker.perform_async()
+  end
 end

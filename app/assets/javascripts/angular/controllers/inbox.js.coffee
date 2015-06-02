@@ -63,14 +63,20 @@ angular.module('deskSpotting.inbox', []).controller "InboxCtrl", [
         return
       return
 
+    $scope.getDateDays = (date) ->
+      date.split(" ")[0]
+
     $scope.getCorrectDate = (booking, date) ->
       if booking.b_type != 'hour'
-        date.split(" ")[0]
+        $scope.getDateDays(date)
       else
-        separateDate = date.split(" ")
-        displayDate = separateDate[0].split("-")
-        displayHour = separateDate[1].split(":")
-        displayDate[2] + "-" + displayDate[1] + "-" + displayDate[0] + " " + displayHour[0] + ":" + displayHour[1]
+        displayHour = date.split(" ")[1].split(":")
+        displayHour[0] + ":" + displayHour[1]
+
+    $scope.daysInBooking = (booking) ->
+      _MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+      return Math.ceil((Date.parse(booking.to) - Date.parse(booking.from)) / _MS_PER_DAY);
 
     $scope.showDecline = (booking) ->
       if booking.state == 'pending_authorization' or booking.state == 'pending_payment' or booking.state == 'paid' or booking.state == 'expired'
