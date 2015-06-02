@@ -2,11 +2,12 @@
 = render 'shared/profile_menu_bar', selected: 'venues'
 
 #venue-list.container.margin-top
+  a.button type='button' class='rounded-btn width-100 uppercase yellow-fill margin-top margin-bottom' href= new_venue_path = t('venues.create_venue')
   #accordion.panel-group aria-multiselectable="true" role="tablist"
     - @venues.each_with_index do |venue, index|
       .panel.panel-default
-        .panel-heading role="tab" id="heading-#{venue.id}" class="#{'open' if index==0}"
-          .venue-bar aria-controls="collapse-venue-#{venue.id}" aria-expanded="#{(index==0)? 'true':'false'}" data-parent="#accordion" data-toggle="collapse" href="#collapse-venue-#{venue.id}"
+        .panel-heading role="tab" id="heading-#{venue.id}" data-toggle="collapse" href="#collapse-venue-#{venue.id}" class="#{'collapsed' if index!=0}"
+          .venue-bar
             .venue-avatar
               - if venue.logo.present?
                 = image_tag(venue.logo.url, width: '50px', height: '50px')
@@ -19,10 +20,16 @@
               .location
                 p = "#{venue.town}, #{Country.new(venue.country_code).name}"
           .right-wrapper
+            - if venue.status == "active"
+              .edit.complete-status
+                = t('venues.complete')
+            - else
+              .edit.incomplete-status
+                = t('venues.incomplete')
             .icon.info.pointer
             a.edit.gray href=edit_venue_path(venue) = t('venues.edit_venue')
-            a.edit.gray href=venue_path(venue) = t('venues.preview')
-            .arrow data-toggle="collapse" href="#collapse-venue-#{venue.id}"
+            = link_to t('venues.preview'), venue_path(venue), class: 'edit gray'
+            .arrow
               = image_tag 'arrow-dropdown@2x.png'
         div[id="collapse-venue-#{venue.id}" class="panel-collapse collapse #{'in' if index==0}" data-aria-labelledby="headingOne" data-role= "tabpanel"]
           .panel-body
@@ -40,4 +47,3 @@
                 .pictures.add-image-container
                   .add-space.venues-space
                     p = t('commons.add_space')
-  a.button type='button' class='rounded-btn width-100 uppercase yellow-fill margin-top margin-bottom' href= new_venue_path = t('venues.create_venue')

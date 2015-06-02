@@ -31,7 +31,7 @@ on_load = ->
       percentage = parseInt(response.percentage).toString()
       $('.progress-container .progress').width(percentage + '%')
       $('.progress-counter').text(percentage + '%')
-      if percentage == 100
+      if percentage == "100"
         $('.status-text span').text('Complete')
         $('.status-text span').css('color: green;')
       else
