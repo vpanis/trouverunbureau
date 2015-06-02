@@ -1,5 +1,8 @@
 class SendReviewsMailWorker
   include Sidekiq::Worker
+  include Sidetiq::Schedulable
+
+  recurrence { hourly }
 
   def perform
     bookings_for_reviews.each do |booking|
