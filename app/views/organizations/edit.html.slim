@@ -32,9 +32,8 @@
             .form-group.center-block.no-float.col-xs-12.col-sm-6.col-md-6.col-lg-6
               .icon.info.pointer#phone-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_share_phone')}"
               label = t('organizations.phone')
-              = f.text_field :phone, placeholder: t('organizations.phone'), class: 'form-control'
-
-
+              = text_field_tag '', @organization.phone, placeholder: t('organizations.phone'), class: 'form-control', type: 'tel', required: true, id: 'phone'
+              = f.hidden_field :phone
           .row
             .small-title
               .small-separator
@@ -65,4 +64,4 @@
               a href=(organization_path(@organization))
                 button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
             .col-xs-6
-              = f.submit t('commons.save'), class: 'rounded-btn yellow-fill width-100 uppercase'
+              = f.submit t('commons.save'), class: 'rounded-btn yellow-fill width-100 uppercase', id: 'save-organization'

@@ -34,7 +34,8 @@
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               .icon.info.pointer#phone-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_share_phone')}"
               label = t('users.phone')
-              = f.text_field :phone, placeholder: t('users.phone'), class: 'form-control', required: true
+              = text_field_tag '', @user.phone, placeholder: t('users.phone'), class: 'form-control', type: 'tel', required: true, id: 'phone'
+              = f.hidden_field :phone
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               label = t('users.profession')
               = f.select(:profession, @profession_options, {}, {class: 'form-control profession-select', required: true})
@@ -110,4 +111,4 @@
               a href=(user_path(@user))
                 button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
             .col-xs-6
-              = f.submit t('commons.save'), class: 'rounded-btn yellow-fill width-100 uppercase'
+              = f.submit t('commons.save'), class: 'rounded-btn yellow-fill width-100 uppercase', id: 'save-edition'

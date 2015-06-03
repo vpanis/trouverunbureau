@@ -359,6 +359,7 @@ fr:
     hour: 'heure'
     week: 'semaine'
   users:
+    user_since: 'User since'
     edit_profile: 'Modifier profil'
     about_me: 'Votre description'
     required_fields: 'Champs requis'
