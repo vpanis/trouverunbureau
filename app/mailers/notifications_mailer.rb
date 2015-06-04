@@ -15,26 +15,26 @@ class NotificationsMailer < ActionMailer::Base
 
   def guest_review_email(booking_id)
     booking = prepare_booking_data(booking_id)
-    send_email(booking.recipients_emails,
+    send_email(booking.client_recipients_emails,
                t('guest_review_email.subject', type: booking.owner.class.to_s,
                                                guest_id: booking.owner.id))
   end
 
   def host_review_email(booking_id)
     booking = prepare_booking_data(booking_id)
-    send_email(booking.recipients_emails,
+    send_email(booking.venue_recipients_emails,
                t('host_review_email.subject', venue_id: booking.space.venue.id))
   end
 
   def receipt_email(booking_id)
     booking = prepare_receipt_data(booking_id)
-    send_email(booking.recipients_emails,
+    send_email(booking.client_recipients_emails,
                t('receipt_email.subject_client', booking_id: booking.id))
   end
 
   def receipt_email_host(booking_id)
     booking = prepare_receipt_data(booking_id)
-    send_email(booking.recipients_emails,
+    send_email(booking.venue_recipients_emails,
                t('receipt_email.subject_host', booking_id: booking.id))
   end
 

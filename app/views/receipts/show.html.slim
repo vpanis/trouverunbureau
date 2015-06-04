@@ -1,4 +1,4 @@
-= render 'shared/menu_bar'
+X= render 'shared/menu_bar'
 = render 'shared/profile_menu_bar', selected: 'nil'
 
 .left-container
@@ -10,7 +10,7 @@
         = t('receipt.venue_title')
     .separator.long
     .date
-      = @booking.created_at.to_date
+      = @payment.receipt.created_at.to_date
     .receipt-number
       = t('receipt.receipt_number')
       = @payment.receipt.id
@@ -203,7 +203,7 @@
                   = refund.amount
               div
                 .subtitle
-                  = t('receipt.receipt_number') + ':'
+                  = t('receipt.receipt_number')
                 span
                   = refund.receipt.id
       - else
@@ -235,7 +235,7 @@
                   = payout_to_user.amount - payout_to_user.fee
               div
                 .subtitle
-                  = t('receipt.receipt_number') + ':'
+                  = t('receipt.receipt_number')
                 span
                   = payout_to_user.receipt.id
   / .rounded-btn.green.print

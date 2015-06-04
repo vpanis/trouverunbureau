@@ -26,6 +26,7 @@ module Payments
       BookingManager.change_booking_status(@payout.user, b,
                                            b.state_if_represented_cancels(@payout.represented)) if
         b.state == 'refunding'
+      notify
     end
 
     def retry_worker(transaction_id, date_i, retry_count, refund)
@@ -37,6 +38,13 @@ module Payments
     def p_type(refund)
       return MangopayPayout.p_types[:refund] if refund
       MangopayPayout.p_types[:payout_to_user]
+    end
+
+    def notify
+      NotificationsMailer.delay.receipt_email(@payout.mangopay_payment.booking.id) if
+        @payout.refund?
+      NotificationsMailer.delay.receipt_email_host(@payout.mangopay_payment.booking.id) if
+        @payout.payout_to_user?
     end
   end
 end

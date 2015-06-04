@@ -3,6 +3,14 @@ class BookingNotificationWrapper < SimpleDelegator
     represented_recipients(space.venue.owner) + represented_recipients(owner)
   end
 
+  def venue_recipients_emails
+    represented_recipients(space.venue.owner)
+  end
+
+  def client_recipients_emails
+    represented_recipients(owner)
+  end
+
   private
 
   def represented_recipients(owner)

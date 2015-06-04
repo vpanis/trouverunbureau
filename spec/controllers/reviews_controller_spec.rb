@@ -44,9 +44,9 @@ describe ReviewsController do
             context 'a venue review exists for that booking' do
               let!(:venue_review) { create(:venue_review, booking: booking) }
 
-              it 'is forbidden' do
+              it 'is redirected' do
                 get :new_venue_review, id: booking.id
-                expect(response.status).to eq(403)
+                expect(response.status).to eq(302)
               end
             end
           end # booking's state is PAID
@@ -143,9 +143,9 @@ describe ReviewsController do
             context 'a client review exists for that booking' do
               let!(:client_review) { create(:client_review, booking: booking) }
 
-              it 'is forbidden' do
+              it 'is redirected' do
                 get :new_client_review, id: booking.id
-                expect(response.status).to eq(403)
+                expect(response.status).to eq(302)
               end
             end
           end # booking's state is PAID
@@ -251,7 +251,7 @@ describe ReviewsController do
               end
 
               it 'redirects to user profile' do
-                expect(response.redirect_url).to eq(user_url(user))
+                expect(response.redirect_url).to eq(paid_bookings_bookings_url)
               end
             end # a venue review does not exist for that booking
 
@@ -262,8 +262,8 @@ describe ReviewsController do
                 post :create_venue_review, id: booking.id
               end
 
-              it 'is forbidden' do
-                expect(response.status).to eq(403)
+              it 'is redirected' do
+                expect(response.status).to eq(302)
               end
 
               it 'does not create another venue_review' do
@@ -374,7 +374,7 @@ describe ReviewsController do
               end
 
               it 'redirects to user profile' do
-                expect(response.redirect_url).to eq(user_url(user))
+                expect(response.redirect_url).to eq(venue_paid_bookings_bookings_url)
               end
             end # a venue review does not exist for that booking
 
@@ -385,8 +385,8 @@ describe ReviewsController do
                 post :create_client_review, id: booking.id
               end
 
-              it 'is forbidden' do
-                expect(response.status).to eq(403)
+              it 'is redirected' do
+                expect(response.status).to eq(302)
               end
 
               it 'does not create another client_review' do
