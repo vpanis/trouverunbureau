@@ -24,13 +24,15 @@ class SpaceBookingInquiryController < ApplicationController
   private
 
   def create_booking_message
-    Message.create!(
+    return unless params[:message].present?
+    message = Message.create!(
       m_type: Message.m_types[:text],
       user: current_user,
       represented: current_represented,
       booking: @booking,
       text: params[:message]
-    ) if params[:message].present?
+    )
+    NewMessageService.new(message).send_notifications if message.valid?
   end
 
   def handle_booking_type
