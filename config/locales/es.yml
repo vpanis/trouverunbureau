@@ -434,13 +434,14 @@ es:
     collection_account: Collection Account
     payout_method: Payout Method
   new_message_email:
-    subject: 'You have a new message from %{from}'
+    subject: 'You have a new message - Booking #%{booking_id}'
     hi: Hi
     got_new_message: Got a new message from
     reply: Or reply directly on this mail.
     view_on_deskspotting: View on DeskSpotting
     team: The DeskSpotting Team
   host_cancellation_email:
+    subject: 'Host Cancellation - Booking #%{booking_id}'
     sorry_cancel: Sorry to see you had to cancel your booking of
     unfortunately: "Unfortunately your guest, %{name}, had to cancel is booking with you for"
     space: Space
@@ -460,6 +461,7 @@ es:
     cancellation_policy: cancellation policy
     terms_of_service: our terms of service
   guest_review_email:
+    subject: 'Guest Review - %{type} #%{guest_id}'
     hi: Hi
     checked_out: You have checked out of
     at: at
@@ -469,9 +471,13 @@ es:
     date: Date
     rate_stay: rate your stay
   host_review_email:
+    subject: 'Host Review - Venue #%{venue_id}'
     rate_guest: rate your guest
     your_guest: Your Guest
     checked_in: has checked in of
+  receipt_email:
+    subject_client: 'Receipt - Booking #%{booking_id}'
+    subject_host: 'Receipt Host - Booking #%{booking_id}'
   reset_password_email:
     this_link: just use this link
     forgot_password:  It seems like you forgot your DeskSpotting password.

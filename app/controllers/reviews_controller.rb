@@ -6,33 +6,35 @@ class ReviewsController < ApplicationController
   def new_client_review
     @booking = Booking.find(params[:id])
     return render_forbidden unless can_do_client_review?
+    return redirect_to venue_paid_bookings_bookings_path if ClientReview.exists?(booking: @booking)
     @review = ClientReview.new(booking: @booking)
   end
 
-  # TODO: redirect to bookings or inbox
   def create_client_review
     @booking = Booking.find(params[:id])
     return render_forbidden unless can_do_client_review?
+    return redirect_to venue_paid_bookings_bookings_path if ClientReview.exists?(booking: @booking)
     review = ClientReview.create(client_review_params)
     review.booking = @booking
     review.save!
-    redirect_to user_path(current_represented)
+    redirect_to venue_paid_bookings_bookings_path
   end
 
   def new_venue_review
     @booking = Booking.find(params[:id])
     return render_forbidden unless can_do_venue_review?
+    return redirect_to paid_bookings_bookings_path if VenueReview.exists?(booking: @booking)
     @review = VenueReview.new(booking: @booking)
   end
 
-  # TODO: redirect to bookings or inbox
   def create_venue_review
     @booking = Booking.find(params[:id])
     return render_forbidden unless can_do_venue_review?
+    return redirect_to paid_bookings_bookings_path if VenueReview.exists?(booking: @booking)
     review = VenueReview.create(venue_review_params)
     review.booking = @booking
     review.save!
-    redirect_to user_path(current_represented)
+    redirect_to paid_bookings_bookings_path
   end
 
   private
@@ -48,13 +50,13 @@ class ReviewsController < ApplicationController
   def can_do_client_review?
     current_represented.eql?(@booking.space.venue.owner) &&
       @booking.space.venue.time_zone.from_zone_to_utc(@booking.from) < Time.current &&
-      @booking.paid? && ClientReview.where(booking: @booking).empty?
+      @booking.paid?
   end
 
   def can_do_venue_review?
     current_represented.eql?(@booking.owner) &&
       @booking.space.venue.time_zone.from_zone_to_utc(@booking.from) < Time.current &&
-      @booking.paid? && VenueReview.where(booking: @booking).empty?
+      @booking.paid?
   end
 
 end

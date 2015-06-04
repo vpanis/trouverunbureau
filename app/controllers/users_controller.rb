@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def login_as_organization
     organization = Organization.find(params[:organization_id])
     return render_forbidden unless current_user.id == params[:id].to_i &&
-    current_user.user_can_write_in_name_of(organization)
+      current_user.user_can_write_in_name_of(organization)
     session[:current_organization_id] = organization.id
     flash[:redirect_if_403] = organization_path(current_represented)
     redirect_to session[:previous_url] || root_path

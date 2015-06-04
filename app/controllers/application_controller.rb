@@ -4,10 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :store_location, :log_user_as_organization
 
   serialization_scope :view_context
 
-  after_action :set_csrf_cookie_for_ng, :store_location
+  after_action :set_csrf_cookie_for_ng
 
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   rescue_from(ActionController::ParameterMissing) do |parameter_missing_exception|
@@ -51,6 +52,11 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def log_user_as_organization
+    session[:current_organization_id] = params[:login_as_organization].to_i if
+      params[:login_as_organization].present?
+  end
 
   # store last url - this is needed for post-login redirect to whatever the user last visited.
   def store_location
