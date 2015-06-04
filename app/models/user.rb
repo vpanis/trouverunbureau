@@ -30,6 +30,7 @@ class User < ActiveRecord::Base
   # Enums
   LANGUAGES = [:en, :es, :it, :de]
   GENDERS = [:f, :m]
+  SUPPORTED_NATIONALITIES = Country.all.map { |c| c[1] }
 
   # Callbacks
   after_initialize :initialize_fields
@@ -61,6 +62,7 @@ class User < ActiveRecord::Base
   validates :profession, inclusion: { in: Venue::PROFESSIONS.map(&:to_s), allow_nil: true }
   validates :gender, inclusion: { in: GENDERS.map(&:to_s), allow_nil: true }
   validates :language, inclusion: { in: LANGUAGES.map(&:to_s), allow_nil: true }
+  validates :nationality, :country_of_residence, inclusion: { in: SUPPORTED_NATIONALITIES }
   validate :each_languages_spoken_inclusion
 
   class << self

@@ -19,6 +19,9 @@ class MangopayCollectionAccount < ActiveRecord::Base
   validates :first_name, :last_name, :email, :nationality, :country_of_residence, :date_of_birth,
             :legal_person_type, :bank_type, presence: true, if: :user_valid?
 
+  validates :nationality, :country_of_residence, inclusion: { in: User::SUPPORTED_NATIONALITIES },
+                                                 if: :user_valid?
+
   # User Info (Only BUSINESS and ORGANIZATION)
   validates :business_name, :business_email,
             presence: true,

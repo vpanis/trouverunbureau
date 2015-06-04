@@ -4,6 +4,10 @@ module SelectOptionsHelper
     Venue::SUPPORTED_COUNTRIES.map { |country| [Country.new(country).name, country] }
   end
 
+  def all_countries_options
+    Country.all.sort
+  end
+
   def venue_types_options
     Venue.v_types.map { |t| [t("venues.types.#{t.first}"), t.first] }
   end
