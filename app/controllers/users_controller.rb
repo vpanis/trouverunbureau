@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     @gender_options = gender_options
     @profession_options = profession_options
     @language_options = language_options
+    @all_language_options = all_language_options
   end
 
   def update

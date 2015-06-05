@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, LogoUploader
 
   # Enums
-  LANGUAGES = [:en, :es, :it, :de]
+  LANGUAGES = [:en, :es, :it, :de, :fr, :pt]
   GENDERS = [:f, :m]
   SUPPORTED_NATIONALITIES = Country.all.map { |c| c[1] }
 
@@ -129,7 +129,7 @@ class User < ActiveRecord::Base
   end
 
   def each_languages_spoken_inclusion
-    invalid_items = languages_spoken - LANGUAGES.map(&:to_s)
+    invalid_items = languages_spoken - LanguageList::COMMON_LANGUAGES.map(&:iso_639_1)
     invalid_items.each do |item|
       errors.add(:language_list, item + ' is not a valid language')
     end

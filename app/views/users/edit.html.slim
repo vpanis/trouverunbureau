@@ -76,7 +76,7 @@
               label = t('users.spoken_languages')
               a.add.margin-left.aqua href='#' data-target="#languageModal" data-toggle="modal" = t('commons.add')
               ul.spoken-languages-container
-                - @language_options.each do |lang|
+                - @all_language_options.each do |lang|
                   li.lang-item id="lang-item-#{lang.last}"
                     div.lang-name
                       = lang.first

@@ -3,12 +3,77 @@ fr:
   errors:
     email_taken: 'The user already exists'
   languages:
-    es: 'Español'
-    en: 'English'
-    it: 'Italiano'
-    de: 'Deutsch'
-    fr: 'French'
-    pt: 'Português'
+    af: Afrikaans
+    ar: Arabic
+    bn: Bengali
+    bo: Tibetan
+    bg: Bulgarian
+    ca: Catalan
+    cs: Czech
+    cy: Welsh
+    da: Danish
+    de: German
+    el: Modern Greek (1453-)
+    en: English
+    et: Estonian
+    eu: Basque
+    fa: Persian
+    fj: Fijian
+    fi: Finnish
+    fr: French
+    ga: Irish
+    gu: Gujarati
+    he: Hebrew
+    hi: Hindi
+    hr: Croatian
+    hu: Hungarian
+    hy: Armenian
+    id: Indonesian
+    is: Icelandic
+    it: Italian
+    ja: Japanese
+    ka: Georgian
+    km: Central Khmer
+    ko: Korean
+    la: Latin
+    lv: Latvian
+    lt: Lithuanian
+    ml: Malayalam
+    mr: Marathi
+    mk: Macedonian
+    mt: Maltese
+    mn: Mongolian
+    mi: Maori
+    ms: Malay
+    ne: Nepali
+    nl: Dutch
+    'no': Norwegian
+    pa: Panjabi
+    pl: Polish
+    pt: Portuguese
+    qu: Quechua
+    ro: Romanian
+    ru: Russian
+    sk: Slovak
+    sl: Slovenian
+    sm: Samoan
+    es: Spanish
+    sq: Albanian
+    sr: Serbian
+    sw: Swahili
+    sv: Swedish
+    ta: Tamil
+    tt: Tatar
+    te: Telugu
+    th: Thai
+    to: Tonga (Tonga Islands)
+    tr: Turkish
+    uk: Ukrainian
+    ur: Urdu
+    uz: Uzbek
+    vi: Vietnamese
+    xh: Xhosa
+    zh: Chinese
   currency:
     usd:
       short_name: 'usd'
