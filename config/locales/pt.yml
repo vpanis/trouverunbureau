@@ -3,12 +3,77 @@ pt:
   errors:
     email_taken: 'The user already exists'
   languages:
-    es: 'Español'
-    en: 'English'
-    it: 'Italiano'
-    de: 'Deutsch'
-    fr: 'French'
-    pt: 'Português'
+    af: Afrikaans
+    ar: Arabic
+    bn: Bengali
+    bo: Tibetan
+    bg: Bulgarian
+    ca: Catalan
+    cs: Czech
+    cy: Welsh
+    da: Danish
+    de: German
+    el: Modern Greek (1453-)
+    en: English
+    et: Estonian
+    eu: Basque
+    fa: Persian
+    fj: Fijian
+    fi: Finnish
+    fr: French
+    ga: Irish
+    gu: Gujarati
+    he: Hebrew
+    hi: Hindi
+    hr: Croatian
+    hu: Hungarian
+    hy: Armenian
+    id: Indonesian
+    is: Icelandic
+    it: Italian
+    ja: Japanese
+    ka: Georgian
+    km: Central Khmer
+    ko: Korean
+    la: Latin
+    lv: Latvian
+    lt: Lithuanian
+    ml: Malayalam
+    mr: Marathi
+    mk: Macedonian
+    mt: Maltese
+    mn: Mongolian
+    mi: Maori
+    ms: Malay
+    ne: Nepali
+    nl: Dutch
+    'no': Norwegian
+    pa: Panjabi
+    pl: Polish
+    pt: Portuguese
+    qu: Quechua
+    ro: Romanian
+    ru: Russian
+    sk: Slovak
+    sl: Slovenian
+    sm: Samoan
+    es: Spanish
+    sq: Albanian
+    sr: Serbian
+    sw: Swahili
+    sv: Swedish
+    ta: Tamil
+    tt: Tatar
+    te: Telugu
+    th: Thai
+    to: Tonga (Tonga Islands)
+    tr: Turkish
+    uk: Ukrainian
+    ur: Urdu
+    uz: Uzbek
+    vi: Vietnamese
+    xh: Xhosa
+    zh: Chinese
   currency:
     usd:
       short_name: 'usd'
@@ -434,13 +499,14 @@ pt:
     collection_account: Collection Account
     payout_method: Payout Method
   new_message_email:
-    subject: 'You have a new message from %{from}'
+    subject: 'You have a new message - Booking #%{booking_id}'
     hi: Hi
     got_new_message: Got a new message from
     reply: Or reply directly on this mail.
     view_on_deskspotting: View on DeskSpotting
     team: The DeskSpotting Team
   host_cancellation_email:
+    subject: 'Host Cancellation - Booking #%{booking_id}'
     sorry_cancel: Sorry to see you had to cancel your booking of
     unfortunately: "Unfortunately your guest, %{name}, had to cancel is booking with you for"
     space: Space
@@ -460,6 +526,7 @@ pt:
     cancellation_policy: cancellation policy
     terms_of_service: our terms of service
   guest_review_email:
+    subject: 'Guest Review - %{type} #%{guest_id}'
     hi: Hi
     checked_out: You have checked out of
     at: at
@@ -469,9 +536,13 @@ pt:
     date: Date
     rate_stay: rate your stay
   host_review_email:
+    subject: 'Host Review - Venue #%{venue_id}'
     rate_guest: rate your guest
     your_guest: Your Guest
     checked_in: has checked in of
+  receipt_email:
+    subject_client: 'Receipt - Booking #%{booking_id}'
+    subject_host: 'Receipt Host - Booking #%{booking_id}'
   reset_password_email:
     this_link: just use this link
     forgot_password:  It seems like you forgot your DeskSpotting password.

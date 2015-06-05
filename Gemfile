@@ -108,6 +108,9 @@ gem 'sidetiq'
 # integers in db, decimals in use
 gem 'acts_as_decimal'
 
+# Languages
+gem 'language_list'
+
 group :development do
   gem 'better_errors', '~>2.0.0'
   gem 'binding_of_caller', '~>0.7.2'

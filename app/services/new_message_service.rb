@@ -33,7 +33,8 @@ class NewMessageService < SimpleDelegator
     end
 
     def notify
-      # let's not send an email for this action, it does not provide much information
+      # TODO: Replace with a 'Booking creation email'
+      NotificationsMailer.delay.new_message_email(id)
     end
   end
 

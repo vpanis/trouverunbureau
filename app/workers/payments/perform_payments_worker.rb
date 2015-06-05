@@ -1,6 +1,9 @@
 module Payments
   class PerformPaymentsWorker
     include Sidekiq::Worker
+    include Sidetiq::Schedulable
+
+    recurrence { hourly }
 
     def perform
       bookings = bookings_to_pay

@@ -31,6 +31,7 @@ module Payments
         BookingManager.change_booking_status(@mangopay_payment.user_paying,
                                              @mangopay_payment.booking,
                                              Booking.states[:pending_payment])
+        @mangopay_payment.receipt.destroy if @mangopay_payment.receipt.present?
       end
 
       def fetch_transaction

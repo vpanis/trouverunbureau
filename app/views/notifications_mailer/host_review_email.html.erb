@@ -11,61 +11,60 @@
         </div>
 
         <div>
-          <p><%= "#{t('guest_review_email.hi')} George," %></p> <!-- TODO: Change name -->
+          <p><%= "#{t('guest_review_email.hi')} #{@booking.space.venue.name}," %></p>
           <p>
-            <%= t('host_review_email.your_guest') %>
-            <span style="color:black; font-weight: bold;"><%= " JP De Lorenzo " %></span><!-- TODO: Change guest name -->
-            <%= t('host_review_email.checked_in') %>
-            <span style="color:black; font-weight: bold;"><%= " Meeting room " %></span><!-- TODO: Change room name -->
-            <%= t('guest_review_email.at') %>
-            <span style="color:black; font-weight: bold;"><%= " Venue name" %></span><!-- TODO: Change venue name -->
+            <%= "#{t('host_review_email.your_guest')} " %>
+            <span style="color:black; font-weight: bold;"><%= @booking.owner.name %></span>
+            <%= " #{t('host_review_email.checked_in')} " %>
+            <span style="color:black; font-weight: bold;"><%= t("spaces.type.#{@booking.space.s_type}") %></span>
+            <%= " #{t('guest_review_email.at')} " %>
+            <span style="color:black; font-weight: bold;"><%= @booking.space.venue.name %></span>
           </p>
         </div>
       </div>
 
       <div style="display: table; margin: 0 auto; padding-top: 20px;">
-          <!-- TODO: If format days or date -->
+        <div style="padding: 0 15px; text-align: center; display: table-cell;">
+          <p style="line-height: 25px;">
+            <span style="font-weight: bold;"><%= (@booking.hour?) ? @booking.to.to_s(format = :custom_only_day) : ((@booking.to - @booking.from) / 1.day).round %></span>
+            <br>
+            <span style="font-size: 14px;"><%= (@booking.hour?) ? t('guest_review_email.date') : t('guest_review_email.days') %></span>
+          </p>
+        </div>
 
-          <!-- DAYS FORMAT -->
-          <div style="padding: 0 15px; text-align: center; display: table-cell;">
-            <p style="line-height: 25px;">
-              <span style="font-weight: bold;">10</span><!-- TODO: Change days -->
-              <br>
-              <span style="font-size: 14px;"><%= t('guest_review_email.days') %></span>
-            </p>
-          </div>
-          <!-- END DAYS FORMAT -->
-          <!-- DATE FORMAT -->
-          <div style="padding: 0 15px; text-align: center; display: table-cell;">
-            <p style="line-height: 25px;">
-              <span style="font-weight: bold;">10/05/15</span><!-- TODO: Change date -->
-              <br>
-              <span style="font-size: 14px;"><%= t('guest_review_email.date') %></span>
-            </p>
-          </div>
-          <!-- END DATE FORMAT -->
+        <div style="text-align: center; display: table-cell; font-size: 20px; vertical-align: middle; font-weight: 100;">|</div>
 
-          <div style="text-align: center; display: table-cell; font-size: 20px; vertical-align: middle; font-weight: 100;">|</div>
-          <div style="padding: 0 15px; text-align: center; display: table-cell;">
-            <p style="line-height: 25px;">
-              <span style="font-weight: bold;">14:00 PM</span><!-- TODO: Change time -->
-              <br>
-              <span style="font-size: 14px;"><%= t('guest_review_email.check_in') %></span>
-            </p>
-          </div>
-          <div style="text-align: center; display: table-cell; font-size: 20px; vertical-align: middle; font-weight: 100;">|</div>
-          <div style="padding: 0 15px; text-align: center; display: table-cell;">
-            <p style="line-height: 25px;">
-              <span style="font-weight: bold;">16:00 PM</span><!-- TODO: Change time -->
-              <br>
-              <span style="font-size: 14px;"><%= t('guest_review_email.check_out') %></span>
-            </p>
-          </div>
+        <div style="padding: 0 15px; text-align: center; display: table-cell;">
+          <p style="line-height: 25px;">
+            <span style="font-weight: bold;"><%= @booking.quantity %></span>
+            <br>
+            <span style="font-size: 14px;"><%= t('receipt.spaces') %></span>
+          </p>
+        </div>
+
+        <div style="text-align: center; display: table-cell; font-size: 20px; vertical-align: middle; font-weight: 100;">|</div>
+
+        <div style="padding: 0 15px; text-align: center; display: table-cell;">
+          <p style="line-height: 25px;">
+            <span style="font-weight: bold;"><%= @booking.from.to_s(format = (@booking.hour?)? :custom_only_hours : :custom_only_day) %></span>
+            <br>
+            <span style="font-size: 14px;"><%= t('guest_review_email.check_in') %></span>
+          </p>
+        </div>
+
+        <div style="text-align: center; display: table-cell; font-size: 20px; vertical-align: middle; font-weight: 100;">|</div>
+
+        <div style="padding: 0 15px; text-align: center; display: table-cell;">
+          <p style="line-height: 25px;">
+            <span style="font-weight: bold;"><%= @booking.to.to_s(format = (@booking.hour?)? :custom_only_hours : :custom_only_day) %></span>
+            <br>
+            <span style="font-size: 14px;"><%= t('guest_review_email.check_out') %></span>
+          </p>
         </div>
       </div>
 
       <div style="background-color: #f6f6f6; text-align: center; padding: 25px 0; margin: 20px 0;">
-        <a href="" style="background-color: rgb(255, 225, 17); padding: 10px 70px; border-radius: 25px; color: black; font-weight: bold; text-decoration:none; text-transform: uppercase;"><!-- TODO: Change rate link -->
+        <a href='<%= "#{Rails.configuration.base_url}#{client_review_booking_path(@booking)}#{(@booking.space.venue.owner.is_a?(Organization)) ? '?login_as_organization=' + @booking.space.venue.owner.id.to_s : ''}" %>' style="background-color: rgb(255, 225, 17); padding: 10px 70px; border-radius: 25px; color: black; font-weight: bold; text-decoration:none; text-transform: uppercase;">
           <%= t('host_review_email.rate_guest') %>
         </a>
       </div>

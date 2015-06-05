@@ -29,6 +29,7 @@ module Payments
                                   notification_date_int: date_i)
         BookingManager.change_booking_status(@payout.user, @payout.mangopay_payment.booking,
                                              Booking.states[:error_refunding]) if refund
+        @payout.receipt.destroy if @payout.receipt.present?
       end
 
       def fetch_transaction(refund)

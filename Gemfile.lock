@@ -296,6 +296,7 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.9.2)
+    language_list (1.1.0)
     launchy (2.4.2)
       addressable (~> 2.3)
     less (2.5.1)
@@ -579,6 +580,7 @@ DEPENDENCIES
   inherited_resources (~> 1.4.1)
   jquery-rails (~> 3.1.2)
   jquery-turbolinks (~> 2.1.0)
+  language_list
   launchy
   less-rails (~> 2.5.0)
   loadjs (~> 0.0.6)

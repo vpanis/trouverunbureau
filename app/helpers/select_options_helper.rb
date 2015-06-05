@@ -4,6 +4,10 @@ module SelectOptionsHelper
     Venue::SUPPORTED_COUNTRIES.map { |country| [Country.new(country).name, country] }
   end
 
+  def all_countries_options
+    Country.all.sort
+  end
+
   def venue_types_options
     Venue.v_types.map { |t| [t("venues.types.#{t.first}"), t.first] }
   end
@@ -22,9 +26,11 @@ module SelectOptionsHelper
   end
 
   def language_options
-    # TODO: define languages list
-    [[t('languages.es'), 'es'], [t('languages.en'), 'en'], [t('languages.de'), 'de'],
-     [t('languages.it'), 'it'], [t('languages.fr'), 'fr'], [t('languages.pt'), 'pt']]
+    User::LANGUAGES.map { |l| [t("languages.#{l}"), l.to_s] }.sort
+  end
+
+  def all_language_options
+    LanguageList::COMMON_LANGUAGES.map { |l| [t("languages.#{l.iso_639_1}"), l.iso_639_1] }.sort
   end
 
   def space_types_options

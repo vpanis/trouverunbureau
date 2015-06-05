@@ -23,12 +23,18 @@ module Payments
                                           notification_date_int: date_i)
       BookingManager.change_booking_status(
         @mangopay_payment.user_paying, @mangopay_payment.booking, Booking.states[:paid])
+      notify
     end
 
     def retry_worker(transaction_id, date_i, retry_count)
       PayinSuccessForHookWorker.perform_in(retry_count.minutes + 1.second, transaction_id, date_i,
                                            retry_count + 1) if
         retry_count < Rails.configuration.payment.notification_attempts
+    end
+
+    def notify
+      NotificationsMailer.delay.receipt_email(@mangopay_payment.booking.id)
+      NotificationsMailer.delay.receipt_email_host(@mangopay_payment.booking.id)
     end
   end
 end

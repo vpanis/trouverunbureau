@@ -1,5 +1,8 @@
 class ExpireBookingsWorker
   include Sidekiq::Worker
+  include Sidetiq::Schedulable
+
+  recurrence { hourly }
 
   def perform
     Booking.where('state = :pending_payment AND approved_at <= :t',
