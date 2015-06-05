@@ -3,7 +3,7 @@ on_load = ->
     controllers:
       venues: ["index"]
   , (controller, action) ->
-    $('.panel-heading').click ->
-     $(this).toggleClass 'open'
+    $( ".panel-heading a" ).click ->
+      event.stopPropagation()
 
 $(document).ready on_load

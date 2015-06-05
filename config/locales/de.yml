@@ -235,6 +235,8 @@ de:
     edit_venue: 'Edit venue'
     create_venue: 'Create new venue'
     preview: 'Preview'
+    complete: 'Complete'
+    incomplete: 'Incomplete'
     edit:
       list_your_venue: 'List your venue'
       start_by: 'Start by telling us about your venue...'

@@ -45,6 +45,12 @@
       -ms-transform: translateY(-50%);
       -webkit-transform: translateY(-50%);
       transform: translateY(-50%);
+      .complete-status {
+        color: $aqua;
+      }
+      .incomplete-status {
+        color: $red;
+      }
       .edit,
       .arrow {
         display: inline-block;
@@ -52,24 +58,19 @@
       .edit {
         margin-right: 50px;
       }
-      .arrow {
-        vertical-align: middle;
-      }
+    }
+    .arrow {
+      vertical-align: middle;
+      -ms-transform: rotate(-180deg);
+      -webkit-transform: rotate(-180deg);
+      transform: rotate(-180deg);
     }
     &.collapsed {
       .arrow {
-        -ms-transform: rotate(-180deg);
-        -webkit-transform: rotate(-180deg);
-        transform: rotate(-180deg);
         transform-origin: 50% 50%;
-      }
-    }
-    &.open {
-      .arrow {
-        -ms-transform: rotate(-180deg);
-        -webkit-transform: rotate(-180deg);
-        transform: rotate(-180deg);
-        transform-origin: 50% 50%;
+        -ms-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
       }
     }
     .venue-bar {
