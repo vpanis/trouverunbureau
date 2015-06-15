@@ -17,7 +17,7 @@
         p.value() ${{selected_booking.fee}}({{selected_booking.space.currency}})
   .col-md-3.total
     p.concept.uppercase = t('inbox.total_payout')
-    p.value() ${{selected_booking.price + selected_booking.deposit - selected_booking.fee}}({{selected_booking.space.currency}})
+    p.value() ${{selected_booking.price + selected_booking.deposit - selected_booking.fee | number:2}}({{selected_booking.space.currency}})
 .row.header ng-if="!selected_booking.venue_owner"
   .col-md-9.detail
     .row
@@ -33,4 +33,4 @@
         p.value() ${{selected_booking.deposit}}({{selected_booking.space.currency}})
   .col-md-3.total
     p.concept.uppercase = t('inbox.total_rental')
-    p.value() ${{(selected_booking.price + selected_booking.deposit)}}({{selected_booking.space.currency}})
+    p.value() ${{(selected_booking.price + selected_booking.deposit) | number:2}}({{selected_booking.space.currency}})
