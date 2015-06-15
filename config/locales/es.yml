@@ -568,7 +568,7 @@ es:
     change_picture: 'Change picture'
     add_manager: 'Add Manager'
     name: 'Name'
-    email: 'Email'
+    email: 'manager@example.com'
     phone: 'Phone'
     members: 'Managers'
     members_subtitle: 'Managers subtitle'

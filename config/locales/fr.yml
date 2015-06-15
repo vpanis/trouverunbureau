@@ -568,7 +568,7 @@ fr:
     change_picture: 'Changez de photo'
     add_manager: 'Ajoutez un gérent'
     name: 'Nom'
-    email: 'Email'
+    email: 'manager@example.com'
     phone: 'Téléphone'
     members: 'Gérent'
     members_subtitle: 'Managers subtitle'
