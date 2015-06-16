@@ -1,7 +1,7 @@
 #FRENCH
 fr:
   errors:
-    email_taken: 'The user already exists'
+    email_taken: "Cet email est déjà inscrit"
   languages:
     af: Afrikaans
     ar: Arabic
@@ -91,589 +91,589 @@ fr:
       short_name: 'aud'
       long_name: 'Australian Dollars'
   commons:
-    save: 'Save'
-    cancel: 'Cancel'
-    close: 'Close'
-    upload_file: 'Upload file'
-    unknown: 'unknown'
-    add: 'add'
-    open: 'Open'
-    delete: 'delete'
-    add_image: 'Add an image'
-    add_space: 'Create new space'
-    pay: pay
+    save: 'Sauvegarder'
+    cancel: 'Annuler'
+    close: 'Fermer'
+    upload_file: 'Charger le fichier'
+    unknown: 'Inconnu'
+    add: 'Ajouter'
+    open: 'Ouvrir'
+    delete: 'Effacer'
+    add_image: 'Ajouter une photo'
+    add_space: 'Ajouter un Espace'
+    pay: 'payer'
   session:
-    email: 'Email address'
-    password: 'Password'
-    login: 'Log in'
-    logout: 'Log out'
-    fb_login: 'Log in with Facebook'
-    keep_session: 'Keep me logged in'
-    forgot_password: 'Forgot password?'
-    not_registered: 'Not registered?'
-    already_registered: 'Already registered?'
-    sign_up_here: 'Sign up here'
-    login_here: 'Log in here'
-    or: or
-    signup: 'Sign up'
-    full_name: 'First and Last name'
-    choose_password: 'Choose Password'
-    password: 'Password'
-    reset_password: 'Reset password'
-    reset_password_help: 'Enter the e-mail address associated with your account.'
-    change_your_password: 'Change your Password'
-    change_password: 'Change Password'
-    date_of_birth: Date of birth
-    country_of_residence: Country of residence
-    nationality: Nationality
-    terms: 'I accept the'
+    email: 'Adresse Email'
+    password: 'Mot de passe'
+    login: 'Connexion'
+    logout: 'Déconnexion'
+    fb_login: 'Connexion avec Facebook'
+    keep_session: 'Rester connecté'
+    forgot_password: 'Mot de passe oublié'
+    not_registered: 'Pas encore inscrit?'
+    already_registered: 'Déjà inscrit'
+    sign_up_here: 'Inscrivez-vous ici'
+    login_here: 'Connectez-vous ici'
+    or: 'ou'
+    signup: 'Inscription'
+    full_name: 'Prénom et Nom'
+    choose_password: 'Choisir mot de passe'
+    password: 'Mot de passe'
+    reset_password: 'Réinitialiser le mot de passe'
+    reset_password_help: 'Entrez votre adresse mail associée à votre compte.'
+    change_your_password: 'Changer votre mot de passe'
+    change_password: 'Changer de mot de passe'
+    date_of_birth: 'Date de naissance'
+    country_of_residence: 'Pays de résidence'
+    nationality: 'Nationalité'
+    terms: "J'accepte les"
   home:
-    sign_in: 'Log in'
-    list_your_space: "List your space"
-    profile: Profile
-    manage_your_venues: Manage your venues
+    sign_in: 'Se connecter'
+    list_your_space: 'Publiez votre annonce'
+    profile: 'Profil'
+    manage_your_venues: 'Gérer vos espaces'
     header:
-      title: 'Everyone needs a workspace'
-      subtitle: 'Rent unique offices or meeting rooms where and when you need them.'
-      search_text: 'Where do you want your Desk?'
-      find: 'Find'
+      title: "Bien plus qu'un bureau"
+      subtitle: "Reservez un bureaux ou votre salle de reunion sur Deskpotting c'est choisir de travaillez où et quand vous voulez. A vous de décidez."
+      search_text: 'Où voulez-vous de votre bureau?'
+      find: 'Trouver'
     features:
-      title: 'features'
-      subtitle: 'Why DeskSpotting'
+      title: 'Particularités'
+      subtitle: 'Pourquoi DeskSpotting?'
       flexibility:
-        title: 'Flexibility'
-        text: 'Wherever, whenever book individual workspace, entire offices or meeting rooms for a couple of hours, a day, a month or more.'
+        title: 'Flexibilité'
+        text: "Reservez un bureaux ou votre salle de reunion sur Deskpotting c'est choisir de travaillez où et quand vous voulez. A vous de décidez."
       networking:
         title: 'Networking'
-        text: 'DeskSpotting helps you find inspiring workplaces based on your professional interests.'
+        text: 'Avec DeskSpotting trouvez un espace qui vous ressemble, et enrichissez votre reseau professionnel.'
       easy:
-        title: 'It’s Easy'
-        text: 'With one click book your workspace using your credit card. No more contract negotiations, wiring funds and paying deposits directly to landlords.'
+        title: "C'est facile"
+        text: 'Fini la paperasse, les contrats. Reservez et payez en un clic avec votre carte de crédit. Votre paiement est transféré en toute securité.'
       no_fees:
-        title: 'No fees'
-        text: 'Find your workspace, book it and get on with your business.'
+        title: 'Pas de frais'
+        text: 'Trouvez et reservez votre espace, en restant concentré sur votre business.'
     your_space:
-      title: 'find your space'
-      subtitle: 'Everyone should have an inspiring workspace'
-      description: 'Looking for a cool place to work for you or your team in your home city? Need a place to work or meet with clients when traveling? Let DeskSpotting help you find great workplaces that meet your needs - whenever, wherever.'
+      title: 'Trouver votre espace'
+      subtitle: 'Tout le monde a le droit a un bureau qui lui ressemble'
+      description: "Vous cherchez dans votre ville un endroit confortable pour travailler, seul ou en équipe? Vous avez besoin d’un espace pour recevoir vos clients? Deskspotting vous trouvera les espaces qu’il vous faut."
       tabs:
-        featured: 'featured'
-        workspaces: 'workspaces'
-        trending: 'trending cities'
-      workspaces: 'workspaces'
-      see_all: 'See all'
+        featured: 'Coups de coeur'
+        workspaces: 'Postes de travail'
+        trending: 'Villes tendance'
+      workspaces: 'Postes de travail'
+      see_all: 'Tout voir'
     list_space:
-      title: 'List your space!'
-      content: 'Have extra workspace or want to sublet your office? List on DeskSpotting and let your space earn you money, meet interesting people and reduce your fixed costs. You decide when and to whom you rent. There is no obligation and no fee to list.'
-      learn_more: 'Learn More'
+      title: 'Publiez votre annonce'
+      content: "Avec DeskSpotting, gagnez de l’argent avec vos espaces libres tout en créant un environnement de travail stimulant; Réduiser vos coûts, décidez où, quand et avec qui vous partagez votre espace, sans engagement, sans frais d'annonce."
+      learn_more: 'En savoir plus'
     quotes:
-      title: 'quotes'
+      title: "Avis D'utilisateurs"
       subtitle: 'Lorem ipsum dolor sit amet'
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
     footer:
-      company: 'Company'
-      join_us: 'Join us'
-      about_us: 'About us'
-      our_terms: 'Our Terms'
-      how_it_works: 'How it works'
-      faq: 'F.A.Q.'
+      company: 'Société'
+      join_us: 'Rejoignez-nous'
+      about_us: 'A propos'
+      our_terms: 'Nos Conditions'
+      how_it_works: 'Comment ça marche'
+      faq: 'Aide'
       contact: 'Contact'
       language:
         en: 'eng'
-      reserved_rights: ' 2014 DeskSpotting. All rights reserved.'
-      terms_of_service: 'Terms of service'
-      privacy_policy: 'Privacy policy'
-      more: 'more'
+      reserved_rights: ' 2015 DeskSpotting Ltd Tous Droits Réservés.'
+      terms_of_service: 'Conditions de service'
+      privacy_policy: 'Politique de confidentialité'
+      more: 'plus'
   menu:
-    search: 'Search'
-    profile: 'Profile'
-    inbox: 'Inbox'
-    bookings: 'Bookings'
-    venues: 'Venues'
+    search: 'Rechercher'
+    profile: 'Profil'
+    inbox: 'Messagerie'
+    bookings: 'Réservations'
+    venues: 'Espaces'
     wishlist: 'Wish List'
-    account: 'Account'
-    change_user: 'Use DeskSpotting as:'
-    create_organization: 'Create organization'
-    messages: Inbox
+    account: 'Compte'
+    change_user: 'Utilisé DeskSpotting en tant que:'
+    create_organization: 'Créer un orgniasation'
+    messages: 'Messagerie'
   search:
-    count: 'Desks found'
-    filters: 'Filters'
-    workspace: 'Workspace'
-    neighbourhood: 'Neighbourhood'
+    count: 'Espaces trouvés'
+    filters: 'Filtres'
+    workspace: 'Postes de travail'
+    neighbourhood: 'Quartier'
     profession: 'Profession'
-    capacity: 'Capacity'
-    check_in: 'Check In'
-    show_filters: 'Show listings'
-    clear_filters: 'Clear filters'
+    capacity: 'Nombre de personnes'
+    check_in: 'Check-In'
+    show_filters: 'Afficher les postes'
+    clear_filters: 'Plus de filtres'
     limits: '%{from} - %{to} more than %{count} desks'
-    no_results: "No spaces matched your search"
-    refine: 'Refine your search using the filters'
-    teams: 'Teams'
-    individual: 'Individual'
+    no_results: 'Pas de postes '
+    refine: "Affinez votre recherche a l'aide de filtres"
+    teams: 'Equipes'
+    individual: 'Individus'
   venues:
     types:
-      coworking_space: 'Coworking space'
-      startup_office: 'Startup office'
+      coworking_space: 'Coworking'
+      startup_office: 'Startup'
       hotel: 'Hotel'
       corporate_office: 'Corporate office'
-      business_center: 'Business Center'
-      design_studio: 'Design Studio'
+      business_center: "Centre d'affaire"
+      design_studio: 'Studio de design'
       loft: 'Loft'
-      apartment: 'Apartment'
-      house: 'House'
-      cafe: 'Cafe'
+      apartment: 'Apartement'
+      house: 'Maison'
+      cafe: 'Café'
       restaurant: 'Restaurant'
     amenities:
-      whiteboards: whiteboards
-      kitchen: kitchen
-      security: security
-      wifi: 'internet speed (wifi)'
-      printer_scanner: 'printers/scanner'
-      chill_area: chill area
-      photocopier: photocopier
-      conference_rooms: conference rooms
-      elevators: elevators
-      outdoor_space: outdoor space
-      team_bookings: team bookings
-      individual_bookings: individual bookings
-      shower: shower
-      fax: fax
-      wheelchair_access: wheelchair access
-      air_conditioning: air conditioning
-      pets_allowed: pets allowed
-      mail_service: mail service
-      gym: gym
-      cafe_restaurant: cafe/restaurant
-      phone_booth: phone booth
-      tv: tv
-      projector: projector
-      concierge: concierge
-      parking: parking
-      water_fountain: water fountain
-      reception_service: reception service
-      cleaning_service: cleaning service
+      whiteboards: 'tableaux blancs'
+      kitchen: 'cuisine'
+      security: 'sécurité'
+      wifi: 'wifi'
+      printer_scanner: 'imprimante/scanner'
+      chill_area: 'espace détente'
+      photocopier: 'photocopieur'
+      conference_rooms: 'salle de conférence'
+      elevators: 'ascenseur'
+      outdoor_space: 'espace exterieur'
+      team_bookings: "réservations d'équipe"
+      individual_bookings: 'réservation individuelle'
+      shower: 'douche'
+      fax: 'fax'
+      wheelchair_access: 'accès chaise roulante'
+      air_conditioning: 'air conditioné'
+      pets_allowed: 'animaux de compagnie autorisés'
+      mail_service: 'service courrier'
+      gym: 'gym'
+      cafe_restaurant: 'café/restaurant'
+      phone_booth: 'cabine téléphonique'
+      tv: 'télévision'
+      projector: 'projecteur'
+      concierge: 'service concierge'
+      parking: 'parking'
+      water_fountain: "fontaine d'eau"
+      reception_service: 'service réceptioniste'
+      cleaning_service: 'service de nettoyage'
     professions:
-      technology: technology
-      public_relations: public relations
-      entertainment: entertainment
-      entrepreneur: entrepreneur
-      startup: startup
-      media: media
-      design: design
-      architect: architect
-      advertising: advertising
-      finance: finance
-      consultant: consultant
-      freelance: freelance
-      journalist: journalist
-      fashion: fashion
-      lawyer: lawyer
-      professor: professor
-      all: All professions are welcome
+      technology: 'technologie'
+      public_relations: 'relation publique'
+      entertainment: 'divertissement'
+      entrepreneur: 'entrepreneur'
+      startup: 'startup'
+      media: 'médias'
+      design: 'design'
+      architect: 'architecte'
+      advertising: 'publicité'
+      finance: 'finance'
+      consultant: 'consultant'
+      freelance: 'freelance'
+      journalist: 'journaliste'
+      fashion: 'mode'
+      lawyer: 'avocat'
+      professor: 'professeur'
+      all: 'Toutes professions bienvenue'
     show:
-      share: 'Share'
+      share: 'Partager'
       report_venue: 'Report Venue'
-      venue: 'venue'
-      workspaces: 'workspaces'
-      chosen_workspace: 'workspace chosen in search'
-      per_hour: 'Per hour'
-      per_day: 'Per day'
-      per_month: 'Per month'
-      per_week: 'Per week'
-      booking_inquiry: 'Booking inquiry'
-      about_venue: 'About venue'
-      location: 'Location'
-      opening_hours: 'Opening hours'
-      closed: 'Closed'
-      amenities: 'Amenities'
+      venue: 'Espace'
+      workspaces: 'Postes de Travail'
+      chosen_workspace: 'Postes de travail recherché'
+      per_hour: 'Par heure'
+      per_day: 'Par jours'
+      per_month: 'Par mois'
+      per_week: 'Par semaine'
+      booking_inquiry: 'Envoyer'
+      about_venue: "À propos de l'espace"
+      location: 'Emplacement'
+      opening_hours: "Horaires d'ouverture"
+      closed: 'Fermé'
+      amenities: 'Équipements'
       professions: 'Professions'
       why_deskspotting:
-        title: 'Why Book on DeskSpotting?'
-        no_booking_fees: 'No booking fees.'
-        booking_time: 'Book only the time you need.'
-        secure_payments: 'Secure payments.'
-        desposit_held: 'Deposit held in escrow.'
-        verified_venues: 'Verified venues.'
-        flexible_cancellations: 'Flexible Cancellations.'
+        title: 'Pourquoi réserver avec DeskSpotting?'
+        no_booking_fees: 'Pas de frais de réservation.'
+        booking_time: 'Réserver le temps qui vous convient'
+        secure_payments: 'Paiements sécurisés'
+        desposit_held: 'Caution détenu en compte séquestre'
+        verified_venues: 'Tous les bureaux sont vérifiés'
+        flexible_cancellations: "Conditions d'annulations flexibles"
       reviews: 'Reviews'
-      no_reviews: 'No reviews'
-    edit_venue: 'Edit venue'
-    create_venue: 'Create new venue'
-    preview: 'Preview'
+      no_reviews: "Pas d'avis"
+    edit_venue: "Modifier l'espace"
+    create_venue: 'Créez un nouveau espace'
+    preview: 'Aperçu'
     complete: 'Complete'
     incomplete: 'Incomplete'
     edit:
-      list_your_venue: 'List your venue'
-      start_by: 'Start by telling us about your venue...'
-      opening_hours: 'Opening hours'
-      standard_times: 'Standard times?'
-      custom_times: 'Custom times?'
-      opening_time: 'Opening Time'
-      closing_time: 'Closing Time'
-      add_venue_logo: 'Add venue logo'
-      change_logo: 'Change logo'
-      name: 'Venue name'
-      street: 'Street address'
-      country: 'Country'
-      email: 'General Email'
-      town: 'City / Neighborhood'
-      postal_code: 'Zip / Postal code'
-      phone: 'Phone number'
-      v_type: 'Venue type'
-      currency: 'Currency'
+      list_your_venue: 'Publier votre annonce'
+      start_by: 'Dites nous en plus sur votre espace'
+      opening_hours: "Horaires d'ouverture"
+      standard_times: 'Horaires standards'
+      custom_times: 'Horaires particuliers'
+      opening_time: "Heure d'ouverture"
+      closing_time: "Heure de fermeture"
+      add_venue_logo: "Ajouter le logo"
+      change_logo: 'Modifier le logo'
+      name: "Nom de l'espace"
+      street: 'Adresse'
+      country: 'Pays'
+      email: 'Email'
+      town: 'Ville'
+      postal_code: 'Code postal'
+      phone: 'Numéro de téléphone'
+      v_type: "Type d'espace"
+      currency: 'Devise'
       description: 'Description'
-      office_rules: 'Office Rules'
-      professions: 'Preferred professions'
-      select_professions: 'Select preferred professions'
-      add_professions: 'Add professions'
-      info_professions: 'Share with guests the professions that are welcome in your venue'
+      office_rules: 'Règlement intérieur'
+      professions: 'Professions recherchées'
+      select_professions: 'Sélectionnez les professions recherchées'
+      add_professions: 'Ajoutez profession'
+      info_professions: 'Quelles porfessions souhaitez-vous acceuillir.'
     collection_account:
-      individual: Individual
-      business: Business
-      funding: Funding
-      first_name: First Name
-      last_name: Last Name
-      email: Email
-      phone: Phone
-      date_of_birth: Date of Birth
+      individual: 'Individu'
+      business: 'Entreprise'
+      funding: 'Financement'
+      first_name: 'Prénom'
+      last_name: 'Nom'
+      email: 'Email'
+      phone: 'Téléphone'
+      date_of_birth: 'Date de naissance'
       ssn: SSN
-      street_address: Street Address
-      locality: Locality
+      street_address: 'Adresse'
+      locality: 'Ville'
       region: Region
-      postal_code: Postal Code
-      legal_name: Legal Name
-      dba_name: DBA Name
+      postal_code: 'Code postal'
+      legal_name: 'Dénomination sociale'
+      dba_name: 'Exerce sous le nom de'
       tax_id: Tax ID
       descriptor: Descriptor
       account_number: Account Number
       routing_number: Routing Number
-      previous_last_4: Previous Last 4
-      required: Required
+      previous_last_4: 'Précédent dernier 4'
+      required: 'Requis'
       only_tax_id_present: Only if tax id present
       only_legal_name_present: Only if legal name present
-      verifying_data: We are verifying your bank account data. This could take a few minutes.
+      verifying_data: 'Nous sommes entrain de vérifier votre information bancaire. Ceci pourait prendre quelques minutes'
   wishlist:
-    no_favourites: "You don't have any favorite spaces"
-    day: 'day'
-    month: 'month'
-    hour: 'hour'
-    week: 'week'
+    no_favourites: "Vous n\'avez pas d\'espaces favoris"
+    day: 'jour'
+    month: 'mois'
+    hour: 'heure'
+    week: 'semaine'
   users:
-    edit_profile: 'Edit profile'
-    about_me: 'About me'
-    required_fields: 'Required fields'
-    optional_fields: 'Optional fields'
-    change_picture: 'Change picture'
-    enter_languages: 'Enter the languages you speak'
-    spoken_languages: 'Spoken Languages'
-    add_languages: 'Add languages'
-    info_no_share: 'we will never share this information with anyone'
-    info_share_street: 'we will only share your street address with a host/guest once a booking has been made'
-    info_share_phone: 'we will only share your phone number with a host/guest once a booking has been made'
-    info_share_street: 'we will only share your street address with a host/guest once a booking has been made'
-    info_share_email: 'we will only share your email with a host/guest once a booking has been made'
-    info_share_emergency: 'we will only share your emergency contact information with a host once a booking has been made'
-    emergency_contact: 'Emergency Contact'
+    edit_profile: 'Modifier profil'
+    about_me: 'Votre description'
+    required_fields: 'Champs requis'
+    optional_fields: 'Champs facultatifs'
+    change_picture: 'Modifier photo'
+    enter_languages: 'Indiquer les langues que vous parlez'
+    spoken_languages: 'Langues parlées'
+    add_languages: 'Ajoutez une langue'
+    info_no_share: 'Nous partagerons jamais cette information avec quiconque'
+    info_share_street: 'Nous partagerons votre adresse avec personne'
+    info_share_phone: "Nous partagerons vos coordonées téléphonique avec l'hôte/visiteur uniquement si la réservation est confirmée"
+    info_share_street: 'Nous partagerons votre adresse avec le visiteur uniquement si la réservation est confirmée'
+    info_share_email: "Nous partagerons votre email avec personne"
+    info_share_emergency: "Nous partagerons les coordonnées de votre contact d'urgence avec l'hôte uniquement si la réservation est confirmée"
+    emergency_contact: "Contact en cas d'urgences"
     genders:
-      m: 'Male'
-      f: 'Female'
-    first_name: 'First name'
-    last_name: 'Last Name'
-    gender: 'Gender'
-    phone: 'Phone Number'
+      m: 'Homme'
+      f: 'Femme'
+    first_name: 'Prénom'
+    last_name: 'Nom'
+    gender: 'Sexe'
+    phone: 'Numéro de téléphone'
     profession: 'Profession'
-    interests: 'More on your carreer and profession'
+    interests: 'Plus sur vos intérêts professionels'
     email: 'Email'
-    company_name: 'Company name'
-    language: 'Language'
-    date_of_birth: 'Date of birth'
-    location: 'Location'
-    nationality: 'Nationality'
-    country_of_residence: 'Country of residence'
-    emergency_name: 'Name'
-    emergency_phone: 'Phone number'
+    company_name: "Nom d'entreprise"
+    language: 'Langues'
+    date_of_birth: 'Date de naissance'
+    location: 'Ville'
+    nationality: 'Nationalité'
+    country_of_residence: 'Pays de résidence'
+    emergency_name: 'Nom'
+    emergency_phone: 'Numéro de téléphone'
     emergency_email: 'Email'
-    emergency_relationship: 'Relationship'
+    emergency_relationship: 'Relation'
     account:
-      email_notifications: 'Email notifications'
-      i_want_to_receive: 'I want to receive'
-      you_can_disable: 'You can disable this at any time.'
-      person_message: 'I receive a message from another person on DeskSpotting.'
-      outstanding_booking: 'My outstanding booking inquiry is accepted or declined.'
-      booking_inquiry: 'I receive a booking inquiry.'
-      account_changes: 'Changes are made to my DeskSpotting account or listing.'
+      email_notifications: 'Notifications par emails'
+      i_want_to_receive: 'Je veux les recevoir'
+      you_can_disable: 'Desactivez les'
+      person_message: "Quand je reçois un message d'un hôte ou visiteur"
+      outstanding_booking: 'Ma demande de réservation est acceptée ou refusée.'
+      booking_inquiry: 'Quand je reçois une demande de réservation.'
+      account_changes: 'Quand des modifications sont faites a mon compte ou mon annonce.'
   spaces:
     types:
-      conference_room: 'Conference room'
-      meeting_room: 'Meeting room'
-      private_office: 'Private office'
-      fixed_desk: 'Fixed desk'
-      hot_desk: Hot desk
-      communal_space: Communal space
+      conference_room: 'Salle de Conférence'
+      meeting_room: 'Salle de réunion'
+      private_office: 'Bureau privé'
+      fixed_desk: 'Poste fixe'
+      hot_desk: 'Bureau de passage'
+      communal_space: 'Espace commun'
       home_office: 'Home Office'
-      all: 'All workspaces'
-    type: 'Workspace type'
-    name: 'Name'
-    capacity: 'Capacity'
-    quantity: 'Quantity'
+      all: 'Tous les postes'
+    type: 'Type de postes'
+    name: 'Nom'
+    capacity: 'Nombre de personnes'
+    quantity: 'Nombre de postes'
     description: 'Description'
-    space_photos: 'Space photos'
-    pricing_in: "Pricing in %{currency}"
-    per_hour: 'Per hour'
-    per_day: 'Per day'
-    per_month: 'Per month'
-    hour_price: 'Hour price'
-    day_price: 'Day price'
-    month_price: 'Month price'
-    deposit: 'Deposit'
-    info_capacity: How many people can work in this space?
-    info_quantity: Number of these spaces you would you like to list on DeskSpotting
-    info_description: Describe this workspace and tell potential guests why it is a good place to work
-    info_photos:  THE BETTER THE PHOTOS THE MORE INTEREST YOU WILL GENERATE IN YOUR SPACE. SHARE PICTURES THAT ACCURATELY REFLECT THE OVERALL ATMOSPHERE OF YOUR SPACE
-    info_pricing: Set the target price you would like your space to be offered at for different time frames. Pricing can always be modified at any time and on a case by case basis
-    info_deposit: All deposits are held in escrow for the security of the host and guest
+    space_photos: 'Photos'
+    pricing_in: "Prix en %{devise}"
+    per_hour: 'Par heure'
+    per_day: 'Par jour'
+    per_month: 'Par mois'
+    hour_price: 'Prix par heure'
+    day_price: 'Prix par heure'
+    month_price: 'Prix par mois'
+    deposit: 'Caution'
+    info_capacity: 'Combien de personnes peuvent travailler à ce poste?'
+    info_quantity: "Combien de postes voulez-vous publier sur DeskSpotting"
+    info_description: "Décrivez ce poste de travail et informez vos visiteurs potentiels pourquoi c'est le bon endroit pour travailler."
+    info_photos:  "En choisissant des photos de qualité vous suscitez l'intérêt pour votre espace de travail. Partagez des photos qui reflètent précisément l'atmosphère de votre espace."
+    info_pricing: 'Fixez le prix que vous souhaitez en fonction des durées que vous proposez. Le prix peut être modifier à tout moment et au cas par cas.'
+    info_deposit: "Toutes les cautions sont gardées en compte séquestre pour la sécurité de l'hôte et du visiteur."
   inbox:
     messages: 'Messages'
-    write_message: 'Write a Message'
-    inquiry: 'Inquiry'
-    space_rental: 'Space rental'
-    deposit: 'Deposit'
-    ds_commission: 'DS commission'
-    total_rental: 'Total Rental'
-    total_payout: 'Total Payout'
-    info_space_rental: The amount you earn. It's held in escrow until check in time. 24 hours later it's in your account
-    info_deposit: It will be held in escrow until 72 hours after the guest's checkout
-    info_fee: It's always 15%
-    info_client_space_rental: The space rental amount. It will be held in escrow until checkin time
-    info_client_deposit: It will be held in escrow and then reimbursed to you 72 hours after checkout
+    write_message: 'Écrivez un message'
+    inquiry: 'Demande'
+    space_rental: "Réservation d'espace"
+    deposit: 'Caution'
+    ds_commission: 'Frais de service DS'
+    total_rental: 'Total réservation'
+    total_payout: 'Paiement Total'
+    info_space_rental: "Les paiements de vos visiteurs sont gardés en compte séquestre jusqu'à leur check-in dans votre espace."
+    info_deposit: 'La caution sera gardé 72 heures après le check-out du visiteur.'
+    info_fee: "20% pour toute réservation d'un mois ou moins. 10% pour toute réservation au delà d'un mois après le premier mois. 10% pour toute réservation de mois en mois après le premier mois."
+    info_client_space_rental: "Le montant de la réservation est gardé en compte séquestre jusqu'au check-in."
+    info_client_deposit: 'La caution est gardée en compte séquestre et sera rembourser 72 heures après votre check-out.'
   reviews:
-    guest_review: 'Guest review'
-    space_review: 'Space review'
+    guest_review: 'Avis sur le visiteur'
+    space_review: "Avis sur l'espace"
     rate_space: "Rate %{space} of %{venue}"
     date: 'Date'
-    spaces: 'Spaces'
-    check_in: 'Check In'
-    check_out: 'Check Out'
-    comment: 'Comment (The review is about to write will be seen only by other hosts)'
+    spaces: 'Espaces'
+    check_in: 'Check-In'
+    check_out: 'Check-Out'
+    comment: "Votre avis sera seulement partagé avec d'autres hôtes"
   bookings:
-    review: Review
-    view_receipt: View Receipt
-    cancel: Cancel
-    delete: Delete
-    all_venues: All Venues
-    current: Current bookings
-    cancelled: Cancelled bookings
-    no_bookings: 'There are no bookings'
+    review: "Avis d'utilisteur"
+    view_receipt: 'Voir reçu'
+    cancel: 'Annuler'
+    delete: 'Effacer'
+    all_venues: 'Tous les espaces'
+    current: 'Réservations en cours'
+    cancelled: 'Réservation annulé'
+    no_bookings: "Il n'y a pas de réservation"
     state:
-      pending_authorization: 'pending'
-      pending_payment: 'approved'
-      paid: 'paid'
-      canceled: 'cancelled'
-      denied: 'denied'
-      expired: 'expired'
+      pending_authorization: 'En attente'
+      pending_payment: 'En attente de paiement'
+      paid: 'Payé'
+      canceled: 'Annulé'
+      denied: 'Refusé'
+      expired: 'Expiré'
   booking_inquiry:
-    time_frame: 'Select Time Frame'
-    check_in: 'Check in'
-    check_out: 'Check_out'
-    spaces_amount: 'Number of spaces'
+    time_frame: 'Sélectionner la durée'
+    check_in: 'Check-In'
+    check_out: 'Check-Out'
+    spaces_amount: 'Nombre de postes'
     date: 'Date'
-    your_message: 'Your message'
-    message_placeholder: 'Tell the host more about yourself and your professional interests.'
+    your_message: 'Votre message'
+    message_placeholder: 'Dites à votre hôte plus sur vous même et vos intérêts professionels.'
     feature_1: 'No booking fees.'
-    feature_2: 'Deposits held in scrows.'
-    feature_3: 'Book only the time you need.'
-    feature_4: 'Verified venues.'
-    feature_5: 'Secure payments.'
-    feature_6: 'Flexible cancelations.'
-    back: 'Back'
-    send_inquiry: 'Send inquiry'
-    month_amount: 'Number of months'
+    feature_2: 'Cautions gardé en compte séquestre.'
+    feature_3: 'Réservé le temps dont vous avez besoin.'
+    feature_4: 'Espaces vérifiés.'
+    feature_5: 'Paiements sécurisés.'
+    feature_6: "Conditions d'annulation flexibles."
+    back: 'Retour'
+    send_inquiry: 'Envoyer demande'
+    month_amount: 'Nombre de mois'
   edit_venue_progress:
-    status: status
-    venue: Venue
-    details: Details
-    amenities: Amenities
-    photos: Photos
-    spaces: Spaces
-    publish: publish
-    delete_venue: Delete venue
-    incomplete: incomplete
+    status: 'Statut'
+    venue: 'Espace'
+    details: 'Détails'
+    amenities: 'Equipements'
+    photos: 'Photos'
+    spaces: 'Postes'
+    publish: 'Publier'
+    delete_venue: 'Effacer espace'
+    incomplete: "incomplet"
     collection_account: Collection Account
-    payout_method: Payout Method
+    payout_method: 'Méthode de paiement'
   new_message_email:
-    subject: 'You have a new message - Booking #%{booking_id}'
-    hi: Hi
-    got_new_message: Got a new message from
-    reply: Or reply directly on this mail.
-    view_on_deskspotting: View on DeskSpotting
-    team: The DeskSpotting Team
+    subject: 'Vous avez un nouveau message %{de}'
+    hi: 'Salut'
+    got_new_message: 'Nouveau message de la part de'
+    reply: 'Ou répondez directement via email'
+    view_on_deskspotting: 'Visualiser sur DeskSpotting'
+    team: "L'Équipe DeskSpotting"
   host_cancellation_email:
     subject: 'Host Cancellation - Booking #%{booking_id}'
-    sorry_cancel: Sorry to see you had to cancel your booking of
-    unfortunately: "Unfortunately your guest, %{name}, had to cancel is booking with you for"
-    space: Space
-    date: Date
-    spaces: Spaces
-    check_in: Check In
-    check_out: Check Out
-    payout: You will receive a payout of
-    transferred: transferred to
-    bank_name: Bank Name
-    account_number: Account Number
-    holder: Holder
-    funds: Funds transferred On
-    refunded: "Your guest %{name} will be refunded"
-    terms1: If you have any questions about our
-    terms2: feel free to read
-    cancellation_policy: cancellation policy
-    terms_of_service: our terms of service
+    sorry_cancel: "Nous regrettons votre annulation de"
+    unfortunately: "Malheureusement votre Visiteur, %{nom}, a du annuler sa réservation de"
+    space: 'Poste'
+    date: 'Date'
+    spaces: 'Postes'
+    check_in: 'Check-In'
+    check_out: 'Check-Out'
+    payout: 'Vous allez recevoir un paiement de'
+    transferred: 'Versé sur'
+    bank_name: 'Nom de votre banque'
+    account_number: 'Numéro de compte'
+    holder: 'Déteneur'
+    funds: "Fonds versés le"
+    refunded: "Votre visiteur %{name} sera remboursé"
+    terms1: 'Si vous avez des questions sur'
+    terms2: "N'héistez pas à lire"
+    cancellation_policy: "Politique d'annulation"
+    terms_of_service: 'Nos conditions de service'
   guest_review_email:
     subject: 'Guest Review - %{type} #%{guest_id}'
-    hi: Hi
-    checked_out: You have checked out of
-    at: at
-    check_in: Check In
-    check_out: Check Out
-    days: Days
-    date: Date
-    rate_stay: rate your stay
+    hi: "Salut"
+    checked_out: "Vous avez effectuez le check-out de"
+    at: 'le'
+    check_in: 'Check-In'
+    check_out: 'Check-Out'
+    days: 'Jours'
+    date: 'Date'
+    rate_stay: "Notez l'espace?"
   host_review_email:
     subject: 'Host Review - Venue #%{venue_id}'
-    rate_guest: rate your guest
-    your_guest: Your Guest
-    checked_in: has checked in of
+    rate_guest: "Notez le visiteur?"
+    your_guest: 'Votre visiteur'
+    checked_in: 'A effectuer le Check-In de'
   receipt_email:
     subject_client: 'Receipt - Booking #%{booking_id}'
     subject_host: 'Receipt Host - Booking #%{booking_id}'
   reset_password_email:
-    this_link: just use this link
-    forgot_password:  It seems like you forgot your DeskSpotting password.
-    dont_worry: Don't worry it happens to the best of us
-    new_password: To create the new password and your back in business
-    not_request: If you did not make this request, all good, just disregard
-    stay_same: this email and your password will stay the same.
+    this_link: 'Utilisez ce lien'
+    forgot_password:  'Il semble que vous avez oubliez votre mot de passe.'
+    dont_worry: 'Ne vous inquiétez pas ça nous arrive aussi!'
+    new_password: 'Créez votre nouveau mot de passe.'
+    not_request: "Si vous n'avez pas fait cette demande, pas de probleme, veuillez simplement ignorer ce message."
+    stay_same: 'votre email et mot de passe resteront les mêmes.'
   new_space:
-    list_new_space: List new space
-    space_photos: Space photos
-    save_to_add_photos: Save space to start adding photos
+    list_new_space: 'Publiez un nouveau poste'
+    space_photos: 'Photos'
+    save_to_add_photos: 'Sauvegardez votre poste pour ajouter des photos'
   referral:
-    invite_friends: 'Invite Friends'
-    join: 'Invite your friends to join DeskSpotting'
+    invite_friends: 'Invitez vos amis'
+    join: 'Invitez vos amis à vous rejoindre sur DeskSpotting.'
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    button: 'Invite'
-    confirmation: 'The invitation was sent correctly to'
+    button: 'Invitez'
+    confirmation: "L'Invitation a été envoyée à"
   organizations:
-    edit_profile: 'Edit profile'
-    required_fields: 'Required fields'
-    change_picture: 'Change picture'
-    add_manager: 'Add Manager'
-    name: 'Name'
+    edit_profile: 'Modifier profil'
+    required_fields: 'Champs requis'
+    change_picture: 'Changez de photo'
+    add_manager: 'Ajoutez un gérent'
+    name: 'Nom'
     email: 'Email'
-    phone: 'Phone'
-    members: 'Managers'
+    phone: 'Téléphone'
+    members: 'Gérent'
     members_subtitle: 'Managers subtitle'
-    create_profile: 'Create organization'
-    create_title: 'Create title'
+    create_profile: 'Créez une organisation'
+    create_title: 'Créez un titre'
   payment:
-    payment: payment
-    welcome: "Hello %{name}. It's payment time!"
-    space_type: space type
-    capacity: Capacity
-    days: Days
-    hours: Hours
-    spaces: Spaces
-    check_in: Check In
-    check_out: Check Out
-    price: price
-    used_credit_card: used credit card
-    new_credit_card: new credit card
-    last_digits:  Last four digits
-    type: Type
-    expiration: Expiration date
-    currency: Currency
-    register_credit_card: register credit card
-    create_credit_card: create credit card
-    cvx: CVX
-    expiration_month: Expiration month(mm)
-    expiration_year: Expiration year(yy)
-    card_number: Credit card number
-    invalid_card_number: Invalid Card Number format
-    invalid_expiration_date: Invalid Expiration Date format
-    invalid_cvv: Invalid CVV format
-    all_required: All field are required!
-    choose_credit_card: You have to choose a credit card first
+    payment: "Paiement"
+    welcome: "Salut %{name}. C'est le moment de payer!"
+    space_type: "Type d'espace"
+    capacity: 'Nombre de personnes'
+    days: 'Jours'
+    hours: 'Heures'
+    spaces: 'Postes'
+    check_in: 'Check-In'
+    check_out: 'Check-Out'
+    price: "prix"
+    used_credit_card:
+    new_credit_card: 'Nouvelle carte'
+    last_digits: 'Les derniers quatre chiffres'
+    type: 'Type'
+    expiration: "Date d'expiration"
+    currency: 'Devise'
+    register_credit_card: 'Enregistrez votre carte'
+    create_credit_card: 'Choisir une autre carte'
+    cvx: 'CVV'
+    expiration_month: 'Expiration mois(mm)'
+    expiration_year: 'Expiration année(aa)'
+    card_number: 'Numéro de carte de crédit'
+    invalid_card_number: 'Format de numéro de carte non valable'
+    invalid_expiration_date: "Format de date d'expriation non valable"
+    invalid_cvv: 'Format de code CVV non valable'
+    all_required: 'Tous les champs sont obligatoires'
+    choose_credit_card: 'Vous devez dabord choisir une autre carte'
   messages:
-    booking_change: The booking info has changed!
-    pending_authorization: The booking needs the venue authorization.
-    pending_payment: "Booking accepted. Pending payment. This booking will be reserved for 24hs. If you don't pay in that time, you could lost the booking."
-    paid: The booking has been successfully paid.
-    cancelled: The booking has been cancelled.
-    denied: The booking has been cancelled by the venue's owner.
-    expired: The 24hs to pay the booking has expire.
-    payment_verification: We are verifying the payment.
-    refunding: The money has been refunded.
-    error_refunding: We are having problems with the refunding.
+    booking_change: "L'information de la réservation a changé"
+    pending_authorization: "La réservation doit être confirmée par l'hôte."
+    pending_payment: 'Réservation confirmée. En attente du paiement. Vous avez 24 heures pour payer votre réservation, si non elle sera annulée.'
+    paid: 'Le paiement pour votre réservation a été bien reçu.'
+    cancelled: 'Votre réservation a été annulée'
+    denied: "Votre demande de réservation a été refusée par l'hôte"
+    expired: 'Les 24 heures pour payer votre réservation se sont écoulés. La réseravtion a été annulée.'
+    payment_verification: 'Nous sommes entrain de vérifier votre paiement.'
+    refunding: 'Le paiement a été remboursé.'
+    error_refunding: "Nous sommes entrain d'avoir des difficultés avec le remboursement."
   payment_methods:
-    personal: personal
-    business: business
-    first_name: First name
-    last_name: Last name
-    email: Email
-    date_of_birth: Date of birth
+    personal: 'Personnel'
+    business: 'Entreprise'
+    first_name: 'Prénom'
+    last_name: 'Nom'
+    email: 'Email'
+    date_of_birth: 'Date de naissance'
     ssn: Ssn
-    locality: Locality
-    street: Street address
-    region: Region
-    postal_code: Postal code
-    required_legal: Required legal representative fields
-    required_fundings: Required fundings fields
+    locality: "Ville"
+    street: 'Adresse'
+    region: 'Région'
+    postal_code: 'Code postal'
+    required_legal: 'Champs requis pour représentant légal'
+    required_fundings: 'Champs requis sur le financement'
     routing_number: Routing number
-    account_number: Account number
-    legal_name: Business legal name
+    account_number: Numéro de compte
+    legal_name: 'Dénomination sociale'
     tax_id: Tax id
-    nationality: Nationality
-    country_of_residence: Country of residence
-    address: Address
-    type_of_account: Select type of account
-    other: Other
-    bank_country: Bank country
-    bank_name: Bank name
-    institution_number: Institution number
+    nationality: 'Nationalité'
+    country_of_residence: 'Pays de résidence'
+    address: 'Adresse'
+    type_of_account: 'Choisir type de compte'
+    other: 'Autre'
+    bank_country: 'Pays banque'
+    bank_name: 'Nom de la banque'
+    institution_number: "Numéro de l'institution"
     branch_code: Branch code
     sort_code: Sort code
   receipt:
-    customer_title: Customer Receipt
-    venue_title: Venue Owner Receipt
-    receipt_number: 'Receipt #'
-    venue_host: Host
-    venue_name: Venue Name
-    street_address: Street Address
-    country: Country
+    customer_title: 'Reçu Visiteur'
+    venue_title: 'Reçu Hôte'
+    receipt_number: 'Reçu #'
+    venue_host: 'Hôte'
+    venue_name: "Nom de l'espace"
+    street_address: 'Adresse'
+    country: 'Pays'
     province: Province
-    zip_code:  'Zip / Postal code'
+    zip_code:  'Code postal'
     email: Email
-    phone_number: 'Phone Number'
-    space_rental: Space Rental
-    deposit: Deposit
-    commission: Commission
-    total_rental: Total Rental
-    space_type: Space Type
-    confirmation_code: Confirmation Code
-    spaces: Spaces
-    check_in: Check In
-    check_out: Check Out
-    guest: Guest
-    first_name: First Name
-    name: Name
-    last_name: Last Name
-    payment_type: Payment Type
-    card: Card
-    expires: Expires
-    refunds: Refunds
-    date: Date
-    amount: Amount
-    payout_type: Payout Type
-    account_type: Account Type
-    account_number: Account Number
+    phone_number: 'Numéro de téléphone'
+    space_rental: 'Réservation de poste'
+    deposit: 'Caution'
+    commission: 'Frais de service'
+    total_rental: 'Total réservation'
+    space_type: 'Type de poste'
+    confirmation_code: 'Code de confirmation'
+    spaces: 'Postes'
+    check_in: "Check-In"
+    check_out: "Check-Out"
+    guest: 'Visiteur'
+    first_name: 'Prénom'
+    name: 'Nom'
+    last_name: 'Nom'
+    payment_type: 'Type de paiement'
+    card: 'Carte'
+    expires: 'Expiration'
+    refunds: 'Remboursements'
+    date: 'Date'
+    amount: 'Montant'
+    payout_type: 'Type de paiement'
+    account_type: 'Type de compte'
+    account_number: 'Numéro de compte'
     iban: IBAN
-    funds_trasferred_on: Funds Transferred On
+    funds_trasferred_on: 'Fonds versés le'
