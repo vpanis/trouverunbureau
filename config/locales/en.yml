@@ -133,8 +133,8 @@ en:
     profile: Profile
     manage_your_venues: Manage your venues
     header:
-      title: 'Everyone needs a workspace'
-      subtitle: 'Rent unique offices or meeting rooms where and when you need them.'
+      title: 'Much more than an office'
+      subtitle: 'Book unique offices or meeting rooms where and when you need them.'
       search_text: 'Where do you want your Desk?'
       find: 'Find'
     features:
@@ -164,7 +164,7 @@ en:
       see_all: 'See all'
     list_space:
       title: 'List your space!'
-      content: 'Have extra workspace or want to sublet your office? List on DeskSpotting and let your space earn you money, meet interesting people and reduce your fixed costs. You decide when and to whom you rent. There is no obligation and no fee to list.'
+      content: 'Have extra workspace and want to make the most of it? List on DeskSpotting and let your space earn you money, meet interesting people and reduce your fixed costs. You decide when and to whom you rent. There is no obligation and no fee to list.'
       learn_more: 'Learn More'
     quotes:
       title: 'quotes'
@@ -176,7 +176,7 @@ en:
       about_us: 'About us'
       our_terms: 'Our Terms'
       how_it_works: 'How it works'
-      faq: 'F.A.Q.'
+      faq: 'Help'
       contact: 'Contact'
       language:
         en: 'eng'
@@ -202,7 +202,7 @@ en:
     neighbourhood: 'Neighbourhood'
     profession: 'Profession'
     capacity: 'Capacity'
-    check_in: 'Check In'
+    check_in: 'Check-In'
     show_filters: 'Show listings'
     clear_filters: 'Clear filters'
     limits: '%{from} - %{to} more than %{count} desks'
@@ -316,7 +316,7 @@ en:
       street: 'Street address'
       country: 'Country'
       email: 'General Email'
-      town: 'City / Neighborhood'
+      town: 'City'
       postal_code: 'Zip / Postal code'
       phone: 'Phone number'
       v_type: 'Venue type'
@@ -338,7 +338,7 @@ en:
       date_of_birth: Date of Birth
       ssn: SSN
       street_address: Street Address
-      locality: Locality
+      locality: City
       region: Region
       postal_code: Postal Code
       legal_name: Legal Name
@@ -399,7 +399,7 @@ en:
       i_want_to_receive: 'I want to receive'
       you_can_disable: 'You can disable this at any time.'
       person_message: 'I receive a message from another person on DeskSpotting.'
-      outstanding_booking: 'My outstanding booking inquiry is accepted or declined.'
+      outstanding_booking: 'My current booking inquiry is accepted or declined.'
       booking_inquiry: 'I receive a booking inquiry.'
       account_changes: 'Changes are made to my DeskSpotting account or listing.'
   spaces:
@@ -429,31 +429,31 @@ en:
     info_capacity: How many people can work in this space?
     info_quantity: Number of these spaces you would you like to list on DeskSpotting
     info_description: Describe this workspace and tell potential guests why it is a good place to work
-    info_photos:  THE BETTER THE PHOTOS THE MORE INTEREST YOU WILL GENERATE IN YOUR SPACE. SHARE PICTURES THAT ACCURATELY REFLECT THE OVERALL ATMOSPHERE OF YOUR SPACE
+    info_photos:  THE PHOTOS THE MORE INTEREST YOU WILL GENERATE IN YOUR SPACE. SHARE PICTURES THAT ACCURATELY REFLECT THE OVERALL ATMOSPHERE OF YOUR SPACE
     info_pricing: Set the target price you would like your space to be offered at for different time frames. Pricing can always be modified at any time and on a case by case basis
     info_deposit: All deposits are held in escrow for the security of the host and guest
   inbox:
     messages: 'Messages'
     write_message: 'Write a Message'
     inquiry: 'Inquiry'
-    space_rental: 'Space rental'
+    space_rental: 'Space booking'
     deposit: 'Deposit'
-    ds_commission: 'DS commission'
-    total_rental: 'Total Rental'
+    ds_commission: 'DS Service Fee'
+    total_rental: 'Total booking'
     total_payout: 'Total Payout'
-    info_space_rental: The amount you earn. It's held in escrow until check in time. 24 hours later it's in your account
-    info_deposit: It will be held in escrow until 72 hours after the guest's checkout
-    info_fee: It's always 15%
-    info_client_space_rental: The space rental amount. It will be held in escrow until checkin time
-    info_client_deposit: It will be held in escrow and then reimbursed to you 72 hours after checkout
+    info_space_rental: The amount you earn. It's held in escrow until check-in time. 24 hours later it's in your account
+    info_deposit: It will be held in escrow until 72 hours after the guest's check-out
+    info_fee: 'For all bookings of a month or less the Service Fee is 20%. For all bookings of more than 1 month the Service Fee is 10% as of the second month. For all month to month bookings the service fee is 10% as of the second month.'
+    info_client_space_rental: The amount of the space booking will be held in escrow until check-in time
+    info_client_deposit: It will be held in escrow and then reimbursed to you 72 hours after check-out
   reviews:
     guest_review: 'Guest review'
     space_review: 'Space review'
     rate_space: "Rate %{space} of %{venue}"
     date: 'Date'
     spaces: 'Spaces'
-    check_in: 'Check In'
-    check_out: 'Check Out'
+    check_in: 'Check-In'
+    check_out: 'Check-Out'
     comment: 'Comment (The review is about to write will be seen only by other hosts)'
   bookings:
     review: Review
@@ -473,8 +473,8 @@ en:
       expired: 'expired'
   booking_inquiry:
     time_frame: 'Select Time Frame'
-    check_in: 'Check in'
-    check_out: 'Check_out'
+    check_in: 'Check-in'
+    check_out: 'Check-out'
     spaces_amount: 'Number of spaces'
     date: 'Date'
     your_message: 'Your message'
@@ -514,8 +514,8 @@ en:
     space: Space
     date: Date
     spaces: Spaces
-    check_in: Check In
-    check_out: Check Out
+    check_in: Check-In
+    check_out: Check-Out
     payout: You will receive a payout of
     transferred: transferred to
     bank_name: Bank Name
@@ -530,10 +530,10 @@ en:
   guest_review_email:
     subject: 'Guest Review - %{type} #%{guest_id}'
     hi: Hi
-    checked_out: You have checked out of
+    checked_out: You have checked-out of
     at: at
-    check_in: Check In
-    check_out: Check Out
+    check_in: Check-In
+    check_out: Check-Out
     days: Days
     date: Date
     rate_stay: rate your stay
@@ -541,7 +541,7 @@ en:
     subject: 'Host Review - Venue #%{venue_id}'
     rate_guest: rate your guest
     your_guest: Your Guest
-    checked_in: has checked in of
+    checked_in: has checked-in of
   receipt_email:
     subject_client: 'Receipt - Booking #%{booking_id}'
     subject_host: 'Receipt Host - Booking #%{booking_id}'
@@ -582,8 +582,8 @@ en:
     days: Days
     hours: Hours
     spaces: Spaces
-    check_in: Check In
-    check_out: Check Out
+    check_in: Check-In
+    check_out: Check-Out
     price: price
     used_credit_card: used credit card
     new_credit_card: new credit card
@@ -593,7 +593,7 @@ en:
     currency: Currency
     register_credit_card: register credit card
     create_credit_card: create credit card
-    cvx: CVX
+    cvx: CVV
     expiration_month: Expiration month(mm)
     expiration_year: Expiration year(yy)
     card_number: Credit card number
@@ -621,7 +621,7 @@ en:
     email: Email
     date_of_birth: Date of birth
     ssn: Ssn
-    locality: Locality
+    locality: City
     street: Street address
     region: Region
     postal_code: Postal code
@@ -653,10 +653,10 @@ en:
     zip_code:  'Zip / Postal code'
     email: Email
     phone_number: 'Phone Number'
-    space_rental: Space Rental
+    space_rental: Space Booking
     deposit: Deposit
-    commission: Commission
-    total_rental: Total Rental
+    commission: Service Fee
+    total_rental: Total Booking
     space_type: Space Type
     confirmation_code: Confirmation Code
     spaces: Spaces
