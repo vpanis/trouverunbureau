@@ -46,10 +46,9 @@ on_load = ->
     $("#phone").intlTelInput
       allowExtensions: true
       utilsScript: '/utils.js'
-    $("#phone").intlTelInput("setNumber", $('#organization_phone').val());
 
     $('#save-organization').click ->
-      $('#organization_phone').val($('#phone').intlTelInput("getNumber"))
+      $('#phone').val($('#phone').intlTelInput("getNumber"))
     initialize_listeners()
     initialize_popovers()
   return

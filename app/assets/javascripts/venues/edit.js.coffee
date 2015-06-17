@@ -83,10 +83,9 @@ on_load = ->
     $("#phone").intlTelInput
       allowExtensions: true
       utilsScript: '/utils.js'
-    $("#phone").intlTelInput("setNumber", $('#venue_phone').val());
 
     $('#save-venue').click ->
-      $('#venue_phone').val($('#phone').intlTelInput("getNumber"))
+      $('#phone').val($('#phone').intlTelInput("getNumber"))
 
     initialize_selects()
     initialize_listeners()

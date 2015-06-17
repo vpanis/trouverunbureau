@@ -53,8 +53,7 @@
       .form-group.col-md-6 class=(@venue.errors.messages[:phone].present? ? 'has-error' : '')
         .icon.info.pointer#phone-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_share_phone')}"
         label = t('venues.edit.phone')
-        = text_field_tag '', @venue.phone, placeholder: t('venues.edit.phone'), class: 'form-control', type: 'tel', required: true, id: 'phone'
-        = f.hidden_field :phone
+        = f.text_field :phone, placeholder: t('venues.edit.phone'), class: 'form-control', type: 'tel', required: true, id: 'phone'
         - if @venue.errors.messages[:phone].present?
           label
             = @venue.errors.messages[:phone].first
