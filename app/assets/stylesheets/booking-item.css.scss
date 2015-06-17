@@ -93,6 +93,7 @@
   .review,
   .receipt,
   .cancel,
+  .claim-deposit,
   .delete {
     display: block;
     padding-left: 20px;
@@ -110,6 +111,9 @@
     @include at2x('ic_booking_cancel', 16px, 16px);
   }
   .delete {
+    @include at2x('ic_booking_delete', 16px, 16px);
+  }
+  .claim-deposit {
     @include at2x('ic_booking_delete', 16px, 16px);
   }
 }
