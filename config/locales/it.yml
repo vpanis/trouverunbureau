@@ -434,6 +434,7 @@ it:
     info_photos:  THE BETTER THE PHOTOS THE MORE INTEREST YOU WILL GENERATE IN YOUR SPACE. SHARE PICTURES THAT ACCURATELY REFLECT THE OVERALL ATMOSPHERE OF YOUR SPACE
     info_pricing: Set the target price you would like your space to be offered at for different time frames. Pricing can always be modified at any time and on a case by case basis
     info_deposit: All deposits are held in escrow for the security of the host and guest
+    edit_your_space: 'Edit your space'
   inbox:
     messages: 'Messages'
     write_message: 'Write a Message'
