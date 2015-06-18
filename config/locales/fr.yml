@@ -432,6 +432,7 @@ fr:
     info_photos:  "En choisissant des photos de qualité vous suscitez l'intérêt pour votre espace de travail. Partagez des photos qui reflètent précisément l'atmosphère de votre espace."
     info_pricing: 'Fixez le prix que vous souhaitez en fonction des durées que vous proposez. Le prix peut être modifier à tout moment et au cas par cas.'
     info_deposit: "Toutes les cautions sont gardées en compte séquestre pour la sécurité de l'hôte et du visiteur."
+    edit_your_space: 'Edit your space'
   inbox:
     messages: 'Messages'
     write_message: 'Écrivez un message'
