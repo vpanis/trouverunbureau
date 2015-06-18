@@ -359,6 +359,7 @@ de:
     hour: 'hour'
     week: 'week'
   users:
+    user_since: 'User since'
     edit_profile: 'Edit profile'
     about_me: 'About me'
     required_fields: 'Required fields'

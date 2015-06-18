@@ -80,6 +80,13 @@ on_load = ->
         return
       return
 
+    $("#phone").intlTelInput
+      allowExtensions: true
+      utilsScript: '/utils.js'
+
+    $('#save-venue').click ->
+      $('#phone').val($('#phone').intlTelInput("getNumber"))
+
     initialize_selects()
     initialize_listeners()
     initialize_popovers()

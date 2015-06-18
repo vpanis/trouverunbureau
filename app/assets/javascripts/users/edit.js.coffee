@@ -93,6 +93,12 @@ on_load = ->
       $('#nationality-popover').popover(options)
       $('#country_of_residence-popover').popover(options)
 
+    $("#phone").intlTelInput
+      allowExtensions: true
+      utilsScript: '/utils.js'
+
+    $('#save-edition').click ->
+      $('#phone').val($('#phone').intlTelInput("getNumber"))
 
     new google.maps.places.Autocomplete(document.getElementById('user_location'))
     initialize_selects()

@@ -19,6 +19,7 @@
 #= require angular-ui-bootstrap-tpls
 #= require select2
 #= require braintree
+#= require intlTelInput.min
 #= require mangopay-kit
 #= require ./payment_modes/mangopay_dropin
 #= require_directory .
