@@ -47,10 +47,10 @@ ActiveRecord::Schema.define(version: 20150529013324) do
     t.datetime "owner_last_seen"
     t.datetime "venue_last_seen"
     t.datetime "approved_at"
-    t.boolean  "owner_delete",       default: false
-    t.boolean  "venue_owner_delete", default: false
     t.integer  "payment_id"
     t.string   "payment_type"
+    t.boolean  "owner_delete",       default: false
+    t.boolean  "venue_owner_delete", default: false
     t.integer  "fee"
     t.integer  "deposit"
     t.boolean  "hold_deposit",       default: false
