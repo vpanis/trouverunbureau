@@ -425,6 +425,7 @@ de:
     hour_price: 'Hour price'
     day_price: 'Day price'
     month_price: 'Month price'
+    minimum_renting_period: 'Minimum renting period'
     deposit: 'Deposit'
     info_capacity: How many people can work in this space?
     info_quantity: Number of these spaces you would you like to list on DeskSpotting

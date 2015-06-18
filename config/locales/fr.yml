@@ -425,6 +425,7 @@ fr:
     hour_price: 'Prix par heure'
     day_price: 'Prix par heure'
     month_price: 'Prix par mois'
+    minimum_renting_period: 'Minimum renting period'
     deposit: 'Caution'
     info_capacity: 'Combien de personnes peuvent travailler à ce poste?'
     info_quantity: "Combien de postes voulez-vous publier sur DeskSpotting"

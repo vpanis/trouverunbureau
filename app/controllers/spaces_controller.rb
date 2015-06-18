@@ -58,6 +58,8 @@ class SpacesController < ApplicationController
 
   def space_params
     params.require(:space).permit(:s_type, :name, :capacity, :quantity, :description, :deposit,
-                                  :hour_price, :day_price, :week_price, :month_price, :venue_id)
+                                  :hour_price, :day_price, :week_price, :month_price,
+                                  :hour_minimum_unity, :day_minimum_unity, :month_minimum_unity,
+                                  :venue_id)
   end
 end
