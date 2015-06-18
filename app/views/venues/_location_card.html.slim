@@ -3,7 +3,8 @@
     h3 #{t('venues.show.location')}
     .separator
     .address
-      .street = @venue.street
+      - if @venue.venue_knows_user(current_represented)
+        .street = @venue.street
       .country = "#{@venue.town}, #{Country.new(@venue.country_code).name}"
   .venue-map#map-canvas
   .venue-coordinates.hidden

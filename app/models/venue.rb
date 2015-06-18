@@ -7,6 +7,7 @@ class Venue < ActiveRecord::Base
   belongs_to :time_zone
 
   has_many :spaces, dependent: :destroy
+  has_many :bookings, through: :spaces
   has_many :day_hours, class_name: 'VenueHour', dependent: :destroy
   has_many :photos, class_name: 'VenuePhoto', dependent: :destroy
   has_one :referral_stat
@@ -94,6 +95,10 @@ class Venue < ActiveRecord::Base
       (venue_hours.from <= my { from }) &
       (venue_hours.to > my { to })
     end.count
+  end
+
+  def venue_knows_user(user)
+    owner == user || bookings.exists?(state: Booking.states[:paid], owner: user)
   end
 
   protected
