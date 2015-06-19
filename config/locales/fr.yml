@@ -419,7 +419,7 @@ fr:
     quantity: 'Nombre de postes'
     description: 'Description'
     space_photos: 'Photos'
-    pricing_in: "Prix en %{devise}"
+    pricing_in: "Prix en %{currency}"
     per_hour: 'Par heure'
     per_day: 'Par jour'
     per_month: 'Par mois'
@@ -504,7 +504,7 @@ fr:
     collection_account: Collection Account
     payout_method: 'Méthode de paiement'
   new_message_email:
-    subject: 'Vous avez un nouveau message %{de}'
+    subject: 'Vous avez un nouveau message - Booking %{booking_id}'
     hi: 'Salut'
     got_new_message: 'Nouveau message de la part de'
     reply: 'Ou répondez directement via email'
@@ -513,7 +513,7 @@ fr:
   host_cancellation_email:
     subject: 'Host Cancellation - Booking #%{booking_id}'
     sorry_cancel: "Nous regrettons votre annulation de"
-    unfortunately: "Malheureusement votre Visiteur, %{nom}, a du annuler sa réservation de"
+    unfortunately: "Malheureusement votre Visiteur, %{name}, a du annuler sa réservation de"
     space: 'Poste'
     date: 'Date'
     spaces: 'Postes'
