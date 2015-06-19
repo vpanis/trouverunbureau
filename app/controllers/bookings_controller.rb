@@ -28,7 +28,8 @@ class BookingsController < ApplicationController
     booking = Booking.find(params[:id])
     return render_forbidden unless can_claim_deposit?(booking)
     booking.update_attributes(hold_deposit: true)
-    return redirect_to :venue_paid_bookings_bookings if params[:from_bookings] == 'venue_paid_bookings'
+    return redirect_to :venue_paid_bookings_bookings if
+      params[:from_bookings] == 'venue_paid_bookings'
     redirect_to :paid_bookings_bookings
   end
 
