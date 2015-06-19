@@ -101,9 +101,9 @@
               = 'IBAN'
             .tab#tab-gb.js-tab data-type='GB' class="#{'tab--selected' if @collection_account.bank_type == 'GB'}"
               = 'GB'
-            .tab#tab-ca.js-tab data-type='CA' class="#{'tab--selected' if @collection_account.bank_type == 'CA'}"
+            //.tab#tab-ca.js-tab data-type='CA' class="#{'tab--selected' if @collection_account.bank_type == 'CA'}"
               = 'CA'
-            .tab#tab-other.js-tab data-type='OTHER' class="#{'tab--selected' if @collection_account.bank_type == 'OTHER'}"
+            //.tab#tab-other.js-tab data-type='OTHER' class="#{'tab--selected' if @collection_account.bank_type == 'OTHER'}"
               = t('payment_methods.other')
       = f.hidden_field :bank_type
       .row
