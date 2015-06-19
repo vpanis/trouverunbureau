@@ -459,6 +459,7 @@ fr:
     check_out: 'Check-Out'
     comment: "Votre avis sera seulement partagé avec d'autres hôtes"
   bookings:
+    claim_deposit: 'Claim deposit'
     review: "Avis d'utilisteur"
     view_receipt: 'Voir reçu'
     cancel: 'Annuler'

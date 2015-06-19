@@ -64,6 +64,7 @@ Deskspotting::Application.routes.draw do
       post :client_review, to: "reviews#create_client_review"
       post :venue_review, to: "reviews#create_venue_review"
       get :receipts, to: "receipts#show"
+      put :claim_deposit, to: "bookings#claim_deposit"
     end
     collection do
       get :paid_bookings, to: "bookings#paid_bookings"

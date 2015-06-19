@@ -17,6 +17,11 @@ module BookingsHelper
     owner?(booking, own) && !deleted?(booking, own) && (booking.cancelled? || finished?(booking))
   end
 
+  def can_claim_deposit?(booking)
+    venue_owner?(booking) && started?(booking) && !booking.hold_deposit &&
+    booking.payment.deposit_amount_in_wallet > 0
+  end
+
   private
 
   def cancellable_states(booking)
@@ -27,11 +32,19 @@ module BookingsHelper
     Time.current > booking.space.venue.time_zone.from_zone_to_utc(booking.to)
   end
 
+  def started?(booking)
+    Time.current > booking.space.venue.time_zone.from_zone_to_utc(booking.from)
+  end
+
   def deleted?(booking, own = true)
     (own) ? booking.owner_delete? : booking.venue_owner_delete?
   end
 
   def owner?(booking, own = true)
     (own) ? booking.owner == current_represented : booking.space.venue.owner == current_represented
+  end
+
+  def venue_owner?(booking)
+    booking.space.venue.owner == current_represented
   end
 end

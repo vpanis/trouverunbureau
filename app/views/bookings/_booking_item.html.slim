@@ -38,3 +38,5 @@
       a.cancel href="#" = t('bookings.cancel')
     - if can_delete?(booking, own)
       a.delete href="#" = t('bookings.delete')
+    - if can_claim_deposit?(booking)
+      = link_to t('bookings.claim_deposit'), claim_deposit_booking_path(id: booking.id, from_bookings: params[:action]), method: :put, class: 'claim-deposit'

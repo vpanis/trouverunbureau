@@ -459,6 +459,7 @@ es:
     check_out: 'Check Out'
     comment: 'Comment (The review is about to write will be seen only by other hosts)'
   bookings:
+    claim_deposit: 'Claim deposit'
     review: Review
     view_receipt: View Receipt
     cancel: Cancel
