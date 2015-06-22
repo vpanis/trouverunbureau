@@ -468,6 +468,7 @@ fr:
     current: 'Réservations en cours'
     cancelled: 'Réservation annulé'
     no_bookings: "Il n'y a pas de réservation"
+    no_paid_cancelled: 'You have no paid nor cancelled bookings yet.'
     state:
       pending_authorization: 'En attente'
       pending_payment: 'En attente de paiement'
