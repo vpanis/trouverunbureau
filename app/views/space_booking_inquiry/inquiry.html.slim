@@ -25,6 +25,7 @@
       .workspace-basic-info
         span.workspace-title
           = @space.name
+          = t("spaces.types.#{@space.s_type}")
         = image_tag('venue_profile_a_team_bookings.png', class: 'capacity-image')
         span.workspace-capacity
           = @space.capacity
@@ -132,8 +133,9 @@
             | Price per {{selected_tab}}
           td
             span.base-price
-              | $ {{booking_type_per_price() | number:0}}
-            = "(#{@space.venue.currency})"
+              = "#{t('currency.' + @space.venue.currency.downcase + '.symbol')}"
+              | {{booking_type_per_price() | number:0}}
+              = "(#{@space.venue.currency})"
         tr
           td
             | {{selected_tab}}s amount
@@ -149,7 +151,7 @@
           td
             | Deposit
           td
-            = "+ $#{number_with_precision(@space.deposit, precision: 2)} (#{@space.venue.currency})"
+            = "+ #{t('currency.' + @space.venue.currency.downcase + '.symbol')}#{number_with_precision(@space.deposit, precision: 2)} (#{@space.venue.currency})"
         tr
           td
             | DeskSpotting fee
@@ -159,7 +161,8 @@
           td
             | Total
           td
-            | ${{booking_type_per_price() * amount_for_booking_type() * space_quantity + space_deposit }}
+            = "#{t('currency.' + @space.venue.currency.downcase + '.symbol')}"
+            | {{booking_type_per_price() * amount_for_booking_type() * space_quantity + space_deposit }}
             = "(#{@space.venue.currency})"
     .booking-reasons-wrapper
       h2

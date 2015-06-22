@@ -78,18 +78,23 @@ de:
     usd:
       short_name: 'usd'
       long_name: 'American Dollars'
+      symbol: 'U$D'
     gbp:
       short_name: 'gbp'
       long_name: 'Pound Sterling'
+      symbol: '£'
     eur:
       short_name: 'eur'
       long_name: 'Euro'
+      symbol: '€'
     cad:
       short_name: 'cad'
       long_name: 'Canadian Dollars'
+      symbol: 'C$'
     aud:
       short_name: 'aud'
       long_name: 'Australian Dollars'
+      symbol: 'A$'
   commons:
     save: 'Save'
     cancel: 'Cancel'
