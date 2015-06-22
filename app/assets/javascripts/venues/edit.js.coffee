@@ -11,10 +11,8 @@ on_load = ->
       $('.currency-select').select2()
       country = $("#venue_country_code").val()
       street_autocomplete = new google.maps.places.Autocomplete(document.getElementById('venue_street'), { types: ['address'], componentRestrictions: {country: country} })
-
       google.maps.event.addListener street_autocomplete, 'place_changed', ->
         geometry = street_autocomplete.getPlace().geometry
-
         if geometry
           lat = geometry.location.lat()
           lng = geometry.location.lng()
@@ -22,13 +20,17 @@ on_load = ->
           $('#venue_longitude').val(lng)
 
           place = street_autocomplete.getPlace()
-
+          $("#street_input").removeClass('has-error')
+          $(".street-invalid-field").addClass('hidden')
           i = 0
           while i < place.address_components.length
             type = place.address_components[i].types[0]
             if type == "locality" || type == "administrative_area_level_3"
               $("#venue_town").val(place.address_components[i].long_name)
             i++
+        else
+          $("#street-input").addClass('has-error')
+          $(".street-invalid-field").removeClass('hidden')
 
 
     initialize_listeners = ->
@@ -80,12 +82,19 @@ on_load = ->
         return
       return
 
+    invalidStreet = (street) ->
+
+
     $("#phone").intlTelInput
       allowExtensions: true
       utilsScript: '/utils.js'
 
     $('#save-venue').click ->
       $('#phone').val($('#phone').intlTelInput("getNumber"))
+      if !invalidStreet($('#venue_street').val())
+        $("#street_input").addClass('has-error')
+        $(".street-invalid-field").removeClass('hidden')
+        return false
 
     initialize_selects()
     initialize_listeners()
