@@ -9,10 +9,11 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
     $scope.itemsPerPage = 12
     $scope.from = 1
     $scope.to = 12
-    $scope.latitude_from = -90
-    $scope.latitude_to = 90
-    $scope.longitude_from = -180
-    $scope.longitude_to = 180
+    # default france
+    $scope.latitude_from = 41.3423276
+    $scope.latitude_to = 51.0891658
+    $scope.longitude_from = -5.142307599999981
+    $scope.longitude_to = 9.56006780000007
     $scope.workspaces = []
     $scope.professions = {}
     $scope.capacity = null
