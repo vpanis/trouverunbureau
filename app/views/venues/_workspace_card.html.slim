@@ -36,26 +36,22 @@
       - if space.hour_price.present?
         .price
           p.black
-            = "$#{space.hour_price.round}"
-            span.currency = "(#{space.venue.currency})"
+            = "#{t("currency.#{space.venue.currency.downcase}.symbol")} #{number_with_precision(space.hour_price, separator: '.', precision: (space.hour_price == space.hour_price.round) ? 0 : 2)}"
           p.time.black #{t('venues.show.per_hour')}
       - if space.day_price.present?
         .price
           p.black
-            = "$#{space.day_price.round}"
-            span.currency = "(#{space.venue.currency})"
+            = "#{t("currency.#{space.venue.currency.downcase}.symbol")} #{number_with_precision(space.day_price, separator: '.', precision: (space.day_price == space.day_price.round) ? 0 : 2)}"
           p.time.black #{t('venues.show.per_day')}
       - if space.week_price.present?
         .price
           p.black
-            = "$#{space.week_price.round}"
-            span.currency = "(#{space.venue.currency})"
+            = "#{t("currency.#{space.venue.currency.downcase}.symbol")} #{number_with_precision(space.week_price, separator: '.', precision: (space.day_price == space.week_price.round) ? 0 : 2)}"
           p.time.black #{t('venues.show.per_week')}
       - if space.month_price.present?
         .price
           p.black
-            = "$#{space.month_price.round}"
-            span.currency = "(#{space.venue.currency})"
+            = "#{t("currency.#{space.venue.currency.downcase}.symbol")} #{number_with_precision(space.month_price, separator: '.', precision: (space.month_price == space.month_price.round) ? 0 : 2)}"
           p.time.black #{t('venues.show.per_month')}
     .booking-inquiry.hidden-xs
       = link_to t('venues.show.booking_inquiry'), inquiry_space_path(space)

@@ -63,23 +63,23 @@ X= render 'shared/menu_bar'
           p.concept
             = t('receipt.space_rental')
           p.value
-            = "$#{@booking.price} (#{@booking.space.venue.currency})"
+            = "#{t("currency.#{@booking.space.venue.currency.downcase}.symbol")}#{@booking.price}"
         div.plus class="col-md-#{(@booking.owner == current_represented)? '6' : '4'}"
           p.concept
             = t('receipt.deposit')
           p.value
-            = "$#{@booking.deposit} (#{@booking.space.venue.currency})"
+            = "#{t("currency.#{@booking.space.venue.currency.downcase}.symbol")}#{@booking.deposit}"
         - unless @booking.owner == current_represented
           div.minus class="col-md-#{(@booking.owner == current_represented)? '6' : '4'}"
             p.concept
               = t('receipt.commission')
             p.value
-              = "$#{@booking.fee} (#{@booking.space.venue.currency})"
+              = "#{t("currency.#{@booking.space.venue.currency.downcase}.symbol")}#{@booking.fee}"
     .col-md-3.total
       p.concept
         = t('receipt.total_rental')
       p.value
-        = "$#{@booking.price + @booking.deposit - ((current_represented == @booking.owner)? 0 : @booking.fee) } (#{@booking.space.venue.currency})"
+        = "#{t("currency.#{@booking.space.venue.currency.downcase}.symbol")}#{@booking.price + @booking.deposit - ((current_represented == @booking.owner)? 0 : @booking.fee) }"
   .booking-info
     .space-type
       .title

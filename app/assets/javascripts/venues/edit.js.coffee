@@ -20,7 +20,7 @@ on_load = ->
           $('#venue_longitude').val(lng)
 
           place = street_autocomplete.getPlace()
-          $("#street_input").removeClass('has-error')
+          $("#street-input").removeClass('has-error')
           $(".street-invalid-field").addClass('hidden')
           i = 0
           while i < place.address_components.length
@@ -92,7 +92,7 @@ on_load = ->
     $('#save-venue').click ->
       $('#phone').val($('#phone').intlTelInput("getNumber"))
       if !invalidStreet($('#venue_street').val())
-        $("#street_input").addClass('has-error')
+        $("#street-input").addClass('has-error')
         $(".street-invalid-field").removeClass('hidden')
         return false
 
