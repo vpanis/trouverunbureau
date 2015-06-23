@@ -6,25 +6,25 @@
       .col-md-3
         .icon.info.icon-black.pointer#space-rental-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('inbox.info_space_rental')}"
         p.concept.capitalize = t('inbox.space_rental')
-        p.value() 
-          = "{t('currency.' + @selected_booking.space.venue.currency.downcase + '.symbol')}"
+        p.value()
+          | {{selected_booking.space.currency_symbol}}
           | {{selected_booking.price}}
       .col-md-3.plus
         .icon.info.icon-black.pointer#deposit-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('inbox.info_deposit')}"
         p.concept.capitalize = t('inbox.deposit')
-        p.value() 
-          = "#{t('currency.' + @selected_booking.space.venue.currency.downcase + '.symbol')}"
+        p.value()
+          | {{selected_booking.space.currency_symbol}}
           | {{selected_booking.deposit}}
       .col-md-3.minus
         .icon.info.icon-black.pointer#fee-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('inbox.info_fee')}"
         p.concept.capitalize = t('inbox.ds_commission')
-        p.value() 
-          = "#{t('currency.' + @selected_booking.space.venue.currency.downcase + '.symbol')}"
+        p.value()
+          | {{selected_booking.space.currency_symbol}}
           | {{selected_booking.fee}}
   .col-md-3.total
     p.concept.uppercase = t('inbox.total_payout')
-    p.value() 
-      = "#{t('currency.' + @selected_booking.space.venue.currency.downcase + '.symbol')}"
+    p.value()
+      | {{selected_booking.space.currency_symbol}}
       | {{selected_booking.price + selected_booking.deposit - selected_booking.fee | number:2}}
 .row.header ng-if="!selected_booking.venue_owner"
   .col-md-9.detail
@@ -34,17 +34,17 @@
       .col-md-3
         .icon.info.icon-black.pointer#client-space-rental-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('inbox.info_client_space_rental')}"
         p.concept.capitalize = t('inbox.space_rental')
-        p.value() 
-          = "#{t('currency.' + @selected_booking.space.venue.currency.downcase + '.symbol')}"
+        p.value()
+          | {{selected_booking.space.currency_symbol}}
           | {{selected_booking.price}}
       .col-md-3.plus
         .icon.info.icon-black.pointer#client-deposit-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('inbox.info_client_deposit')}"
         p.concept.capitalize = t('inbox.deposit')
-        p.value() 
-          = "#{t('currency.' + @selected_booking.space.venue.currency.downcase + '.symbol')}"
+        p.value()
+          | {{selected_booking.space.currency_symbol}}
           | {{selected_booking.deposit}}
   .col-md-3.total
     p.concept.uppercase = t('inbox.total_rental')
-    p.value() 
-      = "#{t('currency.' + @selected_booking.space.venue.currency.downcase + '.symbol')}"
+    p.value()
+      | {{selected_booking.space.currency_symbol}}
       | {{(selected_booking.price + selected_booking.deposit) | number:2}}

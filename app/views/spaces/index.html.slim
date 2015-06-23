@@ -33,23 +33,23 @@
                 .bottom-line
                   .currency() {{space.currency}}
                   .price-hourly ng-if=("space.hour_price")
-                    .hour-price.pull-left() 
-                      = "#{t('currency.' + @space.venue.currency.downcase + '.symbol')}"
+                    .hour-price.pull-left()
+                      | {{space.currency_symbol}}
                       | {{space.hour_price}}
                     .duration.pull-left = t('wishlist.hour')
                   .price-daily ng-if=("space.day_price")
-                    .day-price.pull-left() 
-                      = "#{t('currency.' + @space.venue.currency.downcase + '.symbol')}"
-                      | ${{space.day_price}}
+                    .day-price.pull-left()
+                      | {{space.currency_symbol}}
+                      | {{space.day_price}}
                     .duration.pull-left = t('wishlist.day')
                   .price-weekly ng-if=("space.week_price")
-                    .week-price.pull-left() 
-                      = "#{t('currency.' + @space.venue.currency.downcase + '.symbol')}"
+                    .week-price.pull-left()
+                      | {{space.currency_symbol}}
                       | {{space.week_price}}
                     .duration.pull-left = t('wishlist.week')
                   .price-monthly ng-if=("space.month_price")
-                    .month-price.pull-left() 
-                      = "#{t('currency.' + @space.venue.currency.downcase + '.symbol')}"
+                    .month-price.pull-left()
+                      | {{space.currency_symbol}}
                       | {{space.month_price}}
                     .duration.pull-left = t('wishlist.month')
         .pagination-container.search-pagination.pagination-box

@@ -1,8 +1,7 @@
 .booking-item.clearfix
   .col-md-1.text-center.margin-top
     p.state = booking.state
-    p.price = booking.price
-    p.currency = booking.space.venue.currency
+    p.price = "#{t("currency.#{booking.space.venue.currency.downcase}.symbol")} #{booking.price}"
   .col-md-5
     .clearfix
       p.type.pull-left = booking.space.name

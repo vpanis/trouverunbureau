@@ -1,7 +1,7 @@
 class SpaceSerializer < ActiveModel::Serializer
   attributes :id, :name, :city, :currency, :hour_price, :day_price, :week_price, :month_price,
              :favorite, :latitude, :longitude, :photos, :capacity, :venue_id, :venue_name,
-             :deposit, :logo
+             :deposit, :logo, :currency_symbol
 
   def city
     object.venue.town
@@ -9,6 +9,10 @@ class SpaceSerializer < ActiveModel::Serializer
 
   def currency
     object.venue.currency
+  end
+
+  def currency_symbol
+    I18n.t("currency.#{object.venue.currency.downcase}.symbol")
   end
 
   def latitude
