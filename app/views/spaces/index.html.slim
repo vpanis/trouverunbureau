@@ -13,7 +13,7 @@
               - if current_user.present?
                 .favourite ng-class="{active: space.favorite}" ng-click=("toggleFavorite(space.id, false)") data-is-favorite="{{space.favorite}}"
               - else
-                .favourite
+                a.favourite ng-href="/users/sign_in"
               .carousel-container
                 .carousel.slide id="space-carousel-{{space.id}}"
                   ol.carousel-indicators ng-hide="space.photos.length < 2"
