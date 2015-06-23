@@ -23,4 +23,4 @@
         = render 'booking_item', booking: booking, own: false
   - unless @paid.any? || @canceled.any?
     h3
-      | You have no paid nor cancelled bookings yet.
+      = t('bookings.no_paid_cancelled')
