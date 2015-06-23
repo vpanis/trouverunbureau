@@ -327,6 +327,7 @@ fr:
       select_professions: 'Sélectionnez les professions recherchées'
       add_professions: 'Ajoutez profession'
       info_professions: 'Quelles porfessions souhaitez-vous acceuillir.'
+      invalid_street: 'Please select a valid street address from the dropdown'
     collection_account:
       individual: 'Individu'
       business: 'Entreprise'

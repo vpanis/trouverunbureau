@@ -327,6 +327,7 @@ de:
       select_professions: 'Select preferred professions'
       add_professions: 'Add professions'
       info_professions: 'Share with guests the professions that are welcome in your venue'
+      invalid_street: 'Please select a valid street address from the dropdown'
     collection_account:
       individual: Individual
       business: Business
