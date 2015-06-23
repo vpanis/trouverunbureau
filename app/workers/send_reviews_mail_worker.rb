@@ -6,8 +6,8 @@ class SendReviewsMailWorker
 
   def perform
     bookings_for_reviews.each do |booking|
-      NotificationsMailer.delay.host_review_email(id) unless booking.client_review.present?
-      NotificationsMailer.delay.guest_review_email(id) unless booking.venue_review.present?
+      NotificationsMailer.delay.host_review_email(booking.id) unless booking.client_review.present?
+      NotificationsMailer.delay.guest_review_email(booking.id) unless booking.venue_review.present?
     end
   end
 
