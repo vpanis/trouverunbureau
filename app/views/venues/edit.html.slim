@@ -31,13 +31,13 @@
       .form-group.col-md-6 class=(@venue.errors.messages[:street].present? ? 'has-error' : '') id="street-input"
         .icon.info.pointer#street-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_share_street')}"
         label = t('venues.edit.street')
+        label.street-invalid-field.hidden
+          = t('venues.edit.invalid_street')
         = f.text_field :street, placeholder: t('venues.edit.street'), class: 'form-control', required: true
         - if @venue.errors.messages[:street].present?
           label
             = @venue.errors.messages[:street].first
         = f.hidden_field :town, placeholder: t('venues.edit.town'), class: 'form-control', required: true
-        label.street-invalid-field.hidden
-          = t('venues.edit.invalid_street')
       .form-group.col-md-6
         .icon.lock.pointer#postal-code-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
         label = t('venues.edit.postal_code')

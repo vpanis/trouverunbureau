@@ -112,6 +112,14 @@
   }
 }
 
+.street-invalid-field {
+  font-size: 10px;
+  margin: 0 0 0 20px;
+  color: $red;
+  vertical-align: middle;
+  display: inline-block;
+}
+
 .rounded-img {
   border-radius: 100%;
   width: 95px;
