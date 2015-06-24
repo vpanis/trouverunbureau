@@ -11,7 +11,7 @@
         </div>
 
         <div>
-          <p><%= "#{@message.recipient_name}," %></p> <!-- TODO: Change name -->
+          <p><%= "#{@message.recipient_owner.name}," %></p> <!-- TODO: Change name -->
 
           <!-- TODO: If sorry cancel or unfortunately -->
           <p><%= "#{t('host_cancellation_email.sorry_cancel')}:" %></p>

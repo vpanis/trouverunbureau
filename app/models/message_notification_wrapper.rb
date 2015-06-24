@@ -4,8 +4,8 @@ class MessageNotificationWrapper < SimpleDelegator
     @booking_w.recipients_emails
   end
 
-  def recipient_name
-    @booking_w.owner == represented ? @booking_w.space.venue.owner.name : @booking_w.owner.name
+  def recipient_owner
+    @booking_w.owner == represented ? @booking_w.owner : @booking_w.space.venue.owner
   end
 
   def from
