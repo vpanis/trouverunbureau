@@ -7,10 +7,12 @@ class LandingController < ApplicationController
     @space_types_options = space_types_index_options
     # TODO: que tengan al menos una foto y esten publicados.
     #       where sean de un venue valido y tengan foto
-    @featured_venues = Venue.where(status: [Venue.statuses[:active], Venue.statuses[:reported]])
+    @featured_venues = Venue.distinct.joins(:spaces).where('spaces.active')
+                            .where(status: Venue.accepted_statuses)
                             .order(reviews_sum: :desc).limit(8)
-    @trending_cities = Space.limit(8).joins(:venue).group(venues: :town)
-                            .order('count_town desc').count(:town).to_a
+    @trending_cities = Space.joins(:venue).where(venue: { status: Venue.accepted_statuses })
+                            .group(venues: :town).limit(8).order('count_town desc')
+                            .count(:town).to_a
     @workspaces = workspaces_count
   end
 
@@ -45,7 +47,7 @@ class LandingController < ApplicationController
   private
 
   def workspaces_count
-    type_count = Space.all.group(:s_type).count
+    type_count = Space.active.group(:s_type).count
     results = []
     (0..5).each { |n| results[n] = type_count[n] }
     results

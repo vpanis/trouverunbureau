@@ -1,4 +1,5 @@
 class Venue < ActiveRecord::Base
+  include VenueOpenDaysModule
   attr_accessor :force_submit
   attr_accessor :force_submit_upd
 
@@ -76,25 +77,20 @@ class Venue < ActiveRecord::Base
 
   validate :each_amenity_inclusion, :each_profession_inclusion, unless: :force_submit
 
+  def self.accepted_statuses
+    [Venue.statuses[:active], Venue.statuses[:reported]]
+  end
+
   def opens_at_least_one_day_from_to?(from, to)
-    weekdays = VenueHour.days_covered(from, to)
-    1 <= day_hours.where { weekday.eq_any weekdays }.group(:weekday).count.length
+    venue_opens_at_least_one_day_from_to?(from, to, day_hours)
   end
 
   def opens_days_from_to?(from, to)
-    weekdays = VenueHour.days_covered(from, to)
-    weekdays.length == day_hours.where { weekday.eq_any weekdays }.group(:weekday).count.length
+    venue_opens_days_from_to?(from, to, day_hours)
   end
 
   def opens_hours_from_to?(from, to)
-    from_weekday = VenueHour.which_day(from)
-    from = VenueHour.convert_time(from)
-    to = VenueHour.convert_time(to)
-    1 <= day_hours.where do
-      (venue_hours.weekday == my { from_weekday }) &
-      (venue_hours.from <= my { from }) &
-      (venue_hours.to > my { to })
-    end.count
+    venue_opens_hours_from_to?(from, to, day_hours)
   end
 
   def venue_knows_user(user)
