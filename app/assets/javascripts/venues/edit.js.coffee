@@ -82,16 +82,13 @@ on_load = ->
         return
       return
 
-    invalidStreet = (street) ->
-
-
     $("#phone").intlTelInput
       allowExtensions: true
       utilsScript: '/utils.js'
 
     $('#save-venue').click ->
       $('#phone').val($('#phone').intlTelInput("getNumber"))
-      if !invalidStreet($('#venue_street').val())
+      if !street_autocomplete.getPlace()
         $("#street-input").addClass('has-error')
         $(".street-invalid-field").removeClass('hidden')
         return false
