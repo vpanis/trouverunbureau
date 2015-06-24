@@ -20,12 +20,19 @@
               .location
                 p = "#{venue.town}, #{Country.new(venue.country_code).name}"
           .right-wrapper
-            - if venue.status == "active"
+            - case venue.status
+            - when 'active'
               .edit.complete-status
                 = t('venues.complete')
-            - else
+            - when 'creating'
               .edit.incomplete-status
                 = t('venues.incomplete')
+            - when 'reported'
+              .edit.incomplete-status
+                = t('venues.reported')
+            - when 'closed'
+              .edit.incomplete-status
+                = t('venues.closed')
             .icon.info.pointer
             a.edit.gray href=edit_venue_path(venue) = t('venues.edit_venue')
             = link_to t('venues.preview'), venue_path(venue), class: 'edit gray'

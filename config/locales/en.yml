@@ -307,6 +307,8 @@ en:
     preview: 'Preview'
     complete: 'Complete'
     incomplete: 'Incomplete'
+    reported: 'Reported'
+    closed: 'Closed'
     edit:
       list_your_venue: 'List your venue'
       start_by: 'Start by telling us about your venue...'
