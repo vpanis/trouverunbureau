@@ -307,6 +307,8 @@ fr:
     preview: 'Aperçu'
     complete: 'Complete'
     incomplete: 'Incomplete'
+    reported: 'Reported'
+    closed: 'Closed'
     edit:
       list_your_venue: 'Publier votre annonce'
       start_by: 'Dites nous en plus sur votre espace'
