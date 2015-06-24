@@ -58,14 +58,18 @@ describe VenuesController do
       context 'name is not present' do
         it 'fails with record invalid' do
           params = { country_code: country, force_submit: true }
-          expect { post :create, venue: params }.to raise_error(ActiveRecord::RecordInvalid)
+          @request.env['HTTP_REFERER'] = 'http://test.com/venues'
+          post :create, venue: params
+          expect(response.status).to eq(302)
         end
       end
 
       context 'country_code is not present' do
         it 'fails with record invalid' do
           params = { name: name, force_submit: true }
-          expect { post :create, venue: params }.to raise_error(ActiveRecord::RecordInvalid)
+          @request.env['HTTP_REFERER'] = 'http://test.com/venues'
+          post :create, venue: params
+          expect(response.status).to eq(302)
         end
       end
     end # when the user is logged in
