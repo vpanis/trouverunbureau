@@ -11,7 +11,7 @@
         </div>
 
         <div>
-          <p><%= "#{t('new_message_email.hi')} #{@message.recipient_name}," %></p> <!-- TODO: Change name -->
+          <p><%= "#{t('new_message_email.hi')} #{@message.recipient_owner.name}," %></p> <!-- TODO: Change name -->
           <p><%= "#{t('new_message_email.got_new_message')} " %><span style="color: black; font-weight: bold;"><%="#{@message.from}"%></span> on <%=I18n.l(@message.created_at, format: :long) %></p>
         </div>
       </div>
@@ -21,8 +21,8 @@
       </div>
 
       <div style="max-width: 650px; margin: 0 auto; text-align: center; margin-top: 35px;">
-        <a href="" style="background-color: rgb(255, 225, 17); padding: 15px 70px; border-radius: 25px; color: black; font-weight: bold; text-decoration:none;"><%= t('new_message_email.view_on_deskspotting') %></a>
-        <p style="margin-top: 25px;"><%= t('new_message_email.reply') %></p>
+        <a href='<%= "#{Rails.configuration.base_url}#{inbox_user_path(@message.recipient_owner)}#{(@message.recipient_owner.is_a?(Organization)) ? '?login_as_organization=' + @message.recipient_owner.owner.id.to_s : ''}" %>' style="background-color: rgb(255, 225, 17); padding: 15px 70px; border-radius: 25px; color: black; font-weight: bold; text-decoration:none;"><%= t('new_message_email.view_on_deskspotting') %></a>
+        <p style="margin-top: 25px;"></p>
       </div>
 
       <div style="min-width: 650px; margin: 0 auto; display: table; border-bottom: 1px solid #ccc; padding-bottom: 15px;">
