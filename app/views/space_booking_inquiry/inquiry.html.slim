@@ -135,23 +135,22 @@
             span.base-price
               = "#{t("currency.#{@space.venue.currency.downcase}.symbol")}"
               | {{booking_type_per_price() | number:0}}
-              = "(#{@space.venue.currency})"
         tr
           td
             | {{selected_tab}}s amount
           td
-            | X {{amount_for_booking_type()}}
+            | x {{amount_for_booking_type()}}
+        tr
+          td
+            | Deposit
+          td
+            = "+ #{t("currency.#{@space.venue.currency.downcase}.symbol")}#{number_with_precision(@space.deposit, precision: 2)}"
         tr
           td
             = @space.name
             | &nbsp; amount
           td
-            | X {{space_quantity}}
-        tr
-          td
-            | Deposit
-          td
-            = "+ #{t("currency.#{@space.venue.currency.downcase}.symbol")}#{number_with_precision(@space.deposit, precision: 2)} (#{@space.venue.currency})"
+            | x {{space_quantity}}
         tr
           td
             | DeskSpotting fee
@@ -162,7 +161,7 @@
             | Total
           td
             = "#{t("currency.#{@space.venue.currency.downcase}.symbol")}"
-            | {{booking_type_per_price() * amount_for_booking_type() * space_quantity + space_deposit }}
+            | {{ (booking_type_per_price() * amount_for_booking_type() + space_deposit) * space_quantity }}
     .booking-reasons-wrapper
       h2
         = t('venues.show.why_deskspotting.title')
