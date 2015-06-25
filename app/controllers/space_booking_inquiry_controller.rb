@@ -89,8 +89,8 @@ class SpaceBookingInquiryController < ApplicationController
                                       from: @from_date,
                                       to: @to_date,
                                       space: @space,
-                                      deposit: @space.deposit,
+                                      deposit: @space.deposit * params[:booking][:quantity].to_i,
                                       b_type: @b_type,
-                                      quantity: params[:booking][:quantity])
+                                      quantity: params[:booking][:quantity].to_i)
   end
 end
