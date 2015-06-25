@@ -501,6 +501,18 @@ pt:
     back: 'Back'
     send_inquiry: 'Send inquiry'
     month_amount: 'Number of months'
+    hour: 'hour'
+    hours_amount: 'Hours amount'
+    day: 'day'
+    days_amount: 'Days amount'
+    month: 'month'
+    months_amount: 'Months amount'
+    price_per: 'Price per'
+    deposit: 'Deposit'
+    deskspotting_fee: 'Deskspotting fee'
+    free: 'Free'
+    total: 'Total'
+    space_amount: '%{space} amount'
   edit_venue_progress:
     status: status
     venue: Venue
