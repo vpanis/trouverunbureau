@@ -42,13 +42,13 @@
       = t('booking_inquiry.time_frame')
     .multiple-switch-wrapper
       - if @booking.space.hour_price.present?
-        .tab#tab-hour ng-click="swap_inquiry_type('.form-hour-booking', 'hour')" ng-class="{'tab--selected': selected_tab == 'hour'}"
+        .tab#tab-hour ng-click="swap_inquiry_type('.form-hour-booking', '#{t('booking_inquiry.hour')}')" ng-class="{'tab--selected': selected_tab == '#{t('booking_inquiry.hour')}'}"
           = t('venues.show.per_hour')
       - if @booking.space.day_price.present?
-        .tab#tab-day ng-click="swap_inquiry_type('.form-day-booking', 'day')" ng-class="{'tab--selected': selected_tab == 'day'}"
+        .tab#tab-day ng-click="swap_inquiry_type('.form-day-booking', '#{t('booking_inquiry.day')}')" ng-class="{'tab--selected': selected_tab == '#{t('booking_inquiry.day')}'}"
           = t('venues.show.per_day')
       - if @booking.space.month_price.present?
-        .tab#tab-month ng-click="swap_inquiry_type('.form-month-booking', 'month')" ng-class="{'tab--selected': selected_tab == 'month'}"
+        .tab#tab-month ng-click="swap_inquiry_type('.form-month-booking', '#{t('booking_inquiry.month')}')" ng-class="{'tab--selected': selected_tab == '#{t('booking_inquiry.month')}'}"
           = t('venues.show.per_month')
   .form-container.dashboard-form
     - if @booking.space.hour_price.present?
@@ -64,7 +64,7 @@
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               label
                 = t('booking_inquiry.spaces_amount')
-              = f.text_field :quantity, { class: 'form-control', type: 'number', ng_model: 'space_quantity', min: '1', ng_required: 'true' }
+              = f.text_field :quantity, { class: 'form-control', type: 'number', ng_model: 'space_quantity', min: '1', 'ng-minlength' => 1, max: @space.quantity, 'ng-maxlength' => @space.quantity, ng_required: 'true' }
           .row
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               label
@@ -96,7 +96,7 @@
             .form-group.col-xs-12.col-sm-4.col-md-4.col-lg-4
               label
                 = t('booking_inquiry.spaces_amount')
-              = f.text_field :quantity, value: 1, class: 'form-control', type: 'number', ng_model: 'space_quantity', min: '1', ng_required: 'true'
+              = f.text_field :quantity, value: 1, class: 'form-control', type: 'number', ng_model: 'space_quantity', min: '1', 'ng-minlength' => 1, max: @space.quantity, 'ng-maxlength' => @space.quantity, ng_required: 'true'
           input type="submit" class="input--hidden"
           = text_field_tag :booking_type, nil, { type: 'text', 'ng-model' => "selected_tab", hidden: "" }
           = hidden_field_tag :message, nil, { placeholder: t('booking_inquiry.message_placeholder'), class: 'form-control', hidden: "", ng_model: "booking_message" }
@@ -113,11 +113,11 @@
             .form-group.col-xs-12.col-sm-4.col-md-4.col-lg-4
               label
                 = t('booking_inquiry.month_amount')
-              = text_field_tag :month_quantity, nil, { class: 'form-control', type: 'number', ng_model: 'month_quantity', min: '1', ng_required: 'true' }
+              = text_field_tag :month_quantity, nil, { class: 'form-control', type: 'number', ng_model: 'month_quantity', min: @space.month_minimum_unity, ng_required: 'true', 'ng-minlength' => @space.month_minimum_unity}
             .form-group.col-xs-12.col-sm-4.col-md-4.col-lg-4
               label
                 = t('booking_inquiry.spaces_amount')
-              = f.text_field :quantity, value: 1, class: 'form-control', type: 'number', ng_model: 'space_quantity', min: '1', ng_required: 'true'
+              = f.text_field :quantity, value: 1, class: 'form-control', type: 'number', ng_model: 'space_quantity', min: '1', 'ng-minlength' => '1', max: @space.quantity, 'ng-maxlength' => @space.quantity, ng_required: 'true'
           input type="submit" class="input--hidden"
           = text_field_tag :booking_type, nil, { type: 'text', 'ng-model' => "selected_tab", hidden: "" }
           = hidden_field_tag :message, nil, { placeholder: t('booking_inquiry.message_placeholder'), class: 'form-control', hidden: "", ng_model: "booking_message" }
@@ -130,38 +130,43 @@
       tbody
         tr
           td
-            | Price per {{selected_tab}}
+            = t('booking_inquiry.price_per')
+            | &nbsp; {{selected_tab}}
           td
             span.base-price
               = "#{t("currency.#{@space.venue.currency.downcase}.symbol")}"
               | {{booking_type_per_price() | number:0}}
         tr
           td
-            | {{selected_tab}}s amount
+            label ng-show="selected_tab == '#{t('booking_inquiry.hour')}'"
+              = t('booking_inquiry.hours_amount')
+            label ng-show="selected_tab == '#{t('booking_inquiry.day')}'"
+              = t('booking_inquiry.days_amount')
+            label ng-show="selected_tab == '#{t('booking_inquiry.month')}'"
+              = t('booking_inquiry.months_amount')
           td
             | x {{amount_for_booking_type()}}
         tr
           td
-            | Deposit
+            = t('booking_inquiry.deposit')
           td
             = "+ #{t("currency.#{@space.venue.currency.downcase}.symbol")}#{number_with_precision(@space.deposit, precision: 2)}"
         tr
           td
-            = @space.name
-            | &nbsp; amount
+            = t('booking_inquiry.space_amount', space: @space.name)
           td
-            | x {{space_quantity}}
+            | x {{(space_quantity) ? space_quantity : 0}}
         tr
           td
-            | DeskSpotting fee
+            = t('booking_inquiry.deskspotting_fee')
           td
-            | free
+            = t('booking_inquiry.free')
         tr
           td
-            | Total
+            = t('booking_inquiry.total')
           td
             = "#{t("currency.#{@space.venue.currency.downcase}.symbol")}"
-            | {{ (booking_type_per_price() * amount_for_booking_type() + space_deposit) * space_quantity }}
+            | {{ (booking_type_per_price() * amount_for_booking_type() + space_deposit) * ((space_quantity) ? space_quantity : 0)}}
     .booking-reasons-wrapper
       h2
         = t('venues.show.why_deskspotting.title')
