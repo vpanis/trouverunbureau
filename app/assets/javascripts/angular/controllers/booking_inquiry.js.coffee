@@ -15,10 +15,11 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
       $scope.booking_from = $('#booking_from').value
       $scope.booking_to = $('#booking_to').value
 
-    $scope.swap_inquiry_type = (show_class, tab_name) ->
+    $scope.swap_inquiry_type = (show_class, tab, tab_name) ->
       hide_forms()
       $(show_class).removeClass('form--hidden')
-      $scope.selected_tab = tab_name
+      $scope.selected_tab = tab
+      $scope.selected_tab_name = tab_name
 
     $scope.disabled = (date, mode) ->
       days = [0, 1, 2, 3, 4, 5, 6]
