@@ -137,6 +137,7 @@
         padding-left: 0px;
       }
     }
+    .new,
     .pending_authorization,
     .pending_payment,
     .approved,
@@ -148,8 +149,11 @@
       font-weight: 700;
       width: 90px;
     }
+    .new {
+      color: $black;
+    }
     .pending_authorization {
-      color: $red;
+      color: $dark-gray;
     }
     .approved, .pending_payment {
       color: $aqua;
@@ -158,13 +162,13 @@
       color: $yellow;
     }
     .cancelled {
-      color: $dark-gray;
+      color: $red;
     }
     .denied {
-      color: $dark-gray;
+      color: $red;
     }
     .expired {
-      color: $dark-gray;
+      color: $red;
     }
   }
 }

@@ -3,7 +3,7 @@ class InquirySerializer < ActiveModel::Serializer
   include ActionView::Helpers::DateHelper
 
   attributes :id, :space, :state, :from, :to, :b_type, :price, :quantity, :message_count,
-             :last_message_at, :client, :deposit, :fee, :venue_owner, :with_news
+             :last_message_at, :client, :deposit, :fee, :venue_owner, :with_news, :new
 
   def space
     SpaceSerializer.new(object.space, only: [:id, :name, :city, :currency, :capacity, :venue_name,
@@ -29,6 +29,11 @@ class InquirySerializer < ActiveModel::Serializer
 
   def venue_owner
     object.space.venue.owner.eql?(scope)
+  end
+
+  def new
+    return object.owner_last_seen.nil? if object.owner.eql?(scope)
+    object.venue_last_seen.nil?
   end
 
   delegate :state, to: :object

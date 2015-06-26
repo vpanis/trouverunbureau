@@ -258,14 +258,17 @@ RSpec.describe BookingManager, type: :model do
                                                 b_type: Booking.b_types[:hour],
                                                 quantity: 1, owner: @owner1,
                                                 space: @space2)[0]
+      BookingManager.change_last_seen(@booking1, @owner1, @booking1.messages.last.created_at)
       @booking2, @errors2 = BookingManager.book(@owner2, from: @from, to: @to,
                                                 b_type: Booking.b_types[:hour],
                                                 quantity: 1, owner: @owner2,
                                                 space: @space1)[0]
+      BookingManager.change_last_seen(@booking2, @owner2, @booking2.messages.last.created_at)
       @booking3, @errors3 = BookingManager.book(@owner1_u1, from: @from, to: @to,
                                                 b_type: Booking.b_types[:hour],
                                                 quantity: 1, owner: @owner1,
                                                 space: @space1)[0]
+      BookingManager.change_last_seen(@booking3, @owner1, @booking3.messages.last.created_at)
     end
 
     context 'retrieving the bookings that have news' do
@@ -282,13 +285,17 @@ RSpec.describe BookingManager, type: :model do
       end
 
       it 'don\'t return the booking to the last owner that send a message' do
-        FactoryGirl.create(:message, user: @owner2, represented: @owner2, booking: @booking1)
+        message = FactoryGirl.create(:message, user: @owner2, represented: @owner2,
+                                     booking: @booking1)
+        BookingManager.change_last_seen(@booking1, @owner2, message.created_at)
         expect(BookingManager.bookings_with_news(@owner2)).not_to include(@booking1)
       end
 
       it 'return the booking to the owner that didn\'t send the last message' do
         expect(BookingManager.bookings_with_news(@owner1)).not_to include(@booking1)
-        FactoryGirl.create(:message, user: @owner2, represented: @owner2, booking: @booking1)
+        message = FactoryGirl.create(:message, user: @owner2, represented: @owner2,
+                                     booking: @booking1)
+        BookingManager.change_last_seen(@booking1, @owner2, message.created_at)
         expect(BookingManager.bookings_with_news(@owner2)).not_to include(@booking1)
         expect(BookingManager.bookings_with_news(@owner1)).to include(@booking1)
       end
