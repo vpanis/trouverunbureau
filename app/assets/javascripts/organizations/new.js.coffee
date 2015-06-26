@@ -43,6 +43,12 @@ on_load = ->
       $('#email-popover').popover(options)
       $('#phone-popover').popover(options)
 
+    $("#phone").intlTelInput
+      allowExtensions: true
+      utilsScript: '/utils.js'
+
+    $('#save-organization').click ->
+      $('#phone').val($('#phone').intlTelInput("getNumber"))
     initialize_listeners()
     initialize_popovers()
   return
