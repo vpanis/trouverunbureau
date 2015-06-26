@@ -114,11 +114,27 @@
       font-size: 12px;
       line-height: 20px;
       text-transform: capitalize;
-      &.messages {
+      &.capacity {
         @include at2x('venue_profile_a_team_bookings', 20px, 20px);
         background-repeat: no-repeat;
         background-position: left center;
         padding-left: 25px;
+        padding-right: 25px;
+      }
+      &.messages {
+        @include at2x('invite-friends-email', 19px, 16px);
+        background-repeat: no-repeat;
+        background-position: left center;
+        padding-left: 25px;
+      }
+      &.quantity_pad {
+        text-align: right;
+        margin: 0;
+        padding-right: 5px;
+        padding-left: 5px;
+      }
+      &.status-preview {
+        padding-left: 0px;
       }
     }
     .pending_authorization,
