@@ -8,7 +8,7 @@
       .modal-body
         .form-group
           label = t('organizations.email')
-          input.form-control placeholder="#{t('organizations.email')}" ng-model='email'
+          input.form-control placeholder="#{t('organizations.email_placeholder')}" ng-model='email'
         .form-group
           label = t('organizations.role')
           = select_tag('role_select', options_for_select(member_roles, nil), {class: 'form-control multi-lang-select', ng_model: "role"})
