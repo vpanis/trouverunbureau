@@ -17,7 +17,9 @@
         p = t('edit_venue_progress.details')
     a href=amenities_venue_path(venue)
       li.amenities class=('selected' if step == 3)
-        p = t('edit_venue_progress.amenities')
+        p
+          = t('edit_venue_progress.amenities')
+          label.amenities_counter = "#{venue.amenities.size}/#{Venue::AMENITY_TYPES.size}"
     a href=photos_venue_path(venue)
       li.photos class=('selected' if step == 4)
         p = t('edit_venue_progress.photos')

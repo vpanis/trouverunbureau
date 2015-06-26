@@ -22,7 +22,8 @@ on_load = ->
     addTicks = (response) ->
       $($('.verification-list li')[0]).addClass('done') if response.first_step
       $($('.verification-list li')[1]).addClass('done') if response.second_step
-      $($('.verification-list li')[2]).addClass('done') if response.third_step
+      # The third step are the amenities, and they are optonal.
+      # $($('.verification-list li')[2]).addClass('done') if response.third_step
       $($('.verification-list li')[3]).addClass('done') if response.fourth_step
       $($('.verification-list li')[4]).addClass('done') if response.fifth_step
       $($('.verification-list li')[5]).addClass('done') if response.sixth_step

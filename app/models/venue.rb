@@ -112,6 +112,7 @@ class Venue < ActiveRecord::Base
     self.amenities ||= []
     self.professions ||= []
     self.status ||= Venue.statuses[:creating]
+    self.currency ||= 'eur'
     initialize_reviews_data
   end
 
