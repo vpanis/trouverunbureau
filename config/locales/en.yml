@@ -104,7 +104,7 @@ en:
     add: 'add'
     open: 'Open'
     delete: 'delete'
-    add_image: 'Add an image'
+    add_image: 'Add image'
     add_space: 'Create new space'
     pay: pay
   session:
@@ -144,7 +144,7 @@ en:
       find: 'Find'
     features:
       title: 'features'
-      subtitle: 'Why DeskSpotting'
+      subtitle: 'Why DeskSpotting?'
       flexibility:
         title: 'Flexibility'
         text: 'Wherever, whenever book individual workspace, entire offices or meeting rooms for a couple of hours, a day, a month or more.'
@@ -158,9 +158,9 @@ en:
         title: 'No fees'
         text: 'Find your workspace, book it and get on with your business.'
     your_space:
-      title: 'find your space'
+      title: 'Find your space'
       subtitle: 'Everyone should have an inspiring workspace'
-      description: 'Looking for a cool place to work for you or your team in your home city? Need a place to work or meet with clients when traveling? Let DeskSpotting help you find great workplaces that meet your needs - whenever, wherever.'
+      description: 'Looking for a cool place to work for you or your team in your home city? Need a place to work or meet with clients? Let DeskSpotting help you find great workplaces that meet your needs - whenever, wherever.'
       tabs:
         featured: 'featured'
         workspaces: 'workspaces'
@@ -169,7 +169,7 @@ en:
       see_all: 'See all'
     list_space:
       title: 'List your space!'
-      content: 'Have extra workspace and want to make the most of it? List on DeskSpotting and let your space earn you money, meet interesting people and reduce your fixed costs. You decide when and to whom you rent. There is no obligation and no fee to list.'
+      content: 'Have extra workspace and want to make the most of it? List on DeskSpotting and let your space earn you money, meet interesting people and reduce your fixed costs. You decide when and with whom you share your space. There is no obligation and no fee to list.'
       learn_more: 'Learn More'
     quotes:
       title: 'quotes'
@@ -180,12 +180,12 @@ en:
       join_us: 'Join us'
       about_us: 'About us'
       our_terms: 'Our Terms'
-      how_it_works: 'How it works'
+      how_it_works: 'Hosting'
       faq: 'Help'
       contact: 'Contact'
       language:
         en: 'eng'
-      reserved_rights: ' 2014 DeskSpotting. All rights reserved.'
+      reserved_rights: ' 2015 DeskSpotting. All rights reserved.'
       terms_of_service: 'Terms of service'
       privacy_policy: 'Privacy policy'
       more: 'more'
@@ -204,9 +204,9 @@ en:
     count: 'Desks found'
     filters: 'Filters'
     workspace: 'Workspace'
-    neighbourhood: 'Neighbourhood'
+    neighbourhood: 'Neighborhood'
     profession: 'Profession'
-    capacity: 'Capacity'
+    capacity: 'Number of people'
     check_in: 'Check-In'
     show_filters: 'Show listings'
     clear_filters: 'Clear filters'
@@ -334,7 +334,7 @@ en:
       select_professions: 'Select preferred professions'
       add_professions: 'Add professions'
       info_professions: 'Share with guests the professions that are welcome in your venue'
-      invalid_street: 'Please select a valid street address from the dropdown'
+      invalid_street: 'Please select an address from the dropdown'
     collection_account:
       individual: Individual
       business: Business
@@ -355,7 +355,7 @@ en:
       descriptor: Descriptor
       account_number: Account Number
       routing_number: Routing Number
-      previous_last_4: Previous Last 4
+      previous_last_4: Previous Last 4 digits
       required: Required
       only_tax_id_present: Only if tax id present
       only_legal_name_present: Only if legal name present
@@ -377,10 +377,10 @@ en:
     spoken_languages: 'Spoken Languages'
     add_languages: 'Add languages'
     info_no_share: 'we will never share this information with anyone'
-    info_share_street: 'we will only share your street address with a host/guest once a booking has been made'
+    info_share_street: 'we will never share your street address with anyone'
     info_share_phone: 'we will only share your phone number with a host/guest once a booking has been made'
-    info_share_street: 'we will only share your street address with a host/guest once a booking has been made'
-    info_share_email: 'we will only share your email with a host/guest once a booking has been made'
+    info_share_street: 'we will only share your address with a guest once a booking has been made'
+    info_share_email: 'we will not share your email with anyone'
     info_share_emergency: 'we will only share your emergency contact information with a host once a booking has been made'
     emergency_contact: 'Emergency Contact'
     genders:
@@ -391,7 +391,7 @@ en:
     gender: 'Gender'
     phone: 'Phone Number'
     profession: 'Profession'
-    interests: 'More on your carreer and profession'
+    interests: 'More on your career and profession'
     email: 'Email'
     company_name: 'Company name'
     language: 'Language'
@@ -423,8 +423,8 @@ en:
       all: 'All workspaces'
     type: 'Workspace type'
     name: 'Name'
-    capacity: 'Capacity'
-    quantity: 'Quantity'
+    capacity: 'Number of people'
+    quantity: 'Numbe of spaces'
     description: 'Description'
     space_photos: 'Space photos'
     pricing_in: "Pricing in %{currency}"
@@ -438,10 +438,10 @@ en:
     deposit: 'Deposit'
     info_capacity: How many people can work in this space?
     info_quantity: Number of these spaces you would you like to list on DeskSpotting
-    info_description: Describe this workspace and tell potential guests why it is a good place to work
+    info_description: Describe the workspace and tell potential guests why it is a good place to work
     info_photos:  THE PHOTOS THE MORE INTEREST YOU WILL GENERATE IN YOUR SPACE. SHARE PICTURES THAT ACCURATELY REFLECT THE OVERALL ATMOSPHERE OF YOUR SPACE
-    info_pricing: Set the target price you would like your space to be offered at for different time frames. Pricing can always be modified at any time and on a case by case basis
-    info_deposit: All deposits are held in escrow for the security of the host and guest
+    info_pricing: Set the target price you would like your space to be marketed for different time frames. Pricing can always be modified at any time and on a case by case basis.
+    info_deposit: All deposits are held in escrow for the security of the Guest and Host
     edit_your_space: 'Edit your space'
   inbox:
     messages: 'Messages'
@@ -452,7 +452,7 @@ en:
     ds_commission: 'DS Service Fee'
     total_rental: 'Total booking'
     total_payout: 'Total Payout'
-    info_space_rental: The amount you earn. It's held in escrow until check-in time. 24 hours later it's in your account
+    info_space_rental: 'The amounts paid by the Guest are held in escrow until check-in time. 24 hours later the relevant amounts are transferred to your account'
     info_deposit: It will be held in escrow until 72 hours after the guest's check-out
     info_fee: 'For all bookings of a month or less the Service Fee is 20%. For all bookings of more than 1 month the Service Fee is 10% as of the second month. For all month to month bookings the service fee is 10% as of the second month.'
     info_client_space_rental: The amount of the space booking will be held in escrow until check-in time
@@ -465,7 +465,7 @@ en:
     spaces: 'Spaces'
     check_in: 'Check-In'
     check_out: 'Check-Out'
-    comment: 'Comment (The review is about to write will be seen only by other hosts)'
+    comment: 'Comment (The review will be seen only by other hosts)'
   bookings:
     claim_deposit: 'Claim deposit'
     review: Review
@@ -535,7 +535,7 @@ en:
   host_cancellation_email:
     subject: 'Host Cancellation - Booking #%{booking_id}'
     sorry_cancel: Sorry to see you had to cancel your booking of
-    unfortunately: "Unfortunately your guest, %{name}, had to cancel is booking with you for"
+    unfortunately: "Unfortunately your guest, %{name}, had to cancel the booking with you for"
     space: Space
     date: Date
     spaces: Spaces
@@ -546,7 +546,7 @@ en:
     bank_name: Bank Name
     account_number: Account Number
     holder: Holder
-    funds: Funds transferred On
+    funds: Funds transferred on
     refunded: "Your guest %{name} will be refunded"
     terms1: If you have any questions about our
     terms2: feel free to read
@@ -566,7 +566,7 @@ en:
     subject: 'Host Review - Venue #%{venue_id}'
     rate_guest: rate your guest
     your_guest: Your Guest
-    checked_in: has checked-in of
+    checked_in: has checked-in at
   receipt_email:
     subject_client: 'Receipt - Booking #%{booking_id}'
     subject_host: 'Receipt Host - Booking #%{booking_id}'
@@ -574,19 +574,19 @@ en:
     this_link: just use this link
     forgot_password:  It seems like you forgot your DeskSpotting password.
     dont_worry: Don't worry it happens to the best of us
-    new_password: To create the new password and your back in business
-    not_request: If you did not make this request, all good, just disregard
-    stay_same: this email and your password will stay the same.
+    new_password: Create a new password and you are back in business
+    not_request: 'If you did not make this request, all good, just disregard the message'
+    stay_same: This email and your password will stay the same.
   new_space:
     list_new_space: List new space
     space_photos: Space photos
     save_to_add_photos: Save space to start adding photos
   referral:
     invite_friends: 'Invite Friends'
-    join: 'Invite your friends to join DeskSpotting'
+    join: 'Invite your friends to join you on DeskSpotting'
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
     button: 'Invite'
-    confirmation: 'The invitation was sent correctly'
+    confirmation: 'Invitation Sent!'
   organizations:
     edit_profile: 'Edit profile'
     required_fields: 'Required fields'
@@ -604,21 +604,21 @@ en:
     payment: payment
     welcome: "Hello %{name}. It's payment time!"
     space_type: space type
-    capacity: Capacity
+    capacity: Number of people
     days: Days
     hours: Hours
     spaces: Spaces
     check_in: Check-In
     check_out: Check-Out
     price: price
-    used_credit_card: used credit card
+    used_credit_card: credit card used
     new_credit_card: new credit card
     last_digits:  Last four digits
     type: Type
     expiration: Expiration date
     currency: Currency
     register_credit_card: register credit card
-    create_credit_card: create credit card
+    create_credit_card: add credit card
     cvx: CVV
     expiration_month: Expiration month(mm)
     expiration_year: Expiration year(yy)
@@ -626,19 +626,19 @@ en:
     invalid_card_number: Invalid Card Number format
     invalid_expiration_date: Invalid Expiration Date format
     invalid_cvv: Invalid CVV format
-    all_required: All field are required!
+    all_required: All fields are required!
     choose_credit_card: You have to choose a credit card first
   messages:
-    booking_change: The booking info has changed!
-    pending_authorization: The booking needs the venue authorization.
-    pending_payment: "Booking accepted. Pending payment. This booking will be reserved for 24hs. If you don't pay in that time, you could lost the booking."
-    paid: The booking has been successfully paid.
+    booking_change: The ooking info has changed!
+    pending_authorization: The booking needs the Host's confirmation.
+    pending_payment: "Booking accepted. Pending confirmation. This booking will be held for 24hs. If you don't confirm in that time frame, it will be cancelled."
+    paid: The booking has been paid.
     cancelled: The booking has been cancelled.
-    denied: The booking has been cancelled by the venue's owner.
-    expired: The 24hs to pay the booking has expire.
+    denied: The booking has been cancelled by the Host.
+    expired: The 24hs to confirm the booking have expired.
     payment_verification: We are verifying the payment.
     refunding: The money has been refunded.
-    error_refunding: We are having problems with the refunding.
+    error_refunding: We are having problems processing the refund.
   payment_methods:
     personal: personal
     business: business
@@ -652,7 +652,7 @@ en:
     region: Region
     postal_code: Postal code
     required_legal: Required legal representative fields
-    required_fundings: Required fundings fields
+    required_fundings: Required funding fields
     routing_number: Routing number
     account_number: Account number
     legal_name: Business legal name
@@ -668,8 +668,8 @@ en:
     branch_code: Branch code
     sort_code: Sort code
   receipt:
-    customer_title: Customer Receipt
-    venue_title: Venue Owner Receipt
+    customer_title: Guest Receipt
+    venue_title: Host Receipt
     receipt_number: 'Receipt #'
     venue_host: Host
     venue_name: Venue Name
