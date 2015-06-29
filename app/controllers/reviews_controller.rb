@@ -1,6 +1,5 @@
 class ReviewsController < ApplicationController
   inherit_resources
-  include RepresentedHelper
   before_action :authenticate_user!
 
   def new_client_review

@@ -1,6 +1,5 @@
 class SpacesController < ApplicationController
   inherit_resources
-  include RepresentedHelper
   include SelectOptionsHelper
   before_action :authenticate_user!, except: [:index, :search_mobile]
 

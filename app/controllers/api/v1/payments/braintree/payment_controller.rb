@@ -3,7 +3,6 @@ module Api
     module Payments
       module Braintree
         class PaymentController < ApiController
-          include RepresentedHelper
           before_action :authenticate_user!, only: [:customer_nonce_token]
 
           # nonce token to pay

@@ -1,5 +1,4 @@
 class SpaceBookingInquiryController < ApplicationController
-  include RepresentedHelper
   before_action :authenticate_user!
 
   def inquiry

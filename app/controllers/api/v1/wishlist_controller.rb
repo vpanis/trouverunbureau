@@ -1,7 +1,6 @@
 module Api
   module V1
     class WishlistController < ApiController
-      include RepresentedHelper
       before_action :authenticate_user!
 
       def index

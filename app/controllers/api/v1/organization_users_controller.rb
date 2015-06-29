@@ -1,8 +1,6 @@
 module Api
   module V1
     class OrganizationUsersController < ApplicationController
-      include RepresentedHelper
-
       def index
         @organization = Organization.find(params[:organization_id])
         render status: 200, json: organization_members,

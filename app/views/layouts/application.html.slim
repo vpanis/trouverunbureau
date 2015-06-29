@@ -13,5 +13,6 @@ html
   body ng-app="deskSpotting" data-controller="#{controller.controller_name}" data-action="#{controller.action_name}"
     = render 'layouts/staging_alert'
     .main-container
+      = render 'shared/menu_bar'
       = yield
       = render '/layouts/footer'
