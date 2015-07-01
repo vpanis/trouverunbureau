@@ -1,5 +1,4 @@
 class PaymentsController < ApplicationController
-  include RepresentedHelper
   include SelectOptionsHelper
   before_action :authenticate_user!
 

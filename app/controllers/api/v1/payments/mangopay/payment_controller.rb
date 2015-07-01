@@ -3,7 +3,6 @@ module Api
     module Payments
       module Mangopay
         class PaymentController < ApiController
-          include RepresentedHelper
           before_action :authenticate_user!
 
           # PUT /mangopay/start_payment

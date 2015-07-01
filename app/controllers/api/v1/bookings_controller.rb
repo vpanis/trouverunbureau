@@ -1,7 +1,6 @@
 module Api
   module V1
     class BookingsController < ApplicationController
-      include RepresentedHelper
       include ArraySerializerHelper
 
       before_action :authenticate_user!

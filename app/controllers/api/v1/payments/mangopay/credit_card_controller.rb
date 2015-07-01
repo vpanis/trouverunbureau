@@ -3,7 +3,6 @@ module Api
     module Payments
       module Mangopay
         class CreditCardController < ApiController
-          include RepresentedHelper
           before_action :authenticate_user!
 
           # POST /mangopay/card_registration
