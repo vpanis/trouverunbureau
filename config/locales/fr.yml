@@ -427,7 +427,7 @@ fr:
     quantity: 'Nombre de postes'
     description: 'Description'
     space_photos: 'Photos'
-    pricing_in: "Prix en %{devise}"
+    pricing_in: "Prix en %{currency}"
     per_hour: 'Par heure'
     per_day: 'Par jour'
     per_month: 'Par mois'
@@ -492,7 +492,7 @@ fr:
     date: 'Date'
     your_message: 'Votre message'
     message_placeholder: 'Dites en plus sur vous même et vos intérêts professionels.'
-    feature_1: 'Sans frais.' 
+    feature_1: 'Sans frais.'
     feature_2: 'Caution gardée sous séquestre.'
     feature_3: 'Réservez le temps dont vous avez besoin.'
     feature_4: 'Espaces vérifiés.'
