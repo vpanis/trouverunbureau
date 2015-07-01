@@ -90,6 +90,8 @@ gem 'will_paginate', '~>3.0.7'
 # If required only for development, stage and production will EXPLODE
 gem 'mail_view', '~> 2.0.4'
 
+gem 'mail_form'
+
 gem 'angular-translate-rails'
 
 gem 'countries'
