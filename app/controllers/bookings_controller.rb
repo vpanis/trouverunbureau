@@ -34,6 +34,11 @@ class BookingsController < ApplicationController
 
   private
 
+  def can_claim_deposit?(booking)
+    venue_owner?(booking) && started?(booking) && !booking.hold_deposit &&
+    booking.payment.present? && booking.payment.deposit_amount_in_wallet > 0
+  end
+
   def retrieve_bookings(venue_ids, method_name)
     booking_context = BookingContext.new(current_represented, venue_ids)
     @paid = booking_context.send(method_name, Booking.states.values_at(:paid))

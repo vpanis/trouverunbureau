@@ -9,7 +9,7 @@ class MangopayPayout < ActiveRecord::Base
   TRANSACTION_STATUSES = %w(EXPECTING_RESPONSE TRANSFER_SUCCEEDED TRANSFER_CREATED TRANSFER_FAILED
                             TRANSACTION_SUCCEEDED TRANSACTION_CREATED TRANSACTION_FAILED)
 
-  enum p_types: [:refund, :payout_to_user]
+  enum p_type: [:refund, :payout_to_user]
 
   # Callbacks
   after_initialize :initialize_fields

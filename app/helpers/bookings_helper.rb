@@ -19,7 +19,7 @@ module BookingsHelper
 
   def can_claim_deposit?(booking)
     venue_owner?(booking) && started?(booking) && !booking.hold_deposit &&
-    booking.payment.deposit_amount_in_wallet > 0
+    booking.payment.present? && booking.payment.deposit_amount_in_wallet > 0
   end
 
   private

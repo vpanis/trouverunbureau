@@ -56,7 +56,7 @@ class NotificationsMailer < ActionMailer::Base
   end
 
   def send_i18n_email(recipients_users, subject_key, subject_params = {})
-    emails_in_language = language_user_separator(recipient_users)
+    emails_in_language = language_user_separator(recipients_users)
     emails_in_language.each_pair do |language, emails|
       I18n.with_locale(language) do
         send_email(emails, I18n.t(subject_key, subject_params))
