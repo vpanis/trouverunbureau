@@ -1,7 +1,7 @@
 class MessageNotificationWrapper < SimpleDelegator
 
-  def recipients_users
-    @booking_w.recipients_users
+  def recipients_representees
+    @booking_w.recipients_representees
   end
 
   def recipient_owner

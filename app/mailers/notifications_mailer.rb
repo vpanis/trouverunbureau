@@ -3,38 +3,38 @@ class NotificationsMailer < ActionMailer::Base
 
   def new_message_email(message_id)
     message = prepare_message_data(message_id)
-    send_i18n_email(message.recipients_users, 'new_message_email.subject',
-                    { booking_id: message.booking.id })
+    send_i18n_email(message.recipients_representees, 'new_message_email.subject',
+                    booking_id: message.booking.id)
   end
 
   def host_cancellation_email(message_id)
     message = prepare_message_data(message_id)
-    send_i18n_email(message.recipients_users, 'host_cancellation_email.subject',
-                    { booking_id: message.booking.id })
+    send_i18n_email(message.recipients_representees, 'host_cancellation_email.subject',
+                    booking_id: message.booking.id)
   end
 
   def guest_review_email(booking_id)
     booking = prepare_booking_data(booking_id)
-    send_i18n_email(booking.client_recipients_users, 'guest_review_email.subject',
-                    { type: booking.owner.class.to_s, guest_id: booking.owner.id })
+    send_i18n_email(booking.client_recipients_representees, 'guest_review_email.subject',
+                    type: booking.owner.class.to_s, guest_id: booking.owner.id)
   end
 
   def host_review_email(booking_id)
     booking = prepare_booking_data(booking_id)
-    send_i18n_email(booking.venue_recipients_users, 'host_review_email.subject',
-                    { venue_id: booking.space.venue.id })
+    send_i18n_email(booking.venue_recipients_representees, 'host_review_email.subject',
+                    venue_id: booking.space.venue.id)
   end
 
   def receipt_email(booking_id)
     booking = prepare_receipt_data(booking_id)
-    send_i18n_email(booking.client_recipients_users, 'receipt_email.subject_client',
-                    { booking_id: booking.id })
+    send_i18n_email(booking.client_recipients_representees, 'receipt_email.subject_client',
+                    booking_id: booking.id)
   end
 
   def receipt_email_host(booking_id)
     booking = prepare_receipt_data(booking_id)
-    send_i18n_email(booking.venue_recipients_users, 'receipt_email.subject_host',
-                    { booking_id: booking.id })
+    send_i18n_email(booking.venue_recipients_representees, 'receipt_email.subject_host',
+                    booking_id: booking.id)
   end
 
   private
@@ -55,8 +55,8 @@ class NotificationsMailer < ActionMailer::Base
     @booking
   end
 
-  def send_i18n_email(recipients_users, subject_key, subject_params = {})
-    emails_in_language = language_user_separator(recipients_users)
+  def send_i18n_email(recipients_representees, subject_key, subject_params = {})
+    emails_in_language = language_user_separator(recipients_representees)
     emails_in_language.each_pair do |language, emails|
       I18n.with_locale(language) do
         send_email(emails, I18n.t(subject_key, subject_params))
@@ -64,12 +64,14 @@ class NotificationsMailer < ActionMailer::Base
     end
   end
 
-  def language_user_separator(recipient_users)
+  def language_user_separator(recipient_representees)
     emails_in_language = {}
-    recipient_users.each do |user|
+    recipient_representees.each do |representee|
+      user = representee
+      user = representee.organization_users.first.user if representee.is_a?(Organization)
       language = user.language || I18n.default_locale.to_s
-      emails_in_language[language] = [] unless emails_in_language.has_key?(language)
-      emails_in_language[language] << user
+      emails_in_language[language] = [] unless emails_in_language.key?(language)
+      emails_in_language[language] << representee.email
     end
     emails_in_language
   end

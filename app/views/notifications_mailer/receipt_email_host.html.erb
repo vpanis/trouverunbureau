@@ -17,8 +17,7 @@
           <div class="title" style="text-transform: uppercase; font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; color: black; margin: 15px 0;">
             <%= t('receipt.venue_title') %>
           </div>
-          <div class="separator long" style="  background-color: #ffe111;
-  height: 2px; "></div>
+          <div class="separator long" style="  background-color: #ffe111; height: 2px; "></div>
           <div style="  display: block; text-align: center; margin-top: 15px;">
             <div class="date" style="display: inline-block; text-align: center; margin-right: 20px; ">
               <%= @payment.receipt.created_at.to_date %>
@@ -30,18 +29,17 @@
             </div>
             <div class="bar" style=" display: inline-block; width: 2px; background-color: #efefef; height: 25px;"></div>
             <div class="contact" style="display: inline-block; margin-left: 20px; margin-top: 10px">
-              www.deskspotting.com/help/contact
+              <a href='<%= "#{Rails.configuration.base_url}#{our_terms_path}" %>'>www.deskspotting.com/contact</a>
             </div>
           </div>
         </div>
         <div class="host" style="margin-top: 30px;" >
-          <div class="title" style="text-transform: uppercase; font-family: 'Open Sans', sans-serif;
-  font-size: 14px; font-weight: bold; color: black; margin: 15px 0;">
-            Host
+          <div class="title" style="text-transform: uppercase; font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; color: black; margin: 15px 0;">
+            <%= t('receipt.venue_host') %>
           </div>
           <div class="separator long" style="  background-color: #ffe111; height: 2px; "></div>
-          <div style="  display: block; margin-top: 15px; font-size: 0">
-            <div style="  display: inline-block; vertical-align: top; width: 50%; font-size: 16">
+          <div style="  display: block; margin-top: 15px; font-size: 14px">
+            <div style="  display: inline-block; vertical-align: top; width: 50%; font-size: 14px">
               <div class="venue-name">
                 <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184;">
                   <%= t('receipt.venue_name') + ':' %>
@@ -67,8 +65,7 @@
                 <span><%= @booking.space.venue.town %></span>
               </div>
             </div>
-            <div style="  display: inline-block;
-    vertical-align: top; width: 50%; font-size: 16">
+            <div style="  display: inline-block; vertical-align: top; width: 50%; font-size: 14">
               <div class="zip-code">
                 <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184;">
                   <%= t('receipt.zip_code') + ':' %>
@@ -92,8 +89,7 @@
         </div>
         <!-- space rental, deposit and total payout -->
         <div class="header" style="  font-size: 0; height: 80px; margin: 15px 0;">
-          <div class="yellow-container" style="  display: inline-block; background-color: #ffe111;
-  width: 75%; font-size: 14px; height: 100%; vertical-align: top; font-size: 0;">
+          <div class="yellow-container" style="  display: inline-block; background-color: #ffe111; width: 75%; font-size: 14px; height: 100%; vertical-align: top; font-size: 14px;">
             <div  class="space-rental "style=" display: inline-block; font-size: 14px; width: 32%; text-align: center; vertical-align: top;   padding: 15px 0; height: 50px;">
               <%= image_tag 'ic_profile_info.png' %>
               <p class="concept" style=" display: inline-block; margin: 0; color: black">
@@ -104,7 +100,7 @@
             <div class="plus" style=" display: inline-block; font-size: 14px; width: 2%; text-align: center; vertical-align: top; padding: 30px 0; height: 50px">
               <p class="concept" style=" display: inline-block; margin: 0; weight: bold; color: black">+</p>
             </div>
-            <div class="deposit" style=" display: inline-block; font-size: 14px; width: 32%; text-align: center; vertical-align: top; padding: 15px 0; height: 50px">
+            <div class="deposit" style=" display: inline-block; font-size: 14px; width: 27%; text-align: center; vertical-align: top; padding: 15px 0; height: 50px">
               <%= image_tag 'ic_profile_info.png' %>
               <p class="concept" style=" display: inline-block; margin: 0; color: black">
                 <%= t('receipt.deposit') %>
@@ -122,8 +118,7 @@
               <p class="value"  style="text-transform: uppercase;   font-family: 'Open Sans', sans-serif;   font-size: 14px;   font-weight: bold; color: black;  margin-right: 5px; display: block"><%= "#{t("currency.#{@booking.space.venue.currency.downcase}.symbol")}#{@booking.fee}" %></p>
             </div>
           </div>
-          <div class="total" style="  background-color: #efefef; display: inline-block; width: 25%;
-  font-size: 14px; text-align: center; vertical-align: top; padding: 15px 0; height: 50px; ">
+          <div class="total" style="  background-color: #efefef; display: inline-block; width: 25%; font-size: 14px; text-align: center; vertical-align: top; padding: 15px 0; height: 50px; ">
             <p class="concept" style=" display: ineline-block; margin: 0; color: black">
               <%= t('receipt.total_rental') %>
             </p>
@@ -178,8 +173,7 @@
         <!-- guest payment -->
         <div class="guest-payment-container" style="font-size: 0">
           <div class="guest" style="display: inline-block; width: 50%; vertical-align: top; font-size: 14px;">
-            <div class="title" style="text-transform: uppercase; font-family: 'Open Sans', sans-serif;
-  font-size: 14px; font-weight: bold; color: black; margin: 15px 0; padding-right: 10px">
+            <div class="title" style="text-transform: uppercase; font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; color: black; margin: 15px 0; padding-right: 10px">
               <%= t('receipt.guest') %>
             </div>
             <div class="separator long" style="  background-color: #ffe111; height: 2px; "></div>
@@ -228,8 +222,7 @@
                 <%= t('receipt.payout_type') %>
               </div>
               <%- @payouts_to_user.each do |payout_to_user| %>
-                <div class="separator long" style="  background-color: #ffe111;
-      height: 2px; "></div>
+                <div class="separator long" style="  background-color: #ffe111; height: 2px; "></div>
                 <div class="box" style="margin-top: 15px">
                   <div class="right-info">
                     <div>
@@ -248,7 +241,7 @@
                       <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184;">
                         <%= t('receipt.funds_transferred_on') + ':' %>
                       </div>
-                      <span><%= payout_to_user.update_at %></span>
+                      <span><%= payout_to_user.updated_at %></span>
                     </div>
                     <div>
                       <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184;">
@@ -273,11 +266,11 @@
 
         <p style="line-height: 30px; padding: 25px 0;">
           <%= t('host_cancellation_email.terms1') %>
-          <a href="" style="color: rgba(255,225,17,0.9); font-weight: bold; text-decoration: none;"><!-- TODO: Change policy link -->
+          <a href='<%= "#{Rails.configuration.base_url}#{privacy_policy_path}" %>' style="color: rgba(255,225,17,0.9); font-weight: bold; text-decoration: none;">
             <%= " #{t('host_cancellation_email.cancellation_policy')} " %>
           </a>
           <%= t('host_cancellation_email.terms2') %>
-          <a href="" style="color: rgba(255,225,17,0.9); font-weight: bold; text-decoration: none;"><!-- TODO: Change terms link -->
+          <a href='<%= "#{Rails.configuration.base_url}#{our_terms_path}" %>' style="color: rgba(255,225,17,0.9); font-weight: bold; text-decoration: none;">
             <%= " #{t('host_cancellation_email.terms_of_service')}." %>
           </a>
         </p>
@@ -288,10 +281,10 @@
           <%= t('new_message_email.team') %>
         </p>
         <div class="social-icons" style="min-width: 216px; display: table-cell; vertical-align: middle; text-align: right;">
-          <div class="twitter social-icon" style="width: 40px; height: 40px; display: inline-block; margin-right: 14px; background-image: url(/assets/email-social-icons-sprite.png); background-size: 170px 80px !important; background-position: -1px 0px;"></div>
-          <div class="facebook social-icon" style="width: 40px; height: 40px; display: inline-block; margin-right: 14px; background-image: url(/assets/email-social-icons-sprite.png); background-size: 170px 80px !important; background-position: -44px 0px;"></div>
-          <div class="linkedin social-icon" style="width: 40px; height: 40px; display: inline-block; margin-right: 14px; background-image: url(/assets/email-social-icons-sprite.png); background-size: 170px 80px !important; background-position: -87px 0px;"></div>
-          <div class="instagram social-icon" style="width: 40px; height: 40px; display: inline-block; margin-right: 14px; background-image: url(/assets/email-social-icons-sprite.png); background-size: 170px 80px !important; background-position: -130px 0px;"></div>
+          <div class="twitter social-icon" style="width: 44px; height: 44px; display: inline-block; margin-right: 10px; background-image: url(<%= image_url('ic_twitter_line.png') %>);"></div>
+          <div class="facebook social-icon" style="width: 44px; height: 44px; display: inline-block; margin-right: 10px; background-image: url(<%= image_url('ic_facebook_line.png') %>);"></div>
+          <div class="linkedin social-icon" style="width: 44px; height: 44px; display: inline-block; margin-right: 10px; background-image: url(<%= image_url('ic_linkedin_line.png') %>);"></div>
+          <div class="instagram social-icon" style="width: 44px; height: 44px; display: inline-block; margin-right: 10px; background-image: url(<%= image_url('ic_instagram_line.png') %>);"></div>
         </div>
       </div>
 

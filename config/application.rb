@@ -86,6 +86,11 @@ module Deskspotting
       authentication: mail.authentication
     }
 
+    deskspotting = AppConfiguration.for(:deskspotting)
+    Rails.application.routes.default_url_options[:host] = deskspotting.base_url
+    config.action_mailer.asset_host = deskspotting.base_url
+    config.action_controller.asset_host = deskspotting.base_url
+
     #config.middleware.use ExceptionNotification::Rack, email: {
     #  email_prefix: "[DESKSPOTTING - #{Rails.env}] ",
     #  sender_address: mail.user_name,

@@ -1,13 +1,13 @@
 class BookingNotificationWrapper < SimpleDelegator
-  def recipients_users
+  def recipients_representees
     represented_recipients(space.venue.owner) + represented_recipients(owner)
   end
 
-  def venue_recipients_users
+  def venue_recipients_representees
     represented_recipients(space.venue.owner)
   end
 
-  def client_recipients_users
+  def client_recipients_representees
     represented_recipients(owner)
   end
 
@@ -19,6 +19,6 @@ class BookingNotificationWrapper < SimpleDelegator
   end
 
   def organization_members(owner)
-    owner.users
+    owner.users.to_a
   end
 end
