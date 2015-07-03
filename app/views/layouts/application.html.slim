@@ -15,4 +15,6 @@ html
     .main-container
       = render 'shared/menu_bar'
       = yield
+      .spinner-container
+        = image_tag('ajax-loader.gif', width: '40px', height: '40px')
       = render '/layouts/footer'

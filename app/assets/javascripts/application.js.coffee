@@ -37,3 +37,11 @@
 #= require_tree ./referral/
 #= require angular-translate
 #= require footer
+
+
+# global functions, available in all views
+window.hide_spinner = hide_spinner = ->
+  $('.spinner-container').hide()
+
+window.show_spinner = show_spinner =  ->
+  $('.spinner-container').show()

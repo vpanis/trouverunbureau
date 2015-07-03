@@ -20,7 +20,9 @@ angular.module('deskSpotting.inbox', []).controller "InboxCtrl", [
         getRemoteBookings('users', $scope.user_id)
 
     getRemoteBookings = (entity, id) ->
+      show_spinner()
       Restangular.one(entity, id).customGET('inquiries', {page: $scope.currentPage, amount: $scope.itemsPerPage}).then (result) ->
+        hide_spinner()
         $scope.bookings = result.inquiries
         $scope.totalBookings = result.count
         $scope.currentPage = result.current_page
@@ -36,12 +38,16 @@ angular.module('deskSpotting.inbox', []).controller "InboxCtrl", [
       return
 
     mark_booking_as_read = (booking_id, message_id) ->
+      show_spinner()
       Restangular.one('inquiries', booking_id).one('last_seen_message').customPUT({message_id: message_id}).then (result) ->
+        hide_spinner()
         return
 
     reload_messages = () ->
       booking_id = $scope.selected_booking.id
+      show_spinner()
       Restangular.one('inquiries', booking_id).customGET('messages').then (result) ->
+        hide_spinner()
         $scope.messages = result.messages
         initialize_popovers()
         if $scope.messages.length > 0
@@ -57,7 +63,9 @@ angular.module('deskSpotting.inbox', []).controller "InboxCtrl", [
         console.log('empty messages are ignored')
         return
       this.message_text = ''
+      show_spinner()
       Restangular.one('inquiries', $scope.selected_booking.id).one('messages').customPOST({message: {text: text}}).then (result) ->
+        hide_spinner()
         $scope.message_text = ''
         reload_messages()
         return
@@ -99,13 +107,16 @@ angular.module('deskSpotting.inbox', []).controller "InboxCtrl", [
       return booking.client.id != parseInt($scope.user_id)
 
     $scope.declineBoooking = () ->
+      show_spinner()
       if $scope.selected_booking.client.id != parseInt($scope.user_id)
         Restangular.one('inquiries', $scope.selected_booking.id).one('deny').customPUT().then (result) ->
+          hide_spinner()
           $scope.selected_booking.state = 'denied'
           reload_messages()
           return
       else
         Restangular.one('inquiries', $scope.selected_booking.id).one('cancel').customPUT().then (result) ->
+          hide_spinner()
           $scope.selected_booking.state = 'canceled'
           reload_messages()
           return
@@ -114,7 +125,9 @@ angular.module('deskSpotting.inbox', []).controller "InboxCtrl", [
       window.location = "/payments/new?booking_id=" + selected_booking.id
 
     $scope.approveBoooking = () ->
+      show_spinner()
       Restangular.one('inquiries', $scope.selected_booking.id).one('accept').customPUT().then (result) ->
+        hide_spinner()
         $scope.selected_booking.state = 'pending_payment'
         reload_messages()
         return
@@ -124,7 +137,9 @@ angular.module('deskSpotting.inbox', []).controller "InboxCtrl", [
         $('#price-form')[0].submit()
       else
         price = $('#price-input')[0].value
+        show_spinner()
         Restangular.one('inquiries', $scope.selected_booking.id).one('edit').customPUT({price: price}).then (result) ->
+          hide_spinner()
           reload_messages()
           $scope.selected_booking.price = parseInt(price)
           return

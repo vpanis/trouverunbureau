@@ -7,7 +7,9 @@ angular.module('deskSpotting.wishlist', []).controller "WishlistCtrl", [
     $scope.currentPage = 1
     $scope.itemsPerPage = 12
     $scope.getSpaces = () ->
+      show_spinner()
       Restangular.one('wishlist').get({page: $scope.currentPage, amount: $scope.itemsPerPage}).then (result) ->
+        hide_spinner()
         $scope.spaces = result.spaces
         $scope.totalSpaces = result.count
         $scope.currentPage = result.current_page
@@ -16,7 +18,9 @@ angular.module('deskSpotting.wishlist', []).controller "WishlistCtrl", [
         return
       return
     $scope.removeFavorite = (id, refresh_list, element) ->
+      show_spinner()
       Restangular.one('wishlist', id).remove().then (result) ->
+        hide_spinner()
         if refresh_list
           $scope.getSpaces()
         else
@@ -25,7 +29,9 @@ angular.module('deskSpotting.wishlist', []).controller "WishlistCtrl", [
         return
       return
     $scope.addToFavorites = (id, element) ->
+      show_spinner()
       Restangular.one('wishlist').customPOST({id: id}).then (result) ->
+        hide_spinner()
         $(element).addClass('active')
         element.dataset.isFavorite = true
         return

@@ -9,7 +9,9 @@ angular.module('deskSpotting.client_reviews', []).controller "ClientReviewsCtrl"
     $scope.currentPage = 1
     $scope.itemsPerPage = 5
     $scope.getReviews = () ->
+      show_spinner()
       Restangular.one('users', $scope.clientId).customGET('reviews', {page: $scope.currentPage, amount: $scope.itemsPerPage}).then (result) ->
+        hide_spinner()
         $scope.reviews = result.reviews
         $scope.totalReviews = result.count
         $scope.currentPage = result.current_page

@@ -1601,3 +1601,13 @@ li.venue-hours.active{
 .none {
   display: none;
 }
+
+
+.spinner-container{
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  bottom: 50%;
+  position: fixed;
+  display: none;
+}

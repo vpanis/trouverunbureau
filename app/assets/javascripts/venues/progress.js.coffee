@@ -13,9 +13,11 @@ on_load = ->
     publishEnabled = false
 
     checkStatus = (callback) ->
+      show_spinner()
       $.ajax({
         url: BASEURL + 'status'
         success: (response) ->
+          hide_spinner()
           callback(response)
       })
 
