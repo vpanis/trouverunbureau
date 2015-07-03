@@ -10,10 +10,10 @@ module Payments
           @mangopay_payment.present? && @mangopay_payment.notification_date_int.to_i < date_i
 
         transaction = fetch_transaction
-        save_payment_error(transaction['ResultMessage'], date_i) if
+        save_payment_error(transaction['ResultMessage'], transaction['ResultCode'], date_i) if
           transaction['Status'] == 'FAILED'
       rescue MangoPay::ResponseError => e
-        save_payment_error(e.message, date_i)
+        save_payment_error(e.message, e.code, date_i)
       end
 
       private
@@ -24,10 +24,10 @@ module Payments
         Rails.logger.info(str)
       end
 
-      def save_payment_error(e, date_i)
+      def save_payment_error(e, code, date_i)
         @mangopay_payment.update_attributes(
           error_message: e.to_s, notification_date_int: date_i,
-          transaction_status: 'PAYIN_FAILED')
+          error_code: code, transaction_status: 'PAYIN_FAILED')
         BookingManager.change_booking_status(@mangopay_payment.user_paying,
                                              @mangopay_payment.booking,
                                              Booking.states[:pending_payment])

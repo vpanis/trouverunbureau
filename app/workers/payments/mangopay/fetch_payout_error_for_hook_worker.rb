@@ -10,10 +10,10 @@ module Payments
           @payout.present? && @payout.notification_date_int.to_i < date_i
 
         transaction = fetch_transaction(refund)
-        save_payout_error(transaction['ResultMessage'], date_i) if
+        save_payout_error(transaction['ResultMessage'], transaction['ResultCode'], date_i) if
           transaction['Status'] == 'FAILED'
       rescue MangoPay::ResponseError => e
-        save_payout_error(e.message, date_i)
+        save_payout_error(e.message, e.code, date_i)
       end
 
       private
@@ -24,9 +24,9 @@ module Payments
         Rails.logger.info(str)
       end
 
-      def save_payout_error(e, date_i)
+      def save_payout_error(e, code, date_i)
         @payout.update_attributes(error_message: e.to_s, transaction_status: 'TRANSACTION_FAILED',
-                                  notification_date_int: date_i)
+                                  error_code: code, notification_date_int: date_i)
         BookingManager.change_booking_status(@payout.user, @payout.mangopay_payment.booking,
                                              Booking.states[:error_refunding]) if refund
         @payout.receipt.destroy if @payout.receipt.present?

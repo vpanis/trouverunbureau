@@ -10,12 +10,12 @@ module Payments
         return unless require_validations?(user_id)
         @represented = @booking.owner
         @credit_card = MangopayCreditCard.find_by_id(credit_card_id)
-        return unless valid_credit_card?(user_id)
+        return unless valid_credit_card?
 
         payment = mangopay_transaction(@credit_card.credit_card_id, return_url)
         persist_data(payment, return_url)
       rescue MangoPay::ResponseError => e
-        save_payment_error(e.message, user_id)
+        save_payment_error(e.message, e.code)
       end
 
       private
@@ -26,9 +26,9 @@ module Payments
         Rails.logger.info(str)
       end
 
-      def valid_credit_card?(user_id)
+      def valid_credit_card?
         return true if @credit_card.present? && @credit_card.created?
-        save_payment_error('Credit card not available', user_id)
+        save_payment_error('Credit card not available', 'credit_card_not_available')
         false
       end
 
@@ -59,8 +59,9 @@ module Payments
         fill_receipt
       end
 
-      def save_payment_error(e)
+      def save_payment_error(e, code)
         @booking.payment.update_attributes(error_message: e.to_s,
+                                           error_code: code,
                                            transaction_status: 'PAYIN_FAILED')
       end
 
@@ -74,7 +75,7 @@ module Payments
       end
 
       def persist_data(payment, return_url)
-        return save_payment_error(payment['ResultMessage']) if
+        return save_payment_error(payment['ResultMessage'], payment['ResultCode']) if
           payment['Status'] == 'FAILED'
         save_payment(payment, return_url)
       end
