@@ -25,6 +25,9 @@
       'cancelled': 'cancelled'
       'denied': 'denied'
       'expired': 'pending'
+      'payment_verification': 'verifying'
+      'refunding': 'refunding'
+      'error_refunding': 'refunding'
     $translateProvider.translations 'de',
       'pending_authorization': 'pending'
       'pending_payment': 'approved'
@@ -32,6 +35,9 @@
       'cancelled': 'cancelled'
       'denied': 'denied'
       'expired': 'pending'
+      'payment_verification': 'verifying'
+      'refunding': 'refunding'
+      'error_refunding': 'refunding'
     $translateProvider.translations 'es',
       'pending_authorization': 'pending'
       'pending_payment': 'approved'
@@ -39,6 +45,9 @@
       'cancelled': 'cancelled'
       'denied': 'denied'
       'expired': 'pending'
+      'payment_verification': 'verifying'
+      'refunding': 'refunding'
+      'error_refunding': 'refunding'
     $translateProvider.translations 'fr',
       'pending_authorization': 'pending'
       'pending_payment': 'approved'
@@ -46,6 +55,9 @@
       'cancelled': 'cancelled'
       'denied': 'denied'
       'expired': 'pending'
+      'payment_verification': 'verifying'
+      'refunding': 'refunding'
+      'error_refunding': 'refunding'
     $translateProvider.translations 'it',
       'pending_authorization': 'pending'
       'pending_payment': 'approved'
@@ -53,6 +65,9 @@
       'cancelled': 'cancelled'
       'denied': 'denied'
       'expired': 'pending'
+      'payment_verification': 'verifying'
+      'refunding': 'refunding'
+      'error_refunding': 'refunding'
     $translateProvider.translations 'pt',
       'pending_authorization': 'pending'
       'pending_payment': 'approved'
@@ -60,6 +75,9 @@
       'cancelled': 'cancelled'
       'denied': 'denied'
       'expired': 'pending'
+      'payment_verification': 'verifying'
+      'refunding': 'refunding'
+      'error_refunding': 'refunding'
     $translateProvider.preferredLanguage 'en'
     return
 ]

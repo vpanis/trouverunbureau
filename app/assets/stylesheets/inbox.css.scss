@@ -144,6 +144,9 @@
     .paid,
     .cancelled,
     .denied,
+    .payment_verification,
+    .refunding,
+    .error_refunding,
     .expired {
       text-transform: uppercase;
       font-weight: 700;
@@ -155,19 +158,13 @@
     .pending_authorization {
       color: $dark-gray;
     }
-    .approved, .pending_payment {
+    .approved, .pending_payment, .payment_verification, .refunding {
       color: $aqua;
     }
     .paid {
       color: $yellow;
     }
-    .cancelled {
-      color: $red;
-    }
-    .denied {
-      color: $red;
-    }
-    .expired {
+    .cancelled, .denied, .error_refunding, .expired {
       color: $red;
     }
   }
