@@ -4,6 +4,14 @@ class MessageNotificationWrapper < SimpleDelegator
     filter_representees_dont_want_messages(@booking_w.recipients_representees)
   end
 
+  def venue_recipients_representees
+    filter_representees_dont_want_messages(@booking_w.venue_recipients_representees)
+  end
+
+  def client_recipients_representees
+    filter_representees_dont_want_messages(@booking_w.client_recipients_representees)
+  end
+
   def recipient_owner
     @booking_w.owner == represented ? @booking_w.owner : @booking_w.space.venue.owner
   end

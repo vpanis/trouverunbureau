@@ -13,7 +13,7 @@
         <div>
           <p><%= (@for_type == 'host') ? "#{@message.booking.space.venue.owner.name}," :  "#{@message.booking.owner.name},"%></p>
 
-          <p><%= (@for_type == 'host') ? "#{t('host_cancellation_email.sorry_cancel')}:" : "#{t('host_cancellation_email.unfortunately', name: @message.booking.space.venue.owner.name)}:"%></p>
+          <p><%= (@for_type == 'guest') ? "#{t('guest_cancellation_email.sorry_cancel')}:" : "#{t('guest_cancellation_email.unfortunately', name: @message.booking.owner.name)}:"%></p>
         </div>
       </div>
 
@@ -70,14 +70,42 @@
       <div style="max-width: 650px; margin: 0 auto;">
         <%- if @message.booking.payment.present? && @message.booking.payment.payin_succeeded? %>
 
-          <!-- refunded section -->
-          <p>
-            <%- refund = @message.booking.payment.mangopay_payouts.refund.last %>
-            <%= t((@for_type == 'host') ? 'host_cancellation_email.refund_host' : 'host_cancellation_email.refund_guest', currency_sym: t("currency.#{@message.booking.space.venue.currency.downcase}.symbol"), amount: (refund.present?) ? refund.amount : 0) %><!-- TODO: Change guest name -->
-          </p>
-          <!-- END refunded section -->
-        <%- end %>
+          <%- if @for_type == 'guest' %>
+            <!-- refunded section -->
+            <p>
+              <%- refund = @message.booking.payment.mangopay_payouts.refund.last %>
+              <%= t('guest_cancellation_email.refund', currency_sym: t("currency.#{@message.booking.space.venue.currency.downcase}.symbol"), amount: (refund.present?) ? refund.amount : 0) %>
+            </p>
+            <!-- END refunded section -->
+          <%- else %>
+            <!-- Receive payout section -->
+            <p>
+              <%- refund = @message.booking.payment.mangopay_payouts.refund.last %>
+              <%- payout = nil %>
+              <%- payout = @message.booking.payment.mangopay_payouts.payout_to_user.last unless refund.present? && refund.price_amount_in_wallet >= @message.booking.price %>
+              <%= t('guest_cancellation_email.payout', currency_sym: t("currency.#{@message.booking.space.venue.currency.downcase}.symbol"), amount: (payout.present?) ? (payout.amount - payout.fee) : 0) %>
+            </p>
 
+            <%- if payout.present? && payout.receipt.present? %>
+              <p>
+                <%= "#{t('guest_cancellation_email.transferred')}:" %>
+              </p>
+              <p>
+                <span style="font-weight: bold;"><%= "#{t('guest_cancellation_email.account_type')}: " %></span>
+                <%= payout.receipt.bank_type %>
+              </p>
+              <p>
+                <span style="font-weight: bold;"><%= "#{t('guest_cancellation_email.account_number')}: " %></span>
+                <%= "xxxx xxxx xxxx #{payout.receipt.account_last_4}" %>
+              </p>
+              <p>
+                <span style="font-weight: bold;"><%= "#{t('guest_cancellation_email.funds')}: " %></span>
+                <%= payout.updated_at.to_date %>
+              </p>
+              <!-- END Receive payout section -->
+            <%- end %>
+          <%- end %>
+        <%- end %>
 
         <p style="line-height: 30px; padding: 25px 0;">
           <%= t('host_cancellation_email.terms1') %>

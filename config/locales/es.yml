@@ -534,24 +534,29 @@ es:
     team: The DeskSpotting Team
   host_cancellation_email:
     subject: 'Host Cancellation - Booking #%{booking_id}'
-    sorry_cancel: Sorry to see you had to cancel your booking of
-    unfortunately: "Unfortunately your guest, %{name}, had to cancel is booking with you for"
+    sorry_cancel: Sorry to see you had to cancel the booking of
+    unfortunately: "Unfortunately your host, %{name}, had to cancel the booking with you for"
+    refund_host: 'According to the cancellation terms, your guest will receive a refund of %{currency_sym} %{amount}'
+    refund_guest: 'According to the cancellation terms, you will receive a refund of %{currency_sym} %{amount}'
     space: Space
     date: Date
     spaces: Spaces
-    check_in: Check In
-    check_out: Check Out
-    payout: You will receive a payout of
-    transferred: transferred to
-    bank_name: Bank Name
-    account_number: Account Number
-    holder: Holder
-    funds: Funds transferred On
-    refunded: "Your guest %{name} will be refunded"
+    check_in: Check-In
+    check_out: Check-Out
     terms1: If you have any questions about our
     terms2: feel free to read
     cancellation_policy: cancellation policy
     terms_of_service: our terms of service
+  guest_cancellation_email:
+    subject: 'Guest Cancellation - Booking #%{booking_id}'
+    sorry_cancel: Sorry to see you had to cancel your booking of
+    unfortunately: "Unfortunately your guest, %{name}, had to cancel the booking with you for"
+    payout: 'According to the cancellation terms, you will receive a payout of %{currency_sym} %{amount}'
+    refund: 'According to the cancellation terms, you will receive a refund of %{currency_sym} %{amount}'
+    transferred: transferred to
+    account_type: Account Type
+    account_number: Account Number
+    funds: Funds transferred on
   guest_review_email:
     subject: 'Guest Review - %{type} #%{guest_id}'
     hi: Hi

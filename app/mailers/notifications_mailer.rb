@@ -7,10 +7,24 @@ class NotificationsMailer < ActionMailer::Base
                     booking_id: message.booking.id)
   end
 
-  def host_cancellation_email(message_id)
+  def host_cancellation_email(message_id, for_type)
+    @for_type = for_type
     message = prepare_message_data(message_id)
-    send_i18n_email(message.recipients_representees, 'host_cancellation_email.subject',
-                    booking_id: message.booking.id)
+    return send_i18n_email(message.venue_recipients_representees,
+                           'host_cancellation_email.subject',
+                           booking_id: message.booking.id) if for_type == 'host'
+    send_i18n_email(message.client_recipients_representees, 'host_cancellation_email.subject',
+                    booking_id: message.booking.id) if for_type == 'guest'
+  end
+
+  def guest_cancellation_email(message_id, for_type)
+    @for_type = for_type
+    message = prepare_message_data(message_id)
+    return send_i18n_email(message.venue_recipients_representees,
+                           'guest_cancellation_email.subject',
+                           booking_id: message.booking.id) if for_type == 'host'
+    send_i18n_email(message.client_recipients_representees, 'guest_cancellation_email.subject',
+                    booking_id: message.booking.id) if for_type == 'guest'
   end
 
   def guest_review_email(booking_id)

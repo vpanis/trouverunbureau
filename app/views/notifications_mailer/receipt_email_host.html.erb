@@ -241,7 +241,7 @@
                       <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184;">
                         <%= t('receipt.funds_transferred_on') + ':' %>
                       </div>
-                      <span><%= payout_to_user.updated_at %></span>
+                      <span><%= payout_to_user.updated_at.to_date %></span>
                     </div>
                     <div>
                       <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184;">
