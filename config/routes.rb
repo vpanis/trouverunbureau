@@ -82,6 +82,8 @@ Deskspotting::Application.routes.draw do
   get :terms_of_service, to: 'statics#terms_of_service'
   get :privacy_policy, to: 'statics#privacy_policy'
 
+  resources :contacts, only: [:new, :create]
+
   api_version(module: "api/v1", path: { value: 'api/v1' }) do
     resources :spaces, only: [:index]
 

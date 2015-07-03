@@ -703,3 +703,13 @@ it:
     account_number: Account Number
     iban: IBAN
     funds_trasferred_on: Funds Transferred On
+  contact:
+    title: Contact
+    subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum.'
+    name: 'Name'
+    email: 'E-Mail'
+    message: 'Message'
+    send: 'Send'
+    subject: 'Deskspotting Contact'
+    success: 'Thank you for your message!'
+    error: 'Cannot send message. Please try later.'
