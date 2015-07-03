@@ -7,9 +7,14 @@ class Contact < MailForm::Base
   # in ActionMailer accepts.
   def headers
     {
-      subject: 'Deskspotting Contact',
-      to: 'santiago.samra@wolox.com.ar',
-      from: 'Deskspotting <noreply@deskspotting.com>'
+      subject: I18n.t('contact.subject'),
+      to: info_email,
+      from: "Deskspotting <#{info_email}>"
     }
+  end
+
+  def info_email
+    @info_email = AppConfiguration.for(:deskspotting).contact_us unless @info_email.present?
+    @info_email
   end
 end

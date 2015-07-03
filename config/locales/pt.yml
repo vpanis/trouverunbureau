@@ -710,5 +710,6 @@ pt:
     email: 'E-Mail'
     message: 'Message'
     send: 'Send'
+    subject: 'Deskspotting Contact'
     success: 'Thank you for your message!'
     error: 'Cannot send message. Please try later.'
