@@ -703,3 +703,12 @@ fr:
     account_number: 'Numéro de compte'
     iban: IBAN
     funds_trasferred_on: 'Fonds versés le'
+  contact:
+    title: Contact
+    subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum.'
+    name: 'Name'
+    email: 'E-Mail'
+    message: 'Message'
+    send: 'Send'
+    success: 'Thank you for your message!'
+    error: 'Cannot send message. Please try later.'

@@ -1,8 +1,11 @@
+.text-center
+	p#notice.bg-success
+		= notice
 .contact-page
-	h1 Contact
+	h1 =t('contact.title')
 	.separator
 	.text-center
-			p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum.
+			p =t('contact.subtitle')
 	br
 	#contact-form
 	  = form_for @contact, url: contacts_path(@contact), html: { class: 'ng:non-bindable' } do |f|
@@ -13,7 +16,7 @@
 		      span.field-error-message #{t('contact.name')} #{@contact.errors[:name][0]}
 		  .form-group
 		    label #{t('contact.email', default: 'E-Mail')}
-		    = f.text_field :email, class: 'form-control', required: 'required'
+		    = f.email_field :email, class: 'form-control', required: 'required'
 		    -if @contact.errors.present? && @contact.errors[:email].present?
 		      span.field-error-message #{t('contact.email')} #{@contact.errors[:email][0]}
 		  .form-group
@@ -21,6 +24,4 @@
 		    = f.text_area :message, class: 'form-control', required: 'required'
 		    -if @contact.errors.present? && @contact.errors[:message].present?
 		      span.field-error-message #{t('contact.message')} #{@contact.errors[:message][0]}
-		  button#contact-form-submit.rounded-button type='button'
-		    = t('contact.send', default: 'Send')
-		  = f.submit t('contact.send', default: 'Send'), class: 'hidden'
+		  = f.submit t('contact.send', default: 'Send'), class: 'rounded-button', id: 'contact-form-submit'
