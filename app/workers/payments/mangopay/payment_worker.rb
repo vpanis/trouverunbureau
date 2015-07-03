@@ -21,6 +21,7 @@ module Payments
       private
 
       def init_log(booking_id, credit_card_id, user_id)
+        @user_id = user_id
         str = "Payments::Mangopay::PaymentWorker on booking_id: #{booking_id}, "
         str += "credit_card_id: #{credit_card_id}, user_id: #{user_id}"
         Rails.logger.info(str)
@@ -63,6 +64,10 @@ module Payments
         @booking.payment.update_attributes(error_message: e.to_s,
                                            error_code: code,
                                            transaction_status: 'PAYIN_FAILED')
+        message = Message.create(m_type: Message.m_types[:payment_error], user: @user_id,
+          represented: @booking.owner, booking_id: @booking.id, text: error_message)
+        NewMessageService.new(message).send_notifications
+        @booking.pending_payment!
       end
 
       def require_validations?(user_id)
