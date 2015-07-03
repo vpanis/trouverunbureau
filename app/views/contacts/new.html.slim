@@ -1,6 +1,9 @@
 .contact-page
 	h1 Contact
 	.separator
+	.text-center
+			p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum.
+	br
 	#contact-form
 	  = form_for @contact, url: contacts_path(@contact), html: { class: 'ng:non-bindable' } do |f|
 		  .form-group
