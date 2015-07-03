@@ -115,7 +115,7 @@ saveNewCard = (creditCardId, currency) ->
         return
       error: (response) ->
         hide_spinner()
-        $('.js-create-credit-card').attr('disabled')
+        $('.js-create-credit-card').removeAttr('disabled')
         $("#new-credit-card").removeClass("loading")
         console.log(response)
 
@@ -129,6 +129,7 @@ saveNewCard = (creditCardId, currency) ->
         $(".js-expiration-format").removeClass("hidden")
       when "105204"
         $(".js-cvx-format").removeClass("hidden")
+    $('.js-create-credit-card').removeAttr('disabled')
     # Handle error, see res.ResultCode and res.ResultMessage
     return
 

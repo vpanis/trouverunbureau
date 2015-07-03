@@ -82,7 +82,7 @@
             <p>
               <%- refund = @message.booking.payment.mangopay_payouts.refund.last %>
               <%- payout = nil %>
-              <%- payout = @message.booking.payment.mangopay_payouts.payout_to_user.last unless refund.present? && refund.price_amount_in_wallet >= @message.booking.price %>
+              <%- payout = @message.booking.payment.mangopay_payouts.payout_to_user.last unless refund.present? && refund.amount >= @message.booking.price %>
               <%= t('guest_cancellation_email.payout', currency_sym: t("currency.#{@message.booking.space.venue.currency.downcase}.symbol"), amount: (payout.present?) ? (payout.amount - payout.fee) : 0) %>
             </p>
 

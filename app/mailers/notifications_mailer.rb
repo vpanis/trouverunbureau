@@ -99,9 +99,8 @@ class NotificationsMailer < ActionMailer::Base
     @refunds = []
     @payouts_to_user = []
     @payment.mangopay_payouts.each do |mp|
-      return unless mp.transaction_succeeded?
-      return @refunds << mp if mp.refund?
-      @payouts_to_user << mp
+      @refunds << mp if mp.transaction_succeeded? && mp.refund?
+      @payouts_to_user << mp if mp.transaction_succeeded? && mp.payout_to_user?
     end
   end
 end
