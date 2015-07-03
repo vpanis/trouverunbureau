@@ -481,7 +481,7 @@ it:
       pending_authorization: 'pending'
       pending_payment: 'approved'
       paid: 'paid'
-      canceled: 'cancelled'
+      cancelled: 'cancelled'
       denied: 'denied'
       expired: 'expired'
   booking_inquiry:

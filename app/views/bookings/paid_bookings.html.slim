@@ -11,13 +11,13 @@
         h1 = t('bookings.current')
       - @paid.each do |booking|
         = render 'booking_item', booking: booking, own:true
-  - if @canceled.any?
+  - if @cancelled.any?
     .row
       .title
         h1 = t('bookings.cancelled')
-      - @canceled.each do |booking|
+      - @cancelled.each do |booking|
         = render 'booking_item', booking: booking, own:true
-  - unless @paid.any? || @canceled.any?
+  - unless @paid.any? || @cancelled.any?
     h3
       = t('bookings.no_paid_cancelled')
 
