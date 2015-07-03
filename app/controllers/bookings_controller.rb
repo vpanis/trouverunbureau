@@ -43,9 +43,9 @@ class BookingsController < ApplicationController
     booking_context = BookingContext.new(current_represented, venue_ids)
     @paid = booking_context.send(method_name, Booking.states.values_at(:paid))
     @cancelled = booking_context.send(method_name, [Booking.states.values_at(:cancelled),
-                                                   Booking.states.values_at(:denied),
-                                                   Booking.states.values_at(:refunding),
-                                                   Booking.states.values_at(:error_refunding)])
+                                                    Booking.states.values_at(:denied),
+                                                    Booking.states.values_at(:refunding),
+                                                    Booking.states.values_at(:error_refunding)])
   end
 
 end
