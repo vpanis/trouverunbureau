@@ -28,7 +28,9 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
     $scope.format = 'dd-MM-yyyy'
 
     $scope.getSpaces = () ->
+      show_spinner()
       Restangular.one('spaces').get(build_search_params()).then (result) ->
+        hide_spinner()
         $scope.spaces = result.spaces
         $scope.totalSpaces = result.count
         $scope.currentPage = result.current_page
@@ -263,7 +265,9 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
       return
 
     $scope.removeFavorite = (id, refresh_list, element) ->
+      show_spinner()
       Restangular.one('wishlist', id).remove().then (result) ->
+        hide_spinner()
         if refresh_list
           $scope.getSpaces()
         else
@@ -272,7 +276,9 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
         return
       return
     $scope.addToFavorites = (id, element) ->
+      show_spinner()
       Restangular.one('wishlist').customPOST({id: id}).then (result) ->
+        hide_spinner()
         $(element).addClass('active')
         element.dataset.isFavorite = true
         return

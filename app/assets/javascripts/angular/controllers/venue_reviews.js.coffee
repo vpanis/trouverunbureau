@@ -9,7 +9,9 @@ angular.module('deskSpotting.venue_reviews', []).controller "VenueReviewsCtrl", 
     $scope.currentPage = 1
     $scope.itemsPerPage = 5
     $scope.getReviews = () ->
+      show_spinner()
       Restangular.one('venues', $scope.venueId).customGET('reviews', {page: $scope.currentPage, amount: $scope.itemsPerPage}).then (result) ->
+        hide_spinner()
         $scope.reviews = result.reviews
         $scope.totalReviews = result.count
         $scope.currentPage = result.current_page
