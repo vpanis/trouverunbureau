@@ -10,7 +10,7 @@
     p.booking-city
       | {{booking.space.city}}
     p.bottom-content.status.status-preview.col-md-1 class="{{(booking.new) ? 'new' : booking.state }}"
-      | {{ (booking.new) ? 'new' : booking.state | translate }}
+      | {{ ((booking.new) ? 'new' : booking.state) | translate }}
     p.bottom-content.quantity_pad.col-md-1
       | {{ (booking.quantity > 1) ? booking.quantity + 'x' : ''}}
     p.bottom-content.capacity.col-md-2

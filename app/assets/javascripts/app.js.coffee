@@ -19,6 +19,7 @@
   '$translateProvider'
   ($translateProvider) ->
     $translateProvider.translations 'en',
+      'new': 'new'
       'pending_authorization': 'pending'
       'pending_payment': 'approved'
       'paid': 'paid'
@@ -29,6 +30,7 @@
       'refunding': 'refunding'
       'error_refunding': 'refunding'
     $translateProvider.translations 'de',
+      'new': 'new'
       'pending_authorization': 'pending'
       'pending_payment': 'approved'
       'paid': 'paid'
@@ -39,6 +41,7 @@
       'refunding': 'refunding'
       'error_refunding': 'refunding'
     $translateProvider.translations 'es',
+      'new': 'new'
       'pending_authorization': 'pending'
       'pending_payment': 'approved'
       'paid': 'paid'
@@ -49,6 +52,7 @@
       'refunding': 'refunding'
       'error_refunding': 'refunding'
     $translateProvider.translations 'fr',
+      'new': 'new'
       'pending_authorization': 'pending'
       'pending_payment': 'approved'
       'paid': 'paid'
@@ -59,6 +63,7 @@
       'refunding': 'refunding'
       'error_refunding': 'refunding'
     $translateProvider.translations 'it',
+      'new': 'new'
       'pending_authorization': 'pending'
       'pending_payment': 'approved'
       'paid': 'paid'
@@ -69,6 +74,7 @@
       'refunding': 'refunding'
       'error_refunding': 'refunding'
     $translateProvider.translations 'pt',
+      'new': 'new'
       'pending_authorization': 'pending'
       'pending_payment': 'approved'
       'paid': 'paid'

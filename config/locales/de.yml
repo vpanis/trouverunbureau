@@ -457,6 +457,14 @@ de:
     info_fee: It's always 15%
     info_client_space_rental: The space rental amount. It will be held in escrow until checkin time
     info_client_deposit: It will be held in escrow and then reimbursed to you 72 hours after checkout
+    guest: Guest
+    decline: Decline
+    book_it: Book It
+    approve: Approve
+    new_offer: New Offer
+    send_offer: Send Offer
+    price: Price
+    enter_new_offer: Enter New Offer
   reviews:
     guest_review: 'Guest review'
     space_review: 'Space review'
@@ -477,6 +485,8 @@ de:
     cancelled: Cancelled bookings
     no_bookings: 'There are no bookings'
     no_paid_cancelled: 'You have no paid nor cancelled bookings yet.'
+    your_bookings: Your Bookings
+    venue_bookings: Venue Bookings
     state:
       pending_authorization: 'pending'
       pending_payment: 'approved'
@@ -484,6 +494,10 @@ de:
       cancelled: 'cancelled'
       denied: 'denied'
       expired: 'expired'
+      new: 'new'
+      payment_verification: 'verifying'
+      refunding: 'refunding'
+      error_refunding: 'refunding'
   booking_inquiry:
     time_frame: 'Select Time Frame'
     check_in: 'Check in'

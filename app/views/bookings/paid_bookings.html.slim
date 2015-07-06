@@ -3,8 +3,8 @@
 .booking.container
   .row.margin-top
     .btn-group role="group"
-      = link_to('your bookings', paid_bookings_bookings_path, class: 'button btn btn-default active')
-      = link_to('venue bookings', venue_paid_bookings_bookings_path, class: 'button btn btn-default')
+      = link_to(t('bookings.your_bookings'), paid_bookings_bookings_path, class: 'button btn btn-default active')
+      = link_to(t('bookings.venue_bookings'), venue_paid_bookings_bookings_path, class: 'button btn btn-default')
   - if @paid.any?
     .row
       .title

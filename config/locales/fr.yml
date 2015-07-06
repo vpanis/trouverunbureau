@@ -457,6 +457,14 @@ fr:
     info_fee: "20% pour toute réservation d'un mois ou moins. 10% pour toute réservation au delà d'un mois après le premier mois. 10% pour toute réservation de mois en mois après le premier mois."
     info_client_space_rental: "Le montant de la réservation est gardé sous séquestre jusqu'à 24 heures apres le check-in."
     info_client_deposit: 'La caution est gardée sous séquestre et sera remboursée 72 heures après votre check-out.'
+    guest: Guest
+    decline: Decline
+    book_it: Book It
+    approve: Approve
+    new_offer: New Offer
+    send_offer: Send Offer
+    price: Price
+    enter_new_offer: Enter New Offer
   reviews:
     guest_review: 'Commentaires sur le visiteur'
     space_review: "Commentaires sur l'espace"
@@ -477,6 +485,8 @@ fr:
     cancelled: 'Réservation annulée'
     no_bookings: "Il n'y a pas de réservation"
     no_paid_cancelled: 'You have no paid nor cancelled bookings yet.'
+    your_bookings: Your Bookings
+    venue_bookings: Venue Bookings
     state:
       pending_authorization: 'En attente'
       pending_payment: 'En attente de paiement'
@@ -484,6 +494,10 @@ fr:
       cancelled: 'Annulé'
       denied: 'Refusé'
       expired: 'Expiré'
+      new: 'New'
+      payment_verification: 'Verifying'
+      refunding: 'Refunding'
+      error_refunding: 'Refunding'
   booking_inquiry:
     time_frame: 'Sélectionnez la durée'
     check_in: 'Check-In'
