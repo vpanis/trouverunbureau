@@ -500,8 +500,8 @@ pt:
       error_refunding: 'refunding'
   booking_inquiry:
     time_frame: 'Select Time Frame'
-    check_in: 'Check in'
-    check_out: 'Check_out'
+    check_in: 'Check-in'
+    check_out: 'Check-out'
     spaces_amount: 'Number of spaces'
     date: 'Date'
     your_message: 'Your message'
@@ -516,17 +516,18 @@ pt:
     send_inquiry: 'Send inquiry'
     month_amount: 'Number of months'
     hour: 'hour'
-    hours_amount: 'Hours amount'
+    hours_amount: 'Number of Hours'
     day: 'day'
-    days_amount: 'Days amount'
+    days_amount: 'Number of Days'
     month: 'month'
-    months_amount: 'Months amount'
+    months_amount: 'Number of Months'
     price_per: 'Price per'
     deposit: 'Deposit'
     deskspotting_fee: 'Deskspotting fee'
     free: 'Free'
     total: 'Total'
-    space_amount: '%{space} amount'
+    space_amount: 'Number of Spaces'
+    space_booking: 'Space Booking'
   edit_venue_progress:
     status: status
     venue: Venue
