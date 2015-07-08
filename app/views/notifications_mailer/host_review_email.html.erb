@@ -64,7 +64,7 @@
       </div>
 
       <div style="background-color: #f6f6f6; text-align: center; padding: 25px 0; margin: 20px 0;">
-        <a href='<%= "#{Rails.configuration.base_url}#{client_review_booking_path(@booking)}#{(@booking.space.venue.owner.is_a?(Organization)) ? '?login_as_organization=' + @booking.space.venue.owner.id.to_s : ''}" %>' style="background-color: rgb(255, 225, 17); padding: 10px 70px; border-radius: 25px; color: black; font-weight: bold; text-decoration:none; text-transform: uppercase;">
+        <a href='<%= "#{client_review_booking_url(@booking)}#{(@booking.space.venue.owner.is_a?(Organization)) ? '?login_as_organization=' + @booking.space.venue.owner.id.to_s : ''}" %>' style="background-color: rgb(255, 225, 17); padding: 10px 70px; border-radius: 25px; color: black; font-weight: bold; text-decoration:none; text-transform: uppercase;">
           <%= t('host_review_email.rate_guest') %>
         </a>
       </div>
