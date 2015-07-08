@@ -15,10 +15,6 @@ class StaticsController < ApplicationController
     render_internationalizated('faq')
   end
 
-  def contact
-    render_internationalizated('contact')
-  end
-
   def terms_of_service
     render_internationalizated('terms_of_service')
   end

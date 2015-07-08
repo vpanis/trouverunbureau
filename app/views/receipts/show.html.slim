@@ -14,7 +14,8 @@
       = t('receipt.receipt_number')
       = @payment.receipt.id
     .contact
-      | www.deskspotting.com/help/contact
+      a href="#{contact_path}"
+        | www.deskspotting.com/contact
   .host
     .title
       = t('receipt.venue_host')

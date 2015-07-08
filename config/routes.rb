@@ -78,11 +78,12 @@ Deskspotting::Application.routes.draw do
   get :our_terms, to: 'statics#our_terms'
   get :how_it_works, to: 'statics#how_it_works'
   get :faq, to: 'statics#faq'
-  get :contact, to: 'statics#contact'
   get :terms_of_service, to: 'statics#terms_of_service'
   get :privacy_policy, to: 'statics#privacy_policy'
 
-  resources :contacts, only: [:new, :create]
+  # It's more clear for the user to go to /contact instead of contacts/new
+  get :contact, to: 'contacts#new'
+  resources :contacts, only: [:create]
 
   api_version(module: "api/v1", path: { value: 'api/v1' }) do
     resources :spaces, only: [:index]

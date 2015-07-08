@@ -1,7 +1,6 @@
 class NewMessageService < SimpleDelegator
 
   def send_notifications
-    # return unless user.settings['person_message'].present?
     notifiers.find(&:match?).notify
   end
 
