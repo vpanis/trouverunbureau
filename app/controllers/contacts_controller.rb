@@ -5,9 +5,9 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(params[:contact])
-    # @contact.request = request
     ContactWorker.perform_async params[:contact]
     flash.now[:notice] = I18n.t('contact.success')
+    @contact = Contact.new
     render :new
   end
 end
