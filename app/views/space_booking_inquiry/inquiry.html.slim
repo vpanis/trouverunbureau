@@ -67,11 +67,11 @@
           .row
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               label
-                = t('venues.edit.opening_time')
+                = t('booking_inquiry.check_in')
               select name='hour_booking_from' id='hour_booking_from' class='form-control hour-select' ng-model='hour_booking_begin' required='true' ng-options="hour for hour in hours_for_day() track by hour"
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               label
-                = t('venues.edit.closing_time')
+                = t('booking_inquiry.check_out')
               select name='hour_booking_to' id='hour_booking_to' class='form-control hour-select' ng-model='hour_booking_end' required='true' ng-options="hour for hour in hours_for_day() track by hour"
           input type="submit" class="input--hidden"
           = text_field_tag :booking_type, nil, { type: 'text', 'ng-model' => "selected_tab", hidden: "" }

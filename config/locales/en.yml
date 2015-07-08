@@ -185,7 +185,7 @@ en:
       contact: 'Contact'
       language:
         en: 'eng'
-      reserved_rights: ' 2015 DeskSpotting. All rights reserved.'
+      reserved_rights: ' 2015 DeskSpotting Limited. All rights reserved.'
       terms_of_service: 'Terms of service'
       privacy_policy: 'Privacy policy'
       more: 'more'
@@ -367,7 +367,7 @@ en:
     hour: 'hour'
     week: 'week'
   users:
-    user_since: 'User since'
+    user_since: 'DeskSpotter since'
     edit_profile: 'Edit profile'
     about_me: 'About me'
     required_fields: 'Required fields'
@@ -434,7 +434,7 @@ en:
     hour_price: 'Hour price'
     day_price: 'Day price'
     month_price: 'Month price'
-    minimum_renting_period: 'Minimum renting period'
+    minimum_renting_period: 'Minimum booking time'
     deposit: 'Deposit'
     info_capacity: How many people can work in this space?
     info_quantity: Number of these spaces you would you like to list on DeskSpotting
@@ -464,7 +464,7 @@ en:
     new_offer: New Offer
     send_offer: Send Offer
     price: Price
-    enter_new_offer: Enter New Offer
+    enter_new_offer: Make New Offer
   reviews:
     guest_review: 'Guest review'
     space_review: 'Space review'
@@ -566,7 +566,7 @@ en:
     subject: 'Guest Cancellation - Booking #%{booking_id}'
     sorry_cancel: Sorry to see you had to cancel your booking of
     unfortunately: "Unfortunately your guest, %{name}, had to cancel the booking with you for"
-    payout: 'According to the cancellation terms, you will receive a payout of %{currency_sym} %{amount}'
+    payout: 'According to the cancellation terms, you will receive a payment of %{currency_sym} %{amount}'
     refund: 'According to the cancellation terms, you will receive a refund of %{currency_sym} %{amount}'
     transferred: transferred to
     account_type: Account Type
@@ -593,7 +593,7 @@ en:
   reset_password_email:
     this_link: just use this link
     forgot_password:  It seems like you forgot your DeskSpotting password.
-    dont_worry: Don't worry it happens to the best of us
+    dont_worry: Don't worry it happens to us to
     new_password: Create a new password and you are back in business
     not_request: 'If you did not make this request, all good, just disregard the message'
     stay_same: This email and your password will stay the same.
@@ -619,7 +619,7 @@ en:
     members: 'Managers'
     members_subtitle: 'Managers subtitle'
     create_profile: 'Create organization'
-    create_title: 'Create title'
+    create_title: 'Add title'
   payment:
     payment: payment
     welcome: "Hello %{name}. It's payment time!"
@@ -724,14 +724,14 @@ en:
     iban: IBAN
     funds_trasferred_on: Funds Transferred On
   contact:
-    title: Contact
-    subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum.'
+    title: Contact Us
+    subtitle: 'Have any questions or suggestions. Feel free to reach out.'
     name: 'Name'
     email: 'E-Mail'
     message: 'Message'
     send: 'Send'
-    subject: 'Deskspotting Contact'
+    subject: 'Contact DeskSpotting'
     success: 'Thank you for your message!'
-    error: 'Cannot send message. Please try later.'
+    error: "Something's gone wrong. Please try agian later."
 
 
