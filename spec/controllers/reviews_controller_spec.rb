@@ -15,12 +15,22 @@ describe ReviewsController do
 
           context 'booking\'s state is PAID' do
             let(:booking) do
-              create(:booking, owner: user, state: Booking.states[:paid], from: from_date,
-                               space: venue.spaces.first)
+              b = create(:booking, owner: user, state: Booking.states[:paid], from: from_date,
+                                   space: venue.spaces.first)
+              b.payment = MangopayPayment.create(price_amount_in_wallet: b.price,
+                                                 deposit_amount_in_wallet: b.deposit,
+                                                 transaction_status: 'PAYIN_SUCCEEDED')
+              b.save
+              b.payment.mangopay_payouts.create(amount: b.price, fee: b.fee,
+                                                transaction_status: 'TRANSACTION_SUCCEEDED',
+                                                p_type: MangopayPayout.p_types[:payout_to_user])
+              b
             end
 
             context 'a venue review does not exist for that booking' do
-              before { get :new_venue_review, id: booking.id }
+              before do
+                get :new_venue_review, id: booking.id
+              end
 
               it 'succeeds' do
                 expect(response.status).to eq(200)
@@ -67,8 +77,16 @@ describe ReviewsController do
         context 'booking\'s from date is after now' do
           let(:from_date) { Time.current.advance(seconds: 1) }
           let(:booking) do
-            create(:booking, owner: user, state: Booking.states[:paid], from: from_date,
-                             space: venue.spaces.first)
+            b = create(:booking, owner: user, state: Booking.states[:paid], from: from_date,
+                                 space: venue.spaces.first)
+            b.payment = MangopayPayment.create(price_amount_in_wallet: b.price,
+                                               deposit_amount_in_wallet: b.deposit,
+                                               transaction_status: 'PAYIN_SUCCEEDED')
+            b.save
+            b.payment.mangopay_payouts.create(amount: b.price, fee: b.fee,
+                                              transaction_status: 'TRANSACTION_SUCCEEDED',
+                                              p_type: MangopayPayout.p_types[:payout_to_user])
+            b
           end
 
           it 'is forbidden' do
@@ -116,7 +134,15 @@ describe ReviewsController do
           context 'booking\'s state is PAID' do
             let(:from_date) { Time.current.advance(seconds: -1) }
             let(:booking) do
-              create(:booking, space: space, state: Booking.states[:paid], from: from_date)
+              b = create(:booking, space: space, state: Booking.states[:paid], from: from_date)
+              b.payment = MangopayPayment.create(price_amount_in_wallet: b.price,
+                                                 deposit_amount_in_wallet: b.deposit,
+                                                 transaction_status: 'PAYIN_SUCCEEDED')
+              b.save
+              b.payment.mangopay_payouts.create(amount: b.price, fee: b.fee,
+                                                transaction_status: 'TRANSACTION_SUCCEEDED',
+                                                p_type: MangopayPayout.p_types[:payout_to_user])
+              b
             end
 
             context 'a client review does not exist for that booking' do
@@ -215,8 +241,16 @@ describe ReviewsController do
 
           context 'booking\'s state is PAID' do
             let(:booking) do
-              create(:booking, owner: user, state: Booking.states[:paid], from: from_date,
+              b = create(:booking, owner: user, state: Booking.states[:paid], from: from_date,
                                space: venue.spaces.first)
+              b.payment = MangopayPayment.create(price_amount_in_wallet: b.price,
+                                                 deposit_amount_in_wallet: b.deposit,
+                                                 transaction_status: 'PAYIN_SUCCEEDED')
+              b.save
+              b.payment.mangopay_payouts.create(amount: b.price, fee: b.fee,
+                                                transaction_status: 'TRANSACTION_SUCCEEDED',
+                                                p_type: MangopayPayout.p_types[:payout_to_user])
+              b
             end
             let(:stars) { 4 }
             let(:message) { 'My opinion' }
@@ -288,8 +322,16 @@ describe ReviewsController do
         context 'booking\'s from date is after now' do
           let(:from_date) { Time.current.advance(seconds: 1) }
           let(:booking) do
-            create(:booking, owner: user, state: Booking.states[:paid], from: from_date,
+            b = create(:booking, owner: user, state: Booking.states[:paid], from: from_date,
                              space: venue.spaces.first)
+            b.payment = MangopayPayment.create(price_amount_in_wallet: b.price,
+                                               deposit_amount_in_wallet: b.deposit,
+                                               transaction_status: 'PAYIN_SUCCEEDED')
+            b.save
+            b.payment.mangopay_payouts.create(amount: b.price, fee: b.fee,
+                                              transaction_status: 'TRANSACTION_SUCCEEDED',
+                                              p_type: MangopayPayout.p_types[:payout_to_user])
+            b
           end
 
           it 'is forbidden' do
@@ -339,7 +381,15 @@ describe ReviewsController do
 
           context 'booking\'s state is PAID' do
             let(:booking) do
-              create(:booking, space: space, state: Booking.states[:paid], from: from_date)
+              b = create(:booking, space: space, state: Booking.states[:paid], from: from_date)
+              b.payment = MangopayPayment.create(price_amount_in_wallet: b.price,
+                                                 deposit_amount_in_wallet: b.deposit,
+                                                 transaction_status: 'PAYIN_SUCCEEDED')
+              b.save
+              b.payment.mangopay_payouts.create(amount: b.price, fee: b.fee,
+                                                transaction_status: 'TRANSACTION_SUCCEEDED',
+                                                p_type: MangopayPayout.p_types[:payout_to_user])
+              b
             end
             let(:stars) { 4 }
             let(:message) { 'My opinion' }
@@ -411,7 +461,15 @@ describe ReviewsController do
         context 'booking\'s from date is after now' do
           let(:from_date) { Time.current.advance(seconds: 1) }
           let(:booking) do
-            create(:booking, space: space, state: Booking.states[:paid], from: from_date)
+            b = create(:booking, space: space, state: Booking.states[:paid], from: from_date)
+            b.payment = MangopayPayment.create(price_amount_in_wallet: b.price,
+                                               deposit_amount_in_wallet: b.deposit,
+                                               transaction_status: 'PAYIN_SUCCEEDED')
+            b.save
+            b.payment.mangopay_payouts.create(amount: b.price, fee: b.fee,
+                                              transaction_status: 'TRANSACTION_SUCCEEDED',
+                                              p_type: MangopayPayout.p_types[:payout_to_user])
+            b
           end
 
           it 'is forbidden' do

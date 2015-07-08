@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   include OwnerActions
+  include SettingsModule
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable, :omniauthable,
@@ -41,23 +42,14 @@ class User < ActiveRecord::Base
   validates :password, presence: true, unless: :created_at
 
   validates :email, :emergency_email, format: {
-    with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,
-    on: :create
-  }, allow_nil: true
+    with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }, allow_nil: true
 
-  validates :email, uniqueness: {
-    case_sensitive: false
-  }
+  validates :email, uniqueness: { case_sensitive: false }
 
   validates :quantity_reviews, :reviews_sum, numericality: {
-    only_integer: true,
-    greater_than_or_equal_to: 0
-  }
+    only_integer: true, greater_than_or_equal_to: 0 }
 
-  validates :rating, numericality: {
-    greater_than_or_equal_to: 0,
-    less_than_or_equal_to: 5
-  }
+  validates :rating, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 5 }
 
   validates :profession, inclusion: { in: Venue::PROFESSIONS.map(&:to_s), allow_nil: true }
   validates :gender, inclusion: { in: GENDERS.map(&:to_s), allow_nil: true }
@@ -89,17 +81,13 @@ class User < ActiveRecord::Base
       return user unless user.provider != auth.provider || user.uid != auth.uid
 
       # add the provider and uid if necessary
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.save
-      user
+      user.update_attributes(provider: auth.provider, uid: auth.uid)
     end
   end
 
   def name
-    name = first_name
-    name = name + ' ' + last_name if last_name.present?
-    name
+    first_name unless last_name.present?
+    "#{first_name} #{last_name}"
   end
 
   def email_required?
@@ -120,12 +108,29 @@ class User < ActiveRecord::Base
     user.update_attributes(authentication_token: Devise.friendly_token)
   end
 
+  def receives_person_message?
+    settings_person_message?(settings)
+  end
+
+  def receives_account_changes?
+    settings_account_changes?(settings)
+  end
+
+  def receives_accepted_inquiry?
+    settings_accepted_inquiry?(settings)
+  end
+
+  def receives_incoming_inquiry?
+    settings_incoming_inquiry?(settings)
+  end
+
   private
 
   def initialize_fields
     self.quantity_reviews ||= 0
     self.reviews_sum ||= 0
     self.rating ||= 0
+    self.settings ||= default_settings
   end
 
   def each_languages_spoken_inclusion

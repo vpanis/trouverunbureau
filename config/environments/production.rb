@@ -77,4 +77,13 @@ Deskspotting::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  # We are using sidekiq auth because this will not be a feature and this auth
+  # and the sidekiq auth were in conflict.
+  sidekiq = AppConfiguration.for(:sidekiq)
+  if sidekiq.use_for_all_page_auth == 'true'
+    config.middleware.use Rack::Auth::Basic do |username, password|
+      username == sidekiq.user && password == sidekiq.password
+    end
+  end
 end

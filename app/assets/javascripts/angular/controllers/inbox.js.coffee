@@ -117,7 +117,7 @@ angular.module('deskSpotting.inbox', []).controller "InboxCtrl", [
       else
         Restangular.one('inquiries', $scope.selected_booking.id).one('cancel').customPUT().then (result) ->
           hide_spinner()
-          $scope.selected_booking.state = 'canceled'
+          $scope.selected_booking.state = 'cancelled'
           reload_messages()
           return
 

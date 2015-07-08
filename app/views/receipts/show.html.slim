@@ -14,7 +14,8 @@
       = t('receipt.receipt_number')
       = @payment.receipt.id
     .contact
-      | www.deskspotting.com/help/contact
+      a href="#{contact_path}"
+        | www.deskspotting.com/contact
   .host
     .title
       = t('receipt.venue_host')
@@ -226,7 +227,7 @@
                 .subtitle
                   = t('receipt.funds_transferred_on') + ':'
                 span
-                  = payout_to_user.update_at
+                  = payout_to_user.updated_at
               div
                 .subtitle
                   = t('receipt.amount') + ':'

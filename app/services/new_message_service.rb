@@ -1,7 +1,6 @@
 class NewMessageService < SimpleDelegator
 
   def send_notifications
-    return unless user.settings['person_message'].present?
     notifiers.find(&:match?).notify
   end
 
@@ -9,6 +8,7 @@ class NewMessageService < SimpleDelegator
 
   def notifiers
     [CancelledMessageNotifier.new(self),
+     DeniedMessageNotifier.new(self),
      PendingAuthorizationMessageNotifier.new(self),
      DefaultMessageNotifier.new(self)]
   end
@@ -19,11 +19,23 @@ class NewMessageService < SimpleDelegator
 
   class CancelledMessageNotifier < SimpleDelegator
     def match?
-      %w(cancelled denied refunded).any? { |a| m_type == a }
+      m_type == 'cancelled'
     end
 
     def notify
-      NotificationsMailer.delay.host_cancellation_email(id)
+      NotificationsMailer.delay.guest_cancellation_email(id, 'guest')
+      NotificationsMailer.delay.guest_cancellation_email(id, 'host')
+    end
+  end
+
+  class DeniedMessageNotifier < SimpleDelegator
+    def match?
+      %w(denied refunded).any? { |a| m_type == a }
+    end
+
+    def notify
+      NotificationsMailer.delay.host_cancellation_email(id, 'host')
+      NotificationsMailer.delay.host_cancellation_email(id, 'guest')
     end
   end
 

@@ -68,7 +68,9 @@ module Deskspotting
 
     # Mailer configuration
     mail = AppConfiguration.for :mail
-    config.action_mailer.default_url_options = { host: mail.host, only_path: false }
+    deskspotting = AppConfiguration.for(:deskspotting)
+    config.action_mailer.default_url_options = {
+        host: deskspotting.base_url, only_path: false }
     config.action_mailer.asset_host = mail.host
     # ActionMailer Config
     # Setup for production - deliveries, no errors raised
@@ -85,6 +87,11 @@ module Deskspotting
       password: mail.password,
       authentication: mail.authentication
     }
+
+    Rails.application.routes.default_url_options = {
+        host: deskspotting.base_url, only_path: false }
+    config.action_mailer.asset_host = deskspotting.base_url
+    config.action_controller.asset_host = deskspotting.base_url
 
     #config.middleware.use ExceptionNotification::Rack, email: {
     #  email_prefix: "[DESKSPOTTING - #{Rails.env}] ",

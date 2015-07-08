@@ -37,7 +37,10 @@ class BookingsController < ApplicationController
   def retrieve_bookings(venue_ids, method_name)
     booking_context = BookingContext.new(current_represented, venue_ids)
     @paid = booking_context.send(method_name, Booking.states.values_at(:paid))
-    @canceled = booking_context.send(method_name, Booking.states.values_at(:canceled))
+    @cancelled = booking_context.send(method_name, [Booking.states.values_at(:cancelled),
+                                                    Booking.states.values_at(:denied),
+                                                    Booking.states.values_at(:refunding),
+                                                    Booking.states.values_at(:error_refunding)])
   end
 
 end

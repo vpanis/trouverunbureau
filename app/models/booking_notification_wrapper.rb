@@ -1,24 +1,24 @@
 class BookingNotificationWrapper < SimpleDelegator
-  def recipients_emails
+  def recipients_representees
     represented_recipients(space.venue.owner) + represented_recipients(owner)
   end
 
-  def venue_recipients_emails
+  def venue_recipients_representees
     represented_recipients(space.venue.owner)
   end
 
-  def client_recipients_emails
+  def client_recipients_representees
     represented_recipients(owner)
   end
 
   private
 
   def represented_recipients(owner)
-    return [owner.email] if owner.is_a?(User)
-    organization_members(owner) << owner.email
+    return [owner] if owner.is_a?(User)
+    organization_members(owner) << owner
   end
 
   def organization_members(owner)
-    owner.organization_users.joins(:user).pluck('users.email')
+    owner.users.to_a
   end
 end

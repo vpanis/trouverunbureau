@@ -3,7 +3,7 @@ module Payments
     include Sidekiq::Worker
 
     def perform(transaction_id, date_i, retry_count, refund)
-      init_log(transaction_id)
+      init_log(transaction_id, refund)
       @payout = MangopayPayout.find_by(transaction_id: transaction_id, p_type: p_type(refund))
       return retry_worker(transaction_id, date_i, retry_count, refund) unless
         @payout.present? && @payout.notification_date_int.to_i < date_i
@@ -13,13 +13,13 @@ module Payments
 
     private
 
-    def init_log(transaction_id)
+    def init_log(transaction_id, refund)
       str = 'Payments::Mangopay::PayoutSuccessForHookWorker on '
       str += "payout_id: #{transaction_id}, #{ (refund) ? 'Refund' : 'Payout'}"
       Rails.logger.info(str)
     end
 
-    def save_payout(_e, date_i)
+    def save_payout(date_i)
       @payout.update_attributes(transaction_status: 'TRANSACTION_SUCCEEDED',
                                 notification_date_int: date_i)
       b = @payout.mangopay_payment.booking

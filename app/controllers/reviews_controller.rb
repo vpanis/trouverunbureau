@@ -47,15 +47,24 @@ class ReviewsController < ApplicationController
   end
 
   def can_do_client_review?
-    current_represented.eql?(@booking.space.venue.owner) &&
-      @booking.space.venue.time_zone.from_zone_to_utc(@booking.from) < Time.current &&
-      @booking.paid?
+    can_review?(@booking.space.venue.owner)
   end
 
   def can_do_venue_review?
-    current_represented.eql?(@booking.owner) &&
-      @booking.space.venue.time_zone.from_zone_to_utc(@booking.from) < Time.current &&
-      @booking.paid?
+    can_review?(@booking.owner)
   end
 
+  def can_review?(owner)
+    current_represented.eql?(owner) && valid_check_in? && valid_payout?
+  end
+
+  def valid_check_in?
+    @booking.space.venue.time_zone.from_zone_to_utc(@booking.from) < Time.current
+  end
+
+  def valid_payout?
+    return false unless @booking.payment.present?
+    payout = @booking.payment.mangopay_payouts.first
+    payout.present? && payout.payout_to_user?
+  end
 end

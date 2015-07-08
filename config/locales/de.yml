@@ -457,6 +457,14 @@ de:
     info_fee: It's always 15%
     info_client_space_rental: The space rental amount. It will be held in escrow until checkin time
     info_client_deposit: It will be held in escrow and then reimbursed to you 72 hours after checkout
+    guest: Guest
+    decline: Decline
+    book_it: Book It
+    approve: Approve
+    new_offer: New Offer
+    send_offer: Send Offer
+    price: Price
+    enter_new_offer: Enter New Offer
   reviews:
     guest_review: 'Guest review'
     space_review: 'Space review'
@@ -477,17 +485,23 @@ de:
     cancelled: Cancelled bookings
     no_bookings: 'There are no bookings'
     no_paid_cancelled: 'You have no paid nor cancelled bookings yet.'
+    your_bookings: Your Bookings
+    venue_bookings: Venue Bookings
     state:
       pending_authorization: 'pending'
       pending_payment: 'approved'
       paid: 'paid'
-      canceled: 'cancelled'
+      cancelled: 'cancelled'
       denied: 'denied'
       expired: 'expired'
+      new: 'new'
+      payment_verification: 'verifying'
+      refunding: 'refunding'
+      error_refunding: 'refunding'
   booking_inquiry:
     time_frame: 'Select Time Frame'
-    check_in: 'Check in'
-    check_out: 'Check_out'
+    check_in: 'Check-in'
+    check_out: 'Check-out'
     spaces_amount: 'Number of spaces'
     date: 'Date'
     your_message: 'Your message'
@@ -502,17 +516,18 @@ de:
     send_inquiry: 'Send inquiry'
     month_amount: 'Number of months'
     hour: 'hour'
-    hours_amount: 'Hours amount'
+    hours_amount: 'Number of Hours'
     day: 'day'
-    days_amount: 'Days amount'
+    days_amount: 'Number of Days'
     month: 'month'
-    months_amount: 'Months amount'
+    months_amount: 'Number of Months'
     price_per: 'Price per'
     deposit: 'Deposit'
     deskspotting_fee: 'Deskspotting fee'
     free: 'Free'
     total: 'Total'
-    space_amount: '%{space} amount'
+    space_amount: 'Number of Spaces'
+    space_booking: 'Space Booking'
   edit_venue_progress:
     status: status
     venue: Venue
@@ -534,24 +549,29 @@ de:
     team: The DeskSpotting Team
   host_cancellation_email:
     subject: 'Host Cancellation - Booking #%{booking_id}'
-    sorry_cancel: Sorry to see you had to cancel your booking of
-    unfortunately: "Unfortunately your guest, %{name}, had to cancel is booking with you for"
+    sorry_cancel: Sorry to see you had to cancel the booking of
+    unfortunately: "Unfortunately your host, %{name}, had to cancel the booking with you for"
+    refund_host: 'According to the cancellation terms, your guest will receive a refund of %{currency_sym} %{amount}'
+    refund_guest: 'According to the cancellation terms, you will receive a refund of %{currency_sym} %{amount}'
     space: Space
     date: Date
     spaces: Spaces
-    check_in: Check In
-    check_out: Check Out
-    payout: You will receive a payout of
-    transferred: transferred to
-    bank_name: Bank Name
-    account_number: Account Number
-    holder: Holder
-    funds: Funds transferred On
-    refunded: "Your guest %{name} will be refunded"
+    check_in: Check-In
+    check_out: Check-Out
     terms1: If you have any questions about our
     terms2: feel free to read
     cancellation_policy: cancellation policy
     terms_of_service: our terms of service
+  guest_cancellation_email:
+    subject: 'Guest Cancellation - Booking #%{booking_id}'
+    sorry_cancel: Sorry to see you had to cancel your booking of
+    unfortunately: "Unfortunately your guest, %{name}, had to cancel the booking with you for"
+    payout: 'According to the cancellation terms, you will receive a payout of %{currency_sym} %{amount}'
+    refund: 'According to the cancellation terms, you will receive a refund of %{currency_sym} %{amount}'
+    transferred: transferred to
+    account_type: Account Type
+    account_number: Account Number
+    funds: Funds transferred on
   guest_review_email:
     subject: 'Guest Review - %{type} #%{guest_id}'
     hi: Hi

@@ -1536,12 +1536,8 @@ li.venue-hours.active{
           color: $light-black;
         }
       }
-      &:first-child {
+      &.grey-child {
         background: $light-gray;
-        td:last-child {
-          font-size: 10px;
-          font-style: italic;
-        }
       }
       &:last-child {
         background: $light-gray;

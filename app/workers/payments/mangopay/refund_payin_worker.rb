@@ -13,7 +13,7 @@ module Payments
         refund = mangopay_refund
         persist_data(refund)
       rescue MangoPay::ResponseError => e
-        save_refund_error(e.message)
+        save_refund_error(e.message, e.code)
       end
 
       private
@@ -28,9 +28,9 @@ module Payments
           @payout.mangopay_payment.payin_succeeded? && @payout.mangopay_payment.booking.present?
       end
 
-      def save_refund_error(e, refund_id)
+      def save_refund_error(e, code, refund_id = nil)
         @payout.update_attributes(error_message: e.to_s, transaction_status: 'TRANSACTION_FAILED',
-                                  transaction_id: refund_id)
+                                  error_code: code, transaction_id: refund_id)
       end
 
       def mangopay_refund
@@ -49,7 +49,7 @@ module Payments
       end
 
       def persist_data(refund)
-        return save_refund_error(refund['ResultMessage'], refund['Id']) if
+        return save_refund_error(refund['ResultMessage'], refund['ResultCode'], refund['Id']) if
             refund['Status'] == 'FAILED'
         save_refund(refund)
       end

@@ -185,7 +185,7 @@ en:
       contact: 'Contact'
       language:
         en: 'eng'
-      reserved_rights: ' 2015 DeskSpotting. All rights reserved.'
+      reserved_rights: ' 2015 DeskSpotting Limited. All rights reserved.'
       terms_of_service: 'Terms of service'
       privacy_policy: 'Privacy policy'
       more: 'more'
@@ -367,7 +367,7 @@ en:
     hour: 'hour'
     week: 'week'
   users:
-    user_since: 'User since'
+    user_since: 'DeskSpotter since'
     edit_profile: 'Edit profile'
     about_me: 'About me'
     required_fields: 'Required fields'
@@ -434,7 +434,7 @@ en:
     hour_price: 'Hour price'
     day_price: 'Day price'
     month_price: 'Month price'
-    minimum_renting_period: 'Minimum renting period'
+    minimum_renting_period: 'Minimum booking time'
     deposit: 'Deposit'
     info_capacity: How many people can work in this space?
     info_quantity: Number of these spaces you would you like to list on DeskSpotting
@@ -457,6 +457,14 @@ en:
     info_fee: 'For all bookings of a month or less the Service Fee is 20%. For all bookings of more than 1 month the Service Fee is 10% as of the second month. For all month to month bookings the service fee is 10% as of the second month.'
     info_client_space_rental: The amount of the space booking will be held in escrow until check-in time
     info_client_deposit: It will be held in escrow and then reimbursed to you 72 hours after check-out
+    guest: Guest
+    decline: Decline
+    book_it: Book It
+    approve: Approve
+    new_offer: New Offer
+    send_offer: Send Offer
+    price: Price
+    enter_new_offer: Make New Offer
   reviews:
     guest_review: 'Guest review'
     space_review: 'Space review'
@@ -477,13 +485,19 @@ en:
     cancelled: Cancelled bookings
     no_bookings: 'There are no bookings'
     no_paid_cancelled: 'You have no paid nor cancelled bookings yet.'
+    your_bookings: Your Bookings
+    venue_bookings: Venue Bookings
     state:
       pending_authorization: 'pending'
       pending_payment: 'approved'
       paid: 'paid'
-      canceled: 'cancelled'
+      cancelled: 'cancelled'
       denied: 'denied'
       expired: 'expired'
+      new: 'new'
+      payment_verification: 'verifying'
+      refunding: 'refunding'
+      error_refunding: 'refunding'
   booking_inquiry:
     time_frame: 'Select Time Frame'
     check_in: 'Check-in'
@@ -502,17 +516,18 @@ en:
     send_inquiry: 'Send inquiry'
     month_amount: 'Number of months'
     hour: 'hour'
-    hours_amount: 'Hours amount'
+    hours_amount: 'Number of Hours'
     day: 'day'
-    days_amount: 'Days amount'
+    days_amount: 'Number of Days'
     month: 'month'
-    months_amount: 'Months amount'
+    months_amount: 'Number of Months'
     price_per: 'Price per'
     deposit: 'Deposit'
     deskspotting_fee: 'Deskspotting fee'
     free: 'Free'
     total: 'Total'
-    space_amount: '%{space} amount'
+    space_amount: 'Number of Spaces'
+    space_booking: 'Space Booking'
   edit_venue_progress:
     status: status
     venue: Venue
@@ -534,24 +549,29 @@ en:
     team: The DeskSpotting Team
   host_cancellation_email:
     subject: 'Host Cancellation - Booking #%{booking_id}'
-    sorry_cancel: Sorry to see you had to cancel your booking of
-    unfortunately: "Unfortunately your guest, %{name}, had to cancel the booking with you for"
+    sorry_cancel: Sorry to see you had to cancel the booking of
+    unfortunately: "Unfortunately your host, %{name}, had to cancel the booking with you for"
+    refund_host: 'According to the cancellation terms, your guest will receive a refund of %{currency_sym} %{amount}'
+    refund_guest: 'According to the cancellation terms, you will receive a refund of %{currency_sym} %{amount}'
     space: Space
     date: Date
     spaces: Spaces
     check_in: Check-In
     check_out: Check-Out
-    payout: You will receive a payout of
-    transferred: transferred to
-    bank_name: Bank Name
-    account_number: Account Number
-    holder: Holder
-    funds: Funds transferred on
-    refunded: "Your guest %{name} will be refunded"
     terms1: If you have any questions about our
     terms2: feel free to read
     cancellation_policy: cancellation policy
     terms_of_service: our terms of service
+  guest_cancellation_email:
+    subject: 'Guest Cancellation - Booking #%{booking_id}'
+    sorry_cancel: Sorry to see you had to cancel your booking of
+    unfortunately: "Unfortunately your guest, %{name}, had to cancel the booking with you for"
+    payout: 'According to the cancellation terms, you will receive a payment of %{currency_sym} %{amount}'
+    refund: 'According to the cancellation terms, you will receive a refund of %{currency_sym} %{amount}'
+    transferred: transferred to
+    account_type: Account Type
+    account_number: Account Number
+    funds: Funds transferred on
   guest_review_email:
     subject: 'Guest Review - %{type} #%{guest_id}'
     hi: Hi
@@ -568,12 +588,12 @@ en:
     your_guest: Your Guest
     checked_in: has checked-in at
   receipt_email:
-    subject_client: 'Receipt - Booking #%{booking_id}'
+    subject_client: 'Receipt Guest - Booking #%{booking_id}'
     subject_host: 'Receipt Host - Booking #%{booking_id}'
   reset_password_email:
     this_link: just use this link
     forgot_password:  It seems like you forgot your DeskSpotting password.
-    dont_worry: Don't worry it happens to the best of us
+    dont_worry: Don't worry it happens to us to
     new_password: Create a new password and you are back in business
     not_request: 'If you did not make this request, all good, just disregard the message'
     stay_same: This email and your password will stay the same.
@@ -599,7 +619,7 @@ en:
     members: 'Managers'
     members_subtitle: 'Managers subtitle'
     create_profile: 'Create organization'
-    create_title: 'Create title'
+    create_title: 'Add title'
   payment:
     payment: payment
     welcome: "Hello %{name}. It's payment time!"
@@ -704,14 +724,14 @@ en:
     iban: IBAN
     funds_trasferred_on: Funds Transferred On
   contact:
-    title: Contact
-    subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum.'
+    title: Contact Us
+    subtitle: 'Have any questions or suggestions. Feel free to reach out.'
     name: 'Name'
     email: 'E-Mail'
     message: 'Message'
     send: 'Send'
-    subject: 'Deskspotting Contact'
+    subject: 'Contact DeskSpotting'
     success: 'Thank you for your message!'
-    error: 'Cannot send message. Please try later.'
+    error: "Something's gone wrong. Please try agian later."
 
 
