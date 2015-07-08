@@ -475,7 +475,7 @@ fr:
     check_out: 'Check-Out'
     comment: "Votre avis sera seulement partagé avec d'autres hôtes"
   bookings:
-    claim_deposit: 'Réclamer la caution'
+    claim_deposit: "Réclamer la caution"
     review: "Commentaires"
     view_receipt: 'Voir reçu'
     cancel: 'Annuler'
@@ -484,8 +484,8 @@ fr:
     current: 'Réservation en cours'
     cancelled: 'Réservation annulée'
     no_bookings: "Il n\'y a pas de réservation"
-    no_paid_cancelled: "Vous n\'avez pas de réservation payée ou annulée.
-    your_bookings: Mes réservations
+    no_paid_cancelled: "Vous n\'avez pas de réservation payée ou annulée."
+    your_bookings: "Mes réservations"
     venue_bookings: Vos espaces
     state:
       pending_authorization: 'En attente'
