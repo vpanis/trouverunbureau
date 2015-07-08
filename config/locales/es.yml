@@ -20,7 +20,7 @@ es:
     fa: Persian
     fj: Fijian
     fi: Finnish
-    fr: French
+    fr: Français
     ga: Irish
     gu: Gujarati
     he: Hebrew
@@ -78,18 +78,23 @@ es:
     usd:
       short_name: 'usd'
       long_name: 'American Dollars'
+      symbol: 'U$D'
     gbp:
       short_name: 'gbp'
       long_name: 'Pound Sterling'
+      symbol: '£'
     eur:
       short_name: 'eur'
       long_name: 'Euro'
+      symbol: '€'
     cad:
       short_name: 'cad'
       long_name: 'Canadian Dollars'
+      symbol: 'C$'
     aud:
       short_name: 'aud'
       long_name: 'Australian Dollars'
+      symbol: 'A$'
   commons:
     save: 'Save'
     cancel: 'Cancel'
@@ -302,6 +307,8 @@ es:
     preview: 'Preview'
     complete: 'Complete'
     incomplete: 'Incomplete'
+    reported: 'Reported'
+    closed: 'Closed'
     edit:
       list_your_venue: 'List your venue'
       start_by: 'Start by telling us about your venue...'
@@ -327,6 +334,7 @@ es:
       select_professions: 'Select preferred professions'
       add_professions: 'Add professions'
       info_professions: 'Share with guests the professions that are welcome in your venue'
+      invalid_street: 'Please select a valid street address from the dropdown'
     collection_account:
       individual: Individual
       business: Business
@@ -449,6 +457,14 @@ es:
     info_fee: It's always 15%
     info_client_space_rental: The space rental amount. It will be held in escrow until checkin time
     info_client_deposit: It will be held in escrow and then reimbursed to you 72 hours after checkout
+    guest: Guest
+    decline: Decline
+    book_it: Book It
+    approve: Approve
+    new_offer: New Offer
+    send_offer: Send Offer
+    price: Price
+    enter_new_offer: Enter New Offer
   reviews:
     guest_review: 'Guest review'
     space_review: 'Space review'
@@ -468,17 +484,24 @@ es:
     current: Current bookings
     cancelled: Cancelled bookings
     no_bookings: 'There are no bookings'
+    no_paid_cancelled: 'You have no paid nor cancelled bookings yet.'
+    your_bookings: Your Bookings
+    venue_bookings: Venue Bookings
     state:
       pending_authorization: 'pending'
       pending_payment: 'approved'
       paid: 'paid'
-      canceled: 'cancelled'
+      cancelled: 'cancelled'
       denied: 'denied'
       expired: 'expired'
+      new: 'new'
+      payment_verification: 'verifying'
+      refunding: 'refunding'
+      error_refunding: 'refunding'
   booking_inquiry:
     time_frame: 'Select Time Frame'
-    check_in: 'Check in'
-    check_out: 'Check_out'
+    check_in: 'Check-in'
+    check_out: 'Check-out'
     spaces_amount: 'Number of spaces'
     date: 'Date'
     your_message: 'Your message'
@@ -492,6 +515,19 @@ es:
     back: 'Back'
     send_inquiry: 'Send inquiry'
     month_amount: 'Number of months'
+    hour: 'hour'
+    hours_amount: 'Number of Hours'
+    day: 'day'
+    days_amount: 'Number of Days'
+    month: 'month'
+    months_amount: 'Number of Months'
+    price_per: 'Price per'
+    deposit: 'Deposit'
+    deskspotting_fee: 'Deskspotting fee'
+    free: 'Free'
+    total: 'Total'
+    space_amount: 'Number of Spaces'
+    space_booking: 'Space Booking'
   edit_venue_progress:
     status: status
     venue: Venue
@@ -513,24 +549,29 @@ es:
     team: The DeskSpotting Team
   host_cancellation_email:
     subject: 'Host Cancellation - Booking #%{booking_id}'
-    sorry_cancel: Sorry to see you had to cancel your booking of
-    unfortunately: "Unfortunately your guest, %{name}, had to cancel is booking with you for"
+    sorry_cancel: Sorry to see you had to cancel the booking of
+    unfortunately: "Unfortunately your host, %{name}, had to cancel the booking with you for"
+    refund_host: 'According to the cancellation terms, your guest will receive a refund of %{currency_sym} %{amount}'
+    refund_guest: 'According to the cancellation terms, you will receive a refund of %{currency_sym} %{amount}'
     space: Space
     date: Date
     spaces: Spaces
-    check_in: Check In
-    check_out: Check Out
-    payout: You will receive a payout of
-    transferred: transferred to
-    bank_name: Bank Name
-    account_number: Account Number
-    holder: Holder
-    funds: Funds transferred On
-    refunded: "Your guest %{name} will be refunded"
+    check_in: Check-In
+    check_out: Check-Out
     terms1: If you have any questions about our
     terms2: feel free to read
     cancellation_policy: cancellation policy
     terms_of_service: our terms of service
+  guest_cancellation_email:
+    subject: 'Guest Cancellation - Booking #%{booking_id}'
+    sorry_cancel: Sorry to see you had to cancel your booking of
+    unfortunately: "Unfortunately your guest, %{name}, had to cancel the booking with you for"
+    payout: 'According to the cancellation terms, you will receive a payout of %{currency_sym} %{amount}'
+    refund: 'According to the cancellation terms, you will receive a refund of %{currency_sym} %{amount}'
+    transferred: transferred to
+    account_type: Account Type
+    account_number: Account Number
+    funds: Funds transferred on
   guest_review_email:
     subject: 'Guest Review - %{type} #%{guest_id}'
     hi: Hi
@@ -572,7 +613,8 @@ es:
     change_picture: 'Change picture'
     add_manager: 'Add Manager'
     name: 'Name'
-    email: 'manager@example.com'
+    email: 'Email'
+    email_placeholder: 'manager@example.com'
     phone: 'Phone'
     members: 'Managers'
     members_subtitle: 'Managers subtitle'
@@ -681,3 +723,13 @@ es:
     account_number: Account Number
     iban: IBAN
     funds_trasferred_on: Funds Transferred On
+  contact:
+    title: Contact
+    subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum.'
+    name: 'Name'
+    email: 'E-Mail'
+    message: 'Message'
+    send: 'Send'
+    subject: 'Deskspotting Contact'
+    success: 'Thank you for your message!'
+    error: 'Cannot send message. Please try later.'

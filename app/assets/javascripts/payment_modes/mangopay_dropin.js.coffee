@@ -36,21 +36,25 @@ createNewCardRegistration = (currency) ->
   selectedCreditCardId = null
   $('.js-credit-card').removeClass('active')
   $('#register-credit-card').attr('disabled', 'disabled')
+  show_spinner()
   $.ajax
     url: '/api/v1/mangopay/card_registration'
     method: 'POST'
     data:
       currency: currency
     success: (response) ->
+      hide_spinner()
       setTimeout (->
         retrieveNewCardInfo response.mangopay_credit_card_id, currency
         return
       ), timeBetweenRetrievesMS
 
 retrieveNewCardInfo = (creditCardId, currency) ->
+  show_spinner()
   $.ajax
     url: '/api/v1/mangopay/new_card_info?mangopay_credit_card_id=' + creditCardId
     success: (response) ->
+      hide_spinner()
       if response == null || ((typeof response == 'string' || response instanceof String) && response.trim() == '')
         setTimeout (->
           retrieveNewCardInfo creditCardId, currency
@@ -88,6 +92,7 @@ saveNewCard = (creditCardId, currency) ->
   mangoPay.cardRegistration.registerCard cardData, ((response) ->
     expiration = $("#js-card_exp_date_month").val() + '/' + $("#js-card_exp_date_year").val()
     # Success, you can use res.CardId now that points to registered card
+    show_spinner()
     $.ajax
       url: '/api/v1/mangopay/save_credit_card'
       method: 'PUT'
@@ -99,6 +104,7 @@ saveNewCard = (creditCardId, currency) ->
           expiration: expiration
           card_type: cardData.cardType
       success: (response) ->
+        hide_spinner()
         $('.js-create-credit-card').removeAttr('disabled')
         $("#new-credit-card").removeClass("loading")
         $("#js-create-credit-card").remove()
@@ -108,7 +114,8 @@ saveNewCard = (creditCardId, currency) ->
         $('#create-credit-card').modal('hide')
         return
       error: (response) ->
-        $('.js-create-credit-card').attr('disabled')
+        hide_spinner()
+        $('.js-create-credit-card').removeAttr('disabled')
         $("#new-credit-card").removeClass("loading")
         console.log(response)
 
@@ -122,6 +129,7 @@ saveNewCard = (creditCardId, currency) ->
         $(".js-expiration-format").removeClass("hidden")
       when "105204"
         $(".js-cvx-format").removeClass("hidden")
+    $('.js-create-credit-card').removeAttr('disabled')
     # Handle error, see res.ResultCode and res.ResultMessage
     return
 
@@ -138,6 +146,7 @@ pay = (card_id) ->
   if selectedCreditCardId == null
     $('.js-no-card-error').removeClass('hidden')
     return
+  show_spinner()
   $.ajax
     url: '/api/v1/mangopay/start_payment'
     method: 'PUT'
@@ -145,15 +154,18 @@ pay = (card_id) ->
       booking_id: bookingId
       card_id: selectedCreditCardId
     success: (response) ->
+      hide_spinner()
       setTimeout (->
         retrievePaymentInfo response.mangopay_payment.id
         return
       ), timeBetweenRetrievesMS
 
 retrievePaymentInfo = (paymentId) ->
+  show_spinner()
   $.ajax
     url: '/api/v1/mangopay/payment_info?payment_id=' + paymentId
     success: (response) ->
+      hide_spinner()
       if response == null || ((typeof response == 'string' || response instanceof String) && response.trim() == '')
         setTimeout (->
           retrievePaymentInfo paymentId

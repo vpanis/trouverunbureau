@@ -7,6 +7,7 @@ on_load = ->
     google.maps.event.addListener autocomplete, 'place_changed', ->
       geometry = autocomplete.getPlace().geometry
       if geometry
+        $('#search').val(autocomplete.getPlace().formatted_address)
         $('#menu-search-form').submit()
 
 $(document).ready on_load

@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include RepresentedHelper
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -11,6 +12,12 @@ class ApplicationController < ActionController::Base
   after_action :set_csrf_cookie_for_ng
 
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+
+  rescue_from(ActiveRecord::RecordInvalid) do |exception|
+    @errors = exception.record.errors
+    redirect_to :back
+  end
+
   rescue_from(ActionController::ParameterMissing) do |parameter_missing_exception|
     render text: "Required parameter missing: #{parameter_missing_exception.param}",
            status: :bad_request
@@ -99,5 +106,4 @@ class ApplicationController < ActionController::Base
     # TODO: improve
     render file: "#{Rails.root}/public/404", layout: false, status: 404
   end
-
 end

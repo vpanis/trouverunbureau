@@ -1,4 +1,3 @@
-= render 'shared/menu_bar'
 = render 'shared/profile_menu_bar', selected: 'venues'
 
 #space.main-content.dashboard-form.clearfix.overflow-hidden
@@ -51,7 +50,7 @@
         .subtitle.row
           .col-md-12
             .icon.info.pointer#price-popover data-content=t('spaces.info_pricing') data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
-            p = t('spaces.pricing_in', currency: @space.venue.currency)
+            p = t('spaces.pricing_in', currency: t("currency.#{@space.venue.currency.downcase}.symbol"))
             hr
         .row
           .checkbox.vertical-align.col-md-3
@@ -59,37 +58,40 @@
               = check_box_tag 'per_hour', 1, @space.hour_price.present?, class: 'price-checkbox', data: {time: 'hour'}
               = t('spaces.per_hour')
           .form-group.col-md-2 class=(@space.errors.messages[:hour_price].present? ? 'has-error' : '')
-            label #{t('spaces.hour_price')}
+            label
+              = "#{t('spaces.hour_price')} (#{t("currency.#{@space.venue.currency.downcase}.symbol")})"
             = f.number_field :hour_price, value: @space.hour_price, class: 'form-control', min: 0
           .form-group.col-md-3 class=(@space.errors.messages[:hour_minimum_unity].present? ? 'has-error' : '')
             label #{t('spaces.minimum_renting_period')}
-            = f.number_field :hour_minimum_unity, value: @space.hour_minimum_unity, class: 'form-control', min: 1
+            = f.number_field :hour_minimum_unity, value: @space.hour_minimum_unity, class: 'form-control', min: 0
         .row
           .checkbox.vertical-align.col-md-3
             label
               = check_box_tag 'per_day', 1, @space.day_price.present?, class: 'price-checkbox', data: {time: 'day'}
               = t('spaces.per_day')
           .form-group.col-md-2 class=(@space.errors.messages[:day_price].present? ? 'has-error' : '')
-            label #{t('spaces.day_price')}
+            label
+              = "#{t('spaces.day_price')} (#{t("currency.#{@space.venue.currency.downcase}.symbol")})"
             = f.number_field :day_price, value: @space.day_price, class: 'form-control', min: 0
           .form-group.col-md-3 class=(@space.errors.messages[:day_minimum_unity].present? ? 'has-error' : '')
             label #{t('spaces.minimum_renting_period')}
-            = f.number_field :day_minimum_unity, value: @space.day_minimum_unity, class: 'form-control', min: 1
+            = f.number_field :day_minimum_unity, value: @space.day_minimum_unity, class: 'form-control', min: 0
         .row
           .checkbox.vertical-align.col-md-3
             label
               = check_box_tag 'per_month', 1, @space.month_price.present?, class: 'price-checkbox', data: {time: 'month'}
               = t('spaces.per_month')
           .form-group.col-md-2 class=(@space.errors.messages[:month_price].present? ? 'has-error' : '')
-            label #{t('spaces.month_price')}
+            label
+              = "#{t('spaces.month_price')} (#{t("currency.#{@space.venue.currency.downcase}.symbol")})"
             = f.number_field :month_price, value: @space.month_price, class: 'form-control', min: 0
           .form-group.col-md-3 class=(@space.errors.messages[:month_minimum_unity].present? ? 'has-error' : '')
             label #{t('spaces.minimum_renting_period')}
-            = f.number_field :month_minimum_unity, value: @space.month_minimum_unity, class: 'form-control', min: 1
+            = f.number_field :month_minimum_unity, value: @space.month_minimum_unity, class: 'form-control', min: 0
       .row
         .form-group.col-md-2 class=(@space.errors.messages[:deposit].present? ? 'has-error' : '')
           .icon.info.pointer#deposit-popover data-content=t('spaces.info_deposit') data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0"
-          label = t('spaces.deposit')
+          label = "#{t('spaces.deposit')} (#{t("currency.#{@space.venue.currency.downcase}.symbol")})"
           = f.number_field :deposit, value: @space.deposit, class: 'form-control', min: 0, required: true
 
       .buttons

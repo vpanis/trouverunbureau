@@ -6,8 +6,8 @@ class SendReviewsMailWorker
 
   def perform
     bookings_for_reviews.each do |booking|
-      NotificationsMailer.delay.host_review_email(id) unless booking.client_review.present?
-      NotificationsMailer.delay.guest_review_email(id) unless booking.venue_review.present?
+      NotificationsMailer.delay.host_review_email(booking.id) unless booking.client_review.present?
+      NotificationsMailer.delay.guest_review_email(booking.id) unless booking.venue_review.present?
     end
   end
 
@@ -22,9 +22,9 @@ class SendReviewsMailWorker
         time_zones.seconds_utc_difference)) BETWEEN :t1 AND :t2) OR ((bookings.to +
         (interval '1 second' * time_zones.seconds_utc_difference)) BETWEEN :t1 AND :t2))",
              states: [Booking.states[:paid], Booking.states[:cancelled], Booking.states[:denied]],
-             t1: Time.current.advance(days: (hours_from_check_in_out + 1) * (-1)),
+             t1: Time.current.advance(hours: (hours_from_check_in_out + 1) * (-1)),
              # second less because BETWEEN includes both dates
-             t2: Time.current.advance(days: hours_from_check_in_out * (-1)), seconds: -1)
+             t2: Time.current.advance(hours: hours_from_check_in_out * (-1)), seconds: -1)
   end
 
   def hours_from_check_in_out

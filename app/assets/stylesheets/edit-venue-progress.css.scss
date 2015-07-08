@@ -63,6 +63,9 @@
       }
       p {
         margin-bottom: 0;
+        label.amenities_counter {
+          float: right;
+        }
       }
       &.selected{
         background-color: white;

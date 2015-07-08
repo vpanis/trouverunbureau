@@ -74,13 +74,16 @@ Deskspotting::Application.routes.draw do
 
   resources :payments, only: [:new, :create]
 
-  get :about_us, to: 'landing#about_us'
-  get :our_terms, to: 'landing#our_terms'
-  get :how_it_works, to: 'landing#how_it_works'
-  get :faq, to: 'landing#faq'
-  get :contact, to: 'landing#contact'
-  get :terms_of_service, to: 'landing#terms_of_service'
-  get :privacy_policy, to: 'landing#privacy_policy'
+  get :about_us, to: 'statics#about_us'
+  get :our_terms, to: 'statics#our_terms'
+  get :how_it_works, to: 'statics#how_it_works'
+  get :faq, to: 'statics#faq'
+  get :terms_of_service, to: 'statics#terms_of_service'
+  get :privacy_policy, to: 'statics#privacy_policy'
+
+  # It's more clear for the user to go to /contact instead of contacts/new
+  get :contact, to: 'contacts#new'
+  resources :contacts, only: [:create]
 
   api_version(module: "api/v1", path: { value: 'api/v1' }) do
     resources :spaces, only: [:index]

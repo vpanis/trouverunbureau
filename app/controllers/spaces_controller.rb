@@ -1,6 +1,5 @@
 class SpacesController < ApplicationController
   inherit_resources
-  include RepresentedHelper
   include SelectOptionsHelper
   before_action :authenticate_user!, except: [:index, :search_mobile]
 
@@ -13,6 +12,7 @@ class SpacesController < ApplicationController
   end
 
   def create
+    remove_blank_price_params
     space = Space.create!(space_params)
     redirect_to edit_space_path(space, previous_page: params[:previous_page])
   end
@@ -25,6 +25,7 @@ class SpacesController < ApplicationController
   end
 
   def update
+    remove_blank_price_params
     @space = Space.find(params[:id])
     context = SpaceContext.new(@space, current_represented)
     @previous_page = params[:previous_page] || edit_space_path(@space)
@@ -55,6 +56,14 @@ class SpacesController < ApplicationController
   end
 
   private
+
+  def remove_blank_price_params
+    return if params[:space].blank?
+    params[:space].delete(:hour_price) if params[:space][:hour_price].blank?
+    params[:space].delete(:day_price) if params[:space][:day_price].blank?
+    params[:space].delete(:week_price) if params[:space][:week_price].blank?
+    params[:space].delete(:month_price) if params[:space][:month_price].blank?
+  end
 
   def space_params
     params.require(:space).permit(:s_type, :name, :capacity, :quantity, :description, :deposit,

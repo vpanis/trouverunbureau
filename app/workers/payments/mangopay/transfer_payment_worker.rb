@@ -10,7 +10,7 @@ module Payments
         transfer = transfer_payment
         persist_data(transfer)
       rescue MangoPay::ResponseError => e
-        save_transfer_payment_error(e.message)
+        save_transfer_payment_error(e.message, e.code)
       end
 
       private
@@ -38,9 +38,9 @@ module Payments
         Payments::Mangopay::PayoutPaymentWorker.perform_async(@payout.id)
       end
 
-      def save_transfer_payment_error(e, transference_id = nil)
+      def save_transfer_payment_error(e, code, transference_id = nil)
         @payout.update_attributes(error_message: e.to_s, transaction_status: 'TRANSFER_FAILED',
-                                  transference_id: transference_id)
+                                  error_code: code, transference_id: transference_id)
       end
 
       def transfer_payment
@@ -57,8 +57,8 @@ module Payments
       end
 
       def persist_data(transfer)
-        return save_transfer_payment_error(transfer['ResultMessage'], transfer['Id']) if
-          transfer['Status'] == 'FAILED'
+        return save_transfer_payment_error(transfer['ResultMessage'], transfer['ResultCode'],
+                                           transfer['Id']) if transfer['Status'] == 'FAILED'
         save_transfer_payment(transfer)
       end
     end

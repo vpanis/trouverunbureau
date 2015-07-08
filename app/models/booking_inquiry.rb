@@ -26,7 +26,7 @@ module BookingInquiry
   end
 
   def creation_message(user, booking)
-    state_change_message(user, booking, Booking.states[:pending_authorization])
+    state_change_message(user, booking, Booking.states[:pending_authorization], true)
   end
 
   def change_attributes_message(user, booking)
@@ -38,13 +38,13 @@ module BookingInquiry
 
   private
 
-  def state_change_message(user, booking, state)
+  def state_change_message(user, booking, state, not_flag_as_seen = false)
     return booking unless user.present?
     message = booking.messages.create(represented: booking.owner,
                                       user: user,
                                       m_type: booking_state_to_message_state(state))
     NewMessageService.new(message).send_notifications
-    change_last_seen(booking, booking.owner, message.created_at)
+    change_last_seen(booking, booking.owner, message.created_at) unless not_flag_as_seen
   end
 
   # beware this, asumes that the Message model

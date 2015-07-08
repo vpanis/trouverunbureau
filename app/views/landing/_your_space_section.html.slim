@@ -15,10 +15,10 @@ div role="tabpanel"
       .small-separator
       a.space-btn#workspaces-tab href="#workspaces-content" aria-controls="workspaces-content" role="tab" data-togle="tab" #{t('home.your_space.tabs.workspaces')}
       .small-separator
-    li role="presentation"
-      .small-separator
-      a.space-btn#trending-tab href="#trending-content" aria-controls="trending-content" role="tab" data-togle="tab" #{t('home.your_space.tabs.trending')}
-      .small-separator
+    / li role="presentation"
+    /   .small-separator
+    /   a.space-btn#trending-tab href="#trending-content" aria-controls="trending-content" role="tab" data-togle="tab" #{t('home.your_space.tabs.trending')}
+    /   .small-separator
   .tab-content
     .tab-pane.fade.in.active#features-content role="tabpanel" aria-labelledby="features-tab"
       .row
@@ -32,4 +32,3 @@ div role="tabpanel"
       .row
         - @trending_cities.each_with_index do |city, index|
           = render 'trending_item', img_file_name: "workspace-#{(index)%6+1}.jpg", index: index, offset: index.even?
-

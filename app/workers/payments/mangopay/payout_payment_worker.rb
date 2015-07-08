@@ -10,7 +10,7 @@ module Payments
         transaction = pay_out
         persist_data(transaction)
       rescue MangoPay::ResponseError => e
-        save_pay_out_error(e.message)
+        save_pay_out_error(e.message, e.code)
       end
 
       private
@@ -37,9 +37,9 @@ module Payments
           transaction_status: "TRANSACTION_#{transaction['Status']}")
       end
 
-      def save_pay_out_error(e, transaction_id = nil)
+      def save_pay_out_error(e, code, transaction_id = nil)
         @payout.update_attributes(error_message: e, status: 'TRANSACTION_FAILED',
-                                  transaction_id: transaction_id)
+                                  error_code: code, transaction_id: transaction_id)
       end
 
       def pay_out
@@ -55,9 +55,8 @@ module Payments
       end
 
       def persist_data(transaction)
-        return save_pay_out_error(
-          transaction['ResultCode'] + ': ' + transaction['ResultMessage'], transaction['Id']) if
-            transaction['Status'] == 'FAILED'
+        return save_pay_out_error(transaction['ResultMessage'], transaction['ResultCode'],
+                                  transaction['Id']) if transaction['Status'] == 'FAILED'
         save_pay_out(transaction)
       end
     end

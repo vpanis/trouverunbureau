@@ -139,9 +139,9 @@ describe VenueDetailsController do
           end
 
           it 'fails' do
-            expect do
-              patch :save_details, id: venue.id, venue: @params
-            end.to raise_error(ActiveRecord::RecordInvalid)
+            @request.env['HTTP_REFERER'] = 'http://test.com/venues'
+            patch :save_details, id: venue.id, venue: @params
+            expect(response.status).to eq(302)
           end
         end # venue hours are invalid
 

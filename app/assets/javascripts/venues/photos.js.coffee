@@ -22,6 +22,7 @@ on_load = ->
       photoId = element.dataset.photoId
       if photoId == 'undefined' || photoId == null || photoId == ''
         return
+      show_spinner()
       $.ajax
         type: 'DELETE'
         url: '/api/v1/venue_photos/'+photoId
@@ -30,9 +31,11 @@ on_load = ->
         processData: false
         context: element
         success: (data) ->
+          hide_spinner()
           element.parentElement.parentElement.parentElement.remove()
           return
         error: (data) ->
+          hide_spinner()
           console.log(data)
           return
       return
@@ -49,6 +52,7 @@ on_load = ->
       $('#venue-photo-form').on 'submit', (e) ->
         e.preventDefault()
         formData = new FormData(this)
+        show_spinner()
         $.ajax
           type: 'POST'
           url: $(this).attr('action')
@@ -57,9 +61,11 @@ on_load = ->
           contentType: false
           processData: false
           success: (data) ->
+            hide_spinner()
             add_photo(data)
             return
           error: (data) ->
+            hide_spinner()
             console.log data
             return
         return

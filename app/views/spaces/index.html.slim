@@ -1,5 +1,3 @@
-= render 'shared/menu_bar'
-
 .space-search.container-fluid
   .row#controller ng-controller="SearchCtrl" data-marker-icon=image_url('pin_negro.png') data-active-marker-icon=image_url('venue_profile_pin_map.png')
     #map-canvas.venue-map-container.col-lg-4.col-md-3.hidden-sm.hidden-xs
@@ -13,7 +11,7 @@
               - if current_user.present?
                 .favourite ng-class="{active: space.favorite}" ng-click=("toggleFavorite(space.id, false)") data-is-favorite="{{space.favorite}}"
               - else
-                .favourite
+                a.favourite ng-href="/users/sign_in"
               .carousel-container
                 .carousel.slide id="space-carousel-{{space.id}}"
                   ol.carousel-indicators ng-hide="space.photos.length < 2"
@@ -33,16 +31,24 @@
                 .bottom-line
                   .currency() {{space.currency}}
                   .price-hourly ng-if=("space.hour_price")
-                    .hour-price.pull-left() ${{space.hour_price}}
+                    .hour-price.pull-left()
+                      | {{space.currency_symbol}}
+                      | {{space.hour_price}}
                     .duration.pull-left = t('wishlist.hour')
                   .price-daily ng-if=("space.day_price")
-                    .day-price.pull-left() ${{space.day_price}}
+                    .day-price.pull-left()
+                      | {{space.currency_symbol}}
+                      | {{space.day_price}}
                     .duration.pull-left = t('wishlist.day')
                   .price-weekly ng-if=("space.week_price")
-                    .week-price.pull-left() ${{space.week_price}}
+                    .week-price.pull-left()
+                      | {{space.currency_symbol}}
+                      | {{space.week_price}}
                     .duration.pull-left = t('wishlist.week')
                   .price-monthly ng-if=("space.month_price")
-                    .month-price.pull-left() ${{space.month_price}}
+                    .month-price.pull-left()
+                      | {{space.currency_symbol}}
+                      | {{space.month_price}}
                     .duration.pull-left = t('wishlist.month')
         .pagination-container.search-pagination.pagination-box
           .col-md-3.left.pagination-limits-text() {{from}} - {{to}} out of {{totalSpaces}} desks

@@ -15,7 +15,7 @@
         .city-name = venue.town
         .separator
         .space-info-bottom
-          - space = venue.spaces.first
+          - space = venue.spaces.where(:active).first
           - if space.present?
             - if space.hour_price.present?
               - price = space.hour_price
@@ -29,6 +29,5 @@
             - else
               - price = space.month_price
               - time = t('venues.show.per_month')
-            .price = price.to_i
+            .price = "#{t("currency.#{venue.currency.downcase}.symbol")} #{number_with_precision(price, separator: '.', precision: (price == price.round) ? 0 : 2)}"
             .time = time
-            .currency = venue.currency

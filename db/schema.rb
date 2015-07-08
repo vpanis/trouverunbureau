@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150529013324) do
+ActiveRecord::Schema.define(version: 20150703091134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -210,6 +210,7 @@ ActiveRecord::Schema.define(version: 20150529013324) do
     t.integer  "price_amount_in_wallet"
     t.integer  "deposit_amount_in_wallet"
     t.datetime "next_payout_at"
+    t.string   "error_code"
   end
 
   add_index "mangopay_payments", ["transaction_id"], name: "index_mangopay_payments_on_transaction_id", unique: true, using: :btree
@@ -231,6 +232,7 @@ ActiveRecord::Schema.define(version: 20150529013324) do
     t.integer  "user_id"
     t.integer  "represented_id"
     t.string   "represented_type"
+    t.string   "error_code"
   end
 
   add_index "mangopay_payouts", ["mangopay_payment_id"], name: "index_mangopay_payouts_on_mangopay_payment_id", using: :btree
@@ -363,6 +365,7 @@ ActiveRecord::Schema.define(version: 20150529013324) do
     t.string   "emergency_relationship"
     t.string   "nationality"
     t.string   "country_of_residence"
+    t.hstore   "settings",               default: {},    null: false
     t.string   "invitation_token"
     t.datetime "invitation_created_at"
     t.datetime "invitation_sent_at"
@@ -371,7 +374,6 @@ ActiveRecord::Schema.define(version: 20150529013324) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.integer  "invitations_count",      default: 0
-    t.hstore   "settings",               default: {},    null: false
     t.boolean  "admin",                  default: false
   end
 
@@ -457,8 +459,8 @@ ActiveRecord::Schema.define(version: 20150529013324) do
     t.integer  "collection_account_id"
     t.string   "collection_account_type"
     t.integer  "status"
-    t.text     "office_rules"
     t.string   "country_code"
+    t.text     "office_rules"
     t.integer  "time_zone_id"
   end
 

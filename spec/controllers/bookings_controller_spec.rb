@@ -20,9 +20,12 @@ describe BookingsController do
 
       context 'when user has paid or cancelled bookings' do
         let!(:booking1) { create(:booking, owner: @user_logged, state: Booking.states[:paid]) }
-        let!(:booking2) { create(:booking, owner: @user_logged, state: Booking.states[:canceled]) }
+        let!(:booking2) do
+          create(:booking, owner: @user_logged,
+                           state: Booking.states[:cancelled])
+        end
         let!(:booking3) { create(:booking, state: Booking.states[:paid]) }
-        let!(:booking4) { create(:booking, state: Booking.states[:canceled]) }
+        let!(:booking4) { create(:booking, state: Booking.states[:cancelled]) }
         let!(:booking5) { create(:booking, owner: @user_logged, state: Booking.states[:denied]) }
 
         it 'succeeds' do
@@ -36,10 +39,10 @@ describe BookingsController do
           expect(assigns(:paid).first).to eq(booking1)
         end
 
-        it 'assigns the requested cancelled bookings to @canceled' do
+        it 'assigns the requested cancelled bookings to @cancelled' do
           get :paid_bookings
-          expect(assigns(:canceled).count).to eq(1)
-          expect(assigns(:canceled).first).to eq(booking2)
+          expect(assigns(:cancelled).count).to eq(2)
+          expect(assigns(:cancelled)).to contain_exactly(booking5, booking2)
         end
 
         it 'renders the :paid_bookings template' do
@@ -67,9 +70,9 @@ describe BookingsController do
         let(:venue1) { create(:venue, owner: @user_logged) }
         let(:space1) { create(:space, venue: venue1) }
         let!(:booking1) { create(:booking, space: space1, state: Booking.states[:paid]) }
-        let!(:booking2) { create(:booking, space: space1, state: Booking.states[:canceled]) }
+        let!(:booking2) { create(:booking, space: space1, state: Booking.states[:cancelled]) }
         let!(:booking3) { create(:booking, state: Booking.states[:paid]) }
-        let!(:booking4) { create(:booking, state: Booking.states[:canceled]) }
+        let!(:booking4) { create(:booking, state: Booking.states[:cancelled]) }
         let!(:booking5) { create(:booking, space: space1, state: Booking.states[:denied]) }
 
         it 'succeeds' do
@@ -83,10 +86,10 @@ describe BookingsController do
           expect(assigns(:paid).first).to eq(booking1)
         end
 
-        it 'assigns the requested venue cancelled bookings to @canceled' do
+        it 'assigns the requested venue cancelled bookings to @cancelled' do
           get :venue_paid_bookings
-          expect(assigns(:canceled).count).to eq(1)
-          expect(assigns(:canceled).first).to eq(booking2)
+          expect(assigns(:cancelled).count).to eq(2)
+          expect(assigns(:cancelled)).to contain_exactly(booking5, booking2)
         end
 
         it 'renders the :venue_paid_bookings template' do
@@ -98,7 +101,7 @@ describe BookingsController do
           let(:venue2) { create(:venue, owner: @user_logged) }
           let(:space2) { create(:space, venue: venue2) }
           let!(:booking6) { create(:booking, space: space2, state: Booking.states[:paid]) }
-          let!(:booking7) { create(:booking, space: space2, state: Booking.states[:canceled]) }
+          let!(:booking7) { create(:booking, space: space2, state: Booking.states[:cancelled]) }
 
           before do
             get :venue_paid_bookings, venue_id: venue1.id
@@ -113,16 +116,16 @@ describe BookingsController do
             expect(assigns(:paid).first).to eq(booking1)
           end
 
-          it 'assigns the requested venue canceled bookings to @canceled' do
-            expect(assigns(:canceled).count).to eq(1)
-            expect(assigns(:canceled).first).to eq(booking2)
+          it 'assigns the requested venue cancelled bookings to @cancelled' do
+            expect(assigns(:cancelled).count).to eq(2)
+            expect(assigns(:cancelled)).to contain_exactly(booking5, booking2)
           end
 
           it 'does not retrieve other bookings venue' do
             expect(assigns(:paid).any? do |p|
               p == booking6
             end).to be false
-            expect(assigns(:canceled).any? do |p|
+            expect(assigns(:cancelled).any? do |p|
               p == booking7
             end).to be false
           end
@@ -159,7 +162,10 @@ describe BookingsController do
               end
             end
             context 'when cancelled booking' do
-              let!(:b2) { create(:booking, owner: @user_logged, state: Booking.states[:canceled]) }
+              let!(:b2) do
+                create(:booking, owner: @user_logged,
+                                 state: Booking.states[:cancelled])
+              end
               before do
                 delete :destroy, id: b2.id
                 b2.reload
@@ -186,7 +192,7 @@ describe BookingsController do
               end
             end
             context 'when cancelled booking' do
-              let!(:b2) { create(:booking, space: space1, state: Booking.states[:canceled]) }
+              let!(:b2) { create(:booking, space: space1, state: Booking.states[:cancelled]) }
               before do
                 delete :destroy, id: b2.id
                 b2.reload
@@ -216,7 +222,8 @@ describe BookingsController do
             end
             context 'when cancelled booking' do
               let!(:b2) do
-                create(:booking, space: sp1, owner: @user_logged, state: Booking.states[:canceled])
+                create(:booking, space: sp1, owner: @user_logged,
+                                             state: Booking.states[:cancelled])
               end
               before do
                 delete :destroy, id: b2.id
@@ -231,7 +238,7 @@ describe BookingsController do
         end
 
         context 'when user does not have permissions' do
-          let(:booking1) { create(:booking, state: Booking.states[:canceled]) }
+          let(:booking1) { create(:booking, state: Booking.states[:cancelled]) }
           before do
             delete :destroy, id: booking1.id
           end

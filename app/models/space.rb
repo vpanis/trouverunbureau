@@ -26,6 +26,8 @@ class Space < ActiveRecord::Base
 
   after_initialize :initialize_fields
 
+  scope :active, -> { where(:active) }
+
   acts_as_decimal :hour_price, decimals: 2
   acts_as_decimal :day_price, decimals: 2
   acts_as_decimal :week_price, decimals: 2

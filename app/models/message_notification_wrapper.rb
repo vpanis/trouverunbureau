@@ -1,11 +1,19 @@
 class MessageNotificationWrapper < SimpleDelegator
 
-  def recipients_emails
-    @booking_w.recipients_emails
+  def recipients_representees
+    filter_representees_dont_want_messages(@booking_w.recipients_representees)
   end
 
-  def recipient_name
-    @booking_w.owner == represented ? @booking_w.space.venue.owner.name : @booking_w.owner.name
+  def venue_recipients_representees
+    filter_representees_dont_want_messages(@booking_w.venue_recipients_representees)
+  end
+
+  def client_recipients_representees
+    filter_representees_dont_want_messages(@booking_w.client_recipients_representees)
+  end
+
+  def recipient_owner
+    @booking_w.owner == represented ? @booking_w.owner : @booking_w.space.venue.owner
   end
 
   def from
@@ -23,4 +31,13 @@ class MessageNotificationWrapper < SimpleDelegator
     @booking_w = BookingNotificationWrapper.new(booking)
   end
 
+  def filter_representees_dont_want_messages(representees)
+    representees_want_messages = []
+    representees.each do |representee|
+      user = representee
+      user = representee.organization_users.first.user if representee.is_a?(Organization)
+      representees_want_messages << representee if user.receives_person_message?
+    end
+    representees_want_messages
+  end
 end

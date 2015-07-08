@@ -64,7 +64,7 @@
       </div>
 
       <div style="background-color: #f6f6f6; text-align: center; padding: 25px 0; margin: 20px 0;">
-        <a href='<%= "#{Rails.configuration.base_url}#{client_review_booking_path(@booking)}#{(@booking.space.venue.owner.is_a?(Organization)) ? '?login_as_organization=' + @booking.space.venue.owner.id.to_s : ''}" %>' style="background-color: rgb(255, 225, 17); padding: 10px 70px; border-radius: 25px; color: black; font-weight: bold; text-decoration:none; text-transform: uppercase;">
+        <a href='<%= "#{client_review_booking_url(@booking)}#{(@booking.space.venue.owner.is_a?(Organization)) ? '?login_as_organization=' + @booking.space.venue.owner.id.to_s : ''}" %>' style="background-color: rgb(255, 225, 17); padding: 10px 70px; border-radius: 25px; color: black; font-weight: bold; text-decoration:none; text-transform: uppercase;">
           <%= t('host_review_email.rate_guest') %>
         </a>
       </div>
@@ -75,10 +75,10 @@
           <%= t('new_message_email.team') %>
         </p>
         <div class="social-icons" style="min-width: 216px; display: table-cell; vertical-align: middle; text-align: right;">
-          <div class="twitter social-icon" style="width: 40px; height: 40px; display: inline-block; margin-right: 14px; background-image: url(/assets/email-social-icons-sprite.png); background-size: 170px 80px !important; background-position: -1px 0px;"></div>
-          <div class="facebook social-icon" style="width: 40px; height: 40px; display: inline-block; margin-right: 14px; background-image: url(/assets/email-social-icons-sprite.png); background-size: 170px 80px !important; background-position: -44px 0px;"></div>
-          <div class="linkedin social-icon" style="width: 40px; height: 40px; display: inline-block; margin-right: 14px; background-image: url(/assets/email-social-icons-sprite.png); background-size: 170px 80px !important; background-position: -87px 0px;"></div>
-          <div class="instagram social-icon" style="width: 40px; height: 40px; display: inline-block; margin-right: 14px; background-image: url(/assets/email-social-icons-sprite.png); background-size: 170px 80px !important; background-position: -130px 0px;"></div>
+          <div class="twitter social-icon" style="width: 44px; height: 44px; display: inline-block; margin-right: 10px; background-image: url(<%= image_url('ic_twitter_line.png') %>);"></div>
+          <div class="facebook social-icon" style="width: 44px; height: 44px; display: inline-block; margin-right: 10px; background-image: url(<%= image_url('ic_facebook_line.png') %>);"></div>
+          <div class="linkedin social-icon" style="width: 44px; height: 44px; display: inline-block; margin-right: 10px; background-image: url(<%= image_url('ic_linkedin_line.png') %>);"></div>
+          <div class="instagram social-icon" style="width: 44px; height: 44px; display: inline-block; margin-right: 10px; background-image: url(<%= image_url('ic_instagram_line.png') %>);"></div>
         </div>
       </div>
 

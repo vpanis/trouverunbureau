@@ -9,9 +9,13 @@
       | {{booking.space.venue_name}}
     p.booking-city
       | {{booking.space.city}}
-    p.bottom-content.status class="{{booking.state}}"
-      | {{ booking.state | translate }}
-    p.bottom-content.messages
+    p.bottom-content.status.status-preview.col-md-1 class="{{(booking.new) ? 'new' : booking.state }}"
+      | {{ ((booking.new) ? 'new' : booking.state) | translate }}
+    p.bottom-content.quantity_pad.col-md-1
+      | {{ (booking.quantity > 1) ? booking.quantity + 'x' : ''}}
+    p.bottom-content.capacity.col-md-2
+      | {{booking.space.capacity}}
+    p.bottom-content.messages.col-md-1
       | {{booking.message_count}}
     p.bottom-content.pull-right
       | {{booking.last_message_at}}

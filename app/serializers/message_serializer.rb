@@ -16,7 +16,7 @@ class MessageSerializer < ActiveModel::Serializer
   end
 
   def text
-    return object.text if object.text?
+    return object.text if object.text? || object.payment_error?
     I18n.t("messages.#{object.m_type}")
   end
 

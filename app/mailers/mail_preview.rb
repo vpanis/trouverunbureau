@@ -4,9 +4,24 @@ class MailPreview < MailView
     NotificationsMailer.new_message_email(id)
   end
 
-  def host_cancellation_email
+  def host_cancellation_email_for_host
+    id = Message.where(m_type: Booking.states[:denied]).first.try(:id)
+    NotificationsMailer.host_cancellation_email(id, 'host')
+  end
+
+  def host_cancellation_email_for_guest
+    id = Message.where(m_type: Booking.states[:denied]).first.try(:id)
+    NotificationsMailer.host_cancellation_email(id, 'guest')
+  end
+
+  def guest_cancellation_email_for_guest
     id = Message.where(m_type: Booking.states[:cancelled]).first.try(:id)
-    NotificationsMailer.host_cancellation_email(id)
+    NotificationsMailer.guest_cancellation_email(id, 'guest')
+  end
+
+  def guest_cancellation_email_for_host
+    id = Message.where(m_type: Booking.states[:cancelled]).first.try(:id)
+    NotificationsMailer.guest_cancellation_email(id, 'host')
   end
 
   def guest_review_email

@@ -11,106 +11,81 @@
         </div>
 
         <div>
-          <p><%= "#{@message.recipient_name}," %></p> <!-- TODO: Change name -->
+          <p><%= (@for_type == 'host') ? "#{@message.booking.space.venue.owner.name}," :  "#{@message.booking.owner.name},"%></p>
 
-          <!-- TODO: If sorry cancel or unfortunately -->
-          <p><%= "#{t('host_cancellation_email.sorry_cancel')}:" %></p>
-          <p><%= "#{t('host_cancellation_email.unfortunately', name: @message.from)}:" %></p>
-
+          <p><%= (@for_type == 'host') ? "#{t('host_cancellation_email.sorry_cancel')}:" : "#{t('host_cancellation_email.unfortunately', name: @message.booking.space.venue.owner.name)}:"%></p>
         </div>
       </div>
 
       <div style="background-color: #f6f6f6; text-align: center; padding: 35px 0;">
         <%= image_tag 'venue-default.png', style: 'width: 65px;' %>
-        <p style="color: black; font-size: 25px; margin: 10px 0;">@message.boooking.space.venue.name</p>
+        <p style="color: black; font-size: 25px; margin: 10px 0;"><% @message.booking.space.venue.name %></p>
 
         <p style="color: black; margin: 10px 0;">
           <span style="font-weight: 300;"><%= "#{t('host_cancellation_email.space')}: " %></span>
-          <span style="font-weight: bold;">@message.boooking.space.name</span><!-- TODO: Change space -->
+          <span style="font-weight: bold;"><%= @message.booking.space.name %></span>
         </p>
 
         <div style="display: table; margin: 0 auto; padding-top: 20px;">
           <div style="padding: 0 15px; text-align: center; display: table-cell;">
             <p style="line-height: 25px;">
-              <span style="font-weight: bold;">01/02/16</span><!-- TODO: Change date -->
+              <span style="font-weight: bold;"><%= (@message.booking.hour?) ? @message.booking.to.to_s(format = :custom_only_day) : ((@message.booking.to - @message.booking.from) / 1.day).round %></span>
               <br>
-              <span style="font-size: 14px;"><%= t('host_cancellation_email.date') %></span>
+              <span style="font-size: 14px;"><%= (@message.booking.hour?) ? t('guest_review_email.date') : t('guest_review_email.days') %></span>
             </p>
           </div>
+
           <div style="text-align: center; display: table-cell; font-size: 20px; vertical-align: middle; font-weight: 100;">|</div>
+
           <div style="padding: 0 15px; text-align: center; display: table-cell;">
             <p style="line-height: 25px;">
-              <span style="font-weight: bold;">@message.boooking.quantity</span><!-- TODO: Change spaces -->
+              <span style="font-weight: bold;"><%= @message.booking.quantity %></span>
               <br>
-              <span style="font-size: 14px;"><%= t('host_cancellation_email.spaces') %></span>
+              <span style="font-size: 14px;"><%= t('receipt.spaces') %></span>
             </p>
           </div>
+
           <div style="text-align: center; display: table-cell; font-size: 20px; vertical-align: middle; font-weight: 100;">|</div>
+
           <div style="padding: 0 15px; text-align: center; display: table-cell;">
             <p style="line-height: 25px;">
-              <span style="font-weight: bold;">14:00 PM</span><!-- TODO: Change time -->
+              <span style="font-weight: bold;"><%= @message.booking.from.to_s(format = (@message.booking.hour?)? :custom_only_hours : :custom_only_day) %></span>
               <br>
-              <span style="font-size: 14px;"><%= t('host_cancellation_email.check_in') %></span>
+              <span style="font-size: 14px;"><%= t('guest_review_email.check_in') %></span>
             </p>
           </div>
+
           <div style="text-align: center; display: table-cell; font-size: 20px; vertical-align: middle; font-weight: 100;">|</div>
+
           <div style="padding: 0 15px; text-align: center; display: table-cell;">
             <p style="line-height: 25px;">
-              <span style="font-weight: bold;">16:00 PM</span><!-- TODO: Change time -->
+              <span style="font-weight: bold;"><%= @message.booking.to.to_s(format = (@message.booking.hour?)? :custom_only_hours : :custom_only_day) %></span>
               <br>
-              <span style="font-size: 14px;"><%= t('host_cancellation_email.check_out') %></span>
+              <span style="font-size: 14px;"><%= t('guest_review_email.check_out') %></span>
             </p>
           </div>
         </div>
       </div>
 
       <div style="max-width: 650px; margin: 0 auto;">
-        <!-- TODO: Create if for this sections -->
+        <%- if @message.booking.payment.present? && @message.booking.payment.payin_succeeded? %>
 
-        <!-- refunded section -->
-        <p>
-          <%= t('host_cancellation_email.refunded', name: 'JP') %><!-- TODO: Change guest name -->
-          <span style="color: black; font-weight: bold;">
-            <%= " $#{'234'}." %><!-- TODO: Change amount -->
-          </span>
-        </p>
-        <!-- END refunded section -->
-
-        <!-- Receive payout section -->
-        <p>
-          <%= t('host_cancellation_email.payout') %>
-          <span style="color: black; font-weight: bold;">
-            <%= " $#{'234'} " %><!-- TODO: Change amount -->
-          </span>
-          <%= "#{t('host_cancellation_email.transferred')}:" %>
-        </p>
-
-        <p>
-          <span style="font-weight: bold;"><%= "#{t('host_cancellation_email.bank_name')}: " %></span>
-          Lorem ipsum <!-- TODO: Change bank name -->
-        </p>
-        <p>
-          <span style="font-weight: bold;"><%= "#{t('host_cancellation_email.account_number')}: " %></span>
-          xxxxxxxxxxxxxxxx2342 <!-- TODO: Change account number -->
-        </p>
-        <p>
-          <span style="font-weight: bold;"><%= "#{t('host_cancellation_email.holder')}: " %></span>
-          Lorem ipsum <!-- TODO: Change holder -->
-        </p>
-        <p>
-          <span style="font-weight: bold;"><%= "#{t('host_cancellation_email.funds')}: " %></span>
-          23/10/14 <!-- TODO: Change funds date -->
-        </p>
-        <!-- END Receive payout section -->
+          <!-- refunded section -->
+          <p>
+            <%- refund = @message.booking.payment.mangopay_payouts.refund.last %>
+            <%= t((@for_type == 'host') ? 'host_cancellation_email.refund_host' : 'host_cancellation_email.refund_guest', currency_sym: t("currency.#{@message.booking.space.venue.currency.downcase}.symbol"), amount: (refund.present?) ? refund.amount : 0) %><!-- TODO: Change guest name -->
+          </p>
+          <!-- END refunded section -->
+        <%- end %>
 
 
         <p style="line-height: 30px; padding: 25px 0;">
           <%= t('host_cancellation_email.terms1') %>
-          <a href="" style="color: rgba(255,225,17,0.9); font-weight: bold; text-decoration: none;"><!-- TODO: Change policy link -->
+          <a href='<%= privacy_policy_url %>' style="color: rgba(255,225,17,0.9); font-weight: bold; text-decoration: none;">
             <%= " #{t('host_cancellation_email.cancellation_policy')} " %>
           </a>
           <%= t('host_cancellation_email.terms2') %>
-          <a href="" style="color: rgba(255,225,17,0.9); font-weight: bold; text-decoration: none;"><!-- TODO: Change terms link -->
+          <a href='<%= our_terms_url %>' style="color: rgba(255,225,17,0.9); font-weight: bold; text-decoration: none;">
             <%= " #{t('host_cancellation_email.terms_of_service')}." %>
           </a>
         </p>
@@ -121,10 +96,10 @@
           <%= t('new_message_email.team') %>
         </p>
         <div class="social-icons" style="min-width: 216px; display: table-cell; vertical-align: middle; text-align: right;">
-          <div class="twitter social-icon" style="width: 40px; height: 40px; display: inline-block; margin-right: 14px; background-image: url(/assets/email-social-icons-sprite.png); background-size: 170px 80px !important; background-position: -1px 0px;"></div>
-          <div class="facebook social-icon" style="width: 40px; height: 40px; display: inline-block; margin-right: 14px; background-image: url(/assets/email-social-icons-sprite.png); background-size: 170px 80px !important; background-position: -44px 0px;"></div>
-          <div class="linkedin social-icon" style="width: 40px; height: 40px; display: inline-block; margin-right: 14px; background-image: url(/assets/email-social-icons-sprite.png); background-size: 170px 80px !important; background-position: -87px 0px;"></div>
-          <div class="instagram social-icon" style="width: 40px; height: 40px; display: inline-block; margin-right: 14px; background-image: url(/assets/email-social-icons-sprite.png); background-size: 170px 80px !important; background-position: -130px 0px;"></div>
+          <div class="twitter social-icon" style="width: 44px; height: 44px; display: inline-block; margin-right: 10px; background-image: url(<%= image_url('ic_twitter_line.png') %>);"></div>
+          <div class="facebook social-icon" style="width: 44px; height: 44px; display: inline-block; margin-right: 10px; background-image: url(<%= image_url('ic_facebook_line.png') %>);"></div>
+          <div class="linkedin social-icon" style="width: 44px; height: 44px; display: inline-block; margin-right: 10px; background-image: url(<%= image_url('ic_linkedin_line.png') %>);"></div>
+          <div class="instagram social-icon" style="width: 44px; height: 44px; display: inline-block; margin-right: 10px; background-image: url(<%= image_url('ic_instagram_line.png') %>);"></div>
         </div>
       </div>
 

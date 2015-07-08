@@ -6,12 +6,15 @@ html
     = favicon_link_tag 'favicon.ico'
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
-    = javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"
+    = javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=false&libraries=places&language=#{I18n.locale}"
     = csrf_meta_tags
     style
 
   body ng-app="deskSpotting" data-controller="#{controller.controller_name}" data-action="#{controller.action_name}"
     = render 'layouts/staging_alert'
     .main-container
+      = render 'shared/menu_bar'
       = yield
+      .spinner-container
+        = image_tag('ajax-loader.gif', width: '40px', height: '40px')
       = render '/layouts/footer'

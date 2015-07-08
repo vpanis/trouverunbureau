@@ -5,7 +5,7 @@
   h4 #{t('home.header.subtitle')}
   .separator
   .search-form.row
-    = form_tag spaces_path, method: 'get', class: 'form-inline' do |f|
+    = form_tag spaces_path, method: 'get', id: 'menu-search-form', class: 'form-inline' do |f|
       .form-group.col-xs-10.col-sm-5.col-md-4.col-lg-3.col-xs-offset-1.col-sm-offset-1.col-md-offset-2.col-lg-offset-3
         .styled-search.rounded-left
           label.sr-only #{t('home.header.search_text')}
