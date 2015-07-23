@@ -15,7 +15,7 @@
             - else
               p #{t('venues.show.closed')}
           .day-of-week
-            p = Date::ABBR_DAYNAMES[(weekday + 1) % 7]
+            p = (I18n.t 'date.abbr_day_names')[(weekday + 1) % 7]
         .vertical-separator class=(weekday == 3 ? 'large-hidden' : ((weekday == 2 || weekday == 5)? 'small-hidden' : ''))
 
 
