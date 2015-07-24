@@ -45,6 +45,7 @@ on_load = ->
     initializePopovers()
     initializeListeners()
     if $('.verifying').length
+      show_spinner()
       setInterval (->
         window.location.reload()
         return
