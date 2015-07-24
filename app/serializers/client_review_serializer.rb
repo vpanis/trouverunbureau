@@ -4,7 +4,7 @@ class ClientReviewSerializer < ActiveModel::Serializer
   has_one :venue, serializer: VenueSerializer
 
   def date
-    object.created_at.strftime('%B %Y')
+    I18n.l(object.created_at, format: '%B %Y')
   end
 
   def venue
