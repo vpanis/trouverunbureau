@@ -333,8 +333,8 @@ fr:
       professions: 'Professions recherchées'
       select_professions: 'Sélectionnez les professions recherchées'
       add_professions: 'Ajoutez une profession'
-      info_professions: 'Quelles professions souhaitez-vous acceuillir.'
-      invalid_street: 'Choisissez une adresse parmi les options'
+      info_professions: 'Quelles professions souhaitez-vous accueillir.'
+      invalid_street: 'Choisissez une adresse parmi les options ci-dessous'
     collection_account:
       individual: 'Individu'
       business: 'Entreprise'
@@ -468,7 +468,7 @@ fr:
   reviews:
     guest_review: 'Commentaires sur le visiteur'
     space_review: "Commentaires sur l'espace"
-    rate_space: "Notez %{space} de %{venue}"
+    rate_space: "Notez"
     date: 'Date'
     spaces: 'Espaces'
     check_in: 'Check-In'
@@ -526,29 +526,29 @@ fr:
     deskspotting_fee: 'Frais Deskspotting'
     free: 'Gratuit'
     total: 'Total'
-    space_amount: 'Nombre de poste'
+    space_amount: 'Nombre de postes'
     space_booking: 'Réservation'
   edit_venue_progress:
     status: 'Statut'
-    venue: 'Espace'
-    details: 'Détails'
-    amenities: 'Equipements'
-    photos: 'Photos'
-    spaces: 'Postes'
-    publish: 'Publiez'
+    venue: 'Coordonées Espace'
+    details: 'Informations Espace'
+    amenities: 'Equipements Espace'
+    photos: "Photos Espace"
+    spaces: 'Postes de travail'
+    publish: 'Publier'
     delete_venue: 'Effacez cet espace'
     incomplete: "incomplet"
     collection_account: Collection Account
     payout_method: 'Méthode de paiement'
   new_message_email:
-    subject: 'Vous avez un nouveau message - Réservation %{booking_id}'
+    subject: 'Vous avez un nouveau message - Réservation'
     hi: 'Bonjour'
     got_new_message: 'Nouveau message de la part de'
     reply: 'Ou répondez directement via email'
     view_on_deskspotting: 'Visualisez sur DeskSpotting'
     team: "L'Équipe DeskSpotting"
   host_cancellation_email:
-    subject: 'Annulation hôte - Réservation #%{booking_id}'
+    subject: 'Annulation hôte - Réservation'
     sorry_cancel: "Nous sommes désolé que vous ayez eu besoin d'annuler la réservation de"
     unfortunately: "Malheureusement votre hôte, %{name}, a du annuler votre réservation de"
     refund_host: "Selon la politique d'annulation, le visiteur recevera un remboursement de %{currency_sym} %{amount}"
@@ -563,7 +563,7 @@ fr:
     cancellation_policy: Politique d'annulation
     terms_of_service: Conditions générales
   guest_cancellation_email:
-    subject: 'Annulation visiteur-Réservation #%{booking_id}'
+    subject: 'Annulation visiteur-Réservation'
     sorry_cancel: "Nous sommes désolé que vous ayez eu besoin d'annuler la réservation de"
     unfortunately: "Malheureusement votre visiteur, %{name}, a du annuler sa réservation de"
     payout: "Selon la politique d'annulation, vous recevrez un paiement de %{currency_sym} %{amount}"
