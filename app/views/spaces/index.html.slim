@@ -20,7 +20,7 @@
                     .no-photos ng-if="space.photos.length == 0"
                     a.item ng-href="/venues/{{space.venue_id}}?space_id={{space.id}}" ng-class="{active: $index == 0}" ng-repeat=("photo in space.photos track by $index")
                       .full-image
-                        img ng-src="{{photo}}"
+                        img.full ng-src="{{photo}}"
                   a.left.carousel-control data-slide="prev" href="#space-carousel-{{space.id}}" role="button" ng-hide="space.photos.length < 2"
                     span.glyphicon.left-carousel-arrow aria-hidden="true"
                   a.right.carousel-control data-slide="next" href="#space-carousel-{{space.id}}" role="button" ng-hide="space.photos.length < 2"
