@@ -10,6 +10,7 @@ div
       p.uppercase #{t('session.or')}
   #reset-password-form
     = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+      = devise_error_messages!
       p.help #{t('session.reset_password_help')}
       .form-group
         label #{t('session.email')}

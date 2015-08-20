@@ -30,6 +30,8 @@
                 = currency_options.find { |c| c[1] == credit_card.currency.downcase }[0]
 
   span.js-no-card-error.hidden = t('payment.choose_credit_card')
+  .magopay-certified
+    = image_tag 'Mango-Frise1.png'
   .buttons
     .col-xs-6
       = link_to(inbox_user_path(current_represented))
