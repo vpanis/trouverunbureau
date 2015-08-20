@@ -2,78 +2,79 @@
 fr:
   errors:
     email_taken: "Cet email est déjà inscrit"
+  calendar: jj-mm-aa
   languages:
     af: Afrikaans
-    ar: Arabic
+    ar: Arabe
     bn: Bengali
-    bo: Tibetan
-    bg: Bulgarian
+    bo: Tibétain
+    bg: Bulgare
     ca: Catalan
-    cs: Czech
-    cy: Welsh
-    da: Danish
-    de: German
-    el: Modern Greek (1453-)
-    en: English
-    et: Estonian
+    cs: Tchèque
+    cy: Gallois
+    da: Danois
+    de: Allemand
+    el: Grec Moderne
+    en: Anglais
+    et: Estonien
     eu: Basque
-    fa: Persian
-    fj: Fijian
-    fi: Finnish
+    fa: Perse
+    fj: Fidjien
+    fi: Finlandais
     fr: Français
-    ga: Irish
+    ga: Irlandais
     gu: Gujarati
-    he: Hebrew
+    he: Hébreu
     hi: Hindi
-    hr: Croatian
-    hu: Hungarian
-    hy: Armenian
-    id: Indonesian
-    is: Icelandic
-    it: Italian
-    ja: Japanese
-    ka: Georgian
-    km: Central Khmer
-    ko: Korean
+    hr: Croate
+    hu: Hongrois
+    hy: Arménien
+    id: Indonésien
+    is: Islandais
+    it: Italien
+    ja: Japonais
+    ka: Géorgien
+    km: Khmer
+    ko: Coréen
     la: Latin
-    lv: Latvian
-    lt: Lithuanian
+    lv: Letton
+    lt: Lituanien
     ml: Malayalam
     mr: Marathi
-    mk: Macedonian
-    mt: Maltese
-    mn: Mongolian
+    mk: Macédonien
+    mt: Maltais
+    mn: Mongol
     mi: Maori
-    ms: Malay
-    ne: Nepali
-    nl: Dutch
-    'no': Norwegian
-    pa: Panjabi
-    pl: Polish
-    pt: Portuguese
+    ms: Malais
+    ne: Népalais
+    nl: Néerlandais
+    no: Norvégien
+    pa: Pendjabi
+    pl: Polonais
+    pt: Portuguais
     qu: Quechua
-    ro: Romanian
-    ru: Russian
-    sk: Slovak
-    sl: Slovenian
+    ro: Roumain
+    ru: Russe
+    sk: Slovaque
+    sl: Slovène
     sm: Samoan
-    es: Spanish
-    sq: Albanian
-    sr: Serbian
+    es: Espagnol
+    sq: Albanais
+    sr: Serbe
     sw: Swahili
-    sv: Swedish
-    ta: Tamil
+    sv: Suédois
+    ta: Tamoul
     tt: Tatar
-    te: Telugu
-    th: Thai
+    te: Telougou
+    th: Thailandais
     to: Tonga (Tonga Islands)
-    tr: Turkish
-    uk: Ukrainian
+    tr: Turque
+    uk: Ukrainien
     ur: Urdu
-    uz: Uzbek
-    vi: Vietnamese
+    uz: Ouzbek
+    vi: Vietnamien
     xh: Xhosa
-    zh: Chinese
+    zh: Chinois
   currency:
     usd:
       short_name: 'usd'
@@ -169,7 +170,7 @@ fr:
       see_all: 'Tout voir'
     list_space:
       title: 'Publiez votre annonce'
-      content: "Avec DeskSpotting, gagnez de l’argent avec vos espaces libres tout en vous créant un environnement de travail stimulant; Réduisez vos coûts, décidez où, quand et avec qui vous partagez votre espace, sans engagement, sans frais d'annonce."
+      content: "Avec DeskSpotting, gagnez de l’argent avec vos espaces libres tout en créant un environnement de travail stimulant; Réduisez vos coûts, décidez où, quand et avec qui vous partagez votre espace, sans engagement, sans frais d'annonce."
       learn_more: 'En savoir plus'
     quotes:
       title: "Avis D'utilisateurs"
@@ -185,8 +186,8 @@ fr:
       contact: 'Contact'
       language:
         en: 'eng'
-      reserved_rights: ' 2015 DeskSpotting Limited Tous Droits Réservés.'
-      terms_of_service: "Conditions d'utilisation"
+      reserved_rights: ' 2015 DeskSpotting Ltd Tous Droits Réservés.'
+      terms_of_service: "Conditions générales"
       privacy_policy: 'Politique de confidentialité'
       more: 'plus'
   menu:
@@ -203,7 +204,7 @@ fr:
   search:
     count: 'Postes trouvés'
     filters: 'Filtres'
-    workspace: 'Poste de travail'
+    workspace: 'Postes de travail'
     neighbourhood: 'Quartier'
     profession: 'Profession'
     capacity: 'Nombre de personnes'
@@ -220,7 +221,7 @@ fr:
       coworking_space: 'Coworking'
       startup_office: 'Startup'
       hotel: 'Hôtel'
-      corporate_office: 'Siège social'
+      corporate_office: 'Corporate office'
       business_center: "Centre d'affaire"
       design_studio: 'Studio de design'
       loft: 'Loft'
@@ -252,7 +253,7 @@ fr:
       phone_booth: 'cabine téléphonique'
       tv: 'télévision'
       projector: 'projecteur'
-      concierge: 'conciergerie'
+      concierge: 'service conciergerie'
       parking: 'parking'
       water_fountain: "fontaine d'eau"
       reception_service: 'réceptioniste'
@@ -285,13 +286,13 @@ fr:
       per_day: 'Par jour'
       per_month: 'Par mois'
       per_week: 'Par semaine'
-      booking_inquiry: 'Envoyez une demande'
+      booking_inquiry: 'Envoyé une demande'
       about_venue: "À propos de l'espace"
       location: 'Emplacement'
       opening_hours: "Horaires d'ouverture"
       closed: 'Fermé'
       amenities: 'Équipements'
-      professions: 'Professions'
+      professions: 'Professions recherchées'
       why_deskspotting:
         title: 'Pourquoi réserver avec DeskSpotting?'
         no_booking_fees: 'Sans frais de réservation.'
@@ -332,9 +333,9 @@ fr:
       office_rules: 'Règlement intérieur'
       professions: 'Professions recherchées'
       select_professions: 'Sélectionnez les professions recherchées'
-      add_professions: 'Ajoutez une profession'
+      add_professions: 'Valider'
       info_professions: 'Quelles professions souhaitez-vous accueillir.'
-      invalid_street: 'Choisissez une adresse parmi les options ci-dessous'
+      invalid_street: 'Choissisez une adresse parmi les options ci-dessous'
     collection_account:
       individual: 'Individu'
       business: 'Entreprise'
@@ -361,13 +362,13 @@ fr:
       only_legal_name_present: Only if legal name present
       verifying_data: 'Nous vérifions vos informations bancaires. Ceci pourait prendre quelques minutes'
   wishlist:
-    no_favourites: "Vous n\'avez pas de poste favori"
+    no_favourites: "Vous n'avez pas de poste favori"
     day: 'jour'
     month: 'mois'
     hour: 'heure'
     week: 'semaine'
   users:
-    user_since: 'Deskspotter depuis'
+    user_since: 'DeskSpotter Depuis'
     edit_profile: 'Modifiez profil'
     about_me: 'Votre description'
     required_fields: 'Champs requis'
@@ -375,7 +376,7 @@ fr:
     change_picture: 'Modifiez photo'
     enter_languages: 'Indiquez les langues que vous parlez'
     spoken_languages: 'Langues parlées'
-    add_languages: 'Ajoutez une langue'
+    add_languages: 'Valider'
     info_no_share: 'Nous ne partagerons jamais cette information avec quiconque'
     info_share_street: 'Nous ne partagerons votre adresse avec personne'
     info_share_phone: "Nous ne partagerons vos coordonées téléphonique avec l'hôte/visiteur uniquement si la réservation est confirmée"
@@ -402,7 +403,7 @@ fr:
     emergency_name: 'Nom'
     emergency_phone: 'Numéro de téléphone'
     emergency_email: 'Email'
-    emergency_relationship: "Contact en cas d'urgence"
+    emergency_relationship: "Relation"
     account:
       email_notifications: 'Notifications par emails'
       i_want_to_receive: 'Je veux les recevoir'
@@ -457,25 +458,25 @@ fr:
     info_fee: "20% pour toute réservation d'un mois ou moins. 10% pour toute réservation au delà d'un mois après le premier mois. 10% pour toute réservation de mois en mois après le premier mois."
     info_client_space_rental: "Le montant de la réservation est gardé sous séquestre jusqu'à 24 heures apres le check-in."
     info_client_deposit: 'La caution est gardée sous séquestre et sera remboursée 72 heures après votre check-out.'
-    guest: Visiteur
-    decline: Refuser
-    book_it: Réserver
-    approve: Approuver
-    new_offer: Nouvelle offre
-    send_offer: Envoyez offre
-    price: Prix
-    enter_new_offer: Entrez nouvelle offre
+    guest: "Visiteur"
+    decline: "Refuser"
+    book_it: 'Réserver'
+    approve: 'Approuver'
+    new_offer: 'Nouvelle Offre'
+    send_offer: 'Envoyer Offre'
+    price: 'Prix'
+    enter_new_offer: 'Formuler Nouvelle Offre'
   reviews:
     guest_review: 'Commentaires sur le visiteur'
     space_review: "Commentaires sur l'espace"
-    rate_space: "Notez"
+    rate_space: "Notez %{space} of %{venue}"
     date: 'Date'
-    spaces: 'Espaces'
+    spaces: 'Postes'
     check_in: 'Check-In'
     check_out: 'Check-Out'
     comment: "Votre avis sera seulement partagé avec d'autres hôtes"
   bookings:
-    claim_deposit: "Réclamer la caution"
+    claim_deposit: 'Appeler la caution'
     review: "Commentaires"
     view_receipt: 'Voir reçu'
     cancel: 'Annuler'
@@ -483,10 +484,10 @@ fr:
     all_venues: 'Tous les espaces'
     current: 'Réservation en cours'
     cancelled: 'Réservation annulée'
-    no_bookings: "Il n\'y a pas de réservation"
-    no_paid_cancelled: "Vous n\'avez pas de réservation payée ou annulée."
-    your_bookings: "Mes réservations"
-    venue_bookings: Vos espaces
+    no_bookings: "Il n'y a pas de réservation"
+    no_paid_cancelled: "Vous n'avez pas de réservation payée ou annulée"
+    your_bookings: 'Mes réservations'
+    venue_bookings: "Vos espaces"
     state:
       pending_authorization: 'En attente'
       pending_payment: 'En attente de paiement'
@@ -494,8 +495,8 @@ fr:
       cancelled: 'Annulé'
       denied: 'Refusé'
       expired: 'Expiré'
-      new: 'New'
-      payment_verification: 'Vérification'
+      new: 'Nouveau'
+      payment_verification: 'Verification'
       refunding: 'Remboursement'
       error_refunding: 'Erreur remboursement'
   booking_inquiry:
@@ -516,7 +517,7 @@ fr:
     send_inquiry: 'Envoyer votre demande'
     month_amount: 'Nombre de mois'
     hour: 'heure'
-    hours_amount: Nombre d'heures"
+    hours_amount: "Nombre d'heures"
     day: 'jour'
     days_amount: 'Nombre de jours'
     month: 'mois'
@@ -530,25 +531,25 @@ fr:
     space_booking: 'Réservation'
   edit_venue_progress:
     status: 'Statut'
-    venue: 'Coordonées Espace'
-    details: 'Informations Espace'
-    amenities: 'Equipements Espace'
-    photos: "Photos Espace"
-    spaces: 'Postes de travail'
-    publish: 'Publier'
+    venue: 'Espace'
+    details: 'Détails'
+    amenities: 'Equipements'
+    photos: 'Photos'
+    spaces: 'Postes'
+    publish: 'Publiez'
     delete_venue: 'Effacez cet espace'
     incomplete: "incomplet"
     collection_account: Collection Account
     payout_method: 'Méthode de paiement'
   new_message_email:
-    subject: 'Vous avez un nouveau message - Réservation'
+    subject: 'Vous avez un nouveau message - Réservation %{booking_id}'
     hi: 'Bonjour'
     got_new_message: 'Nouveau message de la part de'
     reply: 'Ou répondez directement via email'
     view_on_deskspotting: 'Visualisez sur DeskSpotting'
     team: "L'Équipe DeskSpotting"
   host_cancellation_email:
-    subject: 'Annulation hôte - Réservation'
+    subject: 'Annulation hôte - Réservation #%{booking_id}'
     sorry_cancel: "Nous sommes désolé que vous ayez eu besoin d'annuler la réservation de"
     unfortunately: "Malheureusement votre hôte, %{name}, a du annuler votre réservation de"
     refund_host: "Selon la politique d'annulation, le visiteur recevera un remboursement de %{currency_sym} %{amount}"
@@ -558,23 +559,23 @@ fr:
     spaces: Postes
     check_in: Check-In
     check_out: Check-Out
-    terms1: 'Si vous avez des questions concernant nos'
-    terms2: Veuillez consulter
-    cancellation_policy: Politique d'annulation
-    terms_of_service: Conditions générales
+    terms1: Si vous avez des questions concernant nos
+    terms2: veuillez consulter 
+    cancellation_policy: politique d'annulation 
+    terms_of_service: conditions générales
   guest_cancellation_email:
-    subject: 'Annulation visiteur-Réservation'
+    subject: "Annulation visiteur - Réservation #%{booking_id}"
     sorry_cancel: "Nous sommes désolé que vous ayez eu besoin d'annuler la réservation de"
     unfortunately: "Malheureusement votre visiteur, %{name}, a du annuler sa réservation de"
     payout: "Selon la politique d'annulation, vous recevrez un paiement de %{currency_sym} %{amount}"
     refund: "Selon la politique d'annulation, vous receverez un remboursement de %{currency_sym} %{amount}"
-    transferred: Transferé à
-    account_type: Type de compte
-    account_number: Numéro de compte
-    funds: Fonds versés le
+    transferred: 'Transféré à'
+    account_type: "Type de compte"
+    account_number: 'Numéro de compte'
+    funds: 'Fonds versés le'
   guest_review_email:
     subject: 'Donnez votre avis - %{type} #%{guest_id}'
-    hi: 'Salut'
+    hi: 'Bonjour'
     checked_out: 'Vous avez effectué le check-out de'
     at: 'le'
     check_in: 'Check-In'
@@ -583,7 +584,7 @@ fr:
     date: 'Date'
     rate_stay: "Notez l'espace?"
   host_review_email:
-    subject: 'Donnez votre avis - Espace #%{venue_id}'
+    subject: 'Donez votre avis - Espace #%{venue_id}'
     rate_guest: 'Notez le visiteur'
     your_guest: 'Votre visiteur'
     checked_in: 'A effectué le Check-In de'
@@ -619,7 +620,7 @@ fr:
     members: 'Gérant'
     members_subtitle: 'Managers subtitle'
     create_profile: 'Créez une organisation'
-    create_title: 'Ajoutez un titre'
+    create_title: 'Créez un titre'
   payment:
     payment: "Paiement"
     welcome: "Bonjour %{name}. C'est le moment de payer!"
@@ -631,7 +632,7 @@ fr:
     check_in: 'Check-In'
     check_out: 'Check-Out'
     price: "prix"
-    used_credit_card: Carte de credit utilisée
+    used_credit_card: "Carte de crédit utilisée"
     new_credit_card: 'Nouvelle carte'
     last_digits: 'Les quatre derniers chiffres'
     type: 'Type'
@@ -642,12 +643,12 @@ fr:
     cvx: 'CVV'
     expiration_month: 'Expiration mois(mm)'
     expiration_year: 'Expiration année(aa)'
-    card_number: 'Numéro de carte de crédit'
+    card_number: 'Numéro de carte crédit'
     invalid_card_number: 'Format de numéro de carte non valable'
     invalid_expiration_date: "Format de date d'expiration non valable"
     invalid_cvv: 'Format de code CVV non valable'
     all_required: 'Tous les champs sont obligatoires'
-    choose_credit_card: "Vous devez d\'abord choisir une autre carte"
+    choose_credit_card: "Vous devez d'abord choisir une autre carte"
   messages:
     booking_change: "L'information de la réservation a changé"
     pending_authorization: "La réservation doit être confirmée par l'hôte."
@@ -658,7 +659,7 @@ fr:
     expired: 'Les 24 heures pour payer votre réservation se sont écoulées. La réservation a été annulé.'
     payment_verification: 'Nous vérifions votre paiement.'
     refunding: 'Le paiement a été remboursé.'
-    error_refunding: "Nous avons des difficultés avec le remboursement."
+    error_refunding: 'Nous avons des difficultés avec le remboursement.'
   payment_methods:
     personal: 'Personnel'
     business: 'Entreprise'
@@ -667,7 +668,7 @@ fr:
     email: 'Email'
     date_of_birth: 'Date de naissance'
     ssn: Ssn
-    locality: "Ville"
+    locality: 'Ville'
     street: 'Adresse'
     region: 'Région'
     postal_code: 'Code postal'
@@ -706,8 +707,8 @@ fr:
     space_type: 'Type de poste'
     confirmation_code: 'Code de confirmation'
     spaces: 'Postes'
-    check_in: "Check-In"
-    check_out: "Check-Out"
+    check_in: 'Check-In'
+    check_out: 'Check-Out'
     guest: 'Visiteur'
     first_name: 'Prénom'
     name: 'Nom'
@@ -724,13 +725,12 @@ fr:
     iban: IBAN
     funds_trasferred_on: 'Fonds versés le'
   contact:
-    title: Contactez-nous
-    subtitle: "Vous avez des questions, n'hésitez pas à nous contacter"
-    name: 'Name'
+    title: Contactez-Nous
+    subtitle: "Vous avez des questions ou suggestions n'hésitez pas à nous contacter"
+    name: 'Nom'
     email: 'E-Mail'
     message: 'Message'
     send: 'Envoyer'
     subject: 'Contacter DeskSpotting'
-    success: 'Merci pour votre message'
-    error: "Erreur d'envoie. Veuillez essayer plus tard"
-
+    success: 'Merci pour votre message!'
+    error: "Erreur d'envoie. Veuillez essayer plustard"
