@@ -14,6 +14,8 @@
           label
             = check_box_tag 'venue[amenities][]', amenity, @venue.amenities.include?(amenity.to_s)
             = t("venues.amenities.#{amenity.to_s}")
+          - if amenity.to_s == "team_bookings"
+            .icon.info.pointer#professions-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('venues.amenities.info_team_bookings')}"
       .row.buttons
         .col-xs-6
           a href='#'
