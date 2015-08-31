@@ -8,6 +8,8 @@ module BookingReservation
   private
 
   def check_if_can_book_and_perform(booking, lock, custom_errors, check_venue_hours = true, &block)
+    custom_errors.add(:from_in_the_past,
+      from: booking.from) if booking.from < booking.space.venue.time_zone.from_zone_to_utc(Time.current)
     check_availability(booking, custom_errors, check_venue_hours)
     return booking unless booking.valid? && custom_errors.empty?
     check_max_collition(booking, lock, custom_errors, &block)

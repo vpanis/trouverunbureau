@@ -114,4 +114,5 @@ class Booking < ActiveRecord::Base
   def valid_for_calculate_time_quantity?
     space.present? && !from.blank? && !to.blank? && from <= to
   end
+
 end
