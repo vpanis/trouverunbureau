@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
   class << self
 
     def from_omniauth(auth)
-      user_found = where('email = :email OR provider = :provider AND uid = :uid',
+      user_found = where('email = :email OR (provider = :provider AND uid = :uid)',
                          email: auth.info.email, provider: auth.provider, uid: auth.uid).first
       if user_found.nil?
         create_provider_user(auth)
@@ -72,7 +72,7 @@ class User < ActiveRecord::Base
     private
 
     def create_provider_user(auth)
-      new(provider: auth.provider, uid: auth.id, email: auth.info.email,
+      new(provider: auth.provider, uid: auth.uid, email: auth.info.email,
           password: Devise.friendly_token[0, 20], first_name: auth.info.first_name,
           last_name: auth.info.last_name)
     end
