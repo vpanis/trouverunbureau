@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :venue do
+    with_time_zone
     town { Faker::Address.city }
     street { Faker::Address.street_address }
     postal_code { Faker::Address.postcode }
@@ -28,8 +29,6 @@ FactoryGirl.define do
 
     owner { FactoryGirl.build(:user) }
     country_code 'FR'
-
-    with_time_zone
 
     after(:build) do |venue|
       unless venue.day_hours.present?
