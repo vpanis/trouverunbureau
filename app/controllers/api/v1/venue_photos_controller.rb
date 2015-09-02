@@ -12,10 +12,10 @@ module Api
         venue_photo = VenuePhoto.find_by(id: params[:id])
         return record_not_found unless venue_photo.present?
         return forbidden unless VenueContext.new(venue_photo.venue, current_represented).owner?
-        return forbidden if venue_photo.space_id != params[:space_id]
+        return forbidden if venue_photo.space_id.to_i != params[:space_id].to_i
         check_if_space_is_active(venue_photo.space)
         venue_photo.destroy!
-        render nothing: true, status: 200
+        render nothing: true, status: 204
       end
 
       private

@@ -9,7 +9,7 @@
         .col-md-4
           .img-wrapper style="background-image: url(#{photo.photo.url});"
             .hover
-              a.delete-photo href="#" data-photo-id=photo.id = t('commons.delete')
+              a.delete-photo href="#" data-photo-id=photo.id data-space-id=photo.space_id = t('commons.delete')
       .col-md-4.add-image-container
         .add-image
           p = t('commons.add_image')
