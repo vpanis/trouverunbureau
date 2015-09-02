@@ -29,6 +29,8 @@ FactoryGirl.define do
     owner { FactoryGirl.build(:user) }
     country_code 'FR'
 
+    with_time_zone
+
     after(:build) do |venue|
       unless venue.day_hours.present?
         venue.day_hours << FactoryGirl.build(:venue_hour, venue: venue, weekday: 0)
