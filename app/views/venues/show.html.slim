@@ -4,7 +4,7 @@
   .row.actions-on-venue
       = form_tag report_api_v1_venue_path(@venue), remote: true, class: 'report-venue-form'
         = submit_tag t('venues.show.report_venue'), id: 'report-venue'
-  .col-xs-12.col-sm-7.col-md-7.col-lg-8
+  .col-xs-12.col-sm-5.col-md-7.col-lg-8
     .hidden-xs
       .venue-avatar
         - if @venue.logo?
@@ -32,11 +32,11 @@
           .location
             .location-icon
             p = @venue.town + ', ' + Country.new(@venue.country_code).name
-  .col-xs-12.col-sm-5.col-md-5.col-lg-4
+  .col-xs-12.col-sm-7.col-md-5.col-lg-4
     .row.tab-selector-container
-      .col-xs-6.tab-selector.active#venue-info-selector
+      .col-xs-5.tab-selector.active#venue-info-selector
         a #{t('venues.show.venue')}
-      .col-xs-6.tab-selector#venue-workspaces-selector
+      .col-xs-7.tab-selector#venue-workspaces-selector
         a #{t('venues.show.workspaces')}
 #venue-info-tab
   = render 'info_tab'
