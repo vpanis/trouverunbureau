@@ -941,9 +941,6 @@ h4.gray-subtitle {
     .amenity.outdoor_space {
       @include at2x('venue_profile_a_outdoor-space', 40px, 40px);
     }
-    .amenity.individual_bookings {
-      @include at2x('venue_profile_a_individual_bookings', 40px, 40px);
-    }
     .amenity.fax {
       @include at2x('venue_profile_a_fax', 40px, 40px);
     }
