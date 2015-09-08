@@ -5,7 +5,7 @@ module SelectOptionsHelper
   end
 
   def all_countries_options
-    Country.all.sort
+    Country.all_translated(session[:locale]).sort
   end
 
   def venue_types_options
