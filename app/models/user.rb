@@ -72,9 +72,10 @@ class User < ActiveRecord::Base
     private
 
     def create_provider_user(auth)
-      new(provider: auth.provider, uid: auth.uid, email: auth.info.email,
-          password: Devise.friendly_token[0, 20], first_name: auth.info.first_name,
-          last_name: auth.info.last_name)
+      new(provider: auth.provider, uid: auth.uid, first_name: auth.info.first_name,
+          email: auth.info.email, password: Devise.friendly_token[0, 20],
+          last_name: auth.info.last_name,
+          date_of_birth: Date.strptime(auth.extra.raw_info.birthday, '%m/%d/%Y'))
     end
 
     def add_provider_if_necessary(user, auth)
