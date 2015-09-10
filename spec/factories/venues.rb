@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :venue do
+    with_time_zone
     town { Faker::Address.city }
     street { Faker::Address.street_address }
     postal_code { Faker::Address.postcode }

@@ -20,6 +20,12 @@
 }
 .form-group{
   margin-bottom: 8px;
+
+  .required:before {
+    content: "* ";
+    color: $red;
+  }
+
   .form-control{
     height: 42px;
     border: 2px solid $light-gray;

@@ -96,8 +96,9 @@
                 label = t('users.emergency_name')
                 = f.text_field :emergency_name, placeholder: t('users.emergency_name'), class: 'form-control'
               .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+                .icon.info.pointer#emergency_phone-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_share_phone')}"
                 label = t('users.emergency_phone')
-                = f.text_field :emergency_phone, placeholder: t('users.emergency_phone'), class: 'form-control'
+                = f.text_field :emergency_phone, placeholder: t('users.emergency_phone'), class: 'form-control', type: 'tel', required: true, id: 'emergency_phone'
               .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
                 label = t('users.emergency_email')
                 = f.text_field :emergency_email, placeholder: t('users.emergency_email'), class: 'form-control'

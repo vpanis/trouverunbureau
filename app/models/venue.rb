@@ -30,7 +30,7 @@ class Venue < ActiveRecord::Base
 
   AMENITY_TYPES = [:whiteboards, :kitchen, :security, :wifi, :printer_scanner, :chill_area,
                    :photocopier, :conference_rooms, :elevators, :outdoor_space, :team_bookings,
-                   :individual_bookings, :shower, :fax, :wheelchair_access, :air_conditioning, :tv,
+                   :shower, :fax, :wheelchair_access, :air_conditioning, :tv,
                    :pets_allowed, :mail_service, :gym, :cafe_restaurant, :phone_booth, :projector,
                    :concierge, :parking, :water_fountain, :reception_service, :cleaning_service]
 

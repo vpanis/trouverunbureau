@@ -5,6 +5,11 @@
 .amenity-checkbox {
   margin-bottom: 23px;
   text-transform: capitalize;
+
+  .icon {
+    margin-left: 5px;
+    outline: none;
+  }
 }
 
 #report-venue {

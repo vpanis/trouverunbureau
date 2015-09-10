@@ -19,6 +19,7 @@ on_load = ->
     delete_photo = (event, element) ->
       event.preventDefault()
       photoId = element.dataset.photoId
+      spaceId = parseInt(element.dataset.spaceId)
       if photoId == 'undefined' || photoId == null || photoId == ''
         return
       show_spinner()
@@ -26,9 +27,9 @@ on_load = ->
         type: 'DELETE'
         url: '/api/v1/venue_photos/'+photoId
         cache: false
-        contentType: false
-        processData: false
         context: element
+        dataType: "json"
+        data: { space_id: spaceId }
         success: (data) ->
           hide_spinner()
           element.parentElement.parentElement.parentElement.remove()

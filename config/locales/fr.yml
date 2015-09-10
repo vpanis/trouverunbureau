@@ -237,6 +237,7 @@ fr:
       printer_scanner: 'imprimante/scanner'
       chill_area: 'espace détente'
       photocopier: 'photocopieur'
+      info_team_bookings: "Êtes-vous ouvert à recevoir des réservations de la part d'équipes de professionnels?"
       conference_rooms: 'salle de conférence'
       elevators: 'ascenseur'
       outdoor_space: 'espace extérieur'
@@ -560,8 +561,8 @@ fr:
     check_in: Check-In
     check_out: Check-Out
     terms1: Si vous avez des questions concernant nos
-    terms2: veuillez consulter 
-    cancellation_policy: politique d'annulation 
+    terms2: veuillez consulter
+    cancellation_policy: politique d'annulation
     terms_of_service: conditions générales
   guest_cancellation_email:
     subject: "Annulation visiteur - Réservation #%{booking_id}"
