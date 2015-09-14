@@ -735,3 +735,140 @@ fr:
     subject: 'Contacter DeskSpotting'
     success: 'Merci pour votre message!'
     error: "Erreur d'envoie. Veuillez essayer plustard"
+    meta:
+      description : "Vous avez des suggestions ou des questions? Vous souhaitez joindre l'équipe de DeskSpotting? Ecrivez-nous."
+      title: "Contact | DeskSpotting"
+      og:
+        title : "Contact | DeskSpotting"
+        description : "Vous avez des suggestions ou des questions? Vous souhaitez joindre l'équipe de DeskSpotting? Ecrivez-nous."
+      twitter :
+        title : "Contact | DeskSpotting"
+        description : "Vous avez des suggestions ou des questions? Vous souhaitez joindre l'équipe de DeskSpotting? Ecrivez-nous."
+  landing:
+    meta:
+      description: "Réservez des espaces de travail où et quand vous voulez. Publiez vos espaces vacants, créez votre espace collaboratif, tout en gagnant de l'argent."
+      title: "DeskSpotting | Bien plus qu'un bureau"
+      og:
+        title: "DeskSpotting | Bien plus qu'un bureau"
+        description: "Réservez des espaces de travail où et quand vous voulez. Publiez vos espaces vacants, créez votre espace collaboratif, tout en gagnant de l'argent."
+      twitter:
+        title: "Desk Spotting | Bien plus qu'un bureau"
+        description: "Réservez des espaces de travail où et quand vous voulez. Publiez vos espaces vacants, créez votre espace collaboratif, tout en gagnant de l'argent."
+  passwords:
+    new:
+      meta:
+        description: "Changez votre mot de passe. Connectez-vous et réservez d'étonnants espaces de travail partagés. DeskSpotting commence maintenant!"
+        title: "Nouveau mot de passe | DeskSpotting"
+        og:
+          title: "Nouveau mot de passe| DeskSpotting"
+          description: "Changez votre mot de passe. Connectez-vous et réservez d'étonnants espaces de travail partagés. DeskSpotting commence maintenant!"
+        twitter:
+          title: "Nouveau mot de passe | DeskSpotting"
+          description: "Changez votre mot de passe. Connectez-vous et réservez d'étonnants espaces de travail partagés. DeskSpotting commence maintenant!"
+  registrations:
+    new:
+      meta:
+        description: "Bienvenue sur DeskSpotting. Inscrivez-vous et commencez à réserver d'étonnants espaces de bureaux partagés. DeskSpotting commence maintenant!"
+        title: "Inscrivez-vous | DeskSpotting"
+        og:
+          title: "Inscrivez-vous | DeskSpotting"
+          description: "Bienvenue sur DeskSpotting. Inscrivez-vous et commencez à réserver d'étonnants espaces de bureaux partagés. DeskSpotting commence maintenant!"
+        twitter:
+          title: "Inscrivez-vous | DeskSpotting"
+          description: "Bienvenue sur DeskSpotting. Inscrivez-vous et commencez à réserver d'étonnants espaces de bureaux partagés. DeskSpotting commence maintenant!"
+  sessions:
+    new:
+      meta:
+        description: "Inscrivez-vous et recherchez des espaces de travail stimulants pour une heure, une journée, un mois ou plus. Vous avez le choix sur DeskSpotting."
+        title: "S'inscrire | DeskSpotting"
+        og:
+          title: "S'inscrire | DeskSpotting"
+          description: "Inscrivez-vous et recherchez des espaces de travail stimulants pour une heure, une journée, un mois ou plus. Vous avez le choix sur DeskSpotting."
+        twitter:
+          title: "S'inscrire | DeskSpotting"
+          description: "Inscrivez-vous et recherchez des espaces de travail stimulants pour une heure, une journée, un mois ou plus. Vous avez le choix sur DeskSpotting."
+  spaces:
+    meta:
+      description: "Réservez des bureaux et des salles de réunion uniques, où et quand vous voulez. Découvrez les avantages de travailler dans des bureaux partagés."
+      title: "Tous les espaces de travail | DeskSpotting"
+      og:
+        title: "Tous les espaces de travail | DeskSpotting"
+        description: "Réservez des bureaux et des salles de réunion uniques, où et quand vous voulez. Découvrez les avantages de travailler dans des bureaux partagés."
+      twitter:
+        title: "Tous les espaces de travail | DeskSpotting"
+        description: "Réservez des bureaux et des salles de réunion uniques, où et quand vous voulez. Découvrez les avantages de travailler dans des bureaux partagés."
+    search_mobile:
+      meta:
+        title: "Search Mobile | DeskSpotting"
+    zero:
+      meta:
+        description: "Réservez des salles de conférence uniques où et quand vous en avez besoin. Découvrez les avantages de travailler dans des bureaux partagés."
+        title: "Salle de conférence | DeskSpotting"
+        og:
+          title: "Salle de conférence | DeskSpotting"
+          description: "Réservez des salles de conférence uniques où et quand vous en avez besoin. Découvrez les avantages de travailler dans des bureaux partagés."
+        twitter:
+          title: "Salle de conférence | DeskSpotting"
+          description: "Réservez des salles de conférence uniques où et quand vous en avez besoin. Découvrez les avantages de travailler dans des bureaux partagés."
+    one:
+      meta:
+        description: "Réservez des salles de réunion uniques où et quand vous en avez besoin. Découvrez les avantages de travailler dans des bureaux partagés."
+        title: "Salle de réunion | DeskSpotting"
+        og:
+          title: "Salle de réunion | DeskSpotting"
+          description: "Réservez des salles de réunion uniques où et quand vous en avez besoin. Découvrez les avantages de travailler dans des bureaux partagés."
+        twitter:
+          title: "Salle de réunion | DeskSpotting"
+          description: "Réservez des salles de réunion uniques où et quand vous en avez besoin. Découvrez les avantages de travailler dans des bureaux partagés."
+    two:
+      meta:
+        description: "Réservez des bureaux privés où et quand vous en avez besoin. Découvrez les avantages de travailler dans des bureaux partagés."
+        title: "Bureau privé | DeskSpotting"
+        og:
+          title: "Bureau privé | DeskSpotting"
+          description: "Réservez des bureaux privés où et quand vous en avez besoin. Découvrez les avantages de travailler dans des bureaux partagés."
+        twitter:
+          title: "Bureau privé | DeskSpotting"
+          description: "Réservez des bureaux privés où et quand vous en avez besoin. Découvrez les avantages de travailler dans des bureaux partagés."
+    three:
+      meta:
+        description: "Réservez des bureaux fixes où et quand vous en avez besoin. Découvrez les avantages de travailler dans des bureaux partagés."
+        title: "Bureau fixe | DeskSpotting"
+        og:
+          title: "Bureau fixe | DeskSpotting"
+          description: "Réservez des bureaux fixes où et quand vous en avez besoin. Découvrez les avantages de travailler dans des bureaux partagés."
+        twitter:
+          title: "Bureau fixe | DeskSpotting"
+          description: "Réservez des bureaux fixes où et quand vous en avez besoin. Découvrez les avantages de travailler dans des bureaux partagés."
+    four:
+      meta:
+        description: "Réservez des bureaux de passage où et quand vous en avez besoin. Découvrez les avantages de travailler dans des bureaux partagés."
+        title: "Bureau de passage| DeskSpotting"
+        og:
+          title: "Bureau de passage | DeskSpotting"
+          description: "Réservez des bureaux de passage où et quand vous en avez besoin. Découvrez les avantages de travailler dans des bureaux partagés."
+        twitter:
+          title: "Bureau de passage | DeskSpotting"
+          description: "Réservez des bureaux de passage où et quand vous en avez besoin. Découvrez les avantages de travailler dans des bureaux partagés."
+    five:
+      meta:
+        description: "Réservez des espaces communs où et quand vous en avez besoin. Découvrez les avantages de travailler dans des bureaux partagés."
+        title: "Espace commun | DeskSpotting"
+        og:
+          title: "Espace commun | DeskSpotting"
+          description: "Réservez des espaces communs où et quand vous en avez besoin. Découvrez les avantages de travailler dans des bureaux partagés."
+        twitter:
+          title: "Espace commun | DeskSpotting"
+          description: "Réservez des espaces communs où et quand vous en avez besoin. Découvrez les avantages de travailler dans des bureaux partagés."
+    six:
+      meta:
+        description: "Travaillez partout comme à la maison. Réservez des bureaux uniques chez des particuliers où et quand vous en avez besoin."
+        title: "Home Office| DeskSpotting"
+        og:
+          title: "Home Office| DeskSpotting"
+          description: "Travaillez partout comme à la maison. Réservez des bureaux uniques chez des particuliers, où et quand vous en avez besoin."
+        twitter:
+          title: "Home Office| DeskSpotting"
+          description: "Travaillez partout comme à la maison. Réservez des bureaux uniques chez des particuliers où et quand vous en avez besoin."
+
+

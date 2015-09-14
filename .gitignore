@@ -48,3 +48,5 @@ public/uploads
 
 # Extra ignored files
 dump.rdb
+
+.idea/

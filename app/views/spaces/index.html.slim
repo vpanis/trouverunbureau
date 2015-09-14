@@ -1,3 +1,60 @@
+== content_for :meta_tag do
+  - case params[:s_type]
+    - when "0"
+      title #{t('spaces.zero.meta.title')}
+      meta name="description" content="#{t('spaces.zero.meta.description')}"
+      meta property="og:title" content="#{t('spaces.zero.meta.og.title')}"
+      meta property="og:description" content="#{t('spaces.zero.meta.og.description')}"
+      meta name="twitter:title" content="#{t('spaces.zero.meta.twitter.title')}"
+      meta name="twitter:description" content="#{t('spaces.zero.meta.twitter.description')}"
+    - when "1"
+      title #{t('spaces.one.meta.title')}
+      meta name="description" content="#{t('spaces.one.meta.description')}"
+      meta property="og:title" content="#{t('spaces.one.meta.og.title')}"
+      meta property="og:description" content="#{t('spaces.one.meta.og.description')}"
+      meta name="twitter:title" content="#{t('spaces.one.meta.twitter.title')}"
+      meta name="twitter:description" content="#{t('spaces.one.meta.twitter.description')}"
+    - when "2"
+      title #{t('spaces.two.meta.title')}
+      meta name="description" content="#{t('spaces.two.meta.description')}"
+      meta property="og:title" content="#{t('spaces.two.meta.og.title')}"
+      meta property="og:description" content="#{t('spaces.two.meta.og.description')}"
+      meta name="twitter:title" content="#{t('spaces.two.meta.twitter.title')}"
+      meta name="twitter:description" content="#{t('spaces.two.meta.twitter.description')}"
+    - when "3"
+      title #{t('spaces.three.meta.title')}
+      meta name="description" content="#{t('spaces.three.meta.description')}"
+      meta property="og:title" content="#{t('spaces.three.meta.og.title')}"
+      meta property="og:description" content="#{t('spaces.three.meta.og.description')}"
+      meta name="twitter:title" content="#{t('spaces.three.meta.twitter.title')}"
+      meta name="twitter:description" content="#{t('spaces.three.meta.twitter.description')}"
+    - when "4"
+      title #{t('spaces.four.meta.title')}
+      meta name="description" content="#{t('spaces.four.meta.description')}"
+      meta property="og:title" content="#{t('spaces.four.meta.og.title')}"
+      meta property="og:description" content="#{t('spaces.four.meta.og.description')}"
+      meta name="twitter:title" content="#{t('spaces.four.meta.twitter.title')}"
+      meta name="twitter:description" content="#{t('spaces.four.meta.twitter.description')}"
+    - when "5"
+      title #{t('spaces.five.meta.title')}
+      meta name="description" content="#{t('spaces.five.meta.description')}"
+      meta property="og:title" content="#{t('spaces.five.meta.og.title')}"
+      meta property="og:description" content="#{t('spaces.five.meta.og.description')}"
+      meta name="twitter:title" content="#{t('spaces.five.meta.twitter.title')}"
+      meta name="twitter:description" content="#{t('spaces.five.meta.twitter.description')}"
+    - when "6"
+      title #{t('spaces.six.meta.title')}
+      meta name="description" content="#{t('spaces.six.meta.description')}"
+      meta property="og:title" content="#{t('spaces.six.meta.og.title')}"
+      meta property="og:description" content="#{t('spaces.six.meta.og.description')}"
+      meta name="twitter:title" content="#{t('spaces.six.meta.twitter.title')}"
+      meta name="twitter:description" content="#{t('spaces.six.meta.twitter.description')}"
+    - else
+      title #{t('spaces.meta.title')}
+      meta property="og:title" content="#{t('spaces.meta.og.title')}"
+      meta property="og:description" content="#{t('spaces.meta.og.description')}"
+      meta name="twitter:title" content="#{t('spaces.meta.twitter.title')}"
+      meta name="twitter:description" content="#{t('spaces.meta.twitter.description')}"
 .space-search.container-fluid
   .row#controller ng-controller="SearchCtrl" data-marker-icon=image_url('pin_negro.png') data-active-marker-icon=image_url('venue_profile_pin_map.png')
     #map-canvas.venue-map-container.col-lg-4.col-md-3.hidden-sm.hidden-xs

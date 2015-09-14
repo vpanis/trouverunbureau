@@ -735,4 +735,138 @@ en:
     subject: 'Contact DeskSpotting'
     success: 'Thank you for your message!'
     error: "Something's gone wrong. Please try agian later."
-
+    meta:
+      description : "Have any suggestions or questions. Or interested in joining the DeskSpotting Team. We are always interested in hearing from you."
+      title: "Contact | DeskSpotting"
+      og:
+        title : "Contact | DeskSpotting"
+        description : "Have any suggestions or questions. Or interested in joining the DeskSpotting Team. We are always interested in hearing from you."
+      twitter :
+        title : "Contact | DeskSpotting"
+        description : "Have any suggestions or questions. Or interested in joining the DeskSpotting Team. We are always interested in hearing from you."
+  landing:
+    meta:
+      description: "Book unique workspaces where and when you need them. List your vacant space and build your own collaborative work environment while earning money."
+      title: "DeskSpotting | Much more than office"
+      og:
+        title: "Much more than an office"
+        description: "Book unique workspaces where and when you need them. List your vacant space and build your own collaborative work environment while earning money."
+      twitter:
+        title: "Desk Spotting | Much more than an office"
+        description: "Book unique workspaces where and when you need them. List your vacant space and build your own collaborative work environment while earning money."
+  passwords:
+      new:
+        meta:
+          description: "Change your password. Log in and start booking amazing shared workspaces and start DeskSpotting now!"
+          title: "New Password | DeskSpotting"
+          og:
+            title: "New Password | DeskSpotting"
+            description: "Change your password. Log in and start booking amazing shared workspaces and start DeskSpotting now!"
+          twitter:
+            title: "New Password | DeskSpotting"
+            description: "Change your password. Log in and start booking amazing shared workspaces and start DeskSpotting now!"
+  registrations:
+    new:
+      meta:
+        description: "Welcome to DeskSpotting. Sign up and start booking amazing shared office spaces. Start DeskSpotting now!"
+        title: "Sign up | DeskSpotting"
+        og:
+          title: "Sign up | DeskSpotting"
+          description: "Welcome to DeskSpotting. Sign up and start booking amazing shared office spaces. Start DeskSpotting now!"
+        twitter:
+          title: "Sign up | DeskSpotting"
+          description: "Welcome to DeskSpotting. Sign up and start booking amazing shared office spaces. Start DeskSpotting now!"
+  sessions:
+    new:
+      meta:
+        description: "Sign in and search for inspiring workspaces you can book for an hour, a day, month or more. The choice is yours on DeskSpotting."
+        title: "Sign in | DeskSpotting"
+        og:
+          title: "Sign in | DeskSpotting"
+          description: "Sign in and search for inspiring workspaces you can book for an hour, a day, month or more. The choice is yours on DeskSpotting."
+        twitter:
+          title: "Sign in | DeskSpotting"
+          description: "Sign in and search for inspiring workspaces you can book for an hour, a day, month or more. The choice is yours on DeskSpotting."
+  spaces:
+    meta:
+      description: "Book unique offices or meeting rooms where and when you need them. Start enjoying the benefits of shared office work environments."
+      title: "All Workspaces | DeskSpotting"
+      og:
+        title: "All Workspaces | DeskSpotting"
+        description: "Book unique offices or meeting rooms where and when you need them. Start enjoying the benefits of shared office work environments."
+      twitter:
+        title: "All Workspaces | DeskSpotting"
+        description: "Book unique offices or meeting rooms where and when you need them. Start enjoying the benefits of shared office work environments."
+    search_mobile:
+      meta:
+        title: "Search Mobile | DeskSpotting"
+    zero:
+      meta:
+        description: "Book unique Conference Rooms where and when you need them. Start enjoying the benefits of shared office work environments."
+        title: "Conference Room | DeskSpotting"
+        og:
+          title: "Conference Room | DeskSpotting"
+          description: "Book unique Conference Rooms where and when you need them. Start enjoying the benefits of shared office work environments."
+        twitter:
+          title: "Conference Room | DeskSpotting"
+          description: "Book unique Conference Rooms where and when you need them. Start enjoying the benefits of shared office work environments."
+    one:
+      meta:
+        description: "Book unique Meeting Rooms  where and when you need them. Start enjoying the benefits of shared office work environments."
+        title: "Meeting Room | DeskSpotting"
+        og:
+          title: "Meeting Room | DeskSpotting"
+          description: "Book unique Meeting Rooms  where and when you need them. Start enjoying the benefits of shared office work environments."
+        twitter:
+          title: "Meeting Room | DeskSpotting"
+          description: "Book unique Meeting Rooms  where and when you need them. Start enjoying the benefits of shared office work environments."
+    two:
+      meta:
+        description: "Book unique Private Offices where and when you need them. Start enjoying the benefits of shared office work environments."
+        title: "Private Office | DeskSpotting"
+        og:
+          title: "Private Office | DeskSpotting"
+          description: "Book unique Private Offices where and when you need them. Start enjoying the benefits of shared office work environments."
+        twitter:
+          title: "Private Office | DeskSpotting"
+          description: "Book unique Private Offices where and when you need them. Start enjoying the benefits of shared office work environments."
+    three:
+      meta:
+        description: "Book unique Fixed desks where and when you need them. Start enjoying the benefits of shared office work environments."
+        title: "Fixed Desk | DeskSpotting"
+        og:
+          title: "Fixed Desk | DeskSpotting"
+          description: "Book unique fixed desk  where and when you need them. Start enjoying the benefits of shared office work environments."
+        twitter:
+          title: "Fixed Desk | DeskSpotting"
+          description: "Book unique fixed desk  where and when you need them. Start enjoying the benefits of shared office work environments."
+    four:
+      meta:
+        description: "Book unique Hot Desks  where and when you need them. Start enjoying the benefits of shared office work environments."
+        title: "Hot Desk | DeskSpotting"
+        og:
+          title: "Hot Desk | DeskSpotting"
+          description: "Book unique Hot Desks  where and when you need them. Start enjoying the benefits of shared office work environments."
+        twitter:
+          title: "Hot Desk | DeskSpotting"
+          description: "Book unique Hot Desks  where and when you need them. Start enjoying the benefits of shared office work environments."
+    five:
+      meta:
+        description: "Book unique Communal Workspaces where and when you need them. Start enjoying the benefits of shared office work environments."
+        title: "Communal Space | DeskSpotting"
+        og:
+          title: "Communal Space | DeskSpotting"
+          description: "Book unique Communal Workspaces where and when you need them. Start enjoying the benefits of shared office work environments."
+        twitter:
+          title: "Communal Space | DeskSpotting"
+          description: "Book unique Communal Workspaces where and when you need them. Start enjoying the benefits of shared office work environments."
+    six:
+      meta:
+        description: "Work from Home everywhere. Book unique Home Offices where and when you need them. "
+        title: "Home Office| DeskSpotting"
+        og:
+          title: "Home Office| DeskSpotting"
+          description: "Work from home everywhere. Book unique Home Offices where and when you need them. "
+        twitter:
+          title: "Home Office| DeskSpotting"
+          description: "Work from home everywhere. Book unique Home Offices where and when you need them. "
