@@ -72,7 +72,7 @@
           .icon.lock.pointer#nationality-popover.lock-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
           label = t('payment_methods.nationality')
           / = f.text_field :nationality, class: 'form-control'
-          = f.select(:nationality, all_countries_options, {}, {class: 'form-control country-select'})
+          = f.select(:nationality, all_countries_options, {prompt: t('payment_methods.select_country')}, {class: 'form-control country-select'})
           - if @collection_account.errors.messages[:nationality].present?
             label
               = @collection_account.errors.messages[:nationality].first
@@ -80,7 +80,7 @@
           .icon.lock.pointer#country_of_residence-popover.lock-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
           label = t('payment_methods.country_of_residence')
           / = f.text_field :country_of_residence, class: 'form-control'
-          = f.select(:country_of_residence, all_countries_options, {}, {class: 'form-control country-select'})
+          = f.select(:country_of_residence, all_countries_options, {prompt: t('payment_methods.select_country')}, {class: 'form-control country-select'})
           - if @collection_account.errors.messages[:country_of_residence].present?
             label
               = @collection_account.errors.messages[:country_of_residence].first
