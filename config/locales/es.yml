@@ -687,6 +687,7 @@ es:
     institution_number: Institution number
     branch_code: Branch code
     sort_code: Sort code
+    select_country: Seleccione país
   receipt:
     customer_title: Customer Receipt
     venue_title: Venue Owner Receipt
