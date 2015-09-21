@@ -598,7 +598,6 @@ en:
     dont_worry: Don't worry it happens to us too!
     new_password: Simply create a new password and you'll be back in business in no time.
     not_request: 'If you did not make this request, all good, just disregard this email and your password will stay the same.'
-    stay_same:
   new_space:
     list_new_space: List new space
     space_photos: Space photos

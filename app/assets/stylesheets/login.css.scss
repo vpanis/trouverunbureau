@@ -1,6 +1,10 @@
 @import 'variables';
 @import 'mixins';
 
+.errors span {
+  color: $red;
+}
+
 .small-italic{
   @include dark-gray-regular-text;
   font-style: italic;
