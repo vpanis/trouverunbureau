@@ -5,7 +5,7 @@
   meta property="og:description" content="#{t('passwords.new.meta.og.description')}"
   meta name="twitter:title" content="#{t('passwords.new.meta.twitter.title')}"
   meta name="twitter:description" content="#{t('passwords.new.meta.twitter.description')}"
-div.section-header
+.section-header
   h2
     span #{t('session.reset_password')}
 div
@@ -17,7 +17,10 @@ div
       p.uppercase #{t('session.or')}
   #reset-password-form
     = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-      = devise_error_messages!
+      .errors
+        - resource.errors.full_messages.each do |error|
+          span
+            = error
       p.help #{t('session.reset_password_help')}
       .form-group
         label #{t('session.email')}

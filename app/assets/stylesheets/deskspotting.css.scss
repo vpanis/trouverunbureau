@@ -1602,3 +1602,21 @@ li.venue-hours.active{
   position: fixed;
   display: none;
 }
+
+/* ===== TERMS ===== */
+
+.terms {
+  a {
+    color: $blue;
+    margin: 0 5px;
+  }
+  p {
+    padding: 5px 0;
+    span {
+      font-weight: bold;
+    }
+  }
+  ul {
+    list-style-type: cross
+  }
+}

@@ -595,8 +595,7 @@ de:
     forgot_password:  It seems like you forgot your DeskSpotting password.
     dont_worry: Don't worry it happens to the best of us
     new_password: To create the new password and your back in business
-    not_request: If you did not make this request, all good, just disregard
-    stay_same: this email and your password will stay the same.
+    not_request: 'If you did not make this request, all good, just disregard this email and your password will stay the same.'
   new_space:
     list_new_space: List new space
     space_photos: Space photos
