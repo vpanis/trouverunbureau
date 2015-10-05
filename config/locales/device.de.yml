@@ -1,0 +1,29 @@
+# Source: https://github.com/tigrish/devise-i18n/blob/master/rails/locales/de.yml
+
+de:
+  devise:
+    confirmations:
+      confirmed: Ihre E-Mail-Adresse wurde erfolgreich bestätigt.
+      send_instructions: Sie erhalten in einigen Minuten eine E-Mail mit Anweisungen zur Bestätigung Ihrer E-Mail-Adresse.
+      send_paranoid_instructions: "Falls Ihre E-Mail-Adresse bereits in unserer Datenbank registriert ist, erhalten Sie in einigen Minuten eine E-Mail mit Anweisungen zur Bestätigung Ihrer E-Mail-Adresse."
+    failure:
+      already_authenticated: Sie sind bereits angemeldet.
+      inactive: Ihr Konto ist noch nicht aktiviert.
+      invalid: Ungültige E-Mail-Adresse oder Passwort.
+    omniauth_callbacks:
+      failure: "Anmeldung über %{kind} nicht möglich, weil %{reason}."
+      success: "Anmeldung über %{kind}-Konto erfolgreich."
+    passwords:
+      no_token: "Sie haben keinen Zugang auf diese Seite, wenn Sie nicht über eine E-Mail zur Zurücksetzung des Passworts auf sie zugreifen. Falls Sie über eine solche E-Mail zugreifen, stellen Sie sicher, dass Sie die volle URL eingegeben haben."
+      updated_not_active: Ihr Passwort wurde erfolgreich geändert.
+    sessions:
+      already_signed_out: Abmeldung erfolgreich.
+      signed_in: Anmeldung erfolgreich.
+      signed_out: Abmeldung erfolgreich.
+  errors:
+    email_taken: Dieser Benutzer existiert bereits
+    messages:
+      not_found: nicht gefunden
+      not_saved:
+        one: 'Aufgrund dieses %{resource}-Fehlers konnte keine Aktualisierung für den Benutzer durchgeführt werden:'
+        other: 'Aufgrund %{count} Fehler konnte für diese/diesen/dieses %{resource} keine Aktualisierung durchgeführt werden:'
