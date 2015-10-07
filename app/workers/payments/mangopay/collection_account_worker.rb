@@ -36,8 +36,9 @@ module Payments
       def save_account_error(e)
         status = MangopayCollectionAccount.statuses[:rejected]
         status = MangopayCollectionAccount.statuses[:error_updating] if @mca.mangopay_persisted
-        @mca.update_attributes(error_message: e.to_s, expecting_mangopay_response: false,
+        @mca.assign_attributes(error_message: e.to_s, expecting_mangopay_response: false,
           status: status)
+        @mca.save(validate: false)
       end
 
       def create_user(coll_acc_data)
