@@ -295,7 +295,7 @@ en:
       why_deskspotting:
         title: 'Why Book on DeskSpotting?'
         no_booking_fees: 'No booking fees.'
-        booking_time: 'Book only the time you need.'
+        booking_time: 'Book the time you need.'
         secure_payments: 'Secure payments.'
         desposit_held: 'Deposit held in escrow.'
         verified_venues: 'Verified venues.'
@@ -313,7 +313,7 @@ en:
       list_your_venue: 'List your venue'
       start_by: 'Start by telling us about your venue...'
       opening_hours: 'Opening hours'
-      standard_times: 'Standard times?'
+      standard_times: 'Standard times'
       custom_times: 'Custom times?'
       opening_time: 'Opening Time'
       closing_time: 'Closing Time'
@@ -508,7 +508,7 @@ en:
     message_placeholder: 'Tell the host more about yourself and your professional interests.'
     feature_1: 'No booking fees.'
     feature_2: 'Deposits held in scrows.'
-    feature_3: 'Book only the time you need.'
+    feature_3: 'Book the time you need.'
     feature_4: 'Verified venues.'
     feature_5: 'Secure payments.'
     feature_6: 'Flexible cancelations.'
@@ -523,23 +523,23 @@ en:
     months_amount: 'Number of Months'
     price_per: 'Price per'
     deposit: 'Deposit'
-    deskspotting_fee: 'Deskspotting fee'
+    deskspotting_fee: 'DeskSpotting fee'
     free: 'Free'
     total: 'Total'
     space_amount: 'Number of Spaces'
     space_booking: 'Space Booking'
   edit_venue_progress:
     status: status
-    venue: Venue
-    details: Details
-    amenities: Amenities
-    photos: Photos
-    spaces: Spaces
-    publish: publish
+    venue: Venue Details
+    details: Venue Info
+    amenities: Venue Amenities
+    photos: Venue Photos
+    spaces: Workspaces
+    publish: Publish
     delete_venue: Delete venue
     incomplete: incomplete
     collection_account: Collection Account
-    payout_method: Payout Method
+    payout_method: Payment Info
   new_message_email:
     subject: 'You have a new message - Booking #%{booking_id}'
     hi: Hi
