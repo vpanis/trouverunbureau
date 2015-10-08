@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, LogoUploader
 
   # Enums
-  LANGUAGES = [:en, :fr]
+  LANGUAGES = [:en, :fr, :de]
   GENDERS = [:f, :m]
   SUPPORTED_NATIONALITIES = Country.all.map { |c| c[1] }
 
