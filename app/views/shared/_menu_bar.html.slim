@@ -8,14 +8,15 @@
       a.navbar-brand href="/"
         = image_tag('isologotipo-login.png', width: '205px', height: '35px')
     #mobile-navbar.collapse.navbar-collapse
-      ul.nav.navbar-nav.hidden-collapse
-        li
-          .search
-            = form_tag spaces_path, method: 'get', class: 'form-inline', id: 'menu-search-form'
-              .styled-search
-                label.sr-only #{t('home.header.search_text')}
-                = text_field_tag :search, params[:search], class: 'form-control', placeholder: t('home.header.search_text')
-                = submit_tag 'search', class: 'hidden'
+      - unless current_page?(root_url)
+        ul.nav.navbar-nav.hidden-collapse
+          li
+            .search
+              = form_tag spaces_path, method: 'get', class: 'form-inline js-menu-bar-search', id: 'menu-search-form'
+                .styled-search
+                  label.sr-only #{t('home.header.search_text')}
+                  = text_field_tag :search, params[:search], class: 'form-control', placeholder: t('home.header.search_text')
+                  = submit_tag 'search', class: 'hidden'
       ul.nav.navbar-nav.hidden-large-navbar.mobile-menu-items
         = render 'shared/mobile_menu'
       ul.nav.navbar-nav.navbar-right.hidden-collapse

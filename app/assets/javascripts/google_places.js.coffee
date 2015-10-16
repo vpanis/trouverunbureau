@@ -11,7 +11,8 @@ on_load = ->
       geometry = autocomplete.getPlace().geometry
       if geometry
         $('#search').val(autocomplete.getPlace().formatted_address)
-        $('#menu-search-form').submit()
+        if $('#menu-search-form').hasClass('js-menu-bar-search')
+          $('#menu-search-form').submit()
 
 $(document).ready on_load
 
