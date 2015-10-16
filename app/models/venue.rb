@@ -38,7 +38,7 @@ class Venue < ActiveRecord::Base
   # SUPPORTED_COUNTRIES = %w(US CA AU DE AD AT BE HR DK ES FI FR GR IE IS IT NO SE CH GB PL PT NL
   #                         CY EE LV LT LU MT SK SI)
 
-  SUPPORTED_COUNTRIES = %w(FR)
+  SUPPORTED_COUNTRIES = %w(FR DE NL BE LU PT AT IT ES FI)
   SUPPORTED_CURRENCIES = %w(eur)
 
   PROFESSIONS = [:technology, :public_relations, :entertainment, :entrepreneur, :startup, :media,
