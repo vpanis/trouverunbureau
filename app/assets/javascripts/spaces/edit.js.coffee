@@ -11,7 +11,7 @@ on_load = ->
         $('.row.pictures').prepend('<div class="photo-errors"> You must add at least one picture </div>')
 
     add_photo = (data) ->
-      photo_html = "<div class=\"col-md-4\"><div class=\"img-wrapper\" style=\"background-image: url("+data.photo+");\"><div class=\"hover\"><a class=\"delete-photo\" data-photo-id=\""+data.id+"\" href=\"#\">delete</a></div></div></div>"
+      photo_html = "<div class=\"col-md-4\"><div class=\"img-wrapper\" style=\"background-image: url("+data.photo+");\"><div class=\"hover\"><a class=\"delete-photo\" data-photo-id=\""+data.id+"\" data-space-id=\""+data.space_id+"\" href=\"#\">delete</a></div></div></div>"
       $('.add-image-container').before(photo_html)
       $('.delete-photo').unbind('click')
       $('.delete-photo').click (event) ->
