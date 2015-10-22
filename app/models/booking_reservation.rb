@@ -5,6 +5,22 @@ module BookingReservation
      Booking.states[:payment_verification]]
   end
 
+  def cancellations(booking_state, booking, represented, user)
+    booking.update_attributes(cancelled_at: Time.current)
+    return change_state(user, booking, booking_state) unless booking.paid?
+    booking, custom_errors = change_state(user, booking, Booking.states[:refunding])
+    ::Payments::CancellationWorker.perform_async(booking.id, user.id,
+                                                 represented.id,
+                                                 represented.class.to_s) if
+        booking.valid? && custom_errors.empty?
+    [booking, custom_errors]
+  end
+
+  def change_state(user, booking, state)
+    booking, custom_errors = BookingManager.change_booking_status(user, booking, state)
+    [booking, custom_errors]
+  end
+
   private
 
   def check_if_can_book_and_perform(booking, lock, custom_errors, check_venue_hours = true, &block)
