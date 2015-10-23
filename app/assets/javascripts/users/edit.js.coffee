@@ -97,8 +97,13 @@ on_load = ->
       allowExtensions: true
       utilsScript: '/utils.js'
 
+    $("#user_emergency_phone").intlTelInput
+      allowExtensions: true
+      utilsScript: '/utils.js'
+
     $('#save-edition').click ->
       $('#phone').val($('#phone').intlTelInput("getNumber"))
+      $('#user_emergency_phone').val($('#user_emergency_phone').intlTelInput("getNumber"))
 
     new google.maps.places.Autocomplete(document.getElementById('user_location'))
     initialize_selects()
