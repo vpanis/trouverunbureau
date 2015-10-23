@@ -1,7 +1,7 @@
-#FRENCH
 fr:
+  'German ': Français
   booking_inquiry:
-    back: Retour
+    back: Retoufr
     check_in: Check-In
     check_out: Check-Out
     date: Date
@@ -31,7 +31,7 @@ fr:
     total: Total
     your_message: Votre message
   bookings:
-    all_venues: Tous les espaces
+    all_venues: Tous les Espaces
     cancel: Annuler
     cancelled: Réservation annulée
     claim_deposit: Appeler la caution
@@ -39,7 +39,7 @@ fr:
     delete: Effacer
     no_bookings: Il n'y a pas de réservation
     no_paid_cancelled: Vous n'avez pas de réservation payée ou annulée.
-    review: Laisser un Commemtaire
+    review: Laissez un Commentaire
     state:
       cancelled: Annulé
       denied: Refusé
@@ -49,11 +49,12 @@ fr:
       paid: Payé
       payment_verification: Verification
       pending_authorization: En attente
-      pending_payment: En attente de paiement
+      pending_payment: Approuvé
       refunding: Remboursement
     venue_bookings: Vos espaces
     view_receipt: Voir Reçu
     your_bookings: Mes réservations
+  calendar: jj-mm-aaaa
   commons:
     add: Ajouter
     add_image: Ajouter une photo
@@ -173,7 +174,7 @@ fr:
     profile: Profil
     quotes:
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-      subtitle: "Lorem ipsum dolor sit amet"
+      subtitle: Lorem ipsum dolor sit amet
       title: Avis D'utilisateurs
     sign_in: Se connecter
     your_space:
@@ -217,7 +218,7 @@ fr:
     info_client_deposit: La caution est gardée sous séquestre et sera remboursée 72 heures après votre check-out.
     info_client_space_rental: Le montant de la réservation est gardé sous séquestre jusqu'à l'heure du check-in.
     info_deposit: La caution sera gardée 72 heures après le check-out du visiteur.
-    info_fee: 20% pour toute réservation d'un mois ou moins. 10% pour toute réservation au delà d'un mois après le premier mois. 10% pour toute réservation de mois en mois après le premier mois.
+    info_fee: "20% pour toute réservation d'un mois ou moins. 10% pour toute réservation au delà d'un mois après le premier mois. 10% pour toute réservation de mois en mois après le premier mois. Pour toute réservation de mois en mois, les frais de service sont de 5% une fois que le temps minimum garanti exigé par l'hôte est passé."
     info_space_rental: Les paiements de vos visiteurs sont gardés sous séquestre jusqu'à 24 heures après le check-in.
     inquiry: Demande
     messages: Messages
@@ -334,7 +335,8 @@ fr:
     save_to_add_photos: Sauvegardez votre poste pour ajouter des photos
     space_photos: Photos
   organizations:
-    add_manager: Ajoutez un gérant
+    add_manager: Ajoutez un Gérant
+    add_manager_action: Ajouter un Gérant
     change_picture: Changez de photo
     create_profile: Créez une organisation
     create_title: Créez un titre
@@ -346,6 +348,7 @@ fr:
     name: Nom
     phone: Téléphone
     required_fields: Champs requis
+    role: Fonction
   payment:
     all_required: Tous les champs sont obligatoires
     capacity: Nombre de personnes
@@ -385,6 +388,7 @@ fr:
     date_of_birth: Date de naissance
     email: Email
     first_name: Prénom
+    gb_other: GB
     institution_number: Numéro de l'institution
     last_name: Nom
     legal_name: Dénomination sociale
@@ -397,7 +401,7 @@ fr:
     required_legal: Champs requis pour le représentant légal
     routing_number: Routing number
     sort_code: Sort code
-    ssn: Ssn
+    ssn: SSN
     street: Adresse
     tax_id: Tax id
     type_of_account: Choisir type de compte
@@ -471,7 +475,7 @@ fr:
     individual: Individuel
     limits: "%{from} - %{to} more than %{count} desks"
     neighbourhood: Quartier
-    no_results: Pas de poste
+    no_results: Pas de postes trouvé pour votre recherche
     profession: Profession
     refine: Affinez votre recherche à l'aide des filtres
     show_filters: Afficher les postes
@@ -486,9 +490,11 @@ fr:
     date_of_birth: Date de naissance
     email: Adresse Email
     fb_login: Connexion avec Facebook
+    first_name: Prénom
     forgot_password: Mot de passe oublié?
     full_name: Prénom et Nom
     keep_session: Restez connecté
+    last_name: Nom
     login: Connexion
     login_here: Connectez-vous ici
     logout: Déconnexion
@@ -572,6 +578,8 @@ fr:
     location: Ville
     nationality: Nationalité
     optional_fields: Champs falcutatifs
+    organization_members: Membres de l'Organisation
+    owner: Gérant
     phone: Numéro de téléphone
     profession: Profession
     required_fields: Champs requis
@@ -589,6 +597,7 @@ fr:
       fax: fax
       gym: gym
       individual_bookings: réservation individuelle
+      info_team_bookings: "Êtes-vous ouvert à recevoir des réservations de la part d'équipes de professionnels?"
       kitchen: cuisine
       mail_service: service courrier
       outdoor_space: espace extérieur
@@ -642,7 +651,7 @@ fr:
       closing_time: Heures de fermeture
       country: Pays
       currency: Devise
-      custom_times: Horaires particuliers
+      custom_times: Horaires particuliers ?
       description: Description
       email: Email
       info_professions: Quelles professions souhaitez-vous accueillir.
@@ -728,4 +737,3 @@ fr:
     month: mois
     no_favourites: Vous n'avez pas de poste favori
     week: semaine
-

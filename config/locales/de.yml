@@ -1,8 +1,9 @@
 de:
+  'German ': Deutsch
   booking_inquiry:
     back: Zurück
     check_in: Check-in
-    check_out: Check-out
+    check_out: Check-Out
     date: Datum
     day: Tag
     days_amount: Anzahl der Tage
@@ -30,7 +31,7 @@ de:
     total: Gesamtsumme
     your_message: Ihre Nachricht
   bookings:
-    all_venues: Alle Lokale
+    all_venues: Alle Arbeitsräume
     cancel: Abbrechen
     cancelled: Stornierte Buchungen
     claim_deposit: Kaution anfordern
@@ -38,7 +39,7 @@ de:
     delete: Löschen
     no_bookings: Es liegen keine Buchungen vor
     no_paid_cancelled: Sie haben keine bezahlten oder stornierten Buchungen.
-    review: Machen Sie eine Bewertung
+    review: Geben Sie eine Bewertung ab
     state:
       cancelled: Storniert
       denied: Abgelehnt
@@ -50,9 +51,10 @@ de:
       pending_authorization: Ausstehend
       pending_payment: Bestätigt
       refunding: Rückzahlung
-    venue_bookings: Gebuchte Lokale
+    venue_bookings: Gebuchte Arbeitsräume
     view_receipt: Beleg Ansehen
     your_bookings: Ihre Buchungen
+  calendar: TT-MM-JJ
   commons:
     add: Hinzufügen
     add_image: Foto hinzufügen
@@ -67,7 +69,7 @@ de:
     upload_file: Datei laden
   contact:
     email: E-Mail
-    error: "Es ist ein Fehler aufgetreten. Versuchen Sie es später noch einmal."
+    error: Es ist ein Fehler aufgetreten. Versuchen Sie es später noch einmal.
     message: Nachricht
     name: Name
     send: Senden
@@ -96,6 +98,25 @@ de:
       long_name: US-amerikanische Dollar
       short_name: usd
       symbol: U$D
+  devise:
+    confirmations:
+      confirmed: Ihre E-Mail-Adresse wurde erfolgreich bestätigt.
+      send_instructions: Sie erhalten in einigen Minuten eine E-Mail mit Anweisungen zur Bestätigung Ihrer E-Mail-Adresse.
+      send_paranoid_instructions: "Falls Ihre E-Mail-Adresse bereits in unserer Datenbank registriert ist, erhalten Sie in einigen Minuten eine E-Mail mit Anweisungen zur Bestätigung Ihrer E-Mail-Adresse."
+    failure:
+      already_authenticated: Sie sind bereits angemeldet.
+      inactive: Ihr Konto ist noch nicht aktiviert.
+      invalid: Ungültige E-Mail-Adresse oder Passwort.
+    omniauth_callbacks:
+      failure: "Anmeldung über %{kind} nicht möglich, weil %{reason}."
+      success: Anmeldung über %{kind}-Konto erfolgreich.
+    passwords:
+      no_token: "Sie haben keinen Zugang auf diese Seite, wenn Sie nicht über eine E-Mail zur Zurücksetzung des Passworts auf sie zugreifen. Falls Sie über eine solche E-Mail zugreifen, stellen Sie sicher, dass Sie die volle URL eingegeben haben."
+      updated_not_active: Ihr Passwort wurde erfolgreich geändert.
+    sessions:
+      already_signed_out: Abmeldung erfolgreich.
+      signed_in: Anmeldung erfolgreich.
+      signed_out: Abmeldung erfolgreich.
   edit_venue_progress:
     amenities: Ausstattung des Lokales
     collection_account: Einzugskonto
@@ -108,6 +129,13 @@ de:
     spaces: Arbeitsräume
     status: Status
     venue: Details zum Lokal
+  errors:
+    email_taken: Dieser Benutzer existiert bereits
+    messages:
+      not_found: nicht gefunden
+      not_saved:
+        one: 'Aufgrund dieses %{resource}-Fehlers konnte keine Aktualisierung für den Benutzer durchgeführt werden:'
+        other: 'Aufgrund %{count} Fehler konnte für diese/diesen/dieses %{resource} keine Aktualisierung durchgeführt werden:'
   guest_cancellation_email:
     account_number: Kontonummer
     account_type: Kontoart
@@ -140,10 +168,10 @@ de:
         text: "DeskSpotting hilft Ihnen dabei, inspirierende Arbeitsräume entsprechend Ihren geschäftlichen Interessen zu finden."
         title: Networking
       no_fees:
-        text: "Finden Sie Ihr Arbeitsumfeld, buchen Sie es und treiben Sie Ihr Geschäft voran."
+        text: "Finden Sie Ihr perfektes Arbeitsumfeld, buchen Sie es und treiben Sie Ihr Geschäft voran."
         title: Keine Gebühren
       subtitle: Wieso DeskSpotting?
-      title: Merkmale
+      title: Vorteile
     footer:
       about_us: "Über uns"
       company: Unternehmen
@@ -176,11 +204,11 @@ de:
       title: Meinungen
     sign_in: Einloggen
     your_space:
-      description: "Sie suchen in Ihrer Stadt nach einem Ort, an dem Sie und Ihr Team in Ruhe arbeiten können? Sie brauchen Raum, um mit Kunden zu arbeiten oder sie zu treffen? Lassen Sie sich von DeskSpotting bei der Suche nach den passenden Arbeitsräumen helfen - wann Sie wollen, wo Sie wollen."
+      description: "Sie suchen in Ihrer Stadt nach einem Ort, an dem Sie und Ihr Team in Ruhe arbeiten können? Sie brauchen Raum, um mit Kunden zu arbeiten oder sie zu treffen? Lassen Sie sich von DeskSpotting bei der Suche nach den passenden Arbeitsräumen helfen – wann Sie wollen, wo Sie wollen."
       see_all: Alle ansehen
       subtitle: Jeder sollte einen inspirierenden Arbeitsplatz haben
       tabs:
-        featured: ausgestattet
+        featured: Empfehlungen
         trending: angesagte Städte
         workspaces: Arbeitsräume
       title: Finden Sie Ihren Arbeitsraum
@@ -216,7 +244,7 @@ de:
     info_client_deposit: Der Betrag wird hinterlegt und 72 Stunden nach dem Check-out an Sie zurückgezahlt
     info_client_space_rental: Der Betrag der Buchung wird bis zur Check-in-Zeit hinterlegt.
     info_deposit: "Er wird bis 72 Stunden, nachdem der Gast ausgecheckt hat, hinterlegt"
-    info_fee: Für alle Buchungen von einem Monat oder weniger betragen die Servicegebühren 20 %. Für alle Buchungen über 1 Monat betragen die Gebühren 10 % ab dem zweiten Monat. Für alle Buchungen zum nächsten Monat betragen die Servicegebühren 10 % ab dem zweiten Monat.
+    info_fee: "Für alle Buchungen von einem Monat oder weniger betragen die Servicegebühren 20 %. Für alle Buchungen über 1 Monat betragen die Gebühren ab dem zweiten Monat 10 %. Für alle Buchungen zum nächsten Monat betragen die Servicegebühren 5 % ab dem Zeitpunkt, an dem der vom Gastgeber geforderte Mindestbuchungszeitraum überschritten wird (kann maximal 4 Monate betragen)."
     info_space_rental: Die vom Gast bezahlten Beträge werden bis zur Check-in-Zeit hinterlegt. Die Überweisung der entsprechenden Beträge auf Ihr Konto erfolgt bis zu 24 Stunden später.
     inquiry: Anfrage
     messages: Nachrichten
@@ -274,7 +302,7 @@ de:
     ne: Nepali
     nl: Niederländisch
     'no': Norwegisch
-    pa: Panjabi
+    pa: Punjabi
     pl: Polnisch
     pt: Portugiesisch
     qu: Quechua
@@ -334,6 +362,7 @@ de:
     space_photos: Fotos vom Arbeitsraum
   organizations:
     add_manager: Manager hinzufügen
+    add_manager_action: Manager hinzufügen
     change_picture: Foto ändern
     create_profile: Unternehmen eingeben
     create_title: Titel hinzufügen
@@ -345,6 +374,7 @@ de:
     name: Name
     phone: Telefon
     required_fields: Pflichtfelder
+    role: Funktion
   payment:
     all_required: Alle Felder sind erforderlich
     capacity: Personenanzahl
@@ -384,6 +414,7 @@ de:
     date_of_birth: Geburtsdatum
     email: E-Mail
     first_name: Vorname
+    gb_other: GB
     institution_number: Institution number
     last_name: Nachname
     legal_name: Offizieller Unternehmensname
@@ -471,7 +502,7 @@ de:
     limits: "%{from} - %{to} mehr als %{count} Schreibtische"
     neighbourhood: Viertel
     no_results: Keine Arbeitsräume gefunden
-    profession: Beruf
+    profession: Beruf/Tätigkeitsbereich
     refine: Verfeinern Sie Ihre Suche mithilfe der Filter
     show_filters: Arbeitsräume anzeigen
     teams: Teams
@@ -485,9 +516,11 @@ de:
     date_of_birth: Geburtsdatum
     email: E-Mail-Adresse
     fb_login: Anmeldung mit Facebook
+    first_name: Vorname
     forgot_password: Passwort vergessen?
     full_name: Vor- und Nachname
     keep_session: Angemeldet bleiben
+    last_name: Nachname
     login: Einloggen
     login_here: Hier einloggen
     logout: Ausloggen
@@ -512,7 +545,7 @@ de:
     info_description: "Beschreiben Sie den Arbeitsplatz und sagen Sie potenziellen Gästen, weshalb das ein guter Arbeitsplatz ist"
     info_photos: "Je besser die Fotos sind, desto mehr Nutzer werden sich für Ihren Arbeitsraum interessieren. Teilen Sie Fotos, die die Gesamtatmosphäre Ihres Arbeitsraums vermitteln."
     info_pricing: "Legen Sie den Preis fest, zu dem Sie Ihren Arbeitsraum bei verschiedenen Zeiträumen anbieten möchten. Der Preis kann jederzeit und von Fall zu Fall geändert werden."
-    info_quantity: 'Anzahl dieser Arbeitsplätze, die Sie auf DeskSpotting anbieten möchten'
+    info_quantity: "Anzahl dieser Arbeitsplätze, die Sie auf DeskSpotting anbieten möchten"
     minimum_renting_period: Mindestbuchungsdauer
     month_price: Preis pro Monat
     name: Name
@@ -529,7 +562,7 @@ de:
       conference_room: Konferenzraum
       fixed_desk: Fester Arbeitsplatz
       home_office: Homeoffice
-      hot_desk: Hot Desking
+      hot_desk: Hot Desk
       meeting_room: Tagungsraum
       private_office: Privates Büro
   users:
@@ -571,8 +604,10 @@ de:
     location: Heimatstadt
     nationality: Nationalität
     optional_fields: Optionale Felder
+    organization_members: Mitglieder der Organisation
+    owner: Manager
     phone: Telefonnummer
-    profession: Beruf
+    profession: Beruf/Tätigkeitsbereich
     required_fields: Pflichtfelder
     spoken_languages: "Sprachen, die Sie sprechen"
     user_since: DeskSpotter seit
@@ -588,6 +623,7 @@ de:
       fax: Fax
       gym: Fitnessraum
       individual_bookings: Buchungen für Einzelpersonen
+      info_team_bookings: "Können Sie sich vorstellen, dass Teams von Berufstätigen Ihren Arbeitsraum buchen?"
       kitchen: Küche
       mail_service: Kurierdienst
       outdoor_space: Außenbereich
@@ -635,7 +671,7 @@ de:
     complete: Vollständig
     create_venue: Neuen Ort erstellen
     edit:
-      add_professions: Berufe hinzufügen
+      add_professions: Berufe/Tätigkeitsbereiche hinzufügen
       add_venue_logo: Logo für den Ort hinzufügen
       change_logo: Logo ändern
       closing_time: Geschäftsschluss
@@ -653,8 +689,8 @@ de:
       opening_time: "Öffnungszeiten"
       phone: Telefonnummer
       postal_code: Postleitzahl
-      professions: Bevorzugte Berufe
-      select_professions: Bevorzugte Berufe auswählen
+      professions: Bevorzugte Berufe/Tätigkeitsbereiche
+      select_professions: Bevorzugte Berufe/Tätigkeitsbereiche auswählen
       standard_times: Standardzeiten
       start_by: Erzählen Sie uns von Ihrem Arbeitsraum...
       street: Adresse
@@ -673,7 +709,7 @@ de:
       entrepreneur: Unternehmer
       fashion: Mode
       finance: Finanzen
-      freelance: Freelancer
+      freelance: Freelance
       journalist: Journalist
       lawyer: Anwalt
       media: Medien

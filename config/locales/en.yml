@@ -1,15 +1,16 @@
 en:
+  'German ': English
   booking_inquiry:
     back: Back
     check_in: Check-in
-    check_out: Check-out
+    check_out: Check-Out
     date: Date
     day: Day
     days_amount: Number of Days
     deposit: Deposit
     deskspotting_fee: DeskSpotting Fee
     feature_1: No booking fees.
-    feature_2: Deposits held in escrow.
+    feature_2: Deposits held in an escrow account.
     feature_3: Book the time you need.
     feature_4: Verified venues.
     feature_5: Secure payments.
@@ -53,10 +54,11 @@ en:
     venue_bookings: Venue Bookings
     view_receipt: View Receipt
     your_bookings: Your Bookings
+  calendar: dd-mm-yyyy
   commons:
     add: Add
-    add_image: Add image
-    add_space: Create new space
+    add_image: Add photo
+    add_space: Create new workspace
     cancel: Cancel
     close: Close
     delete: Delete
@@ -67,7 +69,7 @@ en:
     upload_file: Upload file
   contact:
     email: E-Mail
-    error: Something's gone wrong. Please try agian later.
+    error: Something's gone wrong. Please try again later.
     message: Message
     name: Name
     send: Send
@@ -96,6 +98,25 @@ en:
       long_name: American Dollars
       short_name: usd
       symbol: U$D
+  devise:
+    confirmations:
+      confirmed: Your email address has been successfully confirmed.
+      send_instructions: You will receive an email with instructions for how to confirm your email address in a few minutes.
+      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions on how to confirm your email address."
+    failure:
+      already_authenticated: You are already signed in.
+      inactive: Your account is not activated yet.
+      invalid: Invalid email or password.
+    omniauth_callbacks:
+      failure: "Could not log you in you via %{kind} because %{reason}."
+      success: "Successfully logged in via %{kind} account."
+    passwords:
+      no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
+      updated_not_active: Your password has been changed successfully.
+    sessions:
+      already_signed_out: Signed out successfully.
+      signed_in: Signed in successfully.
+      signed_out: Signed out successfully.
   edit_venue_progress:
     amenities: Venue Amenities
     collection_account: Collection Account
@@ -108,6 +129,13 @@ en:
     spaces: Workspaces
     status: Status
     venue: Venue Details
+  errors:
+    email_taken: The user already exists
+    messages:
+      not_found: not found
+      not_saved:
+        one: 'This %{resource} error prohibited the user from being updated:'
+        other: "%{count} errors prohibited this %{resource} from being updated:"
   guest_cancellation_email:
     account_number: Account Number
     account_type: Account Type
@@ -134,7 +162,7 @@ en:
         text: "With one click book your workspace using your credit card. No more contract negotiations, wiring funds and paying deposits directly to landlords."
         title: It’s Easy
       flexibility:
-        text: "Wherever, whenever book individual workspace, entire offices or meeting rooms for a couple of hours, a day, a month or more."
+        text: "Wherever, whenever book individual workspaces, private offices or meeting rooms for a couple of hours, a day, a month or more."
         title: Flexibility
       networking:
         text: DeskSpotting helps you find inspiring workplaces based on your professional interests.
@@ -180,7 +208,7 @@ en:
       see_all: See all
       subtitle: Everyone should have an inspiring workspace
       tabs:
-        featured: featured
+        featured: Featured
         trending: trending cities
         workspaces: workspaces
       title: Find your space
@@ -193,8 +221,8 @@ en:
     refund_guest: "According to the cancellation terms, you will receive a refund of %{currency_sym} %{amount}"
     refund_host: "According to the cancellation terms, your guest will receive a refund of %{currency_sym} %{amount}"
     sorry_cancel: Sorry to see you had to cancel the booking of
-    space: Space
-    spaces: Spaces
+    space: Workspace
+    spaces: Workspaces
     subject: 'Host Cancellation - Booking #%{booking_id}'
     terms1: If you have any questions about our
     terms2: feel free to read
@@ -213,11 +241,11 @@ en:
     ds_commission: DS Service Fee
     enter_new_offer: Make New Offer
     guest: Guest
-    info_client_deposit: It will be held in escrow and then reimbursed to you 72 hours after check-out
-    info_client_space_rental: The amount of the space booking will be held in escrow until check-in time
-    info_deposit: It will be held in escrow until 72 hours after the guest's check-out
-    info_fee: For all bookings of a month or less the Service Fee is 20%. For all bookings of more than 1 month the Service Fee is 10% as of the second month. For all month to month bookings the service fee is 10% as of the second month.
-    info_space_rental: The amounts paid by the Guest are held in escrow until check-in time. Up to 24 hours later the relevant amounts are transferred to your account
+    info_client_deposit: It will be held in escrow account and then reimbursed to you 72 hours after check-out
+    info_client_space_rental: The amount of the space booking will be held in an escrow account until check-in
+    info_deposit: It will be held in an escrow until 72 hours after the guest's check-out
+    info_fee: "For all bookings of a month or less the Service Fee is 20%. For all bookings of more than 1 month the Service Fee is 10% as of the second month. For all month to month bookings, the service fee is 5% as of when the minimum time frame required by the host has past (cannot exceed 4 months)."
+    info_space_rental: The amounts paid by the Guest are held in an escrow until check-in. Up to 24 hours later the relevant amounts are transferred to your account
     inquiry: Inquiry
     messages: Messages
     new_offer: New Offer
@@ -273,8 +301,8 @@ en:
     mt: Maltese
     ne: Nepali
     nl: Dutch
-    no: Norwegian
-    pa: Panjabi
+    'no': Norwegian
+    pa: Punjabi
     pl: Polish
     pt: Portuguese
     qu: Quechua
@@ -319,12 +347,12 @@ en:
     paid: The booking has been paid.
     payment_verification: We are verifying the payment.
     pending_authorization: The booking needs the Host's confirmation.
-    pending_payment: "Booking accepted. Pending confirmation. This booking will be held for 24hs. If you don't confirm in that time frame, it will be cancelled."
+    pending_payment: "Booking approved. Pending confirmation. This booking will be held for 24hs. If you don't confirm in that time frame, it will be cancelled."
     refunding: The money has been refunded.
   new_message_email:
     got_new_message: Got a new message from
     hi: Hi
-    reply: Or reply directly on this mail.
+    reply: Or reply directly in this e-mail.
     subject: 'You have a new message - Booking #%{booking_id}'
     team: The DeskSpotting Team
     view_on_deskspotting: View on DeskSpotting
@@ -334,6 +362,7 @@ en:
     space_photos: Workspace photos
   organizations:
     add_manager: Add Manager
+    add_manager_action: Add Manager
     change_picture: Change picture
     create_profile: Create organization
     create_title: Add title
@@ -345,6 +374,7 @@ en:
     name: Name
     phone: Phone
     required_fields: Required fields
+    role: Role
   payment:
     all_required: All fields are required
     capacity: Number of people
@@ -360,7 +390,7 @@ en:
     expiration_month: Expiration month(mm)
     expiration_year: Expiration year(yy)
     hours: Hours
-    invalid_card_number: Invalid Card Number format
+    invalid_card_number: Invalid Card Number Format
     invalid_cvv: Invalid CVV format
     invalid_expiration_date: Invalid Expiration Date format
     last_digits: Last four digits
@@ -384,6 +414,7 @@ en:
     date_of_birth: Date of birth
     email: Email
     first_name: First name
+    gb_other: GB
     institution_number: Institution number
     last_name: Last name
     legal_name: Business legal name
@@ -396,7 +427,7 @@ en:
     required_legal: Required legal representative fields
     routing_number: Routing number
     sort_code: Sort code
-    ssn: Ssn
+    ssn: SSN
     street: Street address
     tax_id: Tax id
     type_of_account: Select type of account
@@ -405,8 +436,8 @@ en:
     account_type: Account Type
     amount: Amount
     card: Card
-    check_in: Check In
-    check_out: Check Out
+    check_in: Check-In
+    check_out: Check-Out
     commission: Service Fee
     confirmation_code: Confirmation Code
     country: Country
@@ -437,16 +468,16 @@ en:
     venue_title: Host Receipt
     zip_code: Zip / Postal code
   receipt_email:
-    subject_client: 'Receipt Guest - Booking #%{booking_id}'
-    subject_host: 'Receipt Host - Booking #%{booking_id}'
+    subject_client: 'Guest Receipt - Booking #%{booking_id}'
+    subject_host: 'Host Receipt - Booking #%{booking_id}'
   referral:
     button: Invite
     confirmation: Invitation Sent!
     invite_friends: Invite Friends
     join: Invite your friends to join you on DeskSpotting
-    text: The more friends you invite and that join you on DeskSpotting the more you increase your visibility of your venue(s). Everyone wins!
+    text: 'The more friends you invite and that join you on DeskSpotting the more you increase your visibility of your venue(s). '
   reset_password_email:
-    dont_worry: Don't worry it happens to us too.
+    dont_worry: Don't worry it happens to us too!
     forgot_password: It looks like you forgot your DeskSpotting password.
     new_password: Simply create a new password and you'll be back in business in no time.
     not_request: "If you did not make this request, all good, just disregard this email and your password will stay the same."
@@ -483,11 +514,13 @@ en:
     choose_password: Choose Password
     country_of_residence: Country of residence
     date_of_birth: Date of birth
-    email: Email address
+    email: 'Email '
     fb_login: Log in with Facebook
+    first_name: First Name
     forgot_password: Forgot password?
     full_name: First and Last name
     keep_session: Keep me logged in
+    last_name: Last Name
     login: Log in
     login_here: Log in here
     logout: Log out
@@ -496,7 +529,7 @@ en:
     or: or
     password: Password
     reset_password: Reset password
-    reset_password_help: Enter the e-mail address associated with your account.
+    reset_password_help: Enter the e-mail address associated with your DeskSpotting account.
     sign_up_here: Sign up here
     signup: Sign up
     terms: I accept the
@@ -508,7 +541,7 @@ en:
     edit_your_space: Edit your space
     hour_price: Hour price
     info_capacity: How many people can work in this space?
-    info_deposit: All deposits are held in escrow for the security of the Guest and Host
+    info_deposit: All deposits are held in an escrow for the security of the Guest and Host
     info_description: Describe the workspace and tell potential guests why it is a good place to work
     info_photos: The better the photos the more interest you will generate in your space. Share pictures that accurately reflect the overall atmosphere of your space.
     info_pricing: Set the target price you would like your space to be marketed for different time frames. Pricing can always be modified at any time and on a case by case basis.
@@ -520,16 +553,16 @@ en:
     per_hour: Per hour
     per_month: Per month
     pricing_in: "Pricing in %{currency}"
-    quantity: Numbe of spaces
+    quantity: Number of spaces
     space_photos: Space photos
     type: Workspace type
     types:
       all: All workspaces
       communal_space: Communal space
       conference_room: Conference room
-      fixed_desk: Fixed desk
+      fixed_desk: Dedicated desk
       home_office: Home Office
-      hot_desk: Hot desk
+      hot_desk: Hot Desk
       meeting_room: Meeting room
       private_office: Private office
   users:
@@ -571,6 +604,8 @@ en:
     location: Home City
     nationality: Nationality
     optional_fields: Optional fields
+    organization_members: Organization Members
+    owner: Manager
     phone: Phone Number
     profession: Profession
     required_fields: Required fields
@@ -584,10 +619,11 @@ en:
       cleaning_service: cleaning service
       concierge: concierge
       conference_rooms: conference rooms
-      elevators: elevators
+      elevators: elevator
       fax: fax
       gym: gym
       individual_bookings: individual bookings
+      info_team_bookings: Are you open to have teams make bookings in your venue?
       kitchen: kitchen
       mail_service: mail service
       outdoor_space: outdoor space
@@ -605,7 +641,7 @@ en:
       water_fountain: water fountain
       wheelchair_access: wheelchair access
       whiteboards: whiteboards
-      wifi: internet speed (wifi)
+      wifi: Wifi
     closed: Closed
     collection_account:
       account_number: Account Number
