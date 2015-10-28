@@ -228,6 +228,10 @@ fr:
     total_payout: Paiement Total
     total_rental: Total réservation
     write_message: "Écrivez un message"
+  en_languages :
+      en : English
+      fr: Français
+      de: German
   languages:
     af: Afrikaans
     ar: Arabe
@@ -448,7 +452,7 @@ fr:
     join: Invitez vos amis à vous rejoindre sur DeskSpotting.
     text: "Plus vos amis acceptent de vous rejoindre sur DeskSpotting, plus vous augmentez la visibilité de vos espaces. Tout le monde gagne!"
   reset_password_email:
-    dont_worry: Ne vous inquiétiez pas ça nous arrive aussi.
+    dont_worry: Ne vous inquiétiez pas ça nous arrive aussi
     forgot_password: Il semble que vous avez oublié votre mot de passe.
     new_password: Créez votre nouveau mot de passe.
     not_request: "Si vous n'avez pas fait cette demande, pas de problème, veuillez simplement ignorer ce message."
@@ -608,6 +612,7 @@ fr:
       wheelchair_access: accès chaise roulante
       whiteboards: tableaux blancs
       wifi: wifi
+      info_team_bookings : TBD
     closed: Fermé
     collection_account:
       account_number: Numéro de compte

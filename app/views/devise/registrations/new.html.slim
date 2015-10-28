@@ -39,12 +39,12 @@ div
           span.field-error-message #{t('session.password')} #{resource.errors[:password][0]}
       .form-group
         label #{t('session.nationality')}
-        = f.select(:nationality, all_countries_options, {}, {class: 'form-control country-select'})
+        = f.select(:nationality, all_countries_options, {selected: :"FR"}, {class: 'form-control country-select'})
         -if resource.errors.present? && resource.errors[:nationality].present?
           span.field-error-message #{t('session.nationality')} #{resource.errors[:nationality][0]}
       .form-group
         label #{t('session.country_of_residence')}
-        = f.select(:country_of_residence, all_countries_options, {}, {class: 'form-control country-select'})
+        = f.select(:country_of_residence, all_countries_options, {selected: :"FR"}, {class: 'form-control country-select'})
         -if resource.errors.present? && resource.errors[:country_of_residence].present?
           span.field-error-message #{t('session.country_of_residence')} #{resource.errors[:country_of_residence][0]}
       .form-group

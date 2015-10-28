@@ -569,12 +569,12 @@ h4.gray-subtitle {
   }
   .actions-on-venue{
     text-align: right;
-    height: 18px;
+    height: 35px;
     margin-right: 12px;
     padding-top: 7px;
     a{
       font-weight: 300;
-      color: $gray-text;
+      color: $dark-gray;
       margin-right: 4px;
       margin-left: 11px;
       font-size: 12px;
@@ -660,9 +660,10 @@ h4.gray-subtitle {
   margin-bottom: 20px;
   background-color: white;
   .card-top-bar{
-    height: 88px;
+    height: auto;
     padding: 1px 19px;
     h3{
+      width: calc(100% - 95px);
       font-size: 28px;
       letter-spacing: 0.15rem;
       padding: 3px 4px;
@@ -794,7 +795,6 @@ h4.gray-subtitle {
       text-align: center;
       margin: 36px auto 42px;
       width: 90%;
-      padding: 10px 10%;
       @include border-radius(2em);
       border: 2px solid $yellow;
       background-color: $yellow;
@@ -807,7 +807,8 @@ h4.gray-subtitle {
         text-align: center;
         font-size: 13px;
         color: black;
-
+        display: block;
+        padding: 10px 10%;
       }
     }
     .booking-inquiry:hover{
@@ -870,6 +871,8 @@ h4.gray-subtitle {
         p{
           margin: 0;
           line-height: 20px;
+          position: relative;
+          top: -3px;
         }
       }
     }
@@ -1060,7 +1063,6 @@ h4.gray-subtitle {
 
 /*fix for ui-bootstrap, angular directives */
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
-
 
 /*  ======== USER ======== */
 
@@ -1607,7 +1609,7 @@ li.venue-hours.active{
 
 .terms {
   a {
-    color: $blue;
+    color: #428bca;
     margin: 0 5px;
   }
   p {

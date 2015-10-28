@@ -110,7 +110,7 @@
           </div>
           <div class="total" style="  background-color: #efefef; display: inline-block; width: 25%;   font-size: 14px; text-align: center; vertical-align: top; padding: 15px 0; height: 50px; ">
             <p class="concept" style=" display: ineline-block; margin: 0; color: black">
-              <%= t('receipt.total_rental') %>
+              <%= t('receipt.total_payout') %>
             </p>
             <p class="value" style="text-transform: uppercase;   font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; color: black; margin-right: 5px; display: block;"><%= "#{t("currency.#{@booking.space.venue.currency.downcase}.symbol")}#{@booking.price + @booking.deposit }" %></p>
           </div>
@@ -247,7 +247,7 @@
                       <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184;">
                         <%= t('receipt.amount') + ':' %>
                       </div>
-                      <span><%= refund.amount %></span>
+                      <span><%= "#{t("currency.#{@booking.space.venue.currency.downcase}.symbol")}" %> <%= refund.amount %></span>
                     </div>
                     <div>
                       <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184;">
@@ -266,11 +266,11 @@
 
         <p style="line-height: 30px; padding: 25px 0;">
           <%= t('host_cancellation_email.terms1') %>
-          <a href='<%= privacy_policy_url %>' style="color: rgba(255,225,17,0.9); font-weight: bold; text-decoration: none;">
+          <a href='#{request.protocol}#{request.host_with_port}/our_terms#cancellation' style="color: #ffe111; font-weight: bold; text-decoration: none;">
             <%= " #{t('host_cancellation_email.cancellation_policy')} " %>
           </a>
           <%= t('host_cancellation_email.terms2') %>
-          <a href='<%= our_terms_url %>' style="color: rgba(255,225,17,0.9); font-weight: bold; text-decoration: none;">
+          <a href='<%= our_terms_url %>' style="color: #ffe111; font-weight: bold; text-decoration: none;">
             <%= " #{t('host_cancellation_email.terms_of_service')}." %>
           </a>
         </p>

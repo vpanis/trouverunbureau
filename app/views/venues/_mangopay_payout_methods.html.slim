@@ -90,7 +90,7 @@
             .tab#tab-gb.js-tab data-type='GB' class="#{'tab--selected' if @collection_account.bank_type == 'GB'}"
               = 'GB'
               = 'CA'
-              = t('payment_methods.other')
+              /!= t('payment_methods.other')
       = f.hidden_field :bank_type
       .row
         .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6.js-iban.js-account-field.none class=(@collection_account.errors.messages[:iban].present? ? 'has-error' : '')

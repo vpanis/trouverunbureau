@@ -1,4 +1,5 @@
 on_load = ->
+  $(".calendar.input-group input").inputmask("99-99-9999");
   load
     controllers:
       space_booking_inquiry: ["inquiry"]

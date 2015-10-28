@@ -546,7 +546,7 @@ es:
     got_new_message: Got a new message from
     reply: Or reply directly on this mail.
     view_on_deskspotting: View on DeskSpotting
-    team: The DeskSpotting Team
+    team: Team DeskSpotting
   host_cancellation_email:
     subject: 'Host Cancellation - Booking #%{booking_id}'
     sorry_cancel: Sorry to see you had to cancel the booking of

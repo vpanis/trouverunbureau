@@ -108,7 +108,27 @@
     background-repeat: no-repeat;
     background-position: center;
     padding: 20px;
+    height: 250px;
     margin: 15px auto;
+    &:before {
+      content: "Edit";
+      position: absolute;
+      height: 250px;
+      background: rgba(0, 204, 165, 0.8) url(hover_edit.png) no-repeat  75px center;
+      width: calc(100% - 30px);
+      margin: -20px;
+      opacity: 0;
+      transition: all .2s;
+      padding: 115px;
+      color: white;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    &:hover {
+      &:before {
+        opacity: 1;
+      }
+    }
     &.add-image-container{
       background-color: $yellow;
       height: 250px;

@@ -227,6 +227,10 @@ en:
     total_payout: Total Payout
     total_rental: Total booking
     write_message: Write a Message
+  en_languages :
+    en : English
+    fr: Français
+    de: German
   languages:
     af: Afrikaans
     ar: Arabic
@@ -326,7 +330,7 @@ en:
     hi: Hi
     reply: Or reply directly on this mail.
     subject: 'You have a new message - Booking #%{booking_id}'
-    team: The DeskSpotting Team
+    team: Team DeskSpotting
     view_on_deskspotting: View on DeskSpotting
   new_space:
     list_new_space: List new workspace
@@ -446,7 +450,7 @@ en:
     join: Invite your friends to join you on DeskSpotting
     text: The more friends you invite and that join you on DeskSpotting the more you increase your visibility of your venue(s). Everyone wins!
   reset_password_email:
-    dont_worry: Don't worry it happens to us too.
+    dont_worry: Don't worry it happens to us too
     forgot_password: It looks like you forgot your DeskSpotting password.
     new_password: Simply create a new password and you'll be back in business in no time.
     not_request: "If you did not make this request, all good, just disregard this email and your password will stay the same."
@@ -612,6 +616,7 @@ en:
       wheelchair_access: wheelchair access
       whiteboards: whiteboards
       wifi: internet speed (wifi)
+      info_team_bookings : TBD
     closed: Closed
     collection_account:
       account_number: Account Number

@@ -227,6 +227,10 @@ de:
     total_payout: Auszahlungssumme
     total_rental: Buchungssumme
     write_message: Eine Nachricht schreiben
+  en_languages :
+      en : English
+      fr: Français
+      de: German
   languages:
     af: Afrikaans
     ar: Arabisch
@@ -326,7 +330,7 @@ de:
     hi: Hallo
     reply: Oder antworten Sie direkt über diese E-Mail.
     subject: 'Sie haben eine neue Nachricht - Buchung #%{booking_id}'
-    team: Das DeskSpotting-Team
+    team: Team DeskSpotting
     view_on_deskspotting: Auf DeskSpotting ansehen
   new_space:
     list_new_space: Neuen Arbeitsraum anbieten
@@ -446,7 +450,7 @@ de:
     join: Laden Sie Ihre Freunde auf DeskSpotting ein
     text: "Je mehr Freunde Sie einladen und je mehr von ihnen zu DeskSpotting kommen, desto sichtbarer wird/werden Ihr/Ihre Arbeitsraum/Arbeitsräume. Alle haben etwas davon!"
   reset_password_email:
-    dont_worry: "Keine Sorge, das passiert uns auch."
+    dont_worry: "Keine Sorge, das passiert uns auch"
     forgot_password: "Es scheint, dass Sie Ihr DeskSpotting-Passwort vergessen haben."
     new_password: Erstellen Sie einfach ein neues Passwort und alles ist sofort wieder wie vorher.
     not_request: "Sollten Sie diese Anfrage nicht gestellt haben, alles in Ordnung, ignorieren Sie diese E-Mail und Ihr Passwort bleibt unverändert."
@@ -606,6 +610,7 @@ de:
       wheelchair_access: Rollstuhlzugang
       whiteboards: Whiteboards
       wifi: Internet (WLAN)
+      info_team_bookings : TBD
     closed: Geschlossen
     collection_account:
       account_number: Kontonummer

@@ -282,6 +282,7 @@ GEM
       has_scope (~> 0.6.0.rc)
       responders (~> 1.0.0.rc)
     ipaddress (0.8.0)
+    jquery-inputmask-rails (2.5.5)
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -581,6 +582,7 @@ DEPENDENCIES
   guard (>= 2.2.2)
   guard-livereload
   inherited_resources (~> 1.4.1)
+  jquery-inputmask-rails
   jquery-rails (~> 3.1.2)
   jquery-turbolinks (~> 2.1.0)
   language_list
@@ -627,3 +629,6 @@ DEPENDENCIES
   unicorn (~> 4.8.3)
   versionist (~> 1.4.0)
   will_paginate (~> 3.0.7)
+
+BUNDLED WITH
+   1.10.6

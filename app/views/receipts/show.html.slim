@@ -77,7 +77,7 @@
               = "#{t("currency.#{@booking.space.venue.currency.downcase}.symbol")}#{@booking.fee}"
     .col-md-3.total
       p.concept
-        = t('receipt.total_rental')
+        = t('receipt.total_payout')
       p.value
         = "#{t("currency.#{@booking.space.venue.currency.downcase}.symbol")}#{@booking.price + @booking.deposit - ((current_represented == @booking.owner)? 0 : @booking.fee) }"
   .booking-info

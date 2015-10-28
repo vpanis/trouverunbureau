@@ -7,7 +7,8 @@ module SelectOptionsHelper
   end
 
   def all_countries_options
-    Country.translations(I18n.locale).entries.map(&:reverse).sort
+    map = Country.translations(I18n.locale).entries.map(&:reverse)
+    map.sort
   end
 
   def venue_types_options
@@ -29,6 +30,10 @@ module SelectOptionsHelper
 
   def language_options
     User::LANGUAGES.map { |l| [t("languages.#{l}"), l.to_s] }.sort
+  end
+
+  def english_language_options
+    User::LANGUAGES.map { |l| [t("en_languages.#{l}"), l.to_s] }.sort
   end
 
   def all_language_options

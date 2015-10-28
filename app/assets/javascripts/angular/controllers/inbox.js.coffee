@@ -74,6 +74,11 @@ angular.module('deskSpotting.inbox', []).controller "InboxCtrl", [
     $scope.getDateDays = (date) ->
       date.split(" ")[0]
 
+    $scope.getDateDaysFormatted = (date) ->
+      a = date.split(" ")[0];
+      b = a.split("-");
+      b[2] + "-" + b[1] + "-" + b[0]
+
     $scope.getCorrectDate = (booking, date) ->
       if booking.b_type != 'hour'
         $scope.getDateDays(date)

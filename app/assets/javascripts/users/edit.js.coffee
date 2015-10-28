@@ -90,10 +90,15 @@ on_load = ->
       $('#email-popover').popover(options)
       $('#phone-popover').popover(options)
       $('#emergency-popover').popover(options)
+      $('#emergency_phone-popover').popover(options)
       $('#nationality-popover').popover(options)
       $('#country_of_residence-popover').popover(options)
 
     $("#phone").intlTelInput
+      allowExtensions: true
+      utilsScript: '/utils.js'
+
+    $("#emergency_phone").intlTelInput
       allowExtensions: true
       utilsScript: '/utils.js'
 

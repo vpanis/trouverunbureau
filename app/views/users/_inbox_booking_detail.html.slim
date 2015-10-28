@@ -17,7 +17,7 @@
         .row.margin-top
           .date ng-if="selected_booking.b_type == 'hour'"
             span
-              | {{getDateDays(selected_booking.from)}}
+              | {{getDateDaysFormatted(selected_booking.from)}}
             span
               = t('booking_inquiry.date')
           .date ng-if="selected_booking.b_type != 'hour'"
