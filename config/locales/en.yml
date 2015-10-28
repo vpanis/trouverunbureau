@@ -1,14 +1,266 @@
-#ENGLISH
 en:
+  'German ': English
+  booking_inquiry:
+    back: Back
+    check_in: Check-in
+    check_out: Check-Out
+    date: Date
+    day: Day
+    days_amount: Number of Days
+    deposit: Deposit
+    deskspotting_fee: DeskSpotting Fee
+    feature_1: No booking fees.
+    feature_2: Deposits held in an escrow account.
+    feature_3: Book the time you need.
+    feature_4: Verified venues.
+    feature_5: Secure payments.
+    feature_6: Flexible cancelations.
+    free: Free
+    hour: Hour
+    hours_amount: Number of Hours
+    message_placeholder: Tell the host more about yourself and your professional interests.
+    month: Month
+    month_amount: Number of months
+    months_amount: Number of Months
+    price_per: Price per
+    send_inquiry: Send inquiry
+    space_amount: Number of Spaces
+    space_booking: Space Booking
+    spaces_amount: Number of spaces
+    time_frame: Select Time Frame
+    total: Total
+    your_message: Your message
+  bookings:
+    all_venues: All Venues
+    cancel: Cancel
+    cancelled: Cancelled bookings
+    claim_deposit: Claim deposit
+    current: Current bookings
+    delete: Delete
+    no_bookings: There are no bookings
+    no_paid_cancelled: You have no paid or cancelled bookings.
+    review: Leave a Review
+    state:
+      cancelled: Cancelled
+      denied: Denied
+      error_refunding: Error Refunding
+      expired: Expired
+      new: New
+      paid: Paid
+      payment_verification: Verifying
+      pending_authorization: Pending
+      pending_payment: Approved
+      refunding: Refunding
+    venue_bookings: Venue Bookings
+    view_receipt: View Receipt
+    your_bookings: Your Bookings
+  calendar: dd-mm-yyyy
+  commons:
+    add: Add
+    add_image: Add photo
+    add_space: Create new workspace
+    cancel: Cancel
+    close: Close
+    delete: Delete
+    open: Open
+    pay: Pay
+    save: Save
+    unknown: Unknown
+    upload_file: Upload file
+  contact:
+    email: E-Mail
+    error: Something's gone wrong. Please try again later.
+    message: Message
+    name: Name
+    send: Send
+    subject: Contact DeskSpotting
+    subtitle: Have any questions or suggestions. Feel free to reach out.
+    success: Thank you for your message!
+    title: Contact Us
+  currency:
+    aud:
+      long_name: Australian Dollars
+      short_name: aud
+      symbol: A$
+    cad:
+      long_name: Canadian Dollars
+      short_name: cad
+      symbol: C$
+    eur:
+      long_name: Euro
+      short_name: eur
+      symbol: "€"
+    gbp:
+      long_name: Pound Sterling
+      short_name: gbp
+      symbol: "£"
+    usd:
+      long_name: American Dollars
+      short_name: usd
+      symbol: U$D
+  devise:
+    confirmations:
+      confirmed: Your email address has been successfully confirmed.
+      send_instructions: You will receive an email with instructions for how to confirm your email address in a few minutes.
+      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions on how to confirm your email address."
+    failure:
+      already_authenticated: You are already signed in.
+      inactive: Your account is not activated yet.
+      invalid: Invalid email or password.
+    omniauth_callbacks:
+      failure: "Could not log you in you via %{kind} because %{reason}."
+      success: "Successfully logged in via %{kind} account."
+    passwords:
+      no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
+      updated_not_active: Your password has been changed successfully.
+    sessions:
+      already_signed_out: Signed out successfully.
+      signed_in: Signed in successfully.
+      signed_out: Signed out successfully.
+  edit_venue_progress:
+    amenities: Venue Amenities
+    collection_account: Collection Account
+    delete_venue: Delete venue
+    details: Venue Info
+    incomplete: Incomplete
+    payout_method: Payout details
+    photos: Venue Photos
+    publish: Publish
+    spaces: Workspaces
+    status: Status
+    venue: Venue Details
   errors:
-    email_taken: 'The user already exists'
-  calendar: dd-mm-aa
+    email_taken: The user already exists
+    messages:
+      not_found: not found
+      not_saved:
+        one: 'This %{resource} error prohibited the user from being updated:'
+        other: "%{count} errors prohibited this %{resource} from being updated:"
+  guest_cancellation_email:
+    account_number: Account Number
+    account_type: Account Type
+    funds: Funds transferred on
+    payout: "According to the cancellation terms, you will receive a payment of %{currency_sym} %{amount}"
+    refund: "According to the cancellation terms, you will receive a refund of %{currency_sym} %{amount}"
+    sorry_cancel: Sorry to see you had to cancel your booking of
+    subject: 'Guest Cancellation - Booking #%{booking_id}'
+    transferred: Transferred to
+    unfortunately: "Unfortunately your guest, %{name}, had to cancel the booking with you for"
+  guest_review_email:
+    at: at
+    check_in: Check-In
+    check_out: Check-Out
+    checked_out: You have checked-out of
+    date: Date
+    days: Days
+    hi: Hi
+    rate_stay: Rate your stay
+    subject: 'Guest Review - %{type} #%{guest_id}'
+  home:
+    features:
+      easy:
+        text: "With one click book your workspace using your credit card. No more contract negotiations, wiring funds and paying deposits directly to landlords."
+        title: It’s Easy
+      flexibility:
+        text: "Wherever, whenever book individual workspaces, private offices or meeting rooms for a couple of hours, a day, a month or more."
+        title: Flexibility
+      networking:
+        text: DeskSpotting helps you find inspiring workplaces based on your professional interests.
+        title: Networking
+      no_fees:
+        text: "Find your workspace, book it and get on with your business."
+        title: No fees
+      subtitle: Why DeskSpotting?
+      title: Features
+    footer:
+      about_us: About us
+      company: Company
+      contact: Contact
+      faq: Help
+      how_it_works: Hosting
+      join_us: Join us
+      language:
+        en: eng
+      more: more
+      our_terms: Our Terms
+      privacy_policy: Privacy policy
+      reserved_rights: " 2015 DeskSpotting Limited. All rights reserved."
+      terms_of_service: Terms of service
+    header:
+      find: Find
+      search_text: Where do you want your Desk?
+      subtitle: Book unique offices or meeting rooms where and when you need them.
+      title: Your office. Wherever. Whenever.
+    list_space:
+      content: "Have extra workspace and want to make the most of it? List on DeskSpotting and let your space earn you money, meet interesting people and reduce your fixed costs. You decide when and with whom you share your space. There is no obligation and no fee to list."
+      learn_more: Learn More
+      title: List your space!
+    list_your_space: List your space
+    manage_your_venues: Manage your venues
+    profile: Profile
+    quotes:
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      subtitle: Lorem ipsum dolor sit amet
+      title: quotes
+    sign_in: Log in
+    your_space:
+      description: "Looking for a cool place to work for you or your team in your home city? Need a place to work or meet with clients? Let DeskSpotting help you find great workplaces that meet your needs - whenever, wherever."
+      see_all: See all
+      subtitle: Everyone should have an inspiring workspace
+      tabs:
+        featured: Featured
+        trending: trending cities
+        workspaces: workspaces
+      title: Find your space
+      workspaces: workspaces
+  host_cancellation_email:
+    cancellation_policy: cancellation policy
+    check_in: Check-In
+    check_out: Check-Out
+    date: Date
+    refund_guest: "According to the cancellation terms, you will receive a refund of %{currency_sym} %{amount}"
+    refund_host: "According to the cancellation terms, your guest will receive a refund of %{currency_sym} %{amount}"
+    sorry_cancel: Sorry to see you had to cancel the booking of
+    space: Workspace
+    spaces: Workspaces
+    subject: 'Host Cancellation - Booking #%{booking_id}'
+    terms1: If you have any questions about our
+    terms2: feel free to read
+    terms_of_service: our terms of service
+    unfortunately: "Unfortunately your host, %{name}, had to cancel the booking with you for"
+  host_review_email:
+    checked_in: has Checked-in at
+    rate_guest: Rate your guest
+    subject: 'Host Review - Venue #%{venue_id}'
+    your_guest: Your Guest
+  inbox:
+    approve: Approve
+    book_it: Book It
+    decline: Decline
+    deposit: Deposit
+    ds_commission: DS Service Fee
+    enter_new_offer: Make New Offer
+    guest: Guest
+    info_client_deposit: It will be held in escrow account and then reimbursed to you 72 hours after check-out
+    info_client_space_rental: The amount of the space booking will be held in an escrow account until check-in
+    info_deposit: It will be held in an escrow until 72 hours after the guest's check-out
+    info_fee: "For all bookings of a month or less the Service Fee is 20%. For all bookings of more than 1 month the Service Fee is 10% as of the second month. For all month to month bookings, the service fee is 5% as of when the minimum time frame required by the host has past (cannot exceed 4 months)."
+    info_space_rental: The amounts paid by the Guest are held in an escrow until check-in. Up to 24 hours later the relevant amounts are transferred to your account
+    inquiry: Inquiry
+    messages: Messages
+    new_offer: New Offer
+    price: Price
+    send_offer: Send Offer
+    space_rental: Space booking
+    total_payout: Total Payout
+    total_rental: Total booking
+    write_message: Write a Message
   languages:
     af: Afrikaans
     ar: Arabic
+    bg: Bulgarian
     bn: Bengali
     bo: Tibetan
-    bg: Bulgarian
     ca: Catalan
     cs: Czech
     cy: Welsh
@@ -16,11 +268,12 @@ en:
     de: German
     el: Modern Greek (1453-)
     en: English
+    es: Spanish
     et: Estonian
     eu: Basque
     fa: Persian
-    fj: Fijian
     fi: Finnish
+    fj: Fijian
     fr: Français
     ga: Irish
     gu: Gujarati
@@ -37,19 +290,19 @@ en:
     km: Central Khmer
     ko: Korean
     la: Latin
-    lv: Latvian
     lt: Lithuanian
-    ml: Malayalam
-    mr: Marathi
-    mk: Macedonian
-    mt: Maltese
-    mn: Mongolian
+    lv: Latvian
     mi: Maori
+    mk: Macedonian
+    ml: Malayalam
+    mn: Mongolian
+    mr: Marathi
     ms: Malay
+    mt: Maltese
     ne: Nepali
     nl: Dutch
     'no': Norwegian
-    pa: Panjabi
+    pa: Punjabi
     pl: Polish
     pt: Portuguese
     qu: Quechua
@@ -58,363 +311,458 @@ en:
     sk: Slovak
     sl: Slovenian
     sm: Samoan
-    es: Spanish
     sq: Albanian
     sr: Serbian
-    sw: Swahili
     sv: Swedish
+    sw: Swahili
     ta: Tamil
-    tt: Tatar
     te: Telugu
     th: Thai
     to: Tonga (Tonga Islands)
     tr: Turkish
+    tt: Tatar
     uk: Ukrainian
     ur: Urdu
     uz: Uzbek
     vi: Vietnamese
     xh: Xhosa
     zh: Chinese
-  currency:
-    usd:
-      short_name: 'usd'
-      long_name: 'American Dollars'
-      symbol: 'U$D'
-    gbp:
-      short_name: 'gbp'
-      long_name: 'Pound Sterling'
-      symbol: '£'
-    eur:
-      short_name: 'eur'
-      long_name: 'Euro'
-      symbol: '€'
-    cad:
-      short_name: 'cad'
-      long_name: 'Canadian Dollars'
-      symbol: 'C$'
-    aud:
-      short_name: 'aud'
-      long_name: 'Australian Dollars'
-      symbol: 'A$'
-  commons:
-    save: 'Save'
-    cancel: 'Cancel'
-    close: 'Close'
-    upload_file: 'Upload file'
-    unknown: 'unknown'
-    add: 'add'
-    open: 'Open'
-    delete: 'delete'
-    add_image: 'Add image'
-    add_space: 'Create new space'
-    pay: pay
-  session:
-    email: 'Email address'
-    password: 'Password'
-    login: 'Log in'
-    logout: 'Log out'
-    fb_login: 'Log in with Facebook'
-    keep_session: 'Keep me logged in'
-    forgot_password: 'Forgot password?'
-    not_registered: 'Not registered?'
-    already_registered: 'Already registered?'
-    sign_up_here: 'Sign up here'
-    login_here: 'Log in here'
-    or: or
-    signup: 'Sign up'
-    full_name: 'First and Last name'
-    choose_password: 'Choose Password'
-    password: 'Password'
-    reset_password: 'Reset password'
-    reset_password_help: 'Enter the e-mail address associated with your account.'
-    change_your_password: 'Change your Password'
-    change_password: 'Change Password'
-    date_of_birth: Date of birth
-    country_of_residence: Country of residence
-    nationality: Nationality
-    terms: 'I accept the'
-  home:
-    sign_in: 'Log in'
-    list_your_space: "List your space"
-    profile: Profile
-    manage_your_venues: Manage your venues
-    header:
-      title: 'Much more than an office'
-      subtitle: 'Book unique offices or meeting rooms where and when you need them.'
-      search_text: 'Where do you want your Desk?'
-      find: 'Find'
-    features:
-      title: 'features'
-      subtitle: 'Why DeskSpotting?'
-      flexibility:
-        title: 'Flexibility'
-        text: 'Wherever, whenever book individual workspace, entire offices or meeting rooms for a couple of hours, a day, a month or more.'
-      networking:
-        title: 'Networking'
-        text: 'DeskSpotting helps you find inspiring workplaces based on your professional interests.'
-      easy:
-        title: 'It’s Easy'
-        text: 'With one click book your workspace using your credit card. No more contract negotiations, wiring funds and paying deposits directly to landlords.'
-      no_fees:
-        title: 'No fees'
-        text: 'Find your workspace, book it and get on with your business.'
-    your_space:
-      title: 'Find your space'
-      subtitle: 'Everyone should have an inspiring workspace'
-      description: 'Looking for a cool place to work for you or your team in your home city? Need a place to work or meet with clients? Let DeskSpotting help you find great workplaces that meet your needs - whenever, wherever.'
-      tabs:
-        featured: 'featured'
-        workspaces: 'workspaces'
-        trending: 'trending cities'
-      workspaces: 'workspaces'
-      see_all: 'See all'
-    list_space:
-      title: 'List your space!'
-      content: 'Have extra workspace and want to make the most of it? List on DeskSpotting and let your space earn you money, meet interesting people and reduce your fixed costs. You decide when and with whom you share your space. There is no obligation and no fee to list.'
-      learn_more: 'Learn More'
-    quotes:
-      title: 'quotes'
-      subtitle: 'Lorem ipsum dolor sit amet'
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    footer:
-      company: 'Company'
-      join_us: 'Join us'
-      about_us: 'About us'
-      our_terms: 'Our Terms'
-      how_it_works: 'Hosting'
-      faq: 'Help'
-      contact: 'Contact'
-      language:
-        en: 'eng'
-      reserved_rights: ' 2015 DeskSpotting Limited. All rights reserved.'
-      terms_of_service: 'Terms of service'
-      privacy_policy: 'Privacy policy'
-      more: 'more'
   menu:
-    search: 'Search'
-    profile: 'Profile'
-    inbox: 'Inbox'
-    bookings: 'Bookings'
-    venues: 'Venues'
-    wishlist: 'Wish List'
-    account: 'Account'
+    account: Account
+    bookings: Bookings
     change_user: 'Use DeskSpotting as:'
-    create_organization: 'Create organization'
+    create_organization: Create organization
+    inbox: Inbox
     messages: Inbox
+    profile: Profile
+    search: Search
+    venues: Venues
+    wishlist: Wish List
+  messages:
+    booking_change: The booking info has changed.
+    cancelled: The booking has been cancelled.
+    denied: The booking has been cancelled by the Host.
+    error_refunding: We are having problems processing the refund.
+    expired: The 24hs to pay for the booking have expired. The booking inquiry has been cancelled.
+    paid: The booking has been paid.
+    payment_verification: We are verifying the payment.
+    pending_authorization: The booking needs the Host's confirmation.
+    pending_payment: "Booking approved. Pending confirmation. This booking will be held for 24hs. If you don't confirm in that time frame, it will be cancelled."
+    refunding: The money has been refunded.
+  new_message_email:
+    got_new_message: Got a new message from
+    hi: Hi
+    reply: Or reply directly in this e-mail.
+    subject: 'You have a new message - Booking #%{booking_id}'
+    team: The DeskSpotting Team
+    view_on_deskspotting: View on DeskSpotting
+  new_space:
+    list_new_space: List new workspace
+    save_to_add_photos: Save space to start adding photos
+    space_photos: Workspace photos
+  organizations:
+    add_manager: Add Manager
+    add_manager_action: Add Manager
+    change_picture: Change picture
+    create_profile: Create organization
+    create_title: Add title
+    edit_profile: Edit profile
+    email: Email
+    email_placeholder: manager@example.com
+    members: Managers
+    members_subtitle: Managers subtitle
+    name: Name
+    phone: Phone
+    required_fields: Required fields
+    role: Role
+  payment:
+    all_required: All fields are required
+    capacity: Number of people
+    card_number: Credit card number
+    check_in: Check-In
+    check_out: Check-Out
+    choose_credit_card: You have to choose a credit card first
+    create_credit_card: Add credit card
+    currency: Currency
+    cvx: CVV
+    days: Days
+    expiration: Expiration date
+    expiration_month: Expiration month(mm)
+    expiration_year: Expiration year(yy)
+    hours: Hours
+    invalid_card_number: Invalid Card Number Format
+    invalid_cvv: Invalid CVV format
+    invalid_expiration_date: Invalid Expiration Date format
+    last_digits: Last four digits
+    new_credit_card: New credit card
+    payment: Payment
+    price: price
+    register_credit_card: register credit card
+    space_type: space type
+    spaces: Spaces
+    type: Type
+    used_credit_card: credit card used
+    welcome: "Hello %{name}. It's payment time!"
+  payment_methods:
+    account_number: Account number
+    address: Address
+    bank_country: Bank country
+    bank_name: Bank name
+    branch_code: Branch code
+    business: Business
+    country_of_residence: Country of residence
+    date_of_birth: Date of birth
+    email: Email
+    first_name: First name
+    gb_other: GB
+    institution_number: Institution number
+    last_name: Last name
+    legal_name: Business legal name
+    locality: City
+    nationality: Nationality
+    personal: Personal
+    postal_code: Postal code
+    region: Region
+    required_fundings: Required funding fields
+    required_legal: Required legal representative fields
+    routing_number: Routing number
+    sort_code: Sort code
+    ssn: SSN
+    street: Street address
+    tax_id: Tax id
+    type_of_account: Select type of account
+  receipt:
+    account_number: Account Number
+    account_type: Account Type
+    amount: Amount
+    card: Card
+    check_in: Check-In
+    check_out: Check-Out
+    commission: Service Fee
+    confirmation_code: Confirmation Code
+    country: Country
+    customer_title: Guest Receipt
+    date: Date
+    deposit: Deposit
+    email: Email
+    expires: Expires
+    first_name: First Name
+    funds_trasferred_on: Funds Transferred On
+    guest: Guest
+    iban: IBAN
+    last_name: Last Name
+    name: Name
+    payment_type: Payment Type
+    payout_type: Payout Type
+    phone_number: Phone Number
+    province: Province
+    receipt_number: 'Receipt #'
+    refunds: Refunds
+    space_rental: Space Booking
+    space_type: Space Type
+    spaces: Spaces
+    street_address: Street Address
+    total_rental: Total Booking
+    venue_host: Host
+    venue_name: Venue Name
+    venue_title: Host Receipt
+    zip_code: Zip / Postal code
+  receipt_email:
+    subject_client: 'Guest Receipt - Booking #%{booking_id}'
+    subject_host: 'Host Receipt - Booking #%{booking_id}'
+  referral:
+    button: Invite
+    confirmation: Invitation Sent!
+    invite_friends: Invite Friends
+    join: Invite your friends to join you on DeskSpotting
+    text: 'The more friends you invite and that join you on DeskSpotting the more you increase your visibility of your venue(s). '
+  reset_password_email:
+    dont_worry: Don't worry it happens to us too!
+    forgot_password: It looks like you forgot your DeskSpotting password.
+    new_password: Simply create a new password and you'll be back in business in no time.
+    not_request: "If you did not make this request, all good, just disregard this email and your password will stay the same."
+    stay_same: Your email and password will remain the same.
+    this_link: Change password
+  reviews:
+    check_in: Check-In
+    check_out: Check-Out
+    comment: Comment (The review will be seen only by other hosts)
+    date: Date
+    guest_review: Guest review
+    rate_space: "Rate %{space} of %{venue}"
+    space_review: Space review
+    spaces: Spaces
   search:
-    count: 'Desks found'
-    filters: 'Filters'
-    workspace: 'Workspace'
-    neighbourhood: 'Neighborhood'
-    profession: 'Profession'
-    capacity: 'Number of people'
-    check_in: 'Check-In'
-    show_filters: 'Show listings'
-    clear_filters: 'Clear filters'
-    limits: '%{from} - %{to} more than %{count} desks'
-    no_results: "No spaces matched your search"
-    refine: 'Refine your search using the filters'
-    teams: 'Teams'
-    individual: 'Individual'
-  venues:
+    capacity: Number of people
+    check_in: Check-In
+    clear_filters: Clear filters
+    count: Desks found
+    filters: Filters
+    individual: Individual
+    limits: "%{from} - %{to} more than %{count} desks"
+    neighbourhood: Neighborhood
+    no_results: No spaces matched your search
+    profession: Profession
+    refine: Refine your search using the filters
+    show_filters: Show listings
+    teams: Teams
+    workspace: Workspace
+  session:
+    already_registered: Already registered?
+    change_password: Change Password
+    change_your_password: Change your Password
+    choose_password: Choose Password
+    country_of_residence: Country of residence
+    date_of_birth: Date of birth
+    email: 'Email '
+    fb_login: Log in with Facebook
+    first_name: First Name
+    forgot_password: Forgot password?
+    full_name: First and Last name
+    keep_session: Keep me logged in
+    last_name: Last Name
+    login: Log in
+    login_here: Log in here
+    logout: Log out
+    nationality: Nationality
+    not_registered: Not registered?
+    or: or
+    password: Password
+    reset_password: Reset password
+    reset_password_help: Enter the e-mail address associated with your DeskSpotting account.
+    sign_up_here: Sign up here
+    signup: Sign up
+    terms: I accept the
+  spaces:
+    capacity: Number of people
+    day_price: Day price
+    deposit: Deposit
+    description: Description
+    edit_your_space: Edit your space
+    hour_price: Hour price
+    info_capacity: How many people can work in this space?
+    info_deposit: All deposits are held in an escrow for the security of the Guest and Host
+    info_description: Describe the workspace and tell potential guests why it is a good place to work
+    info_photos: The better the photos the more interest you will generate in your space. Share pictures that accurately reflect the overall atmosphere of your space.
+    info_pricing: Set the target price you would like your space to be marketed for different time frames. Pricing can always be modified at any time and on a case by case basis.
+    info_quantity: Number of these spaces you would you like to list on DeskSpotting
+    minimum_renting_period: Minimum booking time
+    month_price: Month price
+    name: Name
+    per_day: Per day
+    per_hour: Per hour
+    per_month: Per month
+    pricing_in: "Pricing in %{currency}"
+    quantity: Number of spaces
+    space_photos: Space photos
+    type: Workspace type
     types:
-      coworking_space: 'Coworking space'
-      startup_office: 'Startup office'
-      hotel: 'Hotel'
-      corporate_office: 'Corporate office'
-      business_center: 'Business Center'
-      design_studio: 'Design Studio'
-      loft: 'Loft'
-      apartment: 'Apartment'
-      house: 'House'
-      cafe: 'Cafe'
-      restaurant: 'Restaurant'
+      all: All workspaces
+      communal_space: Communal space
+      conference_room: Conference room
+      fixed_desk: Dedicated desk
+      home_office: Home Office
+      hot_desk: Hot Desk
+      meeting_room: Meeting room
+      private_office: Private office
+  users:
+    about_me: About me
+    account:
+      account_changes: Changes are made to my DeskSpotting account or listing.
+      booking_inquiry: I receive a booking inquiry.
+      email_notifications: Email notifications
+      i_want_to_receive: I want to receive
+      outstanding_booking: My current booking inquiry is accepted or declined.
+      person_message: I receive a message from another person on DeskSpotting.
+      you_can_disable: You can disable this at any time.
+    add_languages: Add languages
+    change_picture: Change picture
+    company_name: Company name
+    country_of_residence: Country of residence
+    date_of_birth: Date of birth
+    edit_profile: Edit profile
+    email: Email
+    emergency_contact: Emergency Contact
+    emergency_email: Email
+    emergency_name: Name
+    emergency_phone: Phone number
+    emergency_relationship: Relationship
+    enter_languages: Enter the languages you speak
+    first_name: First name
+    gender: Gender
+    genders:
+      f: Female
+      m: Male
+    info_no_share: We will never share this information with anyone
+    info_share_email: We will not share your email with anyone
+    info_share_emergency: We will only share your emergency contact information with a host once a booking has been made
+    info_share_phone: We will only share your phone number with a host/guest once a booking has been made
+    info_share_street: we will only share your address with a guest once a booking has been made
+    interests: More on your career and profession
+    language: Language
+    last_name: Last Name
+    location: Home City
+    nationality: Nationality
+    optional_fields: Optional fields
+    organization_members: Organization Members
+    owner: Manager
+    phone: Phone Number
+    profession: Profession
+    required_fields: Required fields
+    spoken_languages: Spoken Languages
+    user_since: DeskSpotter since
+  venues:
     amenities:
-      whiteboards: whiteboards
-      kitchen: kitchen
-      security: security
-      wifi: 'internet speed (wifi)'
-      printer_scanner: 'printers/scanner'
-      chill_area: chill area
-      photocopier: photocopier
-      conference_rooms: conference rooms
-      elevators: elevators
-      outdoor_space: outdoor space
-      team_bookings: team bookings
-      info_team_bookings: 'Are you open to have teams make bookings in your venue?'
-      individual_bookings: individual bookings
-      shower: shower
-      fax: fax
-      wheelchair_access: wheelchair access
       air_conditioning: air conditioning
-      pets_allowed: pets allowed
-      mail_service: mail service
-      gym: gym
       cafe_restaurant: cafe/restaurant
-      phone_booth: phone booth
-      tv: tv
-      projector: projector
-      concierge: concierge
-      parking: parking
-      water_fountain: water fountain
-      reception_service: reception service
+      chill_area: chill area
       cleaning_service: cleaning service
-    professions:
-      technology: technology
-      public_relations: public relations
-      entertainment: entertainment
-      entrepreneur: entrepreneur
-      startup: startup
-      media: media
-      design: design
-      architect: architect
-      advertising: advertising
-      finance: finance
-      consultant: consultant
-      freelance: freelance
-      journalist: journalist
-      fashion: fashion
-      lawyer: lawyer
-      professor: professor
-      all: All professions are welcome
-    show:
-      share: 'Share'
-      report_venue: 'Report Venue'
-      venue: 'venue'
-      workspaces: 'workspaces'
-      chosen_workspace: 'workspace chosen in search'
-      per_hour: 'Per hour'
-      per_day: 'Per day'
-      per_month: 'Per month'
-      per_week: 'Per week'
-      booking_inquiry: 'Booking inquiry'
-      about_venue: 'About venue'
-      location: 'Location'
-      opening_hours: 'Opening hours'
-      closed: 'Closed'
-      amenities: 'Amenities'
-      professions: 'Professions'
-      why_deskspotting:
-        title: 'Why Book on DeskSpotting?'
-        no_booking_fees: 'No booking fees.'
-        booking_time: 'Book the time you need.'
-        secure_payments: 'Secure payments.'
-        desposit_held: 'Deposit held in escrow.'
-        verified_venues: 'Verified venues.'
-        flexible_cancellations: 'Flexible Cancellations.'
-      reviews: 'Reviews'
-      no_reviews: 'No reviews'
-    edit_venue: 'Edit venue'
-    create_venue: 'Create new venue'
-    preview: 'Preview'
-    complete: 'Complete'
-    incomplete: 'Incomplete'
-    reported: 'Reported'
-    closed: 'Closed'
-    edit:
-      list_your_venue: 'List your venue'
-      start_by: 'Start by telling us about your venue...'
-      opening_hours: 'Opening hours'
-      standard_times: 'Standard times'
-      custom_times: 'Custom times?'
-      opening_time: 'Opening Time'
-      closing_time: 'Closing Time'
-      add_venue_logo: 'Add venue logo'
-      change_logo: 'Change logo'
-      name: 'Venue name'
-      street: 'Street address'
-      country: 'Country'
-      email: 'General Email'
-      town: 'City'
-      postal_code: 'Zip / Postal code'
-      phone: 'Phone number'
-      v_type: 'Venue type'
-      currency: 'Currency'
-      description: 'Description'
-      office_rules: 'Office Rules'
-      professions: 'Preferred professions'
-      select_professions: 'Select preferred professions'
-      add_professions: 'Add professions'
-      info_professions: 'Share with guests the professions that are welcome in your venue'
-      invalid_street: 'Please select an address from the dropdown'
+      concierge: concierge
+      conference_rooms: conference rooms
+      elevators: elevator
+      fax: fax
+      gym: gym
+      individual_bookings: individual bookings
+      info_team_bookings: Are you open to have teams make bookings in your venue?
+      kitchen: kitchen
+      mail_service: mail service
+      outdoor_space: outdoor space
+      parking: parking
+      pets_allowed: pets allowed
+      phone_booth: phone booth
+      photocopier: photocopier
+      printer_scanner: printers/scanner
+      projector: projector
+      reception_service: reception service
+      security: security
+      shower: shower
+      team_bookings: team bookings
+      tv: tv
+      water_fountain: water fountain
+      wheelchair_access: wheelchair access
+      whiteboards: whiteboards
+      wifi: Wifi
+    closed: Closed
     collection_account:
-      individual: Individual
+      account_number: Account Number
       business: Business
-      funding: Funding
-      first_name: First Name
-      last_name: Last Name
-      email: Email
-      phone: Phone
       date_of_birth: Date of Birth
+      dba_name: DBA Name
+      descriptor: Descriptor
+      email: Email
+      first_name: First Name
+      funding: Funding
+      individual: Individual
+      last_name: Last Name
+      legal_name: Legal Name
+      locality: City
+      only_legal_name_present: Only if legal name present
+      only_tax_id_present: Only if tax id present
+      phone: Phone
+      postal_code: Postal Code
+      previous_last_4: Previous Last 4 digits
+      region: Region
+      required: Required
+      routing_number: Routing Number
       ssn: SSN
       street_address: Street Address
-      locality: City
-      region: Region
-      postal_code: Postal Code
-      legal_name: Legal Name
-      dba_name: DBA Name
       tax_id: Tax ID
-      descriptor: Descriptor
-      account_number: Account Number
-      routing_number: Routing Number
-      previous_last_4: Previous Last 4 digits
-      required: Required
-      only_tax_id_present: Only if tax id present
-      only_legal_name_present: Only if legal name present
       verifying_data: We are verifying your bank account data. This could take a few minutes.
-  wishlist:
-    no_favourites: "You don't have any favorite spaces"
-    day: 'day'
-    month: 'month'
-    hour: 'hour'
-    week: 'week'
-  users:
-    user_since: 'DeskSpotter since'
-    edit_profile: 'Edit profile'
-    about_me: 'About me'
-    required_fields: 'Required fields'
-    optional_fields: 'Optional fields'
-    change_picture: 'Change picture'
-    enter_languages: 'Enter the languages you speak'
-    spoken_languages: 'Spoken Languages'
-    add_languages: 'Add languages'
-    info_no_share: 'we will never share this information with anyone'
-    info_share_street: 'we will never share your street address with anyone'
-    info_share_phone: 'we will only share your phone number with a host/guest once a booking has been made'
-    info_share_street: 'we will only share your address with a guest once a booking has been made'
-    info_share_email: 'we will not share your email with anyone'
-    info_share_emergency: 'we will only share your emergency contact information with a host once a booking has been made'
-    emergency_contact: 'Emergency Contact'
-    genders:
-      m: 'Male'
-      f: 'Female'
-    first_name: 'First name'
-    last_name: 'Last Name'
-    gender: 'Gender'
-    phone: 'Phone Number'
-    profession: 'Profession'
-    interests: 'More on your career and profession'
-    email: 'Email'
-    company_name: 'Company name'
-    language: 'Language'
-    date_of_birth: 'Date of birth'
-    location: 'Home City'
-    nationality: 'Nationality'
-    country_of_residence: 'Country of residence'
-    emergency_name: 'Name'
-    emergency_phone: 'Phone number'
-    emergency_email: 'Email'
-    emergency_relationship: 'Relationship'
-    account:
-      email_notifications: 'Email notifications'
-      i_want_to_receive: 'I want to receive'
-      you_can_disable: 'You can disable this at any time.'
-      person_message: 'I receive a message from another person on DeskSpotting.'
-      outstanding_booking: 'My current booking inquiry is accepted or declined.'
-      booking_inquiry: 'I receive a booking inquiry.'
-      account_changes: 'Changes are made to my DeskSpotting account or listing.'
-  spaces:
+    complete: Complete
+    create_venue: Create new venue
+    edit:
+      add_professions: Add professions
+      add_venue_logo: Add venue logo
+      change_logo: Change logo
+      closing_time: Closing Time
+      country: Country
+      currency: Currency
+      custom_times: Custom times?
+      description: Description
+      email: General Email
+      info_professions: Share with guests the professions that are welcome in your venue
+      invalid_street: Please select an address from the dropdown
+      list_your_venue: List your venue
+      name: Venue name
+      office_rules: Office Rules
+      opening_hours: Opening hours
+      opening_time: Opening Time
+      phone: Phone number
+      postal_code: Zip / Postal code
+      professions: Preferred professions
+      select_professions: Select preferred professions
+      standard_times: Standard times
+      start_by: Start by telling us about your venue...
+      street: Street address
+      town: City
+      v_type: Venue type
+    edit_venue: Edit venue
+    incomplete: Incomplete
+    preview: Preview
+    professions:
+      advertising: advertising
+      all: All professions are welcome
+      architect: architect
+      consultant: consultant
+      design: design
+      entertainment: entertainment
+      entrepreneur: entrepreneur
+      fashion: fashion
+      finance: finance
+      freelance: freelance
+      journalist: journalist
+      lawyer: lawyer
+      media: media
+      professor: professor
+      public_relations: public relations
+      startup: startup
+      technology: technology
+    reported: Reported
+    show:
+      about_venue: About venue
+      amenities: Amenities
+      booking_inquiry: Booking inquiry
+      chosen_workspace: workspace chosen in search
+      closed: Closed
+      location: Location
+      no_reviews: No reviews
+      opening_hours: Opening hours
+      per_day: Per day
+      per_hour: Per hour
+      per_month: Per month
+      per_week: Per week
+      professions: Professions
+      report_venue: Report Venue
+      reviews: Reviews
+      share: Share
+      venue: venue
+      why_deskspotting:
+        booking_time: Book the time you need.
+        desposit_held: Deposit held in escrow.
+        flexible_cancellations: Flexible Cancellations.
+        no_booking_fees: No booking fees.
+        secure_payments: Secure payments.
+        title: Why Book on DeskSpotting?
+        verified_venues: Verified venues.
+      workspaces: workspaces
     types:
+      apartment: Apartment
+          business_center: Business Center
+          cafe: Cafe
+          corporate_office: Corporate office
+          coworking_space: Coworking space
+          design_studio: Design Studio
+          hotel: Hotel
+          house: House
+          loft: Loft
+          restaurant: Restaurant
+          startup_office: Startup office
+      wishlist:
+        day: day
+        hour: hour
+        month: month
+        no_favourites: You don't have any wish listed spaces
+        week: week
       conference_room: 'Conference room'
       meeting_room: 'Meeting room'
       private_office: 'Private office'

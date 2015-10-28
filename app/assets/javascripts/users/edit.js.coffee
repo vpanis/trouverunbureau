@@ -89,7 +89,6 @@ on_load = ->
       $('#gender-popover').popover(options)
       $('#email-popover').popover(options)
       $('#phone-popover').popover(options)
-      $('#emergency_phone-popover').popover(options)
       $('#emergency-popover').popover(options)
       $('#nationality-popover').popover(options)
       $('#country_of_residence-popover').popover(options)
@@ -98,13 +97,13 @@ on_load = ->
       allowExtensions: true
       utilsScript: '/utils.js'
 
-    $("#emergency_phone").intlTelInput
+    $("#user_emergency_phone").intlTelInput
       allowExtensions: true
       utilsScript: '/utils.js'
 
     $('#save-edition').click ->
       $('#phone').val($('#phone').intlTelInput("getNumber"))
-      $('#emergency_phone').val($('#emergency_phone').intlTelInput("getNumber"))
+      $('#user_emergency_phone').val($('#user_emergency_phone').intlTelInput("getNumber"))
 
     new google.maps.places.Autocomplete(document.getElementById('user_location'))
     initialize_selects()

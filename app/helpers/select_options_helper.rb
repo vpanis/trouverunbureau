@@ -1,11 +1,13 @@
 module SelectOptionsHelper
 
   def countries_options
-    Venue::SUPPORTED_COUNTRIES.map { |country| [Country.new(country).name, country] }
+    Venue::SUPPORTED_COUNTRIES.map do |country|
+      [Country.new(country).translation(I18n.locale.to_s), country]
+    end
   end
 
   def all_countries_options
-    Country.all_translated(session[:locale]).sort
+    Country.translations(I18n.locale).entries.map(&:reverse).sort
   end
 
   def venue_types_options
