@@ -44,7 +44,7 @@ module Api
       def create_photo!
         venue_photo = VenuePhoto.create!(photo_params)
         @space.update_attributes(active: true) if @space.present?
-        render json: { id: venue_photo.id, photo: venue_photo.photo.url }, status: 201
+        render json: venue_photo, root: false, status: 201
       end
 
       def photo_params
