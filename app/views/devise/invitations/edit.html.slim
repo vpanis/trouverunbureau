@@ -29,19 +29,19 @@
             span.field-error-message #{t('session.password')} #{resource.errors[:password][0]}
         .form-group
           label #{t('session.nationality')}
-          = f.select(:nationality, all_countries_options, {}, {class: 'form-control country-select'})
+          = f.select(:nationality, all_countries_options, {prompt: t('payment_methods.select_country')}, {class: 'form-control country-select'})
           -if resource.errors.present? && resource.errors[:nationality].present?
             span.field-error-message #{t('session.nationality')} #{resource.errors[:nationality][0]}
         .form-group
           label #{t('session.country_of_residence')}
-          = f.select(:country_of_residence, all_countries_options, {}, {class: 'form-control country-select'})
+          = f.select(:country_of_residence, all_countries_options, {prompt: t('payment_methods.select_country')}, {class: 'form-control country-select'})
           -if resource.errors.present? && resource.errors[:country_of_residence].present?
             span.field-error-message #{t('session.country_of_residence')} #{resource.errors[:country_of_residence][0]}
         .form-group
           label = t('session.date_of_birth')
           .calendar.input-group
             .calendar-icon.input-group-addon ng-click="open($event)" type="button"
-            = f.text_field :date_of_birth, id: 'user_date_of_birth', placeholder: 'mm-dd-aa', class: 'form-control', close_text: t('commons.close'), datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened', type: 'text', show_button_bar:'false', ng_model: 'user_date_of_birth'
+            = f.text_field :date_of_birth, id: 'user_date_of_birth', placeholder: 'mm-dd-yyyy', class: 'form-control', close_text: t('commons.close'), datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened', type: 'text', show_button_bar:'false', ng_model: 'user_date_of_birth'
             -if resource.errors.present? && resource.errors[:date_of_birth].present?
               span.field-error-message #{t('session.date_of_birth')} #{resource.errors[:date_of_birth][0]}
         div.left

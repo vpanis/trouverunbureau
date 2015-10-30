@@ -23,7 +23,7 @@
             = @venue.errors.messages[:name].first
       .form-group.col-md-6 class=(@venue.errors.messages[:country_code].present? ? 'has-error' : '')
         label.required = t('venues.edit.country')
-        = f.select(:country_code, @countries_options, {}, {class: 'form-control country-select', required: true})
+        = f.select(:country_code, @countries_options, {prompt: t('payment_methods.select_country')}, {class: 'form-control country-select', required: true})
         - if @venue.errors.messages[:country_code].present?
           label
             = @venue.errors.messages[:country_code].first

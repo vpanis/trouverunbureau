@@ -20,7 +20,7 @@
           = f.text_field :name, placeholder: t('venues.edit.name'), class: 'form-control', required: true
         .form-group.col-md-8.col-md-offset-2
           label = t('venues.edit.country')
-          = f.select(:country_code, @countries_options, {}, {class: 'form-control country-select'})
+          = f.select(:country_code, @countries_options, {prompt: t('payment_methods.select_country')}, {class: 'form-control country-select'})
       .row.buttons
         .col-xs-6
           a href='#'
