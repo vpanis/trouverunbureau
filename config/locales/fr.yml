@@ -1,7 +1,7 @@
 fr:
   'German ': Français
   booking_inquiry:
-    back: Retoufr
+    back: Retour
     check_in: Check-In
     check_out: Check-Out
     date: Date
@@ -98,6 +98,25 @@ fr:
       long_name: American Dollars
       short_name: usd
       symbol: U$D
+  devise:
+    confirmations:
+      confirmed: Votre compte a été confirmé avec succès.
+      send_instructions: Vous allez recevoir sous quelques minutes un courriel comportant des instructions pour confirmer votre compte.
+      send_paranoid_instructions: Si votre email existe sur notre base de données, vous recevrez sous quelques minutes un message avec des instructions pour confirmer votre compte.
+    failure:
+      already_authenticated: Vous êtes déjà connecté(e).
+      inactive: Votre compte n’est pas encore activé.
+      invalid: Email ou mot de passe incorrect.
+    omniauth_callbacks:
+      failure: 'Nous ne pouvons pas vous connecter depuis %{kind} pour la raison suivante : ''%{reason}''.'
+      success: Connecté avec succès via votre compte %{kind}.
+    passwords:
+      no_token: Vous ne pouvez pas accéder à cette page si vous n’y accédez pas depuis un email de réinitialisation de mot de passe. Si vous venez en effet d’un tel email, vérifiez que vous avez copié l’adresse URL en entier.
+      updated_not_active: Votre mot de passe a été modifié avec succès.
+    sessions:
+      already_signed_out: Déconnecté(e).
+      signed_in: Connecté(e) avec succès.
+      signed_out: Déconnecté(e) avec succès.
   edit_venue_progress:
     amenities: Equipements
     collection_account: Collection Account
@@ -110,16 +129,23 @@ fr:
     spaces: Postes
     status: Statut
     venue: Espace
+  errors:
+    email_taken: Cet email est déjà inscrit
+    messages:
+      not_found: n’a pas été trouvé(e)
+      not_saved:
+        one: 'une erreur a empêché ce (cet ou cette) %{resource} d’être mis(e) à jour:'
+        other: "%{count} erreurs ont empêché ce (cet ou cette) %{resource} d’être mis(e) à jour:"
   guest_cancellation_email:
     account_number: Numéro de compte
     account_type: Type de compte
     funds: Fonds versés le
-    payout: "Selon la politique d'annulation, vous recevrez un paiement de %{currency_sym} %{amount}"
-    refund: "Selon la politique d'annulation, vous receverez un remboursement de %{currency_sym} %{amount}"
+    payout: Selon la politique d'annulation, vous recevrez un paiement de %{currency_sym} %{amount}
+    refund: Selon la politique d'annulation, vous receverez un remboursement de %{currency_sym} %{amount}
     sorry_cancel: Nous sommes désolé que vous ayez eu besoin d'annuler la réservation de
     subject: 'Annulation visiteur - Réservation #%{booking_id}'
     transferred: Transféré à
-    unfortunately: "Malheureusement votre visiteur, %{name}, a du annuler sa réservation de"
+    unfortunately: Malheureusement votre visiteur, %{name}, a du annuler sa réservation de
   guest_review_email:
     at: le
     check_in: Check-In
@@ -139,10 +165,10 @@ fr:
         text: Réservez votre poste sur Deskpotting c'est choisir de travailler où et quand vous voulez.
         title: Flexibilité
       networking:
-        text: "Avec DeskSpotting trouvez un espace qui vous ressemble, et enrichissez votre réseau professionnel."
+        text: Avec DeskSpotting trouvez un espace qui vous ressemble, et enrichissez votre réseau professionnel.
         title: Networking
       no_fees:
-        text: "Avec Deskpotting vous ne payez que votre réservation, sans frais supplémentaire."
+        text: Avec Deskpotting vous ne payez que votre réservation, sans frais supplémentaire.
         title: Sans frais
       subtitle: Pourquoi DeskSpotting?
       title: Particularités
@@ -164,21 +190,21 @@ fr:
       find: Trouver
       search_text: Où voulez-vous travailler?
       subtitle: Choisissez de travailler où et quand vous voulez. A vous de décider.
-      title: "Votre bureau, où et quand vous voulez"
+      title: Bien plus qu'un bureau
     list_space:
-      content: "Avec DeskSpotting, gagnez de l’argent avec vos espaces libres tout en créant un environnement de travail stimulant; Réduisez vos coûts, décidez où, quand et avec qui vous partagez votre espace, sans engagement, sans frais d'annonce."
+      content: Avec DeskSpotting, gagnez de l’argent avec vos espaces libres tout en créant un environnement de travail stimulant; Réduisez vos coûts, décidez où, quand et avec qui vous partagez votre espace, sans engagement, sans frais d'annonce.
       learn_more: En savoir plus
       title: Publiez votre annonce
     list_your_space: Publiez votre annonce
     manage_your_venues: Gérez vos espaces
     profile: Profil
     quotes:
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       subtitle: Lorem ipsum dolor sit amet
       title: Avis D'utilisateurs
     sign_in: Se connecter
     your_space:
-      description: "Vous cherchez dans votre ville un endroit confortable pour travailler, seul ou en équipe? Vous avez besoin d’un bureau pour recevoir vos clients? Deskspotting vous trouvera les espaces qu’il vous faut."
+      description: Vous cherchez dans votre ville un endroit confortable pour travailler, seul ou en équipe? Vous avez besoin d’un bureau pour recevoir vos clients? Deskspotting vous trouvera les espaces qu’il vous faut.
       see_all: Tout voir
       subtitle: Tout le monde a le droit a un bureau qui lui ressemble
       tabs:
@@ -192,8 +218,8 @@ fr:
     check_in: Check-In
     check_out: Check-Out
     date: Date
-    refund_guest: "Selon la politique d'annulation, vous recevrez un remboursement de %{currency_sym} %{amount}"
-    refund_host: "Selon la politique d'annulation, le visiteur recevera un remboursement de %{currency_sym} %{amount}"
+    refund_guest: Selon la politique d'annulation, vous recevrez un remboursement de %{currency_sym} %{amount}
+    refund_host: Selon la politique d'annulation, le visiteur recevera un remboursement de %{currency_sym} %{amount}
     sorry_cancel: Nous sommes désolé que vous ayez eu besoin d'annuler la réservation de
     space: Poste
     spaces: Postes
@@ -201,7 +227,7 @@ fr:
     terms1: Si vous avez des questions concernant nos
     terms2: veuillez consulter
     terms_of_service: conditions générales
-    unfortunately: "Malheureusement votre hôte, %{name}, a du annuler votre réservation de"
+    unfortunately: Malheureusement votre hôte, %{name}, a du annuler votre réservation de
   host_review_email:
     checked_in: a effectué le Check-In de
     rate_guest: Notez le visiteur
@@ -218,7 +244,7 @@ fr:
     info_client_deposit: La caution est gardée sous séquestre et sera remboursée 72 heures après votre check-out.
     info_client_space_rental: Le montant de la réservation est gardé sous séquestre jusqu'à l'heure du check-in.
     info_deposit: La caution sera gardée 72 heures après le check-out du visiteur.
-    info_fee: "20% pour toute réservation d'un mois ou moins. 10% pour toute réservation au delà d'un mois après le premier mois. 10% pour toute réservation de mois en mois après le premier mois. Pour toute réservation de mois en mois, les frais de service sont de 5% une fois que le temps minimum garanti exigé par l'hôte est passé."
+    info_fee: 20% pour toute réservation d'un mois ou moins. 10% pour toute réservation au delà d'un mois après le premier mois. 10% pour toute réservation de mois en mois après le premier mois. Pour toute réservation de mois en mois, les frais de service sont de 5% une fois que le temps minimum garanti exigé par l'hôte est passé.
     info_space_rental: Les paiements de vos visiteurs sont gardés sous séquestre jusqu'à 24 heures après le check-in.
     inquiry: Demande
     messages: Messages
@@ -246,6 +272,7 @@ fr:
     et: Estonien
     eu: Basque
     fa: Perse
+    'false': Norvégien
     fi: Finlandais
     fj: Fidjien
     fr: Français
@@ -321,13 +348,13 @@ fr:
     paid: Le paiement de votre réservation a été validé.
     payment_verification: Nous vérifions votre paiement.
     pending_authorization: La réservation doit être confirmée par l'Hôte.
-    pending_payment: "Réservation confirmée. En attente du paiement. Vous avez 24 heures pour payer votre réservation, si non elle sera annulée."
+    pending_payment: Réservation confirmée. En attente du paiement. Vous avez 24 heures pour payer votre réservation, si non elle sera annulée.
     refunding: Le paiement a été remboursé.
   new_message_email:
     got_new_message: Nouveau message de la part de
     hi: Bonjour
     reply: Ou répondez directement via email
-    subject: "Vous avez un nouveau message - Réservation %{booking_id}"
+    subject: Vous avez un nouveau message - Réservation %{booking_id}
     team: L'Équipe DeskSpotting
     view_on_deskspotting: Visualisez sur DeskSpotting
   new_space:
@@ -376,7 +403,7 @@ fr:
     spaces: Postes
     type: Type
     used_credit_card: Carte de crédit utilisée
-    welcome: "Bonjour %{name}. C'est le moment de payer!"
+    welcome: Bonjour %{name}. C'est le moment de payer!
   payment_methods:
     account_number: Numéro de compte
     address: Adresse
@@ -449,12 +476,12 @@ fr:
     confirmation: L'invitation a été envoyée à
     invite_friends: Invitez vos amis
     join: Invitez vos amis à vous rejoindre sur DeskSpotting.
-    text: "Plus vos amis acceptent de vous rejoindre sur DeskSpotting, plus vous augmentez la visibilité de vos espaces. Tout le monde gagne!"
+    text: Plus vos amis acceptent de vous rejoindre sur DeskSpotting, plus vous augmentez la visibilité de vos espaces. Tout le monde gagne!
   reset_password_email:
     dont_worry: Ne vous inquiétiez pas ça nous arrive aussi.
     forgot_password: Il semble que vous avez oublié votre mot de passe.
     new_password: Créez votre nouveau mot de passe.
-    not_request: "Si vous n'avez pas fait cette demande, pas de problème, veuillez simplement ignorer ce message."
+    not_request: Si vous n'avez pas fait cette demande, pas de problème, veuillez simplement ignorer ce message.
     stay_same: Votre email et mot de passe resteront les mêmes.
     this_link: Changer mot de passe
   reviews:
@@ -463,7 +490,7 @@ fr:
     comment: Votre avis sera seulement partagé avec d'autres hôtes
     date: Date
     guest_review: Commentaires sur le visiteur
-    rate_space: "Notez %{space} of %{venue}"
+    rate_space: Notez %{space} of %{venue}
     space_review: Commentaires sur l'espace
     spaces: Postes
   search:
@@ -526,7 +553,7 @@ fr:
     per_day: Par jour
     per_hour: Par heure
     per_month: Par mois
-    pricing_in: "Prix en %{currency}"
+    pricing_in: Prix en %{currency}
     quantity: Nombre de postes
     space_photos: Photos
     type: Type de poste
@@ -569,17 +596,17 @@ fr:
       m: Homme
     info_no_share: Nous ne partagerons jamais cette information avec quiconque
     info_share_email: Nous ne  partagerons votre email avec personne
-    info_share_emergency: "Nous ne partagerons avec l'hôte  les coordonnées de votre contact d'urgence, uniquement si la réservation est confirmée"
+    info_share_emergency: Nous ne partagerons avec l'hôte  les coordonnées de votre contact d'urgence, uniquement si la réservation est confirmée
     info_share_phone: Nous ne partagerons vos coordonnées téléphonique avec l'hôte/visiteur uniquement si la réservation est confirmée
     info_share_street: Nous ne partagerons votre adresse avec le visiteur uniquement si la réservation est confirmée
     interests: Dites en plus sur vos intérêts professionels
     language: Langue
     last_name: Nom
-    location: Ville
+    location: Ville où vous résidez
     nationality: Nationalité
     optional_fields: Champs falcutatifs
     organization_members: Membres de l'Organisation
-    owner: Gérant
+    owner: Propriétaire
     phone: Numéro de téléphone
     profession: Profession
     required_fields: Champs requis
