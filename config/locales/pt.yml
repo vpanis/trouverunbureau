@@ -1,4 +1,5 @@
-German ': Português
+pt:
+  'German ': Português
   booking_inquiry:
     back: Retroceder
     check_in: Check-in
@@ -53,7 +54,7 @@ German ': Português
     venue_bookings: Lugares Reservados
     view_receipt: Ver Recibo
     your_bookings: As Suas Reservas
-  calendar: dd-mm-aa
+  calendar: dd-mm-aaaa
   commons:
     add: Adicionar
     add_image: Adicionar foto
@@ -158,18 +159,18 @@ German ': Português
   home:
     features:
       easy:
-        text: Esqueça as negociações contratuais, o envio de fundos e as cauções a senhorios. A reserva do seu espaço de trabalho está ao alcance de um clique, usando o cartão de crédito.
+        text: Esqueça as negociações contratuais, o envio de fundos e as cauções a senhorios. O reserva do seu espaço de trabalho está ao alcance de um clique, usando o cartão de crédito.
         title: "É Simples"
       flexibility:
         text: Reserve espaços de trabalho individuais, gabinetes privados ou salas de reuniões. Por algumas horas, um dia, um mês ou mais. Quando e onde quiser.
         title: Flexibilidade
       networking:
-        text: O DeskSpotting ajuda-o a encontrar espaços de trabalho inspiradores com base nos seus interesses profissionais.
+        text: O DeskSpotting ajuda-o a encontrar espaços de trabalho inspiradores com base os seus interesses profissionais.
         title: Networking
       no_fees:
         text: Encontre o seu espaço de trabalho, reserve-o e siga em frente com o seu negócio.
         title: Isento de taxas
-      subtitle: Porquê o DeskSpotting?
+      subtitle: Porquê a DeskSpotting?
       title: Características
     footer:
       about_us: Sobre nós
@@ -187,11 +188,11 @@ German ': Português
       terms_of_service: Termos de serviço
     header:
       find: Pesquisar
-      search_text: Onde quer trabalhar?
+      search_text: 'Onde quer '
       subtitle: Reserve escritórios ou salas de reuniões únicos, onde e quando precisar.
       title: 'Muito mais do que um escritório '
     list_space:
-      content: Tem espaço de trabalho que não utiliza e quer rentabilizá-lo? Publique-o no DeskSpotting e deixe-o ganhar dinheiro por si, apresentá-lo a pessoas interessantes e reduzir-lhe os custos fixos. A decisão de quando e com quem o partilha é sua. A publicação não implica quaisquer obrigações ou encargos.
+      content: Tem espaço de trabalho que não utiliza e quer rentabilizá-lo? Inscreva-o no DeskSpotting e deixe-o ganhar dinheiro por si, apresentá-lo a pessoas interessantes e reduzir-lhe os custos fixos. A decisão de quando e com quem o partilha é sua. A publicação não implica quaisquer obrigações ou encargos.
       learn_more: Saiba Mais
       title: Publique o seu espaço!
     list_your_space: Publique o seu espaço
@@ -409,7 +410,6 @@ German ': Português
     address: Morada
     bank_country: País de operação do banco
     bank_name: Nome do banco
-    bic_iban_tooltip: 
     branch_code: Código do balcão
     business: Negócio
     country_of_residence: País de residência
@@ -513,7 +513,7 @@ German ': Português
     already_registered: Já registado?
     change_password: Alterar palavra-passe
     change_your_password: Altere a sua Palavra-Passe
-    choose_password: Palavra-Passe
+    choose_password: Escolher Palavra-Passe
     country_of_residence: País de residência
     date_of_birth: Data de nascimento
     email: Email
@@ -524,7 +524,7 @@ German ': Português
     keep_session: Manter a sessão iniciada
     last_name: Apelido
     login: Iniciar sessão
-    login_here: Inicie sessão aqui
+    login_here: Iniciar sessão aqui
     logout: Terminar sessão
     nationality: Nacionalidade
     not_registered: Não registado?
@@ -534,7 +534,7 @@ German ': Português
     reset_password_help: Introduza o endereço de email associado à sua conta DeskSpotting.
     sign_up_here: Registe-se aqui
     signup: Registe-se
-    terms: Aceito os
+    terms: Eu aceito
   spaces:
     capacity: Número de pessoas
     day_price: Preço por dia
@@ -564,7 +564,7 @@ German ': Português
       conference_room: Sala de conferências
       fixed_desk: Secretária dedicada
       home_office: Escritório doméstico
-      hot_desk: Hot Desk
+      hot_desk: Secretária de uso alternado
       meeting_room: Sala de reuniões
       private_office: Gabinete privado
   users:
