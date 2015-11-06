@@ -1,4 +1,9 @@
 on_load = ->
+  fbLogin = $('#invisible').data('fblogin');
+  if typeof fbLogin == 'boolean'
+    if fbLogin
+      $(".fb-login-button").hide();
+      $(".section-separator").hide();
   load
     controllers:
       registrations: ["new"]
