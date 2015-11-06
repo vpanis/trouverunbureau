@@ -42,8 +42,17 @@ on_load = ->
       }
       $('.lock-popover').popover(options)
 
+    initializeInputs = ->
+      $('#mangopay_collection_account_iban').bind 'cut copy paste', (e) ->
+        e.preventDefault()
+        return
+      $('#mangopay_collection_account_bic').bind 'cut copy paste', (e) ->
+        e.preventDefault()
+        return
+
     initializePopovers()
     initializeListeners()
+    initializeInputs()
     if $('.verifying').length
       show_spinner()
       setInterval (->
