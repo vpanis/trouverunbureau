@@ -53,6 +53,7 @@ class MangopayCollectionAccount < ActiveRecord::Base
       :bic, :sort_code, :bank_name, :institution_number, :branch_code, :bank_country
     ])
     json[:account_number] = account_number if account_number.present?
+    json['bic'] = json['bic'].delete(' ')
     json[:iban] = iban if iban.present?
     json
   end

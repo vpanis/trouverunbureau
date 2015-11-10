@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, LogoUploader
 
   # Enums
-  LANGUAGES = [:en, :fr, :de]
+  LANGUAGES = [:en, :fr, :de, :es, :pt]
   GENDERS = [:f, :m]
   SUPPORTED_NATIONALITIES = Country.all.map { |c| c[1] }
 
@@ -62,11 +62,8 @@ class User < ActiveRecord::Base
     def from_omniauth(auth)
       user_found = where('email = :email OR (provider = :provider AND uid = :uid)',
                          email: auth.info.email, provider: auth.provider, uid: auth.uid).first
-      if user_found.nil?
-        create_provider_user(auth)
-      else
-        add_provider_if_necessary(user_found, auth)
-      end
+      return create_provider_user(auth) if user_found.nil?
+      add_provider_if_necessary(user_found, auth)
     end
 
     private
@@ -75,14 +72,15 @@ class User < ActiveRecord::Base
       new(provider: auth.provider, uid: auth.uid, first_name: auth.info.first_name,
           email: auth.info.email, password: Devise.friendly_token[0, 20],
           last_name: auth.info.last_name,
-          date_of_birth: Date.strptime(auth.extra.raw_info.birthday, '%m/%d/%Y'))
+          date_of_birth: Date.strptime(auth.extra.raw_info.birthday, '%m/%d/%Y'),
+          remote_avatar_url: auth.info.image.gsub('http://', 'https://'))
     end
 
     def add_provider_if_necessary(user, auth)
       return user unless user.provider != auth.provider || user.uid != auth.uid
-
       # add the provider and uid if necessary
       user.update_attributes(provider: auth.provider, uid: auth.uid)
+      user
     end
   end
 
