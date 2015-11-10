@@ -8,6 +8,7 @@
 div.section-header
   h2
     span #{t('session.signup')}
+#invisible data-fblogin= "#{@new_user_from_facebook}"
 div
   .fb-login-button
     = link_to user_omniauth_authorize_path(:facebook)
@@ -70,6 +71,7 @@ div
         = t('session.signup')
       = f.hidden_field :provider
       = f.hidden_field :uid
+      = f.hidden_field :remote_avatar_url
       = f.submit t('session.signup'), class: 'hidden'
   div.form-footer
     div.left

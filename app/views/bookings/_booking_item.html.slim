@@ -34,7 +34,7 @@
     - if can_view_receipt?(booking, own)
       = link_to t('bookings.view_receipt'), receipts_booking_path(booking), class: 'receipt'
     - if can_cancel?(booking, own)
-      a.cancel href="#" = t('bookings.cancel')
+      = link_to t('bookings.cancel'), cancel_paid_booking_booking_path(booking, from_cancel: params[:action]), method: 'put', class: 'cancel'
     - if can_delete?(booking, own)
       a.delete href="#" = t('bookings.delete')
     - if can_claim_deposit?(booking)

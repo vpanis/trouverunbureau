@@ -102,16 +102,16 @@ en:
     confirmations:
       confirmed: Your email address has been successfully confirmed.
       send_instructions: You will receive an email with instructions for how to confirm your email address in a few minutes.
-      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions on how to confirm your email address."
+      send_paranoid_instructions: If your email address exists in our database, you will receive an email with instructions on how to confirm your email address.
     failure:
       already_authenticated: You are already signed in.
       inactive: Your account is not activated yet.
       invalid: Invalid email or password.
     omniauth_callbacks:
-      failure: "Could not log you in you via %{kind} because %{reason}."
-      success: "Successfully logged in via %{kind} account."
+      failure: Could not log you in you via %{kind} because "%{reason}".
+      success: Successfully logged in via %{kind} account.
     passwords:
-      no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
+      no_token: You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided.
       updated_not_active: Your password has been changed successfully.
     sessions:
       already_signed_out: Signed out successfully.
@@ -140,12 +140,12 @@ en:
     account_number: Account Number
     account_type: Account Type
     funds: Funds transferred on
-    payout: "According to the cancellation terms, you will receive a payment of %{currency_sym} %{amount}"
-    refund: "According to the cancellation terms, you will receive a refund of %{currency_sym} %{amount}"
+    payout: According to the cancellation terms, you will receive a payment of %{currency_sym} %{amount}
+    refund: According to the cancellation terms, you will receive a refund of %{currency_sym} %{amount}
     sorry_cancel: Sorry to see you had to cancel your booking of
     subject: 'Guest Cancellation - Booking #%{booking_id}'
     transferred: Transferred to
-    unfortunately: "Unfortunately your guest, %{name}, had to cancel the booking with you for"
+    unfortunately: Unfortunately your guest, %{name}, had to cancel the booking with you for
   guest_review_email:
     at: at
     check_in: Check-In
@@ -159,16 +159,16 @@ en:
   home:
     features:
       easy:
-        text: "With one click book your workspace using your credit card. No more contract negotiations, wiring funds and paying deposits directly to landlords."
+        text: With one click book your workspace using your credit card. No more contract negotiations, wiring funds and paying deposits directly to landlords.
         title: It’s Easy
       flexibility:
-        text: "Wherever, whenever book individual workspaces, private offices or meeting rooms for a couple of hours, a day, a month or more."
+        text: Wherever, whenever book individual workspaces, private offices or meeting rooms for a couple of hours, a day, a month or more.
         title: Flexibility
       networking:
         text: DeskSpotting helps you find inspiring workplaces based on your professional interests.
         title: Networking
       no_fees:
-        text: "Find your workspace, book it and get on with your business."
+        text: Find your workspace, book it and get on with your business.
         title: No fees
       subtitle: Why DeskSpotting?
       title: Features
@@ -190,21 +190,21 @@ en:
       find: Find
       search_text: Where do you want your Desk?
       subtitle: Book unique offices or meeting rooms where and when you need them.
-      title: Your office. Wherever. Whenever.
+      title: Much more than office
     list_space:
-      content: "Have extra workspace and want to make the most of it? List on DeskSpotting and let your space earn you money, meet interesting people and reduce your fixed costs. You decide when and with whom you share your space. There is no obligation and no fee to list."
+      content: Have extra workspace and want to make the most of it? List on DeskSpotting and let your space earn you money, meet interesting people and reduce your fixed costs. You decide when and with whom you share your space. There is no obligation and no fee to list.
       learn_more: Learn More
       title: List your space!
     list_your_space: List your space
     manage_your_venues: Manage your venues
     profile: Profile
     quotes:
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       subtitle: Lorem ipsum dolor sit amet
-      title: quotes
+      title: Quotes
     sign_in: Log in
     your_space:
-      description: "Looking for a cool place to work for you or your team in your home city? Need a place to work or meet with clients? Let DeskSpotting help you find great workplaces that meet your needs - whenever, wherever."
+      description: Looking for a cool place to work for you or your team in your home city? Need a place to work or meet with clients? Let DeskSpotting help you find great workplaces that meet your needs - whenever, wherever.
       see_all: See all
       subtitle: Everyone should have an inspiring workspace
       tabs:
@@ -218,8 +218,8 @@ en:
     check_in: Check-In
     check_out: Check-Out
     date: Date
-    refund_guest: "According to the cancellation terms, you will receive a refund of %{currency_sym} %{amount}"
-    refund_host: "According to the cancellation terms, your guest will receive a refund of %{currency_sym} %{amount}"
+    refund_guest: According to the cancellation terms, you will receive a refund of %{currency_sym} %{amount}
+    refund_host: According to the cancellation terms, your guest will receive a refund of %{currency_sym} %{amount}
     sorry_cancel: Sorry to see you had to cancel the booking of
     space: Workspace
     spaces: Workspaces
@@ -227,7 +227,7 @@ en:
     terms1: If you have any questions about our
     terms2: feel free to read
     terms_of_service: our terms of service
-    unfortunately: "Unfortunately your host, %{name}, had to cancel the booking with you for"
+    unfortunately: Unfortunately your host, %{name}, had to cancel the booking with you for
   host_review_email:
     checked_in: has Checked-in at
     rate_guest: Rate your guest
@@ -244,7 +244,7 @@ en:
     info_client_deposit: It will be held in escrow account and then reimbursed to you 72 hours after check-out
     info_client_space_rental: The amount of the space booking will be held in an escrow account until check-in
     info_deposit: It will be held in an escrow until 72 hours after the guest's check-out
-    info_fee: "For all bookings of a month or less the Service Fee is 20%. For all bookings of more than 1 month the Service Fee is 10% as of the second month. For all month to month bookings, the service fee is 5% as of when the minimum time frame required by the host has past (cannot exceed 4 months)."
+    info_fee: For all bookings of a month or less the Service Fee is 20%. For all bookings of more than 1 month the Service Fee is 10% as of the second month. For all month to month bookings, the service fee is 5% as of when the minimum time frame required by the host has past (cannot exceed 4 months).
     info_space_rental: The amounts paid by the Guest are held in an escrow until check-in. Up to 24 hours later the relevant amounts are transferred to your account
     inquiry: Inquiry
     messages: Messages
@@ -272,6 +272,7 @@ en:
     et: Estonian
     eu: Basque
     fa: Persian
+    'false': Norwegian
     fi: Finnish
     fj: Fijian
     fr: Français
@@ -347,7 +348,7 @@ en:
     paid: The booking has been paid.
     payment_verification: We are verifying the payment.
     pending_authorization: The booking needs the Host's confirmation.
-    pending_payment: "Booking approved. Pending confirmation. This booking will be held for 24hs. If you don't confirm in that time frame, it will be cancelled."
+    pending_payment: Booking approved. Pending confirmation. This booking will be held for 24hs. If you don't confirm in that time frame, it will be cancelled.
     refunding: The money has been refunded.
   new_message_email:
     got_new_message: Got a new message from
@@ -402,7 +403,7 @@ en:
     spaces: Spaces
     type: Type
     used_credit_card: credit card used
-    welcome: "Hello %{name}. It's payment time!"
+    welcome: Hello %{name}. It's payment time!
   payment_methods:
     account_number: Account number
     address: Address
@@ -480,7 +481,7 @@ en:
     dont_worry: Don't worry it happens to us too!
     forgot_password: It looks like you forgot your DeskSpotting password.
     new_password: Simply create a new password and you'll be back in business in no time.
-    not_request: "If you did not make this request, all good, just disregard this email and your password will stay the same."
+    not_request: If you did not make this request, all good, just disregard this email and your password will stay the same.
     stay_same: Your email and password will remain the same.
     this_link: Change password
   reviews:
@@ -489,7 +490,7 @@ en:
     comment: Comment (The review will be seen only by other hosts)
     date: Date
     guest_review: Guest review
-    rate_space: "Rate %{space} of %{venue}"
+    rate_space: Rate %{space} of %{venue}
     space_review: Space review
     spaces: Spaces
   search:
@@ -552,7 +553,7 @@ en:
     per_day: Per day
     per_hour: Per hour
     per_month: Per month
-    pricing_in: "Pricing in %{currency}"
+    pricing_in: Pricing in %{currency}
     quantity: Number of spaces
     space_photos: Space photos
     type: Workspace type
@@ -605,7 +606,7 @@ en:
     nationality: Nationality
     optional_fields: Optional fields
     organization_members: Organization Members
-    owner: Manager
+    owner: Owner
     phone: Phone Number
     profession: Profession
     required_fields: Required fields
