@@ -59,6 +59,8 @@
       font-size: 13px;
       letter-spacing: 0.14rem;
       color: $desk-black;
+      height: 15px;
+      overflow: hidden;
       &:hover{
         color: $desk-black;
       }

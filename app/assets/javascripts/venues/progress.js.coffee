@@ -36,10 +36,10 @@ on_load = ->
       $('.progress-counter').text(percentage + '%')
       if percentage == "100"
         $('.status-text span').text('Complete')
-        $('.status-text span').css('color: green;')
+        $('.status-text span').css('color', 'green')
       else
         $('.status-text span').text('Incomplete')
-        $('.status-text span').css('color: red;')
+        $('.status-text span').css('color','red')
 
     canPublish = (stepsStatus) ->
       publishEnabled = stepsStatus.first_step && stepsStatus.second_step && stepsStatus.third_step &&

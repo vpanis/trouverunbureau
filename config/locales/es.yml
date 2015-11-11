@@ -355,7 +355,7 @@ es:
     hi: Hola
     reply: O contesta directamente en este correo electrónico.
     subject: 'Tienes un nuevo mensaje - Reserva #%{booking_id}'
-    team: El equipo DeskSpotting
+    team: Equipo DeskSpotting
     view_on_deskspotting: Ver en DeskSpotting
   new_space:
     list_new_space: Publica un nuevo espacio de trabajo

@@ -355,7 +355,7 @@ fr:
     hi: Bonjour
     reply: Ou répondez directement via email
     subject: Vous avez un nouveau message - Réservation %{booking_id}
-    team: L'Équipe DeskSpotting
+    team: DeskSpotting Équipe
     view_on_deskspotting: Visualisez sur DeskSpotting
   new_space:
     list_new_space: Publiez un nouveau poste
@@ -764,3 +764,9 @@ fr:
     month: mois
     no_favourites: Vous n'avez pas de poste favori
     week: semaine
+  en_languages :
+    es: Español
+    pt: Português
+    en: English
+    fr: Français
+    de: Deutsch

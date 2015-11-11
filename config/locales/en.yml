@@ -355,7 +355,7 @@ en:
     hi: Hi
     reply: Or reply directly in this e-mail.
     subject: 'You have a new message - Booking #%{booking_id}'
-    team: The DeskSpotting Team
+    team: Team DeskSpotting
     view_on_deskspotting: View on DeskSpotting
   new_space:
     list_new_space: List new workspace
@@ -764,3 +764,9 @@ en:
     month: month
     no_favourites: You don't have any wish listed spaces
     week: week
+  en_languages :
+    es: Español
+    pt: Português
+    en: English
+    fr: Français
+    de: Deutsch

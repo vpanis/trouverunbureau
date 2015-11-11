@@ -1,4 +1,4 @@
-== content_for :meta_tag do
+/== content_for :meta_tag do
   - case params[:s_type]
     - when "0"
       title #{t('spaces.zero.meta.title')}
@@ -76,8 +76,7 @@
                   .carousel-inner role="listbox"
                     .no-photos ng-if="space.photos.length == 0"
                     a.item ng-href="/venues/{{space.venue_id}}?space_id={{space.id}}" ng-class="{active: $index == 0}" ng-repeat=("photo in space.photos track by $index")
-                      .full-image
-                        img.full ng-src="{{photo}}"
+                      .full-image style="background: url({{photo}}) no-repeat center center;background-size:cover;"
                   a.left.carousel-control data-slide="prev" href="#space-carousel-{{space.id}}" role="button" ng-hide="space.photos.length < 2"
                     span.glyphicon.left-carousel-arrow aria-hidden="true"
                   a.right.carousel-control data-slide="next" href="#space-carousel-{{space.id}}" role="button" ng-hide="space.photos.length < 2"
