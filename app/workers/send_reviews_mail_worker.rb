@@ -18,13 +18,12 @@ class SendReviewsMailWorker
       .joins('INNER JOIN spaces ON spaces.id = bookings.space_id')
       .joins('INNER JOIN venues ON venues.id = spaces.venue_id')
       .joins('INNER JOIN time_zones ON time_zones.id = venues.time_zone_id')
-      .where("state IN (:states) AND (((bookings.from + (interval '1 second' *
-        time_zones.seconds_utc_difference)) BETWEEN :t1 AND :t2) OR ((bookings.to +
-        (interval '1 second' * time_zones.seconds_utc_difference)) BETWEEN :t1 AND :t2))",
-             states: [Booking.states[:paid], Booking.states[:cancelled], Booking.states[:denied]],
-             t1: Time.current.advance(hours: (hours_from_check_in_out + 1) * (-1)),
+      .where("state IN (:states) AND ((bookings.to -
+        (interval '1 second' * time_zones.seconds_utc_difference)) BETWEEN :t1 AND :t2)",
+             states: [Booking.states[:paid]],
+             t1: Time.current.advance(hours: (hours_from_check_in_out) * (-1)),
              # second less because BETWEEN includes both dates
-             t2: Time.current.advance(hours: hours_from_check_in_out * (-1)), seconds: -1)
+             t2: Time.current)
   end
 
   def hours_from_check_in_out
