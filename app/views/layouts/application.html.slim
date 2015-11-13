@@ -10,7 +10,7 @@ html
     = csrf_meta_tags
     style
 
-  body ng-app="deskSpotting" data-controller="#{controller.controller_name}" data-action="#{controller.action_name}"
+  body ng-app="deskSpotting" language="#{I18n.locale}" data-controller="#{controller.controller_name}" data-action="#{controller.action_name}"
     = render 'layouts/staging_alert'
     .main-container
       = render 'shared/menu_bar'

@@ -10,7 +10,7 @@
         li.clear-filters ng-if="filters.length > 0" ng-click=("removeFilterAll()")
           p.filter-name = t('search.clear_filters')
         li ng-repeat=("filter in filters")
-          p.filter-name() {{filter}}
+          p.filter-name() {{filter | translate}}
           .filter-delete.delete-lang ng-click=("removeFilter(filter)")
 
     .col-md-2.col-sm-3.open-filters-button
@@ -29,7 +29,7 @@
           li.clear-filters ng-if="filters.length > 0" ng-click=("removeFilterAll()")
             p.filter-name = t('search.clear_filters')
           li ng-repeat=("filter in filters")
-            p.filter-name() {{filter}}
+            p.filter-name() {{filter | translate}}
             .filter-delete.delete-lang ng-click=("removeFilter(filter)")
 
 

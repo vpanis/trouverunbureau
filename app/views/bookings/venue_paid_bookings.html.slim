@@ -3,8 +3,8 @@
 .booking.container
   .row.margin-top
     .btn-group role="group"
-      = link_to('your bookings', paid_bookings_bookings_path, class: 'button btn btn-default')
-      = link_to('venue bookings', venue_paid_bookings_bookings_path, class: 'button btn btn-default active')
+      = link_to(t('bookings.your_bookings'), paid_bookings_bookings_path, class: 'button btn btn-default')
+      = link_to(t('bookings.venue_bookings'), venue_paid_bookings_bookings_path, class: 'button btn btn-default active')
     = form_tag venue_paid_bookings_bookings_path, method: 'get', style: 'display: inline', id: 'venue_selector' do |f|
       = select_tag :venue_id, options_from_collection_for_select(@venues, :id, :name, @venue_id), {prompt: t('bookings.all_venues')}
       = submit_tag "filter", name: nil, class: 'hidden'
