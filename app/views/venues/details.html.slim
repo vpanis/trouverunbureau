@@ -8,8 +8,8 @@
     = render 'venue_heading', subtitle: nil
     = form_for @venue, url: {action: "details"} do |f|
       .form-group.col-md-12 class=(@venue.errors.messages[:description].present? ? 'has-error' : '')
-        label.required 
-          | t('venues.edit.description')
+        label.required
+          = t('venues.edit.description')
         = f.text_area :description, class: 'form-control'
         - if @venue.errors.messages[:description].present?
           label
