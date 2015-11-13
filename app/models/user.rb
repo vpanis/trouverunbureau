@@ -129,7 +129,7 @@ class User < ActiveRecord::Base
     self.quantity_reviews ||= 0
     self.reviews_sum ||= 0
     self.rating ||= 0
-    self.settings = default_settings if self.settings.empty?
+    self.settings = default_settings if settings.empty?
   end
 
   def each_languages_spoken_inclusion
