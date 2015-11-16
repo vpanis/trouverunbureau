@@ -215,4 +215,4 @@
         .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6.message-wrapper
           = link_to t('booking_inquiry.back'), venue_path(@space.venue), class: "rounded-btn btn-inquiry-back uppercase"
         .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6.message-wrapper
-          input type="submit" value="#{t('booking_inquiry.send_inquiry')}" class="rounded-btn yellow-fill btn-inquiry-send uppercase" ng-click="submit_form()"
+          input type="submit" value="#{t('booking_inquiry.send_inquiry')}" class="rounded-btn yellow-fill btn-inquiry-send uppercase" ng-click="mixpanel.track('Book Inquiry', {'Country': 'France','City': 'Paris','ID': 34,'Time Frame': 'Per Day','Fee': '€300'});submit_form()"

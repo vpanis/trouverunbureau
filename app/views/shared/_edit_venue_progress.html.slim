@@ -31,4 +31,4 @@
         p = t('edit_venue_progress.spaces')
   = form_tag publish_venue_path(venue), id: 'publish-venue' do |f|
     .publish#publish-container
-      = submit_tag t('edit_venue_progress.publish'), class: 'rounded-btn grey-fill width-100'
+      = submit_tag t('edit_venue_progress.publish'), class: 'rounded-btn grey-fill width-100', :onclick => "mixpanel.track('Publish Venue');"

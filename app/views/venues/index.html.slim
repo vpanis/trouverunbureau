@@ -1,3 +1,7 @@
+==content_for :mo_events do
+  javascript:
+    mixpanel.track("Navigation: Manage your Venues");
+
 = render 'shared/profile_menu_bar', selected: 'venues'
 
 #venue-list.container.margin-top

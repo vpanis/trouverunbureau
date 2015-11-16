@@ -255,10 +255,6 @@ de:
     total_payout: Auszahlungssumme
     total_rental: Buchungssumme
     write_message: Eine Nachricht schreiben
-  en_languages :
-      en : English
-      fr: Français
-      de: languages
   languages:
     af: Afrikaans
     ar: Arabisch
@@ -769,3 +765,9 @@ de:
     month: Monat
     no_favourites: Sie haben keine Wish List-Arbeitsräume
     week: Woche
+  en_languages :
+    es: Español
+    pt: Português
+    en: English
+    fr: Français
+    de: Deutsch

@@ -764,3 +764,9 @@ es:
     month: mes
     no_favourites: 'No tienes todavía lugares en tu wish lists '
     week: semana
+  en_languages :
+    es: Español
+    pt: Português
+    en: English
+    fr: Français
+    de: Deutsch

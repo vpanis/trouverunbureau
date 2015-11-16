@@ -55,6 +55,11 @@
       meta property="og:description" content="#{t('spaces.meta.og.description')}"
       meta name="twitter:title" content="#{t('spaces.meta.twitter.title')}"
       meta name="twitter:description" content="#{t('spaces.meta.twitter.description')}"
+
+==content_for :mo_events do
+  javascript:
+    mixpanel.track("Navigation: Venue Search");
+
 .space-search.container-fluid
   .row#controller ng-controller="SearchCtrl" data-marker-icon=image_url('pin_negro.svg') data-active-marker-icon=image_url('venue_profile_pin_map.svg')
     #map-canvas.venue-map-container.col-lg-4.col-md-3.hidden-sm.hidden-xs

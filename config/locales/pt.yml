@@ -766,3 +766,9 @@ pt:
     month: mês
     no_favourites: Não tem quaisquer espaços na wish list
     week: semana
+  en_languages :
+    es: Español
+    pt: Português
+    en: English
+    fr: Français
+    de: Deutsch

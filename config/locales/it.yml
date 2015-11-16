@@ -732,3 +732,9 @@ it:
     subject: 'Deskspotting Contact'
     success: 'Thank you for your message!'
     error: 'Cannot send message. Please try later.'
+  en_languages :
+    es: Español
+    pt: Português
+    en: English
+    fr: Français
+    de: Deutsch
