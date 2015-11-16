@@ -3,6 +3,7 @@ class MangopayPayment < ActiveRecord::Base
   has_one :receipt, as: :payment
   has_many :mangopay_payouts
   belongs_to :user_paying, class_name: 'User'
+  belongs_to :mangopay_credit_card
 
   TRANSACTION_STATUSES = %w(EXPECTING_RESPONSE PAYIN_SUCCEEDED PAYIN_FAILED PAYIN_CREATED)
 
