@@ -1,6 +1,6 @@
 class MangopayCollectionAccount < ActiveRecord::Base
   # Relations
-  has_one :venue
+  has_one :venue, as: :collection_account
 
   attr_accessor :account_number, :iban, :basic_info_only, :update_user_only
 

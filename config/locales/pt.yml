@@ -410,7 +410,6 @@ pt:
     address: Morada
     bank_country: País de operação do banco
     bank_name: Nome do banco
-    bic_iban_tooltip: 
     branch_code: Código do balcão
     business: Negócio
     country_of_residence: País de residência

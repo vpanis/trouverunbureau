@@ -21,6 +21,9 @@ module Payments
     def save_payment(date_i)
       @mangopay_payment.update_attributes(transaction_status: 'PAYIN_SUCCEEDED',
                                           notification_date_int: date_i)
+      @mangopay_payment.mangopay_credit_card.update_attributes(already_paid: true) unless
+        @mangopay_payment.mangopay_credit_card.nil? ||
+        @mangopay_payment.mangopay_credit_card.already_paid
       BookingManager.change_booking_status(
         @mangopay_payment.user_paying, @mangopay_payment.booking, Booking.states[:paid])
       notify

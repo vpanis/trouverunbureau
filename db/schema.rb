@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150703091134) do
+ActiveRecord::Schema.define(version: 20151112234153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -178,6 +178,7 @@ ActiveRecord::Schema.define(version: 20150703091134) do
     t.string   "registration_id"
     t.datetime "registration_expiration_date"
     t.text     "error_message"
+    t.boolean  "already_paid",                 default: false
   end
 
   add_index "mangopay_credit_cards", ["mangopay_payment_account_id"], name: "index_mangopay_credit_cards_on_mangopay_payment_account_id", using: :btree
@@ -211,8 +212,10 @@ ActiveRecord::Schema.define(version: 20150703091134) do
     t.integer  "deposit_amount_in_wallet"
     t.datetime "next_payout_at"
     t.string   "error_code"
+    t.integer  "mangopay_credit_card_id"
   end
 
+  add_index "mangopay_payments", ["mangopay_credit_card_id"], name: "index_mangopay_payments_on_mangopay_credit_card_id", using: :btree
   add_index "mangopay_payments", ["transaction_id"], name: "index_mangopay_payments_on_transaction_id", unique: true, using: :btree
   add_index "mangopay_payments", ["user_paying_id"], name: "index_mangopay_payments_on_user_paying_id", using: :btree
 

@@ -47,7 +47,7 @@ de:
       expired: Abgelaufen
       new: Neu
       paid: Bezahlt
-      payment_verification: "Überprüfung"
+      payment_verification: Überprüfung
       pending_authorization: Ausstehend
       pending_payment: Bestätigt
       refunding: Rückzahlung

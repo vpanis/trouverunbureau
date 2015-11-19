@@ -10,23 +10,23 @@
       = f.hidden_field :venue_id, class: 'form-control'
       = hidden_field_tag 'previous_page', @previous_page
       .form-group.col-md-12#space-name-input
-        label #{t('space.name')}
+        label #{t('spaces.name')}
         = f.text_field :name, class: 'form-control', required: true
       .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
-        label = t('space.type')
+        label = t('spaces.type')
         = f.select(:s_type, @space_types_options, {include_blank: false, required: true}, {class: 'form-control space-types-select'})
 
       .form-group.col-md-3#space-capacity-input class=(@space.errors.messages[:capacity].present? ? 'has-error' : '')
         .icon.info.pointer#capacity-popover data-content=t('spaces.info_capacity') data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
-        label #{t('space.capacity')}
+        label #{t('spaces.capacity')}
         = f.number_field :capacity, class: 'form-control', required: true, min: 1
       .form-group.col-md-3#space-quantity-input class=(@space.errors.messages[:quantity].present? ? 'has-error' : '')
         .icon.info.pointer#quantity-popover data-content=t('spaces.info_quantity') data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
-        label #{t('space.quantity')}
+        label #{t('spaces.quantity')}
         = f.number_field :quantity, class: 'form-control', required: true, min: 1
       .form-group.col-md-12#space-description-input class=(@space.errors.messages[:description].present? ? 'has-error' : '')
         .icon.info.pointer#description-popover data-content=t('spaces.info_description') data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
-        label #{t('space.description')}
+        label #{t('spaces.description')}
         = f.text_area :description, class: 'form-control'
       .pictures.col-md-12
         .subtitle.row
