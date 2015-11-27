@@ -1,5 +1,4 @@
 fr:
-  'German ': Français
   booking_inquiry:
     back: Retour
     check_in: Check-In
@@ -129,6 +128,11 @@ fr:
     spaces: Postes
     status: Statut
     venue: Espace
+  en_languages:
+    de: Deutsch
+    en: English
+    es: Español
+    fr: Français
   errors:
     email_taken: Cet email est déjà inscrit
     messages:
@@ -231,7 +235,7 @@ fr:
   host_review_email:
     checked_in: a effectué le Check-In de
     rate_guest: Notez le visiteur
-    subject: 'Donez votre avis - Espace #%{venue_id}'
+    subject: 'Donnez votre avis - Espace #%{venue_id}'
     your_guest: Votre visiteur
   inbox:
     approve: Accepter
@@ -305,7 +309,7 @@ fr:
     'no': Norvégien
     pa: Pendjabi
     pl: Polonais
-    pt: Portuguais
+    pt: Portugais
     qu: Quechua
     ro: Roumain
     ru: Russe
@@ -355,7 +359,7 @@ fr:
     hi: Bonjour
     reply: Ou répondez directement via email
     subject: Vous avez un nouveau message - Réservation %{booking_id}
-    team: DeskSpotting Équipe
+    team: L'Équipe DeskSpotting
     view_on_deskspotting: Visualisez sur DeskSpotting
   new_space:
     list_new_space: Publiez un nouveau poste
@@ -409,6 +413,7 @@ fr:
     address: Adresse
     bank_country: Pays banque
     bank_name: Nom de la banque
+    bic_iban_tooltip: 
     branch_code: Branch code
     business: Entreprise
     country_of_residence: Pays de résidence
@@ -508,6 +513,7 @@ fr:
     show_filters: Afficher les postes
     teams: Equipes
     workspace: Postes de travail
+  select_country: 
   session:
     already_registered: Déjà inscrit
     change_password: Changez de mot de passe
@@ -538,7 +544,7 @@ fr:
     capacity: Nombre de personnes
     day_price: Prix par jour
     deposit: Caution
-    description: Description
+    description: Description de l'espace
     edit_your_space: Modifiez votre poste
     hour_price: Prix par heure
     info_capacity: Combien de personnes peuvent travailler à ce poste?
@@ -764,9 +770,3 @@ fr:
     month: mois
     no_favourites: Vous n'avez pas de poste favori
     week: semaine
-  en_languages :
-    es: Español
-    pt: Português
-    en: English
-    fr: Français
-    de: Deutsch

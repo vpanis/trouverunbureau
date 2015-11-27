@@ -1,8 +1,7 @@
 en:
-  'German ': English
   booking_inquiry:
     back: Back
-    check_in: Check-in
+    check_in: Check-In
     check_out: Check-Out
     date: Date
     day: Day
@@ -129,6 +128,11 @@ en:
     spaces: Workspaces
     status: Status
     venue: Venue Details
+  en_languages:
+    de: Deutsch
+    en: English
+    es: Español
+    fr: Français
   errors:
     email_taken: The user already exists
     messages:
@@ -275,7 +279,7 @@ en:
     'false': Norwegian
     fi: Finnish
     fj: Fijian
-    fr: Français
+    fr: French
     ga: Irish
     gu: Gujarati
     he: Hebrew
@@ -355,7 +359,7 @@ en:
     hi: Hi
     reply: Or reply directly in this e-mail.
     subject: 'You have a new message - Booking #%{booking_id}'
-    team: Team DeskSpotting
+    team: The DeskSpotting Team
     view_on_deskspotting: View on DeskSpotting
   new_space:
     list_new_space: List new workspace
@@ -409,6 +413,7 @@ en:
     address: Address
     bank_country: Bank country
     bank_name: Bank name
+    bic_iban_tooltip: To ensure proper processing of your payment details please do not copy and paste them in this field.
     branch_code: Branch code
     business: Business
     country_of_residence: Country of residence
@@ -508,6 +513,7 @@ en:
     show_filters: Show listings
     teams: Teams
     workspace: Workspace
+  select_country: Select Country
   session:
     already_registered: Already registered?
     change_password: Change Password
@@ -764,9 +770,3 @@ en:
     month: month
     no_favourites: You don't have any wish listed spaces
     week: week
-  en_languages :
-    es: Español
-    pt: Português
-    en: English
-    fr: Français
-    de: Deutsch

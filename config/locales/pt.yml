@@ -1,5 +1,4 @@
-pt:
-  German ': Português
+pt-PT:
   booking_inquiry:
     back: Retroceder
     check_in: Check-in
@@ -54,7 +53,7 @@ pt:
     venue_bookings: Lugares Reservados
     view_receipt: Ver Recibo
     your_bookings: As Suas Reservas
-  calendar: dd-mm-aa
+  calendar: dd-mm-aaaa
   commons:
     add: Adicionar
     add_image: Adicionar foto
@@ -129,6 +128,11 @@ pt:
     spaces: Espaços de trabalho
     status: Estado
     venue: Detalhes do Espaço
+  en_languages:
+    de: Deutsch
+    en: 
+    es: 
+    fr: 
   errors:
     email_taken: Utilizador já existente
     messages:
@@ -205,12 +209,12 @@ pt:
     sign_in: Iniciar sessão
     your_space:
       description: Procura um sítio fantástico para si e a sua equipa na vossa cidade? Precisa de um local para trabalhar ou reunir com clientes? O DeskSpotting ajuda-o a encontrar excelentes espaços de trabalho que vão ao encontro das suas necessidades - a qualquer hora, em qualquer lugar.
-      see_all: Ver tudo
-      subtitle: Todos merecem um posto de trabalho inspirador
+      see_all: Ver todos
+      subtitle: Todos merecem um espaço de trabalho inspirador
       tabs:
         featured: Em destaque
         trending: Cidades em voga
-        workspaces: Postos de trabalho
+        workspaces: Espaços de trabalho
       title: Encontre o seu espaço
       workspaces: Espaços de trabalho
   host_cancellation_email:
@@ -229,7 +233,7 @@ pt:
     terms_of_service: os nossos termos de serviço
     unfortunately: Infelizmente, o seu anfitrião, %{name}, teve de cancelar a sua reserva do
   host_review_email:
-    checked_in: fez Check-in em
+    checked_in: fez Check-In em
     rate_guest: Classificar o seu hóspede
     subject: 'Comentário do Anfitrião - Lugar #%{venue_id}'
     your_guest: O Seu Hóspede
@@ -410,6 +414,7 @@ pt:
     address: Morada
     bank_country: País de operação do banco
     bank_name: Nome do banco
+    bic_iban_tooltip: 
     branch_code: Código do balcão
     business: Negócio
     country_of_residence: País de residência
@@ -509,6 +514,7 @@ pt:
     show_filters: 'Mostrar espaços '
     teams: Equipas
     workspace: Espaço de trabalho
+  select_country: 
   session:
     already_registered: Já registado?
     change_password: Alterar palavra-passe
@@ -576,7 +582,7 @@ pt:
       i_want_to_receive: Quero receber
       outstanding_booking: O meu pedido de reserva em curso é aceite ou recusado.
       person_message: Recebi uma mensagem de outra pessoa no DeskSpotting.
-      you_can_disable: Pode desativar isto em qualquer altura.
+      you_can_disable: Pode desativar em qualquer altura.
     add_languages: Adicionar línguas
     change_picture: Alterar imagem
     company_name: Nome da empresa
@@ -765,9 +771,3 @@ pt:
     month: mês
     no_favourites: Não tem quaisquer espaços na wish list
     week: semana
-  en_languages :
-    es: Español
-    pt: Português
-    en: English
-    fr: Français
-    de: Deutsch

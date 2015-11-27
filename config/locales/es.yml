@@ -1,8 +1,7 @@
-es:
-  'German ': Español
+es-ES:
   booking_inquiry:
     back: Volver a atrás
-    check_in: Check-in
+    check_in: Check-In
     check_out: Check-Out
     date: Fecha
     day: Día
@@ -10,7 +9,7 @@ es:
     deposit: Fianza
     deskspotting_fee: Tarifas de DeskSpotting
     feature_1: Sin gastos de reserva.
-    feature_2: Depósitos bloqueados en cuenta de depósito en garantía.
+    feature_2: Fianzas bloqueadas en cuenta de depósito en garantía.
     feature_3: Reserva el tiempo que necesites.
     feature_4: Locales verificados.
     feature_5: Pagos seguros.
@@ -112,7 +111,7 @@ es:
       success: Sesión iniciada con éxito a través de tu cuenta %{kind}
     passwords:
       no_token: 'Solo puedes acceder a esta página a través de un correo electrónico de cambio de contraseña. Comprueba que has utilizado la URL completa que aparece en dicho correo. '
-      updated_not_active: Tu contraseña ha sido reestablecida con éxito.
+      updated_not_active: Tu contraseña ha sido restablecida con éxito.
     sessions:
       already_signed_out: Sesión finalizada.
       signed_in: Sesión iniciada.
@@ -129,6 +128,11 @@ es:
     spaces: Espacios de trabajo
     status: Estado
     venue: Detalles del local
+  en_languages:
+    de: Deutsch
+    en: English
+    es: Español
+    fr: Français
   errors:
     email_taken: 'Este usuario ya existe '
     messages:
@@ -183,7 +187,7 @@ es:
         en: eng
       more: más
       our_terms: Nuestros términos
-      privacy_policy: Política de privacicad
+      privacy_policy: Política de privacidad
       reserved_rights: 2015 DeskSpotting Limited. Todos los derechos reservados.
       terms_of_service: Términos de servicio
     header:
@@ -229,9 +233,9 @@ es:
     terms_of_service: nuestros términos de servicio
     unfortunately: Desgraciadamente tu anfitrión, %{name}, ha tenido que cancelar la reserva de
   host_review_email:
-    checked_in: 'hizo el Check-in a '
+    checked_in: hizo el Check-In a
     rate_guest: Evalúa a tu huésped
-    subject: 'Evaluación del anfitrión - Lugar #%{venue_id}'
+    subject: 'Evaluación del anfitrión - Local #%{venue_id}'
     your_guest: Tu huésped
   inbox:
     approve: Aprobar
@@ -244,8 +248,8 @@ es:
     info_client_deposit: Estará bloqueado en una cuenta de depósito en garantía y se reembolsará 72 horas después del check-out
     info_client_space_rental: El importe de la reserva estará bloqueado en una cuenta de depósito en garantía hasta el check-in
     info_deposit: Estará bloqueado en una cuenta de depósito en garantía hasta 72 horas después del check-out del huésped
-    info_fee: Para todas las reservas de un mes o menos la Tarifa de Servicio es del 20 %. Para todas las reservas de más de un mes la Tarifa de Servicio es del 10 % a partir del segundo mes. Para todas las reservas de mes a mes, la Tarifa de Servicio es del 5 % cuando expira el tiempo mínimo requerido por el anfitrión (4 meses como máximo).
-    info_space_rental: El importe pagado por el huésped está bloqueado en una cuenta de plica y será transferido como máximo 24 horas después del check-in.
+    info_fee: Para todas las reservas de un mes o menos la Tarifa de servicio es del 20 %. Para todas las reservas de más de un mes la Tarifa de servicio es del 10 % a partir del segundo mes. Para todas las reservas de mes a mes, la Tarifa de servicio es del 5 % cuando expira el tiempo mínimo requerido por el anfitrión (4 meses como máximo).
+    info_space_rental: El importe pagado por el huésped está bloqueado en una cuenta de depósito en garantía y será transferido como máximo 24 horas después del check-in.
     inquiry: 'Solicita '
     messages: Mensajes
     new_offer: Nueva oferta
@@ -332,13 +336,13 @@ es:
     account: Cuenta
     bookings: Reservas
     change_user: 'Usar DeskSpotting como:'
-    create_organization: Crear una organización
+    create_organization: Crear una cuenta de empresa
     inbox: Buzón
     messages: Buzón
     profile: Perfil
     search: Buscar
-    venues: Lugares
-    wishlist: Lista de deseos
+    venues: Locales
+    wishlist: Wish List
   messages:
     booking_change: La información sobre la reserva ha cambiado.
     cancelled: La reserva ha sido cancelada.
@@ -347,31 +351,31 @@ es:
     expired: Las 24 horas para pagar la reserva han expirado. La solicitud de reserva ha sido cancelada.
     paid: La reserva ha sido pagada.
     payment_verification: Estamos verificando el pago.
-    pending_authorization: La reserva necesita la confirmación del anfitrión.
-    pending_payment: La reserva ha sido aprobada. Esperando confirmación. Esta reserva será guardada durante 24 horas. Si no realizas la confirmación en este plazo, será cancelada.
+    pending_authorization: La reserva debe ser confirmada por el anfitrión.
+    pending_payment: La reserva ha sido aprobada. Esperando confirmación. Esta reserva será guardada durante 24 horas. Si no realizas la confirmación en ese plazo, será cancelada.
     refunding: El importe ha sido reembolsado.
   new_message_email:
     got_new_message: Tienes un nuevo mensaje de
     hi: Hola
-    reply: O contesta directamente en este correo electrónico.
+    reply: O contesta directamente a este correo electrónico.
     subject: 'Tienes un nuevo mensaje - Reserva #%{booking_id}'
-    team: Equipo DeskSpotting
+    team: El equipo DeskSpotting
     view_on_deskspotting: Ver en DeskSpotting
   new_space:
     list_new_space: Publica un nuevo espacio de trabajo
     save_to_add_photos: Guarda el espacio de trabajo para añadir fotos.
     space_photos: Fotos del espacio de trabajo
   organizations:
-    add_manager: Agregar Gerente
-    add_manager_action: Añadir gerente
+    add_manager: Añadir gestor
+    add_manager_action: Añadir gestor
     change_picture: Cambiar foto
-    create_profile: 'Crear una organización '
+    create_profile: Crear una cuenta de empresa
     create_title: Añadir título
     edit_profile: Editar perfil
     email: Correo electrónico
-    email_placeholder: gerente@ejemplo.com
-    members: Gerentes
-    members_subtitle: Designación de los gerentes
+    email_placeholder: gestor@ejemplo.com
+    members: Gestores
+    members_subtitle: Designación de los gestores
     name: Nombre
     phone: Teléfono
     required_fields: Campos obligatorios
@@ -409,6 +413,7 @@ es:
     address: Dirección
     bank_country: País del banco
     bank_name: Nombre del banco
+    bic_iban_tooltip: 
     branch_code: Código de sucursal
     business: Negocio
     country_of_residence: País de residencia
@@ -426,9 +431,9 @@ es:
     region: Región
     required_fundings: Campos bancarios obligatorios
     required_legal: Campos obligatorios del representante legal
-    routing_number: Código de identificación bancaria
+    routing_number: Número de ruta bancaria (EE. UU.)
     sort_code: Código de sucursal
-    ssn: Número de la Seguridad Social
+    ssn: Número de la Seguridad Social (EE. UU.)
     street: Dirección
     tax_id: Identificación fiscal
     type_of_account: Tipo de cuenta
@@ -439,7 +444,7 @@ es:
     card: Tarjeta
     check_in: Check-In
     check_out: Check-Out
-    commission: Comisión de servicio
+    commission: Tarifa de servicio
     confirmation_code: Código de confirmación
     country: País
     customer_title: Recibo de huésped
@@ -465,7 +470,7 @@ es:
     street_address: Dirección postal
     total_rental: Total reserva
     venue_host: Anfitrión
-    venue_name: Nombre del lugar
+    venue_name: Nombre del local
     venue_title: Recibo del anfitrión
     zip_code: Código postal
   receipt_email:
@@ -476,7 +481,7 @@ es:
     confirmation: "¡Invitación enviada!"
     invite_friends: Invitar amigos
     join: Invita a tus amigos a registrarse en DeskSpotting
-    text: Tus lugares tendrán más prioridad en los resultados de búsquedas cuantos más amigos tuyos se registren.
+    text: Cuantos más amigos invites y se registren en DeskSpotting, más prioridad tendrán tus locales en los resultados de búsqueda.
   reset_password_email:
     dont_worry: No te preocupes. ¡A nosotros también nos pasa!
     forgot_password: Parece que has olvidado tu contraseña de DeskSpotting.
@@ -508,6 +513,7 @@ es:
     show_filters: Mostrar anuncios
     teams: Equipos
     workspace: Espacio de trabajo
+  select_country: 
   session:
     already_registered: "¿Ya estás registrado?"
     change_password: Cambiar contraseña
@@ -523,7 +529,7 @@ es:
     keep_session: No cerrar sesión
     last_name: Apellido
     login: Iniciar sesión
-    login_here: Iniciar sesión aquí
+    login_here: Inicia sesión aquí
     logout: Cerrar sesión
     nationality: Nacionalidad
     not_registered: "¿No estás registrado?"
@@ -542,7 +548,7 @@ es:
     edit_your_space: 'Modifica tu espacio '
     hour_price: Precio por hora
     info_capacity: "¿Cuántas personas pueden trabajar en este espacio?"
-    info_deposit: Todas las fianzas se depositan en una cuenta de plica para garantizar la seguridad del huésped y del anfitrión
+    info_deposit: Todas las fianzas se depositan en una cuenta de depósito en garantía para garantizar la seguridad del huésped y del anfitrión
     info_description: Describe el espacio de trabajo y explica a tus huéspedes potenciales por qué es un buen espacio para trabajar
     info_photos: Cuanto mejores sean las fotos, más se interesarán por tu espacio. Comparte fotos que reflejen bien el ambiente general de tu espacio.
     info_pricing: Establece el precio al que deseas alquilar tu espacio durante distintos periodos de tiempo. Podrás modificarlo en cualquier momento según las circunstancias.
@@ -559,53 +565,53 @@ es:
     type: Tipo de espacio de trabajo
     types:
       all: Todos los espacios
-      communal_space: Espacio común
-      conference_room: Sala de conferencia
-      fixed_desk: Espacio de trabajo especializado
-      home_office: Home Office
+      communal_space: Espacio compartido
+      conference_room: Sala de conferencias
+      fixed_desk: Puesto Fijo
+      home_office: Despacho en casa
       hot_desk: Hot Desk
-      meeting_room: Sala de reunión
-      private_office: Oficina privada
+      meeting_room: Sala de reuniones
+      private_office: Despacho privado
   users:
-    about_me: Sobre mi
+    about_me: Sobre mí
     account:
-      account_changes: Cambio están hechos a mi cuenta o anuncio de DeskSpotting.
-      booking_inquiry: He recibido una solicitud de reserva.
-      email_notifications: 'Notificaciones por email '
-      i_want_to_receive: 'Quiero recibir '
-      outstanding_booking: Mi solicitud de reserva actual esta aceptada o rechazada.
-      person_message: Recibo un mensaje de una otra persona en DeskSpotting.
-      you_can_disable: Puedes inhabilitar esto a cualquier momento.
+      account_changes: Los cambios que se realicen a mi cuenta o anuncio de DeskSpotting.
+      booking_inquiry: Mensajes de advertencia cuando otro usuario me envíe una solicitud de reserva.
+      email_notifications: Notificaciones por correo electrónico
+      i_want_to_receive: Deseo recibir
+      outstanding_booking: Mensajes de advertencia cuando mi solicitud sea aceptada o rechazada.
+      person_message: Recibir mensajes de otras personas de DeskSpotting.
+      you_can_disable: Puedes inhabilitar esto en cualquier momento.
     add_languages: Añadir idiomas
-    change_picture: Cambiar de foto
-    company_name: Nombre de empresa
+    change_picture: Cambiar foto
+    company_name: Nombre de la empresa
     country_of_residence: País de residencia
     date_of_birth: Fecha de nacimiento
     edit_profile: Editar perfil
-    email: Email
-    emergency_contact: Contacto de Emergencia
-    emergency_email: Email
+    email: Correo electrónico
+    emergency_contact: Contacto de emergencia
+    emergency_email: Correo electrónico
     emergency_name: Nombre
-    emergency_phone: Numero de teléfono
-    emergency_relationship: Relacionamiento
-    enter_languages: Entrar los idiomas que hables
+    emergency_phone: Número de teléfono
+    emergency_relationship: Relación
+    enter_languages: Añade los idiomas que hablas
     first_name: Nombre
     gender: Sexo
     genders:
       f: Mujer
       m: Hombre
-    info_no_share: Compartiremos esta información con nadie
-    info_share_email: Compartiremos esta información con nadie
-    info_share_emergency: 'Solo compartiremos tu información de contacto de emergencia con anfitrión una vez que la reserva esta hecha. '
-    info_share_phone: 'Solo compartiremos tu numero de teléfono con un anfitrión/huésped una vez que la reserva esta hecha. '
-    info_share_street: solo compartiramos tu dirección con un huésped una vez que le reserva esta hecha
-    interests: 'Más sobre tus carrera  y profesión '
+    info_no_share: No compartiremos esta información con nadie
+    info_share_email: No compartiremos esta información con nadie
+    info_share_emergency: Solo compartiremos tu información de contacto de emergencia con un anfitrión cuando se realice una reserva.
+    info_share_phone: Solo compartiremos tu número de teléfono con un anfitrión/huésped cuando se realice una reserva.
+    info_share_street: Solo compartiremos tu dirección con un huésped cuando se realice una reserva.
+    interests: Más información sobre tu trayectoria y tu profesión
     language: Idioma
     last_name: Apellido
     location: Ciudad de residencia
     nationality: Nacionalidad
     optional_fields: Campos opcionales
-    organization_members: Número de empleados
+    organization_members: Miembros de la empresa
     owner: 'Proprietario '
     phone: Número de teléfono
     profession: Profesión
@@ -614,19 +620,19 @@ es:
     user_since: DeskSpotter  desde
   venues:
     amenities:
-      air_conditioning: aire acondicionado
-      cafe_restaurant: cafe/restaurante
-      chill_area: 'area de relajamiento '
-      cleaning_service: servicio de limpieza
-      concierge: conserje
-      conference_rooms: salas de conferencia
-      elevators: ascensor
-      fax: fax
-      gym: 'gimnasio '
-      individual_bookings: reservas individuales
-      info_team_bookings: Quieres hospedar a equipos en tu lugar?
-      kitchen: cocina
-      mail_service: servicio de correos
+      air_conditioning: Aire acondicionado
+      cafe_restaurant: Cafetería/restaurante
+      chill_area: "Área de relajación"
+      cleaning_service: Servicio de limpieza
+      concierge: Conserje
+      conference_rooms: Salas de conferencias
+      elevators: Ascensor
+      fax: Fax
+      gym: Gimnasio
+      individual_bookings: Reservas individuales
+      info_team_bookings: "¿Aceptarías que un equipo reservara tu local?"
+      kitchen: Cocina
+      mail_service: Servicio de correos
       outdoor_space: Espacio exterior
       parking: Aparcamiento
       pets_allowed: Se admiten mascotas
@@ -636,70 +642,70 @@ es:
       projector: Proyector
       reception_service: Servicio de recepción
       security: Seguridad
-      shower: ducha
-      team_bookings: reservas de equipo
-      tv: tv
-      water_fountain: fuente de agua
+      shower: Ducha
+      team_bookings: Reservas de equipo
+      tv: TV
+      water_fountain: Fuente de agua
       wheelchair_access: Acceso para sillas de ruedas
       whiteboards: Pizarras
       wifi: Wifi
     closed: Cerrado
     collection_account:
-      account_number: 'Numero de cuenta '
+      account_number: Número de cuenta
       business: 'Negocio '
-      date_of_birth: Fecha de Nacimiento
-      dba_name: Negociando Bajo el Nombre de
+      date_of_birth: Fecha de nacimiento
+      dba_name: Nombre comercial
       descriptor: Descriptor
-      email: 'Email '
+      email: Correo electrónico
       first_name: Nombre
       funding: 'Financiamiento '
       individual: 'Individuo '
       last_name: 'Apellido '
       legal_name: 'Nombre jurídico '
       locality: Ciudad
-      only_legal_name_present: 'Solo si el nombre jurídico este presente '
+      only_legal_name_present: Solo si el nombre jurídico está presente
       only_tax_id_present: Solo si se indica el NIF
       phone: Teléfono
       postal_code: Código postal
       previous_last_4: "Últimos 4 dígitos anteriores"
       region: Región
       required: Obligatorio
-      routing_number: Número de ruta bancaria (EE.UU.)
-      ssn: Número de la Seguridad Social (EE.UU.)
+      routing_number: Número de ruta bancaria (EE. UU.)
+      ssn: Número de la Seguridad Social (EE. UU.)
       street_address: Dirección postal
       tax_id: NIF
       verifying_data: Estamos comprobando los datos de tu cuenta bancaria, lo que podría tardar unos minutos.
     complete: Completo
-    create_venue: Crea un nuevo lugar
+    create_venue: Crear nuevo local
     edit:
-      add_professions: Incluir profesiones
-      add_venue_logo: Incluir el logo del local
+      add_professions: Añadir profesiones
+      add_venue_logo: Añadir el logo del local
       change_logo: Cambiar el logo
       closing_time: Hora de cierre
       country: País
       currency: Divisa
-      custom_times: Horarios personalizados ?
+      custom_times: "¿Horarios personalizados?"
       description: Descripción
-      email: Email Principal
-      info_professions: Comparte con huéspedes cual profesiones están bienvenidas en tu lugar
-      invalid_street: Por favor selecciona una dirección del menu desplegable
-      list_your_venue: Publica tu lugar
-      name: Nombre de lugar
-      office_rules: Reglas de la Oficina
+      email: Correo electrónico principal
+      info_professions: Cuéntale a los huéspedes qué profesiones son bienvenidas en tu local
+      invalid_street: Por favor, selecciona una dirección del menú desplegable
+      list_your_venue: Anuncia tu local
+      name: Nombre del local
+      office_rules: Normas de la oficina
       opening_hours: Horario de apertura
       opening_time: Hora de apertura
-      phone: Numero de teléfono
+      phone: Número de teléfono
       postal_code: Código postal
       professions: Profesiones preferidas
       select_professions: 'Elige las profesiones preferidas '
       standard_times: Horarios estándar
-      start_by: Empieza por decirnos mas sobre tu lugar...
+      start_by: Empieza por describirnos tu local
       street: Dirección
       town: Ciudad
-      v_type: Tipo de lugar
-    edit_venue: Editar Lugar
+      v_type: Tipo de local
+    edit_venue: Modificar local
     incomplete: Incompleto
-    preview: Preestrenar
+    preview: Vista previa
     professions:
       advertising: publicidad
       all: Se admiten todas las profesiones
@@ -707,7 +713,7 @@ es:
       consultant: Consultor/a
       design: Diseño
       entertainment: Ocio
-      entrepreneur: Emprendedor/a
+      entrepreneur: Empresario/a
       fashion: Moda
       finance: Sector financiero
       freelance: Autónomo/a
@@ -721,19 +727,19 @@ es:
     reported: Denunciado
     show:
       about_venue: Sobre el local
-      amenities: Equipamiento
+      amenities: Características
       booking_inquiry: Solicitud de reserva
       chosen_workspace: Espacio de trabajo seleccionado en la búsqueda
       closed: Cerrado
       location: Ubicación
       no_reviews: No hay evaluaciones
       opening_hours: Horas de apertura
-      per_day: al día
+      per_day: por día
       per_hour: por hora
-      per_month: al mes
+      per_month: por mes
       per_week: por semana
       professions: Profesiones
-      report_venue: Denunciar Lugar
+      report_venue: Denunciar local
       reviews: Evaluaciones
       share: Compartir
       venue: Local
@@ -762,11 +768,5 @@ es:
     day: día
     hour: hora
     month: mes
-    no_favourites: 'No tienes todavía lugares en tu wish lists '
+    no_favourites: No tienes espacios en tu Wish List
     week: semana
-  en_languages :
-    es: Español
-    pt: Português
-    en: English
-    fr: Français
-    de: Deutsch
