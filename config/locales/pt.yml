@@ -589,6 +589,7 @@ pt:
     company_name: Nome da empresa
     country_of_residence: País de residência
     date_of_birth: Data de nascimento
+    edit_organization_profile: 
     edit_profile: Editar perfil
     email: Email
     emergency_contact: Contacto de Emergência
