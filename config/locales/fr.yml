@@ -523,6 +523,7 @@ fr:
     date_of_birth: Date de naissance
     email: Adresse Email
     fb_login: Connexion avec Facebook
+    fb_signup: Sign up with Facebook
     first_name: Prénom
     forgot_password: Mot de passe oublié?
     full_name: Prénom et Nom
@@ -601,6 +602,7 @@ fr:
       f: Femme
       m: Homme
     info_no_share: Nous ne partagerons jamais cette information avec quiconque
+    info_password: Please input a 8 digit password
     info_share_email: Nous ne  partagerons votre email avec personne
     info_share_emergency: Nous ne partagerons avec l'hôte  les coordonnées de votre contact d'urgence, uniquement si la réservation est confirmée
     info_share_phone: Nous ne partagerons vos coordonnées téléphonique avec l'hôte/visiteur uniquement si la réservation est confirmée

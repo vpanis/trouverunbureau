@@ -523,6 +523,7 @@ de:
     date_of_birth: Geburtsdatum
     email: E-Mail-Adresse
     fb_login: Anmeldung mit Facebook
+    fb_signup: Sign up with Facebook
     first_name: Vorname
     forgot_password: Passwort vergessen?
     full_name: Vor- und Nachname
@@ -601,6 +602,7 @@ de:
       f: Weiblich
       m: Männlich
     info_no_share: Wir werden diese Information an niemanden weitergeben
+    info_password: Please input a 8 digit password
     info_share_email: Wir werden Ihre E-Mail-Adresse an niemanden weitergeben
     info_share_emergency: Wir werden die Informationen Ihres Notfallkontakts nur an einen Gast weitergeben, wenn eine Buchung durchgeführt wurde
     info_share_phone: Wir werden Ihre Telefonnummer nur an einen Gastgeber/Gast weitergeben, wenn eine Buchung durchgeführt wurde

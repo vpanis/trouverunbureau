@@ -109,7 +109,7 @@
 
         <p style="line-height: 30px; padding: 25px 0;">
           <%= t('host_cancellation_email.terms1') %>
-          <a href='#{request.protocol}#{request.host_with_port}/our_terms#cancellation' style="color: #ffe111; font-weight: bold; text-decoration: none;">
+          <a href='<%= our_terms_url %>#cancellation' style="color: #ffe111; font-weight: bold; text-decoration: none;">
             <%= " #{t('host_cancellation_email.cancellation_policy')} " %>
           </a>
           <%= t('host_cancellation_email.terms2') %>

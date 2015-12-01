@@ -130,8 +130,8 @@ pt:
     venue: Detalhes do Espaço
   en_languages:
     de: Deutsch
-    en: 
-    es: 
+    en: English
+    es: Español
     fr: 
   errors:
     email_taken: Utilizador já existente
@@ -524,6 +524,7 @@ pt:
     date_of_birth: Data de nascimento
     email: Email
     fb_login: Iniciar sessão com o Facebook
+    fb_signup: 
     first_name: Nome Próprio
     forgot_password: Esqueceu-se da palavra-passe?
     full_name: Nome Próprio e Apelido
@@ -602,6 +603,7 @@ pt:
       f: Feminino
       m: Masculino
     info_no_share: Esta informação nunca será partilhada com ninguém
+    info_password: Please input a 8 digit password
     info_share_email: O seu email não será partilhado com ninguém
     info_share_emergency: O seu contacto de emergência só será partilhado com um anfitrião, em caso de reserva
     info_share_phone: O seu número de telefone só será partilhado com um anfitrião/hóspede, em caso de reserva

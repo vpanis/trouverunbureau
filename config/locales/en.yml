@@ -523,6 +523,7 @@ en:
     date_of_birth: Date of birth
     email: 'Email '
     fb_login: Log in with Facebook
+    fb_signup: Sign up with Facebook
     first_name: First Name
     forgot_password: Forgot password?
     full_name: First and Last name
@@ -601,6 +602,7 @@ en:
       f: Female
       m: Male
     info_no_share: We will never share this information with anyone
+    info_password: Please input a 8 digit password
     info_share_email: We will not share your email with anyone
     info_share_emergency: We will only share your emergency contact information with a host once a booking has been made
     info_share_phone: We will only share your phone number with a host/guest once a booking has been made

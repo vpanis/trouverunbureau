@@ -369,7 +369,7 @@ es:
     add_manager: Añadir gestor
     add_manager_action: Añadir gestor
     change_picture: Cambiar foto
-    create_profile: Crear una cuenta de empresa
+    create_profile: 'Crear una organización '
     create_title: Añadir título
     edit_profile: Editar perfil
     email: Correo electrónico
@@ -523,6 +523,7 @@ es:
     date_of_birth: Fecha de nacimiento
     email: Correo electrónico
     fb_login: Iniciar sesión con Facebook
+    fb_signup: Sign up with Facebook
     first_name: Nombre
     forgot_password: "¿Olvidaste tu contraseña?"
     full_name: Nombre y apellido
@@ -601,6 +602,7 @@ es:
       f: Mujer
       m: Hombre
     info_no_share: No compartiremos esta información con nadie
+    info_password: Please input a 8 digit password
     info_share_email: No compartiremos esta información con nadie
     info_share_emergency: Solo compartiremos tu información de contacto de emergencia con un anfitrión cuando se realice una reserva.
     info_share_phone: Solo compartiremos tu número de teléfono con un anfitrión/huésped cuando se realice una reserva.

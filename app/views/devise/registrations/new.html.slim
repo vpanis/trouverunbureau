@@ -12,7 +12,7 @@ div.section-header
 div
   .fb-login-button
     = link_to user_omniauth_authorize_path(:facebook)
-      .fb-button-text #{t('session.fb_login')}
+      .fb-button-text #{t('session.fb_signup')}
   .section-separator
     .separator-text
       p.uppercase #{t('session.or')}
@@ -34,6 +34,7 @@ div
         -if resource.errors.present? && resource.errors[:email].present?
           span.field-error-message #{t('session.email')} #{resource.errors[:email][0]}
       .form-group
+        .icon.info.pointer#phone-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_password')}"
         label #{t('session.choose_password')}
         = f.password_field :password, class: 'form-control', required: 'required'
         -if resource.errors.present? && resource.errors[:password].present?
