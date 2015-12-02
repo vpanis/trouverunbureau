@@ -6,7 +6,8 @@ if Rails.env.test?
     hours_to_poll_for_verify_release: 0.01,
     append_random_to_accounts_ids: true)
   deskspotting = OpenStruct.new(
-    fee: 0.15,
+    fee: 0.2,
+    fee2: 0.1,
     payouts_attempts: 3,
     base_url: "http://localhost:3000",
     hours_from_check_in_out_for_rate: 1,
@@ -31,7 +32,8 @@ Deskspotting::Application.configure do
   config.hours_from_check_in_out_for_rate = deskspotting.hours_from_check_in_out_for_rate.to_i
   config.base_url = deskspotting.base_url
   config.payment = OpenStruct.new(
-    deskspotting_fee: deskspotting.fee.to_f,
+    deskspotting_fee: deskspotting.fee || 0.2,
+    deskspotting_fee2: deskspotting.fee2 || 0.1,
     braintree: OpenStruct.new(
       merchant_account_id: braintree.merchant_account,
       time_to_poll_for_escrow_status: braintree.minutes_to_poll_for_escrow_status.to_i.minutes,
@@ -54,3 +56,6 @@ Deskspotting::Application.configure do
     deposit_days: 3.to_i
   )
 end
+
+PayConf = Rails.configuration.payment
+

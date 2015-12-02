@@ -11,7 +11,7 @@ class Booking < ActiveRecord::Base
   has_one :venue_review
 
   # Constants/Enums
-  enum b_type: [:hour, :day, :week, :month]
+  enum b_type: [:hour, :day, :week, :month, :month_to_month]
 
   # Beware: tye Messages m_types must contain the Booking states
   enum state: [:pending_authorization, :pending_payment, :paid, :cancelled, :denied, :expired,
@@ -91,13 +91,31 @@ class Booking < ActiveRecord::Base
       (VenueHour.weekdays_array(from, to) - venue_not_open_days).length
     when 'month'
       (to.year * 12 + to.month) - (from.year * 12 + from.month) + ((to.day >= from.day) ? 1 : 0)
+    when 'month_to_month'
+      1
     else
       ((to - from) / 1.send(b_type)).ceil
     end
   end
 
+  # 20% for hourly, dayly, and for the first month of monthly/month-to-month rents
+  # 10% for each month or part thereof after the first month of monthly/month-to-month rents
   def calculate_fee
-    self.fee = price * Rails.configuration.payment.deskspotting_fee
+    first_unit_price = (1.0/unit_price_quantity) * price
+    self.fee = PayConf.deskspotting_fee * first_unit_price
+    if unit_price_quantity > 1
+      remainder_fee_factor = if %w(month month_to_month).include? b_type
+        PayConf.deskspotting_fee2.to_f
+      else
+        PayConf.deskspotting_fee.to_f
+      end
+      remainder_price = price - first_unit_price
+      Rails.logger.info remainder_price.class 
+      Rails.logger.info remainder_fee_factor.class 
+      Rails.logger.info remainder_price 
+      Rails.logger.info remainder_fee_factor
+      self.fee += remainder_price * remainder_fee_factor
+    end
   end
 
   def minimum_time_reached

@@ -81,16 +81,20 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
         return per_hour_price
       else if $scope.selected_tab == 'day'
         return per_day_price
-      else
+      else if $scope.selected_tab == 'month'
         return per_month_price
+      else
+        return per_month_to_month_price
 
     $scope.submit_form = () ->
       if $scope.selected_tab == 'hour'
         $('#hour-form').find(':submit').click()
       else if $scope.selected_tab == 'day'
         $('#day-form').find(':submit').click()
-      else
+      else if $scope.selected_tab == 'month'
         $('#month-form').find(':submit').click()
+      else
+        $('#month_to_month-form').find(':submit').click()
       return
 
     # PRIVATE FUNCTIONS
@@ -99,6 +103,7 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
       $scope.per_hour_selected = false
       $scope.per_day_selected = false
       $scope.per_month_selected = false
+      $scope.per_month_to_month_selected = false
 
     stablish_hours_amount = () ->
       if !$scope.hour_booking_begin || !$scope.hour_booking_end
@@ -162,6 +167,7 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
     per_hour_price = $("#venue-hour-price").attr('data-hour-price')
     per_day_price = $("#venue-day-price").attr('data-day-price')
     per_month_price = $("#venue-month-price").attr('data-month-price')
+    per_month_to_month_price = $("#venue-month_to_month-price").attr('data-month_to_month-price')
     $scope.month_quantity = 1
 
     #initializers

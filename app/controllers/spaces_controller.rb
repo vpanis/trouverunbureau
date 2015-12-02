@@ -63,12 +63,13 @@ class SpacesController < ApplicationController
     params[:space].delete(:day_price) if params[:space][:day_price].blank?
     params[:space].delete(:week_price) if params[:space][:week_price].blank?
     params[:space].delete(:month_price) if params[:space][:month_price].blank?
+    params[:space].delete(:month_to_month_price) if params[:space][:month_to_month_price].blank?
   end
 
   def space_params
     params.require(:space).permit(:s_type, :name, :capacity, :quantity, :description, :deposit,
-                                  :hour_price, :day_price, :week_price, :month_price,
-                                  :hour_minimum_unity, :day_minimum_unity, :month_minimum_unity,
+                                  :hour_price, :day_price, :week_price, :month_price, :month_to_month_price,
+                                  :hour_minimum_unity, :day_minimum_unity, :month_minimum_unity, :month_to_month_minimum_unity,
                                   :venue_id)
   end
 end
