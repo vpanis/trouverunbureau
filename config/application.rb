@@ -81,10 +81,10 @@ module Deskspotting
     config.action_mailer.smtp_settings = {
       enable_starttls_auto: true,
       address: mail.address,
-      port: mail.port.to_i,
-      domain: mail.domain,
-      user_name: mail.user_name,
-      password: mail.password,
+      port: '587',
+      domain: 'smtp.mandrillapp.com',
+      user_name: 'info@deskspotting.com',
+      password: 'NHi9uF4yxDKKJZXblLSL4g',
       authentication: mail.authentication
     }
 
