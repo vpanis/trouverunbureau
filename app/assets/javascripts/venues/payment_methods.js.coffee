@@ -44,6 +44,11 @@ on_load = ->
 
     initializePopovers()
     initializeListeners()
+    if $('.verifying').length
+      setInterval (->
+        window.location.reload()
+        return
+      ), 10000
     showAccountTypeFieldAndEraseTheOthers($('#mangopay_collection_account_bank_type').val())
 
 $(document).ready on_load

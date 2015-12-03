@@ -2,6 +2,7 @@
 en:
   errors:
     email_taken: 'The user already exists'
+  calendar: dd-mm-aa
   languages:
     af: Afrikaans
     ar: Arabic
@@ -107,6 +108,8 @@ en:
     add_image: 'Add image'
     add_space: 'Create new space'
     pay: pay
+    person: person
+    people: people
   session:
     email: 'Email address'
     password: 'Password'
@@ -157,6 +160,9 @@ en:
       no_fees:
         title: 'No fees'
         text: 'Find your workspace, book it and get on with your business.'
+      month_to_month:
+        title: 'Month to month bookings'
+        text: 'Ultimate flexibility for those people that love a workspace but just can`t commit to how long they will stay.'
     your_space:
       title: 'Find your space'
       subtitle: 'Everyone should have an inspiring workspace'
@@ -284,6 +290,8 @@ en:
       per_hour: 'Per hour'
       per_day: 'Per day'
       per_month: 'Per month'
+      month_to_month: 'Month to month'
+      month_to_months: 'month to month'
       per_week: 'Per week'
       booking_inquiry: 'Booking inquiry'
       about_venue: 'About venue'
@@ -295,7 +303,7 @@ en:
       why_deskspotting:
         title: 'Why Book on DeskSpotting?'
         no_booking_fees: 'No booking fees.'
-        booking_time: 'Book only the time you need.'
+        booking_time: 'Book the time you need.'
         secure_payments: 'Secure payments.'
         desposit_held: 'Deposit held in escrow.'
         verified_venues: 'Verified venues.'
@@ -313,7 +321,7 @@ en:
       list_your_venue: 'List your venue'
       start_by: 'Start by telling us about your venue...'
       opening_hours: 'Opening hours'
-      standard_times: 'Standard times?'
+      standard_times: 'Standard times'
       custom_times: 'Custom times?'
       opening_time: 'Opening Time'
       closing_time: 'Closing Time'
@@ -364,6 +372,7 @@ en:
     no_favourites: "You don't have any favorite spaces"
     day: 'day'
     month: 'month'
+    month_to_months: 'month to month'
     hour: 'hour'
     week: 'week'
   users:
@@ -508,7 +517,7 @@ en:
     message_placeholder: 'Tell the host more about yourself and your professional interests.'
     feature_1: 'No booking fees.'
     feature_2: 'Deposits held in scrows.'
-    feature_3: 'Book only the time you need.'
+    feature_3: 'Book the time you need.'
     feature_4: 'Verified venues.'
     feature_5: 'Secure payments.'
     feature_6: 'Flexible cancelations.'
@@ -521,25 +530,29 @@ en:
     days_amount: 'Number of Days'
     month: 'month'
     months_amount: 'Number of Months'
+    month_to_months: 'month to month'
+    month_to_month: 'month'
+    month_to_month_amount: 'Number of Months'
+    month_to_months_amount: 'Number of Months'
     price_per: 'Price per'
     deposit: 'Deposit'
-    deskspotting_fee: 'Deskspotting fee'
+    deskspotting_fee: 'DeskSpotting fee'
     free: 'Free'
     total: 'Total'
     space_amount: 'Number of Spaces'
     space_booking: 'Space Booking'
   edit_venue_progress:
     status: status
-    venue: Venue
-    details: Details
-    amenities: Amenities
-    photos: Photos
-    spaces: Spaces
-    publish: publish
+    venue: Venue Details
+    details: Venue Info
+    amenities: Venue Amenities
+    photos: Venue Photos
+    spaces: Workspaces
+    publish: Publish
     delete_venue: Delete venue
     incomplete: incomplete
     collection_account: Collection Account
-    payout_method: Payout Method
+    payout_method: Payment Info
   new_message_email:
     subject: 'You have a new message - Booking #%{booking_id}'
     hi: Hi
@@ -592,11 +605,11 @@ en:
     subject_host: 'Receipt Host - Booking #%{booking_id}'
   reset_password_email:
     this_link: just use this link
-    forgot_password:  It seems like you forgot your DeskSpotting password.
-    dont_worry: Don't worry it happens to us to
-    new_password: Create a new password and you are back in business
-    not_request: 'If you did not make this request, all good, just disregard the message'
-    stay_same: This email and your password will stay the same.
+    forgot_password:  It looks like you forgot your DeskSpotting password.
+    dont_worry: Don't worry it happens to us too!
+    new_password: Simply create a new password and you'll be back in business in no time.
+    not_request: 'If you did not make this request, all good, just disregard this email and your password will stay the same.'
+    stay_same: 
   new_space:
     list_new_space: List new space
     space_photos: Space photos
@@ -701,8 +714,8 @@ en:
     phone_number: 'Phone Number'
     space_rental: Space Booking
     deposit: Deposit
-    commission: Service Fee
-    total_rental: Total Booking
+    commission: DS Commission
+    total_rental: TOTAL PAYOUT
     space_type: Space Type
     confirmation_code: Confirmation Code
     spaces: Spaces
@@ -733,5 +746,4 @@ en:
     subject: 'Contact DeskSpotting'
     success: 'Thank you for your message!'
     error: "Something's gone wrong. Please try agian later."
-
 

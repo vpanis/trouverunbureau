@@ -275,6 +275,9 @@ h4.gray-subtitle {
       .features-box-image#ft-fees{
         @include at2x('feature-4', 98px, 98px);
       }
+      .features-box-image#ft-month_to_month{
+        @include at2x('feature-5', 98px, 98px);
+      }
       h5{
         text-transform: uppercase;
         font-size: 17px;
@@ -1476,6 +1479,9 @@ li.venue-hours.active{
   .time-select-wrapper {
     text-align: center;
     margin-bottom: 40px;
+    #tab-month_to_month {
+      width: 133px;
+    }
     .multiple-switch-wrapper {
       width: 600px;
       margin: 0 auto;

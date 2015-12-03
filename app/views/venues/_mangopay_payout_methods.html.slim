@@ -14,7 +14,7 @@
 /     br
   br
 -if @collection_account.expecting_mangopay_response || @collection_account.processing?
-  span = t('venues.collection_account.verifying_data')
+  span.verifying = t('venues.collection_account.verifying_data')
 -else
   / .inquiring-container
   /   .time-select-wrapper
@@ -64,7 +64,7 @@
           .calendar.input-group
             .calendar-icon.input-group-addon ng-click="open($event)" type="button"
             - value = @collection_account.date_of_birth.strftime("%d-%m-%Y") if @collection_account.date_of_birth.present?
-            = f.text_field :date_of_birth, value: value, id: 'user_date_of_birth', placeholder: 'dd-mm-aa', class: 'form-control', close_text: t('commons.close'), datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened', type: 'text', show_button_bar:'false', ng_model: 'user_date_of_birth'
+            = f.text_field :date_of_birth, value: value, id: 'user_date_of_birth', placeholder: t('calendar'), class: 'form-control', close_text: t('commons.close'), datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened', type: 'text', show_button_bar:'false', ng_model: 'user_date_of_birth'
             - if @collection_account.errors.messages[:date_of_birth].present?
               label
                 = @collection_account.errors.messages[:date_of_birth].first
