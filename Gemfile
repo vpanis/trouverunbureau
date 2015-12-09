@@ -161,5 +161,10 @@ group :test do
 end
 
 group :production, :staging do
-  gem 'rails_12factor', '~>0.0.2'
+  # gem 'rails_12factor', '~>0.0.2'
 end
+
+gem 'mina'
+gem "non-stupid-digest-assets"
+gem 'dotenv'
+gem 'dotenv-rails'
