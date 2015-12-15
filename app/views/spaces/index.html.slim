@@ -6,7 +6,7 @@
       = render 'collapsed_search_filters'
       .spaces-results
         .spaces-list
-          .col-md-4.col-sm-6 ng-repeat=("space in spaces")
+          .col-md-6.col-sm-6 ng-repeat=("space in spaces")
             .favorite-space ng-mouseenter="selectSpace(space)" ng-mouseleave="leaveSpace(space)"
               - if current_user.present?
                 .favourite ng-class="{active: space.favorite}" ng-click=("toggleFavorite(space.id, false)") data-is-favorite="{{space.favorite}}"

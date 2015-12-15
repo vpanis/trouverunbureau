@@ -17,6 +17,9 @@
       width: 2px;
       background-color: $light-gray;
     }
+    &.input-group-addon {
+      background-color:#fff;
+    }
     &:after{
       @include at2x('ic_profile_calendar', 25px, 25px);
       background-position: center center;

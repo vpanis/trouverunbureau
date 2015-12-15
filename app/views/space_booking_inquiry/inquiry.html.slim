@@ -1,5 +1,16 @@
 = render 'shared/profile_menu_bar', selected: 'nil'
-
+javascript:
+  var updateMonthTwoMonth = function() {
+    var date, formatedDate, m, regex;
+    var value = $("#booking_from").val().split("-");
+    date = new Date(value[2]+"-"+value[1]+"-"+value[0]);
+    date.setMonth(date.getMonth() + 2);
+    date.setDate(date.getDate() + 1);
+    $("#booking_month_to_month_as_of").val( 
+      (parseInt(date.getDate()) < 10 ? "0" + date.getDate() : date.getDate()) + "-" + 
+      (parseInt(date.getMonth() + 1) < 10 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1)) + "-" + 
+      date.getFullYear());
+  };
 #venue-hours data-day-hours=@day_hours
 #venue-hour-price data-hour-price=@booking.space.hour_price
 #venue-day-price data-day-price=@booking.space.day_price
@@ -140,20 +151,29 @@
       = form_for @booking, url: inquiry_space_path(@space), html: { id: 'month_to_month-form'} do |f|
         .form.form-month_to_month-booking.form--hidden
           .row
-            .form-group.col-xs-12.col-sm-4.col-md-4.col-lg-4
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               label
                 = t('booking_inquiry.check_in')
               .calendar.input-group
                 .calendar-icon.input-group-addon ng-click="open($event, 'opened_from')" type="button"
-                = f.text_field :from, placeholder: 'dd-mm-aa', class: 'form-control', close_text: 'Close', datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened_from', ng_model: "booking_from", date_disabled: "disabled(date, mode)", type: 'text', show_button_bar:'false', ng_required: 'true'
+                = f.text_field :from, placeholder: 'dd-mm-aa', class: 'form-control', close_text: 'Close', datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened_from', ng_model: "booking_from", date_disabled: "disabled(date, mode)", type: 'text', show_button_bar:'false', ng_required: 'true', :onchange => 'updateMonthTwoMonth()'
             / .form-group.col-xs-12.col-sm-4.col-md-4.col-lg-4
               / label
                 / = t('booking_inquiry.month_to_month_amount')
-              # = text_field_tag :month_to_month_quantity, nil, { class: 'form-control', type: 'number', ng_model: 'month_to_month_quantity', min: @space.month_to_month_minimum_unity, ng_required: 'true', 'ng-minlength' => @space.month_to_month_minimum_unity}
-            .form-group.col-xs-12.col-sm-4.col-md-4.col-lg-4
+             / # = text_field_tag :month_to_month_quantity, nil, { class: 'form-control', type: 'number', ng_model: 'month_to_month_quantity', min: @space.month_to_month_minimum_unity, ng_required: 'true', 'ng-minlength' => @space.month_to_month_minimum_unity}
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               label
                 = t('booking_inquiry.spaces_amount')
               = f.text_field :quantity, value: 1, class: 'form-control', type: 'number', ng_model: 'space_quantity', min: '1', 'ng-minlength' => '1', max: @space.quantity, 'ng-maxlength' => @space.quantity, ng_required: 'true'
+          .row
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              label
+                = t('booking_inquiry.guaranteed_months')
+              = f.text_field :guaranteed_months, value: 2, class: 'form-control', type: 'number', disabled: 'disabled'
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              label
+                = t('booking_inquiry.month_to_month_as_of')
+              = f.text_field :month_to_month_as_of, value: "", class: 'form-control', type: 'text', disabled: 'disabled'
           input type="submit" class="input--hidden"
           = text_field_tag :booking_type, nil, { type: 'text', 'ng-model' => "selected_tab", hidden: "" }
           .row
