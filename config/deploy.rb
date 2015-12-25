@@ -6,7 +6,7 @@ require 'mina/rvm'
 task :deploy_prod => :environment do
   set :rails_env, 'production'
   set :restart_workers_cmd, "sudo restart_workers"
-  set :branch, 'current-prod-linode'
+  set :branch, 'master'
   set :deploy_to, '/var/www/ds/prod'
   set :test_url, "http://prod.deskspotting.com"
   @command_valid = true
