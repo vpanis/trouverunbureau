@@ -35,7 +35,7 @@ class SpaceBookingInquiryController < ApplicationController
   end
 
   def handle_booking_type
-    if params[:booking_type].in?(%w(hour day month))
+    if params[:booking_type].in?(%w(hour day month month_to_month))
       send("#{params[:booking_type]}_type_booking")
     else
       false
@@ -80,6 +80,16 @@ class SpaceBookingInquiryController < ApplicationController
                 .advance(days: -1, months: params[:month_quantity].to_i)
                 .at_end_of_day
     @b_type = Booking.b_types[:month]
+    true
+  end
+
+  def month_to_month_type_booking
+    return false unless params[:booking][:from].present?
+    @from_date = Time.zone.parse(params[:booking][:from]).at_beginning_of_day
+    @to_date = Time.zone.parse(params[:booking][:from])
+                .advance(days: -1, months: 1)
+                .at_end_of_day
+    @b_type = Booking.b_types[:month_to_month]
     true
   end
 

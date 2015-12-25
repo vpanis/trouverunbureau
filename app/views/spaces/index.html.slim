@@ -68,7 +68,7 @@
       = render 'collapsed_search_filters'
       .spaces-results
         .spaces-list
-          .col-md-4.col-sm-6 ng-repeat=("space in spaces")
+          .col-md-6.col-sm-6 ng-repeat=("space in spaces")
             .favorite-space ng-mouseenter="selectSpace(space)" ng-mouseleave="leaveSpace(space)"
               - if current_user.present?
                 .favourite ng-class="{active: space.favorite}" ng-click=("toggleFavorite(space.id, false)") data-is-favorite="{{space.favorite}}"
@@ -111,6 +111,11 @@
                       | {{space.currency_symbol}}
                       | {{space.month_price}}
                     .duration.pull-left = t('wishlist.month')
+                  .price-month_to_month ng-if=("space.month_to_month_price")
+                    .month-price.pull-left()
+                      | {{space.currency_symbol}}
+                      | {{space.month_to_month_price}}
+                    .duration.pull-left = t('wishlist.month_to_months')
         .pagination-container.search-pagination.pagination-box
           .col-md-3.left.pagination-limits-text() {{from}} - {{to}} out of {{totalSpaces}} desks
           pagination.pagination-sm.pagination-pages ng-change="getSpaces()" total-items="totalSpaces" ng-model="currentPage" max-size="3" rotate="false" boundary-links="true" previous-text="‹" next-text="›" first-text="«" last-text="»" items-per-page="itemsPerPage"

@@ -37,7 +37,7 @@ module Payments
       future_payout_at = booking.to if booking.to <= future_payout_at
       amount = calculate_amount(booking, future_payout_at)
       [{ amount: amount,
-         fee: calculate_fee(amount),
+         fee: calculate_fee(amount, booking),
          user_id: booking.payment.user_paying_id,
          represented: booking.owner,
          p_type: MangopayPayout.p_types[:payout_to_user] },
@@ -52,9 +52,14 @@ module Payments
       floor_2d(days_in_this_payout / days_left_to_pay * booking.payment.price_amount_in_wallet)
     end
 
-    # This will have variable fees in the future
-    def calculate_fee(price)
-      floor_2d(price * Rails.configuration.payment.deskspotting_fee)
+    def calculate_fee(price, booking)
+      fee_rate = if booking.b_type == 'month' and # paid at monthly intervals
+                    booking.payment.next_payout_at == booking.from # first payout
+        PayConf.deskspotting_fee
+      else
+        PayConf.deskspotting_fee2
+      end
+      floor_2d(fee_rate * price)
     end
 
     def floor_2d(float)
