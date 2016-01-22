@@ -32,8 +32,8 @@ Deskspotting::Application.configure do
   config.hours_from_check_in_out_for_rate = deskspotting.hours_from_check_in_out_for_rate.to_i
   config.base_url = deskspotting.base_url
   config.payment = OpenStruct.new(
-    deskspotting_fee: deskspotting.fee || 0.2,
-    deskspotting_fee2: deskspotting.fee2 || 0.1,
+    deskspotting_fee: deskspotting.fee.try(:to_f) || 0.2,
+    deskspotting_fee2: deskspotting.fee2.try(:to_f) || 0.1,
     braintree: OpenStruct.new(
       merchant_account_id: braintree.merchant_account,
       time_to_poll_for_escrow_status: braintree.minutes_to_poll_for_escrow_status.to_i.minutes,
