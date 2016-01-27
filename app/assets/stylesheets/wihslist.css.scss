@@ -59,7 +59,7 @@
       font-size: 13px;
       letter-spacing: 0.14rem;
       color: $desk-black;
-      height: 15px;
+      height: 22px;
       overflow: hidden;
       &:hover{
         color: $desk-black;
@@ -67,17 +67,42 @@
       &:after {
         position: absolute;
         content: '';
-        bottom: -6px;
+        bottom: 0;
         left: 0;
         width: 30px;
         height: 2px;
         background-color: $yellow;
       }
     }
+    .additional-info {
+      margin: 0;
+      .desk-type {
+        float: left;
+        line-height: 30px;
+      }
+      .info {
+        background: $yellow;
+        float: right;
+        padding: 0 8px;
+        .people {
+          background: url(people.svg) no-repeat center center;
+          background-size: contain;
+          display: inline-block;
+          vertical-align: middle;
+          width: 18px;
+          height: 18px;
+        }
+        .number {
+          color: #000;
+          margin-left: 5px;
+          vertical-align: middle;
+        }
+      }
+    }
     .city {
       text-transform: uppercase;
       color: $gray-text;
-      margin-top: 12px;
+      margin-top: 0;
       font-size: 9px;
       letter-spacing: 0.15rem;
     }
@@ -86,12 +111,14 @@
     line-height: 19px;
     margin-top: 8px;
     font-size: 12px;
+    border-bottom: 0;
     .currency,
     [class^="price-"] {
       display: inline-block;
       vertical-align: middle;
     }
     .currency {
+      display: none;
       padding: 0 10px;
       background-color: $yellow;
       margin-right: 20px;
@@ -100,18 +127,22 @@
       text-transform: uppercase;
     }
     [class^="price-"] {
-      margin-right: 10px;
+      width: 25%;
     }
     .hour-price,
     .day-price,
     .week-price,
     .month-price {
       font-weight: bold;
-      margin-right: 5px;
-      font-size: 11px;
+      margin-right: 0;
+      font-size: 12px;
+      float: none!important;
+      text-align: center;
     }
     .duration{
       font-size: 11px;
+      text-align: center;
+      float: none!important;
     }
   }
   .wishlist-pagination {
