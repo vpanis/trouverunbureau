@@ -30,3 +30,115 @@
 
 // Customizing the collapse menu width
 @grid-float-breakpoint: 951px;
+
+//custom tabs + help-pages
+.tabs-below > .nav-tabs,
+.tabs-right > .nav-tabs,
+.tabs-left > .nav-tabs {
+  border-bottom: 0; 
+}
+
+
+.tab-content > .tab-pane,
+.pill-content > .pill-pane {
+  display: none;
+}
+
+.tab-content > .active,
+.pill-content > .active {
+  display: block;
+}
+.tabs-left > .nav-tabs {
+    float: left;
+}
+.help-page .tab-pane.container{padding-top:37px;}
+.help-page h2{font-size:23px; margin-top:0px; padding:0 15px; color:#000;}
+.help-page h3{font-size:14px; color:#808184; padding:4px 0 4px 25px;}
+.help-page .tabs-left > .nav-tabs > li,
+.help-page .tabs-right > .nav-tabs > li {
+  float: none; display:block;
+}
+
+.help-page .nav-tabs{text-align:center; cursor:none;}
+.help-page .nav-tabs > li{float:none; margin-bottom:-1px; display:inline-block;}
+.help-page .nav-tabs, .help-page .nav-tabs > li > a, .help-page .nav-tabs > li > a:hover{border:none;}
+.help-page .nav-tabs > li > a{color:#808184;}
+.help-page .nav-tabs > li.active > a,
+.help-page .nav-tabs > li.active > a:hover,
+.help-page .nav-tabs > li.active > a:focus{border:none; color:#808184; font-weight:600; background-color:inherit;}
+.help-page .tabs-left .nav-tabs > li > a{font-weight:600;}
+
+.help-page .tabs-left > .nav-tabs > li{text-align:left; background:no-repeat url(/assets/arrow-help-right.png) right 50%; }
+.help-page .tabs-left > .nav-tabs > li.active{background:no-repeat url(/assets/arrow-help-left.png) left 50%; padding-left:20px;}
+.help-page .tabs-left > .nav-tabs > li a, .help-page h3{background:no-repeat url(/assets/icons-help-sprite.png);}
+.help-page .tab-pane.active ul.nav.nav-tabs li{display:none}
+.help-page .tab-pane.active#general ul.nav.nav-tabs li:first-child{display:block;}
+.help-page .tab-pane.active ul.nav.nav-tabs li.active{display:block;}
+
+.help-page .tabs-left > .nav-tabs > li a.gnrl1{background-position: 0 9px;}
+.help-page .tabs-left > .nav-tabs > li a.gnrl2{background-position: 0 -24px;}
+.help-page .tabs-left > .nav-tabs > li a.gnrl3{background-position: 0 -56px;}
+.help-page .tabs-left > .nav-tabs > li a.gnrl4{background-position: -1px -91px;}
+
+.help-page .tabs-left > .nav-tabs > li a.gnrl1{background-position: 0 9px;}
+.help-page .tabs-left > .nav-tabs > li a.gnrl2{background-position: 0 -24px;}
+.help-page .tabs-left > .nav-tabs > li a.gnrl3{background-position: 0 -56px;}
+.help-page .tabs-left > .nav-tabs > li a.gnrl4{background-position: -1px -91px;}
+
+.help-page h3.gtst{background-position: 0 1px;}
+.help-page h3.wrks{background-position: 0 -32px;}
+.help-page h3.cntrs{background-position: 0 -65px;}
+.help-page h3.cnft{background-position: -1px -99px;}
+
+.help-page .tabs-left .nav-tabs li a {padding: 10px 20px 10px 29px;}
+.help-page .nav-tabs > li > a:hover{background-color:inherit; color:#6C6D6F;}
+.help-page .nav-tabs > li{border-bottom:2px solid transparent;}
+.help-page .nav-tabs > li.active{border-bottom:2px solid #ffe111;}
+.help-page .nav-tabs.top-tabs > li{border-top:2px solid transparent; margin:0 10px;}
+.help-page .nav-tabs.top-tabs > li.active{border-top:2px solid #ffe111;}
+.help-page .tab-content ul, .help-page .tab-content li, .help-page .tab-content li a{padding-left:0px}
+.help-page .tab-content li a{color:#00CCA5; font-weight:300;}
+.help-page .tab-content .tab-content .tab-pane li a{line-height:2.6em;}
+.help-page .tab-content li.more-link a{color:#000; font-weight:400;}
+.help-page .tab-content .tabs-left .nav-tabs li a{color:#808184;}
+.help-page .tab-content li{list-style-type:none;}
+
+
+// 5 columns, as from http://www.wearesicc.com/quick-tips-5-column-layout-with-twitter-bootstrap/
+.col-xs-15,
+.col-sm-15,
+.col-md-15,
+.col-lg-15 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.col-xs-15 {
+    width: 20%;
+    float: left;
+}
+@media (max-width: 780px) {
+    .help-page .tab-content {
+        clear:both;
+    }
+}
+@media (min-width: 768px) {
+.col-sm-15 {
+        width: 20%;
+        float: left;
+    }
+}
+@media (min-width: 992px) {
+    .col-md-15 {
+        width: 20%;
+        float: left;
+    }
+}
+@media (min-width: 1200px) {
+    .col-lg-15 {
+        width: 20%;
+        float: left;
+    }
+}

@@ -119,6 +119,8 @@ group :development do
   gem 'better_errors', '~>2.0.0'
   gem 'binding_of_caller', '~>0.7.2'
   gem 'spring', '~>1.1.3'
+  gem 'meta_request'
+  gem 'quiet_assets'
 
   # Livereload
   gem 'guard', '>= 2.2.2',       require: false
@@ -165,3 +167,9 @@ end
 group :production, :staging do
   gem 'rails_12factor', '~>0.0.2'
 end
+
+gem "non-stupid-digest-assets"
+
+
+gem 'dotenv'
+gem 'dotenv-rails'

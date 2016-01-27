@@ -20,6 +20,7 @@
 coverage/*
 /coverage/*
 public/assets/source_maps/
+public/assets
 
 # Ignore coveralls results
 coverage/*

@@ -8,12 +8,14 @@
       - else
         = t('receipt.venue_title')
     .separator.long
-    .date
+    .column
       = @payment.receipt.created_at.to_date
-    .receipt-number
+    .bar
+    .column
       = t('receipt.receipt_number')
       = @payment.receipt.id
-    .contact
+    .bar
+    .column
       a href="#{contact_path}"
         | www.deskspotting.com/contact
   .host
@@ -86,6 +88,26 @@
         = t('receipt.space_type') + ':'
       span
         = t("spaces.types.#{@booking.space.s_type}")
+    .capacity
+      .title
+        = t('receipt.capacity') + ':'
+      span
+        - if @booking.space.capacity == 1
+          = t("1 #{t("commons.person")}")
+        - else
+          = t("#{@booking.space.capacity} #{t("commons.people")}")
+    .timeframe
+      .title
+        = t('receipt.timeframe') + ':'
+      span
+        - if @booking.b_type == 'hour'
+          = t("venues.show.per_hour")
+        - if @booking.b_type == 'day'
+          = t("venues.show.per_day")
+        - if @booking.b_type == 'month'
+          = t("venues.show.per_month")
+        - if @booking.b_type == 'month_to_month'
+          = t("venues.show.month_to_months")
     .confirmation
       span
         = t('receipt.confirmation_code') + ':'
@@ -101,14 +123,14 @@
             = t('booking_inquiry.date')
         - else
           .subtitle
-            = ((@booking.to - @booking.from) / 1.day).round
-          span
             = t('payment.days')
+          span
+            = ((@booking.to - @booking.from) / 1.day).round
       .column
         .subtitle
-          = @booking.quantity
-        span
           = t('receipt.spaces')
+        span
+          = @booking.quantity
       .bar
       .column
         .subtitle

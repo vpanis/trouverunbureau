@@ -42,6 +42,10 @@ host: localhost
 port: 6379
 password: "a password if needed"
 
+To run in local machine:
+- $ redis-server
+- $ cd APP_ROOT && bundle exec sidekiq -e development 
+
 ###.resque.yml (web job's overview)
 
 user: "some user (this is a plain name, it doesn't matter if the user exists or not)"

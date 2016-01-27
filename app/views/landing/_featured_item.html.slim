@@ -26,8 +26,11 @@
             - elsif space.week_price.present?
               - price = space.week_price
               - time = t('venues.show.per_week')
-            - else
+            - elsif space.month_price.present?
               - price = space.month_price
               - time = t('venues.show.per_month')
+            - else
+              - price = space.month_to_month_price
+              - time = t('venues.show.month_to_month')
             .price = "#{t("currency.#{venue.currency.downcase}.symbol")} #{number_with_precision(price, separator: '.', precision: (price == price.round) ? 0 : 2)}"
             .time = time
