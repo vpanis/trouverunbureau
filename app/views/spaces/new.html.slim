@@ -7,6 +7,9 @@
       h3 = t('new_space.list_new_space')
     .small-separator
     = form_for(@space) do |f|
+      .row.buttons.continue
+        .col-xs-12
+          = f.submit t("commons.save_continue"), class: 'rounded-btn yellow-fill width-50 uppercase'
       = f.hidden_field :venue_id, class: 'form-control'
       = hidden_field_tag 'previous_page', @previous_page
       .form-group.col-md-12#space-name-input
@@ -57,11 +60,11 @@
             label
               = check_box_tag 'per_hour', 1, @space.hour_price.present?, class: 'price-checkbox', data: {time: 'hour'}
               = t('spaces.per_hour')
-          .form-group.col-md-2 class=(@space.errors.messages[:hour_price].present? ? 'has-error' : '')
+          .form-group.col-md-3 class=(@space.errors.messages[:hour_price].present? ? 'has-error' : '')
             label
               = "#{t('spaces.hour_price')} (#{t("currency.#{@space.venue.currency.downcase}.symbol")})"
             = f.number_field :hour_price, value: @space.hour_price, class: 'form-control', min: 0
-          .form-group.col-md-3 class=(@space.errors.messages[:hour_minimum_unity].present? ? 'has-error' : '')
+          .form-group.col-md-4 class=(@space.errors.messages[:hour_minimum_unity].present? ? 'has-error' : '')
             label #{t('spaces.minimum_renting_period')}
             = f.number_field :hour_minimum_unity, value: @space.hour_minimum_unity, class: 'form-control', min: 0
         .row
@@ -69,11 +72,11 @@
             label
               = check_box_tag 'per_day', 1, @space.day_price.present?, class: 'price-checkbox', data: {time: 'day'}
               = t('spaces.per_day')
-          .form-group.col-md-2 class=(@space.errors.messages[:day_price].present? ? 'has-error' : '')
+          .form-group.col-md-3 class=(@space.errors.messages[:day_price].present? ? 'has-error' : '')
             label
               = "#{t('spaces.day_price')} (#{t("currency.#{@space.venue.currency.downcase}.symbol")})"
             = f.number_field :day_price, value: @space.day_price, class: 'form-control', min: 0
-          .form-group.col-md-3 class=(@space.errors.messages[:day_minimum_unity].present? ? 'has-error' : '')
+          .form-group.col-md-4 class=(@space.errors.messages[:day_minimum_unity].present? ? 'has-error' : '')
             label #{t('spaces.minimum_renting_period')}
             = f.number_field :day_minimum_unity, value: @space.day_minimum_unity, class: 'form-control', min: 0
         .row
@@ -81,11 +84,11 @@
             label
               = check_box_tag 'per_month', 1, @space.month_price.present?, class: 'price-checkbox', data: {time: 'month'}
               = t('spaces.per_month')
-          .form-group.col-md-2 class=(@space.errors.messages[:month_price].present? ? 'has-error' : '')
+          .form-group.col-md-3 class=(@space.errors.messages[:month_price].present? ? 'has-error' : '')
             label
               = "#{t('spaces.month_price')} (#{t("currency.#{@space.venue.currency.downcase}.symbol")})"
             = f.number_field :month_price, value: @space.month_price, class: 'form-control', min: 0
-          .form-group.col-md-3 class=(@space.errors.messages[:month_minimum_unity].present? ? 'has-error' : '')
+          .form-group.col-md-4 class=(@space.errors.messages[:month_minimum_unity].present? ? 'has-error' : '')
             label #{t('spaces.minimum_renting_period')}
             = f.number_field :month_minimum_unity, value: @space.month_minimum_unity, class: 'form-control', min: 0
         .row
@@ -93,11 +96,11 @@
             label
               = check_box_tag 'month_to_month', 1, @space.month_to_month_price.present?, class: 'price-checkbox', data: {time: 'month_to_month'}
               = t('spaces.month_to_month')
-          .form-group.col-md-2 class=(@space.errors.messages[:month_to_month_price].present? ? 'has-error' : '')
+          .form-group.col-md-3 class=(@space.errors.messages[:month_to_month_price].present? ? 'has-error' : '')
             label
               = "#{t('spaces.month_price')} (#{t("currency.#{@space.venue.currency.downcase}.symbol")})"
             = f.number_field :month_to_month_price, value: @space.month_to_month_price, class: 'form-control', min: 0
-          .form-group.col-md-3 class=(@space.errors.messages[:month_to_month_minimum_unity].present? ? 'has-error' : '')
+          .form-group.col-md-4 class=(@space.errors.messages[:month_to_month_minimum_unity].present? ? 'has-error' : '')
             label #{t('spaces.minimum_renting_period')}
             = f.number_field :month_to_month_minimum_unity, value: @space.month_to_month_minimum_unity, class: 'form-control', min: 0, max: 3
       .row

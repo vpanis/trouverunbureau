@@ -85,3 +85,12 @@
     border-color: darken($gray, 20%);
   }
 }
+
+.buttons {
+  &.continue {
+    margin: 10px 0 30px !important;
+    & > div {
+      text-align: center;
+    }
+  }
+}

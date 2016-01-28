@@ -3,7 +3,7 @@
 #venue.main-content.dashboard-form.clearfix.overflow-hidden
   = render 'shared/edit_venue_progress', venue: @venue, step: 6
   .details-section.col-md-7.col-md-offset-1.margin-top
-    = render 'venue_heading', subtitle: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+    = render 'venue_heading', subtitle: 'Select any of your workspaces to edit their information.'
     - @venue.spaces.each do |space|
       .space.pictures.col-md-4
         h2 = t('spaces.types.' + space.s_type)

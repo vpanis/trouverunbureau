@@ -49,7 +49,7 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
         if !is_mobile()
           update_map()
 
-        $("html, body").animate {
+        $(".spaces-results").animate {
           scrollTop: 0
         }, "fast"
       return

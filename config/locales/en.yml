@@ -64,6 +64,7 @@ en:
     open: Open
     pay: Pay
     save: Save
+    save_continue: Save and continue
     unknown: Unknown
     upload_file: Upload file
   contact:
@@ -176,6 +177,9 @@ en:
         title: No fees
       subtitle: Why DeskSpotting?
       title: Features
+      month_to_month:
+        title: Month to month bookings
+        text: Ultimate flexibility for those people that love a workspace but just can’t commit to how long they will stay.
     footer:
       about_us: About us
       company: Company
@@ -556,6 +560,7 @@ en:
     info_quantity: Number of these spaces you would you like to list on DeskSpotting
     minimum_renting_period: Minimum booking time
     month_price: Month price
+    month_to_month: Month to Month
     name: Name
     per_day: Per day
     per_hour: Per hour
@@ -773,3 +778,4 @@ en:
     month: month
     no_favourites: You don't have any wish listed spaces
     week: week
+    month_to_month: month to month
