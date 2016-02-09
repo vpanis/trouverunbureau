@@ -213,16 +213,18 @@ describe UsersController do
         let(:new_last_name) { 'new_last_name' }
         let(:new_email) { 'new@example.com' }
         let(:new_phone) { '1111111' }
-        let(:new_language) { 'en' }
+        let(:new_language) { User::LANGUAGES.sample.to_s }
         let(:new_date_of_birth) { '14-07-1982' }
-        let(:new_gender) { 'f' }
+        let(:new_gender) { User::GENDERS.sample.to_s }
         let(:new_profession) { Venue::PROFESSIONS.last.to_s }
         let(:new_company_name) { 'new_company_name' }
+        let(:new_emergency_phone) { '2222222' }
         before do
           params = { id: @user_logged.id, first_name: new_first_name, last_name: new_last_name,
                          email: new_email, phone: new_phone, language: new_language,
                          date_of_birth: new_date_of_birth, gender: new_gender,
-                         profession: new_profession, company_name: new_company_name }
+                         profession: new_profession, company_name: new_company_name,
+                         emergency_phone: new_emergency_phone }
           patch :update, id: @user_logged.id, user: params
         end
 
@@ -237,6 +239,7 @@ describe UsersController do
           expect(@user_logged.gender).to eq(new_gender)
           expect(@user_logged.profession).to eq(new_profession)
           expect(@user_logged.company_name).to eq(new_company_name)
+          expect(@user_logged.emergency_phone).to eq(new_emergency_phone)
         end
 
         it 'succeeds' do
