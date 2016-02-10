@@ -11,7 +11,7 @@
         </div>
 
         <div>
-          <p><%= "#{t('new_message_email.hi')} #{@message.recipient_owner.name}," %></p> <!-- TODO: Change name -->
+          <p><%= "#{t('new_message_email.hi')} #{@message.to}," %></p>
           <p><%= "#{t('new_message_email.got_new_message')} " %><span style="color: black; font-weight: bold;"><%="#{@message.from}"%></span> on <%=I18n.l(@message.created_at, format: :long) %></p>
         </div>
       </div>

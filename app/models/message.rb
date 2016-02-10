@@ -14,13 +14,11 @@ class Message < ActiveRecord::Base
   validates :text, presence: true, if: proc { |e| e.m_type == 'text' }
   validates :user, presence: true, unless: proc { |e| e.m_type == 'pending_authorization' }
 
-  # after_create :touch_booking_last_seen
+  def destination_recipient
+    sender_is_guest? ? 'host' : 'guest'
+  end
 
-  # private
-
-  # def touch_booking_last_seen
-  #   binding.pry
-  #   BookingManager.change_last_seen(booking, represented, created_at) unless not_flag_as_seen
-  # end
-
+  def sender_is_guest?
+    booking.owner == user
+  end
 end
