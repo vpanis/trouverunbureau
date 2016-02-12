@@ -383,6 +383,7 @@ it:
     info_share_email: 'we will only share your email with a host/guest once a booking has been made'
     info_share_emergency: 'we will only share your emergency contact information with a host once a booking has been made'
     emergency_contact: 'Emergency Contact'
+    gender_select: Si prega di indicare il tuo sesso
     genders:
       m: 'Male'
       f: 'Female'

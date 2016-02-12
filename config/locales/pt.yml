@@ -132,7 +132,7 @@ pt:
     de: Deutsch
     en: English
     es: Español
-    fr: 
+    fr:
   errors:
     email_taken: Utilizador já existente
     messages:
@@ -414,7 +414,7 @@ pt:
     address: Morada
     bank_country: País de operação do banco
     bank_name: Nome do banco
-    bic_iban_tooltip: 
+    bic_iban_tooltip:
     branch_code: Código do balcão
     business: Negócio
     country_of_residence: País de residência
@@ -514,7 +514,7 @@ pt:
     show_filters: 'Mostrar espaços '
     teams: Equipas
     workspace: Espaço de trabalho
-  select_country: 
+  select_country:
   session:
     already_registered: Já registado?
     change_password: Alterar palavra-passe
@@ -524,7 +524,7 @@ pt:
     date_of_birth: Data de nascimento
     email: Email
     fb_login: Iniciar sessão com o Facebook
-    fb_signup: 
+    fb_signup:
     first_name: Nome Próprio
     forgot_password: Esqueceu-se da palavra-passe?
     full_name: Nome Próprio e Apelido
@@ -589,7 +589,7 @@ pt:
     company_name: Nome da empresa
     country_of_residence: País de residência
     date_of_birth: Data de nascimento
-    edit_organization_profile: 
+    edit_organization_profile:
     edit_profile: Editar perfil
     email: Email
     emergency_contact: Contacto de Emergência
@@ -600,6 +600,7 @@ pt:
     enter_languages: Introduza as línguas que fala
     first_name: Nome próprio
     gender: Género
+    gender_select: Indique seu género
     genders:
       f: Feminino
       m: Masculino

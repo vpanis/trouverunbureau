@@ -413,7 +413,7 @@ es:
     address: Dirección
     bank_country: País del banco
     bank_name: Nombre del banco
-    bic_iban_tooltip: 
+    bic_iban_tooltip:
     branch_code: Código de sucursal
     business: Negocio
     country_of_residence: País de residencia
@@ -513,7 +513,7 @@ es:
     show_filters: Mostrar anuncios
     teams: Equipos
     workspace: Espacio de trabajo
-  select_country: 
+  select_country:
   session:
     already_registered: "¿Ya estás registrado?"
     change_password: Cambiar contraseña
@@ -599,6 +599,7 @@ es:
     enter_languages: Añade los idiomas que hablas
     first_name: Nombre
     gender: Sexo
+    gender_select: Por favor indique su sexo
     genders:
       f: Mujer
       m: Hombre
