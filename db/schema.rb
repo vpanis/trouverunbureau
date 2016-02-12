@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112234153) do
+ActiveRecord::Schema.define(version: 20160212215939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -314,11 +314,12 @@ ActiveRecord::Schema.define(version: 20151112234153) do
     t.integer  "week_price"
     t.integer  "month_price"
     t.integer  "deposit"
-    t.boolean  "active",              default: false, null: false
-    t.integer  "hour_minimum_unity",  default: 1,     null: false
-    t.integer  "day_minimum_unity",   default: 1,     null: false
-    t.integer  "week_minimum_unity",  default: 1,     null: false
-    t.integer  "month_minimum_unity", default: 1,     null: false
+    t.boolean  "active",                       default: false, null: false
+    t.integer  "hour_minimum_unity",           default: 1,     null: false
+    t.integer  "day_minimum_unity",            default: 1,     null: false
+    t.integer  "week_minimum_unity",           default: 1,     null: false
+    t.integer  "month_minimum_unity",          default: 1,     null: false
+    t.integer  "month_to_month_minimum_unity", default: 1,     null: false
   end
 
   add_index "spaces", ["venue_id"], name: "index_spaces_on_venue_id", using: :btree
