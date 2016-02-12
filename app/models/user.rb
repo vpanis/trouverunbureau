@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
   validates :rating, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 5 }
 
   validates :profession, inclusion: { in: Venue::PROFESSIONS.map(&:to_s), allow_nil: true }
-  validates :gender, inclusion: { in: GENDERS.map(&:to_s), allow_nil: true }
+  validates :gender, inclusion: { in: GENDERS.map(&:to_s), allow_nil: true, allow_blank: true }
   validates :language, inclusion: { in: LANGUAGES.map(&:to_s), allow_nil: true }
   validates :nationality, :country_of_residence, inclusion: { in: SUPPORTED_NATIONALITIES }
   validate :each_languages_spoken_inclusion

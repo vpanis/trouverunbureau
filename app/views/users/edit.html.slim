@@ -29,7 +29,7 @@
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               .icon.lock.pointer#gender-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
               label = t('users.gender')
-              = f.select(:gender, @gender_options, {}, {class: 'form-control gender-select'})
+              = f.select(:gender, @gender_options, { prompt: t('users.gender_select') }, { class: 'form-control gender-select'})
             .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
               .icon.info.pointer#phone-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_share_phone')}"
               label = t('users.phone')

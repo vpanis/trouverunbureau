@@ -413,7 +413,7 @@ fr:
     address: Adresse
     bank_country: Pays banque
     bank_name: Nom de la banque
-    bic_iban_tooltip: 
+    bic_iban_tooltip:
     branch_code: Branch code
     business: Entreprise
     country_of_residence: Pays de résidence
@@ -513,7 +513,7 @@ fr:
     show_filters: Afficher les postes
     teams: Equipes
     workspace: Postes de travail
-  select_country: 
+  select_country:
   session:
     already_registered: Déjà inscrit
     change_password: Changez de mot de passe
@@ -599,6 +599,7 @@ fr:
     enter_languages: Indiquez les langues que vous parlez
     first_name: Prénom
     gender: Sexe
+    gender_select: S'il vous plaît indiquer votre sexe
     genders:
       f: Femme
       m: Homme

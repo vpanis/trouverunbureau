@@ -158,6 +158,7 @@ group :test, :development do
   gem 'launchy'
 
   gem 'shoulda-matchers'
+  gem 'shoulda-callback-matchers', '~> 1.1.1'
 end
 
 group :test do
