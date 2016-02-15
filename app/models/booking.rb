@@ -101,19 +101,19 @@ class Booking < ActiveRecord::Base
   # 20% for hourly, dayly, and for the first month of monthly/month-to-month rents
   # 10% for each month or part thereof after the first month of monthly/month-to-month rents
   def calculate_fee
-    first_unit_price = (1.0/unit_price_quantity) * price
-    self.fee = PayConf.deskspotting_fee * first_unit_price
-    if unit_price_quantity > 1
-      remainder_fee_factor = if %w(month month_to_month).include? b_type
-        PayConf.deskspotting_fee2.to_f
-      else
-        PayConf.deskspotting_fee.to_f
-      end
+    self.fee = 0
+
+    if unit_price_quantity > 0
+      first_unit_price = (1.0 / unit_price_quantity) * price
+
+      remainder_fee_factor =  if %w(month month_to_month).include? b_type
+                                PayConf.deskspotting_fee2.to_f
+                              else
+                                PayConf.deskspotting_fee.to_f
+                              end
       remainder_price = price - first_unit_price
-      Rails.logger.info remainder_price.class 
-      Rails.logger.info remainder_fee_factor.class 
-      Rails.logger.info remainder_price 
-      Rails.logger.info remainder_fee_factor
+
+      self.fee = PayConf.deskspotting_fee * first_unit_price
       self.fee += remainder_price * remainder_fee_factor
     end
   end

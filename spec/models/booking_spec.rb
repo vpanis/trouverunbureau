@@ -5,26 +5,41 @@ RSpec.describe Booking, type: :model do
 
   # Relations
   it { should belong_to(:owner) }
+  it { should belong_to(:payment) }
   it { should belong_to(:space) }
   it { should have_many(:messages) }
+  it { should have_one(:client_review) }
+  it { should have_one(:venue_review) }
 
   # Presence
-  it { should validate_presence_of(:owner) }
-  it { should validate_presence_of(:space) }
   it { should validate_presence_of(:b_type) }
-  it { should validate_presence_of(:quantity) }
   it { should validate_presence_of(:from) }
+  it { should validate_presence_of(:owner) }
+  it { should validate_presence_of(:quantity) }
+  it { should validate_presence_of(:space) }
   it { should validate_presence_of(:to) }
 
   # Enums
-  it { should define_enum_for(:b_types) }
-  it { should define_enum_for(:states) }
+  it do
+    should define_enum_for(:b_types)
+      .with([:hour, :day, :week, :month, :month_to_month])
+  end
+
+  it do
+    should define_enum_for(:states).with(
+      [:pending_authorization, :pending_payment, :paid, :cancelled, :denied,
+        :expired, :payment_verification, :refunding, :error_refunding])
+  end
+
+  # Callbacks
+  context 'callbacks' do
+    it { is_expected.to callback(:initialize_fields).after(:initialize) }
+    it { is_expected.to callback(:calculate_price).before(:validation) }
+    it { is_expected.to callback(:calculate_fee).before(:validation) }
+  end
 
   # Numericality
-  it do
-    should validate_numericality_of(:quantity)
-    .only_integer.is_greater_than_or_equal_to(1)
-  end
+  it { should validate_numericality_of(:quantity).only_integer.is_greater_than_or_equal_to(1) }
 
   it 'should fail if the space don\'t have the booking type price' do
     space = FactoryGirl.create(:space, day_price: 10, month_price: nil)
@@ -150,10 +165,11 @@ RSpec.describe Booking, type: :model do
     end
   end
 
+  #TO DO: improve fee calculation specs
   context 'fee calculation' do
     it 'returns the fee to pay to deskspotting' do
-      booking = FactoryGirl.create(:booking, price: 300, fee: 0)
-      expect(booking.fee).to eq(booking.calculate_fee)
+      booking = FactoryGirl.create(:booking, price: (1..100).to_a.sample, fee: 0)
+      expect(booking.fee).to eq((booking.price * 0.2).round(2))
     end
   end
 
