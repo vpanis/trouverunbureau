@@ -1,7 +1,7 @@
 class MailPreview < MailView
   def new_message_email
     id = Message.first.try(:id)
-    NotificationsMailer.new_message_email(id)
+    NotificationsMailer.new_message_email(id, 'host')
   end
 
   def host_cancellation_email_for_host

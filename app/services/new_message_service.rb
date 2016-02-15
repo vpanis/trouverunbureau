@@ -70,7 +70,8 @@ class NewMessageService < SimpleDelegator
     end
 
     def notify
-      NotificationsMailer.delay.new_message_email(id)
+      NotificationsMailer.delay.new_message_email(id, 'host')
+      NotificationsMailer.delay.new_message_email(id, 'guest')
     end
   end
 end
