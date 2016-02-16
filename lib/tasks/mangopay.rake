@@ -1,72 +1,31 @@
 namespace :mangopay do
   desc 'Creates the hooks where mangopay will notify for especific events'
-  task create_hooks: :environment do
+  task deploy_hooks: :environment do
+    current_endpoints = MangoPay::Hook.fetch
+
     base_url = AppConfiguration.for(:deskspotting).base_url
+    base_endpoints = [
+      { event_type: "PAYIN_NORMAL_SUCCEEDED", endpoint_url: "payin_succeeded" },
+      { event_type: "PAYIN_NORMAL_FAILED", endpoint_url: "payin_failed" },
+      { event_type: "PAYOUT_NORMAL_SUCCEEDED", endpoint_url: "payout_succeeded" },
+      { event_type: "PAYOUT_NORMAL_FAILED", endpoint_url: "payout_failed" },
+      { event_type: "PAYOUT_REFUND_SUCCEEDED", endpoint_url: "refund_succeeded" },
+      { event_type: "PAYOUT_REFUND_FAILED", endpoint_url: "refund_failed" }
+    ].freeze
 
-    begin
-      MangoPay::Hook.create(Url: "#{base_url}/api/v1/mangopay/payin_succeeded",
-                            EventType: "PAYIN_NORMAL_SUCCEEDED")
-      puts "Payin Succeeded hook created"
-    rescue MangoPay::ResponseError => e
-      previous_url = MangoPay::Hook.fetch.select do |h|
-        h["EventType"] == "PAYIN_NORMAL_SUCCEEDED"
-      end.first["Url"]
-      puts "Succeeded hook already exists for url: #{previous_url} and yours is: #{base_url}/api/v1/mangopay/payin_succeeded"
-    end
+    base_endpoints.each do |ss|
+      hook = current_endpoints.select { |s| s["EventType"] == ss[:event_type] }.first
+      url = "#{base_url}/api/v1/mangopay/#{ss[:endpoint_url]}"
 
-    begin
-      MangoPay::Hook.create(Url: "#{base_url}/api/v1/mangopay/payin_failed",
-                            EventType: "PAYIN_NORMAL_FAILED")
-      puts "Payin Failed hook created"
-    rescue MangoPay::ResponseError => e
-      previous_url = MangoPay::Hook.fetch.select do |h|
-        h["EventType"] == "PAYIN_NORMAL_FAILED"
-      end.first["Url"]
-      puts "Failed hook already exists for url: #{previous_url} and yours is: #{base_url}/api/v1/mangopay/payin_failed"
-    end
-
-    begin
-      MangoPay::Hook.create(Url: "#{base_url}/api/v1/mangopay/payout_succeeded",
-                            EventType: "PAYOUT_NORMAL_SUCCEEDED")
-      puts "Payout Succeeded hook created"
-    rescue MangoPay::ResponseError => e
-      previous_url = MangoPay::Hook.fetch.select do |h|
-        h["EventType"] == "PAYOUT_NORMAL_SUCCEEDED"
-      end.first["Url"]
-      puts "Succeeded hook already exists for url: #{previous_url} and yours is: #{base_url}/api/v1/mangopay/payout_succeeded"
-    end
-
-    begin
-      MangoPay::Hook.create(Url: "#{base_url}/api/v1/mangopay/payout_failed",
-                            EventType: "PAYOUT_NORMAL_FAILED")
-      puts "Payout Failed hook created"
-    rescue MangoPay::ResponseError => e
-      previous_url = MangoPay::Hook.fetch.select do |h|
-        h["EventType"] == "PAYOUT_NORMAL_FAILED"
-      end.first["Url"]
-      puts "Failed hook already exists for url: #{previous_url} and yours is: #{base_url}/api/v1/mangopay/payout_failed"
-    end
-
-    begin
-      MangoPay::Hook.create(Url: "#{base_url}/api/v1/mangopay/refund_succeeded",
-                            EventType: "PAYOUT_REFUND_SUCCEEDED")
-      puts "Refund Succeeded hook created"
-    rescue MangoPay::ResponseError => e
-      previous_url = MangoPay::Hook.fetch.select do |h|
-        h["EventType"] == "PAYOUT_REFUND_SUCCEEDED"
-      end.first["Url"]
-      puts "Succeeded hook already exists for url: #{previous_url} and yours is: #{base_url}/api/v1/mangopay/refund_succeeded"
-    end
-
-    begin
-      MangoPay::Hook.create(Url: "#{base_url}/api/v1/mangopay/refund_failed",
-                            EventType: "PAYOUT_REFUND_FAILED")
-      puts "Refund Failed hook created"
-    rescue MangoPay::ResponseError => e
-      previous_url = MangoPay::Hook.fetch.select do |h|
-        h["EventType"] == "PAYOUT_REFUND_FAILED"
-      end.first["Url"]
-      puts "Failed hook already exists for url: #{previous_url} and yours is: #{base_url}/api/v1/mangopay/refund_failed"
+      if !hook
+        MangoPay::Hook.create(Url: url, EventType: ss[:event_type])
+        puts "#{ss[:event_type]} created with url: #{url}"
+      elsif url != hook["Url"]
+        MangoPay::Hook.update(hook["Id"], Url: url)
+        puts "#{ss[:event_type]} updated with url: #{url} (was #{hook['Url']})"
+      else
+        puts "#{ss[:event_type]} already up-to-date with url: #{url}"
+      end
     end
   end
 end
