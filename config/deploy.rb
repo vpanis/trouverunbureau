@@ -86,6 +86,9 @@ task :deploy => :environment do
     require 'rbconfig'
     is_win = RbConfig::CONFIG['host_os'] =~ /mswin|mingw/
     unless is_win
+      queue %[echo "-----> Deploying mangopay hooks"]
+      queue "rake mangopay:deploy_hooks"
+
       queue %[echo "-----> Testing site"]
       queue %[
         red=`tput setaf 1`; green=`tput setaf 2`; reset=`tput sgr0`
@@ -111,7 +114,6 @@ task :deploy => :environment do
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
-    invoke "rake[mangopay:deploy_hooks]"
 
     to :launch do
       queue %[
