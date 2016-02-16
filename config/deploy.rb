@@ -29,8 +29,8 @@ set :user, 'deskspotting'
 set :port, '21890'
 
 shared_dirs = [
-  'tmp', 
-  'log', 
+  'tmp',
+  'log',
   'public/uploads'
 ]
 
@@ -95,7 +95,7 @@ task :deploy => :environment do
           echo "${red}Error accessing site:\n$output"
           echo
           echo "!!! ATTENTION: RIGHT NOW #{test_url} RUNNING IN #{domain}:#{deploy_to}/#{current_path} IS DOWN !!!"
-        else 
+        else
           echo "${green}ok"
         fi
         echo ${reset}
@@ -111,6 +111,7 @@ task :deploy => :environment do
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
+    invoke "rake[mangopay:deploy_hooks]"
 
     to :launch do
       queue %[
