@@ -165,12 +165,7 @@ group :test do
   gem 'rspec-sidekiq'
 end
 
-group :production, :staging do
-  gem 'rails_12factor', '~>0.0.2'
-end
-
 gem "non-stupid-digest-assets"
-
 
 gem 'dotenv'
 gem 'dotenv-rails'
