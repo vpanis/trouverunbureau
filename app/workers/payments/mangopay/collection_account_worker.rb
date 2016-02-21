@@ -54,7 +54,7 @@ module Payments
 
       def person_user_data_for_mangopay(coll_acc_data)
         { firstName: coll_acc_data[:first_name], lastName: coll_acc_data[:last_name],
-          birthday: coll_acc_data[:date_of_bith].to_i, nationality: coll_acc_data[:nationality],
+          birthday: coll_acc_data[:date_of_birth].try(:to_time).to_i, nationality: coll_acc_data[:nationality],
           countryOfResidence: coll_acc_data[:country_of_residence], email: coll_acc_data[:email] }
       end
 
@@ -65,14 +65,17 @@ module Payments
       end
 
       def non_person_data_for_mangopay(coll_acc_data)
-        { legalPersonType: coll_acc_data[:legal_person_type],
+        {
+          legalPersonType: coll_acc_data[:legal_person_type],
           legalRepresentativeEmail: coll_acc_data[:email],
-          legalRepresentativeBirthday: coll_acc_data[:date_of_bith].to_i,
+          legalRepresentativeBirthday: coll_acc_data[:date_of_birth].try(:to_time).to_i,
           legalRepresentativeCountryOfResidence: coll_acc_data[:country_of_residence],
           legalRepresentativeFirstName: coll_acc_data[:first_name],
           legalRepresentativeLastName: coll_acc_data[:last_name],
           legalRepresentativeNationality: coll_acc_data[:nationality],
-          email: coll_acc_data[:business_email], name: coll_acc_data[:business_name] }
+          email: coll_acc_data[:business_email],
+          name: coll_acc_data[:business_name]
+        }
       end
 
       def create_wallet(mangopay_user_id)

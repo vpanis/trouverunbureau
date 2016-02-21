@@ -341,7 +341,7 @@ GEM
       activemodel (>= 3.2, < 5)
     mail_view (2.0.4)
       tilt
-    mangopay (3.0.20)
+    mangopay (3.0.15)
       multi_json (>= 1.7.7)
     meta_request (0.3.4)
       callsite (~> 0.0, >= 0.0.11)
@@ -622,7 +622,7 @@ DEPENDENCIES
   loadjs (~> 0.0.6)
   mail_form
   mail_view (~> 2.0.4)
-  mangopay (~> 3.0.0)
+  mangopay (= 3.0.15)
   meta_request
   non-stupid-digest-assets
   omniauth-facebook (~> 2.0.0)
