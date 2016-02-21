@@ -103,7 +103,10 @@ gem 'timezone'
 
 # Payment Methods
 gem 'braintree', '~>2.40.0'
-gem 'mangopay', '~>3.0.0'
+
+# Sticking with 3.0.15 because of breaking changes of
+# https://docs.mangopay.com/api-v2-01-overview/
+gem 'mangopay', '3.0.15'
 
 gem 'devise_invitable'
 

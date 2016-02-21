@@ -1,5 +1,4 @@
 class MangopayCollectionAccount < ActiveRecord::Base
-  # Relations
   has_one :venue, as: :collection_account
 
   attr_accessor :account_number, :iban, :basic_info_only, :update_user_only
@@ -53,7 +52,7 @@ class MangopayCollectionAccount < ActiveRecord::Base
       :bic, :sort_code, :bank_name, :institution_number, :branch_code, :bank_country
     ])
     json[:account_number] = account_number if account_number.present?
-    json['bic'] = json['bic'].delete(' ')
+    json['bic'] = json['bic'].delete(' ') if json['bic']
     json[:iban] = iban if iban.present?
     json
   end

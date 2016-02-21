@@ -1,6 +1,6 @@
 = render 'new_credit_card_modal'
 = render 'create_credit_card_modal'
-#js-mangopay-config data-base-url="#{Rails.configuration.payment.mangopay.base_url}" data-client-id="#{Rails.configuration.payment.mangopay.client_id}"
+#js-mangopay-config data-base-url="#{MangoPay.configuration.root_url}" data-client-id="#{MangoPay.configuration.client_id}"
 .uk-payment-container
   .credit-cards-title
     .title
