@@ -119,6 +119,8 @@ gem 'acts_as_decimal'
 # Languages
 gem 'language_list'
 
+gem 'newrelic_rpm'
+
 group :development do
   gem 'better_errors', '~>2.0.0'
   gem 'binding_of_caller', '~>0.7.2'
