@@ -124,7 +124,7 @@ task :deploy => :environment do
       queue! %[touch #{deploy_to}/#{current_path}/tmp/restart.txt]
       if restart_workers
         queue %[echo 'Restarting workers...']
-        queue! %[restart_workers_cmd]
+        queue! %[#{restart_workers_cmd}]
       end
     end
   end
