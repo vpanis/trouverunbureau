@@ -4,15 +4,20 @@ module Payments
       include Sidekiq::Worker
 
       def perform(mangopay_collection_account_id, collection_account_data)
-        init_log(mangopay_collection_account_id)
-        @mca = MangopayCollectionAccount.find_by_id(mangopay_collection_account_id)
-        collection_account_data.symbolize_keys!
-        return unless @mca.present?
+        begin
+          init_log(mangopay_collection_account_id)
 
-        account = create_user(collection_account_data)
-        save_collection_account(account, collection_account_data)
-      rescue MangoPay::ResponseError => e
-        save_account_error(e.message)
+          @mca = MangopayCollectionAccount.find_by_id(mangopay_collection_account_id)
+          return unless @mca.present?
+
+          collection_account_data.symbolize_keys!
+          account = create_user(collection_account_data)
+          save_collection_account(account, collection_account_data)
+        rescue MangoPay::ResponseError => e
+          save_account_error(e.message)
+        rescue Exception => e
+          raise e.exception, e.message
+        end
       end
 
       private
