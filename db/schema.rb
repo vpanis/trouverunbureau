@@ -320,6 +320,7 @@ ActiveRecord::Schema.define(version: 20160212215939) do
     t.integer  "week_minimum_unity",           default: 1,     null: false
     t.integer  "month_minimum_unity",          default: 1,     null: false
     t.integer  "month_to_month_minimum_unity", default: 1,     null: false
+    t.integer  "month_to_month_price"
   end
 
   add_index "spaces", ["venue_id"], name: "index_spaces_on_venue_id", using: :btree
