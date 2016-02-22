@@ -77,6 +77,7 @@ gem 'slim-rails', '~>2.1.5'
 
 # Sidekiq
 gem 'sidekiq', '~>3.3.4'
+gem 'sidekiq-failures'
 gem 'sinatra', '>= 1.3.0', require: nil
 
 gem 'pundit', '~>0.3.0'
