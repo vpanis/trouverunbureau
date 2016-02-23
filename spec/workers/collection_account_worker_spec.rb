@@ -14,9 +14,7 @@ module Payments
         expect(MangopayCollectionAccount.count).to eq(initial_count)
       end
 
-      it 'should properly call the MangoPay endpoints' do
-        pending
-      end
+      pending 'should properly call the MangoPay endpoints'
     end
   end
 end
