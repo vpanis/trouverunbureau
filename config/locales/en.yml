@@ -21,6 +21,7 @@ en:
     month: Month
     month_amount: Number of months
     months_amount: Number of Months
+    month_to_month: Month to Month
     price_per: Price per
     send_inquiry: Send inquiry
     space_amount: Number of Spaces
