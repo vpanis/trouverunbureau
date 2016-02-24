@@ -29,13 +29,23 @@ module Payments
       end
 
       def save_collection_account(account, coll_acc_data)
-        wallet = create_wallet(account['Id'])
+        wallet_id = if @mca.wallet_id.present?
+                      @mca.wallet_id
+                    else
+                      create_wallet(account['Id'])['Id']
+                    end
+
         bank_account = create_bank_account(account['Id'], coll_acc_data)
         @mca.assign_attributes(coll_acc_data)
-        @mca.update_attributes(mangopay_user_id: account['Id'], wallet_id: wallet['Id'],
-          bank_account_id: bank_account['Id'], expecting_mangopay_response: false,
-          status: MangopayCollectionAccount.statuses[:accepted], mangopay_persisted: true,
-          active: true)
+        @mca.update_attributes(
+          mangopay_user_id: account['Id'],
+          wallet_id: wallet_id,
+          bank_account_id: bank_account['Id'],
+          expecting_mangopay_response: false,
+          status: MangopayCollectionAccount.statuses[:accepted],
+          mangopay_persisted: true,
+          active: true
+        )
       end
 
       def save_account_error(e)
