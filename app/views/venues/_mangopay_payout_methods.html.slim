@@ -5,14 +5,14 @@
     = image_tag('venue-default.png', width: '95px', height: '95px')
   h3.big = @venue.name
   .small-separator
--if @collection_account.error_updating?
-  span.photo-errors
-    = @collection_account.error_message
-  br
 -if @collection_account.expecting_mangopay_response || @collection_account.processing?
   span.verifying
     = t('venues.collection_account.verifying_data')
 -else
+  -if @collection_account.error_updating?
+    span.photo-errors
+      = @collection_account.error_message
+    br
   .personal-section ng-controller= "UserProfileCtrl"
     = form_for @collection_account, url: collection_account_info_venue_path(@venue) do |f|
       = f.hidden_field :legal_person_type
