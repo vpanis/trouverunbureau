@@ -4,20 +4,18 @@ module Payments
       include Sidekiq::Worker
 
       def perform(mangopay_collection_account_id, collection_account_data)
-        begin
-          init_log(mangopay_collection_account_id)
+        init_log(mangopay_collection_account_id)
 
-          @mca = MangopayCollectionAccount.find_by_id(mangopay_collection_account_id)
-          return unless @mca.present?
+        @mca = MangopayCollectionAccount.find_by_id(mangopay_collection_account_id)
+        return unless @mca.present?
 
-          collection_account_data.symbolize_keys!
-          account = create_user(collection_account_data)
-          save_collection_account(account, collection_account_data)
+        collection_account_data.symbolize_keys!
+        @mca.mangopay_user_id = create_user(collection_account_data)['Id']
+
+        save_collection_account(collection_account_data)
+
         rescue MangoPay::ResponseError => e
           save_account_error(e.message)
-        rescue Exception => e
-          raise e.exception, e.message
-        end
       end
 
       private
@@ -28,21 +26,36 @@ module Payments
         Rails.logger.info(str)
       end
 
-      def save_collection_account(account, coll_acc_data)
-        wallet = create_wallet(account['Id'])
-        bank_account = create_bank_account(account['Id'], coll_acc_data)
+      def save_collection_account(coll_acc_data)
         @mca.assign_attributes(coll_acc_data)
-        @mca.update_attributes(mangopay_user_id: account['Id'], wallet_id: wallet['Id'],
-          bank_account_id: bank_account['Id'], expecting_mangopay_response: false,
-          status: MangopayCollectionAccount.statuses[:accepted], mangopay_persisted: true,
-          active: true)
+
+        if @mca.wallet_id.nil?
+          @mca.wallet_id = create_wallet(@mca.mangopay_user_id)['Id']
+        end
+
+        @mca.bank_account_id = create_bank_account(@mca.mangopay_user_id, coll_acc_data)['Id']
+
+        @mca.update!(
+          expecting_mangopay_response: false,
+          status: MangopayCollectionAccount.statuses[:accepted],
+          mangopay_persisted: true,
+          active: true
+        )
       end
 
       def save_account_error(e)
-        status = MangopayCollectionAccount.statuses[:rejected]
-        status = MangopayCollectionAccount.statuses[:error_updating] if @mca.mangopay_persisted
-        @mca.assign_attributes(error_message: e.to_s, expecting_mangopay_response: false,
-          status: status)
+        status =  if @mca.mangopay_persisted
+                    MangopayCollectionAccount.statuses[:error_updating]
+                  else
+                    MangopayCollectionAccount.statuses[:rejected]
+                  end
+
+        @mca.assign_attributes(
+          error_message: e.to_s,
+          expecting_mangopay_response: false,
+          status: status
+        )
+
         @mca.save(validate: false)
       end
 
@@ -52,15 +65,24 @@ module Payments
       end
 
       def create_person_user(coll_acc_data)
-        user_data = person_user_data_for_mangopay(coll_acc_data)
-        return MangoPay::NaturalUser.create(user_data) unless @mca.mangopay_persisted
-        MangoPay::NaturalUser.update(@mca.mangopay_user_id, user_data)
+        user_data = prepare_person_user_data_for_mangopay(coll_acc_data)
+
+        if @mca.mangopay_persisted || @mca.mangopay_user_id.present?
+          MangoPay::NaturalUser.update(@mca.mangopay_user_id, user_data)
+        else
+          MangoPay::NaturalUser.create(user_data)
+        end
       end
 
-      def person_user_data_for_mangopay(coll_acc_data)
-        { firstName: coll_acc_data[:first_name], lastName: coll_acc_data[:last_name],
-          birthday: coll_acc_data[:date_of_birth].try(:to_time).to_i, nationality: coll_acc_data[:nationality],
-          countryOfResidence: coll_acc_data[:country_of_residence], email: coll_acc_data[:email] }
+      def prepare_person_user_data_for_mangopay(coll_acc_data)
+        {
+          firstName: coll_acc_data[:first_name],
+          lastName: coll_acc_data[:last_name],
+          birthday: coll_acc_data[:date_of_birth].try(:to_time).to_i,
+          nationality: coll_acc_data[:nationality],
+          countryOfResidence: coll_acc_data[:country_of_residence],
+          email: coll_acc_data[:email]
+        }
       end
 
       def create_non_person_user(coll_acc_data)

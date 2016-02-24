@@ -2,6 +2,7 @@ require 'mina/bundler'
 require 'mina/rails'
 require 'mina/git'
 require 'mina/rvm'
+require 'mina/dotenv'
 
 task :deploy_prod => :environment do
   set :rails_env, 'production'
@@ -9,6 +10,7 @@ task :deploy_prod => :environment do
   set :branch, 'master'
   set :deploy_to, '/var/www/ds/prod'
   set :test_url, "http://prod.deskspotting.com"
+  set :dotenv_location, '.prod_env'
   @command_valid = true
   invoke :deploy
 end
@@ -19,6 +21,7 @@ task :deploy_beta => :environment do
   set :branch, 'development'
   set :deploy_to, '/var/www/ds/beta'
   set :test_url, "http://beta.deskspotting.com"
+  set :dotenv_location, '.beta_env'
   @command_valid = true
   invoke :deploy
 end
@@ -106,6 +109,7 @@ task :deploy => :environment do
     queue! %[echo "Using ruby version `ruby -v` in path `which ruby`."]
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
+    invoke :'dotenv:push'
     queue %[echo "-----> Bundle"]
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
@@ -124,7 +128,7 @@ task :deploy => :environment do
       queue! %[touch #{deploy_to}/#{current_path}/tmp/restart.txt]
       if restart_workers
         queue %[echo 'Restarting workers...']
-        queue! %[restart_workers_cmd]
+        queue! %[#{restart_workers_cmd}]
       end
     end
   end
