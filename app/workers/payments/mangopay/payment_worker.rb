@@ -66,7 +66,7 @@ module Payments
       def save_payment_error(e, code)
         @booking.payment.update_attributes(error_message: e.to_s, error_code: code,
                                            transaction_status: 'PAYIN_FAILED')
-        message = Message.create(m_type: Message.m_types[:payment_error], user: @user_id,
+        message = Message.create(m_type: Message.m_types[:payment_error], user_id: @user_id,
           represented: @booking.owner, booking_id: @booking.id, text: e.to_s)
         NewMessageService.new(message).send_notifications
         @booking.pending_payment!
