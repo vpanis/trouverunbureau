@@ -89,7 +89,7 @@
               a.space-info ng-href="/venues/{{space.venue_id}}?space_id={{space.id}}"
                 .name() {{space.name}}
                 .row.additional-info
-                  .desk-type() Meeting Room
+                  .desk-type() {{space.space_type}}
                   .info
                     .people
                     span.number() {{space.capacity}}

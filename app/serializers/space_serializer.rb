@@ -1,7 +1,11 @@
 class SpaceSerializer < ActiveModel::Serializer
   attributes :id, :name, :city, :currency, :hour_price, :day_price, :week_price, :month_price, :month_to_month_price,
              :favorite, :latitude, :longitude, :photos, :capacity, :venue_id, :venue_name,
-             :deposit, :logo, :currency_symbol
+             :deposit, :logo, :currency_symbol, :space_type
+
+  def space_type
+    I18n.t("spaces.types.#{object.s_type}")
+  end
 
   def city
     object.venue.town
