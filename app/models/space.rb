@@ -19,8 +19,11 @@ class Space < ActiveRecord::Base
   validates :hour_price, :day_price, :week_price, :month_price, :month_to_month_price, numericality: {
     greater_than: 0 }, allow_nil: true
 
-  validates :hour_minimum_unity, :day_minimum_unity, :week_minimum_unity, :month_minimum_unity, :month_to_month_minimum_unity,
+  validates :hour_minimum_unity, :day_minimum_unity, :week_minimum_unity,
             numericality: { only_integer: true, greater_than_or_equal_to: 1 }
+
+  validates :month_minimum_unity, :month_to_month_minimum_unity,
+            numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 4 }
 
   validate :at_least_one_price
 
@@ -35,13 +38,17 @@ class Space < ActiveRecord::Base
   acts_as_decimal :month_to_month_price, decimals: 2
   acts_as_decimal :deposit, decimals: 2
 
+  def month_to_month_as_of
+    month_to_month_minimum_unity.to_i * 30
+  end
+
+  private
+
   def at_least_one_price
     return if hour_price.present? ||
       day_price.present? || week_price.present? || month_price.present? || month_to_month_price.present?
     errors.add(:price, 'Needs at least one price')
   end
-
-  private
 
   def initialize_fields
     self.deposit ||= 0

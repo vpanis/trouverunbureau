@@ -63,7 +63,7 @@
             = f.number_field :hour_price, value: @space.hour_price, class: 'form-control', min: 0
           .form-group.col-md-4 class=(@space.errors.messages[:hour_minimum_unity].present? ? 'has-error' : '')
             label #{t('spaces.minimum_renting_period')}
-            = f.number_field :hour_minimum_unity, value: @space.hour_minimum_unity, class: 'form-control', min: 0
+            = f.number_field :hour_minimum_unity, value: @space.hour_minimum_unity, class: 'form-control', min: 1
         .row
           .checkbox.vertical-align.col-md-3
             label
@@ -75,7 +75,7 @@
             = f.number_field :day_price, value: @space.day_price, class: 'form-control', min: 0
           .form-group.col-md-4 class=(@space.errors.messages[:day_minimum_unity].present? ? 'has-error' : '')
             label #{t('spaces.minimum_renting_period')}
-            = f.number_field :day_minimum_unity, value: @space.day_minimum_unity, class: 'form-control', min: 0
+            = f.number_field :day_minimum_unity, value: @space.day_minimum_unity, class: 'form-control', min: 1
         .row
           .checkbox.vertical-align.col-md-3
             label
@@ -87,7 +87,7 @@
             = f.number_field :month_price, value: @space.month_price, class: 'form-control', min: 0
           .form-group.col-md-4 class=(@space.errors.messages[:month_minimum_unity].present? ? 'has-error' : '')
             label #{t('spaces.minimum_renting_period')}
-            = f.number_field :month_minimum_unity, value: @space.month_minimum_unity, class: 'form-control', min: 0
+            = f.number_field :month_minimum_unity, value: @space.month_minimum_unity, class: 'form-control', min: 1, max: 4
         .row
           .checkbox.vertical-align.col-md-3
             label
@@ -99,7 +99,7 @@
             = f.number_field :month_to_month_price, value: @space.month_to_month_price, class: 'form-control', min: 0
           .form-group.col-md-4 class=(@space.errors.messages[:month_to_month_minimum_unity].present? ? 'has-error' : '')
             label #{t('spaces.minimum_renting_period')}
-            = f.number_field :month_to_month_minimum_unity, value: @space.month_to_month_minimum_unity, class: 'form-control', min: 0, max: 3
+            = f.number_field :month_to_month_minimum_unity, value: @space.month_to_month_minimum_unity, class: 'form-control', min: 1, max: 4
       .row
         .form-group.col-md-2
           .icon.info.pointer#deposit-popover data-content=t('spaces.info_deposit') data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0"
