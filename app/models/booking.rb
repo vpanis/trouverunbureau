@@ -120,8 +120,11 @@ class Booking < ActiveRecord::Base
 
   def minimum_time_reached
     return unless b_type.present? && valid_for_calculate_time_quantity?
-    errors.add(:minimum_time, 'you must at least reach the minimum time') if
-      space.send("#{b_type}_minimum_unity") > unit_price_quantity
+    return if b_type == 'month_to_month'
+
+    if space.send("#{b_type}_minimum_unity") > unit_price_quantity
+      errors.add(:minimum_time, 'you must at least reach the minimum time')
+    end
   end
 
   def from_smaller_than_to

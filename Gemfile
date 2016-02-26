@@ -162,16 +162,14 @@ group :test, :development do
 
   # Save and open page cucumber
   gem 'launchy'
-
-  gem 'shoulda-matchers'
-  gem 'shoulda-callback-matchers', '~> 1.1.1'
 end
 
 group :test do
   gem 'rspec-sidekiq'
+  gem 'shoulda-callback-matchers', '~> 1.1.1'
+  gem 'shoulda-matchers'
 end
-
-gem "non-stupid-digest-assets"
 
 gem 'dotenv'
 gem 'dotenv-rails'
+gem 'non-stupid-digest-assets'

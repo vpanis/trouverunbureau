@@ -5,6 +5,22 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
 
     # SCOPE FUNCTIONS
 
+    $scope.updateMonthToMonth = (month_to_month_as_of_in_days) ->
+      booking_from = new Date($scope.booking_from)
+      booking_from.setDate(booking_from.getDate() + month_to_month_as_of_in_days)
+
+      dd = booking_from.getDate()
+      mm = booking_from.getMonth() + 1
+      yyyy = booking_from.getFullYear()
+
+      if(dd < 10)
+        dd = '0' + dd
+
+      if(mm < 10)
+        mm = '0' + mm
+
+      $scope.month_to_month_as_of = dd+'-'+mm+'-'+yyyy;
+
     $scope.open = ($event, $input_open) ->
       $event.preventDefault()
       $event.stopPropagation()
@@ -152,6 +168,7 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
     $scope.format = 'dd-MM-yyyy'
     $scope.initialize_dates()
     $scope.space_quantity = 1
+    $scope.month_to_month_as_of = ""
     $scope.space_deposit = parseFloat($("#space-deposit").attr('data-amount'))
     close_all
     deselect_all_tabs();

@@ -230,7 +230,7 @@ RSpec.describe Booking, type: :model do
     end
 
     it 'returns an error if the space minimum months is not reached' do
-      space = FactoryGirl.create(:space, month_minimum_unity: 5)
+      space = FactoryGirl.create(:space, month_minimum_unity: 4)
       from = Time.current.at_beginning_of_day
       to = from.advance(months: 1).at_end_of_day
       booking = FactoryGirl.build(:booking, space: space, b_type: Booking.b_types[:month],
