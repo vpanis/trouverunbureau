@@ -41,8 +41,8 @@ class MailPreview < MailView
   end
 
   def receipt_email_host
-    id = MangopayPayout.where(transaction_status: 'TRANSACTION_SUCCEEDED')
-                .first.try(:mangopay_payment).try(:booking).try(:id)
+    id = MangopayPayment.where(transaction_status: 'PAYIN_SUCCEEDED')
+                .first.try(:booking).try(:id)
     NotificationsMailer.receipt_email_host(id)
   end
 end
