@@ -446,24 +446,32 @@ en:
     account_number: Account Number
     account_type: Account Type
     amount: Amount
+    amount_paid: Amount Paid
+    capacity: Capacity
     card: Card
-    check_in: Check-In
-    check_out: Check-Out
+    check_in: Check In
+    check_out: Check Out
     commission: Service Fee
     confirmation_code: Confirmation Code
     country: Country
     customer_title: Guest Receipt
     date: Date
+    days: Days
     deposit: Deposit
     email: Email
     expires: Expires
     first_name: First Name
     funds_trasferred_on: Funds Transferred On
-    guest: Guest
+    guest: Guest Info
+    hours: Hours
     iban: IBAN
     last_name: Last Name
+    month_to_month: Guaranteed months
+    month_to_month_as_of: Month to month as of
+    months: Months
     name: Name
     payment_type: Payment Type
+    payout: Payout
     payout_type: Payout Type
     phone_number: Phone Number
     province: Province
@@ -471,9 +479,12 @@ en:
     refunds: Refunds
     space_rental: Space Booking
     space_type: Space Type
-    spaces: Spaces
+    spaces: '# of Spaces'
     street_address: Street Address
+    time_frame: Time Frame
+    total_payout: Total Payout
     total_rental: Total Booking
+    upcoming_payouts: Upcoming Payouts
     venue_host: Host
     venue_name: Venue Name
     venue_title: Host Receipt
