@@ -10,8 +10,8 @@ module Users
 
     def create_mangopay_account
       status = MangopayPaymentAccount.statuses[:processing]
-      mpa = MangopayPaymentAccount.create(buyer: self, status: status)
-      Payments::Mangopay::PaymentAccountWorker.perform_async(self.id, mpa.id)
+      mpa = MangopayPaymentAccount.create(buyer: resource, status: status)
+      Payments::Mangopay::PaymentAccountWorker.perform_async(resource.id, mpa.id)
     end
   end
 end
