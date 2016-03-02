@@ -5,9 +5,12 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
 
     # SCOPE FUNCTIONS
 
-    $scope.updateMonthToMonth = (month_to_month_as_of_in_days) ->
+    $scope.updateMonthToMonth = () ->
+      if (!$scope.booking_from)
+        return
+
       booking_from = new Date($scope.booking_from)
-      booking_from.setDate(booking_from.getDate() + month_to_month_as_of_in_days)
+      booking_from.setDate(booking_from.getDate() + per_month_to_month_as_of)
 
       dd = booking_from.getDate()
       mm = booking_from.getMonth() + 1
@@ -102,6 +105,26 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
       else
         return per_month_to_month_price
 
+    $scope.month_to_month_minimum_quantity = () ->
+      return per_month_to_month_minimum_quantity
+
+    $scope.calculate_space_quantity = () ->
+      return if $scope.space_quantity then $scope.space_quantity else 0
+
+    $scope.calculate_deposit = () ->
+      return $scope.space_deposit * $scope.calculate_space_quantity()
+
+    $scope.calculate_space_booking = () ->
+      res = $scope.booking_type_per_price() * $scope.amount_for_booking_type() * $scope.calculate_space_quantity()
+
+      if $scope.selected_tab == 'month_to_month'
+        res *= $scope.month_to_month_minimum_quantity()
+
+      return res
+
+    $scope.calculate_space_total = () ->
+      return $scope.calculate_space_booking() + $scope.calculate_deposit()
+
     $scope.submit_form = () ->
       if $scope.selected_tab == 'hour'
         $('#hour-form').find(':submit').click()
@@ -185,6 +208,8 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
     per_day_price = $("#venue-day-price").attr('data-day-price')
     per_month_price = $("#venue-month-price").attr('data-month-price')
     per_month_to_month_price = $("#venue-month_to_month-price").attr('data-month_to_month-price')
+    per_month_to_month_minimum_quantity = $("#venue-month_to_month-minimum-quantity").attr('data-month_to_month-minimum-quantity')
+    per_month_to_month_as_of = parseInt($("#venue-month_to_month-as-of").attr('data-month_to_month-as-of'))
     $scope.month_quantity = 1
 
     #initializers

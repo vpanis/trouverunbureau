@@ -15,6 +15,7 @@ en:
     feature_5: Secure payments.
     feature_6: Flexible cancelations.
     free: Free
+    guaranteed_months_quantity: Guaranteed months quantity
     hour: Hour
     hours_amount: Number of Hours
     message_placeholder: Tell the host more about yourself and your professional interests.

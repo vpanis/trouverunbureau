@@ -5,6 +5,9 @@
 #venue-day-price data-day-price=@booking.space.day_price
 #venue-month-price data-month-price=@booking.space.month_price
 #venue-month_to_month-price data-month_to_month-price=@booking.space.month_to_month_price
+#venue-month_to_month-minimum-quantity data-month_to_month-minimum-quantity=@booking.space.month_to_month_minimum_unity
+#venue-month_to_month-as-of data-month_to_month-as-of=@booking.space.month_to_month_as_of
+
 #space-deposit data-amount=@space.deposit
 .error-wrapper
   - if @booking_errors.present?
@@ -52,7 +55,7 @@
         .tab#tab-month ng-click="swap_inquiry_type('.form-month-booking', 'month', '#{t('booking_inquiry.month')}')" ng-class="{'tab--selected': selected_tab == 'month'}"
           = t('venues.show.per_month')
       - if @booking.space.month_to_month_price.present?
-        .tab#tab-month_to_month ng-click="swap_inquiry_type('.form-month_to_month-booking', 'month_to_month', '#{t('booking_inquiry.month_to_month')}')" ng-class="{'tab--selected': selected_tab == 'month_to_month'}"
+        .tab#tab-month_to_month ng-click="swap_inquiry_type('.form-month_to_month-booking', 'month_to_month', '#{t('booking_inquiry.month_to_month')}'); updateMonthToMonth()" ng-class="{'tab--selected': selected_tab == 'month_to_month'}"
           = t('venues.show.month_to_month')
   .form-container.dashboard-form
     - if @booking.space.hour_price.present?
@@ -146,7 +149,7 @@
                 = t('booking_inquiry.check_in')
               .calendar.input-group
                 .calendar-icon.input-group-addon ng-click="open($event, 'opened_from')" type="button"
-                = f.text_field :from, placeholder: t('calendar'), class: 'form-control', close_text: 'Close', datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened_from', ng_model: "booking_from", date_disabled: "disabled(date, mode)", type: 'text', show_button_bar: 'false', ng_required: 'true', ng_change: "updateMonthToMonth(#{@space.month_to_month_as_of})"
+                = f.text_field :from, placeholder: t('calendar'), class: 'form-control', close_text: 'Close', datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened_from', ng_model: "booking_from", date_disabled: "disabled(date, mode)", type: 'text', show_button_bar: 'false', ng_required: 'true', ng_change: "updateMonthToMonth()"
             / .form-group.col-xs-12.col-sm-4.col-md-4.col-lg-4
               / label
                 / = t('booking_inquiry.month_to_month_amount')
@@ -191,23 +194,29 @@
               = t('booking_inquiry.months_amount')
           td
             | x {{amount_for_booking_type()}}
+        tr ng-show="selected_tab == 'month_to_month'"
+          td
+            label
+              = t('guaranteed_months_quantity')
+          td
+            | x #{@space.month_to_month_minimum_unity}
         tr
           td
             = t('booking_inquiry.space_amount', space: @space.name)
           td
-            | x {{(space_quantity) ? space_quantity : 0}}
+            | x {{calculate_space_quantity()}}
         tr.grey-child
           td
             = t('booking_inquiry.space_booking')
           td
             = t("currency.#{@space.venue.currency.downcase}.symbol")
-            | {{(booking_type_per_price() * amount_for_booking_type()) * ((space_quantity) ? space_quantity : 0)}}
+            | {{calculate_space_booking()}}
         tr.grey-child
           td
             = t('booking_inquiry.deposit')
           td
             = "+ #{t("currency.#{@space.venue.currency.downcase}.symbol")}"
-            | {{space_deposit * ((space_quantity) ? space_quantity : 0) }}
+            | {{calculate_deposit()}}
         tr
           td
             = t('booking_inquiry.deskspotting_fee')
@@ -218,7 +227,7 @@
             = t('booking_inquiry.total')
           td
             = "#{t("currency.#{@space.venue.currency.downcase}.symbol")}"
-            | {{ (booking_type_per_price() * amount_for_booking_type() + space_deposit) * ((space_quantity) ? space_quantity : 0)}}
+            | {{calculate_space_total()}}
     .booking-reasons-wrapper
       h2
         = t('venues.show.why_deskspotting.title')
