@@ -88,8 +88,11 @@ angular.module('deskSpotting.inbox', []).controller "InboxCtrl", [
 
     $scope.daysInBooking = (booking) ->
       _MS_PER_DAY = 1000 * 60 * 60 * 24;
-
       return Math.ceil((Date.parse(booking.to) - Date.parse(booking.from)) / _MS_PER_DAY);
+
+    $scope.monthsInBooking = (booking) ->
+      _MS_PER_MONTH = 1000 * 60 * 60 * 24 * 30;
+      return Math.ceil((Date.parse(booking.to) - Date.parse(booking.from)) / _MS_PER_MONTH);
 
     $scope.showDecline = (booking) ->
       if booking.state == 'pending_authorization' or booking.state == 'pending_payment' or booking.state == 'paid' or booking.state == 'expired'

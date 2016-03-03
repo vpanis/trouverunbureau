@@ -7,7 +7,7 @@ class InquirySerializer < ActiveModel::Serializer
 
   def space
     SpaceSerializer.new(object.space, only: [:id, :name, :city, :currency, :capacity, :venue_name,
-                                             :logo, :currency_symbol],
+                                             :logo, :currency_symbol, :guaranteed_months],
                                       root: false)
   end
 

@@ -52,7 +52,5 @@ dump.rdb
 
 .idea/
 .env
-
 .beta_env
-
 .prod_env

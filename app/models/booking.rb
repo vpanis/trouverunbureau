@@ -92,13 +92,13 @@ class Booking < ActiveRecord::Base
     when 'month'
       (to.year * 12 + to.month) - (from.year * 12 + from.month) + ((to.day >= from.day) ? 1 : 0)
     when 'month_to_month'
-      1
+      space.month_to_month_minimum_unity || 1
     else
       ((to - from) / 1.send(b_type)).ceil
     end
   end
 
-  # 20% for hourly, dayly, and for the first month of monthly/month-to-month rents
+  # 20% for hourly, daily, and for the first month of monthly/month-to-month rents
   # 10% for each month or part thereof after the first month of monthly/month-to-month rents
   def calculate_fee
     self.fee = 0

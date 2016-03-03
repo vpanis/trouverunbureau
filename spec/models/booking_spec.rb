@@ -57,7 +57,7 @@ RSpec.describe Booking, type: :model do
                                   )
       # open: tuesday, wednesday and friday
       @space = FactoryGirl.create(:space, venue: @venue, hour_price: 2, day_price: 20,
-                                  week_price: 100, month_price: 400)
+                                  week_price: 100, month_price: 400, month_to_month_price: 300)
       @monday = Time.current.next_week(:monday).at_beginning_of_day
     end
 
@@ -163,6 +163,18 @@ RSpec.describe Booking, type: :model do
                                    from: from, to: to, quantity: 2)
       expect(booking.price).to eq(400 * 2 * 2)
     end
+
+    it 'returns the calculated month to month price' do
+      # the price for a month to month booking is determined with the
+      # month_to_month_minimum_unity quantity (guaranteed months)
+
+      from = @monday
+      to = @monday.advance(days: @space.month_to_month_as_of).at_end_of_day
+      booking = FactoryGirl.create(:booking, space: @space, b_type: Booking.b_types[:month_to_month],
+                                   from: from, to: to, quantity: 2)
+      expect(booking.price).to eq(booking.space.month_to_month_price * booking.quantity * booking.space.month_to_month_minimum_unity)
+    end
+
   end
 
   #TO DO: improve fee calculation specs
