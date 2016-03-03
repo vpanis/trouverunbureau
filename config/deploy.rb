@@ -44,7 +44,7 @@ set :shared_paths, (shared_dirs + shared_files)
 set :forward_agent, true
 
 task :environment do
-  invoke :"rvm:use[ruby-2.1.8@#{rails_env}] --create"
+  invoke :"rvm:use[ruby-2.1.8@#{rails_env}]"
 end
 
 task :log_prod do
