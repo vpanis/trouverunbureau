@@ -8,8 +8,8 @@ class SpaceBookingInquiryController < ApplicationController
   end
 
   def create_booking_inquiry
-    return render :inquiry, status: 400 unless handle_booking_type
     @space = Space.includes(:venue).find(params[:id])
+    return render :inquiry, status: 400 unless handle_booking_type
     @booking, @custom_error = create_booking
     if @booking.valid? && @custom_error.empty?
       create_booking_message
@@ -86,9 +86,7 @@ class SpaceBookingInquiryController < ApplicationController
   def month_to_month_type_booking
     return false unless params[:booking][:from].present?
     @from_date = Time.zone.parse(params[:booking][:from]).at_beginning_of_day
-    @to_date = Time.zone.parse(params[:booking][:from])
-                .advance(days: -1, months: 1)
-                .at_end_of_day
+    @to_date = @from_date.advance(days: @space.month_to_month_as_of).at_end_of_day
     @b_type = Booking.b_types[:month_to_month]
     true
   end
@@ -98,8 +96,12 @@ class SpaceBookingInquiryController < ApplicationController
                                       from: @from_date,
                                       to: @to_date,
                                       space: @space,
-                                      deposit: @space.deposit * params[:booking][:quantity].to_i,
+                                      deposit: @space.deposit * quantity_param,
                                       b_type: @b_type,
-                                      quantity: params[:booking][:quantity].to_i)
+                                      quantity: quantity_param)
+  end
+
+  def quantity_param
+    params[:booking][:quantity].to_i
   end
 end

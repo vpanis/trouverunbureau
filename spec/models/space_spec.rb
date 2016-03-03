@@ -57,7 +57,8 @@ RSpec.describe Space, type: :model do
                                 hour_price: nil,
                                 day_price: nil,
                                 week_price: nil,
-                                month_price: nil)
+                                month_price: nil,
+                                month_to_month_price: nil)
       expect(space.valid?).to be_falsey
       expect(space.errors[:price]).to be_present
     end
@@ -67,7 +68,8 @@ RSpec.describe Space, type: :model do
                                 hour_price: 100,
                                 day_price: nil,
                                 week_price: nil,
-                                month_price: nil)
+                                month_price: nil,
+                                month_to_month_price: nil)
       expect(space.valid?).to be_truthy
       expect(space.errors).to be_empty
     end
