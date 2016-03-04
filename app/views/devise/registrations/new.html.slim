@@ -20,40 +20,40 @@ div
     = form_for resource, as: resource_name, url: registration_path(resource_name) do |f|
       .form-group
         label #{t('session.first_name')}
-        = f.text_field :first_name, class: 'form-control', required: 'required'
+        = f.text_field :first_name, class: 'form-control', required: true
         -if resource.errors.present? && resource.errors[:first_name].present?
           span.field-error-message #{t('session.first_name')} #{resource.errors[:first_name][0]}
       .form-group
         label #{t('session.last_name')}
-        = f.text_field :last_name, class: 'form-control', required: 'required'
+        = f.text_field :last_name, class: 'form-control', required: true
         -if resource.errors.present? && resource.errors[:last_name].present?
           span.field-error-message #{t('session.last_name')} #{resource.errors[:last_name][0]}
       .form-group
         label #{t('session.email')}
-        = f.text_field :email, class: 'form-control', required: 'required'
+        = f.text_field :email, class: 'form-control', required: true
         -if resource.errors.present? && resource.errors[:email].present?
           span.field-error-message #{t('session.email')} #{resource.errors[:email][0]}
       .form-group
         .icon.info.pointer#phone-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_password')}"
         label #{t('session.choose_password')}
-        = f.password_field :password, class: 'form-control', required: 'required'
+        = f.password_field(:password, class: 'form-control', required: true, minlength: 8)
         -if resource.errors.present? && resource.errors[:password].present?
           span.field-error-message #{t('session.password')} #{resource.errors[:password][0]}
       .form-group
         label #{t('session.nationality')}
-        = f.select(:nationality, all_countries_options, {prompt: t('payment_methods.select_country')}, {class: 'form-control country-select'})
+        = f.select(:nationality, all_countries_options, {prompt: t('payment_methods.select_country')}, {class: 'form-control country-select', required: true})
         -if resource.errors.present? && resource.errors[:nationality].present?
           span.field-error-message #{t('session.nationality')} #{resource.errors[:nationality][0]}
       .form-group
         label #{t('session.country_of_residence')}
-        = f.select(:country_of_residence, all_countries_options, {prompt: t('payment_methods.select_country')}, {class: 'form-control country-select'})
+        = f.select(:country_of_residence, all_countries_options, {prompt: t('payment_methods.select_country')}, {class: 'form-control country-select', required: true})
         -if resource.errors.present? && resource.errors[:country_of_residence].present?
           span.field-error-message #{t('session.country_of_residence')} #{resource.errors[:country_of_residence][0]}
       .form-group
         label = t('session.date_of_birth')
         .calendar.input-group
           .calendar-icon.input-group-addon ng-click="open($event)" type="button"
-          = f.text_field :date_of_birth, id: 'user_date_of_birth', placeholder: 'dd-mm-yyyy', class: 'form-control', close_text: t('commons.close'), datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened', type: 'text', show_button_bar:'false', ng_model: 'user_date_of_birth', ng_click: "open($event)", required: 'required'
+          = f.text_field :date_of_birth, id: 'user_date_of_birth', placeholder: t('calendar'), class: 'form-control', close_text: t('commons.close'), datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened', type: 'text', show_button_bar:'false', ng_model: 'user_date_of_birth', ng_click: "open($event)", required: true
           -if resource.errors.present? && resource.errors[:date_of_birth].present?
             span.field-error-message #{t('session.date_of_birth')} #{resource.errors[:date_of_birth][0]}
       .left
@@ -64,7 +64,7 @@ div
         span#unaccepted_terms.error.error--hidden
           | you must accept the terms and conditions to continue.
         p
-          = check_box_tag :terms_accepted, required: 'required'
+          = check_box_tag :terms_accepted, required: true
           span.small-italic
             | #{t('session.terms')} &nbsp;
           = link_to t('home.footer.terms_of_service'), terms_of_service_path, class: 'small-italic'
