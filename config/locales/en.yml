@@ -476,6 +476,8 @@ en:
     payment_type: Payment Type
     payout: Payout
     payout_type: Payout Type
+    people: People
+    person: Person
     phone_number: Phone Number
     province: Province
     receipt_number: 'Receipt #'
