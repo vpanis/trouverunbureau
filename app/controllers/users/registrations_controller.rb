@@ -4,6 +4,7 @@ module Users
       super
       return unless resource.persisted? # user is created successfuly
       create_mangopay_account
+      NotificationsMailer.delay.welcome_email(resource.id)
     end
 
     private

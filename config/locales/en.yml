@@ -245,6 +245,21 @@ en:
     rate_guest: Rate your guest
     subject: 'Host Review - Venue #%{venue_id}'
     your_guest: Your Guest
+  welcome_email:
+    subject: You're a spotter now!
+    message: Discover unique workspaces for you, for your team, and take advantage of the shared workspace environment.
+    footer: Your Office. Wherever. Whenever.
+    title_1: Complete your Profile
+    description_1: The more information you provide on yourself and your professional interests, the easier it will be for DeskSpotting to connect you to your ideal workspaces and work partners.
+    button_1: Tell us more
+    title_2: Become a Host
+    description_2: Monetize your vacant office space, earn money and meet interesting professionals that you can collaborate with. Everybody wins.
+    button_2: List your space
+    title_3: Start Spotting!
+    description_3: Search for your ideal workspace. Remember you can even search by the professions you would like to wok with.
+    button_3: Book now
+    footer_disclaimer_1: Shared with love from our headquarters.
+    footer_disclaimer_2: Copyright. Deskpotting LIMITED. 2016.
   inbox:
     approve: Approve
     book_it: Book It
