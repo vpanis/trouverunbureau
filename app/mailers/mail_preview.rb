@@ -1,4 +1,9 @@
 class MailPreview < MailView
+  def welcome_email
+    id = User.first.try(:id)
+    NotificationsMailer.welcome_email(id)
+  end
+
   def new_message_email
     id = Message.first.try(:id)
     NotificationsMailer.new_message_email(id, 'host')

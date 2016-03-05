@@ -55,6 +55,11 @@ class NotificationsMailer < ActionMailer::Base
                     booking_id: booking.id)
   end
 
+  def welcome_email(user_id)
+    @user = User.find(user_id)
+    send_i18n_email([@user], 'welcome_email.subject')
+  end
+
   private
 
   def prepare_message_data(id)

@@ -1,0 +1,122 @@
+<style>
+    @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,700,300,400);
+</style>
+<div lang="es" style="min-width: 320px; margin: 0; padding: 20px 0; font-family: Open Sans, sans-serif;">
+  <div style="max-width: 720px; margin: 0 auto;">
+    <!-- body -->
+    <div class="body" style="color: #666;">
+      <div style="max-width: 650px; margin: 0 auto; padding-bottom: 30px;">
+        <div style="padding: 20px 50px; border-bottom: 1px solid #ccc; text-align: center;">
+          <%= image_tag 'isologotipo-login.png' %>
+        </div>
+
+        <div style="max-width:100%; max-height:100%;">
+          <%= image_tag 'welcome_picture.png', style: 'max-width:100%; max-height:100%; padding-top: 10px;' %>
+        </div>
+
+        <div style="background-color: #FFE011; text-align: center; padding: 20px; ">
+          <p style="font-size: 22px; text-transform: uppercase;"><%= "#{t('welcome_email.subject')}" %></p>
+          <p style="font-size: 20px;"><%= "#{t('welcome_email.message')}" %></p>
+        </div>
+
+        <div style="width: 100%; text-align: center;">
+          <span style="display: inline-block; color: #DDD; padding: 10px;">
+            <p style="padding: 10px 35px; margin: 10px 0; background-color: #555;"><%= "#{t('welcome_email.subject')}" %></p>
+          </span>
+        </div>
+
+        <div style="width: 100%; display:flex;">
+          <div style="width: 50%; text-align: center; margin: auto;">
+            <%= image_tag 'message.svg', style: 'width: 50%;' %>
+          </div>
+          <div style="width: 50%; text-align: left; ">
+            <p style="margin: 10px 0;font-size: 24px;font-weight: 600;">
+              <%= "#{t('welcome_email.title_1')}" %>
+            </p>
+            <p style="margin: 10px 0;">
+              <%= "#{t('welcome_email.description_1')}" %>
+            </p>
+            <p style="background-color: #FFE011; border-radius: 23px; text-align: center; padding: 5px;">
+              <%= link_to edit_user_path(@user), target: "_blank", style: "text-transform: uppercase; text-decoration: none; font-weight: 600; color: #231F20;" do %>
+                <%= "#{t('welcome_email.button_1')}"%>
+              <% end %>
+            </p>
+          </div>
+        </div>
+
+        <div style="width: 100%; display:flex;">
+          <div style="width: 50%; text-align: right; ">
+            <p style="margin: 10px 0; font-size: 24px;font-weight: 600;">
+              <%= "#{t('welcome_email.title_2')}" %>
+            </p>
+            <p style="margin: 10px 0;">
+              <%= "#{t('welcome_email.description_2')}" %>
+            </p>
+            <p style="background-color: #FFE011; border-radius: 23px; text-align: center; padding: 5px;">
+              <%= link_to new_venue_path, target: "_blank", style: "text-transform: uppercase; text-decoration: none; font-weight: 600; color: #231F20;" do %>
+                <%= "#{t('welcome_email.button_2')}"%>
+              <% end %>
+            </p>
+          </div>
+          <div style="width: 50%; text-align: center; margin: auto;">
+            <%= image_tag 'message.svg', style: 'width: 50%;' %>
+          </div>
+        </div>
+
+        <div style="width: 100%; display:flex;">
+          <div style="width: 50%; text-align: center; margin: auto;">
+            <%= image_tag 'message.svg', style: 'width: 50%;' %>
+          </div>
+          <div style="width: 50%; text-align: left; ">
+            <p style="margin: 10px 0;font-size: 24px;font-weight: 600;">
+              <%= "#{t('welcome_email.title_3')}" %>
+            </p>
+            <p style="margin: 10px 0;">
+              <%= "#{t('welcome_email.description_3')}" %>
+            </p>
+            <p style="background-color: #FFE011; border-radius: 23px; text-align: center; padding: 5px;">
+              <%= link_to spaces_path, target: "_blank", style: "text-transform: uppercase; text-decoration: none; font-weight: 600; color: #231F20;" do %>
+                <%= "#{t('welcome_email.button_3')}"%>
+              <% end %>
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="border-top: 6px solid #FFE011; padding-bottom: 30px;">
+      </div>
+
+      <div style="min-width: 650px; margin: 0 auto; display: table; border-bottom: 1px solid #ccc; padding-bottom: 15px;">
+        <p style="color: #FFE011; display: table-cell; vertical-align: middle; font-weight: 600;font-style: italic;">
+          <%= t('welcome_email.footer') %>
+        </p>
+
+        <div class="social-icons" style="min-width: 216px; display: table-cell; vertical-align: middle; text-align: right;">
+          <a style="text-decoration: none;" href="https://twitter.com/deskspotting" target="_blank">
+            <div class="twitter social-icon" style="width: 44px; height: 44px; display: inline-block; margin-right: 10px; background-image: url(<%= image_url('ic_twitter_line.png') %>);"></div>
+          </a>
+          <a style="text-decoration: none;" href="https://facebook.com/deskspotting" target="_blank">
+            <div class="facebook social-icon" style="width: 44px; height: 44px; display: inline-block; margin-right: 10px; background-image: url(<%= image_url('ic_facebook_line.png') %>);"></div>
+          </a>
+          <a style="text-decoration: none;" href="https://linkedin.com/company/deskspotting" target="_blank">
+            <div class="linkedin social-icon" style="width: 44px; height: 44px; display: inline-block; margin-right: 10px; background-image: url(<%= image_url('ic_linkedin_line.png') %>);"></div>
+          </a>
+          <a style="text-decoration: none;" href="https://instagram.com/deskspotting/" target="_blank">
+            <div class="instagram social-icon" style="width: 44px; height: 44px; display: inline-block; margin-right: 10px; background-image: url(<%= image_url('ic_instagram_line.png') %>);"></div>
+          </a>
+        </div>
+      </div>
+
+      <div style="text-align: center;">
+        <p style="margin: 10px 0; font-size: 12px;">
+          <%= "#{t('welcome_email.footer_disclaimer_1')}" %>
+        </p>
+        <p style="margin: 10px 0; font-size: 12px;">
+          <%= "#{t('welcome_email.footer_disclaimer_2')}" %>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
