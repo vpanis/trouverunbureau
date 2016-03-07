@@ -7,7 +7,7 @@ Deskspotting::Application.routes.draw do
     registrations: "users/registrations"
   }
 
-  if Rails.env.development?
+  unless Rails.env.production?
     mount MailPreview => 'mail_view'
   end
 
