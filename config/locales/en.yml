@@ -138,6 +138,7 @@ en:
     en: English
     es: Español
     fr: Français
+    pt: Português
   errors:
     email_taken: The user already exists
     messages:
