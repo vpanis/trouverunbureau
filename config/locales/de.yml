@@ -133,6 +133,7 @@ de:
     en: English
     es: Español
     fr: Français
+    pt: Português
   errors:
     email_taken: Dieser Benutzer existiert bereits
     messages:

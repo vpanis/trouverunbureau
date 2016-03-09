@@ -132,7 +132,8 @@ pt:
     de: Deutsch
     en: English
     es: Español
-    fr:
+    fr: Français
+    pt: Português
   errors:
     email_taken: Utilizador já existente
     messages:

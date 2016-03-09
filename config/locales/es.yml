@@ -133,6 +133,7 @@ es:
     en: English
     es: Español
     fr: Français
+    pt: Português
   errors:
     email_taken: 'Este usuario ya existe '
     messages:
