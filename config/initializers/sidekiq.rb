@@ -13,7 +13,7 @@ else
 end
 
 Sidekiq.configure_server do |config|
-  config.redis = { size: 2, url: url }
+  config.redis = { size: 30, url: url }
   config.error_handlers << proc { |exception, context| Airbrake.notify_or_ignore(exception, parameters: context) }
 end
 

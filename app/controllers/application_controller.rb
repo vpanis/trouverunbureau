@@ -26,8 +26,13 @@ class ApplicationController < ActionController::Base
   before_action :set_user_language
 
   def set_user_language
-    return I18n.locale = session[:locale] if session[:locale].present? && current_user.nil?
-    I18n.locale = current_user.language if current_user.present? && current_user.language.present?
+    I18n.locale = if session[:locale].present? && current_user.nil?
+                    session[:locale]
+                  elsif current_user.try(:language)
+                    current_user.language
+                  else
+                    I18n.default_locale
+                  end
   end
 
   def default_url_options

@@ -9,7 +9,7 @@ task :deploy_prod => :environment do
   set :restart_workers_cmd, "sudo restart_workers"
   set :branch, 'master'
   set :deploy_to, '/var/www/ds/prod'
-  set :test_url, "http://prod.deskspotting.com"
+  set :test_url, "http://deskspotting.com"
   set :dotenv_location, '.prod_env'
   @command_valid = true
   invoke :deploy
