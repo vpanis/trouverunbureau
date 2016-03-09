@@ -17,20 +17,35 @@
         .row.margin-top
           .date ng-if="selected_booking.b_type == 'hour'"
             span
-              | {{getDateDays(selected_booking.from)}}
+              | {{getDateDaysFormatted(selected_booking.from)}}
             span
               = t('booking_inquiry.date')
           .date ng-if="selected_booking.b_type != 'hour'"
             span
+              | {{getCorrectDate(selected_booking, selected_booking.from)}}
+            span
+              = t('booking_inquiry.check_in')
+          .date ng-if="selected_booking.b_type == 'day'"
+            span
               | {{daysInBooking(selected_booking)}}
             span
-              = t('payment.days')
+              = t('booking_inquiry.days_amount')
+          .date ng-if="selected_booking.b_type == 'month'"
+            span
+              | {{monthsInBooking(selected_booking)}}
+            span
+              = t('booking_inquiry.months_amount')
+          .date ng-if="selected_booking.b_type == 'month_to_month'"
+            span
+              | {{selected_booking.space.guaranteed_months}}
+            span
+              = t('booking_inquiry.guaranteed_months')
           .date
             span
               | {{selected_booking.quantity}}
             span
-              = t('reviews.spaces')
-          .date
+              = t('booking_inquiry.spaces_amount')
+          .date ng-if="selected_booking.b_type == 'hour'"
             span
               | {{getCorrectDate(selected_booking, selected_booking.from)}}
             span
@@ -38,7 +53,9 @@
           .date
             span
               | {{getCorrectDate(selected_booking, selected_booking.to)}}
-            span
+            span ng-if="selected_booking.b_type == 'month_to_month'"
+              = t('booking_inquiry.month_to_month_as_of')
+            span ng-if="selected_booking.b_type != 'month_to_month'"
               = t('booking_inquiry.check_out')
       .guest-data.col-md-4 ng-if="showGuest(selected_booking)"
         .clearfix.margin-bottom

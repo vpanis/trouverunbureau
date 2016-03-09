@@ -2,6 +2,7 @@ require 'mina/bundler'
 require 'mina/rails'
 require 'mina/git'
 require 'mina/rvm'
+require 'mina/dotenv'
 
 task :deploy_prod => :environment do
   set :rails_env, 'production'
@@ -9,6 +10,7 @@ task :deploy_prod => :environment do
   set :branch, 'master'
   set :deploy_to, '/var/www/ds/prod'
   set :test_url, "http://prod.deskspotting.com"
+  set :dotenv_location, '.prod_env'
   @command_valid = true
   invoke :deploy
 end
@@ -19,6 +21,7 @@ task :deploy_beta => :environment do
   set :branch, 'development'
   set :deploy_to, '/var/www/ds/beta'
   set :test_url, "http://beta.deskspotting.com"
+  set :dotenv_location, '.beta_env'
   @command_valid = true
   invoke :deploy
 end
@@ -29,8 +32,8 @@ set :user, 'deskspotting'
 set :port, '21890'
 
 shared_dirs = [
-  'tmp', 
-  'log', 
+  'tmp',
+  'log',
   'public/uploads'
 ]
 
@@ -41,7 +44,7 @@ set :shared_paths, (shared_dirs + shared_files)
 set :forward_agent, true
 
 task :environment do
-  invoke :'rvm:use[ruby-2.1.5@default]'
+  invoke :"rvm:use[ruby-2.1.8@default]"
 end
 
 task :log_prod do
@@ -95,7 +98,7 @@ task :deploy => :environment do
           echo "${red}Error accessing site:\n$output"
           echo
           echo "!!! ATTENTION: RIGHT NOW #{test_url} RUNNING IN #{domain}:#{deploy_to}/#{current_path} IS DOWN !!!"
-        else 
+        else
           echo "${green}ok"
         fi
         echo ${reset}
@@ -106,11 +109,15 @@ task :deploy => :environment do
     queue! %[echo "Using ruby version `ruby -v` in path `which ruby`."]
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
+    invoke :'dotenv:push'
     queue %[echo "-----> Bundle"]
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
+
+    queue %[echo "-----> Deploying mangopay hooks"]
+    invoke 'deploy_hooks'
 
     to :launch do
       queue %[
@@ -121,8 +128,12 @@ task :deploy => :environment do
       queue! %[touch #{deploy_to}/#{current_path}/tmp/restart.txt]
       if restart_workers
         queue %[echo 'Restarting workers...']
-        queue! %[restart_workers_cmd]
+        queue! %[#{restart_workers_cmd}]
       end
     end
   end
+end
+
+task :deploy_hooks do
+  queue "cd #{deploy_to}/current ; bundle exec rake mangopay:deploy_hooks"
 end

@@ -275,6 +275,9 @@ h4.gray-subtitle {
       .features-box-image#ft-fees{
         @include at2x('feature-4', 98px, 98px);
       }
+      .features-box-image#ft-month_to_month{
+        @include at2x('feature-5', 98px, 98px);
+      }
       h5{
         text-transform: uppercase;
         font-size: 17px;
@@ -385,7 +388,7 @@ h4.gray-subtitle {
             }
             .price, .amount {
               font-weight: 700;
-              font-size: 32px;
+              font-size: 26px;
               letter-spacing: 0.25rem;
               padding-top: 24px;
             }
@@ -435,6 +438,7 @@ h4.gray-subtitle {
         margin: 18px 0px;
       }
       p{
+        color: #000;
         padding: 6px;
         letter-spacing: 0.14rem;
         font-weight: 200;
@@ -512,10 +516,10 @@ h4.gray-subtitle {
 /*  ======== APPLICATION ======== */
 #venue-main-carousel{
   .item{
-    height: 432px;
+    height: 462px;
     width: 100%;
     .full-image{
-      height: 432px;
+      height: 462px;
       width: 100%;
       background: no-repeat;
       background-size: 100% auto;
@@ -569,12 +573,12 @@ h4.gray-subtitle {
   }
   .actions-on-venue{
     text-align: right;
-    height: 18px;
+    height: 35px;
     margin-right: 12px;
     padding-top: 7px;
     a{
       font-weight: 300;
-      color: $gray-text;
+      color: $dark-gray;
       margin-right: 4px;
       margin-left: 11px;
       font-size: 12px;
@@ -655,14 +659,20 @@ h4.gray-subtitle {
   }
 }
 
+.bottom-line {
+  border-bottom: 1px solid #FFE111;
+  margin-bottom: 15px;
+}
+
 .space-card, .info-card{
   width: 483px;
   margin-bottom: 20px;
   background-color: white;
   .card-top-bar{
-    height: 88px;
+    height: auto;
     padding: 1px 19px;
     h3{
+      width: calc(100% - 95px);
       font-size: 28px;
       letter-spacing: 0.15rem;
       padding: 3px 4px;
@@ -736,7 +746,7 @@ h4.gray-subtitle {
     }
     .price{
       text-align: center;
-      min-width: 120px;
+      min-width: 110px;
       display: inline-block;
       padding: 0 5px;
       p{
@@ -777,6 +787,9 @@ h4.gray-subtitle {
           text-transform: uppercase;
           font-size: 12px;
           font-weight: 700;
+          p {
+            font-weight: 600;
+          }
         }
       }
       .vertical-separator{
@@ -794,7 +807,6 @@ h4.gray-subtitle {
       text-align: center;
       margin: 36px auto 42px;
       width: 90%;
-      padding: 10px 10%;
       @include border-radius(2em);
       border: 2px solid $yellow;
       background-color: $yellow;
@@ -807,7 +819,8 @@ h4.gray-subtitle {
         text-align: center;
         font-size: 13px;
         color: black;
-
+        display: block;
+        padding: 10px 10%;
       }
     }
     .booking-inquiry:hover{
@@ -870,6 +883,8 @@ h4.gray-subtitle {
         p{
           margin: 0;
           line-height: 20px;
+          position: relative;
+          top: -3px;
         }
       }
     }
@@ -1060,7 +1075,6 @@ h4.gray-subtitle {
 
 /*fix for ui-bootstrap, angular directives */
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
-
 
 /*  ======== USER ======== */
 
@@ -1267,7 +1281,7 @@ ul.spoken-languages-container{
 }
 
 .buttons {
-  margin: ($module * 4) 0;
+  margin: ($module * 3) 0;
   display: inline-block;
   width: 100%;
 }
@@ -1472,6 +1486,9 @@ li.venue-hours.active{
   .time-select-wrapper {
     text-align: center;
     margin-bottom: 40px;
+    #tab-month_to_month {
+      width: 133px;
+    }
     .multiple-switch-wrapper {
       width: 600px;
       margin: 0 auto;
@@ -1607,7 +1624,7 @@ li.venue-hours.active{
 
 .terms {
   a {
-    color: $blue;
+    color: #428bca;
     margin: 0 5px;
   }
   p {

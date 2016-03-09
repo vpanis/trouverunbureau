@@ -37,7 +37,10 @@
 #= require_tree ./referral/
 #= require angular-translate
 #= require footer
-
+#= require jquery.inputmask
+#= require jquery.inputmask.extensions
+#= require jquery.inputmask.numeric.extensions
+#= require jquery.inputmask.date.extensions
 
 # global functions, available in all views
 window.hide_spinner = hide_spinner = ->

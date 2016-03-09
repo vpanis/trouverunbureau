@@ -4,7 +4,7 @@
   .container style="height: 100%;"
     .spaces-list ng-controller="WishlistCtrl"
       .row
-        .col-xs-12.col-sm-6.col-md-4 ng-repeat=("space in spaces")
+        .col-xs-12.col-sm-6.col-md-6 ng-repeat=("space in spaces")
           .favorite-space
             .favourite.active ng-click=("removeFavorite(space.id, true)")
             .carousel-container

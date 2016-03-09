@@ -5,6 +5,25 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
 
     # SCOPE FUNCTIONS
 
+    $scope.updateMonthToMonth = () ->
+      if (!$scope.booking_from)
+        return
+
+      booking_from = new Date($scope.booking_from)
+      booking_from.setDate(booking_from.getDate() + per_month_to_month_as_of)
+
+      dd = booking_from.getDate()
+      mm = booking_from.getMonth() + 1
+      yyyy = booking_from.getFullYear()
+
+      if(dd < 10)
+        dd = '0' + dd
+
+      if(mm < 10)
+        mm = '0' + mm
+
+      $scope.month_to_month_as_of = dd+'-'+mm+'-'+yyyy;
+
     $scope.open = ($event, $input_open) ->
       $event.preventDefault()
       $event.stopPropagation()
@@ -81,16 +100,40 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
         return per_hour_price
       else if $scope.selected_tab == 'day'
         return per_day_price
-      else
+      else if $scope.selected_tab == 'month'
         return per_month_price
+      else
+        return per_month_to_month_price
+
+    $scope.month_to_month_minimum_quantity = () ->
+      return per_month_to_month_minimum_quantity
+
+    $scope.calculate_space_quantity = () ->
+      return if $scope.space_quantity then $scope.space_quantity else 0
+
+    $scope.calculate_deposit = () ->
+      return $scope.space_deposit * $scope.calculate_space_quantity()
+
+    $scope.calculate_space_booking = () ->
+      res = $scope.booking_type_per_price() * $scope.amount_for_booking_type() * $scope.calculate_space_quantity()
+
+      if $scope.selected_tab == 'month_to_month'
+        res *= $scope.month_to_month_minimum_quantity()
+
+      return res
+
+    $scope.calculate_space_total = () ->
+      return $scope.calculate_space_booking() + $scope.calculate_deposit()
 
     $scope.submit_form = () ->
       if $scope.selected_tab == 'hour'
         $('#hour-form').find(':submit').click()
       else if $scope.selected_tab == 'day'
         $('#day-form').find(':submit').click()
-      else
+      else if $scope.selected_tab == 'month'
         $('#month-form').find(':submit').click()
+      else
+        $('#month_to_month-form').find(':submit').click()
       return
 
     # PRIVATE FUNCTIONS
@@ -99,6 +142,7 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
       $scope.per_hour_selected = false
       $scope.per_day_selected = false
       $scope.per_month_selected = false
+      $scope.per_month_to_month_selected = false
 
     stablish_hours_amount = () ->
       if !$scope.hour_booking_begin || !$scope.hour_booking_end
@@ -147,6 +191,7 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
     $scope.format = 'dd-MM-yyyy'
     $scope.initialize_dates()
     $scope.space_quantity = 1
+    $scope.month_to_month_as_of = ""
     $scope.space_deposit = parseFloat($("#space-deposit").attr('data-amount'))
     close_all
     deselect_all_tabs();
@@ -162,6 +207,9 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
     per_hour_price = $("#venue-hour-price").attr('data-hour-price')
     per_day_price = $("#venue-day-price").attr('data-day-price')
     per_month_price = $("#venue-month-price").attr('data-month-price')
+    per_month_to_month_price = $("#venue-month_to_month-price").attr('data-month_to_month-price')
+    per_month_to_month_minimum_quantity = $("#venue-month_to_month-minimum-quantity").attr('data-month_to_month-minimum-quantity')
+    per_month_to_month_as_of = parseInt($("#venue-month_to_month-as-of").attr('data-month_to_month-as-of'))
     $scope.month_quantity = 1
 
     #initializers

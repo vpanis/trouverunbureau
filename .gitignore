@@ -20,6 +20,7 @@
 coverage/*
 /coverage/*
 public/assets/source_maps/
+public/assets
 
 # Ignore coveralls results
 coverage/*
@@ -48,3 +49,8 @@ public/uploads
 
 # Extra ignored files
 dump.rdb
+
+.idea/
+.env
+.beta_env
+.prod_env

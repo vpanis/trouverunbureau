@@ -9,4 +9,9 @@ RSpec.describe VenuePhoto, type: :model do
 
   # Presence
   it { should validate_presence_of(:venue) }
+
+  # Callbacks
+  context 'callbacks' do
+    it { is_expected.to callback(:erase_photo).before(:destroy) }
+  end
 end

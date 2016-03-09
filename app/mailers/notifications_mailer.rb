@@ -1,10 +1,14 @@
 class NotificationsMailer < ActionMailer::Base
-  default from: 'from@test.com'
+  default from: ENV['MAIL_FROM_NAME'] + " <" + ENV['MAIL_FROM_ADDRESS'] + ">" || 'No Reply <from@test.com>'
 
-  def new_message_email(message_id)
+  def new_message_email(message_id, for_type)
+    @for_type = for_type
     message = prepare_message_data(message_id)
-    send_i18n_email(message.recipients_representees, 'new_message_email.subject',
-                    booking_id: message.booking.id)
+    return send_i18n_email(message.venue_recipients_representees,
+                           'new_message_email.subject',
+                           booking_id: message.booking.id) if for_type == 'host'
+    send_i18n_email(message.client_recipients_representees, 'new_message_email.subject',
+                    booking_id: message.booking.id) if for_type == 'guest'
   end
 
   def host_cancellation_email(message_id, for_type)
@@ -49,6 +53,11 @@ class NotificationsMailer < ActionMailer::Base
     booking = prepare_receipt_data(booking_id)
     send_i18n_email(booking.venue_recipients_representees, 'receipt_email.subject_host',
                     booking_id: booking.id)
+  end
+
+  def welcome_email(user_id)
+    @user = User.find(user_id)
+    send_i18n_email([@user], 'welcome_email.subject')
   end
 
   private

@@ -9,6 +9,9 @@
       - if @venue.errors.messages[:amenities].present?
           label
             = @venue.errors.messages[:amenities].first
+      .row.buttons.continue
+        .col-xs-12
+          = f.submit t("commons.save_continue"), class: 'rounded-btn yellow-fill width-50 uppercase'
       - Venue::AMENITY_TYPES.each do |amenity|
         div.amenity-checkbox.col-md-4
           label
@@ -21,4 +24,4 @@
           a href='#'
             button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
         .col-xs-6
-          = f.submit 'Save', class: 'rounded-btn yellow-fill width-100 uppercase'
+          = f.submit t("commons.save"), class: 'rounded-btn yellow-fill width-100 uppercase'

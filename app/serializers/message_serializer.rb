@@ -12,7 +12,8 @@ class MessageSerializer < ActiveModel::Serializer
   end
 
   def date
-    object.created_at.to_s
+    #object.created_at.to_s
+    object.created_at.strftime("%d/%m/%Y")
   end
 
   def text

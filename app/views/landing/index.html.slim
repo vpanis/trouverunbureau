@@ -1,3 +1,14 @@
+/== content_for :meta_tag do
+  title #{t('landing.meta.title')}
+  meta name="description" content="#{t('landing.meta.description')}"
+  meta property="og:title" content="#{t('landing.meta.og.title')}"
+  meta property="og:description" content="#{t('landing.meta.og.description')}"
+  meta name="twitter:title" content="#{t('landing.meta.twitter.title')}"
+  meta name="twitter:description" content="#{t('landing.meta.twitter.description')}"
+==content_for :mo_events do
+  javascript:
+    mixpanel.track("Navigation: Homepage");
+
 .landing-page
   .section#header
     = render 'header_section'
@@ -11,7 +22,7 @@
         h2 #{t('home.list_space.title')}
         .separator
         p #{t('home.list_space.content')}
-        a.add-space-btn href="#" #{t('home.list_space.learn_more')}
+        a.add-space-btn href="/how_it_works" #{t('home.list_space.learn_more')}
       .hidden-xs.col-sm-6.col-md-6.col-lg-6.space-image
   - if false
     .section#quotes

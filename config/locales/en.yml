@@ -1,8 +1,7 @@
 en:
-  'German ': English
   booking_inquiry:
     back: Back
-    check_in: Check-in
+    check_in: Check-In
     check_out: Check-Out
     date: Date
     day: Day
@@ -16,12 +15,16 @@ en:
     feature_5: Secure payments.
     feature_6: Flexible cancelations.
     free: Free
+    guaranteed_months: Guaranteed months
+    guaranteed_months_quantity: Guaranteed months quantity
     hour: Hour
     hours_amount: Number of Hours
     message_placeholder: Tell the host more about yourself and your professional interests.
     month: Month
     month_amount: Number of months
     months_amount: Number of Months
+    month_to_month: Month to Month
+    month_to_month_as_of: Month to month as of
     price_per: Price per
     send_inquiry: Send inquiry
     space_amount: Number of Spaces
@@ -65,6 +68,7 @@ en:
     open: Open
     pay: Pay
     save: Save
+    save_continue: Save and continue
     unknown: Unknown
     upload_file: Upload file
   contact:
@@ -129,6 +133,12 @@ en:
     spaces: Workspaces
     status: Status
     venue: Venue Details
+  en_languages:
+    de: Deutsch
+    en: English
+    es: Español
+    fr: Français
+    pt: Português
   errors:
     email_taken: The user already exists
     messages:
@@ -172,6 +182,9 @@ en:
         title: No fees
       subtitle: Why DeskSpotting?
       title: Features
+      month_to_month:
+        title: Month to month bookings
+        text: Ultimate flexibility for those people that love a workspace but just can’t commit to how long they will stay.
     footer:
       about_us: About us
       company: Company
@@ -233,6 +246,22 @@ en:
     rate_guest: Rate your guest
     subject: 'Host Review - Venue #%{venue_id}'
     your_guest: Your Guest
+  welcome_email:
+    subject: You're a spotter now!
+    message: Discover unique workspaces for you, for your team, and take advantage of the shared workspace environment.
+    message_2: Before you start Spotting
+    title_1: Complete your Profile
+    description_1: The more information you provide on yourself and your professional interests, the easier it will be for DeskSpotting to connect you to your ideal workspaces and work partners.
+    button_1: Tell us more
+    title_2: Become a Host
+    description_2: Monetize your vacant office space, earn money and meet interesting professionals that you can collaborate with. Everybody wins.
+    button_2: List your space
+    title_3: Start Spotting!
+    description_3: Search for your ideal workspace. Remember you can even search by the professions you would like to work with.
+    button_3: Book now
+    footer: Your Office. Wherever. Whenever.
+    footer_disclaimer_1: Shared with love from our headquarters.
+    footer_disclaimer_2: Copyright. Deskpotting LIMITED. 2016.
   inbox:
     approve: Approve
     book_it: Book It
@@ -275,7 +304,7 @@ en:
     'false': Norwegian
     fi: Finnish
     fj: Fijian
-    fr: Français
+    fr: French
     ga: Irish
     gu: Gujarati
     he: Hebrew
@@ -409,6 +438,7 @@ en:
     address: Address
     bank_country: Bank country
     bank_name: Bank name
+    bic_iban_tooltip: To ensure proper processing of your payment details please do not copy and paste them in this field.
     branch_code: Branch code
     business: Business
     country_of_residence: Country of residence
@@ -436,34 +466,47 @@ en:
     account_number: Account Number
     account_type: Account Type
     amount: Amount
+    amount_paid: Amount Paid
+    capacity: Capacity
     card: Card
-    check_in: Check-In
-    check_out: Check-Out
+    check_in: Check In
+    check_out: Check Out
     commission: Service Fee
     confirmation_code: Confirmation Code
     country: Country
     customer_title: Guest Receipt
     date: Date
+    days: Days
     deposit: Deposit
     email: Email
     expires: Expires
     first_name: First Name
     funds_trasferred_on: Funds Transferred On
-    guest: Guest
+    guest: Guest Info
+    hours: Hours
     iban: IBAN
     last_name: Last Name
+    month_to_month: Guaranteed months
+    month_to_month_as_of: Month to month as of
+    months: Months
     name: Name
     payment_type: Payment Type
+    payout: Payout
     payout_type: Payout Type
+    people: People
+    person: Person
     phone_number: Phone Number
     province: Province
     receipt_number: 'Receipt #'
     refunds: Refunds
     space_rental: Space Booking
     space_type: Space Type
-    spaces: Spaces
+    spaces: '# of Spaces'
     street_address: Street Address
+    time_frame: Time Frame
+    total_payout: Total Payout
     total_rental: Total Booking
+    upcoming_payouts: Upcoming Payouts
     venue_host: Host
     venue_name: Venue Name
     venue_title: Host Receipt
@@ -508,6 +551,7 @@ en:
     show_filters: Show listings
     teams: Teams
     workspace: Workspace
+  select_country: Select Country
   session:
     already_registered: Already registered?
     change_password: Change Password
@@ -517,6 +561,7 @@ en:
     date_of_birth: Date of birth
     email: 'Email '
     fb_login: Log in with Facebook
+    fb_signup: Sign up with Facebook
     first_name: First Name
     forgot_password: Forgot password?
     full_name: First and Last name
@@ -549,6 +594,7 @@ en:
     info_quantity: Number of these spaces you would you like to list on DeskSpotting
     minimum_renting_period: Minimum booking time
     month_price: Month price
+    month_to_month: Month to Month
     name: Name
     per_day: Per day
     per_hour: Per hour
@@ -581,6 +627,7 @@ en:
     company_name: Company name
     country_of_residence: Country of residence
     date_of_birth: Date of birth
+    edit_organization_profile: Edit Organization Profile
     edit_profile: Edit profile
     email: Email
     emergency_contact: Emergency Contact
@@ -591,10 +638,12 @@ en:
     enter_languages: Enter the languages you speak
     first_name: First name
     gender: Gender
+    gender_select: Please select your gender
     genders:
       f: Female
       m: Male
     info_no_share: We will never share this information with anyone
+    info_password: Please input a 8 digit password
     info_share_email: We will not share your email with anyone
     info_share_emergency: We will only share your emergency contact information with a host once a booking has been made
     info_share_phone: We will only share your phone number with a host/guest once a booking has been made
@@ -726,6 +775,7 @@ en:
       chosen_workspace: workspace chosen in search
       closed: Closed
       location: Location
+      month_to_month: Month to Month
       no_reviews: No reviews
       opening_hours: Opening hours
       per_day: Per day
@@ -764,3 +814,4 @@ en:
     month: month
     no_favourites: You don't have any wish listed spaces
     week: week
+    month_to_month: month to month

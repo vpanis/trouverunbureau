@@ -5,26 +5,41 @@ RSpec.describe Booking, type: :model do
 
   # Relations
   it { should belong_to(:owner) }
+  it { should belong_to(:payment) }
   it { should belong_to(:space) }
   it { should have_many(:messages) }
+  it { should have_one(:client_review) }
+  it { should have_one(:venue_review) }
 
   # Presence
-  it { should validate_presence_of(:owner) }
-  it { should validate_presence_of(:space) }
   it { should validate_presence_of(:b_type) }
-  it { should validate_presence_of(:quantity) }
   it { should validate_presence_of(:from) }
+  it { should validate_presence_of(:owner) }
+  it { should validate_presence_of(:quantity) }
+  it { should validate_presence_of(:space) }
   it { should validate_presence_of(:to) }
 
   # Enums
-  it { should define_enum_for(:b_types) }
-  it { should define_enum_for(:states) }
+  it do
+    should define_enum_for(:b_types)
+      .with([:hour, :day, :week, :month, :month_to_month])
+  end
+
+  it do
+    should define_enum_for(:states).with(
+      [:pending_authorization, :pending_payment, :paid, :cancelled, :denied,
+        :expired, :payment_verification, :refunding, :error_refunding])
+  end
+
+  # Callbacks
+  context 'callbacks' do
+    it { is_expected.to callback(:initialize_fields).after(:initialize) }
+    it { is_expected.to callback(:calculate_price).before(:validation) }
+    it { is_expected.to callback(:calculate_fee).before(:validation) }
+  end
 
   # Numericality
-  it do
-    should validate_numericality_of(:quantity)
-    .only_integer.is_greater_than_or_equal_to(1)
-  end
+  it { should validate_numericality_of(:quantity).only_integer.is_greater_than_or_equal_to(1) }
 
   it 'should fail if the space don\'t have the booking type price' do
     space = FactoryGirl.create(:space, day_price: 10, month_price: nil)
@@ -42,7 +57,7 @@ RSpec.describe Booking, type: :model do
                                   )
       # open: tuesday, wednesday and friday
       @space = FactoryGirl.create(:space, venue: @venue, hour_price: 2, day_price: 20,
-                                  week_price: 100, month_price: 400)
+                                  week_price: 100, month_price: 400, month_to_month_price: 300)
       @monday = Time.current.next_week(:monday).at_beginning_of_day
     end
 
@@ -148,12 +163,25 @@ RSpec.describe Booking, type: :model do
                                    from: from, to: to, quantity: 2)
       expect(booking.price).to eq(400 * 2 * 2)
     end
+
+    it 'returns the calculated month to month price' do
+      # the price for a month to month booking is determined with the
+      # month_to_month_minimum_unity quantity (guaranteed months)
+
+      from = @monday
+      to = @monday.advance(days: @space.month_to_month_as_of).at_end_of_day
+      booking = FactoryGirl.create(:booking, space: @space, b_type: Booking.b_types[:month_to_month],
+                                   from: from, to: to, quantity: 2)
+      expect(booking.price).to eq(booking.space.month_to_month_price * booking.quantity * booking.space.month_to_month_minimum_unity)
+    end
+
   end
 
+  #TO DO: improve fee calculation specs
   context 'fee calculation' do
     it 'returns the fee to pay to deskspotting' do
-      booking = FactoryGirl.create(:booking, price: 300, fee: 0)
-      expect(booking.fee).to eq(booking.price * Rails.configuration.payment.deskspotting_fee)
+      booking = FactoryGirl.create(:booking, price: (1..100).to_a.sample, fee: 0)
+      expect(booking.fee).to eq((booking.price * 0.2).round(2))
     end
   end
 
@@ -214,7 +242,7 @@ RSpec.describe Booking, type: :model do
     end
 
     it 'returns an error if the space minimum months is not reached' do
-      space = FactoryGirl.create(:space, month_minimum_unity: 5)
+      space = FactoryGirl.create(:space, month_minimum_unity: 4)
       from = Time.current.at_beginning_of_day
       to = from.advance(months: 1).at_end_of_day
       booking = FactoryGirl.build(:booking, space: space, b_type: Booking.b_types[:month],

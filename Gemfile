@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.1.5'
+ruby '2.1.8'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
@@ -53,6 +53,8 @@ gem 'turbolinks', '~>2.3.0'
 
 gem 'jquery-turbolinks', '~>2.1.0'
 
+gem 'jquery-inputmask-rails'
+
 gem 'devise', '~>3.3.0'
 gem 'omniauth-facebook', '~>2.0.0'
 gem 'devise-async', '~>0.9.0'
@@ -75,6 +77,7 @@ gem 'slim-rails', '~>2.1.5'
 
 # Sidekiq
 gem 'sidekiq', '~>3.3.4'
+gem 'sidekiq-failures'
 gem 'sinatra', '>= 1.3.0', require: nil
 
 gem 'pundit', '~>0.3.0'
@@ -101,7 +104,10 @@ gem 'timezone'
 
 # Payment Methods
 gem 'braintree', '~>2.40.0'
-gem 'mangopay', '~>3.0.0'
+
+# Sticking with 3.0.15 because of breaking changes of
+# https://docs.mangopay.com/api-v2-01-overview/
+gem 'mangopay', '3.0.15'
 
 gem 'devise_invitable'
 
@@ -113,10 +119,14 @@ gem 'acts_as_decimal'
 # Languages
 gem 'language_list'
 
+gem 'newrelic_rpm'
+
 group :development do
   gem 'better_errors', '~>2.0.0'
   gem 'binding_of_caller', '~>0.7.2'
   gem 'spring', '~>1.1.3'
+  gem 'meta_request'
+  gem 'quiet_assets'
 
   # Livereload
   gem 'guard', '>= 2.2.2',       require: false
@@ -152,19 +162,14 @@ group :test, :development do
 
   # Save and open page cucumber
   gem 'launchy'
-
-  gem 'shoulda-matchers'
 end
 
 group :test do
   gem 'rspec-sidekiq'
+  gem 'shoulda-callback-matchers', '~> 1.1.1'
+  gem 'shoulda-matchers'
 end
 
-group :production, :staging do
-  # gem 'rails_12factor', '~>0.0.2'
-end
-
-gem 'mina'
-gem "non-stupid-digest-assets"
 gem 'dotenv'
 gem 'dotenv-rails'
+gem 'non-stupid-digest-assets'

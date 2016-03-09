@@ -8,8 +8,11 @@ class PaymentsController < ApplicationController
                  .where(id: params[:booking_id], owner: current_represented).first
     return record_not_found unless booking_is_payable?
     @venue = @booking.space.venue
+
+    # TODO move validation to model
     return redirect_to inbox_user_path(@current_represented) unless
       active_collection_account?(@venue.collection_account)
+
     @payment_method = which_payment_method(@venue.collection_account)
     payment_requeriments
   end

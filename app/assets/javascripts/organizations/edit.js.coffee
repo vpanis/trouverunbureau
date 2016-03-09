@@ -47,6 +47,10 @@ on_load = ->
       allowExtensions: true
       utilsScript: '/utils.js'
 
+    $("#emergency_phone").intlTelInput
+      allowExtensions: true
+      utilsScript: '/utils.js'
+
     $('#save-organization').click ->
       $('#phone').val($('#phone').intlTelInput("getNumber"))
     initialize_listeners()

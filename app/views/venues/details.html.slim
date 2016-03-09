@@ -7,6 +7,9 @@
   .details-section.col-md-7.col-md-offset-1.margin-top
     = render 'venue_heading', subtitle: nil
     = form_for @venue, url: {action: "details"} do |f|
+      .row.buttons.continue
+        .col-xs-12
+          = f.submit t("commons.save_continue"), class: 'rounded-btn yellow-fill width-50 uppercase'
       .form-group.col-md-12 class=(@venue.errors.messages[:description].present? ? 'has-error' : '')
         label.required
           = t('venues.edit.description')

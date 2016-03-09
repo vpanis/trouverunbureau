@@ -1,6 +1,10 @@
 @import 'variables';
 
-.title, .code, .price {
+.web-receipt {
+  padding: 30px;
+}
+
+.title, .price {
   text-transform: uppercase;
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
@@ -75,9 +79,6 @@ span, .date, .receipt-number, .contact {
     }
     .detail {
       background-color: $yellow;
-      .value {
-        margin-left: 22px;
-      }
       .plus:after {
         content: '+';
         position: absolute;
@@ -130,11 +131,13 @@ span, .date, .receipt-number, .contact {
     }
   }
 
-
-
 /* BOOKING INFO */
 
-.space-type {
+.booking-info {
+  display: block;
+}
+
+.space-type, .confirmation, .timeframe, .capacity {
   display: inline-block;
   .title {
     margin-right: 5px;
@@ -146,18 +149,9 @@ span, .date, .receipt-number, .contact {
   }
 }
 
-.confirmation {
-  display: inline-block;
-  float: right;
-}
-
-.code {
-  display: inline-block;
-}
-
 .column {
   display: inline-block;
-  margin: 10px 50px;
+  margin: 10px 20px;
   text-align: center;
   .subtitle {
     display: block;
@@ -172,7 +166,7 @@ span, .date, .receipt-number, .contact {
 .bar {
   display: inline-block;
   width: 2px;
- background-color: $light-gray;
+  background-color: $light-gray;
   height: 25px;
 }
 
@@ -226,26 +220,9 @@ span, .date, .receipt-number, .contact {
 /* MEDIA */
 
 @media screen and (max-width: 1500px) {
-  .left-containter {
-    display: block;
-  }
-
   .print {
     display: block;
     margin: 0px auto;
     margin-top: 50px;
   }
-
-  .right-container {
-    margin: 0 auto;
-    margin-bottom: 50px;
-    display: block;
-  }
-
-  .left-container {
-    display: block;
-    text-align: center;
-    margin: 0 auto;
-  }
-
 }

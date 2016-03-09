@@ -48,6 +48,10 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
           $(".search-pagination").show()
         if !is_mobile()
           update_map()
+
+        $(".spaces-results").animate {
+          scrollTop: 0
+        }, "fast"
       return
 
     is_mobile = ->
@@ -143,7 +147,7 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
 
     getLatLongFromAddress = (address) ->
       geocoder = new google.maps.Geocoder();
-      geocoder.geocode { 'address': address }, (results, status) ->
+      geocoder.geocode { 'address': decodeURIComponent(address) }, (results, status) ->
         if status == google.maps.GeocoderStatus.OK
           calculate_bounds(results)
         else

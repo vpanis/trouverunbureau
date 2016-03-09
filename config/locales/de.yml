@@ -1,8 +1,7 @@
 de:
-  'German ': Deutsch
   booking_inquiry:
     back: Zurück
-    check_in: Check-in
+    check_in: Check-In
     check_out: Check-Out
     date: Datum
     day: Tag
@@ -47,14 +46,14 @@ de:
       expired: Abgelaufen
       new: Neu
       paid: Bezahlt
-      payment_verification: Überprüfung
+      payment_verification: "Überprüfung"
       pending_authorization: Ausstehend
       pending_payment: Bestätigt
       refunding: Rückzahlung
     venue_bookings: Gebuchte Arbeitsräume
     view_receipt: Beleg Ansehen
     your_bookings: Ihre Buchungen
-  calendar: TT-MM-JJJJ
+  calendar: TT-MM-JJjj
   commons:
     add: Hinzufügen
     add_image: Foto hinzufügen
@@ -129,6 +128,12 @@ de:
     spaces: Arbeitsräume
     status: Status
     venue: Details zum Lokal
+  en_languages:
+    de: Deutsch
+    en: English
+    es: Español
+    fr: Français
+    pt: Português
   errors:
     email_taken: Dieser Benutzer existiert bereits
     messages:
@@ -148,7 +153,7 @@ de:
     unfortunately: 'Leider musste Ihr Gast, %{name}, seine Buchung bei Ihnen stornieren:'
   guest_review_email:
     at: in
-    check_in: Check-in
+    check_in: Check-In
     check_out: Check-out
     checked_out: Sie haben ausgecheckt von
     date: Datum
@@ -215,7 +220,7 @@ de:
       workspaces: Arbeitsräume
   host_cancellation_email:
     cancellation_policy: Stornierungsbedingungen
-    check_in: Check-in
+    check_in: Check-In
     check_out: Check-out
     date: Datum
     refund_guest: Gemäß den Stornierungsbedingungen werden Sie eine Rückzahlung von %{currency_sym} %{amount} erhalten
@@ -380,7 +385,7 @@ de:
     all_required: Alle Felder sind erforderlich
     capacity: Personenanzahl
     card_number: Kreditkartennummer
-    check_in: Check-in
+    check_in: Check-In
     check_out: Check-out
     choose_credit_card: Sie müssen zuerst eine Kreditkarte aussuchen
     create_credit_card: Eine Kreditkarte hinzufügen
@@ -409,6 +414,7 @@ de:
     address: Adresse
     bank_country: Land der Bank
     bank_name: Name der Bank
+    bic_iban_tooltip:
     branch_code: Branch-Code
     business: Unternehmen
     country_of_residence: Wohnsitzland
@@ -437,7 +443,7 @@ de:
     account_type: Kontoart
     amount: Betrag
     card: Karte
-    check_in: Check-in
+    check_in: Check-In
     check_out: Check-out
     commission: Servicegebühren
     confirmation_code: Bestätigungscode
@@ -485,7 +491,7 @@ de:
     stay_same: Ihre E-Mail und Ihr Passwort bleiben unverändert.
     this_link: Passwort ändern
   reviews:
-    check_in: Check-in
+    check_in: Check-In
     check_out: Check-out
     comment: Meinung (Ihre Bewertung werden nur andere Gastgeber sehen)
     date: Datum
@@ -495,7 +501,7 @@ de:
     spaces: Arbeitsräume
   search:
     capacity: Personenanzahl
-    check_in: Check-in
+    check_in: Check-In
     clear_filters: Filter löschen
     count: Gefundene Arbeitsplätze
     filters: Filter
@@ -503,11 +509,12 @@ de:
     limits: "%{from} - %{to} mehr als %{count} Schreibtische"
     neighbourhood: Viertel
     no_results: Keine Arbeitsräume gefunden
-    profession: Beruf/Tätigkeitsbereich
+    profession: Beruf
     refine: Verfeinern Sie Ihre Suche mithilfe der Filter
     show_filters: Arbeitsräume anzeigen
     teams: Teams
     workspace: Arbeitsplatz
+  select_country:
   session:
     already_registered: Schon angemeldet?
     change_password: Passwort ändern
@@ -517,6 +524,7 @@ de:
     date_of_birth: Geburtsdatum
     email: E-Mail-Adresse
     fb_login: Anmeldung mit Facebook
+    fb_signup: Sign up with Facebook
     first_name: Vorname
     forgot_password: Passwort vergessen?
     full_name: Vor- und Nachname
@@ -581,6 +589,7 @@ de:
     company_name: Name des Unternehmens
     country_of_residence: Wohnsitzland
     date_of_birth: Geburtsdatum
+    edit_organization_profile: Edit Organization Profile
     edit_profile: Profil ändern
     email: E-Mail
     emergency_contact: Notfallkontakt
@@ -591,10 +600,12 @@ de:
     enter_languages: Geben Sie die Sprachen ein, die Sie sprechen
     first_name: Vorname
     gender: Geschlecht
+    gender_select: Bitte geben Sie Ihr Geschlecht
     genders:
       f: Weiblich
       m: Männlich
     info_no_share: Wir werden diese Information an niemanden weitergeben
+    info_password: Please input a 8 digit password
     info_share_email: Wir werden Ihre E-Mail-Adresse an niemanden weitergeben
     info_share_emergency: Wir werden die Informationen Ihres Notfallkontakts nur an einen Gast weitergeben, wenn eine Buchung durchgeführt wurde
     info_share_phone: Wir werden Ihre Telefonnummer nur an einen Gastgeber/Gast weitergeben, wenn eine Buchung durchgeführt wurde
@@ -608,7 +619,7 @@ de:
     organization_members: Mitglieder des Unternehmens
     owner: Eigentümer
     phone: Telefonnummer
-    profession: Beruf/Tätigkeitsbereich
+    profession: Beruf
     required_fields: Pflichtfelder
     spoken_languages: Sprachen, die Sie sprechen
     user_since: DeskSpotter seit
@@ -672,7 +683,7 @@ de:
     complete: Vollständig
     create_venue: Neuen Ort erstellen
     edit:
-      add_professions: Berufe/Tätigkeitsbereiche hinzufügen
+      add_professions: Berufe hinzufügen
       add_venue_logo: Logo für den Ort hinzufügen
       change_logo: Logo ändern
       closing_time: Geschäftsschluss
@@ -690,8 +701,8 @@ de:
       opening_time: "Öffnungszeiten"
       phone: Telefonnummer
       postal_code: Postleitzahl
-      professions: Bevorzugte Berufe/Tätigkeitsbereiche
-      select_professions: Bevorzugte Berufe/Tätigkeitsbereiche auswählen
+      professions: Bevorzugte Berufe
+      select_professions: Bevorzugte Berufe auswählen
       standard_times: Standardzeiten
       start_by: Erzählen Sie uns von Ihrem Arbeitsraum...
       street: Adresse
@@ -726,6 +737,7 @@ de:
       chosen_workspace: in der Suche ausgewählter Arbeitsplatz
       closed: Geschlossen
       location: Lage
+      month_to_month: Monat pro monat
       no_reviews: Keine Bewertungen
       opening_hours: "Öffnungszeiten"
       per_day: Pro Tag

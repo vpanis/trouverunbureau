@@ -64,7 +64,7 @@
           .calendar.input-group
             .calendar-icon.input-group-addon type="button"
             / TODO fix date picker
-            = f.text_field :date_of_birth, placeholder: 'dd-mm-aa', class: 'form-control', close_text: 'Close', datepicker_options: {}, datepicker_popup: 'dd-MM-yyyy', is_open: 'true', type: 'text', show_button_bar:'false', ng_model: 'date_of_birth'
+            = f.text_field :date_of_birth, placeholder: 'dd-mm-yyyy', class: 'form-control', close_text: 'Close', datepicker_options: {}, datepicker_popup: 'dd-MM-yyyy', is_open: 'true', type: 'text', show_button_bar:'false', ng_model: 'date_of_birth'
             - if @collection_account.errors.messages[:date_of_birth].present?
               label
                 = @collection_account.errors.messages[:date_of_birth].first

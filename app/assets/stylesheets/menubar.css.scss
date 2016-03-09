@@ -67,6 +67,11 @@
       color: $dark-gray;
       vertical-align: bottom;
       width: 115px;
+      p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
     .avatar {
       display: inline-block;
@@ -183,7 +188,7 @@
 
 .user-visible {
   display: block;
-  width: 160px;
+  width: auto;
   text-align: left;
   .avatar,
   .name {

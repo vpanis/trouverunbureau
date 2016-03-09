@@ -16,16 +16,17 @@ case Rails.env
 
     # Users
     puts 'creating users'
-    user1 = FactoryGirl.create(:user, first_name: "Robert", last_name: "De Niro", email: Helper.next_email, password: "12341234", phone: "23111131259", gender: 'm', company_name: 'Wolox', interests: 'Lorem ipsum and stuff', profession: Venue::PROFESSIONS.first.to_s, language: 'en', languages_spoken: ['es', 'en'])
-    user2 = FactoryGirl.create(:user, first_name: "Al", last_name: "Pacino", email: Helper.next_email, password: "12341234", phone: "65468315358",  gender: 'm', company_name: 'Blue Jeans', interests: 'sarasa zaraza saraza zarasa', profession: Venue::PROFESSIONS.last.to_s)
-    user3 = FactoryGirl.create(:user, first_name: "Judie", last_name: "Foster", email: Helper.next_email, password: "12341234", phone: "98461875135",  gender: 'm', company_name: 'i work solo', profession: Venue::PROFESSIONS.first.to_s)
-    user4 = FactoryGirl.create(:user, first_name: "John", last_name: "Doe", email: Helper.next_email, password: "12341234", phone: "34155355515",  gender: 'f', company_name: 'freelancer', profession: Venue::PROFESSIONS.first.to_s)
-    user5 = FactoryGirl.create(:user, first_name: "Danny", last_name: "Devito", email: Helper.next_email, password: "12341234", phone: "87964522466",  gender: 'm', company_name: 'We are the best', profession: Venue::PROFESSIONS.last.to_s)
-    user6 = FactoryGirl.create(:user, first_name: "Julia", last_name: "Robert", email: Helper.next_email, password: "12341234", phone: "65735238463",  gender: 'm', company_name: 'Wololo', profession: Venue::PROFESSIONS.first.to_s)
-    user7 = FactoryGirl.create(:user, first_name: "Sean", last_name: "Connery", email: Helper.next_email, password: "12341234", phone: "98976865432",  gender: 'm', company_name: 'Ultimate devs', profession: Venue::PROFESSIONS.last.to_s)
-    user8 = FactoryGirl.create(:user, first_name: "Angelina", last_name: "Jolie", email: Helper.next_email, password: "12341234", phone: "65468363365",  gender: 'f', company_name: 'Best Designers', profession: Venue::PROFESSIONS.last.to_s)
-    user9 = FactoryGirl.create(:user, first_name: "Carlin", last_name: "Calvo", email: Helper.next_email, password: "12341234", phone: "26654561666",  gender: 'm', company_name: 'Molox', profession: Venue::PROFESSIONS.last.to_s)
-    user10 = FactoryGirl.create(:user, first_name: "Quentin", last_name: "Tarantino", email: Helper.next_email, password: "12341234", phone: "6446468684", gender: 'm',  company_name: 'XO7OM', profession: Venue::PROFESSIONS.last.to_s)
+    DEFAULT_PASSWORD = "12341234"
+    user1 = FactoryGirl.create(:user, first_name: "Robert", last_name: "De Niro", email: Helper.next_email, password: DEFAULT_PASSWORD, phone: "23111131259", gender: 'm', company_name: 'Wolox', interests: 'Lorem ipsum and stuff', profession: Venue::PROFESSIONS.first.to_s, language: 'en', languages_spoken: ['es', 'en'])
+    user2 = FactoryGirl.create(:user, first_name: "Al", last_name: "Pacino", email: Helper.next_email, password: DEFAULT_PASSWORD, phone: "65468315358",  gender: 'm', company_name: 'Blue Jeans', interests: 'sarasa zaraza saraza zarasa', profession: Venue::PROFESSIONS.last.to_s)
+    user3 = FactoryGirl.create(:user, first_name: "Judie", last_name: "Foster", email: Helper.next_email, password: DEFAULT_PASSWORD, phone: "98461875135",  gender: 'm', company_name: 'i work solo', profession: Venue::PROFESSIONS.first.to_s)
+    user4 = FactoryGirl.create(:user, first_name: "John", last_name: "Doe", email: Helper.next_email, password: DEFAULT_PASSWORD, phone: "34155355515",  gender: 'f', company_name: 'freelancer', profession: Venue::PROFESSIONS.first.to_s)
+    user5 = FactoryGirl.create(:user, first_name: "Danny", last_name: "Devito", email: Helper.next_email, password: DEFAULT_PASSWORD, phone: "87964522466",  gender: 'm', company_name: 'We are the best', profession: Venue::PROFESSIONS.last.to_s)
+    user6 = FactoryGirl.create(:user, first_name: "Julia", last_name: "Robert", email: Helper.next_email, password: DEFAULT_PASSWORD, phone: "65735238463",  gender: 'm', company_name: 'Wololo', profession: Venue::PROFESSIONS.first.to_s)
+    user7 = FactoryGirl.create(:user, first_name: "Sean", last_name: "Connery", email: Helper.next_email, password: DEFAULT_PASSWORD, phone: "98976865432",  gender: 'm', company_name: 'Ultimate devs', profession: Venue::PROFESSIONS.last.to_s)
+    user8 = FactoryGirl.create(:user, first_name: "Angelina", last_name: "Jolie", email: Helper.next_email, password: DEFAULT_PASSWORD, phone: "65468363365",  gender: 'f', company_name: 'Best Designers', profession: Venue::PROFESSIONS.last.to_s)
+    user9 = FactoryGirl.create(:user, first_name: "Carlin", last_name: "Calvo", email: Helper.next_email, password: DEFAULT_PASSWORD, phone: "26654561666",  gender: 'm', company_name: 'Molox', profession: Venue::PROFESSIONS.last.to_s)
+    user10 = FactoryGirl.create(:user, first_name: "Quentin", last_name: "Tarantino", email: Helper.next_email, password: DEFAULT_PASSWORD, phone: "6446468684", gender: 'm',  company_name: 'XO7OM', profession: Venue::PROFESSIONS.last.to_s)
 
     # Organizations
     puts 'creating organizations'
@@ -351,7 +352,8 @@ case Rails.env
     b_u6_v1_sp2_1 = Booking.create!(owner: user6, space: v1_sp2, state: Booking.states[:paid], b_type: Booking.b_types[:day], quantity: 2, from: next_monday.at_beginning_of_day, to: next_monday.at_end_of_day)
     ClientReview.create!(booking: b_u6_v1_sp2_1, stars: 4, message: Faker::Lorem.paragraph(10))
     VenueReview.create!(booking: b_u6_v1_sp2_1, stars: 4, message: Faker::Lorem.paragraph(10))
-    b_u6_v1_sp2_2 = Booking.create!(owner: user6, space: v1_sp2, state: Booking.states[:paid], b_type: Booking.b_types[:day], quantity: 2, from: next_tuesday.at_beginning_of_day, to: next_monday.at_end_of_day)
+
+    b_u6_v1_sp2_2 = Booking.create!(owner: user6, space: v1_sp2, state: Booking.states[:paid], b_type: Booking.b_types[:day], quantity: 2, from: next_tuesday.at_beginning_of_day, to: next_tuesday.at_end_of_day)
     ClientReview.create!(booking: b_u6_v1_sp2_2, stars: 4, message: Faker::Lorem.paragraph(10))
     VenueReview.create!(booking: b_u6_v1_sp2_2, stars: 3, message: Faker::Lorem.paragraph(10))
     Booking.create!(owner: user6, space: v1_sp2, state: Booking.states[:paid], b_type: Booking.b_types[:day], quantity: 2, from: next_wednesday.at_beginning_of_day, to: next_wednesday.advance(days: 5).at_end_of_day)
@@ -417,9 +419,9 @@ case Rails.env
     b_u2_v3_sp1 = Booking.create!(owner: user2, space: v3_sp1, state: Booking.states[:paid], b_type: Booking.b_types[:hour], quantity: 1, from: next_tuesday.advance(hours: -2), to: next_tuesday.advance(hours: 6))
     VenueReview.create!(booking: b_u2_v3_sp1, stars: 3, message: Faker::Lorem.paragraph(10))
 
-    b_u7_v3_sp1 = Booking.create!(owner: user7, space: v3_sp1, state: Booking.states[:paid], b_type: Booking.b_types[:day], quantity: 10, from: next_wednesday.at_beginning_of_day, to: next_wednesday.at_end_of_day)
+    b_u7_v3_sp1 = Booking.create!(owner: user7, space: v3_sp1, state: Booking.states[:paid], b_type: Booking.b_types[:day], quantity: 10, from: next_wednesday.at_beginning_of_day, to: next_thursday.at_end_of_day)
     ClientReview.create!(booking: b_u7_v3_sp1, stars: 4, message: Faker::Lorem.paragraph(10))
-    b_u8_v3_sp1 = Booking.create!(owner: user8, space: v3_sp1, state: Booking.states[:paid], b_type: Booking.b_types[:day], quantity: 10, from: next_wednesday.at_beginning_of_day, to: next_wednesday.at_end_of_day)
+    b_u8_v3_sp1 = Booking.create!(owner: user8, space: v3_sp1, state: Booking.states[:paid], b_type: Booking.b_types[:day], quantity: 10, from: next_wednesday.at_beginning_of_day, to: next_thursday.at_end_of_day)
     ClientReview.create!(booking: b_u8_v3_sp1, stars: 4, message: Faker::Lorem.paragraph(10))
     b_u1_v3_sp1 = Booking.create!(owner: user1, space: v3_sp1, state: Booking.states[:paid], b_type: Booking.b_types[:hour], quantity: 1, from: next_wednesday.advance(hours: 7), to: next_wednesday.advance(hours: 12))
     ClientReview.create!(booking: b_u1_v3_sp1, stars: 2, message: Faker::Lorem.paragraph(10))

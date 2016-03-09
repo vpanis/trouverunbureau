@@ -1,3 +1,10 @@
+/== content_for :meta_tag do
+  title #{t('sessions.new.meta.title')}
+  meta name="description" content="#{t('sessions.new.meta.description')}"
+  meta property="og:title" content="#{t('sessions.new.meta.og.title')}"
+  meta property="og:description" content="#{t('sessions.new.meta.og.description')}"
+  meta name="twitter:title" content="#{t('sessions.new.meta.twitter.title')}"
+  meta name="twitter:description" content="#{t('sessions.new.meta.twitter.description')}"
 div.section-header
   h2
     span #{t('session.login')}

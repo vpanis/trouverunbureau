@@ -20,6 +20,9 @@
   }
   .state {
     color: $aqua;
+    &.cancelled {
+      color: $red;
+    }
   }
   .price,
   .currency {

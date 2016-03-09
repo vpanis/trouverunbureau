@@ -10,6 +10,7 @@ class NewMessageService < SimpleDelegator
     [CancelledMessageNotifier.new(self),
      DeniedMessageNotifier.new(self),
      PendingAuthorizationMessageNotifier.new(self),
+     InboxMessageNotifier.new(self),
      DefaultMessageNotifier.new(self)]
   end
 
@@ -46,7 +47,18 @@ class NewMessageService < SimpleDelegator
 
     def notify
       # TODO: Replace with a 'Booking creation email'
-      NotificationsMailer.delay.new_message_email(id)
+      NotificationsMailer.delay.new_message_email(id, 'host')
+      NotificationsMailer.delay.new_message_email(id, 'guest')
+    end
+  end
+
+  class InboxMessageNotifier < SimpleDelegator
+    def match?
+      m_type == 'text'
+    end
+
+    def notify
+      NotificationsMailer.delay.new_message_email(id, destination_recipient)
     end
   end
 
@@ -58,7 +70,8 @@ class NewMessageService < SimpleDelegator
     end
 
     def notify
-      NotificationsMailer.delay.new_message_email(id)
+      NotificationsMailer.delay.new_message_email(id, 'host')
+      NotificationsMailer.delay.new_message_email(id, 'guest')
     end
   end
 end

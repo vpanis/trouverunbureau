@@ -21,15 +21,15 @@ section#footer
         .social-icons
           = link_to 'https://twitter.com/deskspotting', target: '_blank'
             .twitter.social-icon
-          = link_to 'https://twitter.com/deskspotting', target: '_blank'
+          = link_to 'https://facebook.com/deskspotting', target: '_blank'
             .facebook.social-icon
-          = link_to 'https://www.linkedin.com/company/deskspotting', target: '_blank'
+          = link_to 'https://linkedin.com/company/deskspotting', target: '_blank'
             .linkedin.social-icon
           = link_to 'https://instagram.com/deskspotting/', target: '_blank'
             .instagram.social-icon
         .language
           = form_tag(change_language_path , :method => :put, :remote => true, id: 'change_language')
-            = select_tag :language, options_for_select(language_options, selected: I18n.locale), id: 'language-select'
+            = select_tag :language, options_for_select(english_language_options, selected: I18n.locale), id: 'language-select'
             p.white-arrow &#x25B2;
   .row
     .rights

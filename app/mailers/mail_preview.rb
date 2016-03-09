@@ -1,7 +1,12 @@
 class MailPreview < MailView
+  def welcome_email
+    id = User.first.try(:id)
+    NotificationsMailer.welcome_email(id)
+  end
+
   def new_message_email
     id = Message.first.try(:id)
-    NotificationsMailer.new_message_email(id)
+    NotificationsMailer.new_message_email(id, 'host')
   end
 
   def host_cancellation_email_for_host
@@ -41,8 +46,8 @@ class MailPreview < MailView
   end
 
   def receipt_email_host
-    id = MangopayPayout.where(transaction_status: 'TRANSACTION_SUCCEEDED')
-                .first.try(:mangopay_payment).try(:booking).try(:id)
+    id = MangopayPayment.where(transaction_status: 'PAYIN_SUCCEEDED')
+                .first.try(:booking).try(:id)
     NotificationsMailer.receipt_email_host(id)
   end
 end
