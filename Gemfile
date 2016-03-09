@@ -2,8 +2,7 @@ source 'http://rubygems.org'
 
 ruby '2.1.8'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.8'
+gem 'rails', '~> 4.1.0'
 
 gem 'google-webfonts-rails', '~>0.0.4'
 
@@ -60,11 +59,7 @@ gem 'omniauth-facebook', '~>2.0.0'
 gem 'devise-async', '~>0.9.0'
 
 # SQL simplifier
-gem 'squeel', '~>1.2.2'
-
-# CodeClimate Reporter
-gem 'codeclimate-test-reporter', group: :test, require: nil
-gem 'simplecov', require: false, group: :test
+gem 'squeel'
 
 # Active Admin
 gem 'activeadmin', github: 'activeadmin'
@@ -76,8 +71,10 @@ gem 'polyamorous', '~>1.1.0'
 gem 'slim-rails', '~>2.1.5'
 
 # Sidekiq
-gem 'sidekiq', '~>3.3.4'
+gem 'sidekiq', '~> 4.0'
 gem 'sidekiq-failures'
+gem 'sidetiq', '0.7.0'
+
 gem 'sinatra', '>= 1.3.0', require: nil
 
 gem 'pundit', '~>0.3.0'
@@ -111,7 +108,6 @@ gem 'mangopay', '3.0.15'
 
 gem 'devise_invitable'
 
-gem 'sidetiq'
 
 # integers in db, decimals in use
 gem 'acts_as_decimal'
@@ -147,7 +143,6 @@ group :debugging, :development, :test do
 end
 
 group :test, :development do
-
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'faker'
@@ -165,6 +160,10 @@ group :test, :development do
 end
 
 group :test do
+  # CodeClimate Reporter
+  gem 'codeclimate-test-reporter', require: nil
+  gem 'simplecov', require: false
+
   gem 'rspec-sidekiq'
   gem 'shoulda-callback-matchers', '~> 1.1.1'
   gem 'shoulda-matchers'
