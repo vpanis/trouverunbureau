@@ -15,11 +15,15 @@ de:
     feature_5: Sichere Zahlungen.
     feature_6: Flexible Stornierungsbedingungen.
     free: Kostenlos
+    guaranteed_months:
+    guaranteed_months_quantity:
     hour: Stunde
     hours_amount: Anzahl der Stunden
     message_placeholder: Erzählen Sie mehr über sich und Ihre beruflichen Interessen.
     month: Monat
     month_amount: Anzahl der Monate
+    month_to_month:
+    month_to_month_as_of:
     months_amount: Anzahl der Monate
     price_per: Preis pro
     send_inquiry: Anfrage absenden
@@ -64,6 +68,7 @@ de:
     open: "Öffnen"
     pay: Zahlen
     save: Speichern
+    save_continue:
     unknown: Unbekannt
     upload_file: Datei laden
   contact:
@@ -133,7 +138,7 @@ de:
     en: English
     es: Español
     fr: Français
-    pt: Português
+    pt:
   errors:
     email_taken: Dieser Benutzer existiert bereits
     messages:
@@ -169,6 +174,9 @@ de:
       flexibility:
         text: Buchen Sie, wann und wo Sie wollen, einen individuellen Arbeitsraum, ein privates Büro oder Tagungsräume für einige Stunden, einen Tag, einen Monat oder länger.
         title: Flexibilität
+      month_to_month:
+        text:
+        title:
       networking:
         text: DeskSpotting hilft Ihnen dabei, inspirierende Arbeitsräume entsprechend Ihren geschäftlichen Interessen zu finden.
         title: Networking
@@ -442,6 +450,8 @@ de:
     account_number: Kontonummer
     account_type: Kontoart
     amount: Betrag
+    amount_paid:
+    capacity:
     card: Karte
     check_in: Check-In
     check_out: Check-out
@@ -450,17 +460,25 @@ de:
     country: Land
     customer_title: Beleg Gast
     date: Datum
+    days:
     deposit: Kaution
     email: E-Mail
     expires: Gültig bis
     first_name: Vorname
     funds_trasferred_on: "Überweisung am"
     guest: Gast
+    hours:
     iban: IBAN
     last_name: Nachname
+    month_to_month:
+    month_to_month_as_of:
+    months:
     name: Name
     payment_type: Zahlungsart
+    payout:
     payout_type: Auszahlungsart
+    people:
+    person:
     phone_number: Telefonnummer
     province: Provinz
     receipt_number: 'Beleg #'
@@ -469,7 +487,10 @@ de:
     space_type: Art des Arbeitsraums
     spaces: Orte
     street_address: Adresse
+    time_frame:
+    total_payout:
     total_rental: Buchungssumme
+    upcoming_payouts:
     venue_host: Gastgeber
     venue_name: Name des Ortes
     venue_title: Beleg Gastgeber
@@ -524,7 +545,7 @@ de:
     date_of_birth: Geburtsdatum
     email: E-Mail-Adresse
     fb_login: Anmeldung mit Facebook
-    fb_signup: Sign up with Facebook
+    fb_signup:
     first_name: Vorname
     forgot_password: Passwort vergessen?
     full_name: Vor- und Nachname
@@ -557,6 +578,7 @@ de:
     info_quantity: Anzahl dieser Arbeitsplätze, die Sie auf DeskSpotting anbieten möchten
     minimum_renting_period: Mindestbuchungsdauer
     month_price: Preis pro Monat
+    month_to_month:
     name: Name
     per_day: Pro Tag
     per_hour: Pro Stunde
@@ -589,7 +611,7 @@ de:
     company_name: Name des Unternehmens
     country_of_residence: Wohnsitzland
     date_of_birth: Geburtsdatum
-    edit_organization_profile: Edit Organization Profile
+    edit_organization_profile:
     edit_profile: Profil ändern
     email: E-Mail
     emergency_contact: Notfallkontakt
@@ -600,7 +622,7 @@ de:
     enter_languages: Geben Sie die Sprachen ein, die Sie sprechen
     first_name: Vorname
     gender: Geschlecht
-    gender_select: Bitte geben Sie Ihr Geschlecht
+    gender_select:
     genders:
       f: Weiblich
       m: Männlich
@@ -737,7 +759,7 @@ de:
       chosen_workspace: in der Suche ausgewählter Arbeitsplatz
       closed: Geschlossen
       location: Lage
-      month_to_month: Monat pro monat
+      month_to_month:
       no_reviews: Keine Bewertungen
       opening_hours: "Öffnungszeiten"
       per_day: Pro Tag
@@ -770,9 +792,26 @@ de:
       loft: Loft
       restaurant: Restaurant
       startup_office: Start-up-Büro
+  welcome_email:
+    button_1:
+    button_2:
+    button_3:
+    description_1:
+    description_2:
+    description_3:
+    footer:
+    footer_disclaimer_1:
+    footer_disclaimer_2:
+    message:
+    message_2:
+    subject:
+    title_1:
+    title_2:
+    title_3:
   wishlist:
     day: Tag
     hour: Stunde
     month: Monat
+    month_to_month:
     no_favourites: Sie haben keine Wish List-Arbeitsräume
     week: Woche

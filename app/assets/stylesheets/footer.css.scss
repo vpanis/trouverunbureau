@@ -18,12 +18,12 @@ html [data-action="wishlist"], html [data-controller="referrals"]{
     text-decoration: none;
   }
   .icon{
-    @include at2x('isologo-top-bar', 205px, 35px);
+    background-image: image-url('deskspotting-logo.svg');
     background-repeat: no-repeat;
     background-position: center;
     display: inline-block;
-    width: 205px;
-    height: 35px;
+    width: 205px !important;
+    height: 35px !important;
     margin-left: 14px;
     margin-top: 12px;
   }

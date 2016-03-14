@@ -15,11 +15,15 @@ es:
     feature_5: Pagos seguros.
     feature_6: Cancelaciones flexibles.
     free: Gratis
+    guaranteed_months: Meses Garantizados
+    guaranteed_months_quantity: Meses guarantizados
     hour: Hora
     hours_amount: Número de horas
     message_placeholder: Cuéntale al anfitrión algo más sobre ti y tus intereses profesionales.
     month: Mes
     month_amount: Número de meses
+    month_to_month: Mes al Mes
+    month_to_month_as_of: Mes al Mes a partir de
     months_amount: Número de meses
     price_per: Precio por
     send_inquiry: Enviar solicitud
@@ -64,6 +68,7 @@ es:
     open: Abrir
     pay: Pagar
     save: Guardar
+    save_continue: Guardar y continuar
     unknown: Desconocido
     upload_file: Subir archivo
   contact:
@@ -169,6 +174,9 @@ es:
       flexibility:
         text: 'Donde quieras y cuando quieras: reserva espacios de trabajo individuales, oficinas privadas o salas de reuniones por horas, días, meses, etc.'
         title: Flexibilidad
+      month_to_month:
+        text: La mejor opción cuando te gusta un espacio de trabajo pero no sabes cuánto tiempo te quedarás.
+        title: Reservas mes al mes
       networking:
         text: 'DeskSpotting te ayuda a encontrar espacios de trabajo según tus intereses profesionales. '
         title: Networking
@@ -414,7 +422,7 @@ es:
     address: Dirección
     bank_country: País del banco
     bank_name: Nombre del banco
-    bic_iban_tooltip:
+    bic_iban_tooltip: 'Para asegurar el procesamiento de tu información bancaria complete este campo manualmente. '
     branch_code: Código de sucursal
     business: Negocio
     country_of_residence: País de residencia
@@ -442,6 +450,8 @@ es:
     account_number: Número de cuenta
     account_type: Tipo de cuenta
     amount: Importe
+    amount_paid: Monto Pagado
+    capacity: Capacidad
     card: Tarjeta
     check_in: Check-In
     check_out: Check-Out
@@ -450,17 +460,25 @@ es:
     country: País
     customer_title: Recibo de huésped
     date: Fecha
+    days: Dias
     deposit: Fianza
     email: Correo electrónico
     expires: Expira
     first_name: Nombre
     funds_trasferred_on: Fondos transferidos el
     guest: Huésped
+    hours: Horas
     iban: IBAN
     last_name: Apellido
+    month_to_month: Meses garantizados
+    month_to_month_as_of: Mes al mes a partir de
+    months: Meses
     name: Nombre
     payment_type: Tipo de pago
+    payout: Pago
     payout_type: Tipo de pago
+    people: Personas
+    person: Persona
     phone_number: Número de teléfono
     province: Provincia
     receipt_number: Recibo n.º
@@ -469,7 +487,10 @@ es:
     space_type: Tipo de espacio
     spaces: Espacios
     street_address: Dirección postal
+    time_frame: Plazo
+    total_payout: Pago Total
     total_rental: Total reserva
+    upcoming_payouts: Próximos Pagos
     venue_host: Anfitrión
     venue_name: Nombre del local
     venue_title: Recibo del anfitrión
@@ -514,7 +535,7 @@ es:
     show_filters: Mostrar anuncios
     teams: Equipos
     workspace: Espacio de trabajo
-  select_country:
+  select_country: Seleccionar país
   session:
     already_registered: "¿Ya estás registrado?"
     change_password: Cambiar contraseña
@@ -524,7 +545,7 @@ es:
     date_of_birth: Fecha de nacimiento
     email: Correo electrónico
     fb_login: Iniciar sesión con Facebook
-    fb_signup: Sign up with Facebook
+    fb_signup: Registrate con Facebook
     first_name: Nombre
     forgot_password: "¿Olvidaste tu contraseña?"
     full_name: Nombre y apellido
@@ -557,6 +578,7 @@ es:
     info_quantity: "¿Cuántos de estos espacios deseas anunciar en DeskSpotting?"
     minimum_renting_period: Tiempo mínimo de reserva
     month_price: Precio por mes
+    month_to_month: mes al mes
     name: Nombre
     per_day: Por día
     per_hour: Por hora
@@ -589,7 +611,7 @@ es:
     company_name: Nombre de la empresa
     country_of_residence: País de residencia
     date_of_birth: Fecha de nacimiento
-    edit_organization_profile: Edit Organization Profile
+    edit_organization_profile: 'Editar Perfil de Organización '
     edit_profile: Editar perfil
     email: Correo electrónico
     emergency_contact: Contacto de emergencia
@@ -600,7 +622,7 @@ es:
     enter_languages: Añade los idiomas que hablas
     first_name: Nombre
     gender: Sexo
-    gender_select: Por favor indique su sexo
+    gender_select: Seleccione su genero
     genders:
       f: Mujer
       m: Hombre
@@ -737,7 +759,7 @@ es:
       chosen_workspace: Espacio de trabajo seleccionado en la búsqueda
       closed: Cerrado
       location: Ubicación
-      month_to_month: Mes a mes
+      month_to_month: Mes al Mes
       no_reviews: No hay evaluaciones
       opening_hours: Horas de apertura
       per_day: por día
@@ -770,9 +792,26 @@ es:
       loft: Loft
       restaurant: Restaurante
       startup_office: Oficina de una startup
+  welcome_email:
+    button_1: Cuéntanos mas
+    button_2: 'Publica tu espacio '
+    button_3: 'Resérvalo '
+    description_1: Cuanta más información compartas sobre tu vida y tus intereses profesionales, más fácil será para DeskSpotting conectarte con espacios y compañeros de trabajo ideales para ti.
+    description_2: Monetiza tus espacios libres de oficina, gana dinero y conoce a profesionales interesantes con los que puedes colaborar. Todo el mundo gana.
+    description_3: Busca tu espacio de trabajo ideal. Recuerda que puedes incluso buscar por las profesiones con las que gustaría trabajar.
+    footer: Mucho más que una oficina.
+    footer_disclaimer_1: Shared with love from our headquarters.
+    footer_disclaimer_2: Copyright. DeskSpotting LIMITED. 2016.
+    message: 'Descubre espacios de trabajos únicos para ti o tu equipo. Aprovecha las ventajas de ambientes de trabajo compartidos. '
+    message_2: Antes de empezar a usar DeskSpotting
+    subject: Bienvenido a DeskSpotting!
+    title_1: 'Completa tu Perfil '
+    title_2: Conviértete en Anfitrión
+    title_3: Empieza a usar DeskSpotting!
   wishlist:
     day: día
     hour: hora
     month: mes
+    month_to_month: mes al mes
     no_favourites: No tienes espacios en tu Wish List
     week: semana

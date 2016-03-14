@@ -172,3 +172,5 @@ end
 gem 'dotenv'
 gem 'dotenv-rails'
 gem 'non-stupid-digest-assets'
+
+gem 'intercom-rails'
