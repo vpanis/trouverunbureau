@@ -58,12 +58,12 @@ h4.gray-subtitle {
     @include rounded-right(0px);
   }
   .icon {
-    @include at2x('isologo-top-bar', 205px, 35px);
+    background-image: image-url('deskspotting-logo.svg');
     background-repeat: no-repeat;
     background-position: center;
     display: inline-block;
-    width: 205px;
-    height: 35px;
+    width: 205px !important;
+    height: 35px !important;
     margin-left: 14px;
     margin-top: 12px;
   }
@@ -284,6 +284,7 @@ h4.gray-subtitle {
         margin-top: 20px;
         letter-spacing: 0.13rem;
         font-weight: 300;
+        height: 10%;
       }
       p{
         font-weight: 300;

@@ -26,7 +26,7 @@
     text-align: center;
   }
   h1.icon{
-    @include at2x('isologotipo-login', 205px, 35px);
+    background-image: image-url('deskspotting-logo-login.svg');
     background-repeat: no-repeat;
     background-position: center;
     display: inline-block;

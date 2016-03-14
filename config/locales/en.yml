@@ -16,15 +16,15 @@ en:
     feature_6: Flexible cancelations.
     free: Free
     guaranteed_months: Guaranteed months
-    guaranteed_months_quantity: Guaranteed months quantity
+    guaranteed_months_quantity: Number of Guaranteed Months
     hour: Hour
     hours_amount: Number of Hours
     message_placeholder: Tell the host more about yourself and your professional interests.
     month: Month
     month_amount: Number of months
-    months_amount: Number of Months
     month_to_month: Month to Month
     month_to_month_as_of: Month to month as of
+    months_amount: Number of Months
     price_per: Price per
     send_inquiry: Send inquiry
     space_amount: Number of Spaces
@@ -174,6 +174,9 @@ en:
       flexibility:
         text: Wherever, whenever book individual workspaces, private offices or meeting rooms for a couple of hours, a day, a month or more.
         title: Flexibility
+      month_to_month:
+        text: Ultimate flexibility for those people that love a workspace but just can’t commit to how long they will stay.
+        title: Month to month bookings
       networking:
         text: DeskSpotting helps you find inspiring workplaces based on your professional interests.
         title: Networking
@@ -182,9 +185,6 @@ en:
         title: No fees
       subtitle: Why DeskSpotting?
       title: Features
-      month_to_month:
-        title: Month to month bookings
-        text: Ultimate flexibility for those people that love a workspace but just can’t commit to how long they will stay.
     footer:
       about_us: About us
       company: Company
@@ -246,22 +246,6 @@ en:
     rate_guest: Rate your guest
     subject: 'Host Review - Venue #%{venue_id}'
     your_guest: Your Guest
-  welcome_email:
-    subject: You're a spotter now!
-    message: Discover unique workspaces for you, for your team, and take advantage of the shared workspace environment.
-    message_2: Before you start Spotting
-    title_1: Complete your Profile
-    description_1: The more information you provide on yourself and your professional interests, the easier it will be for DeskSpotting to connect you to your ideal workspaces and work partners.
-    button_1: Tell us more
-    title_2: Become a Host
-    description_2: Monetize your vacant office space, earn money and meet interesting professionals that you can collaborate with. Everybody wins.
-    button_2: List your space
-    title_3: Start Spotting!
-    description_3: Search for your ideal workspace. Remember you can even search by the professions you would like to work with.
-    button_3: Book now
-    footer: Your Office. Wherever. Whenever.
-    footer_disclaimer_1: Shared with love from our headquarters.
-    footer_disclaimer_2: Copyright. Deskpotting LIMITED. 2016.
   inbox:
     approve: Approve
     book_it: Book It
@@ -501,7 +485,7 @@ en:
     refunds: Refunds
     space_rental: Space Booking
     space_type: Space Type
-    spaces: '# of Spaces'
+    spaces: "# of Spaces"
     street_address: Street Address
     time_frame: Time Frame
     total_payout: Total Payout
@@ -808,10 +792,26 @@ en:
       loft: Loft
       restaurant: Restaurant
       startup_office: Startup office
+  welcome_email:
+    button_1: Tell us more
+    button_2: List your space
+    button_3: Book now
+    description_1: The more information you provide on yourself and your professional interests, the easier it will be for DeskSpotting to connect you to your ideal workspaces and work partners.
+    description_2: Monetize your vacant office space, earn money and meet interesting professionals that you can collaborate with. Everybody wins.
+    description_3: Search for your ideal workspace. Remember you can even search by the professions you would like to work with.
+    footer: Much more than an office.
+    footer_disclaimer_1: Shared with love from our headquarters.
+    footer_disclaimer_2: Copyright. DeskSpotting LIMITED. 2016.
+    message: Discover unique workspaces for you or your team, and take advantage of the shared workspace environment.
+    message_2: Before you start DeskSpotting
+    subject: Welcome to DeskSpotting!
+    title_1: Complete your Profile
+    title_2: Become a Host
+    title_3: Start DeskSpotting!
   wishlist:
     day: day
     hour: hour
     month: month
+    month_to_month: month to month
     no_favourites: You don't have any wish listed spaces
     week: week
-    month_to_month: month to month
