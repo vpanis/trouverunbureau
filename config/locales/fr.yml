@@ -15,11 +15,15 @@ fr:
     feature_5: Paiements sécurisés.
     feature_6: Conditions d'annulation flexibles.
     free: Gratuit
+    guaranteed_months: Mois Guaranties
+    guaranteed_months_quantity: Nombre de mois garantis
     hour: Heure
     hours_amount: Nombre d'heures
     message_placeholder: Dites en plus sur vous même et vos intérêts professionels.
     month: Mois
     month_amount: Nombre de mois
+    month_to_month: Mois en Mois
+    month_to_month_as_of: De mois en mois à partir de
     months_amount: Nombre de mois
     price_per: Prix par
     send_inquiry: Envoyer votre demande
@@ -64,6 +68,7 @@ fr:
     open: Ouvert
     pay: Payer
     save: Sauvegarder
+    save_continue: Sauvegarder et Continuer
     unknown: Inconnu
     upload_file: Charger le fichier
   contact:
@@ -133,7 +138,7 @@ fr:
     en: English
     es: Español
     fr: Français
-    pt: Português
+    pt: Portuguais
   errors:
     email_taken: Cet email est déjà inscrit
     messages:
@@ -169,6 +174,9 @@ fr:
       flexibility:
         text: Réservez votre poste sur Deskpotting c'est choisir de travailler où et quand vous voulez.
         title: Flexibilité
+      month_to_month:
+        text: La meilleure option pour ceux qui aiment un espace de travail mais ne savent pas combien de temps ils vont y rester.
+        title: Réservations de mois en mois
       networking:
         text: Avec DeskSpotting trouvez un espace qui vous ressemble, et enrichissez votre réseau professionnel.
         title: Networking
@@ -414,7 +422,7 @@ fr:
     address: Adresse
     bank_country: Pays banque
     bank_name: Nom de la banque
-    bic_iban_tooltip:
+    bic_iban_tooltip: 'Pour assurer la vérification de votre information bancaire veuillez bien l''introduire manuellement. '
     branch_code: Branch code
     business: Entreprise
     country_of_residence: Pays de résidence
@@ -442,6 +450,8 @@ fr:
     account_number: Numéro de compte
     account_type: Type de compte
     amount: Montant
+    amount_paid: Montant Payé
+    capacity: Capacité
     card: Carte
     check_in: Check-In
     check_out: Check-Out
@@ -450,17 +460,25 @@ fr:
     country: Pays
     customer_title: Reçu Visiteur
     date: Date
+    days: Jours
     deposit: Caution
     email: Email
     expires: Expiration
     first_name: Prénom
     funds_trasferred_on: Fonds versés le
     guest: Visiteur
+    hours: Heures
     iban: IBAN
     last_name: Nom
+    month_to_month: Mois garantis
+    month_to_month_as_of: Mois en mois à compter de
+    months: Mois
     name: Nom
     payment_type: Type de paiement
+    payout: Versement
     payout_type: Type de paiement
+    people: Gens
+    person: Personne
     phone_number: Numéro de téléphone
     province: Province
     receipt_number: 'Reçu #'
@@ -469,7 +487,10 @@ fr:
     space_type: Type de poste
     spaces: Postes
     street_address: Adresse
+    time_frame: Délai
+    total_payout: Paiement Total
     total_rental: Total réservation
+    upcoming_payouts: Versements à venir
     venue_host: Hôte
     venue_name: Nom de l'espace
     venue_title: Reçu Hôte
@@ -514,7 +535,7 @@ fr:
     show_filters: Afficher les postes
     teams: Equipes
     workspace: Postes de travail
-  select_country:
+  select_country: Choisissez le pays
   session:
     already_registered: Déjà inscrit
     change_password: Changez de mot de passe
@@ -524,7 +545,7 @@ fr:
     date_of_birth: Date de naissance
     email: Adresse Email
     fb_login: Connexion avec Facebook
-    fb_signup: Sign up with Facebook
+    fb_signup: Inscrivez-vous avec Facebook
     first_name: Prénom
     forgot_password: Mot de passe oublié?
     full_name: Prénom et Nom
@@ -557,6 +578,7 @@ fr:
     info_quantity: Combien de postes souhaitez-vous publier sur DeskSpotting
     minimum_renting_period: Durée minimale
     month_price: Prix par mois
+    month_to_month: mois en mois
     name: Nom
     per_day: Par jour
     per_hour: Par heure
@@ -589,7 +611,7 @@ fr:
     company_name: Nom d'entreprise
     country_of_residence: Pays de résidence
     date_of_birth: Date de naissance
-    edit_organization_profile: Edit Organization Profile
+    edit_organization_profile: Modifier Profile Organisation
     edit_profile: Modifiez profil
     email: Email
     emergency_contact: Contact en cas d'urgence
@@ -600,7 +622,7 @@ fr:
     enter_languages: Indiquez les langues que vous parlez
     first_name: Prénom
     gender: Sexe
-    gender_select: S'il vous plaît indiquer votre sexe
+    gender_select: Merci de sélectionner votre genre
     genders:
       f: Femme
       m: Homme
@@ -737,7 +759,7 @@ fr:
       chosen_workspace: Poste de travail recherché
       closed: Fermé
       location: Emplacement
-      month_to_month: Mois par mois
+      month_to_month: Mois en Mois
       no_reviews: Pas de commentaire
       opening_hours: Horaires d'ouverture
       per_day: Par jour
@@ -770,9 +792,28 @@ fr:
       loft: Loft
       restaurant: Restaurant
       startup_office: Startup
+  welcome_email:
+    button_1: Dites nous en plus
+    button_2: Publiez votre espace
+    button_3: Réservez maintenant
+    description_1: Plus vous partagerez d'informations sur vous et vos intérêts professionnels, plus il sera facile sur DeskSpotting de vous connecter à des espaces et des travailleurs qui vous ressemblent.
+    description_2: Monétisez vos espaces de travail vacants, gagnez de l'argent et rencontrez des professionnels avec qui pourriez peut être collaborer. Tout le monde y gagne.
+    description_3: Recherchez votre espace de travail idéal. Rappelez-vous que vous pouvez même rechercher par professions avec qui vous pourriez travailler.
+    footer: Bien plus qu'un bureau.
+    footer_disclaimer_1: Partagez avec nous votre amour pour vos bureaux.
+    footer_disclaimer_2: |2
+
+      Copyright. DeskSpotting LIMITED. 2016.
+    message: Découvrez des espaces de travail uniques pour vous ou votre équipe, et découvrez les avantages des bureaux partagés.
+    message_2: Avant de commencer DeskSpotting
+    subject: Bienvenue sur DeskSpotting
+    title_1: Complétez votre profil
+    title_2: Devenir un Hôte
+    title_3: Démarrez sur DeskSpotting!
   wishlist:
     day: jour
     hour: heure
     month: mois
+    month_to_month: 'mois en mois '
     no_favourites: Vous n'avez pas de poste favori
     week: semaine

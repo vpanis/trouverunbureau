@@ -15,11 +15,15 @@ pt:
     feature_5: Pagamentos seguros.
     feature_6: Cancelamentos flexíveis.
     free: Gratuito
+    guaranteed_months: Meses adiantados
+    guaranteed_months_quantity:
     hour: Hora
     hours_amount: Número de Horas
     message_placeholder: Fale ao hóspede mais sobre si e os seus interesses profissionais.
     month: Mês
     month_amount: Número de meses
+    month_to_month:
+    month_to_month_as_of: Mes a Mes a partir de
     months_amount: Número de Meses
     price_per: Preço por
     send_inquiry: Enviar pedido
@@ -64,6 +68,7 @@ pt:
     open: Abrir
     pay: Pagar
     save: Guardar
+    save_continue: Guardar e continuar
     unknown: Desconhecido
     upload_file: Carregar ficheiro
   contact:
@@ -127,13 +132,13 @@ pt:
     publish: Publicar
     spaces: Espaços de trabalho
     status: Estado
-    venue: Detalhes do Espaço
+    venue: Detalhes do Lugar
   en_languages:
     de: Deutsch
     en: English
     es: Español
     fr: Français
-    pt: Português
+    pt:
   errors:
     email_taken: Utilizador já existente
     messages:
@@ -169,6 +174,9 @@ pt:
       flexibility:
         text: Reserve espaços de trabalho individuais, gabinetes privados ou salas de reuniões. Por algumas horas, um dia, um mês ou mais. Quando e onde quiser.
         title: Flexibilidade
+      month_to_month:
+        text: O máximo de flexibilidade para pessoas que adoram um espaço mas não se podem comprometer com quanto tempo vão ficar.
+        title: Reservas mês a mês
       networking:
         text: O DeskSpotting ajuda-o a encontrar espaços de trabalho inspiradores com base nos seus interesses profissionais.
         title: Networking
@@ -415,7 +423,7 @@ pt:
     address: Morada
     bank_country: País de operação do banco
     bank_name: Nome do banco
-    bic_iban_tooltip:
+    bic_iban_tooltip: Para se assegurar o processamento correcto dos seus detalhes de pagamento por favor não faça copy paste desses detalhes neste campo.
     branch_code: Código do balcão
     business: Negócio
     country_of_residence: País de residência
@@ -443,6 +451,8 @@ pt:
     account_number: Número de Conta
     account_type: Tipo de Conta
     amount: Montante
+    amount_paid:
+    capacity:
     card: Cartão
     check_in: Check-In
     check_out: Check-Out
@@ -451,17 +461,25 @@ pt:
     country: País
     customer_title: Recibo do Hóspede
     date: Data
+    days:
     deposit: Caução
     email: Email
     expires: Expira
     first_name: Nome Próprio
     funds_trasferred_on: Fundos Transferidos em
     guest: Hóspede
+    hours:
     iban: IBAN
     last_name: Apelido
+    month_to_month:
+    month_to_month_as_of:
+    months:
     name: Nome
     payment_type: Tipo de Pagamento
+    payout:
     payout_type: Tipo de Recebimento
+    people:
+    person:
     phone_number: Número de Telefone
     province: Distrito
     receipt_number: 'Recibo #'
@@ -470,7 +488,10 @@ pt:
     space_type: Tipo de Espaço
     spaces: Espaços
     street_address: Morada
+    time_frame:
+    total_payout:
     total_rental: Montante Total da Reserva
+    upcoming_payouts:
     venue_host: Anfitrião
     venue_name: Nome do Lugar
     venue_title: Recibo do Anfitrião
@@ -515,7 +536,7 @@ pt:
     show_filters: 'Mostrar espaços '
     teams: Equipas
     workspace: Espaço de trabalho
-  select_country:
+  select_country: Selecionar Pais
   session:
     already_registered: Já registado?
     change_password: Alterar palavra-passe
@@ -525,7 +546,7 @@ pt:
     date_of_birth: Data de nascimento
     email: Email
     fb_login: Iniciar sessão com o Facebook
-    fb_signup:
+    fb_signup: Registrar com Facebook
     first_name: Nome Próprio
     forgot_password: Esqueceu-se da palavra-passe?
     full_name: Nome Próprio e Apelido
@@ -558,6 +579,7 @@ pt:
     info_quantity: Número destes espaços que quer publicar no DeskSpotting
     minimum_renting_period: Tempo mínimo de reserva
     month_price: Preço mensal
+    month_to_month: mês a mês
     name: Nome
     per_day: Por dia
     per_hour: Por hora
@@ -590,7 +612,7 @@ pt:
     company_name: Nome da empresa
     country_of_residence: País de residência
     date_of_birth: Data de nascimento
-    edit_organization_profile:
+    edit_organization_profile: Editar Perfil da Organização
     edit_profile: Editar perfil
     email: Email
     emergency_contact: Contacto de Emergência
@@ -601,7 +623,7 @@ pt:
     enter_languages: Introduza as línguas que fala
     first_name: Nome próprio
     gender: Género
-    gender_select: Indique seu género
+    gender_select:
     genders:
       f: Feminino
       m: Masculino
@@ -738,7 +760,7 @@ pt:
       chosen_workspace: espaço de trabalho escolhido na pesquisa
       closed: Encerrado
       location: Localização
-      month_to_month: Mês por mês
+      month_to_month:
       no_reviews: Sem comentários
       opening_hours: Hora de abertura
       per_day: Por dia
@@ -771,9 +793,26 @@ pt:
       loft: Loft
       restaurant: Restaurante
       startup_office: Escritório de startup
+  welcome_email:
+    button_1:
+    button_2:
+    button_3:
+    description_1:
+    description_2:
+    description_3:
+    footer:
+    footer_disclaimer_1:
+    footer_disclaimer_2:
+    message:
+    message_2:
+    subject:
+    title_1:
+    title_2:
+    title_3:
   wishlist:
     day: dia
     hour: hora
     month: mês
+    month_to_month: mês a mês
     no_favourites: Não tem quaisquer espaços na wish list
     week: semana
