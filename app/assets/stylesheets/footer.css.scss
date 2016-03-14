@@ -18,7 +18,7 @@ html [data-action="wishlist"], html [data-controller="referrals"]{
     text-decoration: none;
   }
   .icon{
-    @include at2x('isologo-top-bar', 205px, 35px);
+    background-image: image-url('deskspotting-logo.svg');
     background-repeat: no-repeat;
     background-position: center;
     display: inline-block;

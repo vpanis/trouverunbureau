@@ -58,7 +58,7 @@ h4.gray-subtitle {
     @include rounded-right(0px);
   }
   .icon {
-    @include at2x('isologo-top-bar', 205px, 35px);
+    background-image: image-url('deskspotting-logo.svg');
     background-repeat: no-repeat;
     background-position: center;
     display: inline-block;
