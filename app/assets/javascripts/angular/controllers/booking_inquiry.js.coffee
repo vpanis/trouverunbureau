@@ -126,6 +126,14 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
       return $scope.calculate_space_booking() + $scope.calculate_deposit()
 
     $scope.submit_form = () ->
+      h = {}
+      h['ID'] = $("#venue-id").attr('data-venue-id')
+      h['Venue City'] = $("#venue-city").attr('data-venue-city')
+      h['Venue Country'] = $("#venue-country").attr('data-venue-country')
+      h['Time Frame'] = $scope.selected_tab_name
+      h['Fee'] = $scope.calculate_space_total()
+      mixpanel.track('Book Inquiry', h)
+
       if $scope.selected_tab == 'hour'
         $('#hour-form').find(':submit').click()
       else if $scope.selected_tab == 'day'

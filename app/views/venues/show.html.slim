@@ -1,6 +1,6 @@
 ==content_for :mo_events do
   javascript:
-    mixpanel.track("Navigation: Venue",{"Country": "#{Country.new(@venue.country_code).name}","City": "#{@venue.town}","ID":#{@venue.id}});
+    mixpanel.track("Navigation: Venue",{"Venue Country": "#{Country.new(@venue.country_code).name}","Venue City": "#{@venue.town}","ID":#{@venue.id}});
 
 = render 'main_carousel'
 
