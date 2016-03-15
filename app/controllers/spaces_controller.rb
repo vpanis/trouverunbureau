@@ -47,11 +47,21 @@ class SpacesController < ApplicationController
   end
 
   def index
+    if params[:s_type].blank?
+      set_meta_tags title: t('meta.spaces.index.title'),
+                    description: t('meta.spaces.index.description')
+    else
+      set_meta_tags title: t("meta.spaces.space_#{params[:s_type]}.title"),
+                    description: t("meta.spaces.space_#{params[:s_type]}.description")
+    end
+
     @professions = profession_options
     @workspaces = space_types_checkbox_options
   end
 
   def search_mobile
+    set_meta_tags title: t('meta.spaces.search_mobile.title'),
+                  description: t('meta.spaces.search_mobile.description')
     @space_types_options = space_types_index_options
   end
 

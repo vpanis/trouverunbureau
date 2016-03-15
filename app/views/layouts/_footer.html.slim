@@ -35,6 +35,6 @@ section#footer
     .rights
       p
         | &copy; #{t('home.footer.reserved_rights')}
-        = link_to(t('home.footer.terms_of_service'), terms_of_service_path)
-        |  -
-        = link_to(t('home.footer.privacy_policy'), privacy_policy_path)
+        =<> link_to(t('home.footer.terms_of_service'), terms_of_service_path)
+        | -
+        =< link_to(t('home.footer.privacy_policy'), privacy_policy_path)
