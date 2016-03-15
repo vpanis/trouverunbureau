@@ -65,7 +65,7 @@ class UsersController < ApplicationController
 
   # sometimes the form sends "{'es'}" and we need to remove {}
   def update_languages_spoken!
-    return unless  user_params['languages_spoken'].present?
+    return unless user_params['languages_spoken'].present?
     languages = user_params['languages_spoken'].gsub(/^\{+|\}+$/, '').split(',')
     @user.update_attributes!(languages_spoken: languages)
   end
