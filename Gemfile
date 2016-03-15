@@ -169,8 +169,7 @@ group :test do
   gem 'shoulda-matchers'
 end
 
-gem 'dotenv'
 gem 'dotenv-rails'
-gem 'non-stupid-digest-assets'
-
 gem 'intercom-rails'
+gem 'meta-tags'
+gem 'non-stupid-digest-assets'

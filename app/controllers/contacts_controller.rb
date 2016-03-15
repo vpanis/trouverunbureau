@@ -1,5 +1,7 @@
 class ContactsController < ApplicationController
   def new
+    set_meta_tags title: t("meta.contacts.new.title"),
+                  description: t("meta.contacts.new.description")
     @contact = Contact.new
   end
 
