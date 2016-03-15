@@ -108,7 +108,6 @@ gem 'mangopay', '3.0.15'
 
 gem 'devise_invitable'
 
-
 # integers in db, decimals in use
 gem 'acts_as_decimal'
 
@@ -147,7 +146,7 @@ group :test, :development do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'cucumber-rails', require: false
-  gem 'database_cleaner', github: 'bmabey/database_cleaner'
+  gem 'database_cleaner'
 
   # Modify time in tests
   gem 'timecop', '~>0.7.1'
