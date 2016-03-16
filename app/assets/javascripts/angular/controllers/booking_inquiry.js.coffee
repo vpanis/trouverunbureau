@@ -1,4 +1,6 @@
-angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtrl", [
+angular
+.module('deskSpotting.booking_inquiry', [])
+.controller "BookingInquiryCtrl", [
   '$scope'
   'Restangular'
   ($scope, Restangular) ->
@@ -34,11 +36,11 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
       $scope.booking_from = $('#booking_from').value
       $scope.booking_to = $('#booking_to').value
 
-    $scope.swap_inquiry_type = (show_class, tab, tab_name) ->
+    $scope.swap_inquiry_type = (show_class, tab) ->
       hide_forms()
       $(show_class).removeClass('form--hidden')
       $scope.selected_tab = tab
-      $scope.selected_tab_name = tab_name
+      $scope.selected_tab_name = $("#translation-info").attr(tab)
 
     $scope.disabled = (date, mode) ->
       days = [0, 1, 2, 3, 4, 5, 6]
@@ -202,12 +204,11 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
     $scope.space_deposit = parseFloat($("#space-deposit").attr('data-amount'))
     close_all
     deselect_all_tabs();
-    if $('.multiple-switch-wrapper .tab').attr('id') == 'tab-hour'
-      $scope.selected_tab = 'hour'
-    else if $('.multiple-switch-wrapper .tab').attr('id') == 'tab-day'
-      $scope.selected_tab = 'day'
-    else
-      $scope.selected_tab = 'month'
+
+    current_timeframe = $('.multiple-switch-wrapper .tab').attr('id').substring(4)
+    $scope.selected_tab = current_timeframe
+    $scope.selected_tab_name = $("#translation-info").attr(current_timeframe)
+
     $($('.form-container .form')[0]).removeClass('form--hidden')
 
     available_dates_hours = $.parseJSON($("#venue-hours").attr('data-day-hours'))
