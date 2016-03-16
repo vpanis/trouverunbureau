@@ -15,7 +15,7 @@ class Space < ActiveRecord::Base
   validates :capacity, :quantity, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   validates :hour_deposit, :day_deposit, :week_deposit, :month_deposit, :month_to_month_deposit, numericality: {
-    greater_than: 0 }, allow_nil: true
+    greater_than_or_equal_to: 0 }, allow_nil: true
 
   validates :hour_price, :day_price, :week_price, :month_price, :month_to_month_price, numericality: {
     greater_than: 0 }, allow_nil: true

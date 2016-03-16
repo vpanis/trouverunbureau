@@ -14,7 +14,6 @@ RSpec.describe Space, type: :model do
   it { should validate_presence_of(:capacity) }
   it { should validate_presence_of(:quantity) }
   it { should validate_presence_of(:venue) }
-  it { should validate_presence_of(:deposit) }
 
   # Callbacks
   context 'callbacks' do
@@ -40,6 +39,11 @@ RSpec.describe Space, type: :model do
 
   it { should validate_numericality_of(:month_minimum_unity).only_integer.is_greater_than_or_equal_to(1).is_less_than_or_equal_to(4) }
   it { should validate_numericality_of(:month_to_month_minimum_unity).only_integer.is_greater_than_or_equal_to(1).is_less_than_or_equal_to(4) }
+
+  #it { should validate_numericality_of(:hour_deposit).is_greater_than_or_equal_to(0) }
+  #it { should validate_numericality_of(:day_deposit).is_greater_than_or_equal_to(0) }
+  #it { should validate_numericality_of(:month_deposit).is_greater_than_or_equal_to(0) }
+  #it { should validate_numericality_of(:month_to_month_deposit).is_greater_than_or_equal_to(0) }
 
   describe '#month_to_month_as_of' do
     let(:examples) { { nil => 0, 0 => 0, 1 => 30, 3 => 90, 4 => 120 } }
@@ -74,4 +78,7 @@ RSpec.describe Space, type: :model do
       expect(space.errors).to be_empty
     end
   end
+
+
+
 end
