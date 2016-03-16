@@ -6,7 +6,7 @@
     .small-separator
     h4.gray-subtitle = t('payment.welcome', name: current_represented.name)
   .payment-info-container
-    #hidden-data data-payment-id="#{@payment.id if @payment.present?}" data-payment-state="#{@payment.transaction_status if @payment.present?}" data-booking-id="#{@booking.id}" data-booking-state="#{@booking.state}"
+    #hidden-data data-payment-id="#{@payment.id if @payment.present?}" data-payment-state="#{@payment.transaction_status if @payment.present?}" data-booking-id="#{@booking.id}" data-booking-state="#{@booking.state}" data-booking-amount="#{number_with_precision(@booking.price + @booking.deposit, precision: 2)}" data-booking-currency="#{@booking.space.venue.currency.upcase}"
     .payment-info
       = image_tag('venue-default.png', width: '75px', height: '75px')
       p.space-name = @booking.space.name

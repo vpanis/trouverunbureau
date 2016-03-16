@@ -130,6 +130,13 @@ angular.module('deskSpotting.inbox', []).controller "InboxCtrl", [
           return
 
     $scope.payBoooking = (selected_booking) ->
+      h = {}
+      h['ID'] = selected_booking.id
+      h['Venue City'] = selected_booking.space.city
+      h['Venue Country'] = selected_booking.space.country
+      h['Booking Type'] = selected_booking.b_type
+      mixpanel.track('Book It', h)
+
       window.location = "/payments/new?booking_id=" + selected_booking.id
 
     $scope.approveBoooking = () ->
@@ -141,10 +148,19 @@ angular.module('deskSpotting.inbox', []).controller "InboxCtrl", [
         return
 
     $scope.sendNewOffer = () ->
+      price = $('#price-input')[0].value
+
+      h = {}
+      h['ID'] = $scope.selected_booking.id
+      h['Venue City'] = $scope.selected_booking.space.city
+      h['Venue Country'] = $scope.selected_booking.space.country
+      h['Booking Type'] = $scope.selected_booking.b_type
+      h['New Price'] = price
+      mixpanel.track('New Offer', h)
+
       if not $('#price-form')[0].checkValidity()
         $('#price-form')[0].submit()
       else
-        price = $('#price-input')[0].value
         show_spinner()
         Restangular.one('inquiries', $scope.selected_booking.id).one('edit').customPUT({price: price}).then (result) ->
           hide_spinner()

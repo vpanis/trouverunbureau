@@ -9,15 +9,21 @@ onLoad = ->
     mangopayConfiguration = $("#js-mangopay-config")[0].dataset
     mangoPay.cardRegistration.baseURL = mangopayConfiguration.baseUrl
     mangoPay.cardRegistration.clientId = mangopayConfiguration.clientId
+    bookingPaymentData = $("#hidden-data")[0].dataset
+
     $('.js-create-card-registration').on 'click', (event) ->
       $("#new-credit-card").addClass("loading")
       createNewCardRegistration $('#js-card_currency').val().toUpperCase()
+
     $('.js-credit-card').on 'click', select_card
+
     $('#js-pay').on 'click', (event) ->
       if selectedCreditCardId != null
+        mixpanel.track('Paid Booking', $("#hidden-data")[0].dataset)
+        fbq('track', 'Purchase', {value: bookingPaymentData.bookingAmount, currency: bookingPaymentData.bookingCurrency});
         pay(selectedCreditCardId)
+
     # If the payment is in a expected response status
-    bookingPaymentData = $("#hidden-data")[0].dataset
     if bookingPaymentData.bookingState == "payment_verification" and
       (bookingPaymentData.paymentState == 'EXPECTING_RESPONSE' or
         bookingPaymentData.paymentState == 'PAYING_CREATED')
