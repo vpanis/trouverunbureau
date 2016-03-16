@@ -75,7 +75,7 @@
           .form-group.col-md-2 class=(@space.errors.messages[:hour_price].present? ? 'has-error' : '')
             = f.number_field :hour_price, value: @space.hour_price, placeholder: 'e.g. 10,00', class: 'form-control', min: 0
           .form-group.col-md-2 
-            = f.number_field :deposit, value: @space.deposit, class: 'form-control', min: 0, required: true
+            = f.number_field :hour_deposit, value: @space.hour_deposit, class: 'form-control', min: 0
           .form-group.col-md-4 class=(@space.errors.messages[:hour_minimum_unity].present? ? 'has-error' : '')
             = f.number_field :hour_minimum_unity, value: @space.hour_minimum_unity, class: 'form-control', min: 0
         .row
@@ -86,7 +86,7 @@
           .form-group.col-md-2 class=(@space.errors.messages[:day_price].present? ? 'has-error' : '')
             = f.number_field :day_price, value: @space.day_price, placeholder: 'e.g. 10,00', class: 'form-control', min: 0
           .form-group.col-md-2 
-            = f.number_field :deposit, value: @space.deposit, class: 'form-control', min: 0, required: true
+            = f.number_field :day_deposit, value: @space.day_deposit, class: 'form-control', min: 0
           .form-group.col-md-4 class=(@space.errors.messages[:day_minimum_unity].present? ? 'has-error' : '')
             = f.number_field :day_minimum_unity, value: @space.day_minimum_unity, class: 'form-control', min: 0
         .row
@@ -97,7 +97,7 @@
           .form-group.col-md-2 class=(@space.errors.messages[:month_price].present? ? 'has-error' : '')
             = f.number_field :month_price, value: @space.month_price, placeholder: 'e.g. 10,00', class: 'form-control', min: 0
           .form-group.col-md-2 
-            = f.number_field :deposit, value: @space.deposit, class: 'form-control', min: 0, required: true
+            = f.number_field :month_deposit, value: @space.month_deposit, class: 'form-control', min: 0
           .form-group.col-md-4 class=(@space.errors.messages[:month_minimum_unity].present? ? 'has-error' : '')
             = f.number_field :month_minimum_unity, value: @space.month_minimum_unity, class: 'form-control', min: 0
         .row
@@ -108,7 +108,7 @@
           .form-group.col-md-2 class=(@space.errors.messages[:month_to_month_price].present? ? 'has-error' : '')
             = f.number_field :month_to_month_price, value: @space.month_to_month_price, placeholder: 'e.g. 10,00', class: 'form-control', min: 0
           .form-group.col-md-2 
-            = f.number_field :deposit, value: @space.deposit, class: 'form-control', min: 0, required: true
+            = f.number_field :month_to_month_deposit, value: @space.month_to_month_deposit, class: 'form-control', min: 0
           .form-group.col-md-4 class=(@space.errors.messages[:month_to_month_minimum_unity].present? ? 'has-error' : '')
             = f.number_field :month_to_month_minimum_unity, value: @space.month_to_month_minimum_unity, class: 'form-control', min: 0, max: 3
       .buttons

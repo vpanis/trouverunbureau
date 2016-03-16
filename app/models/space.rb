@@ -10,11 +10,12 @@ class Space < ActiveRecord::Base
                 :communal_space, :home_office]
 
   # Validations
-  validates :s_type, :name, :capacity, :quantity, :venue, :deposit, presence: true
+  validates :s_type, :name, :capacity, :quantity, :venue, presence: true
 
   validates :capacity, :quantity, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
-  validates :deposit, numericality: { greater_than_or_equal_to: 0 }
+  validates :hour_deposit, :day_deposit, :week_deposit, :month_deposit, :month_to_month_deposit, numericality: {
+    greater_than: 0 }, allow_nil: true
 
   validates :hour_price, :day_price, :week_price, :month_price, :month_to_month_price, numericality: {
     greater_than: 0 }, allow_nil: true
@@ -36,7 +37,12 @@ class Space < ActiveRecord::Base
   acts_as_decimal :week_price, decimals: 2
   acts_as_decimal :month_price, decimals: 2
   acts_as_decimal :month_to_month_price, decimals: 2
-  acts_as_decimal :deposit, decimals: 2
+
+  acts_as_decimal :hour_deposit, decimals: 2
+  acts_as_decimal :day_deposit, decimals: 2
+  acts_as_decimal :week_deposit, decimals: 2
+  acts_as_decimal :month_deposit, decimals: 2
+  acts_as_decimal :month_to_month_deposit, decimals: 2
 
   def month_to_month_as_of
     month_to_month_minimum_unity.to_i * 30
@@ -51,7 +57,6 @@ class Space < ActiveRecord::Base
   end
 
   def initialize_fields
-    self.deposit ||= 0
     self.hour_minimum_unity ||= 1
     self.day_minimum_unity ||= 1
     self.week_minimum_unity ||= 1
