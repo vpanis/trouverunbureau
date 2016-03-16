@@ -58,7 +58,6 @@
               .icon.lock.pointer#country_of_residence-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
               label = t('users.country_of_residence')
               = f.select(:country_of_residence, all_countries_options, {prompt: t('payment_methods.select_country')}, {class: 'form-control country-select', required: true})
-              / = f.text_field :country_of_residence, placeholder: t('users.country_of_residence'), class: 'form-control', required: true
           .row
             .small-title
               .small-separator

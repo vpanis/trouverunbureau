@@ -1,6 +1,9 @@
 == content_for :mo_events do
   javascript:
-    mixpanel.track("Navigation: Homepage");
+    var user_id = #{current_user ? current_user.id : 0}
+    if (user_id > 0)
+      mixpanel.identify(user_id.toString())
+    mixpanel.track("Navigation: Homepage")
 
 .landing-page
   .section#header

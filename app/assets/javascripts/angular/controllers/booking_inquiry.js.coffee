@@ -130,8 +130,7 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
       h['ID'] = $("#venue-id").attr('data-venue-id')
       h['Venue City'] = $("#venue-city").attr('data-venue-city')
       h['Venue Country'] = $("#venue-country").attr('data-venue-country')
-      h['Time Frame'] = $scope.selected_tab_name
-      h['Fee'] = $scope.calculate_space_total()
+      h['Booking Type'] = $scope.selected_tab_name
       mixpanel.track('Book Inquiry', h)
 
       if $scope.selected_tab == 'hour'
