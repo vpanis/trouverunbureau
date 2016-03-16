@@ -36,7 +36,7 @@
           .col-md-12
             .icon.info.pointer#photos-popover data-content=t('spaces.info_photos') data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
             label = t('spaces.space_photos')
-            hr
+            hr.spacer
         .row.pictures
           - @space.photos.each do |venue_photo|
             .col-md-4
@@ -51,7 +51,7 @@
           .col-md-12
             .icon.info.pointer#price-popover data-content=t('spaces.info_pricing') data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
             label = t('spaces.pricing', currency: t("currency.#{@space.venue.currency.downcase}.symbol"))
-            hr
+            hr.spacer
         .row
           .col-md-4
             .icon.info.pointer#renting-period-popover data-content=t('spaces.info_renting_period') data-original-title="" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title=""
