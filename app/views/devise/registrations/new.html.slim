@@ -61,8 +61,8 @@ div
         p
           = check_box_tag :terms_accepted, required: true
           span.small-italic
-            | #{t('session.terms')} &nbsp;
-          = link_to t('home.footer.terms_of_service'), terms_of_service_path, class: 'small-italic'
+            | #{t('session.terms')}
+          =< link_to t('home.footer.terms_of_service'), terms_of_service_path, class: 'small-italic', target: '_blank'
       button#signup-form-submit.rounded-button type='button'
         = t('session.signup')
       = f.hidden_field :provider
