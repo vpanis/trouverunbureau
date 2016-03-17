@@ -92,16 +92,10 @@ class SpaceBookingInquiryController < ApplicationController
   end
 
   def create_booking
-
-    puts 'deposit >>>>>>>>> '
-    puts calculate_deposit(@space, @b_type, quantity_param)
-
-    
     BookingManager.book(current_user, owner: current_represented,
                                       from: @from_date,
                                       to: @to_date,
                                       space: @space,
-                                      #deposit: @space.deposit * quantity_param,
                                       deposit: calculate_deposit(@space, @b_type, quantity_param),
                                       b_type: @b_type,
                                       quantity: quantity_param)
