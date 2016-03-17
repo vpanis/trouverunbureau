@@ -119,7 +119,6 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
       return if $scope.space_quantity then $scope.space_quantity else 0
 
     $scope.calculate_deposit = () ->
-      #return $scope.space_deposit * $scope.calculate_space_quantity()
       deposit = $scope.calculate_space_deposit()
       quantity = $scope.calculate_space_quantity()
       return deposit * quantity
@@ -210,7 +209,6 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
     $scope.initialize_dates()
     $scope.space_quantity = 1
     $scope.month_to_month_as_of = ""
-    $scope.space_deposit = parseFloat($("#space-deposit").attr('data-amount'))
     $scope.space_deposit_attributes = JSON.parse($("#space-deposit-attributes").attr('data-amount'))
     close_all
     deselect_all_tabs();
