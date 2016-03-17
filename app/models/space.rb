@@ -50,12 +50,22 @@ class Space < ActiveRecord::Base
 
   def deposits_attributes
     {
-      :hour_deposit           =>  self.hour_deposit,
-      :day_deposit            =>  self.day_deposit,
-      :week_deposit           =>  self.week_deposit,
-      :month_deposit          =>  self.month_deposit,
-      :month_to_month_deposit =>  self.month_to_month_deposit
+      :hour_deposit           =>  self.hour_deposit.to_i,
+      :day_deposit            =>  self.day_deposit.to_i,
+      :week_deposit           =>  self.week_deposit.to_i,
+      :month_deposit          =>  self.month_deposit.to_i,
+      :month_to_month_deposit =>  self.month_to_month_deposit.to_i
     }
+    .with_indifferent_access
+  end
+
+  def deposit_by_type(booking_type)
+    deposit_type = "#{booking_type}_deposit"
+    self.deposits_attributes[deposit_type]
+  end
+
+  def calculate_deposit(booking_type, quantity)
+    self.deposit_by_type(booking_type) * quantity
   end
 
   private
