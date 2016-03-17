@@ -29,7 +29,6 @@ RSpec.describe Space, type: :model do
 
   # Numericality
   # every property used with `acts_as_decimal` is failing
-  # it { should validate_numericality_of(:deposit).is_greater_than_or_equal_to(0) }
   it { should validate_numericality_of(:capacity).only_integer.is_greater_than_or_equal_to(0) }
   it { should validate_numericality_of(:quantity).only_integer.is_greater_than_or_equal_to(0) }
 
@@ -39,12 +38,7 @@ RSpec.describe Space, type: :model do
 
   it { should validate_numericality_of(:month_minimum_unity).only_integer.is_greater_than_or_equal_to(1).is_less_than_or_equal_to(4) }
   it { should validate_numericality_of(:month_to_month_minimum_unity).only_integer.is_greater_than_or_equal_to(1).is_less_than_or_equal_to(4) }
-
-  #it { should validate_numericality_of(:hour_deposit).is_greater_than_or_equal_to(0) }
-  #it { should validate_numericality_of(:day_deposit).is_greater_than_or_equal_to(0) }
-  #it { should validate_numericality_of(:month_deposit).is_greater_than_or_equal_to(0) }
-  #it { should validate_numericality_of(:month_to_month_deposit).is_greater_than_or_equal_to(0) }
-
+  
   describe '#month_to_month_as_of' do
     let(:examples) { { nil => 0, 0 => 0, 1 => 30, 3 => 90, 4 => 120 } }
     it 'does something 1' do
@@ -82,22 +76,23 @@ RSpec.describe Space, type: :model do
   describe 'deposits' do
     let(:deposits) {
       {
-        :hour_deposit           =>  1,
-        :day_deposit            =>  10,
-        :week_deposit           =>  100,
-        :month_deposit          =>  1000,
-        :month_to_month_deposit =>  2000
+        hour_deposit: 1,
+        day_deposit: 10,
+        week_deposit: 100,
+        month_deposit: 1000,
+        month_to_month_deposit: 2000
       }.with_indifferent_access
     }
 
     let(:quantity) { 2 }
-    let(:space) { FactoryGirl.build(:space,
-                              hour_deposit: deposits[:hour_deposit],
-                              day_deposit: deposits[:day_deposit],
-                              week_deposit: deposits[:week_deposit],
-                              month_deposit: deposits[:month_deposit],
-                              month_to_month_deposit: deposits[:month_to_month_deposit])
-                          }
+    let(:space) {
+                  FactoryGirl.build(:space,
+                    hour_deposit: deposits[:hour_deposit],
+                    day_deposit: deposits[:day_deposit],
+                    week_deposit: deposits[:week_deposit],
+                    month_deposit: deposits[:month_deposit],
+                    month_to_month_deposit: deposits[:month_to_month_deposit])
+                  }
     it 'should be valid' do
       expect(space.valid?).to be_truthy
     end

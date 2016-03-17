@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160316184711) do
+ActiveRecord::Schema.define(version: 20160317232424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -313,7 +313,6 @@ ActiveRecord::Schema.define(version: 20160316184711) do
     t.integer  "day_price"
     t.integer  "week_price"
     t.integer  "month_price"
-    t.integer  "deposit"
     t.boolean  "active",                       default: false, null: false
     t.integer  "hour_minimum_unity",           default: 1,     null: false
     t.integer  "day_minimum_unity",            default: 1,     null: false
