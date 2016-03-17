@@ -79,6 +79,61 @@ RSpec.describe Space, type: :model do
     end
   end
 
+  describe 'deposits' do
+    let(:deposits) {
+      {
+        :hour_deposit           =>  1,
+        :day_deposit            =>  10,
+        :week_deposit           =>  100,
+        :month_deposit          =>  1000,
+        :month_to_month_deposit =>  2000
+      }.with_indifferent_access
+    }
 
+    let(:quantity) { 2 }
+    let(:space) { FactoryGirl.build(:space,
+                              hour_deposit: deposits[:hour_deposit],
+                              day_deposit: deposits[:day_deposit],
+                              week_deposit: deposits[:week_deposit],
+                              month_deposit: deposits[:month_deposit],
+                              month_to_month_deposit: deposits[:month_to_month_deposit])
+                          }
+    it 'should be valid' do
+      expect(space.valid?).to be_truthy
+    end
 
+    it 'should have deposit amounts defined' do
+      expect(space.hour_deposit).to be_present
+      expect(space.day_deposit).to be_present
+      expect(space.week_deposit).to be_present
+      expect(space.month_deposit).to be_present
+      expect(space.month_to_month_deposit).to be_present
+    end
+
+    it 'should have the correct deposit amounts' do
+      expect(space.hour_deposit).to eq(deposits[:hour_deposit])
+      expect(space.day_deposit).to eq(deposits[:day_deposit])
+      expect(space.week_deposit).to eq(deposits[:week_deposit])
+      expect(space.month_deposit).to eq(deposits[:month_deposit])
+      expect(space.month_to_month_deposit).to eq(deposits[:month_to_month_deposit])
+    end
+
+    it 'should have deposits_attributes' do
+      expect(space.deposits_attributes).to be_present
+      expect(space.deposits_attributes).to eq(deposits)
+    end
+
+    it 'should respond the deposit amount by the booking type' do
+      Booking.b_types.keys.each do |booking_type|
+        expect(space.deposit_by_type(booking_type)).to eq(deposits["#{booking_type}_deposit"])
+      end
+    end
+
+    it 'should calculate the deposit correctly, depending on the booking type' do
+      Booking.b_types.keys.each do |booking_type|
+        deposit_amount = deposits["#{booking_type}_deposit"] * quantity
+        expect(space.calculate_deposit(booking_type, quantity)).to eq(deposit_amount)
+      end
+    end
+  end
 end

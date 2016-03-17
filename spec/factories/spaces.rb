@@ -16,7 +16,6 @@ FactoryGirl.define do
     week_minimum_unity 1
     month_minimum_unity 1
     month_to_month_minimum_unity 3
-    deposit 0 #TODO remove
     hour_deposit 2
     day_deposit 15
     month_deposit 150
