@@ -48,6 +48,16 @@ class Space < ActiveRecord::Base
     month_to_month_minimum_unity.to_i * 30
   end
 
+  def deposits_attributes
+    {
+      :hour_deposit           =>  self.hour_deposit,
+      :day_deposit            =>  self.day_deposit,
+      :week_deposit           =>  self.week_deposit,
+      :month_deposit          =>  self.month_deposit,
+      :month_to_month_deposit =>  self.month_to_month_deposit
+    }
+  end
+
   private
 
   def at_least_one_price
