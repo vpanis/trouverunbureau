@@ -576,9 +576,9 @@ en:
     info_photos: The better the photos the more interest you will generate in your space. Share pictures that accurately reflect the overall atmosphere of your space.
     info_pricing: Set the target price you would like your space to be marketed for different time frames. Pricing can always be modified at any time and on a case by case basis.
     info_quantity: Number of these spaces you would you like to list on DeskSpotting
-    info_minimum_renting_period: Minimal renting period allowed
-    info_renting_period: Renting periods available
-    minimum_renting_period: Minimum renting period
+    info_minimum_renting_period: Minimal booking time allowed
+    info_renting_period: Booking times available
+    minimum_renting_period: Minimum booking time
     month_price: Month price
     month_to_month: Month to Month
     name: Name
@@ -589,7 +589,7 @@ en:
     pricing: Pricing (%{currency})
     pricing_in: Pricing in %{currency}
     quantity: Number of spaces
-    renting_period: Renting Period
+    renting_period: Booking time
     space_photos: Space photos
     type: Workspace type
     types:
