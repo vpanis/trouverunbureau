@@ -5,8 +5,12 @@ module Mixpanel
     include Sidekiq::Worker
 
     def perform(user_id, event)
-      return unless user_id && event
-      mixpanel_tracker.track(user_id.to_s, event.to_s)
+      user = User.find(user_id)
+      return unless user && event
+
+      user_ip = user.current_sign_in_ip.to_s
+
+      mixpanel_tracker.track(user.id, event.to_s, {}, user_ip)
     end
 
     private
