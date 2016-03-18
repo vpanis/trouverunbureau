@@ -8,8 +8,8 @@ module Mixpanel
       user = User.find(user_id)
       return unless user
 
-      mixpanel_tracker.track(user.id, 'Sign Up')
-      mixpanel_tracker.people.set(user.id, user_info_to_track(user))
+      mixpanel_tracker.people.set(user.id, user_info_to_track(user), user.current_sign_in_ip)
+      mixpanel_tracker.track(user.id, 'Sign Up', {}, user.current_sign_in_ip)
     end
 
     private
