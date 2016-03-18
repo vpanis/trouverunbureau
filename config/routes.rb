@@ -2,14 +2,13 @@ Deskspotting::Application.routes.draw do
 
   ActiveAdmin.routes(self)
   devise_for :users, controllers: {
-    omniauth_callbacks: "users/omniauth_callbacks",
+    omniauth_callbacks: 'users/omniauth_callbacks',
     invitations: 'users/invitations',
-    registrations: "users/registrations"
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
   }
 
-  unless Rails.env.production?
-    mount MailPreview => 'mail_view'
-  end
+  mount MailPreview => 'mail_view' unless Rails.env.production?
 
   root to: 'landing#index'
   resources :referrals, only: [:new]
