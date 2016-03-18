@@ -4,6 +4,9 @@ module Users
       super
       return unless resource.persisted? # user is created successfuly
       create_mangopay_account
+
+      Mixpanel::SignUpTrackerWorker.perform_async(resource.id)
+
       NotificationsMailer.delay.welcome_email(resource.id)
     end
 
