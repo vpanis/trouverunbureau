@@ -3,6 +3,27 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   subject { FactoryGirl.create(:user) }
 
+  # Methods
+  describe "#has_made_any_inquiries?" do
+
+    context "without any inquiries" do
+      it { expect(subject.has_made_any_inquiries?).not_to be }
+    end
+
+    context "with inquiries" do
+
+      let(:message) { instance_double("DMessage", exists?: true) }
+
+      before(:each) do
+        allow(Message).to receive(:by_user).and_return(message)
+        allow(message).to receive(:pending_authorization).and_return(message)
+      end
+
+      it { expect(subject.has_made_any_inquiries?).to be }
+    end
+
+  end
+
   # Relations
   it { should have_many(:bookings) }
   it { should have_many(:organization_users) }

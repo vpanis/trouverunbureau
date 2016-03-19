@@ -1,6 +1,32 @@
 require 'rails_helper'
 
 RSpec.describe Message, type: :model do
+
+  # Scopes
+  describe ".by_user" do
+
+    let(:user1) { FactoryGirl.create(:user) }
+    let(:user2) { FactoryGirl.create(:user) }
+
+    let!(:user1_message) { FactoryGirl.create(:message, user: user1) }
+    let!(:user2_message) { FactoryGirl.create(:message, user: user2) }
+
+    it "fecthes by user" do
+      all = Message.all
+      expect(all).to include user1_message
+      expect(all).to include user2_message
+
+      by_user1 = Message.by_user user1
+      expect(by_user1).to include user1_message
+      expect(by_user1).not_to include user2_message
+
+      by_user2 = Message.by_user user2
+      expect(by_user2).to include user2_message
+      expect(by_user2).not_to include user1_message
+    end
+
+  end
+
   # Relations
   it { should belong_to(:booking) }
   it { should belong_to(:represented) }
