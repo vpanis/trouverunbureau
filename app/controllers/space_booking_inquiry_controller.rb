@@ -5,6 +5,8 @@ class SpaceBookingInquiryController < ApplicationController
     @space = Space.includes(:venue).find(params[:id])
     @day_hours = @space.venue.day_hours.to_json(only: [:weekday, :from, :to])
     @booking = Booking.new(space: @space, owner: current_represented)
+    @show_modal = current_user.first_inquiry?
+    @show_modal &&= current_user.has_to_fill_inquiry_information?
   end
 
   def create_booking_inquiry
