@@ -6,5 +6,14 @@
           span aria-hidden="true"  &times;
         h4.modal-title id="#{modal_id}Label" = title
       .modal-body
-        a id='save'
-          button.width-100.rounded-btn.bold.yellow-fill.uppercase = t('send_inquiry.send_booking_inquiry')
+        = form_for(@user, remote: true) do |f|
+          = f.file_field :avatar, class: 'hidden'
+          .row
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              label = t('users.first_name')
+              = f.text_field :first_name, placeholder: t('users.first_name'), class: 'form-control', required: true
+            .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+              .icon.lock.pointer#last-name-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
+              label = t('users.last_name')
+              = f.text_field :last_name, placeholder: t('users.last_name'), class: 'form-control', required: true
+          = f.submit t('booking_inquiry.send_booking_inquiry'), class: 'rounded-btn yellow-fill width-100 uppercase', id: 'save-edition'

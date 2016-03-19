@@ -128,6 +128,9 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
     $scope.show_fill_modal = () ->
       $('#fill-modal').modal ->
         return
+      return
+
+    $scope.alert = window.alert
 
     $scope.submit_form = () ->
       if $scope.selected_tab == 'hour'
