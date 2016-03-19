@@ -31,7 +31,7 @@ RSpec.describe User, type: :model do
     let(:avoided) { [:avatar, :languages_spoken, :date_of_birth] }
 
     before(:each) do
-      User::PERMITTED_FIELDS.each do |field|
+      User::OPTIONAL_FIELDS.each do |field|
         next if avoided.include? field
         subject.send("#{field}=", field.to_s)
       end
@@ -61,7 +61,7 @@ RSpec.describe User, type: :model do
     end
 
     context "when has blank field" do
-      User::PERMITTED_FIELDS.each do |field|
+      User::OPTIONAL_FIELDS.each do |field|
         it_behaves_like "returning the blank field", field
       end
     end

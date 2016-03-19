@@ -1,13 +1,14 @@
 class SpaceBookingInquiryController < ApplicationController
   before_action :authenticate_user!
+  include SelectOptionsHelper
 
   def inquiry
     @space = Space.includes(:venue).find(params[:id])
     @day_hours = @space.venue.day_hours.to_json(only: [:weekday, :from, :to])
     @booking = Booking.new(space: @space, owner: current_represented)
-    @missing_fields = current_user.unfilled_fields?
+    @missing_fields = current_user.unfilled_fields
     @show_modal = current_user.first_inquiry? && !@missing_fields.empty?
-    @user = current_user
+    setup_user_variables if @show_modal
   end
 
   def create_booking_inquiry
@@ -24,6 +25,14 @@ class SpaceBookingInquiryController < ApplicationController
   end
 
   private
+
+  def setup_user_variables
+    @user = current_user
+    @gender_options = gender_options
+    @profession_options = profession_options
+    @language_options = language_options
+    @all_language_options = all_language_options
+  end
 
   def create_booking_message
     return unless params[:message].present?

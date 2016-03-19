@@ -56,12 +56,16 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(User::PERMITTED_FIELDS)
+    params.require(:user).permit(:first_name, :last_name, :email, :phone, :language, :avatar,
+                                 :date_of_birth, :nationality, :country_of_residence, :gender,
+                                 :profession, :company_name, :languages_spoken, :location,
+                                 :interests, :emergency_relationship, :emergency_name,
+                                 :emergency_email, :emergency_phone)
   end
 
   # sometimes the form sends "{'es'}" and we need to remove {}
   def update_languages_spoken!
-    return unless  user_params['languages_spoken'].present?
+    return unless user_params['languages_spoken'].present?
     languages = user_params['languages_spoken'].gsub(/^\{+|\}+$/, '').split(',')
     @user.update_attributes!(languages_spoken: languages)
   end

@@ -32,12 +32,8 @@ class User < ActiveRecord::Base
   LANGUAGES = [:en, :fr, :de, :es, :pt]
   GENDERS = [:f, :m]
   SUPPORTED_NATIONALITIES = Country.all.map { |c| c[1] }
-  PERMITTED_FIELDS = [ :first_name, :last_name, :email, :phone, :language, :avatar,
-                       :date_of_birth, :nationality, :country_of_residence, :gender,
-                       :profession, :company_name, :languages_spoken, :location,
-                       :interests, :emergency_relationship, :emergency_name,
-                       :emergency_email, :emergency_phone ]
-
+  OPTIONAL_FIELDS = [ :language, :gender, :profession, :company_name, :languages_spoken, :location,
+                      :interests, :emergency_relationship, :emergency_name, :emergency_email, :emergency_phone ]
 
   # Callbacks
   after_initialize :initialize_fields
@@ -135,7 +131,7 @@ class User < ActiveRecord::Base
   end
 
   def unfilled_fields
-    PERMITTED_FIELDS.reject { |f| send(f).present? }
+    OPTIONAL_FIELDS.reject { |f| send(f).present? }
   end
 
   private
