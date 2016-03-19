@@ -128,6 +128,12 @@ class User < ActiveRecord::Base
     Message.by_user(self.id).pending_authorization.exists?
   end
 
+  def has_to_fill_inquiry_information?
+    any_blank = location.blank? || gender.blank?
+    any_blank ||= profession.blank? || company_name.blank?
+    any_blank ||= languages_spoken.blank? || interests.blank?
+  end
+
   private
 
   def initialize_fields

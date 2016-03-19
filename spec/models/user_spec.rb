@@ -1,13 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject { FactoryGirl.create(:user) }
 
   # Methods
   describe "#has_made_any_inquiries?" do
 
-    context "without any inquiries" do
-      it { expect(subject.has_made_any_inquiries?).not_to be }
+    subject { FactoryGirl.create(:user) }
+
+    it "returns false for users without any inquiries" do
+      expect(subject.has_made_any_inquiries?).not_to be
     end
 
     context "with inquiries" do
@@ -20,6 +21,42 @@ RSpec.describe User, type: :model do
       end
 
       it { expect(subject.has_made_any_inquiries?).to be }
+    end
+
+  end
+
+  describe "#has_to_fill_inquiry_information?" do
+
+    subject { FactoryGirl.create(:user) }
+    inquiry_fields = [
+        :location, :languages_spoken, :gender,
+        :company_name, :profession, :interests
+      ]
+
+    before(:each) do
+      inquiry_fields.each do |field|
+        allow(subject).to receive(field).and_return(field.to_s)
+      end
+    end
+
+    it "returns false for users with no blank inquiry fields" do
+      expect(subject.has_to_fill_inquiry_information?).not_to be
+    end
+
+    shared_examples 'with inquiry field blank' do |field|
+      it do
+        allow(subject).to receive(field).and_return(nil)
+        expect(subject.has_to_fill_inquiry_information?).to be
+
+        allow(subject).to receive(field).and_return('')
+        expect(subject.has_to_fill_inquiry_information?).to be
+      end
+    end
+
+    context "when has blank field" do
+      inquiry_fields.each do |field|
+        it_behaves_like "with inquiry field blank", field
+      end
     end
 
   end
