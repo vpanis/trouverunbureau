@@ -124,8 +124,8 @@ class User < ActiveRecord::Base
     settings_incoming_inquiry?(settings)
   end
 
-  def has_made_any_inquiries?
-    Message.by_user(self.id).pending_authorization.exists?
+  def first_inquiry?
+    !Message.by_user(self.id).pending_authorization.exists?
   end
 
   def has_to_fill_inquiry_information?

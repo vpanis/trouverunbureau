@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
 
   # Methods
-  describe "#has_made_any_inquiries?" do
+  describe "#first_inquiry?" do
 
     subject { FactoryGirl.create(:user) }
 
     it "returns false for users without any inquiries" do
-      expect(subject.has_made_any_inquiries?).not_to be
+      expect(subject.first_inquiry?).to be
     end
 
     context "with inquiries" do
@@ -20,7 +20,7 @@ RSpec.describe User, type: :model do
         allow(message).to receive(:pending_authorization).and_return(message)
       end
 
-      it { expect(subject.has_made_any_inquiries?).to be }
+      it { expect(subject.first_inquiry?).not_to be }
     end
 
   end
