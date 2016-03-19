@@ -56,11 +56,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :phone, :language, :avatar,
-                                 :date_of_birth, :nationality, :country_of_residence, :gender,
-                                 :profession, :company_name, :languages_spoken, :location,
-                                 :interests, :emergency_relationship, :emergency_name,
-                                 :emergency_email, :emergency_phone)
+    params.require(:user).permit(User::PERMITTED_FIELDS)
   end
 
   # sometimes the form sends "{'es'}" and we need to remove {}

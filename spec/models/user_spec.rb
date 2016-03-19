@@ -25,37 +25,44 @@ RSpec.describe User, type: :model do
 
   end
 
-  describe "#has_to_fill_inquiry_information?" do
+  describe "#unfilled_fields" do
 
     subject { FactoryGirl.create(:user) }
-    inquiry_fields = [
-        :location, :languages_spoken, :gender,
-        :company_name, :profession, :interests
-      ]
+    let(:avoided) { [:avatar, :languages_spoken, :date_of_birth] }
 
     before(:each) do
-      inquiry_fields.each do |field|
-        allow(subject).to receive(field).and_return(field.to_s)
+      User::PERMITTED_FIELDS.each do |field|
+        next if avoided.include? field
+        subject.send("#{field}=", field.to_s)
       end
     end
 
-    it "returns false for users with no blank inquiry fields" do
-      expect(subject.has_to_fill_inquiry_information?).not_to be
+    it "returns empty for users with no blank fields" do
+      result = subject.unfilled_fields - avoided
+      expect((result).empty?).to be
     end
 
-    shared_examples 'with inquiry field blank' do |field|
+    shared_examples 'returning the blank field' do |field|
       it do
-        allow(subject).to receive(field).and_return(nil)
-        expect(subject.has_to_fill_inquiry_information?).to be
+        unless avoided.include? field
+          subject.send("#{field}=", nil)
+          result = (subject.unfilled_fields - avoided)
+          expect(result.empty?).not_to be
+          expect(result.size).to eq(1)
+          expect(result.first).to eq(field)
 
-        allow(subject).to receive(field).and_return('')
-        expect(subject.has_to_fill_inquiry_information?).to be
+          subject.send("#{field}=", '')
+          result = subject.unfilled_fields - avoided
+          expect(result.empty?).not_to be
+          expect(result.size).to eq(1)
+          expect(result.first).to eq(field)
+        end
       end
     end
 
     context "when has blank field" do
-      inquiry_fields.each do |field|
-        it_behaves_like "with inquiry field blank", field
+      User::PERMITTED_FIELDS.each do |field|
+        it_behaves_like "returning the blank field", field
       end
     end
 

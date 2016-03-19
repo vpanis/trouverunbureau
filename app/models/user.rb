@@ -32,6 +32,12 @@ class User < ActiveRecord::Base
   LANGUAGES = [:en, :fr, :de, :es, :pt]
   GENDERS = [:f, :m]
   SUPPORTED_NATIONALITIES = Country.all.map { |c| c[1] }
+  PERMITTED_FIELDS = [ :first_name, :last_name, :email, :phone, :language, :avatar,
+                       :date_of_birth, :nationality, :country_of_residence, :gender,
+                       :profession, :company_name, :languages_spoken, :location,
+                       :interests, :emergency_relationship, :emergency_name,
+                       :emergency_email, :emergency_phone ]
+
 
   # Callbacks
   after_initialize :initialize_fields
@@ -128,10 +134,8 @@ class User < ActiveRecord::Base
     !Message.by_user(self.id).pending_authorization.exists?
   end
 
-  def has_to_fill_inquiry_information?
-    any_blank = location.blank? || gender.blank?
-    any_blank ||= profession.blank? || company_name.blank?
-    any_blank ||= languages_spoken.blank? || interests.blank?
+  def unfilled_fields
+    PERMITTED_FIELDS.reject { |f| send(f).present? }
   end
 
   private
