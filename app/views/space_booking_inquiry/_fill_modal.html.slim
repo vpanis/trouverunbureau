@@ -1,0 +1,10 @@
+.modal.fade aria-hidden="true" aria-labelledby="#{modal_id}Label" role="dialog" tabindex="-1" id=modal_id
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close aria-label="#{t('commons.close')}" data-dismiss="modal" type="button"
+          span aria-hidden="true"  &times;
+        h4.modal-title id="#{modal_id}Label" = title
+      .modal-body
+        a id='save'
+          button.width-100.rounded-btn.bold.yellow-fill.uppercase = t('send_inquiry.send_booking_inquiry')

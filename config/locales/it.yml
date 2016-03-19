@@ -611,6 +611,7 @@ it:
     edit_profile: 'Edit profile'
     required_fields: 'Required fields'
     change_picture: 'Change picture'
+    complete_profile: 'Per favore, completa il tuo profilo'
     add_manager: 'Add Manager'
     name: 'Name'
     email: 'Email'

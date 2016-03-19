@@ -27,6 +27,7 @@ en:
     months_amount: Number of Months
     price_per: Price per
     send_inquiry: Send inquiry
+    send_booking_inquiry: Send booking inquiry
     space_amount: Number of Spaces
     space_booking: Space Booking
     spaces_amount: Number of spaces
@@ -608,6 +609,7 @@ en:
       you_can_disable: You can disable this at any time.
     add_languages: Add languages
     change_picture: Change picture
+    complete_profile: 'Please, complete your profile'
     company_name: Company name
     country_of_residence: Country of residence
     date_of_birth: Date of birth

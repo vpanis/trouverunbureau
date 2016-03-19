@@ -125,6 +125,10 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
     $scope.calculate_space_total = () ->
       return $scope.calculate_space_booking() + $scope.calculate_deposit()
 
+    $scope.show_fill_modal = () ->
+      $('#fill-modal').modal ->
+        return
+
     $scope.submit_form = () ->
       if $scope.selected_tab == 'hour'
         $('#hour-form').find(':submit').click()

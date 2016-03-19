@@ -378,6 +378,7 @@ es:
     add_manager: Añadir gestor
     add_manager_action: Añadir gestor
     change_picture: Cambiar foto
+    complete_profile: 'Por favor, complete su perfil'
     create_profile: 'Crear una organización '
     create_title: Añadir título
     edit_profile: Editar perfil

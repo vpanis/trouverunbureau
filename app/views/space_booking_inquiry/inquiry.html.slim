@@ -8,6 +8,8 @@
 #venue-month_to_month-minimum-quantity data-month_to_month-minimum-quantity=@booking.space.month_to_month_minimum_unity
 #venue-month_to_month-as-of data-month_to_month-as-of=@booking.space.month_to_month_as_of
 
+- if @show_modal
+  = render 'fill_modal', modal_id: 'fill-modal', title: t('users.complete_profile'), image_link_id: 'fill-link', save_button_id: 'save-fill'
 #space-deposit data-amount=@space.deposit
 .error-wrapper
   - if @booking_errors.present?
@@ -57,6 +59,7 @@
       - if @booking.space.month_to_month_price.present?
         .tab#tab-month_to_month ng-click="swap_inquiry_type('.form-month_to_month-booking', 'month_to_month', '#{t('booking_inquiry.month_to_month')}'); updateMonthToMonth()" ng-class="{'tab--selected': selected_tab == 'month_to_month'}"
           = t('venues.show.month_to_month')
+
   .form-container.dashboard-form
     - if @booking.space.hour_price.present?
       = form_for @booking, url: inquiry_space_path(@space), html: { id: 'hour-form'} do |f|
@@ -262,4 +265,4 @@
         .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6.message-wrapper
           = link_to t('booking_inquiry.back'), venue_path(@space.venue), class: "rounded-btn btn-inquiry-back uppercase"
         .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6.message-wrapper
-          input type="submit" value="#{t('booking_inquiry.send_inquiry')}" class="rounded-btn yellow-fill btn-inquiry-send uppercase" ng-click="mixpanel.track('Book Inquiry', {'Country': 'France','City': 'Paris','ID': 34,'Time Frame': 'Per Day','Fee': '€300'});submit_form()"
+          input type="submit" value="#{t('booking_inquiry.send_inquiry')}" class="rounded-btn yellow-fill btn-inquiry-send uppercase" ng-click="mixpanel.track('Book Inquiry', {'Country': 'France','City': 'Paris','ID': 34,'Time Frame': 'Per Day','Fee': '€300'});show_fill_modal();submit_form()"
