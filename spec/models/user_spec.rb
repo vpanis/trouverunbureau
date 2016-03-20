@@ -28,35 +28,33 @@ RSpec.describe User, type: :model do
   describe "#unfilled_fields" do
 
     subject { FactoryGirl.create(:user) }
-    let(:avoided) { [:avatar, :languages_spoken, :date_of_birth] }
 
     before(:each) do
       User::OPTIONAL_FIELDS.each do |field|
-        next if avoided.include? field
+        next if :languages_spoken == field
         subject.send("#{field}=", field.to_s)
       end
+      subject.languages_spoken = ['flonopix']
     end
 
     it "returns empty for users with no blank fields" do
-      result = subject.unfilled_fields - avoided
+      result = subject.unfilled_fields
       expect((result).empty?).to be
     end
 
     shared_examples 'returning the blank field' do |field|
       it do
-        unless avoided.include? field
-          subject.send("#{field}=", nil)
-          result = (subject.unfilled_fields - avoided)
-          expect(result.empty?).not_to be
-          expect(result.size).to eq(1)
-          expect(result.first).to eq(field)
+        subject.send("#{field}=", nil)
+        result = subject.unfilled_fields
+        expect(result.empty?).not_to be
+        expect(result.size).to eq(1)
+        expect(result.first).to eq(field)
 
-          subject.send("#{field}=", '')
-          result = subject.unfilled_fields - avoided
-          expect(result.empty?).not_to be
-          expect(result.size).to eq(1)
-          expect(result.first).to eq(field)
-        end
+        subject.send("#{field}=", :languages_spoken == field ? [] : '')
+        result = subject.unfilled_fields
+        expect(result.empty?).not_to be
+        expect(result.size).to eq(1)
+        expect(result.first).to eq(field)
       end
     end
 
