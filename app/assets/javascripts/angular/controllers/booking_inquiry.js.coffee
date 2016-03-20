@@ -125,13 +125,13 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
     $scope.calculate_space_total = () ->
       return $scope.calculate_space_booking() + $scope.calculate_deposit()
 
-    $scope.show_fill_modal = () ->
-      $('#fill-modal').modal ->
+    $scope.show_profile_modal = () ->
+      $('#profile-modal').modal ->
         return
       return
 
     $('#save-edition').click ->
-      $('#fill-modal').modal('hide');
+      $('#profile-modal').modal('hide');
       $scope.submit_form();
       return
 

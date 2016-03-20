@@ -8,8 +8,8 @@
 #venue-month_to_month-minimum-quantity data-month_to_month-minimum-quantity=@booking.space.month_to_month_minimum_unity
 #venue-month_to_month-as-of data-month_to_month-as-of=@booking.space.month_to_month_as_of
 
-- if @show_modal
-  = render 'fill_modal', modal_id: 'fill-modal', title: t('users.complete_profile'), image_link_id: 'fill-link', save_button_id: 'save-fill'
+- if @profile_modal
+  = render 'profile_modal', modal_id: 'profile-modal', title: t('users.complete_profile'), save_button_id: 'save-profile'
 #space-deposit data-amount=@space.deposit
 .error-wrapper
   - if @booking_errors.present?
@@ -265,4 +265,4 @@
         .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6.message-wrapper
           = link_to t('booking_inquiry.back'), venue_path(@space.venue), class: "rounded-btn btn-inquiry-back uppercase"
         .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6.message-wrapper
-          input type="submit" value="#{t('booking_inquiry.send_inquiry')}" class="rounded-btn yellow-fill btn-inquiry-send uppercase" ng-click="mixpanel.track('Book Inquiry', {'Country': 'France','City': 'Paris','ID': 34,'Time Frame': 'Per Day','Fee': '€300'});#{@show_modal ? 'show_fill_modal' : 'submit_form'}()"
+          input type="submit" value="#{t('booking_inquiry.send_inquiry')}" class="rounded-btn yellow-fill btn-inquiry-send uppercase" ng-click="mixpanel.track('Book Inquiry', {'Country': 'France','City': 'Paris','ID': 34,'Time Frame': 'Per Day','Fee': '€300'});#{@profile_modal ? 'show_profile_modal' : 'submit_form'}()"
