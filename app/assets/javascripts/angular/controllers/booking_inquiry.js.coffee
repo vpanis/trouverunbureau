@@ -132,7 +132,7 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
 
     $('#save-edition').click ->
       $('#fill-modal').modal('hide');
-      submit_form()
+      $scope.submit_form();
       return
 
     $scope.submit_form = () ->
