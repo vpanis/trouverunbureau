@@ -57,14 +57,21 @@
         h4.gray-subtitle = t('users.optional_fields')
 
   .row
-    .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
-      label = t('users.language')
-      = f.select(:language, @language_options, {}, {class: 'form-control language-select'})
-    - if !@profile_modal || (@missing_fields || []).include?(:location)  
+    - if !@profile_modal || (@missing_fields || []).include?(:language)
+      .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+        label = t('users.language')
+        = f.select(:language, @language_options, {}, {class: 'form-control language-select'})
+    - if !@profile_modal || (@missing_fields || []).include?(:location)
       .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
         label = t('users.location')
         = f.text_field :location, placeholder: t('users.location'), class: 'form-control'
-    - if !@profile_modal || (@missing_fields || []).include?(:languages_spoken)
+    - if @profile_modal
+      - if (@missing_fields || []).include?(:languages_spoken)
+        .form-group.col-xs-12
+          label = t('users.languages')
+          = select_tag('languages_spoken_select', options_from_collection_for_select(@all_language_options, :second, :first, @user.languages_spoken), {multiple: true, class: 'form-control multi-lang-select'})
+          = f.hidden_field :languages_spoken
+    - else
       .form-group.col-xs-12
         label = t('users.spoken_languages')
         a.add.margin-left.aqua href='#' data-target="#languageModal" data-toggle="modal" = t('commons.add')
