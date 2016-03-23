@@ -79,14 +79,27 @@ retrieveNewCardInfo = (creditCardId, currency) ->
 
 saveNewCard = (creditCardId, currency) ->
   $(".js-card-errors").addClass("hidden")
+  $("#generic-error-label").addClass("hidden")
   $("#required-label").addClass("hidden")
+  $('.js-card-info input, .js-card-info select').removeClass('field-error')
+
   nonEmptyVal = _.reduce $('.js-card-info input'), ((acc, input) ->
-    acc and $(input).val() != ''
+    acc and $(input).val()
   ), true
-  if !nonEmptyVal
+
+  nonEmptySelect = _.reduce $('.js-card-info select'), ((acc, select) ->
+    acc and $(select).val()
+  ), true
+
+  if !nonEmptyVal || !nonEmptySelect
     $("#required-label").removeClass("hidden")
+    $('.js-card-info input, .js-card-info select').filter(->
+      @value == ''
+    ).addClass 'field-error'
     return
+
   $("#new-credit-card").addClass("loading")
+
   cardData =
     cardNumber: $("#js-card_number").val()
     cardExpirationDate: $("#js-card_exp_date_month").val() + $("#js-card_exp_date_year").val()
@@ -95,6 +108,7 @@ saveNewCard = (creditCardId, currency) ->
 
   $('.js-create-credit-card').attr('disabled', 'disabled')
   $(".js-card-info :input").attr('disabled', true)
+
   mangoPay.cardRegistration.registerCard cardData, ((response) ->
     expiration = $("#js-card_exp_date_month").val() + '/' + $("#js-card_exp_date_year").val()
     # Success, you can use res.CardId now that points to registered card
@@ -112,6 +126,7 @@ saveNewCard = (creditCardId, currency) ->
       success: (response) ->
         hide_spinner()
         $('.js-create-credit-card').removeAttr('disabled')
+        $(".js-card-info :input").attr('disabled', false)
         $("#new-credit-card").removeClass("loading")
         $("#js-create-credit-card").remove()
         selectedCreditCardId = creditCardId
@@ -122,20 +137,32 @@ saveNewCard = (creditCardId, currency) ->
       error: (response) ->
         hide_spinner()
         $('.js-create-credit-card').removeAttr('disabled')
+        $(".js-card-info :input").attr('disabled', false)
         $("#new-credit-card").removeClass("loading")
         console.log(response)
 
     return
   ), (response) ->
     $("#new-credit-card").removeClass("loading")
+
     switch response.ResultCode
       when "105202"
+        $("#js-card_number").addClass("field-error")
         $(".js-card-format").removeClass("hidden")
       when "105203"
+        $("#js-card_exp_date_month").addClass("field-error")
+        $("#js-card_exp_date_year").addClass("field-error")
         $(".js-expiration-format").removeClass("hidden")
       when "105204"
+        $("#js-card_cvx").addClass("field-error")
+        $(".js-cvx-format").addClass("field-error")
         $(".js-cvx-format").removeClass("hidden")
+      when "001599"
+        $("#generic-error-label").removeClass("hidden")
+
     $('.js-create-credit-card').removeAttr('disabled')
+    $(".js-card-info :input").attr('disabled', false)
+
     # Handle error, see res.ResultCode and res.ResultMessage
     return
 
