@@ -81,9 +81,13 @@ saveNewCard = (creditCardId, currency) ->
   $(".js-card-errors").addClass("hidden")
   $("#required-label").addClass("hidden")
   nonEmptyVal = _.reduce $('.js-card-info input'), ((acc, input) ->
-    acc and $(input).val() != ''
+    acc and $(input).val()
   ), true
-  if !nonEmptyVal
+  nonEmptySelect = _.reduce $('.js-card-info select'), ((acc, select) ->
+    acc and $(select).val()
+  ), true
+
+  if !nonEmptyVal || !nonEmptySelect
     $("#required-label").removeClass("hidden")
     return
   $("#new-credit-card").addClass("loading")
@@ -112,6 +116,7 @@ saveNewCard = (creditCardId, currency) ->
       success: (response) ->
         hide_spinner()
         $('.js-create-credit-card').removeAttr('disabled')
+        $(".js-card-info :input").attr('disabled', false)
         $("#new-credit-card").removeClass("loading")
         $("#js-create-credit-card").remove()
         selectedCreditCardId = creditCardId
@@ -122,6 +127,7 @@ saveNewCard = (creditCardId, currency) ->
       error: (response) ->
         hide_spinner()
         $('.js-create-credit-card').removeAttr('disabled')
+        $(".js-card-info :input").attr('disabled', false)
         $("#new-credit-card").removeClass("loading")
         console.log(response)
 
@@ -136,6 +142,8 @@ saveNewCard = (creditCardId, currency) ->
       when "105204"
         $(".js-cvx-format").removeClass("hidden")
     $('.js-create-credit-card').removeAttr('disabled')
+    $(".js-card-info :input").attr('disabled', false)
+
     # Handle error, see res.ResultCode and res.ResultMessage
     return
 

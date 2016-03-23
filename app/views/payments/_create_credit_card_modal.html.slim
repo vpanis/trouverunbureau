@@ -5,25 +5,26 @@
         button.close aria-label="#{t('commons.close')}" data-dismiss="modal" type="button"
           span aria-hidden="true"  &times;
         h4.modal-title id="createCreditCardLabel" = t('payment.new_credit_card')
-      .modal-body
+      .modal-body.js-card-info
         .form-group.col-md-12
           label = t('payment.card_number')
           = text_field_tag :card_number, nil, { id: 'js-card_number', class: 'form-control' }
-          span.js-card-errors.js-card-format.hidden = t('payment.invalid_card_number')
+          span.js-card-errors.js-card-format.error.hidden = t('payment.invalid_card_number')
         .form-group.col-md-12
           label = t('payment.expiration_month')
-          = text_field_tag :expiration_month, nil, { id: 'js-card_exp_date_month', class: 'form-control' }
+          = select_tag :expiration_month, options_for_select('01'..'12'), class: 'form-control', id: 'js-card_exp_date_month'
         .form-group.col-md-12
           label = t('payment.expiration_year')
-          = text_field_tag :expiration_year, nil, { id: 'js-card_exp_date_year', class: 'form-control' }
-          span.js-card-errors.js-expiration-format.hidden = t('payment.invalid_expiration_date')
+          = select_tag :expiration_year, options_for_select(Time.now.strftime("%y")..(Time.now + 15.years).strftime("%y")), class: 'form-control', id: 'js-card_exp_date_year'
+          span.js-card-errors.js-expiration-format.error.hidden = t('payment.invalid_expiration_date')
         .form-group.col-md-12
           label = t('payment.cvx')
-          = text_field_tag :cvx, nil, { id: 'js-card_cvx', class: 'form-control' }
-          span.js-card-errors.js-cvx-format.hidden = t('payment.invalid_cvv')
+          = text_field_tag :cvx, nil, { id: 'js-card_cvx', class: 'form-control', maxlength: 4 }
+          span.js-card-errors.js-cvx-format.error.hidden = t('payment.invalid_cvv')
         .form-group.col-md-12
           label = t('payment.type')
           = select_tag(:type, options_for_select([["CB/VISA/MASTERCARD", "CB_VISA_MASTERCARD"]]), { id: 'js-card_type', class: 'form-control no-borders credit-cards-type-select'})
-        label#required-label.hidden = t('payment.all_required')
+        .form-group.col-md-12.text-center
+          label#required-label.error.hidden = t('payment.all_required')
         a id="#"
           button#register-credit-card.width-100.js-create-credit-card.rounded-btn.bold.yellow-fill.uppercase = t('payment.create_credit_card')
