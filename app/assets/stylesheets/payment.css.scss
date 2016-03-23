@@ -1,8 +1,12 @@
 @import 'variables';
 
-.error {
+.error-message {
   color: red;
   font-weight: 400;
+}
+
+.field-error {
+  border-color: red !important;
 }
 
 .payment-info-container {
