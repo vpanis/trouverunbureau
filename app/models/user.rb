@@ -70,9 +70,9 @@ class User < ActiveRecord::Base
 
     def create_provider_user(auth)
       unless Rails.env.production?
-        puts '*' * 50
-        puts auth.to_yaml
-        puts '*' * 50
+        Rails.logger.info '*' * 50
+        Rails.logger.info auth.to_yaml
+        Rails.logger.info '*' * 50
       end
       date = auth.extra.raw_info.birthday.present? ? Date.strptime(auth.extra.raw_info.birthday, '%m/%d/%Y') : nil
       new(provider: auth.provider, uid: auth.uid, first_name: auth.info.first_name,
