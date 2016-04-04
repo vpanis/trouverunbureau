@@ -3,10 +3,18 @@ class VenueCollectionAccountsController < VenuesController
 
   def collection_account_info
     @venue = Venue.find(params[:id])
+
     return render_forbidden unless current_represented == @venue.owner
 
     select_collection_method
     set_collection_account
+
+    if params[:verifying] == 'true' &&
+      !@collection_account.expecting_mangopay_response? &&
+      @collection_account.respond_to?(:accepted?) &&
+      @collection_account.accepted?
+      return redirect_to(spaces_venue_path(@venue))
+    end
   end
 
   def edit_collection_account
