@@ -367,6 +367,7 @@ pt:
   new_message_email:
     got_new_message: Tem uma nova mensagem de
     hi: Olá
+    on_date_connector: 'em'
     reply: Ou responda diretamente neste email
     subject: 'Tem uma mensagem nova - Reserva #%{booking_id}'
     team: A Equipa do DeskSpotting
