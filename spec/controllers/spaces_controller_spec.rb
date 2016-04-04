@@ -98,7 +98,7 @@ describe SpacesController do
           end
 
           it 'renders the :edit template' do
-            expect(response.redirect_url).to eq(edit_space_url(a_space))
+            expect(response.redirect_url).to eq(spaces_venue_url(a_space.venue))
           end
 
           context 'when lower capacity' do

@@ -28,9 +28,8 @@ class SpacesController < ApplicationController
     remove_blank_price_params
     @space = Space.find(params[:id])
     context = SpaceContext.new(@space, current_represented)
-    @previous_page = params[:previous_page] || edit_space_path(@space)
     return render_forbidden unless context.owner?
-    return redirect_to @previous_page if context.update_space(space_params)
+    return redirect_to spaces_venue_path(@space.venue) if context.update_space(space_params)
     redirect_to edit_space_path(@space)
   end
 
