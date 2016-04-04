@@ -33,8 +33,8 @@ angular
       $scope[$input_open] = true
 
     $scope.initialize_dates = () ->
-      $scope.booking_from = $('#booking_from').value
-      $scope.booking_to = $('#booking_to').value
+      $scope.booking_from = $('#booking_from').value || new Date($("#booking-info").attr('data-from'))
+      $scope.booking_to = $('#booking_to').value || new Date($("#booking-info").attr('data-to'))
 
     $scope.swap_inquiry_type = (show_class, tab) ->
       hide_forms()
@@ -147,12 +147,6 @@ angular
 
     # PRIVATE FUNCTIONS
 
-    deselect_all_tabs = () ->
-      $scope.per_hour_selected = false
-      $scope.per_day_selected = false
-      $scope.per_month_selected = false
-      $scope.per_month_to_month_selected = false
-
     stablish_hours_amount = () ->
       if !$scope.hour_booking_begin || !$scope.hour_booking_end
         return 0
@@ -199,17 +193,11 @@ angular
       show_weeks: false
     $scope.format = 'dd-MM-yyyy'
     $scope.initialize_dates()
-    $scope.space_quantity = 1
+    $scope.space_quantity = parseInt($("#booking-info").attr('data-space-quantity') || 1)
     $scope.month_to_month_as_of = ""
     $scope.space_deposit = parseFloat($("#space-deposit").attr('data-amount'))
     close_all
-    deselect_all_tabs();
-
-    current_timeframe = $('.multiple-switch-wrapper .tab').attr('id').substring(4)
-    $scope.selected_tab = current_timeframe
-    $scope.selected_tab_name = $("#translation-info").attr(current_timeframe)
-
-    $($('.form-container .form')[0]).removeClass('form--hidden')
+    hide_forms
 
     available_dates_hours = $.parseJSON($("#venue-hours").attr('data-day-hours'))
     per_hour_price = $("#venue-hour-price").attr('data-hour-price')
@@ -219,6 +207,9 @@ angular
     per_month_to_month_minimum_quantity = $("#venue-month_to_month-minimum-quantity").attr('data-month_to_month-minimum-quantity')
     per_month_to_month_as_of = parseInt($("#venue-month_to_month-as-of").attr('data-month_to_month-as-of'))
     $scope.month_quantity = 1
+
+    current_timeframe = $("#booking-info").attr('data-b-type') || $('.multiple-switch-wrapper .tab').attr('id').substring(4)
+    $scope.swap_inquiry_type('.form-' + current_timeframe + '-booking', current_timeframe)
 
     #initializers
     initialize_selects = ->
