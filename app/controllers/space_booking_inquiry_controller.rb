@@ -4,7 +4,10 @@ class SpaceBookingInquiryController < ApplicationController
   def inquiry
     @space = Space.includes(:venue).find(params[:id])
     @day_hours = @space.venue.day_hours.to_json(only: [:weekday, :from, :to])
-    @booking = Booking.new(space: @space, owner: current_represented)
+
+    unless @booking
+      @booking = Booking.new(space: @space, owner: current_represented)
+    end
   end
 
   def create_booking_inquiry

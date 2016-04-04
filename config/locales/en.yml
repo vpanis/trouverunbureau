@@ -5,6 +5,7 @@ en:
     check_out: Check-Out
     date: Date
     day: Day
+    days: Days
     days_amount: Number of Days
     deposit: Deposit
     deskspotting_fee: DeskSpotting Fee
@@ -18,9 +19,11 @@ en:
     guaranteed_months: Guaranteed months
     guaranteed_months_quantity: Number of Guaranteed Months
     hour: Hour
+    hours: Hours
     hours_amount: Number of Hours
     message_placeholder: Tell the host more about yourself and your professional interests.
     month: Month
+    months: Months
     month_amount: Number of months
     month_to_month: Month to Month
     month_to_month_as_of: Month to month as of
@@ -33,6 +36,8 @@ en:
     time_frame: Select Time Frame
     total: Total
     your_message: Your message
+    errors:
+      minimum_time: 'You must at least reach the minimum time for this workplace (%{minimum_time} %{b_type})'
   bookings:
     all_venues: All Venues
     cancel: Cancel
