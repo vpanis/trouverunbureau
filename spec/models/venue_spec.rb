@@ -4,10 +4,22 @@ RSpec.describe Venue, type: :model do
   subject { FactoryGirl.create(:venue) }
 
   # Relations
+  it { should belong_to(:collection_account).dependent(:destroy) }
   it { should belong_to(:owner) }
-  it { should have_many(:spaces) }
-  it { should have_many(:day_hours) }
-  it { should have_many(:photos) }
+  it { should belong_to(:time_zone) }
+  it { should have_many(:bookings).through(:spaces) }
+  it { should have_many(:day_hours).dependent(:destroy).class_name('VenueHour') }
+  it { should have_many(:photos).dependent(:destroy).class_name('VenuePhoto') }
+  it { should have_many(:spaces).dependent(:destroy) }
+  it { should have_one(:referral_stat) }
+
+  # Nested Attributes
+  it { should accept_nested_attributes_for(:day_hours).allow_destroy(true) }
+
+  # Callbacks
+  context 'callbacks' do
+    it { is_expected.to callback(:initialize_fields).after(:initialize) }
+  end
 
   # Presence
   it { should validate_presence_of(:town) }
@@ -29,8 +41,10 @@ RSpec.describe Venue, type: :model do
   it { should_not validate_presence_of(:desks) }
 
   # Enums
-  it { should define_enum_for(:v_types) }
-  it { should define_enum_for(:space_units) }
+  it { should define_enum_for(:v_types).with([:coworking_space, :startup_office, :hotel, :corporate_office, :business_center,
+                :design_studio, :loft, :apartment, :house, :cafe, :restaurant]) }
+  it { should define_enum_for(:space_units).with([:square_mts, :square_foots]) }
+  it { should define_enum_for(:statuses).with([:creating, :active, :reported, :closed]) }
 
   # Numericality
   it do
@@ -96,4 +110,14 @@ RSpec.describe Venue, type: :model do
     should venue.valid? be false
   end
 
+  describe '#maximum_open_lapse' do
+    it 'returns the max lapse of time for a day open in a venue' do
+      expect(subject.maximum_open_lapse).to eq(12)
+    end
+
+    it 'returns nil for an Venue without opening days set' do
+      subject.day_hours.clear
+      expect(subject.maximum_open_lapse).to be_nil
+    end
+  end
 end

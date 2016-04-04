@@ -4,15 +4,15 @@ class Venue < ActiveRecord::Base
   attr_accessor :force_submit_upd
 
   # Relations
+  belongs_to :collection_account, polymorphic: true, dependent: :destroy
   belongs_to :owner, polymorphic: true
   belongs_to :time_zone
 
-  has_many :spaces, dependent: :destroy
   has_many :bookings, through: :spaces
   has_many :day_hours, class_name: 'VenueHour', dependent: :destroy
   has_many :photos, class_name: 'VenuePhoto', dependent: :destroy
+  has_many :spaces, dependent: :destroy
   has_one :referral_stat
-  belongs_to :collection_account, polymorphic: true, dependent: :destroy
 
   accepts_nested_attributes_for :day_hours, allow_destroy: true, reject_if:
                                             proc { |e| e[:from].blank? || e[:to].blank? }
@@ -95,6 +95,10 @@ class Venue < ActiveRecord::Base
 
   def venue_knows_user(user)
     owner == user || bookings.exists?(state: Booking.states[:paid], owner: user)
+  end
+
+  def maximum_open_lapse
+    day_hours.map { |d| (d.to - d.from) / 100 }.max
   end
 
   protected
