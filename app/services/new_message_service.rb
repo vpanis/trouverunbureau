@@ -48,7 +48,6 @@ class NewMessageService < SimpleDelegator
     def notify
       # TODO: Replace with a 'Booking creation email'
       NotificationsMailer.delay.new_message_email(id, 'host')
-      NotificationsMailer.delay.new_message_email(id, 'guest')
     end
   end
 
