@@ -657,15 +657,21 @@ en:
       cafe_restaurant: cafe/restaurant
       chill_area: chill area
       cleaning_service: cleaning service
+      coffee_station: coffe_station
       concierge: concierge
       conference_rooms: conference rooms
+      dvd: dvd
       elevators: elevator
       fax: fax
+      first_aid: first aid
       gym: gym
       individual_bookings: individual bookings
       info_team_bookings: Are you open to have teams make bookings in your venue?
       kitchen: kitchen
+      locker: locker
       mail_service: mail service
+      microwave: microwave
+      nap_area: nap area
       outdoor_space: outdoor space
       parking: parking
       pets_allowed: pets allowed
@@ -674,10 +680,14 @@ en:
       printer_scanner: printers/scanner
       projector: projector
       reception_service: reception service
+      refrigerator: refrigerator
       security: security
       shower: shower
+      snacks: snacks
+      storage: storage
       team_bookings: team bookings
       tv: tv
+      videoconference: videoconference
       water_fountain: water fountain
       wheelchair_access: wheelchair access
       whiteboards: whiteboards
@@ -757,6 +767,9 @@ en:
       public_relations: public relations
       startup: startup
       technology: technology
+      psychologist: psychologist
+      therapist: therapist
+      headhunter: headhunter
     reported: Reported
     show:
       about_venue: About venue
@@ -798,6 +811,7 @@ en:
       loft: Loft
       restaurant: Restaurant
       startup_office: Startup office
+      training_room: Training room
   welcome_email:
     button_1: Tell us more
     button_2: List your space
