@@ -110,11 +110,20 @@ angular
     $scope.month_to_month_minimum_quantity = () ->
       return per_month_to_month_minimum_quantity
 
+    $scope.calculate_space_deposit = () ->
+      deposits_attributes = $scope.space_deposit_attributes
+      period = $scope.selected_tab + '_deposit'
+      if deposits_attributes && deposits_attributes.hasOwnProperty(period)
+        return parseFloat(deposits_attributes[period]) || 0
+      return 0
+
     $scope.calculate_space_quantity = () ->
       return if $scope.space_quantity then $scope.space_quantity else 0
 
     $scope.calculate_deposit = () ->
-      return $scope.space_deposit * $scope.calculate_space_quantity()
+      deposit = $scope.calculate_space_deposit()
+      quantity = $scope.calculate_space_quantity()
+      return deposit * quantity
 
     $scope.calculate_space_booking = () ->
       res = $scope.booking_type_per_price() * $scope.amount_for_booking_type() * $scope.calculate_space_quantity()
@@ -205,7 +214,7 @@ angular
     $scope.initialize_dates()
     $scope.space_quantity = parseInt($("#booking-info").attr('data-space-quantity') || 1)
     $scope.month_to_month_as_of = ""
-    $scope.space_deposit = parseFloat($("#space-deposit").attr('data-amount'))
+    $scope.space_deposit_attributes = JSON.parse($("#space-deposit-attributes").attr('data-amount'))
     close_all
     hide_forms
 

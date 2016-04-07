@@ -16,7 +16,10 @@ FactoryGirl.define do
     week_minimum_unity 1
     month_minimum_unity 1
     month_to_month_minimum_unity 3
-    deposit 50
+    hour_deposit 2
+    day_deposit 15
+    month_deposit 150
+    month_to_month_deposit 120
     active true
 
     venue { FactoryGirl.build(:venue) }

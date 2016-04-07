@@ -112,12 +112,17 @@ class SpaceBookingInquiryController < ApplicationController
                                       from: @from_date,
                                       to: @to_date,
                                       space: @space,
-                                      deposit: @space.deposit * quantity_param,
+                                      deposit: calculate_deposit(@space, @b_type, quantity_param),
                                       b_type: @b_type,
                                       quantity: quantity_param)
   end
 
   def quantity_param
     params[:booking][:quantity].to_i
+  end
+
+  def calculate_deposit(space, booking_type, quantity)
+    booking_type = Booking.b_types.key(booking_type)
+    space.calculate_deposit(booking_type, quantity)
   end
 end

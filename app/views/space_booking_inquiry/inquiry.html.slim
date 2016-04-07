@@ -18,7 +18,9 @@
 
 - if @profile_modal
   = render 'profile_modal', modal_id: 'profile-modal', title: t('users.complete_profile'), save_button_id: 'save-profile'
-#space-deposit data-amount=@space.deposit
+
+#space-deposit-attributes data-amount=@space.deposits_attributes.to_json
+
 .error-wrapper
   - if @booking_errors.present?
     - @booking_errors.each do |attribute, message|

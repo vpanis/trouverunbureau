@@ -41,8 +41,10 @@ describe SpaceBookingInquiryController do
     context 'when user logged in' do
       let(:a_venue) { create(:venue, :with_venue_hours) }
       let!(:a_space) do
-        create(:space, venue: a_venue, hour_price: 5, day_price: 30,
-        month_price: 800, month_to_month_price: 600)
+        create(:space, venue: a_venue,
+        hour_price: 5, day_price: 30, month_price: 800, month_to_month_price: 600,
+        hour_deposit: 5, day_deposit: 10, month_deposit: 100,
+        month_to_month_deposit: 150)
       end
 
       before(:each) do
