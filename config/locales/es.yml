@@ -576,6 +576,8 @@ es:
     info_photos: Cuanto mejores sean las fotos, más se interesarán por tu espacio. Comparte fotos que reflejen bien el ambiente general de tu espacio.
     info_pricing: Establece el precio al que deseas alquilar tu espacio durante distintos periodos de tiempo. Podrás modificarlo en cualquier momento según las circunstancias.
     info_quantity: "¿Cuántos de estos espacios deseas anunciar en DeskSpotting?"
+    info_minimum_renting_period: Tiempo mínimo de reserva
+    info_renting_period: Tiempos de reserva
     minimum_renting_period: Tiempo mínimo de reserva
     month_price: Precio por mes
     month_to_month: mes al mes
@@ -583,8 +585,11 @@ es:
     per_day: Por día
     per_hour: Por hora
     per_month: Por mes
+    price: Precio
+    pricing: Precios (%{currency})
     pricing_in: Precios en %{currency}
     quantity: Número de espacios
+    renting_period: Tiempos de reserva
     space_photos: Fotos del espacio
     type: Tipo de espacio de trabajo
     types:

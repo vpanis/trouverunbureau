@@ -576,6 +576,8 @@ fr:
     info_photos: En choisissant des photos de qualité vous susciterez l'intérêt. Partagez des photos qui reflètent précisément l'atmosphère de votre espace.
     info_pricing: Fixez le prix que vous souhaitez en fonction des durées que vous proposez. Le prix peut être modifier à tout moment et au cas par cas.
     info_quantity: Combien de postes souhaitez-vous publier sur DeskSpotting
+    info_minimum_renting_period: Durée minimale
+    info_renting_period: Durée
     minimum_renting_period: Durée minimale
     month_price: Prix par mois
     month_to_month: mois en mois
@@ -583,8 +585,11 @@ fr:
     per_day: Par jour
     per_hour: Par heure
     per_month: Par mois
+    price: Prix
+    pricing: Prix (%{currency})
     pricing_in: Prix en %{currency}
     quantity: Nombre de postes
+    renting_period: Durée
     space_photos: Photos
     type: Type de poste
     types:
