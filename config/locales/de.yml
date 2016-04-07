@@ -366,6 +366,7 @@ de:
   new_message_email:
     got_new_message: Neue Nachricht von
     hi: Hallo
+    on_date_connector: 'am'
     reply: Oder antworten Sie direkt über diese E-Mail.
     subject: 'Sie haben eine neue Nachricht - Buchung #%{booking_id}'
     team: Das DeskSpotting-Team

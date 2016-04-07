@@ -49,6 +49,13 @@ class VenuesController < ApplicationController
     @user = current_represented
     @photos = @venue.photos
     @selected_space = Space.find(params[:space_id]) if params[:space_id]
+
+    venue_type_category = t("venues.types.#{@venue.v_type}")
+    venue_location = "#{@venue.town}, #{Country.new(@venue.country_code).name}"
+
+    set_meta_tags title: t('meta.venues.index.title', name: @venue.name, category: venue_type_category),
+                  description: t('meta.venues.index.description', name: @venue.name, category: venue_type_category, location: venue_location)
+
     # favorites of the user
     if current_user.present?
       @favorite_spaces_ids = current_user.favorite_spaces.pluck(:id)

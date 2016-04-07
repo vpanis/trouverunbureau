@@ -12,6 +12,8 @@ on_load = ->
     $("#signup-form-submit").click( ->
       $('#unaccepted_terms').addClass('error--hidden')
       if ($('#terms_accepted').is(':checked'))
+        mixpanel.track('Sign Up Attempt');
+        fbq('track', 'CompleteRegistration');
         $('#new_user').find(':submit').click()
       else
         $('#unaccepted_terms').removeClass('error--hidden')

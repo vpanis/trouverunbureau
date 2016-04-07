@@ -28,9 +28,8 @@ class SpacesController < ApplicationController
     remove_blank_price_params
     @space = Space.find(params[:id])
     context = SpaceContext.new(@space, current_represented)
-    @previous_page = params[:previous_page] || edit_space_path(@space)
     return render_forbidden unless context.owner?
-    return redirect_to @previous_page if context.update_space(space_params)
+    return redirect_to spaces_venue_path(@space.venue) if context.update_space(space_params)
     redirect_to edit_space_path(@space)
   end
 
@@ -47,11 +46,21 @@ class SpacesController < ApplicationController
   end
 
   def index
+    if params[:s_type].blank?
+      set_meta_tags title: t('meta.spaces.index.title'),
+                    description: t('meta.spaces.index.description')
+    else
+      set_meta_tags title: t("meta.spaces.space_#{params[:s_type]}.title"),
+                    description: t("meta.spaces.space_#{params[:s_type]}.description")
+    end
+
     @professions = profession_options
     @workspaces = space_types_checkbox_options
   end
 
   def search_mobile
+    set_meta_tags title: t('meta.spaces.search_mobile.title'),
+                  description: t('meta.spaces.search_mobile.description')
     @space_types_options = space_types_index_options
   end
 

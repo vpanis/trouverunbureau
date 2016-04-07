@@ -5,6 +5,7 @@ en:
     check_out: Check-Out
     date: Date
     day: Day
+    days: Days
     days_amount: Number of Days
     deposit: Deposit
     deskspotting_fee: DeskSpotting Fee
@@ -18,9 +19,11 @@ en:
     guaranteed_months: Guaranteed months
     guaranteed_months_quantity: Number of Guaranteed Months
     hour: Hour
+    hours: Hours
     hours_amount: Number of Hours
     message_placeholder: Tell the host more about yourself and your professional interests.
     month: Month
+    months: Months
     month_amount: Number of months
     month_to_month: Month to Month
     month_to_month_as_of: Month to month as of
@@ -34,6 +37,8 @@ en:
     time_frame: Select Time Frame
     total: Total
     your_message: Your message
+    errors:
+      minimum_time: 'You must at least reach the minimum time for this workplace (%{minimum_time} %{b_type})'
   bookings:
     all_venues: All Venues
     cancel: Cancel
@@ -367,6 +372,7 @@ en:
   new_message_email:
     got_new_message: Got a new message from
     hi: Hi
+    on_date_connector: 'on'
     reply: Or reply directly in this e-mail.
     subject: 'You have a new message - Booking #%{booking_id}'
     team: The DeskSpotting Team
@@ -817,3 +823,70 @@ en:
     month_to_month: month to month
     no_favourites: You don't have any wish listed spaces
     week: week
+  meta:
+    contacts:
+      new:
+        title: Contact
+        description: Have any suggestions or questions. Or interested in joining the DeskSpotting Team. We are always interested in hearing from you.
+    landing:
+      index:
+        title: Much more than office
+        description: Book unique workspaces where and when you need them. List your vacant space and build your own collaborative work environment while earning money.
+    spaces:
+      index:
+        title: All Workspaces
+        description: Book unique offices or meeting rooms where and when you need them. Start enjoying the benefits of shared office work environments.
+      search_mobile:
+        title: Search Mobile
+        description: ''
+      space_0:
+        title: Conference Room
+        description: Book unique Conference Rooms where and when you need them. Start enjoying the benefits of shared office work environments.
+      space_1:
+        title: Meeting Room
+        description: Book unique Meeting Rooms  where and when you need them. Start enjoying the benefits of shared office work environments.
+      space_2:
+        title: Private Office
+        description: Book unique Private Offices where and when you need them. Start enjoying the benefits of shared office work environments.
+      space_3:
+        title: Fixed Desk
+        description: Book unique Fixed desks where and when you need them. Start enjoying the benefits of shared office work environments.
+      space_4:
+        title: Hot Desk
+        description: Book unique Hot Desks  where and when you need them. Start enjoying the benefits of shared office work environments.
+      space_5:
+        title: Communal Space
+        description: Book unique Communal Workspaces where and when you need them. Start enjoying the benefits of shared office work environments.
+      space_6:
+        title: Home Office
+        description: Work from Home everywhere. Book unique Home Offices where and when you need them.
+    statics:
+      about_us:
+        title: About us
+        description: DeskSpotting is made for all types of businesses from startups, to mature companies looking to benefit from shared office work environments.
+      terms_of_service:
+        title: Our Terms
+        description: Welcome to DeskSpotting. Read carefully these service conditions since they contain important information regarding your legal rights and obligations.
+      how_it_works:
+        title: How it Works
+        description: Find and list workspaces on a flexible basis on DeskSpotting. Start enjoying the benefits of shared office work environments.
+      faq:
+        title: FAQ
+        description: In which countries can I use DeskSpotting? Why Use DeskSpotting? How can I build my own coworking environment? Learn more about DeskSpotting.
+      privacy_policy:
+        title: Privacy Policy
+        description: This document lays out our Privacy Policy for hosts and guests on DeskSpotting regarding the handling of user information.
+    users:
+      password_new:
+        title: New Password
+        description: Change your password. Log in and start booking amazing shared workspaces and start DeskSpotting now!
+      sign_up:
+        title: Sign up
+        description: Welcome to DeskSpotting. Sign up and start booking amazing shared office spaces. Start DeskSpotting now!
+      sign_in:
+        title: Sign in
+        description: Sign in and search for inspiring workspaces you can book for an hour, a day, month or more. The choice is yours on DeskSpotting.
+    venues:
+      index:
+        title: "%{name} | %{category}"
+        description: "%{name}. Amazing %{category} in %{location}. Book your inspiring workspace by the hour, day month or more."

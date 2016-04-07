@@ -3,6 +3,7 @@ class LandingController < ApplicationController
   include SelectOptionsHelper
 
   def index
+    meta_tags_landing
     @space_types_options = space_types_index_options
     @featured_venues = Venue.distinct.joins(:spaces).where('spaces.active')
                             .where(status: Venue.accepted_statuses)
@@ -14,6 +15,12 @@ class LandingController < ApplicationController
   end
 
   private
+
+  def meta_tags_landing
+    set_meta_tags title: t('meta.landing.index.title'),
+                  description: t('meta.landing.index.description'),
+                  reverse: false
+  end
 
   def workspaces_count
     type_count = Space.active.group(:s_type).count

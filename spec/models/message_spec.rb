@@ -61,7 +61,7 @@ RSpec.describe Message, type: :model do
   end
 
   describe '#sender_is_guest?' do
-    let(:message) { FactoryGirl.create(:message) }
+    let(:message) { FactoryGirl.build(:message) }
 
     it 'returns false if the sender is NOT the guest' do
       allow(message).to receive(:user).and_return(User.new)

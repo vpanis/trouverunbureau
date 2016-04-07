@@ -366,6 +366,7 @@ fr:
   new_message_email:
     got_new_message: Nouveau message de la part de
     hi: Bonjour
+    on_date_connector: 'le'
     reply: Ou répondez directement via email
     subject: Vous avez un nouveau message - Réservation %{booking_id}
     team: L'Équipe DeskSpotting

@@ -1,13 +1,9 @@
-/== content_for :meta_tag do
-  title #{t('landing.meta.title')}
-  meta name="description" content="#{t('landing.meta.description')}"
-  meta property="og:title" content="#{t('landing.meta.og.title')}"
-  meta property="og:description" content="#{t('landing.meta.og.description')}"
-  meta name="twitter:title" content="#{t('landing.meta.twitter.title')}"
-  meta name="twitter:description" content="#{t('landing.meta.twitter.description')}"
-==content_for :mo_events do
+== content_for :mo_events do
   javascript:
-    mixpanel.track("Navigation: Homepage");
+    var user_id = #{current_user ? current_user.id : 0}
+    if (user_id > 0)
+      mixpanel.identify(user_id.toString())
+    mixpanel.track("Navigation: Homepage")
 
 .landing-page
   .section#header

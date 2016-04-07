@@ -544,6 +544,7 @@ it:
   new_message_email:
     subject: 'You have a new message - Booking #%{booking_id}'
     hi: Hi
+    on_date_connector: 'il'
     got_new_message: Got a new message from
     reply: Or reply directly on this mail.
     view_on_deskspotting: View on DeskSpotting

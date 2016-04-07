@@ -5,7 +5,7 @@ class SpaceBookingInquiryController < ApplicationController
   def inquiry
     @space = Space.includes(:venue).find(params[:id])
     @day_hours = @space.venue.day_hours.to_json(only: [:weekday, :from, :to])
-    @booking = Booking.new(space: @space, owner: current_represented)
+    @booking ||= Booking.new(space: @space, owner: current_represented)
     setup_profile_variables
   end
 

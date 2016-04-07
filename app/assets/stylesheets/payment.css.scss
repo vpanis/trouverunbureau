@@ -1,5 +1,14 @@
 @import 'variables';
 
+.error-message {
+  color: red;
+  font-weight: 400;
+}
+
+.field-error {
+  border-color: red !important;
+}
+
 .payment-info-container {
   width: 850px;
   margin: 0 auto;
@@ -63,7 +72,7 @@
     padding: 15px;
   }
   .uk-payment-container {
-    
+
     .magopay-certified{
       margin-left: 25%;
     }

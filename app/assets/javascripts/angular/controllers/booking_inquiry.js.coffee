@@ -1,4 +1,6 @@
-angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtrl", [
+angular
+.module('deskSpotting.booking_inquiry', [])
+.controller "BookingInquiryCtrl", [
   '$scope'
   'Restangular'
   ($scope, Restangular) ->
@@ -31,14 +33,14 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
       $scope[$input_open] = true
 
     $scope.initialize_dates = () ->
-      $scope.booking_from = $('#booking_from').value
-      $scope.booking_to = $('#booking_to').value
+      $scope.booking_from = $('#booking_from').value || new Date($("#booking-info").attr('data-from'))
+      $scope.booking_to = $('#booking_to').value || new Date($("#booking-info").attr('data-to'))
 
-    $scope.swap_inquiry_type = (show_class, tab, tab_name) ->
+    $scope.swap_inquiry_type = (show_class, tab) ->
       hide_forms()
       $(show_class).removeClass('form--hidden')
       $scope.selected_tab = tab
-      $scope.selected_tab_name = tab_name
+      $scope.selected_tab_name = $("#translation-info").attr(tab)
 
     $scope.disabled = (date, mode) ->
       days = [0, 1, 2, 3, 4, 5, 6]
@@ -136,6 +138,13 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
       return
 
     $scope.submit_form = () ->
+      h = {}
+      h['ID'] = $("#venue-id").attr('data-venue-id')
+      h['Venue City'] = $("#venue-city").attr('data-venue-city')
+      h['Venue Country'] = $("#venue-country").attr('data-venue-country')
+      h['Booking Type'] = $scope.selected_tab_name
+      mixpanel.track('Book Inquiry', h)
+
       if $scope.selected_tab == 'hour'
         $('#hour-form').find(':submit').click()
       else if $scope.selected_tab == 'day'
@@ -147,12 +156,6 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
       return
 
     # PRIVATE FUNCTIONS
-
-    deselect_all_tabs = () ->
-      $scope.per_hour_selected = false
-      $scope.per_day_selected = false
-      $scope.per_month_selected = false
-      $scope.per_month_to_month_selected = false
 
     stablish_hours_amount = () ->
       if !$scope.hour_booking_begin || !$scope.hour_booking_end
@@ -200,18 +203,11 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
       show_weeks: false
     $scope.format = 'dd-MM-yyyy'
     $scope.initialize_dates()
-    $scope.space_quantity = 1
+    $scope.space_quantity = parseInt($("#booking-info").attr('data-space-quantity') || 1)
     $scope.month_to_month_as_of = ""
     $scope.space_deposit = parseFloat($("#space-deposit").attr('data-amount'))
     close_all
-    deselect_all_tabs();
-    if $('.multiple-switch-wrapper .tab').attr('id') == 'tab-hour'
-      $scope.selected_tab = 'hour'
-    else if $('.multiple-switch-wrapper .tab').attr('id') == 'tab-day'
-      $scope.selected_tab = 'day'
-    else
-      $scope.selected_tab = 'month'
-    $($('.form-container .form')[0]).removeClass('form--hidden')
+    hide_forms
 
     available_dates_hours = $.parseJSON($("#venue-hours").attr('data-day-hours'))
     per_hour_price = $("#venue-hour-price").attr('data-hour-price')
@@ -221,6 +217,9 @@ angular.module('deskSpotting.booking_inquiry', []).controller "BookingInquiryCtr
     per_month_to_month_minimum_quantity = $("#venue-month_to_month-minimum-quantity").attr('data-month_to_month-minimum-quantity')
     per_month_to_month_as_of = parseInt($("#venue-month_to_month-as-of").attr('data-month_to_month-as-of'))
     $scope.month_quantity = 1
+
+    current_timeframe = $("#booking-info").attr('data-b-type') || $('.multiple-switch-wrapper .tab').attr('id').substring(4)
+    $scope.swap_inquiry_type('.form-' + current_timeframe + '-booking', current_timeframe)
 
     #initializers
     initialize_selects = ->
