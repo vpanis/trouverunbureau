@@ -602,6 +602,7 @@ en:
       hot_desk: Hot Desk
       meeting_room: Meeting room
       private_office: Private office
+      training_room: Training Room
   users:
     about_me: About me
     account:
@@ -657,7 +658,7 @@ en:
       cafe_restaurant: cafe/restaurant
       chill_area: chill area
       cleaning_service: cleaning service
-      coffee_station: coffe_station
+      coffee_station: coffee station
       concierge: concierge
       conference_rooms: conference rooms
       dvd: dvd
@@ -687,7 +688,7 @@ en:
       storage: storage
       team_bookings: team bookings
       tv: tv
-      videoconference: videoconference
+      videoconference: video conference
       water_fountain: water fountain
       wheelchair_access: wheelchair access
       whiteboards: whiteboards
@@ -811,7 +812,6 @@ en:
       loft: Loft
       restaurant: Restaurant
       startup_office: Startup office
-      training_room: Training room
   welcome_email:
     button_1: Tell us more
     button_2: List your space

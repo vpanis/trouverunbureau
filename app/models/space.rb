@@ -7,7 +7,7 @@ class Space < ActiveRecord::Base
 
   # Constants/Enums
   enum s_type: [:conference_room, :meeting_room, :private_office, :fixed_desk, :hot_desk,
-                :communal_space, :home_office]
+                :communal_space, :home_office, :training_room]
 
   # Validations
   validates :s_type, :name, :capacity, :quantity, :venue, :deposit, presence: true

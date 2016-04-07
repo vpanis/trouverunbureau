@@ -22,7 +22,7 @@ class Venue < ActiveRecord::Base
 
   # Constants/Enums
   enum v_type: [:coworking_space, :startup_office, :hotel, :corporate_office, :business_center,
-                :design_studio, :loft, :apartment, :house, :cafe, :restaurant, :training_room]
+                :design_studio, :loft, :apartment, :house, :cafe, :restaurant]
 
   enum space_unit: [:square_mts, :square_foots]
 
