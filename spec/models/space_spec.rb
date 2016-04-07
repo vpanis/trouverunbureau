@@ -24,7 +24,7 @@ RSpec.describe Space, type: :model do
   it {
     should define_enum_for(:s_types)
     .with([:conference_room, :meeting_room, :private_office, :fixed_desk,
-          :hot_desk, :communal_space, :home_office])
+          :hot_desk, :communal_space, :home_office, :training_room])
   }
 
   # Numericality
@@ -38,7 +38,7 @@ RSpec.describe Space, type: :model do
 
   it { should validate_numericality_of(:month_minimum_unity).only_integer.is_greater_than_or_equal_to(1).is_less_than_or_equal_to(4) }
   it { should validate_numericality_of(:month_to_month_minimum_unity).only_integer.is_greater_than_or_equal_to(1).is_less_than_or_equal_to(4) }
-  
+
   describe '#month_to_month_as_of' do
     let(:examples) { { nil => 0, 0 => 0, 1 => 30, 3 => 90, 4 => 120 } }
     it 'does something 1' do
