@@ -290,6 +290,7 @@ GEM
     hashie (3.3.2)
     hike (1.2.3)
     hitimes (1.2.3)
+    http_accept_language (2.0.5)
     http_parser.rb (0.6.0)
     i18n (0.7.0)
     i18n_data (0.6.3)
@@ -610,6 +611,7 @@ DEPENDENCIES
   google-webfonts-rails (~> 0.0.4)
   guard (>= 2.2.2)
   guard-livereload
+  http_accept_language
   inherited_resources (~> 1.4.1)
   intercom-rails
   jquery-inputmask-rails

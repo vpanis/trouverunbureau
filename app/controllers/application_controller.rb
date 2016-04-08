@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
                   elsif current_user.try(:language)
                     current_user.language
                   else
-                    I18n.default_locale
+                    http_accept_language.preferred_language_from(I18n.available_locales)
                   end
   end
 
