@@ -30,16 +30,24 @@ on_load = ->
       $('#deposit-popover').popover(options)
 
     validate_price = ->
+      $('.form-group.has-error').removeClass 'has-error'
       checked_price = $('.price-checkbox').is(':checked')
-      values = $.map($('.price-checkbox:checked').closest('.row').find('input[type=number]'),
-        (e) -> $(e).val())
-      valid_price = $.inArray("", values) != 1
+      empty_prices = $('.price-checkbox:checked').closest('.row').find('input.price-input[type=number]').filter ->
+        @value.length <= 0 || @value == 0
+      valid_price = !empty_prices || empty_prices.length == 0
+
       return true if checked_price && valid_price
-      showErrorMessage()
+      showErrorMessage(empty_prices)
       false
 
-    showErrorMessage = ->
-      $('.pricing .form-group').addClass 'has-error'
+    showErrorMessage = (empty_prices) ->
+      if empty_prices
+        empty_prices.each ->
+          $(this).closest('.form-group').addClass 'has-error'
+          return
+      else
+        $('.pricing .form-group').addClass 'has-error'
+      return
 
     initialize_selects()
     initialize_listeners()

@@ -77,6 +77,12 @@ class Space < ActiveRecord::Base
   end
 
   def initialize_fields
+    self.hour_deposit ||= 0
+    self.day_deposit ||= 0
+    self.week_deposit ||= 0
+    self.month_deposit ||= 0
+    self.month_to_month_deposit ||= 0
+
     self.hour_minimum_unity ||= 1
     self.day_minimum_unity ||= 1
     self.week_minimum_unity ||= 1
