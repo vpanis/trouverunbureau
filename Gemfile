@@ -113,6 +113,7 @@ gem 'acts_as_decimal'
 
 # Languages
 gem 'language_list'
+gem 'http_accept_language'
 
 gem 'newrelic_rpm'
 
