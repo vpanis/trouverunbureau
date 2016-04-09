@@ -7,6 +7,10 @@ on_load = ->
       $('.space-types-select').select2()
       return
     initialize_listeners = ->
+      $('.price-checkbox').change ->
+        if !@checked
+          $(this).closest('.row').find('input.price-input[type=number]').val ''
+        return
       $('#new_space').submit ->
         validate_price()
 
