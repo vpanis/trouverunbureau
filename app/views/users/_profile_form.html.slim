@@ -1,6 +1,10 @@
 = form_for(@user, remote: (@profile_modal || false) ) do |f|
   = f.file_field :avatar, class: 'hidden'
   .row
+    - if @profile_modal
+      .row
+        .small-title
+          h4.gray-subtitle = t('users.required_fields')
     - unless @profile_modal
       .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
         label = t('users.first_name')
@@ -13,8 +17,8 @@
       .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
         .icon.lock.pointer#gender-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
         label = t('users.gender')
-        = f.select(:gender, @gender_options, { prompt: t('users.gender_select') }, { class: 'form-control gender-select'})
-    - unless @profile_modal
+        = f.select(:gender, @gender_options, { prompt: t('users.gender_select') }, { class: 'form-control gender-select', required: @profile_modal})
+    - if !@profile_modal || (@missing_fields || []).include?(:phone)
       .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
         .icon.info.pointer#phone-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_share_phone')}"
         label = t('users.phone')
@@ -22,7 +26,7 @@
     - if !@profile_modal || (@missing_fields || []).include?(:profession)
       .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
         label = t('users.profession')
-        = f.select(:profession, @profession_options, {}, {class: 'form-control profession-select'})
+        = f.select(:profession, @profession_options, {}, {class: 'form-control profession-select', required: @profile_modal})
     - unless @profile_modal
       .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
         .icon.lock.pointer#email-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
@@ -31,7 +35,7 @@
     - if !@profile_modal || (@missing_fields || []).include?(:company_name)
       .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
         label = t('users.company_name')
-        = f.text_field :company_name, placeholder: t('users.company_name'), class: 'form-control'
+        = f.text_field :company_name, placeholder: t('users.company_name'), class: 'form-control', required: @profile_modal
     - unless @profile_modal
       .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
         label = t('users.date_of_birth')
@@ -63,12 +67,12 @@
     - if !@profile_modal || (@missing_fields || []).include?(:location)
       .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
         label = t('users.location')
-        = f.text_field :location, placeholder: t('users.location'), class: 'form-control'
+        = f.text_field :location, placeholder: t('users.location'), class: 'form-control', required: @profile_modal
     - if @profile_modal
       - if (@missing_fields || []).include?(:languages_spoken)
         .form-group.col-xs-12
           label = t('users.languages')
-          = select_tag('languages_spoken_select', options_from_collection_for_select(@all_language_options, :second, :first, @user.languages_spoken), {multiple: true, class: 'form-control multi-lang-select'})
+          = select_tag('languages_spoken_select', options_from_collection_for_select(@all_language_options, :second, :first, @user.languages_spoken), {multiple: true, class: 'form-control multi-lang-select', required: @profile_modal})
           = f.hidden_field :languages_spoken
     - else
       .form-group.col-xs-12
@@ -84,7 +88,13 @@
     - if !@profile_modal || (@missing_fields || []).include?(:interests)
       .form-group.col-xs-12
         label = t('users.interests')
-        = f.text_area :interests, placeholder: t('users.interests'), class: 'form-control'
+        = f.text_area :interests, placeholder: t('users.interests'), class: 'form-control', required: @profile_modal
+
+  - if @profile_modal
+    .row
+      .small-title
+        .small-separator
+        h4.gray-subtitle = t('users.optional_fields')
 
     - if !@profile_modal || !(@missing_fields || []).grep(/emergency/).empty?
       .emergency-contact.col-xs-12
