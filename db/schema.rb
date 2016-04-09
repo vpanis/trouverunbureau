@@ -320,7 +320,6 @@ ActiveRecord::Schema.define(version: 20160317232424) do
     t.integer  "month_minimum_unity",          default: 1,     null: false
     t.integer  "month_to_month_minimum_unity", default: 1,     null: false
     t.integer  "month_to_month_price"
-    t.integer  "deposit"
     t.integer  "hour_deposit"
     t.integer  "day_deposit"
     t.integer  "week_deposit"
