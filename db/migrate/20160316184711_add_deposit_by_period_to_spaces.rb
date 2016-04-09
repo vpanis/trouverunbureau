@@ -14,6 +14,8 @@ class AddDepositByPeriodToSpaces < ActiveRecord::Migration
       space.week_deposit            = deposit if space.week_price.present?
       space.month_deposit           = deposit if space.month_price.present?
       space.month_to_month_deposit  = deposit if space.month_to_month_price.present?
+
+      space.save!
     end
 
   end
