@@ -4,11 +4,17 @@ on_load = ->
       spaces: ["edit"]
   , (controller, action) ->
 
+    $('#newWorkspaceShareModal').on 'hide.bs.modal', (e) ->
+      $('.edit_space').submit()
+      return
+
     $('#save-space').click (event) ->
       # there is always one child because of the upload form
+      event.preventDefault()
       if($('.row.pictures').children().size() < 2)
-        event.preventDefault()
         $('.row.pictures').prepend('<div class="photo-errors"> You must add at least one picture </div>')
+      else
+        $('#newWorkspaceShareModal').modal('toggle');
 
     add_photo = (data) ->
       photo_html = "<div class=\"col-md-4\"><div class=\"img-wrapper\" style=\"background-image: url("+data.photo+");\"><div class=\"hover\"><a class=\"delete-photo\" data-photo-id=\""+data.id+"\" data-space-id=\""+data.space_id+"\" href=\"#\">delete</a></div></div></div>"
