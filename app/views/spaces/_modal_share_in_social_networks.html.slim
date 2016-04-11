@@ -1,0 +1,25 @@
+#newWorkspaceShareModal.modal.fade aria-hidden="true" aria-labelledby="languageModalLabel" role="dialog" tabindex="-1"
+  .modal-dialog#share-on-social-network
+    .modal-content
+      .modal-header
+        button.close aria-label="#{t('commons.close')}" data-dismiss="modal" type="button"
+          span aria-hidden="true" &times;
+        h4#languageModalLabel.modal-title
+          - if @space.photos.present?
+            = t('spaces.thanks_for_updating')
+          - else
+            = t('spaces.thanks_for_registering')
+      .modal-body
+        span
+          = t('spaces.sharing_message', space: @space.name, venue: @space.venue.name)
+      .modal-footer
+        span
+          = t('spaces.share_on')
+        .row.share-venue
+          .social-icons
+            = link_to share_on_twitter_url(@space.venue.id), target: '_blank', onclick: "$('#newWorkspaceShareModal').modal('toggle');"
+              .twitter.social-icon
+            = link_to share_on_facebook_url(@space.venue.id), target: '_blank', onclick: "$('#newWorkspaceShareModal').modal('toggle');"
+              .facebook.social-icon
+            = link_to share_on_linkedin_url(@space.venue.id), target: '_blank', onclick: "$('#newWorkspaceShareModal').modal('toggle');"
+              .linkedin.social-icon

@@ -3,7 +3,7 @@
 #venue.main-content.dashboard-form.clearfix.overflow-hidden
   = render 'shared/edit_venue_progress', venue: @venue, step: 6
   .details-section.col-md-7.col-md-offset-1.margin-top
-    = render 'venue_heading', subtitle: 'Select any of your workspaces to edit their information.'
+    = render 'venue_heading', subtitle: t('workspace.select_workspace')
     - @venue.spaces.each do |space|
       .space.pictures.col-md-4
         h2 = t('spaces.types.' + space.s_type)
@@ -13,8 +13,8 @@
           - photo = 'venue-default.png'
         .img-wrapper style="background-image: url('#{photo}');"
           .hover
-            = link_to 'edit space', edit_space_path(space), class: 'edit'
-            = link_to 'delete space', space_path(space), method: :delete, class: 'delete-photo'
+            = link_to t('spaces.edit_your_space'), edit_space_path(space), class: 'edit'
+            = link_to t('spaces.delete_your_space'), space_path(space), method: :delete, class: 'delete-photo'
     .col-md-4.add-image-container.space
       a href=new_space_venue_path(@venue)
         .margin-top-0.add-space.add-space-section
