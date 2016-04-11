@@ -142,8 +142,10 @@ angular
       return
 
     $('#save-edition').click ->
-      $('#profile-modal').modal('hide');
-      $scope.submit_form();
+      profile_form = $('#edit_user_1')[0]
+      if profile_form.checkValidity()
+        $('#profile-modal').modal('hide');
+        $scope.submit_form();
       return
 
     $scope.submit_form = () ->
