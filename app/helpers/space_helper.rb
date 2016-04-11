@@ -1,17 +1,23 @@
 module SpaceHelper
-  def share_on_twitter_url(venue_id)
+  def share_on_twitter_url(space)
     'https://twitter.com/intent/tweet' \
       "?text=#{url_encode(I18n.t('spaces.share_text'))}" \
-      "&url=#{url_encode(spaces_venue_url(venue_id))}"
+      "&url=#{space_venue_url(space)}"
   end
 
-  def share_on_linkedin_url(venue_id)
+  def share_on_linkedin_url(space)
     'https://www.linkedin.com/shareArticle' \
-      "?url=#{url_encode(spaces_venue_url(venue_id))}"
+      "?url=#{space_venue_url(space)}"
   end
 
-  def share_on_facebook_url(venue_id)
+  def share_on_facebook_url(space)
     'https://www.facebook.com/sharer/sharer.php' \
-      "?u=#{url_encode(spaces_venue_url(venue_id))}"
+      "?u=#{space_venue_url(space)}"
+  end
+
+  private
+
+  def space_venue_url(space)
+    url_encode(venue_url(space.venue.id, space_id: space.id))
   end
 end
