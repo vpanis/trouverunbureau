@@ -601,7 +601,7 @@ en:
     renting_period: Booking time
     select_workspace: Select any of your workspaces to edit their information
     share_on: 'Share on:'
-    share_text: Check out my workspace on @DeskSpotting
+    share_text: Come work in my space. This %{space_type} of mine can be booked on @DeskSpotting
     sharing_message: 'Now, in order to be able to really take advantage of %{space} and %{venue} you should start by sharing it in your social networks so anyone can see the workspace you have available.'
     space_photos: Space photos
     thanks_for_registering: Thank you for registering your workspace!
