@@ -17,9 +17,9 @@
           = t('spaces.share_on')
         .row.share-venue
           .social-icons
-            = link_to share_on_twitter_url(@space.venue.id), target: '_blank', onclick: "$('#newWorkspaceShareModal').modal('toggle');"
+            = link_to share_on_twitter_url(@space), target: '_blank', onclick: "$('#newWorkspaceShareModal').modal('toggle');"
               .twitter.social-icon
-            = link_to share_on_facebook_url(@space.venue.id), target: '_blank', onclick: "$('#newWorkspaceShareModal').modal('toggle');"
+            = link_to share_on_facebook_url(@space), target: '_blank', onclick: "$('#newWorkspaceShareModal').modal('toggle');"
               .facebook.social-icon
-            = link_to share_on_linkedin_url(@space.venue.id), target: '_blank', onclick: "$('#newWorkspaceShareModal').modal('toggle');"
+            = link_to share_on_linkedin_url(@space), target: '_blank', onclick: "$('#newWorkspaceShareModal').modal('toggle');"
               .linkedin.social-icon
