@@ -12,7 +12,7 @@
 
         <div>
           <p><%= "#{t('new_message_email.hi')} #{@message.to}," %></p>
-          <p><%= "#{t('new_message_email.got_new_message')} " %><span style="color: black; font-weight: bold;"><%="#{@message.from}"%></span><%= " #{t('new_message_email.on_date_connector')} #{I18n.l(@message.created_at, format: :long)}" %></p>
+          <p><%= "#{t('new_message_email.got_new_message')} " %><span style="color: black; font-weight: bold;"><%="#{@message.from}"%></span></p>
         </div>
       </div>
 
