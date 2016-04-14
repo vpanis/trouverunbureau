@@ -26,8 +26,17 @@ class SpaceBookingInquiryController < ApplicationController
 
   def setup_profile_variables
     @missing_fields = current_user.unfilled_fields
-    @profile_modal = current_user.first_inquiry? && !@missing_fields.empty?
+    @profile_modal = show_modal? && current_user.first_inquiry? && !@missing_fields.empty?
     setup_user_variables if @profile_modal
+  end
+
+  def show_modal?
+    booking_conf = AppConfiguration.for(:booking)
+    if booking_conf.show_complete_profile_modal
+      booking_conf.show_complete_profile_modal.downcase.strip == 'true'
+    else
+      false
+    end
   end
 
   def setup_user_variables
