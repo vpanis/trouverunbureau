@@ -119,7 +119,7 @@ en:
       inactive: Your account is not activated yet.
       invalid: Invalid email or password.
     omniauth_callbacks:
-      failure: Could not log you in you via %{kind} because "%{reason}".
+      failure: Could not log you in you via %{kind} because %{reason}.
       success: Successfully logged in via %{kind} account.
     passwords:
       no_token: You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided.
