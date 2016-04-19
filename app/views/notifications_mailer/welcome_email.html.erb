@@ -37,7 +37,7 @@
               <%= "#{t('welcome_email.description_1')}" %>
             </p>
             <p style="background-color: #FFE011; border-radius: 23px; text-align: center; padding: 5px;">
-              <%= link_to edit_user_path(@user), target: "_blank", style: "text-transform: uppercase; text-decoration: none; font-weight: 600; color: #231F20;" do %>
+              <%= link_to edit_user_url(@user), target: "_blank", style: "text-transform: uppercase; text-decoration: none; font-weight: 600; color: #231F20;" do %>
                 <%= "#{t('welcome_email.button_1')}"%>
               <% end %>
             </p>
@@ -53,7 +53,7 @@
               <%= "#{t('welcome_email.description_2')}" %>
             </p>
             <p style="background-color: #FFE011; border-radius: 23px; text-align: center; padding: 5px;">
-              <%= link_to new_venue_path, target: "_blank", style: "text-transform: uppercase; text-decoration: none; font-weight: 600; color: #231F20;" do %>
+              <%= link_to new_venue_edit_user_url, target: "_blank", style: "text-transform: uppercase; text-decoration: none; font-weight: 600; color: #231F20;" do %>
                 <%= "#{t('welcome_email.button_2')}"%>
               <% end %>
             </p>
@@ -75,7 +75,7 @@
               <%= "#{t('welcome_email.description_3')}" %>
             </p>
             <p style="background-color: #FFE011; border-radius: 23px; text-align: center; padding: 5px;">
-              <%= link_to spaces_path, target: "_blank", style: "text-transform: uppercase; text-decoration: none; font-weight: 600; color: #231F20;" do %>
+              <%= link_to spaces_edit_user_url, target: "_blank", style: "text-transform: uppercase; text-decoration: none; font-weight: 600; color: #231F20;" do %>
                 <%= "#{t('welcome_email.button_3')}"%>
               <% end %>
             </p>
