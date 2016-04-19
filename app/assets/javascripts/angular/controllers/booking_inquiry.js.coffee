@@ -33,8 +33,8 @@ angular
       $scope[$input_open] = true
 
     $scope.initialize_dates = () ->
-      $scope.booking_from = $('#booking_from').value || new Date($("#booking-info").attr('data-from'))
-      $scope.booking_to = $('#booking_to').value || new Date($("#booking-info").attr('data-to'))
+      # $scope.booking_from = $('#booking_from').value || new Date($("#booking-info").attr('data-from'))
+      # $scope.booking_to = $('#booking_to').value || new Date($("#booking-info").attr('data-to'))
 
     $scope.swap_inquiry_type = (show_class, tab) ->
       hide_forms()
