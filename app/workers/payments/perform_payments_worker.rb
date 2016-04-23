@@ -53,7 +53,7 @@ module Payments
     end
 
     def calculate_fee(price, booking)
-      fee_rate = if booking.b_type == 'month' and # paid at monthly intervals
+      fee_rate = if (booking.b_type == 'month' or booking.b_type == 'month_to_month') and # paid at monthly intervals
                     booking.payment.next_payout_at == booking.from # first payout
         PayConf.deskspotting_fee
       else
