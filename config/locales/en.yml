@@ -407,6 +407,7 @@ en:
     create_credit_card: Add credit card
     currency: Currency
     cvx: CVV
+    info_cvx: This is the three digit code on the back of your card.
     days: Days
     expiration: Expiration date
     expiration_month: Expiration month(mm)
