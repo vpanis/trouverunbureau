@@ -8,10 +8,7 @@ module Api
 
       # PUT /inquiries/:id/accept
       def accept
-        state = Booking.states[:pending_payment]
-        @booking, @custom_errors = BookingManager.change_booking_status(current_user,
-                                                                        @booking,
-                                                                        state)
+        approve_booking
         render_booking_error
       end
 
@@ -31,12 +28,22 @@ module Api
         return render status: 400, json: { error: 'Invalid price' } if params[:price] <= 0
         @booking = Booking.find_by_id(params[:id])
         @booking, errors = BookingManager.update_booking(current_user, @booking, booking_params)
+
+        approve_booking
+
         return render status: 400, json: { error: @booking.errors.to_a + errors.to_a } if
           !@booking.valid? || !errors.empty?
         render nothing: true, status: 200
       end
 
       private
+
+      def approve_booking
+        state = Booking.states[:pending_payment]
+        @booking, @custom_errors = BookingManager.change_booking_status(current_user,
+                                                                        @booking,
+                                                                        state)
+      end
 
       def inquiry_data_validation(booking)
         unless booking.present?
