@@ -171,8 +171,10 @@ en:
     date: Date
     days: Days
     hi: Hi
+    conversion_text: how would you rate your stay at
+    conversion_text2: Help DeskSpotting grow by letting us know how everything went at
     rate_stay: Rate your stay
-    subject: 'Guest Review - %{type} #%{guest_id}'
+    subject: '%{guest_id}, rate your guest %{type}'
   home:
     features:
       easy:
@@ -251,7 +253,9 @@ en:
   host_review_email:
     checked_in: has Checked-in at
     rate_guest: Rate your guest
-    subject: 'Host Review - Venue #%{venue_id}'
+    conversion_text: how would you rate your stay at
+    conversion_text2: Help DeskSpotting grow by letting us know how everything went at
+    subject: '%{guest_id}, rate your stay at %{venue_id}"'
     your_guest: Your Guest
   inbox:
     approve: Approve

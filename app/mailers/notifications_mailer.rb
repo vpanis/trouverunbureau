@@ -34,13 +34,13 @@ class NotificationsMailer < ActionMailer::Base
   def guest_review_email(booking_id)
     booking = prepare_booking_data(booking_id)
     send_i18n_email(booking.client_recipients_representees, 'guest_review_email.subject',
-                    type: booking.owner.class.to_s, guest_id: booking.owner.id)
+                    type: booking.owner.class.to_s, guest_id: booking.owner.name)
   end
 
   def host_review_email(booking_id)
     booking = prepare_booking_data(booking_id)
     send_i18n_email(booking.venue_recipients_representees, 'host_review_email.subject',
-                    venue_id: booking.space.venue.id)
+                    venue_id: booking.space.venue.id, guest_id: booking.owner.name)
   end
 
   def receipt_email(booking_id)
