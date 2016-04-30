@@ -7,8 +7,8 @@ class StaticsController < ApplicationController
     render_page 'terms_of_service'
   end
 
-  def how_it_works
-    render_page 'how_it_works'
+  def insurance
+    render_page 'insurance'
   end
 
   def faq

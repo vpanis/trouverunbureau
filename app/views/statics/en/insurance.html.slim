@@ -1,0 +1,27 @@
+/== content_for :meta_tag do
+  title About us | DeskSpotting
+  meta name="description" content="DeskSpotting is made for all types of businesses from startups, to mature companies looking to benefit from shared office work environments."
+  meta property="og:title" content="About us | DeskSpotting"
+  meta property="og:description" content="DeskSpotting is made for all types of businesses from startups, to mature companies looking to benefit from shared office work environments."
+  meta name="twitter:title" content="About us | DeskSpotting"
+  meta name="twitter:description" content="DeskSpotting is made for all types of businesses from startups, to mature companies looking to benefit from shared office work environments."
+.static-page.container.assurance
+  h1 INSURANCE
+  .separator
+  .col-md-12.text-center
+    = image_tag('deskspotting-aig.jpg', width: '500px', height: '86px', :class => "assurance-logo")
+  h3 DeskSpotting et AIG, leader mondial de l'assurance, ont mis au point une assurance spécifique pour l'accueil de Visiteurs pour toute réservation faite dans un espace de travail en France.
+  br
+  h5 Que couvre cette assurance?
+  p
+    | 1. La responsabilité civile du Visiteur : Jusqu'à 100 000€ en cas d'incendie, de dégât des eaux, de vol avec effraction.
+  br
+  p
+    | 2. Les biens ou équipements confiés aux Visiteurs à hauteur de 2 000€.
+  br
+  h5 Quelles sont les annonces couvertes par cette assurance?
+  p
+    | Cette assurance s'applique automatiquement pour toutes les annonces payantes situées en France. L'hôte est alors couvert sur toute la durée du séjour payé via DeskSpotting.
+  br
+  .col-md12.text-center
+    a href="#{ asset_path 'notice-information.pdf'}" type='button' target='_blank' class='rounded-btn yellow-fill uppercase' = 'Voir Les Conditions DAssurance'
