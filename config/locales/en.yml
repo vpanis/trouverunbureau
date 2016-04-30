@@ -909,6 +909,9 @@ en:
       privacy_policy:
         title: Privacy Policy
         description: This document lays out our Privacy Policy for hosts and guests on DeskSpotting regarding the handling of user information.
+      insurance:
+        title: Insurance
+        description: DeskSpotting and AIG, have developed a specific insurance for the reception of visitors for any booking made in a workspace in France.
     users:
       password_new:
         title: New Password
