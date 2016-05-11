@@ -11,7 +11,7 @@
         </div>
 
         <div>
-          <p><%= "#{t('guest_review_email.hi')} #{@booking.owner.name}," %></p>
+          <p><%= "#{t('guest_review_email.hi')} #{@booking.owner.name}, #{t('guest_review_email.conversion_text')} ? #{@booking.owner.class.to_s} #{t('guest_review_email.conversion_text2')} #{@booking.owner.class.to_s}" %> </p>
           <p>
             <%= "#{t('guest_review_email.checked_out')} " %>
             <span style="color:black; font-weight: bold;"><%= t("spaces.type.#{@booking.space.s_type}") %></span>

@@ -112,3 +112,203 @@
     color: $gray;
   }
 }
+
+@media screen and (max-width: 600px){
+  body[data-action="spaces"][data-controller="venues"], body[data-action="edit"][data-controller="spaces"], body[data-action="edit"][data-controller="venues"], body[data-action="new"][data-controller="venues"], body[data-action="new"][data-controller="spaces"],
+  body[data-action="details"][data-controller="venue_details"],
+  body[data-action="save_details"][data-controller="venue_details"], body[data-action="amenities"][data-controller="venue_amenities"],
+  body[data-action="photos"][data-controller="venues"], body[data-action="collection_account_info"][data-controller="venue_collection_accounts"],
+  body[data-action="edit_collection_account"][data-controller="venue_collection_accounts"]{
+    .row.buttons.continue{
+      .col-xs-12{
+        .rounded-btn.yellow-fill.width-50.uppercase{
+          width: 100%!important;
+        }
+      }
+    }
+    form#publish-venue{
+      .publish{
+        .rounded-btn.grey-fill.width-100{
+          width: 100%!important;
+        }
+      }
+    }
+  }
+  body[data-action="collection_account_info"][data-controller="venue_collection_accounts"]{
+    .buttons{
+      .col-md-6{
+        width: 100%!important;
+        float: none;
+        margin: 0 auto;
+      }
+    }
+  }
+  body[data-action="index"][data-controller="venues"]{
+    .panel-heading{
+      .right-wrapper{
+        margin-top: 10px;
+        .edit.incomplete-status{
+          margin-right: 0!important;
+        }
+        .icon.info.pointer, a.edit.gray:nth-of-type(1){
+          display: none!important;
+        }
+        a.edit.gray:nth-of-type(2){
+          margin-left: 20px;
+          margin-right: 0!important;
+        }
+      }
+      .venue-bar{
+        text-align: center;
+        margin-bottom: 20px;
+        .basic-info{
+          display: block;
+          margin: 0 auto;
+          .location{
+            background-image: none!important;
+            background: none!important;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1000px){
+  body[data-action="spaces"][data-controller="venues"], body[data-action="edit"][data-controller="spaces"], body[data-action="edit"][data-controller="venues"], body[data-action="new"][data-controller="venues"], body[data-action="new"][data-controller="spaces"],
+  body[data-action="details"][data-controller="venue_details"],
+  body[data-action="save_details"][data-controller="venue_details"], body[data-action="amenities"][data-controller="venue_amenities"],
+  body[data-action="photos"][data-controller="venues"], body[data-action="collection_account_info"][data-controller="venue_collection_accounts"],
+  body[data-action="edit_collection_account"][data-controller="venue_collection_accounts"]{
+
+    .overflow-hidden .height-100{
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    form#publish-venue{
+      .publish{
+        text-align: center;
+        .rounded-btn.grey-fill.width-100{
+          width: 50%;
+        }
+      }
+    }
+    .col-md-7{
+      width: 100%;
+    }
+    .col-md-offset-1{
+      margin-left: 0;
+    }
+    .main-container{
+      padding-bottom: 550px !important;
+    }
+    .modal-dialog{
+      width: 95%!important;
+    }
+    .main-content{
+      margin-top: 88px;
+      .details-section.col-md-7.col-md-offset-1{
+        margin-top: 500px!important;
+      }
+    }
+    .status{
+      position: fixed;
+      top: 62px;
+      z-index: 1000;
+      width: 100%;
+      background-color: #ccc;
+    }
+    .verification-steps{
+      float:left!important;
+      width:100%!important;
+    }
+    .buttons{
+      a[type="button"]{
+        margin: 20px 0;
+      }
+    }
+    .col-md-4.add-image-container.space{
+      margin-bottom: 20px;
+    }
+
+
+    .hover{
+      a.edit, .delete-photo{
+        position: absolute;
+        top: calc(50% - 15px);
+        left: calc(50% - 15px);
+        color: transparent;
+        max-width: 30px;
+        background-position: 0;
+        background-size: 30px 30px !important;
+        span{
+          color: transparent!important;
+        }
+      }
+      a.edit{
+        top: calc(50% - 80px);
+      }
+    }
+    .row.buttons.continue{
+      .col-xs-12{
+        padding-left: 0;
+        padding-right: 0;
+        .rounded-btn.yellow-fill.width-50.uppercase{
+          width: 50%;
+        }
+      }
+    }
+    .inquiring-container .time-select-wrapper .multiple-switch-wrapper{
+      width: 200px!important;
+    }
+  }
+  body[data-action="details"][data-controller="venue_details"]{
+    div.subtitle{
+      width: 100%;
+    }
+  }
+  body[data-action="collection_account_info"][data-controller="venue_collection_accounts"]{
+    .buttons{
+      .col-md-6{
+        width: 50%;
+        float: none;
+        margin: 0 auto;
+      }
+    }
+  }
+  body[data-action="index"][data-controller="venues"]{
+    .panel-heading{
+      .venue-bar{
+        .basic-info{
+          padding-bottom: 30px!important;
+        }
+      }
+    }
+    .panel-body{
+      .space.pictures:before{
+        content: ""!important;
+        background: rgba(0, 204, 165, 0.8) url(hover_edit.png) no-repeat center!important;
+        color: transparent!important;
+      }
+    }
+  }
+  body[data-action="index"][data-controller="venues"]{
+    .main-container{
+      padding-bottom: 530px !important;
+    }
+    .panel-heading{
+      padding: 10px!important;
+      .right-wrapper{
+        position: relative!important;
+        padding-left: 20px;
+        .arrow{
+          float: right;
+        }
+      }
+    }
+  }
+  section#footer{
+    .col-xs-12.col-sm-12.col-md-4.col-lg-4{
+      text-align: center;
+    }
+  }
+}
