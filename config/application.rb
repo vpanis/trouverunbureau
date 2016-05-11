@@ -68,29 +68,33 @@ module Deskspotting
     end
 
     # Mailer configuration
-    mail = AppConfiguration.for :mail
+    mail = AppConfiguration.for(:mail)
     deskspotting = AppConfiguration.for(:deskspotting)
     config.action_mailer.default_url_options = {
-        host: deskspotting.base_url, only_path: false }
+      host: deskspotting.base_url,
+      only_path: false
+    }
     config.action_mailer.asset_host = mail.host
     # ActionMailer Config
     # Setup for production - deliveries, no errors raised
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.perform_deliveries = mail.perform_deliveries == 'true'
-    config.action_mailer.raise_delivery_errors =  mail.raise_delivery_errors == 'true'
-    config.action_mailer.default :charset => "utf-8"
+    config.action_mailer.raise_delivery_errors = mail.raise_delivery_errors == 'true'
+    config.action_mailer.default(charset: "utf-8")
     config.action_mailer.smtp_settings = {
       enable_starttls_auto: true,
       address: mail.address,
-      port: '587',
-      domain: 'smtp.mandrillapp.com',
-      user_name: 'info@deskspotting.com',
-      password: 'NHi9uF4yxDKKJZXblLSL4g',
+      port: mail.port,
+      domain: mail.host,
+      user_name: mail.username,
+      password: mail.password,
       authentication: mail.authentication
     }
 
     Rails.application.routes.default_url_options = {
-        host: deskspotting.base_url, only_path: false }
+      host: deskspotting.base_url,
+      only_path: false
+    }
     config.action_mailer.asset_host = deskspotting.base_url
     config.action_controller.asset_host = deskspotting.base_url
 
