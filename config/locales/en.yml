@@ -1,4 +1,5 @@
 en:
+  collition_errors: These dates or times are not available please try others.
   booking_inquiry:
     back: Back
     check_in: Check-In
@@ -170,11 +171,11 @@ en:
     checked_out: You have checked-out of
     date: Date
     days: Days
-    hi: Hi
+    hi: Hey
     conversion_text: how would you rate your stay at
-    conversion_text2: Help DeskSpotting grow by letting us know how everything went at
+    conversion_text2: Your feedback is very important to us and other DeskSpotters!
     rate_stay: Rate your stay
-    subject: '%{guest_id}, rate your guest %{type}'
+    subject: '%{guest_id}, rate your stay at %{type}'
   home:
     features:
       easy:
@@ -254,9 +255,9 @@ en:
   host_review_email:
     checked_in: has Checked-in at
     rate_guest: Rate your guest
-    conversion_text: how would you rate your stay at
-    conversion_text2: Help DeskSpotting grow by letting us know how everything went at
-    subject: '%{guest_id}, rate your stay at %{venue_id}"'
+    conversion_text: how would you rate your guest
+    conversion_text2: Your feedback is very important to us and other DeskSpotters!
+    subject: '%{host_id}, rate your guest %{guest_id}"'
     your_guest: Your Guest
   inbox:
     approve: Approve
@@ -380,7 +381,7 @@ en:
     hi: Hi
     on_date_connector: 'on'
     reply: Or reply directly in this e-mail.
-    subject: 'Inquiry at %{venue_name} %{type} %{checking_date}'
+    subject: 'Inquiry at %{venue_name} per %{type}, %{checking_date}'
     team: The DeskSpotting Team
     view_on_deskspotting: View on DeskSpotting
   new_space:
@@ -718,6 +719,7 @@ en:
       wheelchair_access: wheelchair access
       whiteboards: whiteboards
       wifi: Wifi
+      catering_services: Catering Services
     closed: Closed
     collection_account:
       account_number: Account Number
@@ -796,6 +798,7 @@ en:
       psychologist: psychologist
       therapist: therapist
       headhunter: headhunter
+      coach: coach
     reported: Reported
     show:
       about_venue: About venue

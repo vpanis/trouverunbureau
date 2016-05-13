@@ -549,7 +549,7 @@ it:
     collection_account: Collection Account
     payout_method: Payout Method
   new_message_email:
-    subject: 'You have a new message - Booking #%{booking_id}'
+    subject: 'Inquiry at %{venue_name} %{type} %{checking_date}'
     hi: Hi
     on_date_connector: 'il'
     got_new_message: Got a new message from
