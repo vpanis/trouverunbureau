@@ -95,8 +95,9 @@
       .row
         .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6.js-iban.js-account-field.none class=(@collection_account.errors.messages[:iban].present? ? 'has-error' : '')
           .icon.lock.pointer#iban-popover.lock-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
-          label IBAN #{" ( #{t('venues.collection_account.previous_last_4')}: #{@collection_account.iban_last_4} )" if @collection_account.iban_last_4.present?}
-          = f.text_field :iban, class: 'form-control'
+          /!label IBAN #{" ( #{t('venues.collection_account.previous_last_4')}: #{@collection_account.iban_last_4} )" if @collection_account.iban_last_4.present?}
+          label IBAN
+          = f.text_field :iban, class: 'form-control', placeholder: "#{t('venues.collection_account.previous_last_4')}: #{@collection_account.iban_last_4}"
           - if @collection_account.errors.messages[:iban].present?
             label
               = @collection_account.errors.messages[:iban].first

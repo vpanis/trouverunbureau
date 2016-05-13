@@ -7,10 +7,12 @@ class NotificationsMailer < ActionMailer::Base
     return send_i18n_email(message.venue_recipients_representees,
                            'new_message_email.subject',
                            venue_name: message.booking.space.venue.name,
-                           checking_date: message.payment.receipt.created_at.to_date,
-                           type: I18n.t("spaces.types.#{message.booking.b_type}")) if for_type == 'host'
+                           checking_date: message.booking.created_at.strftime("%Y-%m-%d %H:%M"),
+                           type: I18n.t("wishlist.#{message.booking.b_type}")) if for_type == 'host'
     send_i18n_email(message.client_recipients_representees, 'new_message_email.subject',
-                    booking_id: message.booking.id) if for_type == 'guest'
+                    venue_name: message.booking.space.venue.name,
+                    checking_date: message.booking.created_at.strftime("%Y-%m-%d %H:%M"),
+                    type: I18n.t("wishlist.#{message.booking.b_type}")) if for_type == 'guest'
   end
 
   def host_cancellation_email(message_id, for_type)
@@ -36,13 +38,15 @@ class NotificationsMailer < ActionMailer::Base
   def guest_review_email(booking_id)
     booking = prepare_booking_data(booking_id)
     send_i18n_email(booking.client_recipients_representees, 'guest_review_email.subject',
-                    type: booking.owner.class.to_s, guest_id: booking.owner.name)
+                    guest_id: booking.owner.name,
+                    type: booking.space.venue.name)
   end
 
   def host_review_email(booking_id)
     booking = prepare_booking_data(booking_id)
     send_i18n_email(booking.venue_recipients_representees, 'host_review_email.subject',
-                    venue_id: booking.space.venue.id, guest_id: booking.owner.name)
+                    host_id: booking.owner.name,
+                    guest_id: booking.space.venue.owner.name)
   end
 
   def receipt_email(booking_id)

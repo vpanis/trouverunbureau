@@ -34,7 +34,7 @@ class Venue < ActiveRecord::Base
                    :pets_allowed, :mail_service, :gym, :cafe_restaurant, :phone_booth, :projector,
                    :concierge, :parking, :water_fountain, :reception_service, :cleaning_service, :first_aid, 
                    :nap_area, :snacks, :dvd, :coffee_station, :refrigerator, :microwave, :videoconference, 
-                   :locker, :storage]
+                   :locker, :storage, :catering_services]
 
   # SUPPORTED_CURRENCIES = %w(usd gbp eur cad aud)
   # SUPPORTED_COUNTRIES = %w(US CA AU DE AD AT BE HR DK ES FI FR GR IE IS IT NO SE CH GB PL PT NL
@@ -45,7 +45,7 @@ class Venue < ActiveRecord::Base
 
   PROFESSIONS = [:technology, :public_relations, :entertainment, :entrepreneur, :startup, :media,
                  :design, :architect, :advertising, :finance, :consultant, :freelance, :journalist,
-                 :fashion, :lawyer, :professor, :psychologist, :therapist, :headhunter]
+                 :fashion, :lawyer, :professor, :psychologist, :therapist, :headhunter, :coach]
 
   # Callbacks
   after_initialize :initialize_fields
