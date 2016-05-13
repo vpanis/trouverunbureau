@@ -6,7 +6,9 @@ class NotificationsMailer < ActionMailer::Base
     message = prepare_message_data(message_id)
     return send_i18n_email(message.venue_recipients_representees,
                            'new_message_email.subject',
-                           booking_id: message.booking.id) if for_type == 'host'
+                           venue_name: message.booking.space.venue.name,
+                           checking_date: message.payment.receipt.created_at.to_date,
+                           type: I18n.t("spaces.types.#{message.booking.b_type}")) if for_type == 'host'
     send_i18n_email(message.client_recipients_representees, 'new_message_email.subject',
                     booking_id: message.booking.id) if for_type == 'guest'
   end
