@@ -379,6 +379,8 @@ es:
     add_manager: Añadir gestor
     add_manager_action: Añadir gestor
     change_picture: Cambiar foto
+    confirm_identity: Confirmar Identidad
+    identity_confirmed: Identidad Confirmada
     complete_profile: 'Por favor, complete su perfil'
     create_profile: 'Crear una organización '
     create_title: Añadir título
@@ -615,6 +617,8 @@ es:
       you_can_disable: Puedes inhabilitar esto en cualquier momento.
     add_languages: Añadir idiomas
     change_picture: Cambiar foto
+    confirm_identity: Confirmar Identidad
+    identity_confirmed: Identidad Confirmada
     company_name: Nombre de la empresa
     country_of_residence: País de residencia
     date_of_birth: Fecha de nacimiento

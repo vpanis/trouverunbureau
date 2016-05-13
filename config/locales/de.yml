@@ -379,6 +379,8 @@ de:
     add_manager: Manager hinzufügen
     add_manager_action: Manager hinzufügen
     change_picture: Foto ändern
+    confirm_identity: Confirm Identity
+    identity_confirmed: Identity Confirmed
     create_profile: Unternehmen eingeben
     create_title: Titel hinzufügen
     edit_profile: Profil ändern
@@ -614,6 +616,8 @@ de:
       you_can_disable: Sie können dies jederzeit deaktivieren.
     add_languages: Sprachen hinzufügen
     change_picture: Foto ändern
+    confirm_identity: Confirm Identity
+    identity_confirmed: Identity Confirmed
     complete_profile: 'Venligst, udfyld din profil'
     company_name: Name des Unternehmens
     country_of_residence: Wohnsitzland

@@ -306,3 +306,15 @@ hr {
   }
 }
 
+.identity-confirmed{
+  color: #666666;
+  &:before{
+    content: "";
+    display: inline-block;
+    height: 22px;
+    vertical-align: middle;
+    width: 22px;
+    margin-right: 5px;
+    background: url("check.png") no-repeat center center;
+  }
+}

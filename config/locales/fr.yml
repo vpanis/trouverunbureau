@@ -380,6 +380,8 @@ fr:
     add_manager: Ajoutez un Gérant
     add_manager_action: Ajouter un Gérant
     change_picture: Changez de photo
+    confirm_identity: Confirm Identity
+    identity_confirmed: Identity Confirmed
     create_profile: Créez une organisation
     create_title: Créez un titre
     edit_profile: Modifiez profil
@@ -615,6 +617,8 @@ fr:
       you_can_disable: Désactivez les
     add_languages: Valider
     change_picture: Modifiez photo
+    confirm_identity: Confirm Identity
+    identity_confirmed: Identity Confirmed
     complete_profile: "S'il vous plaît, compléter votre profil"
     company_name: Nom d'entreprise
     country_of_residence: Pays de résidence

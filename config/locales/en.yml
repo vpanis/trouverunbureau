@@ -380,7 +380,7 @@ en:
     hi: Hi
     on_date_connector: 'on'
     reply: Or reply directly in this e-mail.
-    subject: 'You have a new message - Booking #%{booking_id}'
+    subject: 'Inquiry at %{venue_name} %{type} %{checking_date}'
     team: The DeskSpotting Team
     view_on_deskspotting: View on DeskSpotting
   new_space:
@@ -391,6 +391,8 @@ en:
     add_manager: Add Manager
     add_manager_action: Add Manager
     change_picture: Change picture
+    confirm_identity: Confirm Identity
+    identity_confirmed: Identity Confirmed
     create_profile: Create organization
     create_title: Add title
     edit_profile: Edit profile
@@ -635,6 +637,8 @@ en:
       you_can_disable: You can disable this at any time.
     add_languages: Add languages
     change_picture: Change picture
+    confirm_identity: Confirm Identity
+    identity_confirmed: Identity Confirmed
     complete_profile: 'Please, complete your profile'
     company_name: Company name
     country_of_residence: Country of residence
