@@ -380,6 +380,8 @@ pt:
     add_manager: Adicionar Gestor
     add_manager_action: Adicionar Gestor
     change_picture: Alterar imagem
+    confirm_identity: Confirm Identity
+    identity_confirmed: Identity Confirmed
     create_profile: Criar organização
     create_title: Adicionar título
     edit_profile: Editar perfil
@@ -615,6 +617,8 @@ pt:
       you_can_disable: Pode desativar em qualquer altura.
     add_languages: Adicionar línguas
     change_picture: Alterar imagem
+    confirm_identity: Confirm Identity
+    identity_confirmed: Identity Confirmed
     complete_profile: 'Por favor, complete seu perfil'
     company_name: Nome da empresa
     country_of_residence: País de residência

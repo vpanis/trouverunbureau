@@ -52,7 +52,9 @@
         .icon.lock.pointer#country_of_residence-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
         label = t('users.country_of_residence')
         = f.select(:country_of_residence, all_countries_options, {prompt: t('payment_methods.select_country')}, {class: 'form-control country-select', required: true})
-
+    a#confirm-identity.add.aqua href="#" style="pointer-events: none; margin: 15px; width: 180px;" = t('users.confirm_identity')
+    = f.file_field :confirm,  class: 'form-control', style: 'width: 280px; padding-left: 10px; position: relative; top: -73px ; left: -100px ;opacity: 0; cursor: pointer;'
+    a.identity-confirmed href="#" style="pointer-events: none; margin: 15px; width: 180px;" = t('users.identity_confirmed')
   - unless @profile_modal
     .row
       .small-title
