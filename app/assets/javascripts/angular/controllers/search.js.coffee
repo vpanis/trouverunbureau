@@ -3,7 +3,13 @@ angular.module('deskSpotting.search', ['ngCookies']).controller "SearchCtrl", [
   '$cookies'
   'Restangular'
   ($scope, $cookies, Restangular) ->
-    loadFilters()
+    # Loading Filters
+    $scope.capacity = $cookies.getObject('search_capacity') or null
+    $scope.check_in = $cookies.getObject('search_check_in') or null
+    $scope.filters = $cookies.getObject('search_filters') or []
+    $scope.professions = $cookies.getObject('search_professions') or {}
+    $scope.workspaces = $cookies.getObject('search_workspaces') or []
+
     MAX_MOBILE_PIXELS_WIDE = 991
     $scope.spaces = []
     $scope.totalSpaces = ""
@@ -240,13 +246,6 @@ angular.module('deskSpotting.search', ['ngCookies']).controller "SearchCtrl", [
 
       $scope.getSpaces()
       return
-
-    loadFilters = ()->
-      $scope.capacity = $cookies.getObject('search_capacity') or null
-      $scope.check_in = $cookies.getObject('search_check_in') or null
-      $scope.filters = $cookies.getObject('search_filters') or []
-      $scope.professions = $cookies.getObject('search_professions') or {}
-      $scope.workspaces = $cookies.getObject('search_workspaces') or []
 
     storeFilters = ()->
       $cookies.putObject('search_capacity', $scope.capacity);
