@@ -1,7 +1,4 @@
-# encoding: utf-8
-
 class BaseUploader < CarrierWave::Uploader::Base
-
   # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
 
@@ -16,5 +13,4 @@ class BaseUploader < CarrierWave::Uploader::Base
   def extension_white_list
     %w(jpg jpeg gif png)
   end
-
 end
