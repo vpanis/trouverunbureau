@@ -32,8 +32,8 @@ class User < ActiveRecord::Base
   LANGUAGES = [:en, :fr, :de, :es, :pt]
   GENDERS = [:f, :m]
   SUPPORTED_NATIONALITIES = Country.all.map { |c| c[1] }
-  OPTIONAL_FIELDS = [ :language, :gender, :profession, :company_name, :languages_spoken, :location,
-                      :interests, :emergency_relationship, :emergency_name, :emergency_email, :emergency_phone ]
+  OPTIONAL_FIELDS = [:language, :gender, :profession, :company_name, :languages_spoken, :location,
+                      :interests, :emergency_relationship, :emergency_name, :emergency_email, :emergency_phone]
 
   # Callbacks
   after_initialize :initialize_fields
@@ -60,7 +60,6 @@ class User < ActiveRecord::Base
   validate :each_languages_spoken_inclusion
 
   class << self
-
     def from_omniauth(auth)
       user_found = where('email = :email OR (provider = :provider AND uid = :uid)',
                          email: auth.info.email, provider: auth.provider, uid: auth.uid).first
@@ -155,5 +154,4 @@ class User < ActiveRecord::Base
       errors.add(:language_list, item + ' is not a valid language')
     end
   end
-
 end

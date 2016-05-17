@@ -56,7 +56,7 @@ gem 'jquery-turbolinks', '~>2.1.0'
 gem 'jquery-inputmask-rails'
 
 gem 'devise', '~>3.3.0'
-gem 'omniauth-facebook', '~>2.0.0'
+gem 'omniauth-facebook'
 gem 'devise-async', '~>0.9.0'
 
 # SQL simplifier
