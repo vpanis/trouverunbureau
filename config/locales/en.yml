@@ -738,7 +738,7 @@ en:
       only_tax_id_present: Only if tax id present
       phone: Phone
       postal_code: Postal Code
-      previous_last_4: Previous Last 4 digits
+      previous_last_4: Last 4 digits
       region: Region
       required: Required
       routing_number: Routing Number
