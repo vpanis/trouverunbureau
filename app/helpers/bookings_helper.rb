@@ -1,8 +1,7 @@
 module BookingsHelper
-
   def can_review?(booking, own = true)
     now = Time.current
-    owner?(booking, own) && now >= booking.space.venue.time_zone.from_zone_to_utc(booking.from)
+    booking.space.persisted? && owner?(booking, own) && now >= booking.space.venue.time_zone.from_zone_to_utc(booking.from)
   end
 
   def can_view_receipt?(booking, own = true)
@@ -29,11 +28,11 @@ module BookingsHelper
   end
 
   def finished?(booking)
-    Time.current > booking.space.venue.time_zone.from_zone_to_utc(booking.to)
+    booking.space.persisted? && Time.current > booking.space.venue.time_zone.from_zone_to_utc(booking.to)
   end
 
   def started?(booking)
-    Time.current > booking.space.venue.time_zone.from_zone_to_utc(booking.from)
+    booking.space.persisted? && Time.current > booking.space.venue.time_zone.from_zone_to_utc(booking.from)
   end
 
   def deleted?(booking, own = true)
@@ -41,10 +40,10 @@ module BookingsHelper
   end
 
   def owner?(booking, own = true)
-    (own) ? booking.owner == current_represented : booking.space.venue.owner == current_represented
+    booking.space.persisted? && (own) ? booking.owner == current_represented : booking.space.venue.owner == current_represented
   end
 
   def venue_owner?(booking)
-    booking.space.venue.owner == current_represented
+    booking.space.persisted? && booking.space.venue.owner == current_represented
   end
 end

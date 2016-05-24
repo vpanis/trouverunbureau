@@ -78,5 +78,4 @@ class BookingsController < ApplicationController
       !@booking.valid? || !@custom_errors.empty?
     redirect_to :back
   end
-
 end
