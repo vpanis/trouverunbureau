@@ -1,5 +1,5 @@
 class VenueReviewSerializer < ActiveModel::Serializer
-  attributes :id, :message, :date
+  attributes :id, :message, :date, :stars
 
   has_one :owner, serializer: ClientSerializer
 

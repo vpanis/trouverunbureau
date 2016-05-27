@@ -69,7 +69,7 @@
         div
           .review-container
             .stars
-              .star ng-repeat="n in [1, 2, 3, 4, 5]" ng-class="{active: selected_booking.client.rating > n}"
+              .star ng-repeat="n in [1, 2, 3, 4, 5]" ng-class="{active: selected_booking.client.rating >= n}"
             .reviews
               | ({{selected_booking.client.quantity_reviews}})
   .row

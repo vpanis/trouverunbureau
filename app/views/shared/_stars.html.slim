@@ -1,6 +1,6 @@
 .review-container
   .stars
     - (1..5).each do |i|
-      .star class=('active' if rating > i)
+      .star class=('active' if rating >= i)
   .reviews
     = "(#{quantity})"

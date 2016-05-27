@@ -12,6 +12,10 @@
           p.date() {{review.date}}
       .col-xs-12.col-sm-10.col-md-10.col-lg-10
         .message
+          div
+            .review-container
+              .stars
+                .star ng-repeat="n in [1, 2, 3, 4, 5]" ng-class="{active: review.stars >= n}"
           p() {{review.message}}
           .separator
     .pagination-container.venue-reviews-pagination
