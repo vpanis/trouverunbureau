@@ -1,0 +1,12 @@
+@import 'variables';
+@import 'mixins';
+.assurance {
+  padding-bottom: 80px;
+  .assurance-logo {
+    margin-bottom: 30px;
+  }
+  a[type="button"] {
+    position: relative;
+    top: 20px;
+  }
+}

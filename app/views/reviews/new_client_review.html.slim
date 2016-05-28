@@ -6,7 +6,7 @@
     .small-separator
     .user-avatar
       - if @booking.owner.avatar?
-        = image_tag(@user.avatar.url, width: '95px', height: '95px')
+        = image_tag(@booking.owner.avatar.url, width: '95px', height: '95px')
       - else
         = image_tag('default-avatar.png', width: '95px', height: '95px')
     h4.gray-subtitle = @booking.owner.name

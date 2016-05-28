@@ -32,6 +32,8 @@ class User < ActiveRecord::Base
   LANGUAGES = [:en, :fr, :de, :es, :pt]
   GENDERS = [:f, :m]
   SUPPORTED_NATIONALITIES = Country.all.map { |c| c[1] }
+  OPTIONAL_FIELDS = [:language, :gender, :profession, :company_name, :languages_spoken, :location,
+                      :interests, :emergency_relationship, :emergency_name, :emergency_email, :emergency_phone]
 
   # Callbacks
   after_initialize :initialize_fields
@@ -58,7 +60,6 @@ class User < ActiveRecord::Base
   validate :each_languages_spoken_inclusion
 
   class << self
-
     def from_omniauth(auth)
       user_found = where('email = :email OR (provider = :provider AND uid = :uid)',
                          email: auth.info.email, provider: auth.provider, uid: auth.uid).first
@@ -69,11 +70,17 @@ class User < ActiveRecord::Base
     private
 
     def create_provider_user(auth)
+      unless Rails.env.production?
+        Rails.logger.info '*' * 50
+        Rails.logger.info auth.to_yaml
+        Rails.logger.info '*' * 50
+      end
       date = auth.extra.raw_info.birthday.present? ? Date.strptime(auth.extra.raw_info.birthday, '%m/%d/%Y') : nil
       new(provider: auth.provider, uid: auth.uid, first_name: auth.info.first_name,
           email: auth.info.email, password: Devise.friendly_token[0, 20],
           last_name: auth.info.last_name,
           date_of_birth: date,
+          location: auth.info.location,
           remote_avatar_url: auth.info.image.gsub('http://', 'https://'))
     end
 
@@ -124,6 +131,14 @@ class User < ActiveRecord::Base
     settings_incoming_inquiry?(settings)
   end
 
+  def first_inquiry?
+    !Message.by_user(self.id).pending_authorization.exists?
+  end
+
+  def unfilled_fields
+    OPTIONAL_FIELDS.reject { |f| send(f).present? }
+  end
+
   private
 
   def initialize_fields
@@ -139,5 +154,4 @@ class User < ActiveRecord::Base
       errors.add(:language_list, item + ' is not a valid language')
     end
   end
-
 end

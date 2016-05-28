@@ -47,7 +47,8 @@ on_load = ->
     if $('.verifying').length
       show_spinner()
       setInterval (->
-        window.location.reload()
+        params = $.param( { verifying: "true" } )
+        window.location.href = '//' + location.host + location.pathname + "?" + params
         return
       ), 6000
       show_spinner()

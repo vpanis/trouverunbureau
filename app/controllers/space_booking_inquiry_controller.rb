@@ -1,10 +1,12 @@
 class SpaceBookingInquiryController < ApplicationController
   before_action :authenticate_user!
+  include SelectOptionsHelper
 
   def inquiry
     @space = Space.includes(:venue).find(params[:id])
     @day_hours = @space.venue.day_hours.to_json(only: [:weekday, :from, :to])
-    @booking = Booking.new(space: @space, owner: current_represented)
+    @booking ||= Booking.new(space: @space, owner: current_represented)
+    setup_profile_variables
   end
 
   def create_booking_inquiry
@@ -21,6 +23,29 @@ class SpaceBookingInquiryController < ApplicationController
   end
 
   private
+
+  def setup_profile_variables
+    @missing_fields = current_user.unfilled_fields
+    @profile_modal = show_modal? && current_user.first_inquiry? && !@missing_fields.empty?
+    setup_user_variables if @profile_modal
+  end
+
+  def show_modal?
+    booking_conf = AppConfiguration.for(:booking)
+    if booking_conf.show_complete_profile_modal
+      booking_conf.show_complete_profile_modal.downcase.strip == 'true'
+    else
+      false
+    end
+  end
+
+  def setup_user_variables
+    @user = current_user
+    @gender_options = gender_options
+    @profession_options = profession_options
+    @language_options = language_options
+    @all_language_options = all_language_options
+  end
 
   def create_booking_message
     return unless params[:message].present?
@@ -96,12 +121,17 @@ class SpaceBookingInquiryController < ApplicationController
                                       from: @from_date,
                                       to: @to_date,
                                       space: @space,
-                                      deposit: @space.deposit * quantity_param,
+                                      deposit: calculate_deposit(@space, @b_type, quantity_param),
                                       b_type: @b_type,
                                       quantity: quantity_param)
   end
 
   def quantity_param
     params[:booking][:quantity].to_i
+  end
+
+  def calculate_deposit(space, booking_type, quantity)
+    booking_type = Booking.b_types.key(booking_type)
+    space.calculate_deposit(booking_type, quantity)
   end
 end

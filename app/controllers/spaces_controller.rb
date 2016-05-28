@@ -28,9 +28,8 @@ class SpacesController < ApplicationController
     remove_blank_price_params
     @space = Space.find(params[:id])
     context = SpaceContext.new(@space, current_represented)
-    @previous_page = params[:previous_page] || edit_space_path(@space)
     return render_forbidden unless context.owner?
-    return redirect_to @previous_page if context.update_space(space_params)
+    return redirect_to spaces_venue_path(@space.venue) if context.update_space(space_params)
     redirect_to edit_space_path(@space)
   end
 
@@ -69,15 +68,22 @@ class SpacesController < ApplicationController
 
   def remove_blank_price_params
     return if params[:space].blank?
-    params[:space].delete(:hour_price) if params[:space][:hour_price].blank?
-    params[:space].delete(:day_price) if params[:space][:day_price].blank?
-    params[:space].delete(:week_price) if params[:space][:week_price].blank?
-    params[:space].delete(:month_price) if params[:space][:month_price].blank?
+    params[:space].delete(:hour_price)           if params[:space][:hour_price].blank?
+    params[:space].delete(:day_price)            if params[:space][:day_price].blank?
+    params[:space].delete(:week_price)           if params[:space][:week_price].blank?
+    params[:space].delete(:month_price)          if params[:space][:month_price].blank?
     params[:space].delete(:month_to_month_price) if params[:space][:month_to_month_price].blank?
+
+    params[:space].delete(:hour_deposit)           if params[:space][:hour_price].blank?
+    params[:space].delete(:day_deposit)            if params[:space][:day_price].blank?
+    params[:space].delete(:week_deposit)           if params[:space][:week_price].blank?
+    params[:space].delete(:month_deposit)          if params[:space][:month_price].blank?
+    params[:space].delete(:month_to_month_deposit) if params[:space][:month_to_month_price].blank?
   end
 
   def space_params
-    params.require(:space).permit(:s_type, :name, :capacity, :quantity, :description, :deposit,
+    params.require(:space).permit(:s_type, :name, :capacity, :quantity, :description,
+                                  :hour_deposit, :day_deposit, :week_deposit, :month_deposit, :month_to_month_deposit,
                                   :hour_price, :day_price, :week_price, :month_price, :month_to_month_price,
                                   :hour_minimum_unity, :day_minimum_unity, :month_minimum_unity, :month_to_month_minimum_unity,
                                   :venue_id)

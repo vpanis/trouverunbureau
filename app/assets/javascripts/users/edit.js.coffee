@@ -2,6 +2,7 @@ on_load = ->
   load
     controllers:
       users: ["edit"]
+      space_booking_inquiry: ["inquiry"]
   , (controller, action) ->
     close_languages_modal = ->
       values = get_select2_languages()

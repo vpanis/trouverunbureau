@@ -7,6 +7,14 @@ body{
   color: $desk-black;
   font-family: "Open Sans", sans-serif;
   margin: 0;
+
+  #footer .company a:last-child {
+    display: none;
+  }
+
+  &[language="fr"] #footer .company a:last-child{
+    display: block;
+  }
 }
 
 a, a:hover{
@@ -44,7 +52,7 @@ h4.gray-subtitle {
 
 .separator {
   border-top: 2px solid $yellow;
-  margin: 40px auto 68px;
+  margin: 40px auto 40px;
   width: 10%;
 }
 
@@ -960,6 +968,9 @@ h4.gray-subtitle {
     .amenity.fax {
       @include at2x('venue_profile_a_fax', 40px, 40px);
     }
+    .amenity.catering_services {
+      @include at2x('venue_profile_a_catering_services', 40px, 40px);
+    }
     .amenity.air_conditioning {
       @include at2x('venue_profile_a_air_conditioning', 40px, 40px);
     }
@@ -1637,4 +1648,88 @@ li.venue-hours.active{
   ul {
     list-style-type: cross
   }
+}
+
+/** new calendar **/
+
+.calendar *:focus {
+  outline: none!important;
+}
+
+.calendar .dropdown-menu li table thead tr th button.btn.btn-default.btn-sm {
+  border: 0!important;
+  background: none!important;
+}
+
+.calendar .dropdown-menu {
+  padding: 10px 15px!important;
+  border-radius: 0!important;
+}
+.calendar table thead tr {
+  th {
+    padding: 5px 0;
+    small {
+      font-weight: 400!important;
+      color: #000;
+    }
+  }
+  &:first-child {
+    border-bottom: 2px solid #FFE111;
+    th:nth-child(2) button strong {
+      font-weight: 400!important;
+      color: #000;
+    }
+  }
+  &:last-child th {
+    padding-bottom: 10px;
+  }
+}
+.calendar .glyphicon {
+  color: #000!important;
+}
+.calendar .dropdown-menu .btn {
+  border:0!important;
+  span {
+    color: #000!important;
+  }
+}
+.calendar .dropdown-menu li table tbody tr td.text-center button.btn.btn-default.btn-sm.btn-info.active,
+.calendar .dropdown-menu li table tbody tr td.text-center button.btn.btn-default.btn-sm.btn-info{
+  background-color: #FFE111!important;
+  border-radius: 100%;
+  height: 34px!important;
+  line-height: 10px;
+  padding: 0;
+}
+.calendar tbody {
+  .btn-default:hover,
+  .btn-default:focus,
+  .btn-default.focus,
+  .open > .dropdown-toggle.btn-default {
+    background: none!important;
+    border: 2px solid #FFE111!important;
+    box-sizing: border-box;
+    height: 34px!important;
+    line-height: 10px;
+    padding: 0;
+    border-radius: 100%!important;
+  }
+  .btn-default:active, .btn-default.active {
+      background: none!important;
+      border: 0!important;
+  }
+  .btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+    opacity: 0.3!important;
+  }
+}
+
+form.edit_space .pictures .photo-errors {
+  color: #fff!important;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  background: #d2505a;
+  padding: 10px 0;
 }

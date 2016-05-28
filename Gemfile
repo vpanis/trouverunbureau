@@ -22,7 +22,7 @@ gem 'versionist', '~>1.4.0'
 gem 'sass-rails', '~> 4.0.0'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.0.3'
@@ -38,8 +38,9 @@ gem 'loadjs', '~>0.0.6'
 gem 'inherited_resources', '~>1.4.1'
 
 # angularjs
-gem 'angularjs-rails'
+gem 'angular-translate-rails'
 gem 'angular-ui-bootstrap-rails'
+gem 'angularjs-rails'
 
 gem 'select2-rails'
 
@@ -55,7 +56,7 @@ gem 'jquery-turbolinks', '~>2.1.0'
 gem 'jquery-inputmask-rails'
 
 gem 'devise', '~>3.3.0'
-gem 'omniauth-facebook', '~>2.0.0'
+gem 'omniauth-facebook'
 gem 'devise-async', '~>0.9.0'
 
 # SQL simplifier
@@ -92,8 +93,6 @@ gem 'mail_view', '~> 2.0.4'
 
 gem 'mail_form'
 
-gem 'angular-translate-rails'
-
 gem 'countries'
 
 # Timezone from geonames
@@ -113,6 +112,7 @@ gem 'acts_as_decimal'
 
 # Languages
 gem 'language_list'
+gem 'http_accept_language'
 
 gem 'newrelic_rpm'
 

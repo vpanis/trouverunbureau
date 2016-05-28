@@ -8,6 +8,9 @@ on_load = ->
       $('[name="booking[quantity]"]').keydown (e) ->
         e = e || window.event
         e.preventDefault()
+    $('#languages_spoken_select').change ->
+      $('#user_languages_spoken').val($(this).val())
+      return
 
     disable_keyboard_number()
 

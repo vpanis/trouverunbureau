@@ -1,7 +1,15 @@
-angular.module('deskSpotting.search', []).controller "SearchCtrl", [
+angular.module('deskSpotting.search', ['ngCookies']).controller "SearchCtrl", [
   '$scope'
+  '$cookies'
   'Restangular'
-  ($scope, Restangular) ->
+  ($scope, $cookies, Restangular) ->
+    # Loading Filters
+    $scope.capacity = $cookies.getObject('search_capacity') or null
+    $scope.check_in = $cookies.getObject('search_check_in') or null
+    $scope.filters = $cookies.getObject('search_filters') or []
+    $scope.professions = $cookies.getObject('search_professions') or {}
+    $scope.workspaces = $cookies.getObject('search_workspaces') or []
+
     MAX_MOBILE_PIXELS_WIDE = 991
     $scope.spaces = []
     $scope.totalSpaces = ""
@@ -14,10 +22,6 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
     $scope.latitude_to = 51.0891658
     $scope.longitude_from = -5.142307599999981
     $scope.longitude_to = 9.56006780000007
-    $scope.workspaces = []
-    $scope.professions = {}
-    $scope.capacity = null
-    $scope.filters = []
     $scope.marker_icon = document.getElementById('controller').dataset.markerIcon
     $scope.active_icon = document.getElementById('controller').dataset.activeMarkerIcon
     $scope.markers = []
@@ -231,14 +235,24 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
       $scope.filters = []
       if $scope.workspaces.length > 0
         $scope.filters.push('workspaces')
-      if ! $.isEmptyObject($scope.professions)
+      if !$.isEmptyObject($scope.professions)
         $scope.filters.push('professions')
       if $scope.capacity != null
         $scope.filters.push('capacity')
       if $scope.check_in != undefined && $scope.check_in != null && $scope.check_in != ''
         $scope.filters.push('check in')
+
+      storeFilters()
+
       $scope.getSpaces()
       return
+
+    storeFilters = ()->
+      $cookies.putObject('search_capacity', $scope.capacity);
+      $cookies.putObject('search_check_in', $scope.check_in);
+      $cookies.putObject('search_filters', $scope.filters);
+      $cookies.putObject('search_professions', $scope.professions);
+      $cookies.putObject('search_workspaces', $scope.workspaces);
 
     $scope.removeFilter = (filter_name)->
       if filter_name == 'workspaces'
@@ -249,6 +263,7 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
         $scope.capacity = null
       if filter_name == 'check in'
         $scope.check_in = ''
+      storeFilters()
       $scope.showFilters()
       return
 
@@ -258,6 +273,7 @@ angular.module('deskSpotting.search', []).controller "SearchCtrl", [
       $scope.professions = {}
       $scope.capacity = null
       $scope.filters = []
+      storeFilters()
       $scope.getSpaces()
       event.currentTarget.remove()
       return

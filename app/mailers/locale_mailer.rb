@@ -1,5 +1,5 @@
 class LocaleMailer < Devise::Mailer
-  default from: ENV['MAIL_FROM_NAME'] + " <" + ENV['MAIL_FROM_ADDRESS'] + ">" || 'No Reply <from@test.com>'
+  default from: ENV['MAIL_FROM_NAME'].to_s + " <" + ENV['MAIL_FROM_ADDRESS'].to_s + ">" || 'No Reply <from@test.com>'
 
   helper :application # gives access to all helpers defined within `application_helper`.
   include Devise::Controllers::UrlHelpers # Optional. eg. `confirmation_url`

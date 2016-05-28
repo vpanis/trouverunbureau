@@ -82,8 +82,29 @@ describe SpacesController do
           let(:a_space) { create(:space, capacity: 2, venue: a_venue) }
           let(:new_description) { 'new description' }
           let(:new_quantity) { a_space.quantity + 1 }
+          let(:new_hour_price) { 10 }
+          let(:new_hour_deposit) { 5 }
+          let(:new_day_price) { 100 }
+          let(:new_day_deposit) { 15 }
+          let(:new_month_price) { 1000 }
+          let(:new_month_deposit) { 150 }
+          let(:new_month_to_month_price) { 2000 }
+          let(:new_month_to_month_deposit) { 250 }
+
           before do
-            space_params = { id: a_space.id, description: new_description, quantity: new_quantity }
+            space_params = {
+              id: a_space.id,
+              description: new_description,
+              quantity: new_quantity,
+              hour_price: new_hour_price,
+              hour_deposit: new_hour_deposit,
+              day_price: new_day_price,
+              day_deposit: new_day_deposit,
+              month_price: new_month_price,
+              month_deposit: new_month_deposit,
+              month_to_month_price: new_month_to_month_price,
+              month_to_month_deposit: new_month_to_month_deposit
+            }
             patch :update, id: a_space.id, space: space_params
             a_space.reload
           end
@@ -97,8 +118,22 @@ describe SpacesController do
             expect(a_space.quantity).to eq(new_quantity)
           end
 
+          it 'updates the prices' do
+            expect(a_space.hour_price).to eq(new_hour_price)
+            expect(a_space.day_price).to eq(new_day_price)
+            expect(a_space.month_price).to eq(new_month_price)
+            expect(a_space.month_to_month_price).to eq(new_month_to_month_price)
+          end
+
+          it 'updates the deposits' do
+            expect(a_space.hour_deposit).to eq(new_hour_deposit)
+            expect(a_space.day_deposit).to eq(new_day_deposit)
+            expect(a_space.month_deposit).to eq(new_month_deposit)
+            expect(a_space.month_to_month_deposit).to eq(new_month_to_month_deposit)
+          end
+
           it 'renders the :edit template' do
-            expect(response.redirect_url).to eq(edit_space_url(a_space))
+            expect(response.redirect_url).to eq(spaces_venue_url(a_space.venue))
           end
 
           context 'when lower capacity' do

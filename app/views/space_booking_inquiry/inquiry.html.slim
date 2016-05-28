@@ -1,5 +1,7 @@
 = render 'shared/profile_menu_bar', selected: 'nil'
 
+#booking-info data-space-quantity=@booking.quantity data-from=@booking.from data-to=@booking.to data-b-type=@booking.b_type
+
 #venue-id data-venue-id=@space.venue.id
 #venue-city data-venue-city=@space.venue.town
 #venue-country data-venue-country=Country.new(@space.venue.country_code).name
@@ -14,7 +16,11 @@
 #venue-month_to_month-minimum-quantity data-month_to_month-minimum-quantity=@booking.space.month_to_month_minimum_unity
 #venue-month_to_month-as-of data-month_to_month-as-of=@booking.space.month_to_month_as_of
 
-#space-deposit data-amount=@space.deposit
+- if @profile_modal
+  = render 'profile_modal', modal_id: 'profile-modal', title: t('users.complete_profile'), save_button_id: 'save-profile'
+
+#space-deposit-attributes data-amount=@space.deposits_attributes.to_json
+
 .error-wrapper
   - if @booking_errors.present?
     - @booking_errors.each do |attribute, message|
@@ -63,6 +69,7 @@
       - if @booking.space.month_to_month_price.present?
         .tab#tab-month_to_month ng-click="swap_inquiry_type('.form-month_to_month-booking', 'month_to_month'); updateMonthToMonth()" ng-class="{'tab--selected': selected_tab == 'month_to_month'}"
           = t('venues.show.month_to_month')
+
   .form-container.dashboard-form
     - if @booking.space.hour_price.present?
       = form_for @booking, url: inquiry_space_path(@space), html: { id: 'hour-form'} do |f|
@@ -268,4 +275,4 @@
         .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6.message-wrapper
           = link_to t('booking_inquiry.back'), venue_path(@space.venue), class: "rounded-btn btn-inquiry-back uppercase"
         .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6.message-wrapper
-          input type="submit" value="#{t('booking_inquiry.send_inquiry')}" class="rounded-btn yellow-fill btn-inquiry-send uppercase" ng-click="submit_form()"
+          input type="submit" value="#{t('booking_inquiry.send_inquiry')}" class="rounded-btn yellow-fill btn-inquiry-send uppercase" ng-click="#{@profile_modal ? 'show_profile_modal' : 'submit_form'}()"

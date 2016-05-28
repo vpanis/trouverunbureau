@@ -18,6 +18,7 @@
           = select_tag :expiration_year, options_for_select(Time.now.strftime("%y")..(Time.now + 15.years).strftime("%y")), class: 'form-control', id: 'js-card_exp_date_year'
           span.js-card-errors.js-expiration-format.error-message.hidden = t('payment.invalid_expiration_date')
         .form-group.col-md-12
+          .icon.info.pointer#street-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('payment.info_cvx')}"
           label = t('payment.cvx')
           = text_field_tag :cvx, nil, { id: 'js-card_cvx', class: 'form-control', maxlength: 4 }
           span.js-card-errors.js-cvx-format.error-message.hidden = t('payment.invalid_cvv')

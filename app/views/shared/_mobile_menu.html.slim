@@ -4,6 +4,8 @@ li
   li
     = link_to(t('menu.profile'), user_path(current_user))
   li
+    = link_to(t('menu.venues'), venues_path)
+  li
     = link_to(t('menu.wishlist'), wishlist_spaces_path)
   li
     = link_to(t('menu.account'), account_user_path(current_user))

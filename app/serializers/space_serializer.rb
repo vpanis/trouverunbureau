@@ -1,7 +1,8 @@
 class SpaceSerializer < ActiveModel::Serializer
   attributes :id, :name, :city, :country, :currency, :hour_price, :day_price, :week_price, :month_price, :month_to_month_price,
+             :hour_deposit, :day_deposit, :week_deposit, :month_deposit, :month_to_month_deposit,
              :favorite, :latitude, :longitude, :photos, :capacity, :venue_id, :venue_name,
-             :deposit, :logo, :currency_symbol, :space_type, :guaranteed_months
+             :logo, :currency_symbol, :space_type, :guaranteed_months
 
   def guaranteed_months
     object.month_to_month_minimum_unity

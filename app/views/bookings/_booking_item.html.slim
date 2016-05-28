@@ -1,3 +1,5 @@
+- booking.space = Space.new(name: 'Deleted Space') unless booking.space
+- booking.space.venue = Venue.new(name: 'Deleted Venue', country_code: 'FR') unless booking.space.venue
 .booking-item.clearfix
   .col-md-1.text-center.margin-top
     - if booking.state == "cancelled"

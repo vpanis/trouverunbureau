@@ -58,5 +58,5 @@
           p.black
             = "#{t("currency.#{space.venue.currency.downcase}.symbol")} #{number_with_precision(space.month_to_month_price, separator: '.', precision: (space.month_to_month_price == space.month_to_month_price.round) ? 0 : 2)}"
           p.time.black #{t('venues.show.month_to_month')}
-    .booking-inquiry.hidden-xs
+    .booking-inquiry
       = link_to t('venues.show.booking_inquiry'), inquiry_space_path(space)

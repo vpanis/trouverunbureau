@@ -1,7 +1,70 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject { FactoryGirl.create(:user) }
+
+  # Methods
+  describe "#first_inquiry?" do
+
+    subject { FactoryGirl.create(:user) }
+
+    it "returns false for users without any inquiries" do
+      expect(subject.first_inquiry?).to be
+    end
+
+    context "with inquiries" do
+
+      let(:message) { instance_double("DMessage", exists?: true) }
+
+      before(:each) do
+        allow(Message).to receive(:by_user).and_return(message)
+        allow(message).to receive(:pending_authorization).and_return(message)
+      end
+
+      it { expect(subject.first_inquiry?).not_to be }
+    end
+
+  end
+
+  describe "#unfilled_fields" do
+
+    subject { FactoryGirl.create(:user) }
+
+    before(:each) do
+      User::OPTIONAL_FIELDS.each do |field|
+        next if :languages_spoken == field
+        subject.send("#{field}=", field.to_s)
+      end
+      subject.languages_spoken = ['flonopix']
+    end
+
+    it "returns empty for users with no blank fields" do
+      result = subject.unfilled_fields
+      expect((result).empty?).to be
+    end
+
+    shared_examples 'returning the blank field' do |field|
+      it do
+        subject.send("#{field}=", nil)
+        result = subject.unfilled_fields
+        expect(result.empty?).not_to be
+        expect(result.size).to eq(1)
+        expect(result.first).to eq(field)
+
+        subject.send("#{field}=", :languages_spoken == field ? [] : '')
+        result = subject.unfilled_fields
+        expect(result.empty?).not_to be
+        expect(result.size).to eq(1)
+        expect(result.first).to eq(field)
+      end
+    end
+
+    context "when has blank field" do
+      User::OPTIONAL_FIELDS.each do |field|
+        it_behaves_like "returning the blank field", field
+      end
+    end
+
+  end
 
   # Relations
   it { should have_many(:bookings) }

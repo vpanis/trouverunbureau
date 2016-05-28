@@ -14,6 +14,8 @@ class Message < ActiveRecord::Base
   validates :text, presence: true, if: proc { |e| e.m_type == 'text' }
   validates :user, presence: true, unless: proc { |e| e.m_type == 'pending_authorization' }
 
+  scope :by_user, ->(user) { where(user: user) }
+
   def destination_recipient
     sender_is_guest? ? 'host' : 'guest'
   end

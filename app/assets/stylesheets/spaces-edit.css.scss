@@ -190,3 +190,45 @@
     }
   }
 }
+.spacer{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#share-on-social-network {
+  width: 500px;
+}
+
+.share-venue{
+  .social-icons{
+    height: 100px;
+    background-color: $gray;
+    padding: 28px 0px;
+    min-width: 216px;
+    .social-icon{
+      width: 40px;
+      height: 40px;
+      display: inline-block;
+      margin-right: 14px;
+      @include at2x('social-icons-sprite', 170px, 80px);
+    }
+    .twitter{
+      background-position: -1px 0px;
+    }
+    .twitter:hover{
+      background-position: -1px 40px;
+    }
+    .facebook{
+      background-position: -44px 0px;
+    }
+    .facebook:hover{
+      background-position: -44px 40px;
+    }
+    .linkedin{
+      background-position: -87px 0px;
+    }
+    .linkedin:hover{
+      background-position: -87px 40px;
+    }
+  }
+}

@@ -14,6 +14,7 @@
 #= require retina
 #= require masonry.pkgd
 #= require angular
+#= require angular-cookies
 #= require lodash
 #= require restangular
 #= require angular-ui-bootstrap-tpls

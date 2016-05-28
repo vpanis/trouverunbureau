@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
                   elsif current_user.try(:language)
                     current_user.language
                   else
-                    I18n.default_locale
+                    http_accept_language.preferred_language_from(I18n.available_locales)
                   end
   end
 
@@ -88,7 +88,7 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     allow = [:email, :first_name, :last_name, :password, :remember_me, :date_of_birth,
-             :nationality, :country_of_residence, :remote_avatar_url]
+             :nationality, :country_of_residence, :remote_avatar_url, :location]
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(allow) }
 
     devise_parameter_sanitizer.for(:accept_invitation) { |u| u.permit(allow << :invitation_token) }

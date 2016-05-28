@@ -7,11 +7,14 @@ class NewMessageService < SimpleDelegator
   private
 
   def notifiers
-    [CancelledMessageNotifier.new(self),
-     DeniedMessageNotifier.new(self),
-     PendingAuthorizationMessageNotifier.new(self),
-     InboxMessageNotifier.new(self),
-     DefaultMessageNotifier.new(self)]
+    [
+      CancelledMessageNotifier.new(self),
+      DeniedMessageNotifier.new(self),
+      PendingAuthorizationMessageNotifier.new(self),
+      PendingPaymentMessageNotifier.new(self),
+      InboxMessageNotifier.new(self),
+      DefaultMessageNotifier.new(self)
+    ]
   end
 
   # While the ammount of notifiers stays small and the actions taken by the notifiers are few,
@@ -48,6 +51,15 @@ class NewMessageService < SimpleDelegator
     def notify
       # TODO: Replace with a 'Booking creation email'
       NotificationsMailer.delay.new_message_email(id, 'host')
+    end
+  end
+
+  class PendingPaymentMessageNotifier < SimpleDelegator
+    def match?
+      m_type == 'pending_payment'
+    end
+
+    def notify
       NotificationsMailer.delay.new_message_email(id, 'guest')
     end
   end

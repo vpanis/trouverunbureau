@@ -1,0 +1,131 @@
+= form_for(@user, remote: (@profile_modal || false) ) do |f|
+  = f.file_field :avatar, class: 'hidden'
+  .row
+    - if @profile_modal
+      .row
+        .small-title
+          h4.gray-subtitle = t('users.required_fields')
+    - unless @profile_modal
+      .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+        label = t('users.first_name')
+        = f.text_field :first_name, placeholder: t('users.first_name'), class: 'form-control', required: true
+      .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+        .icon.lock.pointer#last-name-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
+        label = t('users.last_name')
+        = f.text_field :last_name, placeholder: t('users.last_name'), class: 'form-control', required: true
+    - if !@profile_modal || (@missing_fields || []).include?(:gender)
+      .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+        .icon.lock.pointer#gender-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
+        label = t('users.gender')
+        = f.select(:gender, @gender_options, { prompt: t('users.gender_select') }, { class: 'form-control gender-select', required: @profile_modal})
+    - if !@profile_modal || (@missing_fields || []).include?(:phone)
+      .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+        .icon.info.pointer#phone-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_share_phone')}"
+        label = t('users.phone')
+        = f.text_field :phone, placeholder: t('users.phone'), class: 'form-control', type: 'tel', required: true, id: 'phone'
+    - if !@profile_modal || (@missing_fields || []).include?(:profession)
+      .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+        label = t('users.profession')
+        = f.select(:profession, @profession_options, {}, {class: 'form-control profession-select', required: @profile_modal})
+    - unless @profile_modal
+      .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+        .icon.lock.pointer#email-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
+        label = t('users.email')
+        = f.text_field :email, placeholder: t('users.email'), class: 'form-control', required: true
+    - if !@profile_modal || (@missing_fields || []).include?(:company_name)
+      .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+        label = t('users.company_name')
+        = f.text_field :company_name, placeholder: t('users.company_name'), class: 'form-control', required: @profile_modal
+    - unless @profile_modal
+      .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+        label = t('users.date_of_birth')
+        .calendar.input-group
+          .calendar-icon.input-group-addon ng-click="open($event)" type="button"
+          - value = @user.date_of_birth.strftime("%d-%m-%Y") if @user.date_of_birth.present?
+          = f.text_field :date_of_birth, value: value, placeholder: t('users.date_of_birth'), class: 'form-control', close_text: t('commons.close'), datepicker_options: 'dateOptions', datepicker_popup: '{{format}}', is_open: 'opened', ng_model:'user_date_of_birth', ng_required: 'true', type: 'text', show_button_bar:'false', ng_click: "open($event)"
+      .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+        .icon.lock.pointer#nationality-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
+        label = t('users.nationality')
+        = f.select(:nationality, all_countries_options, {prompt: t('payment_methods.select_country')}, {class: 'form-control country-select', required: true})
+    - unless @profile_modal
+      .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+        .icon.lock.pointer#country_of_residence-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
+        label = t('users.country_of_residence')
+        = f.select(:country_of_residence, all_countries_options, {prompt: t('payment_methods.select_country')}, {class: 'form-control country-select', required: true})
+    a#confirm-identity.add.aqua href="#" style="pointer-events: none; margin: 15px; width: 180px;" = t('users.confirm_identity')
+    = f.file_field :confirm,  class: 'form-control', style: 'width: 280px; padding-left: 10px; position: relative; top: -73px ; left: -100px ;opacity: 0; cursor: pointer;'
+    a.identity-confirmed href="#" style="pointer-events: none; margin: 15px; width: 180px;" = t('users.identity_confirmed')
+  - unless @profile_modal
+    .row
+      .small-title
+        .small-separator
+        h4.gray-subtitle = t('users.optional_fields')
+
+  .row
+    - if !@profile_modal || (@missing_fields || []).include?(:language)
+      .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+        label = t('users.language')
+        = f.select(:language, @language_options, {}, {class: 'form-control language-select'})
+    - if !@profile_modal || (@missing_fields || []).include?(:location)
+      .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+        label = t('users.location')
+        = f.text_field :location, placeholder: t('users.location'), class: 'form-control', required: @profile_modal
+    - if @profile_modal
+      - if (@missing_fields || []).include?(:languages_spoken)
+        .form-group.col-xs-12
+          label = t('users.languages')
+          = select_tag('languages_spoken_select', options_from_collection_for_select(@all_language_options, :second, :first, @user.languages_spoken), {multiple: true, class: 'form-control multi-lang-select', required: @profile_modal})
+          = f.hidden_field :languages_spoken
+    - else
+      .form-group.col-xs-12
+        label = t('users.spoken_languages')
+        a.add.margin-left.aqua href='#' data-target="#languageModal" data-toggle="modal" = t('commons.add')
+        ul.spoken-languages-container
+          - @all_language_options.each do |lang|
+            li.lang-item id="lang-item-#{lang.last}"
+              div.lang-name
+                = lang.first
+              .delete-lang href="#" data-lang=lang.last
+        = f.hidden_field :languages_spoken
+    - if !@profile_modal || (@missing_fields || []).include?(:interests)
+      .form-group.col-xs-12
+        label = t('users.interests')
+        = f.text_area :interests, placeholder: t('users.interests'), class: 'form-control', required: @profile_modal
+
+  - if @profile_modal
+    .row
+      .small-title
+        .small-separator
+        h4.gray-subtitle = t('users.optional_fields')
+
+    - if !@profile_modal || !(@missing_fields || []).grep(/emergency/).empty?
+      .emergency-contact.col-xs-12
+        .icon.info.pointer#emergency-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_share_emergency')}"
+        p
+          span = t('users.emergency_contact')
+          span.aqua#emergency-toggle.arrow edit
+        hr
+      .emergency-info
+        .col-lg-12
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+          label = t('users.emergency_name')
+          = f.text_field :emergency_name, placeholder: t('users.emergency_name'), class: 'form-control'
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+          .icon.info.pointer#emergency_phone-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_share_phone')}"
+          label = t('users.emergency_phone')
+          = f.text_field :emergency_phone, placeholder: t('users.emergency_phone'), class: 'form-control', type: 'tel', id: 'emergency_phone'
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+          label = t('users.emergency_email')
+          = f.text_field :emergency_email, placeholder: t('users.emergency_email'), class: 'form-control'
+        .form-group.col-xs-12.col-sm-6.col-md-6.col-lg-6
+          label = t('users.emergency_relationship')
+          = f.text_field :emergency_relationship, placeholder: t('users.emergency_relationship'), class: 'form-control'
+  .buttons
+    - if @profile_modal
+      = f.submit t('booking_inquiry.send_booking_inquiry'), class: 'rounded-btn yellow-fill width-100 uppercase', id: 'save-edition'
+    - else
+      .col-xs-6
+        a href=(user_path(@user))
+          button type='button' class='rounded-btn width-100 uppercase' = t("commons.cancel")
+      .col-xs-6
+        = f.submit t('commons.save'), class: 'rounded-btn yellow-fill width-100 uppercase', id: 'save-edition'

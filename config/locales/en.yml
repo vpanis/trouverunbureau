@@ -1,10 +1,12 @@
 en:
+  collition_errors: These dates or times are not available please try others.
   booking_inquiry:
     back: Back
     check_in: Check-In
     check_out: Check-Out
     date: Date
     day: Day
+    days: Days
     days_amount: Number of Days
     deposit: Deposit
     deskspotting_fee: DeskSpotting Fee
@@ -18,21 +20,26 @@ en:
     guaranteed_months: Guaranteed months
     guaranteed_months_quantity: Number of Guaranteed Months
     hour: Hour
+    hours: Hours
     hours_amount: Number of Hours
     message_placeholder: Tell the host more about yourself and your professional interests.
     month: Month
+    months: Months
     month_amount: Number of months
     month_to_month: Month to Month
     month_to_month_as_of: Month to month as of
     months_amount: Number of Months
     price_per: Price per
     send_inquiry: Send inquiry
+    send_booking_inquiry: Send booking inquiry
     space_amount: Number of Spaces
     space_booking: Space Booking
     spaces_amount: Number of spaces
     time_frame: Select Time Frame
     total: Total
     your_message: Your message
+    errors:
+      minimum_time: 'You must at least reach the minimum time for this workplace (%{minimum_time} %{b_type})'
   bookings:
     all_venues: All Venues
     cancel: Cancel
@@ -69,6 +76,7 @@ en:
     pay: Pay
     save: Save
     save_continue: Save and continue
+    share: Share
     unknown: Unknown
     upload_file: Upload file
   contact:
@@ -112,7 +120,7 @@ en:
       inactive: Your account is not activated yet.
       invalid: Invalid email or password.
     omniauth_callbacks:
-      failure: Could not log you in you via %{kind} because "%{reason}".
+      failure: Could not log you in you via %{kind} because %{reason}.
       success: Successfully logged in via %{kind} account.
     passwords:
       no_token: You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided.
@@ -163,9 +171,11 @@ en:
     checked_out: You have checked-out of
     date: Date
     days: Days
-    hi: Hi
+    hi: Hey
+    conversion_text: how would you rate your stay at
+    conversion_text2: Your feedback is very important to us and other DeskSpotters!
     rate_stay: Rate your stay
-    subject: 'Guest Review - %{type} #%{guest_id}'
+    subject: '%{guest_id}, rate your stay at %{type}'
   home:
     features:
       easy:
@@ -191,6 +201,7 @@ en:
       contact: Contact
       faq: Help
       how_it_works: Hosting
+      insurance: Insurance
       join_us: Join us
       language:
         en: eng
@@ -244,7 +255,9 @@ en:
   host_review_email:
     checked_in: has Checked-in at
     rate_guest: Rate your guest
-    subject: 'Host Review - Venue #%{venue_id}'
+    conversion_text: how would you rate your guest
+    conversion_text2: Your feedback is very important to us and other DeskSpotters!
+    subject: '%{host_id}, rate your guest %{guest_id}"'
     your_guest: Your Guest
   inbox:
     approve: Approve
@@ -366,8 +379,9 @@ en:
   new_message_email:
     got_new_message: Got a new message from
     hi: Hi
+    on_date_connector: 'on'
     reply: Or reply directly in this e-mail.
-    subject: 'You have a new message - Booking #%{booking_id}'
+    subject: 'Inquiry at %{venue_name} per %{type}, %{checking_date}'
     team: The DeskSpotting Team
     view_on_deskspotting: View on DeskSpotting
   new_space:
@@ -378,6 +392,8 @@ en:
     add_manager: Add Manager
     add_manager_action: Add Manager
     change_picture: Change picture
+    confirm_identity: Confirm Identity
+    identity_confirmed: Identity Confirmed
     create_profile: Create organization
     create_title: Add title
     edit_profile: Edit profile
@@ -399,6 +415,7 @@ en:
     create_credit_card: Add credit card
     currency: Currency
     cvx: CVV
+    info_cvx: This is the three digit code on the back of your card.
     days: Days
     expiration: Expiration date
     expiration_month: Expiration month(mm)
@@ -566,6 +583,7 @@ en:
   spaces:
     capacity: Number of people
     day_price: Day price
+    delete_your_space: Delete your space
     deposit: Deposit
     description: Description
     edit_your_space: Edit your space
@@ -573,9 +591,11 @@ en:
     info_capacity: How many people can work in this space?
     info_deposit: All deposits are held in an escrow for the security of the Guest and Host
     info_description: Describe the workspace and tell potential guests why it is a good place to work
+    info_minimum_renting_period: Minimal booking time allowed
     info_photos: The better the photos the more interest you will generate in your space. Share pictures that accurately reflect the overall atmosphere of your space.
     info_pricing: Set the target price you would like your space to be marketed for different time frames. Pricing can always be modified at any time and on a case by case basis.
     info_quantity: Number of these spaces you would you like to list on DeskSpotting
+    info_renting_period: Booking times available
     minimum_renting_period: Minimum booking time
     month_price: Month price
     month_to_month: Month to Month
@@ -583,9 +603,18 @@ en:
     per_day: Per day
     per_hour: Per hour
     per_month: Per month
+    price: Price
+    pricing: Pricing (%{currency})
     pricing_in: Pricing in %{currency}
     quantity: Number of spaces
+    renting_period: Booking time
+    select_workspace: Select any of your workspaces to edit their information
+    share_on: 'Share on:'
+    share_text: Come work in my space. This %{space_type} of mine can be booked on @DeskSpotting
+    sharing_message: 'Now, in order to be able to really take advantage of %{space} and %{venue} you should start by sharing it in your social networks so anyone can see the workspace you have available.'
     space_photos: Space photos
+    thanks_for_registering: Thank you for registering your workspace!
+    thanks_for_updating: Thank you for updating your workspace!
     type: Workspace type
     types:
       all: All workspaces
@@ -596,6 +625,7 @@ en:
       hot_desk: Hot Desk
       meeting_room: Meeting room
       private_office: Private office
+      training_room: Training Room
   users:
     about_me: About me
     account:
@@ -608,6 +638,9 @@ en:
       you_can_disable: You can disable this at any time.
     add_languages: Add languages
     change_picture: Change picture
+    confirm_identity: Confirm Identity
+    identity_confirmed: Identity Confirmed
+    complete_profile: 'Please, complete your profile'
     company_name: Company name
     country_of_residence: Country of residence
     date_of_birth: Date of birth
@@ -651,15 +684,21 @@ en:
       cafe_restaurant: cafe/restaurant
       chill_area: chill area
       cleaning_service: cleaning service
+      coffee_station: coffee station
       concierge: concierge
       conference_rooms: conference rooms
+      dvd: dvd
       elevators: elevator
       fax: fax
+      first_aid: first aid
       gym: gym
       individual_bookings: individual bookings
       info_team_bookings: Are you open to have teams make bookings in your venue?
       kitchen: kitchen
+      locker: locker
       mail_service: mail service
+      microwave: microwave
+      nap_area: nap area
       outdoor_space: outdoor space
       parking: parking
       pets_allowed: pets allowed
@@ -668,14 +707,19 @@ en:
       printer_scanner: printers/scanner
       projector: projector
       reception_service: reception service
+      refrigerator: refrigerator
       security: security
       shower: shower
+      snacks: snacks
+      storage: storage
       team_bookings: team bookings
       tv: tv
+      videoconference: video conference
       water_fountain: water fountain
       wheelchair_access: wheelchair access
       whiteboards: whiteboards
       wifi: Wifi
+      catering_services: Catering Services
     closed: Closed
     collection_account:
       account_number: Account Number
@@ -694,7 +738,7 @@ en:
       only_tax_id_present: Only if tax id present
       phone: Phone
       postal_code: Postal Code
-      previous_last_4: Previous Last 4 digits
+      previous_last_4: Last 4 digits
       region: Region
       required: Required
       routing_number: Routing Number
@@ -751,6 +795,10 @@ en:
       public_relations: public relations
       startup: startup
       technology: technology
+      psychologist: psychologist
+      therapist: therapist
+      headhunter: headhunter
+      coach: coach
     reported: Reported
     show:
       about_venue: About venue
@@ -868,6 +916,9 @@ en:
       privacy_policy:
         title: Privacy Policy
         description: This document lays out our Privacy Policy for hosts and guests on DeskSpotting regarding the handling of user information.
+      insurance:
+        title: Insurance
+        description: DeskSpotting and AIG, have developed a specific insurance for the reception of visitors for any booking made in a workspace in France.
     users:
       password_new:
         title: New Password

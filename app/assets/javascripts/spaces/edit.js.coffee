@@ -4,11 +4,17 @@ on_load = ->
       spaces: ["edit"]
   , (controller, action) ->
 
+    $('#newWorkspaceShareModal').on 'hide.bs.modal', (e) ->
+      $('.edit_space').submit()
+      return
+
     $('#save-space').click (event) ->
       # there is always one child because of the upload form
+      event.preventDefault()
       if($('.row.pictures').children().size() < 2)
-        event.preventDefault()
         $('.row.pictures').prepend('<div class="photo-errors"> You must add at least one picture </div>')
+      else
+        $('#newWorkspaceShareModal').modal('toggle');
 
     add_photo = (data) ->
       photo_html = "<div class=\"col-md-4\"><div class=\"img-wrapper\" style=\"background-image: url("+data.photo+");\"><div class=\"hover\"><a class=\"delete-photo\" data-photo-id=\""+data.id+"\" data-space-id=\""+data.space_id+"\" href=\"#\">delete</a></div></div></div>"
@@ -43,6 +49,10 @@ on_load = ->
       $('.space-types-select').select2()
       return
     initialize_listeners = ->
+      $('.price-checkbox').change ->
+        if !@checked
+          $(this).closest('.row').find('input.price-input[type=number]').val ''
+        return
       $('.edit_space').submit ->
         validate_price()
       $('.delete-photo').click (event) ->
@@ -94,16 +104,24 @@ on_load = ->
       $('#deposit-popover').popover(options)
 
     validate_price = ->
+      $('.form-group.has-error').removeClass 'has-error'
       checked_price = $('.price-checkbox').is(':checked')
-      values = $.map($('.price-checkbox:checked').closest('.row').find('input[type=number]'),
-        (e) -> $(e).val())
-      valid_price = $.inArray("", values) != 1
+      empty_prices = $('.price-checkbox:checked').closest('.row').find('input.price-input[type=number]').filter ->
+        @value.length <= 0
+      valid_price = !empty_prices || empty_prices.length == 0
+
       return true if checked_price && valid_price
-      showErrorMessage()
+      showErrorMessage(empty_prices)
       false
 
-    showErrorMessage = ->
-      $('.pricing .form-group').addClass 'has-error'
+    showErrorMessage = (empty_prices) ->
+      if empty_prices
+        empty_prices.each ->
+          $(this).closest('.form-group').addClass 'has-error'
+          return
+      else
+        $('.pricing .form-group').addClass 'has-error'
+      return
 
     initialize_selects()
     initialize_listeners()

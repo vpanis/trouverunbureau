@@ -367,6 +367,7 @@ pt:
   new_message_email:
     got_new_message: Tem uma nova mensagem de
     hi: Olá
+    on_date_connector: 'em'
     reply: Ou responda diretamente neste email
     subject: 'Tem uma mensagem nova - Reserva #%{booking_id}'
     team: A Equipa do DeskSpotting
@@ -379,6 +380,8 @@ pt:
     add_manager: Adicionar Gestor
     add_manager_action: Adicionar Gestor
     change_picture: Alterar imagem
+    confirm_identity: Confirm Identity
+    identity_confirmed: Identity Confirmed
     create_profile: Criar organização
     create_title: Adicionar título
     edit_profile: Editar perfil
@@ -577,6 +580,8 @@ pt:
     info_photos: Quanto melhores as fotos, mais interesse despertará no seu espaço. Partilhe fotos que reflitam bem a atmosfera geral deste.
     info_pricing: Defina o preço a que pretende que o seu espaço seja negociado, consoante diferentes períodos de tempo. Este pode ser alterado, a qualquer altura e caso a caso.
     info_quantity: Número destes espaços que quer publicar no DeskSpotting
+    info_minimum_renting_period: Tempo mínimo de reserva permitido
+    info_renting_period: Períodos de tempo disponíveis
     minimum_renting_period: Tempo mínimo de reserva
     month_price: Preço mensal
     month_to_month: mês a mês
@@ -584,8 +589,11 @@ pt:
     per_day: Por dia
     per_hour: Por hora
     per_month: Por mês
+    price: Preço
+    pricing: Preço (%{currency})
     pricing_in: Preço em %{currency}
     quantity: Número de espaços
+    renting_period: Período de tempo
     space_photos: Fotos do espaço
     type: Tipo de espaço de trabalho
     types:
@@ -609,6 +617,9 @@ pt:
       you_can_disable: Pode desativar em qualquer altura.
     add_languages: Adicionar línguas
     change_picture: Alterar imagem
+    confirm_identity: Confirm Identity
+    identity_confirmed: Identity Confirmed
+    complete_profile: 'Por favor, complete seu perfil'
     company_name: Nome da empresa
     country_of_residence: País de residência
     date_of_birth: Data de nascimento

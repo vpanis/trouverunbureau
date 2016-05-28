@@ -138,7 +138,7 @@ fr:
     en: English
     es: Español
     fr: Français
-    pt: Portuguais
+    pt: Português
   errors:
     email_taken: Cet email est déjà inscrit
     messages:
@@ -191,6 +191,7 @@ fr:
       contact: Contact
       faq: Aide
       how_it_works: Devenez hôte
+      insurance: Assurance
       join_us: Rejoignez-nous
       language:
         en: eng
@@ -366,6 +367,7 @@ fr:
   new_message_email:
     got_new_message: Nouveau message de la part de
     hi: Bonjour
+    on_date_connector: 'le'
     reply: Ou répondez directement via email
     subject: Vous avez un nouveau message - Réservation %{booking_id}
     team: L'Équipe DeskSpotting
@@ -378,6 +380,8 @@ fr:
     add_manager: Ajoutez un Gérant
     add_manager_action: Ajouter un Gérant
     change_picture: Changez de photo
+    confirm_identity: Confirm Identity
+    identity_confirmed: Identity Confirmed
     create_profile: Créez une organisation
     create_title: Créez un titre
     edit_profile: Modifiez profil
@@ -576,6 +580,8 @@ fr:
     info_photos: En choisissant des photos de qualité vous susciterez l'intérêt. Partagez des photos qui reflètent précisément l'atmosphère de votre espace.
     info_pricing: Fixez le prix que vous souhaitez en fonction des durées que vous proposez. Le prix peut être modifier à tout moment et au cas par cas.
     info_quantity: Combien de postes souhaitez-vous publier sur DeskSpotting
+    info_minimum_renting_period: Durée minimale
+    info_renting_period: Durée
     minimum_renting_period: Durée minimale
     month_price: Prix par mois
     month_to_month: mois en mois
@@ -583,8 +589,11 @@ fr:
     per_day: Par jour
     per_hour: Par heure
     per_month: Par mois
+    price: Prix
+    pricing: Prix (%{currency})
     pricing_in: Prix en %{currency}
     quantity: Nombre de postes
+    renting_period: Durée
     space_photos: Photos
     type: Type de poste
     types:
@@ -608,6 +617,9 @@ fr:
       you_can_disable: Désactivez les
     add_languages: Valider
     change_picture: Modifiez photo
+    confirm_identity: Confirm Identity
+    identity_confirmed: Identity Confirmed
+    complete_profile: "S'il vous plaît, compléter votre profil"
     company_name: Nom d'entreprise
     country_of_residence: Pays de résidence
     date_of_birth: Date de naissance

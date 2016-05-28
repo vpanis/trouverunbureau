@@ -68,7 +68,7 @@ de:
     open: "Öffnen"
     pay: Zahlen
     save: Speichern
-    save_continue:
+    save_continue: Speichern und Fortfahren
     unknown: Unbekannt
     upload_file: Datei laden
   contact:
@@ -366,6 +366,7 @@ de:
   new_message_email:
     got_new_message: Neue Nachricht von
     hi: Hallo
+    on_date_connector: 'am'
     reply: Oder antworten Sie direkt über diese E-Mail.
     subject: 'Sie haben eine neue Nachricht - Buchung #%{booking_id}'
     team: Das DeskSpotting-Team
@@ -378,6 +379,8 @@ de:
     add_manager: Manager hinzufügen
     add_manager_action: Manager hinzufügen
     change_picture: Foto ändern
+    confirm_identity: Confirm Identity
+    identity_confirmed: Identity Confirmed
     create_profile: Unternehmen eingeben
     create_title: Titel hinzufügen
     edit_profile: Profil ändern
@@ -576,6 +579,8 @@ de:
     info_photos: Je besser die Fotos sind, desto mehr Nutzer werden sich für Ihren Arbeitsraum interessieren. Teilen Sie Fotos, die die Gesamtatmosphäre Ihres Arbeitsraums vermitteln.
     info_pricing: Legen Sie den Preis fest, zu dem Sie Ihren Arbeitsraum bei verschiedenen Zeiträumen anbieten möchten. Der Preis kann jederzeit und von Fall zu Fall geändert werden.
     info_quantity: Anzahl dieser Arbeitsplätze, die Sie auf DeskSpotting anbieten möchten
+    info_minimum_renting_period: Mindestbuchungsdauer
+    info_renting_period: Buchungsdauer
     minimum_renting_period: Mindestbuchungsdauer
     month_price: Preis pro Monat
     month_to_month:
@@ -583,8 +588,11 @@ de:
     per_day: Pro Tag
     per_hour: Pro Stunde
     per_month: Pro Monat
+    price: Preis
+    pricing: Preis (%{currency})
     pricing_in: Preis in %{currency}
     quantity: Anzahl der Arbeitsplätze
+    renting_period: Buchungsdauer
     space_photos: Fotos vom Arbeitsplatz
     type: Art des Arbeitsraums
     types:
@@ -608,6 +616,9 @@ de:
       you_can_disable: Sie können dies jederzeit deaktivieren.
     add_languages: Sprachen hinzufügen
     change_picture: Foto ändern
+    confirm_identity: Confirm Identity
+    identity_confirmed: Identity Confirmed
+    complete_profile: 'Venligst, udfyld din profil'
     company_name: Name des Unternehmens
     country_of_residence: Wohnsitzland
     date_of_birth: Geburtsdatum

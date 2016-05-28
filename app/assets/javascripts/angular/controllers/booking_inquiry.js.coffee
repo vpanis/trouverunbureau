@@ -33,8 +33,8 @@ angular
       $scope[$input_open] = true
 
     $scope.initialize_dates = () ->
-      $scope.booking_from = $('#booking_from').value
-      $scope.booking_to = $('#booking_to').value
+      # $scope.booking_from = $('#booking_from').value || new Date($("#booking-info").attr('data-from'))
+      # $scope.booking_to = $('#booking_to').value || new Date($("#booking-info").attr('data-to'))
 
     $scope.swap_inquiry_type = (show_class, tab) ->
       hide_forms()
@@ -110,11 +110,20 @@ angular
     $scope.month_to_month_minimum_quantity = () ->
       return per_month_to_month_minimum_quantity
 
+    $scope.calculate_space_deposit = () ->
+      deposits_attributes = $scope.space_deposit_attributes
+      period = $scope.selected_tab + '_deposit'
+      if deposits_attributes && deposits_attributes.hasOwnProperty(period)
+        return parseFloat(deposits_attributes[period]) || 0
+      return 0
+
     $scope.calculate_space_quantity = () ->
       return if $scope.space_quantity then $scope.space_quantity else 0
 
     $scope.calculate_deposit = () ->
-      return $scope.space_deposit * $scope.calculate_space_quantity()
+      deposit = $scope.calculate_space_deposit()
+      quantity = $scope.calculate_space_quantity()
+      return deposit * quantity
 
     $scope.calculate_space_booking = () ->
       res = $scope.booking_type_per_price() * $scope.amount_for_booking_type() * $scope.calculate_space_quantity()
@@ -126,6 +135,18 @@ angular
 
     $scope.calculate_space_total = () ->
       return $scope.calculate_space_booking() + $scope.calculate_deposit()
+
+    $scope.show_profile_modal = () ->
+      $('#profile-modal').modal ->
+        return
+      return
+
+    $('#save-edition').click ->
+      profile_form = $('#edit_user_1')[0]
+      if profile_form.checkValidity()
+        $('#profile-modal').modal('hide');
+        $scope.submit_form();
+      return
 
     $scope.submit_form = () ->
       h = {}
@@ -146,12 +167,6 @@ angular
       return
 
     # PRIVATE FUNCTIONS
-
-    deselect_all_tabs = () ->
-      $scope.per_hour_selected = false
-      $scope.per_day_selected = false
-      $scope.per_month_selected = false
-      $scope.per_month_to_month_selected = false
 
     stablish_hours_amount = () ->
       if !$scope.hour_booking_begin || !$scope.hour_booking_end
@@ -199,17 +214,11 @@ angular
       show_weeks: false
     $scope.format = 'dd-MM-yyyy'
     $scope.initialize_dates()
-    $scope.space_quantity = 1
+    $scope.space_quantity = parseInt($("#booking-info").attr('data-space-quantity') || 1)
     $scope.month_to_month_as_of = ""
-    $scope.space_deposit = parseFloat($("#space-deposit").attr('data-amount'))
+    $scope.space_deposit_attributes = JSON.parse($("#space-deposit-attributes").attr('data-amount'))
     close_all
-    deselect_all_tabs();
-
-    current_timeframe = $('.multiple-switch-wrapper .tab').attr('id').substring(4)
-    $scope.selected_tab = current_timeframe
-    $scope.selected_tab_name = $("#translation-info").attr(current_timeframe)
-
-    $($('.form-container .form')[0]).removeClass('form--hidden')
+    hide_forms
 
     available_dates_hours = $.parseJSON($("#venue-hours").attr('data-day-hours'))
     per_hour_price = $("#venue-hour-price").attr('data-hour-price')
@@ -219,6 +228,9 @@ angular
     per_month_to_month_minimum_quantity = $("#venue-month_to_month-minimum-quantity").attr('data-month_to_month-minimum-quantity')
     per_month_to_month_as_of = parseInt($("#venue-month_to_month-as-of").attr('data-month_to_month-as-of'))
     $scope.month_quantity = 1
+
+    current_timeframe = $("#booking-info").attr('data-b-type') || $('.multiple-switch-wrapper .tab').attr('id').substring(4)
+    $scope.swap_inquiry_type('.form-' + current_timeframe + '-booking', current_timeframe)
 
     #initializers
     initialize_selects = ->
