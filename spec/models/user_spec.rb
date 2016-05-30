@@ -87,6 +87,11 @@ RSpec.describe User, type: :model do
       .source(:space)
   end
 
+  it do
+    should allow_value(true).for(:identity_confirmed)
+    should allow_value(false).for(:identity_confirmed)
+  end
+
   # Uniquneness
   it { should validate_uniqueness_of(:email).case_insensitive }
 
