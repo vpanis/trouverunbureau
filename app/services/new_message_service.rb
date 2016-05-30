@@ -1,5 +1,4 @@
 class NewMessageService < SimpleDelegator
-
   def send_notifications
     notifiers.find(&:match?).notify
   end
