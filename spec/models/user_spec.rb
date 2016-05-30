@@ -1,10 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
   # Methods
   describe "#first_inquiry?" do
-
     subject { FactoryGirl.create(:user) }
 
     it "returns false for users without any inquiries" do
@@ -12,7 +10,6 @@ RSpec.describe User, type: :model do
     end
 
     context "with inquiries" do
-
       let(:message) { instance_double("DMessage", exists?: true) }
 
       before(:each) do
@@ -22,11 +19,9 @@ RSpec.describe User, type: :model do
 
       it { expect(subject.first_inquiry?).not_to be }
     end
-
   end
 
   describe "#unfilled_fields" do
-
     subject { FactoryGirl.create(:user) }
 
     before(:each) do
@@ -63,7 +58,12 @@ RSpec.describe User, type: :model do
         it_behaves_like "returning the blank field", field
       end
     end
+  end
 
+  # Pictures
+  it do
+    should allow_value(Faker::Company.logo).for(:avatar)
+    should allow_value(Faker::Company.logo).for(:identity_picture)
   end
 
   # Relations
@@ -102,20 +102,20 @@ RSpec.describe User, type: :model do
   # Numericality
   it do
     should validate_numericality_of(:rating)
-    .is_less_than_or_equal_to(5)
-    .is_greater_than_or_equal_to(0)
+      .is_less_than_or_equal_to(5)
+      .is_greater_than_or_equal_to(0)
   end
 
   it do
     should validate_numericality_of(:quantity_reviews)
-    .only_integer
-    .is_greater_than_or_equal_to(0)
+      .only_integer
+      .is_greater_than_or_equal_to(0)
   end
 
   it do
     should validate_numericality_of(:reviews_sum)
-    .only_integer
-    .is_greater_than_or_equal_to(0)
+      .only_integer
+      .is_greater_than_or_equal_to(0)
   end
 
   # Inclusion
@@ -169,9 +169,7 @@ RSpec.describe User, type: :model do
   end
 
   # Callbacks
-
   context 'callbacks' do
     it { is_expected.to callback(:initialize_fields).after(:initialize) }
   end
-
 end
