@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
 
   # Uploaders
   mount_uploader :avatar, LogoUploader
+  mount_uploader :identity_picture, PhotoUploader
 
   # Enums
   LANGUAGES = [:en, :fr, :de, :es, :pt]

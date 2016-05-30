@@ -1,5 +1,6 @@
 = form_for(@user, remote: (@profile_modal || false) ) do |f|
   = f.file_field :avatar, class: 'hidden'
+  = f.file_field :identity_picture, class: 'hidden'
   .row
     - if @profile_modal
       .row
@@ -52,9 +53,18 @@
         .icon.lock.pointer#country_of_residence-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('users.info_no_share')}"
         label = t('users.country_of_residence')
         = f.select(:country_of_residence, all_countries_options, {prompt: t('payment_methods.select_country')}, {class: 'form-control country-select', required: true})
-    a#confirm-identity.add.aqua href="#" style="pointer-events: none; margin: 15px; width: 180px;" = t('users.confirm_identity')
-    = f.file_field :confirm,  class: 'form-control', style: 'width: 280px; padding-left: 10px; position: relative; top: -73px ; left: -100px ;opacity: 0; cursor: pointer;'
-    a.identity-confirmed href="#" style="pointer-events: none; margin: 15px; width: 180px;" = t('users.identity_confirmed')
+
+    .user-title
+      - if @user.identity_confirmed?
+        = image_tag(@user.identity_picture.url, width: '95px', height: '95px', id: 'user-identity-picture-img')
+        a.identity-confirmed href="#" style="pointer-events: none; margin: 15px; width: 180px;" = t('users.identity_confirmed')
+      - elsif @user.identity_picture?
+        = image_tag(@user.identity_picture.url, width: '95px', height: '95px', id: 'user-identity-picture-img')
+        a.identity-confirming href="#" data-toggle="modal" data-target="#identity-picture-modal" = t('users.confirming_identity')
+      - else
+        = image_tag('default-avatar.png', width: '95px', height: '95px', id: 'user-identity-picture-img')
+        a#confirm-identity.add.block.aqua href="#" data-toggle="modal" data-target="#identity-picture-modal" = t('users.confirm_identity')
+
   - unless @profile_modal
     .row
       .small-title

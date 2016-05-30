@@ -6,4 +6,11 @@ RSpec.describe UsersFavorite, type: :model do
   # Relations
   it { should belong_to(:user) }
   it { should belong_to(:space) }
+
+  # Uniquneness
+  it { should validate_uniqueness_of(:space).scoped_to(:user_id) }
+
+  # Presence
+  it { should validate_presence_of(:user) }
+  it { should validate_presence_of(:space) }
 end

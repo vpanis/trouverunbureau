@@ -1,6 +1,7 @@
 = render 'shared/profile_menu_bar', selected: 'profile'
 = render 'language_modal'
 = render 'shared/image_modal', modal_id: 'avatar-modal', title: t('users.change_picture'), image_link_id: 'avatar-link', save_button_id: 'save-avatar'
+= render 'shared/image_modal', modal_id: 'identity-picture-modal', title: t('users.change_picture'), image_link_id: 'identity-picture-link', save_button_id: 'save-identity-picture'
 
 .user.container
   .user-title
@@ -8,11 +9,11 @@
     .small-separator
     h4.gray-subtitle = t('users.required_fields')
     .user-avatar
-        - if @user.avatar?
-          = image_tag(@user.avatar.url, width: '95px', height: '95px', id: 'user-avatar-img')
-        - else
-          = image_tag('default-avatar.png', width: '95px', height: '95px', id: 'user-avatar-img')
-        a#edit-avatar.add.block.aqua href="#" data-toggle="modal" data-target="#avatar-modal" = t('users.change_picture')
+      - if @user.avatar?
+        = image_tag(@user.avatar.url, width: '95px', height: '95px', id: 'user-avatar-img')
+      - else
+        = image_tag('default-avatar.png', width: '95px', height: '95px', id: 'user-avatar-img')
+      a#edit-avatar.add.block.aqua href="#" data-toggle="modal" data-target="#avatar-modal" = t('users.change_picture')
   .row
     .col-xs-12.col-sm-8.col-md-8.col-lg-8.col-xs-offset-0.col-sm-offset-2
       .edit-profile-form.dashboard-form ng-controller="UserProfileCtrl"
