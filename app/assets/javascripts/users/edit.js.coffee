@@ -63,16 +63,26 @@ on_load = ->
     initialize_listeners = ->
       $('#save-languages').click ->
         close_languages_modal()
+
       $('.delete-lang').click  ->
         delete_language($(this))
+
       $('#emergency-toggle').click ->
         $('.emergency-info').toggle()
+
       # handle avatar
       $('#avatar-link').click ->
         $('#user_avatar').click()
         $('#avatar-modal').modal('hide')
       $('#user_avatar').change ->
         handle_local_img('#user_avatar', '#user-avatar-img')
+
+      # handle identity picture
+      $('#identity-picture-link').click ->
+        $('#user_identity_picture').click()
+        $('#identity-picture-modal').modal('hide')
+      $('#user_identity_picture').change ->
+        handle_local_img('#user_identity_picture', '#user-identity-picture-img')
 
     initialize_popovers = ->
       options = {

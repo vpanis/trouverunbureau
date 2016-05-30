@@ -90,7 +90,7 @@ hr {
 
   display: inline-block;
 
-  width: 122px;
+  width: 130px;
   margin: 15px auto 0;
   padding-bottom: 25px;
   padding-left: 20px;
@@ -303,6 +303,19 @@ hr {
       bottom: -7px;
       left: 160px;
     }
+  }
+}
+
+.identity-confirming{
+  color: #666666;
+  &:before{
+    content: "";
+    display: inline-block;
+    height: 22px;
+    vertical-align: middle;
+    width: 22px;
+    margin-right: 5px;
+    background: url("cross.png") no-repeat center center;
   }
 }
 

@@ -393,6 +393,7 @@ en:
     add_manager_action: Add Manager
     change_picture: Change picture
     confirm_identity: Confirm Identity
+    confirming_identity: Confirming Identity
     identity_confirmed: Identity Confirmed
     create_profile: Create organization
     create_title: Add title
@@ -639,6 +640,7 @@ en:
     add_languages: Add languages
     change_picture: Change picture
     confirm_identity: Confirm Identity
+    confirming_identity: Confirming Identity
     identity_confirmed: Identity Confirmed
     complete_profile: 'Please, complete your profile'
     company_name: Company name
