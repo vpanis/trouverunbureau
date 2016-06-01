@@ -6,10 +6,14 @@ class NotificationsMailer < ActionMailer::Base
     message = prepare_message_data(message_id)
     return send_i18n_email(message.venue_recipients_representees,
                            'new_message_email.subject',
+                           booking_id: message.booking.id,
                            venue_name: message.booking.space.venue.name,
                            checking_date: message.booking.created_at.strftime("%Y-%m-%d %H:%M"),
                            type: I18n.t("wishlist.#{message.booking.b_type}")) if for_type == 'host'
-    send_i18n_email(message.client_recipients_representees, 'new_message_email.subject',
+
+    send_i18n_email(message.client_recipients_representees,
+                    'new_message_email.subject',
+                    booking_id: message.booking.id,
                     venue_name: message.booking.space.venue.name,
                     checking_date: message.booking.created_at.strftime("%Y-%m-%d %H:%M"),
                     type: I18n.t("wishlist.#{message.booking.b_type}")) if for_type == 'guest'
