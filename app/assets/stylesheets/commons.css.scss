@@ -344,40 +344,93 @@ hr {
       margin: 0 0 25px;
   }
   #sidebar-faq{
+    margin-bottom: 30px;
+    > div > div > ul {
+      > li {
+        & > a:after {
+          font-family: 'FontAwesome', serif;
+          content: "\f105";
+          color: #00cca5;
+          float: right;
+        }
+        & > a:before{
+          font-family: FontAwesome, serif;
+          color: #666666;
+          margin-right: 12px;
+          width: 20px;
+          float: left;
+          text-align: center;
+          font-size: 20px;
+        }
+      }
+    }
+    .general-content > div {
+     > ul{
+        > li{
+          &:nth-child(1) > a:before{
+            content: "\f024";
+          }
+          &:nth-child(2) > a:before{
+            content: "\f0ac";
+          }
+          &:nth-child(3) > a:before{
+            content: "\f108";
+          }
+          &:nth-child(4) > a:before{
+            content: "\f023";
+          }
+        }
+      }
+    }
+    .guests-content > div {
+      > ul{
+        > li{
+          &:nth-child(1) > a:before{
+            content: "\f007";
+          }
+          &:nth-child(2) > a:before{
+            content: "\f073";
+          }
+          &:nth-child(3) > a:before{
+            content: "\f09d";
+          }
+          &:nth-child(4) > a:before{
+            content: "\f05c";
+          }
+        }
+      }
+    }
+    .hosts-content > div {
+      > ul{
+        > li{
+          &:nth-child(1) > a:before{
+            content: "\f007";
+          }
+          &:nth-child(2) > a:before{
+            content: "\f040";
+          }
+          &:nth-child(3) > a:before{
+            content: "\f073";
+          }
+          &:nth-child(4) > a:before{
+            content: "\f09d";
+          }
+          &:nth-child(5) > a:before{
+            content: "\f046";
+          }
+          &:nth-child(6) > a:before{
+            content: "\f05c";
+          }
+          &:nth-child(7) > a:before{
+            content: "\f0c0";
+          }
+        }
+      }
+    }
     > ul {
       > li {
         width: 180px;
-        > a {
-          &:after {
-            font-family: 'FontAwesome', serif;
-            content: "\f105";
-            color: #00cca5;
-            float: right;
-          }
-          &:before {
-            font-family: FontAwesome, serif;
-            color: #666666;
-            margin-right: 12px;
-            width: 20px;
-            float: left;
-            text-align: center;
-            font-size: 20px;
-          }
-        }
-        &:nth-child(1) > a:before{
-          content: "\f277";
-        }
-        &:nth-child(2) > a:before{
-          content: "\f0ac";
-        }
-        &:nth-child(3) > a:before{
-          content: "\f108";
-        }
-        &:nth-child(4) > a:before{
-          content: "\f023";
-        }
       }
-
       .selected{
         margin-bottom: 10px;
         a{
@@ -481,9 +534,16 @@ hr {
     }
   }
   .row.getting-started-1,.row.getting-started-2, .row.getting-started-3,
-  .row.workspaces-1, .row.workspaces-2, .row.workspaces-3,
+  .row.workspaces-1, .row.workspaces-2, .row.workspaces-3,.row.workspaces-4, .row.workspaces-5, .row.workspaces-6,
   .row.countries-1,
-  .row.confidentiality-1{
+  .row.confidentiality-1,
+  .account-1,.account-2,.account-3,.account-4,.account-5,.account-6,.account-7,.account-8,
+  .bookings-1,.bookings-2,.bookings-3,.bookings-4,.bookings-5,.bookings-6,.bookings-7,.bookings-8,.bookings-9,.bookings-10,.bookings-11,.bookings-12,
+  .payments-1,.payments-2,.payments-3,
+  .cancellations-1,.cancellations-2,
+  .list-space-1,.list-space-2,.list-space-3,.list-space-4,.list-space-5,
+  .guests-content, .hosts-content,
+  .more-content{
     display: none;
   }
 }
@@ -511,6 +571,27 @@ hr {
 .fa.fa-lock:before{
   content: "\f023";
 }
+.fa.fa-user:before{
+  content: "\f007";
+}
+.fa.fa-calendar:before{
+  content: "\f073";
+}
+.fa.fa-times-circle-o:before{
+  content: "\f05c";
+}
+.fa.fa-pencil:before{
+  content: "\f040";
+}
+.fa.fa-credit-card:before{
+  content: "\f09d";
+}
+.fa.fa-check-square-o:before{
+  content: "\f046";
+}
+.fa.fa-flag:before{
+  content: "\f024";
+}
 .fa:before{
   font-family: FontAwesome, serif;
   color: #666666;
@@ -518,4 +599,13 @@ hr {
   width: 20px;
   text-align: center;
   font-size: 20px;
+}
+
+ul.answers{
+  padding-left: 25px;
+  li:before{
+    font-family: FontAwesome, serfif;
+    content: "\f111";
+    margin-right: 10px;
+  }
 }
