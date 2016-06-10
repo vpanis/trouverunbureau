@@ -134,7 +134,11 @@ angular
       return res
 
     $scope.calculate_space_total = () ->
-      return $scope.calculate_space_booking() + $scope.calculate_deposit()
+      return ($scope.calculate_space_booking() + $scope.calculate_deposit()) * 1.2
+
+    # TODO: CHANGE MAGIC NUMBER FOR ENV VARIABLE: VAT
+    $scope.calculate_vat = () ->
+      return ($scope.calculate_space_booking() + $scope.calculate_deposit()) * 0.2
 
     $scope.show_profile_modal = () ->
       $('#profile-modal').modal ->
