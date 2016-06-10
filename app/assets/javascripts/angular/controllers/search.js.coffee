@@ -204,6 +204,8 @@ angular.module('deskSpotting.search', ['ngCookies']).controller "SearchCtrl", [
       space_position = new google.maps.LatLng(parseFloat(space.latitude), parseFloat(space.longitude))
       marker = build_marker(space)
       $scope.markers[i] = new (google.maps.Marker)(marker)
+      $scope.markers[i].addListener 'click', ->
+        window.location = '/venues/'+space.venue_id+'?space_id='+space.id
       google.maps.event.addListener $scope.markers[i], 'mouseover', ->
         $scope.markers[i].setIcon $scope.active_icon
       google.maps.event.addListener $scope.markers[i], 'mouseout', ->
