@@ -23,7 +23,7 @@ RSpec.describe Space, type: :model do
   # Enums
   it {
     should define_enum_for(:s_types)
-    .with([:conference_room, :meeting_room, :private_office, :fixed_desk,
+    .with([:meeting_room, :private_office, :fixed_desk,
           :hot_desk, :communal_space, :home_office, :training_room])
   }
 
