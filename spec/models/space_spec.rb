@@ -37,7 +37,7 @@ RSpec.describe Space, type: :model do
   it { should validate_numericality_of(:week_minimum_unity).only_integer.is_greater_than_or_equal_to(1) }
 
   it { should validate_numericality_of(:month_minimum_unity).only_integer.is_greater_than_or_equal_to(1).is_less_than_or_equal_to(4) }
-  it { should validate_numericality_of(:month_to_month_minimum_unity).only_integer.is_greater_than_or_equal_to(1).is_less_than_or_equal_to(4) }
+  it { should validate_numericality_of(:month_to_month_minimum_unity).only_integer.is_greater_than_or_equal_to(1).is_less_than_or_equal_to(3) }
 
   describe '#month_to_month_as_of' do
     let(:examples) { { nil => 0, 0 => 0, 1 => 30, 3 => 90, 4 => 120 } }
