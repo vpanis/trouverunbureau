@@ -41,10 +41,10 @@ RSpec.describe Venue, type: :model do
   it { should_not validate_presence_of(:desks) }
 
   # Enums
-  it { should define_enum_for(:v_types).with([:coworking_space, :startup_office, :hotel, :corporate_office, :business_center,
+  it { should define_enum_for(:v_type).with([:coworking_space, :startup_office, :hotel, :corporate_office, :business_center,
                 :design_studio, :loft, :apartment, :house, :cafe, :restaurant]) }
-  it { should define_enum_for(:space_units).with([:square_mts, :square_foots]) }
-  it { should define_enum_for(:statuses).with([:creating, :active, :reported, :closed]) }
+  it { should define_enum_for(:space_unit).with([:square_mts, :square_foots]) }
+  it { should define_enum_for(:status).with([:creating, :active, :reported, :closed]) }
 
   # Numericality
   it do

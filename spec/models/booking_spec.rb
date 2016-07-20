@@ -21,12 +21,12 @@ RSpec.describe Booking, type: :model do
 
   # Enums
   it do
-    should define_enum_for(:b_types)
+    should define_enum_for(:b_type)
       .with([:hour, :day, :week, :month, :month_to_month])
   end
 
   it do
-    should define_enum_for(:states).with(
+    should define_enum_for(:state).with(
       [:pending_authorization, :pending_payment, :paid, :cancelled, :denied,
         :expired, :payment_verification, :refunding, :error_refunding])
   end
