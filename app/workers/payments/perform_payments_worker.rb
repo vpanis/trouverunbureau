@@ -53,12 +53,27 @@ module Payments
     end
 
     def calculate_fee(price, booking)
-      fee_rate = if (booking.b_type == 'month' or booking.b_type == 'month_to_month') and # paid at monthly intervals
-                    booking.payment.next_payout_at == booking.from # first payout
-        PayConf.deskspotting_fee
-      else
-        PayConf.deskspotting_fee2
+      # Minimum Time Frame 1 month = 20% for 1st month - 5% per month thereafter.
+      # Minimum Time Frame 2 months = 20% for 1st month 10% 2nd month - 5% per month thereafter
+      # Minimum Time Frame 3 months = 20% for 1st month, 10% 2nd month, 10% 3rd month, 5% thereafter.
+      # The minimum time frame on Month to Month Bookings cannot exceed 3 months.
+
+      fee_rate = PayConf.deskspotting_fee2
+
+      if (%w(month month_to_month).include? booking.b_type)
+        m2mmu = booking.space.month_to_month_minimum_unity
+        next_payout_at = booking.payment.try(:next_payout_at) || Date.today
+
+        fee_rate =  if next_payout_at == booking.from
+                      # first payout
+                      PayConf.deskspotting_fee
+                    elsif next_payout_at <= booking.from.advance(months: m2mmu)
+                      PayConf.deskspotting_fee2
+                    else
+                      PayConf.deskspotting_fee3
+                    end
       end
+
       floor_2d(fee_rate * price)
     end
 
