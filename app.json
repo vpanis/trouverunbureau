@@ -49,6 +49,9 @@
     "DESKSPOTTING_FEE2":{
       "required":true
     },
+    "DESKSPOTTING_FEE3":{
+      "required":true
+    },
     "DESKSPOTTING_PAYOUTS_ATTEMPTS":{
       "required":true
     },

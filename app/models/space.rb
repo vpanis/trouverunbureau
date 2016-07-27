@@ -23,8 +23,8 @@ class Space < ActiveRecord::Base
   validates :hour_minimum_unity, :day_minimum_unity, :week_minimum_unity,
             numericality: { only_integer: true, greater_than_or_equal_to: 1 }
 
-  validates :month_minimum_unity, :month_to_month_minimum_unity,
-            numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 4 }
+  validates :month_minimum_unity, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 4 }
+  validates :month_to_month_minimum_unity, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 3 }
 
   validate :at_least_one_price
 
