@@ -173,3 +173,5 @@ gem 'intercom-rails'
 gem 'meta-tags'
 gem 'non-stupid-digest-assets'
 gem 'mixpanel-ruby'
+gem 'table_print'
+
