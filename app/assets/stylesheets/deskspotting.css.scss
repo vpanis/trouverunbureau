@@ -932,6 +932,9 @@ h4.gray-subtitle {
     .amenity.elevators {
       @include at2x('venue_profile_a_elevators', 40px, 40px);
     }
+    .amenity.dvd {
+      @include at2x('venue_profile_a_dvd', 40px, 40px);
+    }
     .amenity.team_bookings {
       @include at2x('venue_profile_a_team_bookings', 40px, 40px);
     }
@@ -964,6 +967,9 @@ h4.gray-subtitle {
     }
     .amenity.outdoor_space {
       @include at2x('venue_profile_a_outdoor-space', 40px, 40px);
+    }
+    .amenity.nap_area {
+      @include at2x('venue_profile_a_nap_area', 40px, 40px);
     }
     .amenity.fax {
       @include at2x('venue_profile_a_fax', 40px, 40px);
@@ -1000,6 +1006,33 @@ h4.gray-subtitle {
     }
     .amenity.cleaning_service {
       @include at2x('venue_profile_a_cleaning_service', 40px, 40px);
+    }
+    .amenity.first_aid {
+      @include at2x('venue_profile_a_first_aid', 40px, 40px);
+    }
+    .amenity.snacks {
+      @include at2x('venue_profile_a_snacks', 40px, 40px);
+    }
+    .amenity.coffee_station {
+      @include at2x('venue_profile_a_coffee_station', 40px, 40px);
+    }
+    .amenity.refrigerator {
+      @include at2x('venue_profile_a_refrigerator', 40px, 40px);
+    }
+    .amenity.storage {
+      @include at2x('venue_profile_a_storage', 40px, 40px);
+    }
+    .amenity.microwave {
+      @include at2x('venue_profile_a_microwave', 40px, 40px);
+    }
+    .amenity.locker {
+      @include at2x('venue_profile_a_locker', 40px, 40px);
+    }
+    .amenity.individual_bookings {
+      @include at2x('venue_profile_a_individual_bookings', 40px, 40px);
+    }
+    .amenity.videoconference {
+      @include at2x('venue_profile_a_videoconference', 40px, 40px);
     }
   }
 }

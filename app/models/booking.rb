@@ -99,18 +99,28 @@ class Booking < ActiveRecord::Base
   end
 
   # 20% for hourly, daily, and for the first month of monthly/month-to-month rents
-  # 10% for each month or part thereof after the first month of monthly/month-to-month rents
+  # Minimum Time Frame 1 month = 20% for 1st month - 5% per month thereafter.
+  # Minimum Time Frame 2 months = 20% for 1st month 10% 2nd month - 5% per month thereafter
+  # Minimum Time Frame 3 months = 20% for 1st month, 10% 2nd month, 10% 3rd month, 5% thereafter.
+  # The minimum time frame on Month to Month Bookings cannot exceed 3 months.
   def calculate_fee
     self.fee = 0
 
     if unit_price_quantity > 0
       first_unit_price = (1.0 / unit_price_quantity) * price
 
-      remainder_fee_factor =  if %w(month month_to_month).include? b_type
-                                PayConf.deskspotting_fee2.to_f
-                              else
-                                PayConf.deskspotting_fee.to_f
-                              end
+      remainder_fee_factor = PayConf.deskspotting_fee.to_f
+      if %w(month month_to_month).include? b_type
+        m2mmu = self.space.month_to_month_minimum_unity
+        next_payout_at = self.payment.try(:next_payout_at) || Date.today
+
+        remainder_fee_factor = if next_payout_at <= from.advance(months: m2mmu)
+          PayConf.deskspotting_fee2
+        else
+          PayConf.deskspotting_fee3
+        end
+      end
+
       remainder_price = price - first_unit_price
 
       self.fee = PayConf.deskspotting_fee * first_unit_price

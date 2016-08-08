@@ -20,7 +20,7 @@
           <div class="separator long" style="  background-color: #ffe111; height: 2px; "></div>
           <div style="  display: block; text-align: center; margin-top: 15px;">
             <div class="date" style="display: inline-block; text-align: center; margin-right: 20px; ">
-              <%= @payment.receipt.created_at.to_date %>
+              <%= @payment.receipt.created_at.strftime("%d-%m-%Y") %>
             </div>
             <div class="bar" style=" display: inline-block; width: 2px; background-color: #efefef; height: 25px;"></div>
             <div class="receipt-number" style="display: inline-block; margin: 0 20px; ">
@@ -389,7 +389,41 @@
             <%- end %>
           </div>
         </div>
-
+        <%= if @booking.month_to_month? %>
+          <div class="mtm-payment-container">
+            <div class="guest">
+              <div class="title">t('receipt.upcoming_payouts')</div>
+              <div class="separator long">
+                <div class="box">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>t('receipt.payout')</td>
+                        <td>t('receipt.date')</td>
+                        <td>t('receipt.amount')</td>
+                      </tr>
+                      <tr>
+                        <td>2nd</td>
+                        <td>12/23/15</td>
+                        <td>£ 295,50</td>
+                      </tr>
+                      <tr>
+                        <td>3rd</td>
+                        <td>12/23/15</td>
+                        <td>£ 295,50</td>
+                      </tr>
+                      <tr>
+                        <td>4th</td>
+                        <td>12/23/15</td>
+                        <td>£ 295,50</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        <%= end %>
       <!-- END CONTENT -->
 
         <p style="line-height: 30px; padding: 25px 0;">

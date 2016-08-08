@@ -7,7 +7,7 @@ gem 'rails', '~> 4.1.0'
 gem 'google-webfonts-rails', '~>0.0.4'
 
 # Use postgresql as the database for Active Record
-gem 'pg', '~>0.17.1'
+gem 'pg', '~>0.18'
 
 # To extract sensitive configuration
 gem 'app_configuration', '~>0.0.3'
@@ -164,8 +164,8 @@ group :test do
   gem 'simplecov', require: false
 
   gem 'rspec-sidekiq'
-  gem 'shoulda-callback-matchers', '~> 1.1.1'
-  gem 'shoulda-matchers'
+  gem 'shoulda-callback-matchers', '~> 1.1.4'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 gem 'dotenv-rails'
@@ -173,3 +173,5 @@ gem 'intercom-rails'
 gem 'meta-tags'
 gem 'non-stupid-digest-assets'
 gem 'mixpanel-ruby'
+gem 'table_print'
+

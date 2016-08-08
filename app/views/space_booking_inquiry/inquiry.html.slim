@@ -236,6 +236,11 @@
           td
             = t('booking_inquiry.free')
         tr
+          td VAT
+          td
+            = "#{t("currency.#{@space.venue.currency.downcase}.symbol")}"
+            | {{calculate_vat()}}
+        tr
           td
             = t('booking_inquiry.total')
           td

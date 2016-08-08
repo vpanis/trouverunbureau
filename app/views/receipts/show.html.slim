@@ -344,4 +344,31 @@
                     = t('receipt.receipt_number')
                   span
                     = payout_to_user.receipt.id
+    - if @booking.b_type == 'month_to_month'
+      .mtm-payment-container
+        .guest
+          .title
+            = t('receipt.upcoming_payouts')
+          .separator.long
+            .box
+              table
+                tr
+                  td
+                    = t('receipt.payout')
+                  td
+                    = t('receipt.date')
+                  td
+                    = t('receipt.amount')
+                tr
+                  td 2nd
+                  td 12/23/15
+                  td £ 295,50
+                tr
+                  td 3rd
+                  td 12/23/15
+                  td £ 295,50
+                tr
+                  td 4th
+                  td 12/23/15
+                  td £ 295,50
   .col-md-1

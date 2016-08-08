@@ -175,9 +175,22 @@ span, .date, .receipt-number, .contact {
   text-align: center;
 }
 
+/** MONTH TO MONTH **/
+.mtm-payment-container {
+  table {
+    width: 100%;
+    td {
+      font-weight: 300;
+      color: #808184;
+      letter-spacing: 1px;
+      padding: 10px 0;
+    }
+  }
+}
+
 /* GUEST AND PAYMENT */
 
-.guest-payment-container {
+.guest-payment-container, .mtm-payment-container {
   margin-top: 25px;
 }
 
