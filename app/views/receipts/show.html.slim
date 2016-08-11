@@ -69,7 +69,7 @@
               = t('receipt.deposit')
             p.value
               = "#{t("currency.#{@booking.space.venue.currency.downcase}.symbol")}#{@booking.deposit}"
-          div.plus class="col-md-#{(@booking.owner == current_represented) ? '4' : '3'}"
+          div.plus class="invisible col-md-#{(@booking.owner == current_represented) ? '4' : '3'}"
             p.concept
               = t('receipt.vat')
             p.value()
@@ -359,7 +359,7 @@
           .separator.long
             .box
               / TODO SANTI: Please update this values with real info
-              table
+              table.hidden
                 tr
                   td
                     = t('receipt.payout')
