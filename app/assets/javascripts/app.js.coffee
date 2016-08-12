@@ -2,6 +2,7 @@
 @deskspotting = angular.module('deskSpotting', [
   'restangular',
   'ui.bootstrap',
+  'deskSpotting.home',
   'deskSpotting.inbox',
   'deskSpotting.venue_reviews',
   'deskSpotting.client_reviews',
