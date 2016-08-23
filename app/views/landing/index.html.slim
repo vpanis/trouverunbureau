@@ -5,7 +5,7 @@
       mixpanel.identify(user_id.toString())
     mixpanel.track("Navigation: Homepage")
 
-.landing-page
+.landing-page#controller ng-controller="HomeCtrl"
   .section#header
     = render 'header_section'
   .section#features
