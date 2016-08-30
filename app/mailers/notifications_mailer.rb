@@ -70,6 +70,16 @@ class NotificationsMailer < ActionMailer::Base
     send_i18n_email([@user], 'welcome_email.subject')
   end
 
+  def aig_claim_email(booking_id)
+    # attachments['attachment.pdf'] = File.read('attachment.pdf')
+    booking = prepare_receipt_data(booking_id)
+
+    aig_email = User.new(email: ENV['AIG_CLAIM_EMAIL'])
+
+    send_i18n_email([aig_email], 'aig_claim_email.subject',
+                    booking_id: booking.id, receipts: [1,2,3])
+  end
+
   private
 
   def prepare_message_data(id)

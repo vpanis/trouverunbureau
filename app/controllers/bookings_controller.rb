@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
   inherit_resources
   include BookingsHelper
   before_action :authenticate_user!
-  before_action :retrieve_booking, only: [:destroy, :claim_deposit, :cancel_paid_booking]
+  before_action :retrieve_booking, only: [:destroy, :claim_deposit, :make_claim, :cancel_paid_booking]
 
   def paid_bookings
     retrieve_bookings([], 'retrieve_bookings')
@@ -28,6 +28,17 @@ class BookingsController < ApplicationController
     @booking.update_attributes(hold_deposit: true)
     return redirect_to :venue_paid_bookings_bookings if
       params[:from_bookings] == 'venue_paid_bookings'
+    redirect_to :paid_bookings_bookings
+  end
+
+  def make_claim
+    return render_forbidden unless can_make_claim?(@booking) && !@booking.aig_claim_made?
+
+    Payments::MakeAigClaimWorker.perform_async(@booking.id)
+
+    return redirect_to :venue_paid_bookings_bookings if
+      params[:from_bookings] == 'venue_paid_bookings'
+
     redirect_to :paid_bookings_bookings
   end
 

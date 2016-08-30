@@ -15,11 +15,12 @@
         p.value()
           | {{selected_booking.space.currency_symbol}}
           | {{selected_booking.deposit}}
-      .col-md-2.plus
+      .col-md-2.plus.invisible
         p.concept.capitalize VAT
         p.value()
           | {{selected_booking.space.currency_symbol}}
           | 20
+          / TODO SANTI: please update this 20 with the real VAT
       .col-md-4.minus
         .icon.info.icon-black.pointer#fee-popover tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="#{t('inbox.info_fee')}"
         p.concept.capitalize = t('inbox.ds_commission')
@@ -48,6 +49,12 @@
         p.value()
           | {{selected_booking.space.currency_symbol}}
           | {{selected_booking.deposit}}
+      .col-md-3.plus.invisible
+        p.concept.capitalize VAT
+        p.value()
+          | {{selected_booking.space.currency_symbol}}
+          | 20
+          / TODO SANTI: please update this 20 with the real VAT
   .col-md-3.total
     p.concept.uppercase = t('inbox.total_rental')
     p.value()

@@ -30,6 +30,7 @@ angular.module('deskSpotting.search', ['ngCookies']).controller "SearchCtrl", [
       startingDay: 1
       show_weeks: false
     $scope.format = 'dd-MM-yyyy'
+    $scope.flagReload = false
 
     $scope.getSpaces = () ->
       show_spinner()
@@ -156,6 +157,7 @@ angular.module('deskSpotting.search', ['ngCookies']).controller "SearchCtrl", [
           calculate_bounds(results)
         else
           console.log('Geocode was not successful for the following reason: ' + status)
+        $scope.flagReload = true
         initialize_map()
         $scope.getSpaces()
         return
@@ -185,6 +187,11 @@ angular.module('deskSpotting.search', ['ngCookies']).controller "SearchCtrl", [
       ne = $scope.map.getBounds().getNorthEast()
       sw = $scope.map.getBounds().getSouthWest()
       setBoundsToScope(ne, sw)
+      if $scope.flagReload == true
+        $scope.flagReload = false
+        google.maps.event.addListenerOnce $scope.map, 'bounds_changed', ->
+          bounds_changed_handler()
+        return
       $scope.getSpaces()
       return
 

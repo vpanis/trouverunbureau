@@ -16,6 +16,10 @@ module BookingsHelper
     owner?(booking, own) && !deleted?(booking, own) && (booking.cancelled? || finished?(booking))
   end
 
+  def can_make_claim?(booking, own = true)
+    !venue_owner?(booking) && booking.space.venue.country_code == 'FR'
+  end
+
   def can_claim_deposit?(booking)
     venue_owner?(booking) && started?(booking) && !booking.hold_deposit &&
     booking.payment.present? && booking.payment.deposit_amount_in_wallet > 0

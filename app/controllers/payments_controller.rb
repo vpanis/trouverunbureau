@@ -1,6 +1,7 @@
 class PaymentsController < ApplicationController
   include SelectOptionsHelper
   before_action :authenticate_user!
+  before_action :check_user_identity, only: [:new, :create]
 
   # GET /payments/new?booking_id
   def new
@@ -32,6 +33,13 @@ class PaymentsController < ApplicationController
   end
 
   private
+
+  def check_user_identity
+    unless current_represented.identity_confirmed?
+      flash[:alert] = 'You MUST confirm your identity before Booking a workspace.'
+      return redirect_to inbox_user_path(@current_represented)
+    end
+  end
 
   def payment_requeriments
     case @payment_method

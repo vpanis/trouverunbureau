@@ -97,7 +97,8 @@
   .receipt,
   .cancel,
   .claim-deposit,
-  .delete {
+  .delete,
+  .insurance-claim, .insurance-claim-disabled {
     display: block;
     padding-left: 20px;
     background-repeat: no-repeat;
@@ -119,4 +120,11 @@
   .claim-deposit {
     @include at2x('ic_booking_deposit', 16px, 16px);
   }
+  .insurance-claim {
+    @include at2x('ic_booking_make_claim', 16px, 16px);
+  }
+    .insurance-claim-disabled {
+      @include at2x('ic_booking_make_claim-disabled', 16px, 16px);
+      pointer-events: none;
+    }
 }

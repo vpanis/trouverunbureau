@@ -59,18 +59,25 @@
     .row.header
       .col-xs-9.detail
         .row
-          div class="col-md-#{(@booking.owner == current_represented)? '6' : '4'}"
+          div class="col-md-#{(@booking.owner == current_represented)? '4' : '3'}"
             p.concept
               = t('receipt.space_rental')
             p.value
               = "#{t("currency.#{@booking.space.venue.currency.downcase}.symbol")}#{@booking.price}"
-          div.plus class="col-md-#{(@booking.owner == current_represented)? '6' : '4'}"
+          div.plus class="col-md-#{(@booking.owner == current_represented)? '4' : '3'}"
             p.concept
               = t('receipt.deposit')
             p.value
               = "#{t("currency.#{@booking.space.venue.currency.downcase}.symbol")}#{@booking.deposit}"
+          div.plus class="invisible col-md-#{(@booking.owner == current_represented) ? '4' : '3'}"
+            p.concept
+              = t('receipt.vat')
+            p.value()
+              | {{selected_booking.space.currency_symbol}}
+              | 20
+              / TODO SANTI: please check if this is ok and update this 20 with the real VAT
           - unless @booking.owner == current_represented
-            div.minus class="col-md-#{(@booking.owner == current_represented)? '6' : '4'}"
+            div.minus class="col-md-#{(@booking.owner == current_represented)? '4' : '3'}"
               p.concept
                 = t('receipt.commission')
               p.value
@@ -351,7 +358,8 @@
             = t('receipt.upcoming_payouts')
           .separator.long
             .box
-              table
+              / TODO SANTI: Please update this values with real info
+              table.hidden
                 tr
                   td
                     = t('receipt.payout')
@@ -361,14 +369,20 @@
                     = t('receipt.amount')
                 tr
                   td 2nd
-                  td 12/23/15
-                  td £ 295,50
+                  td
+                    = (@payment.updated_at + 30.days).to_date
+                  td
+                    = "#{t("currency.#{@booking.space.venue.currency.downcase}.symbol")} #{@payouts_to_user.first.amount}"
                 tr
                   td 3rd
-                  td 12/23/15
-                  td £ 295,50
+                  td
+                    = (@payment.updated_at + 60.days).to_date
+                  td
+                    = "#{t("currency.#{@booking.space.venue.currency.downcase}.symbol")} #{@payouts_to_user.first.amount}"
                 tr
                   td 4th
-                  td 12/23/15
-                  td £ 295,50
+                  td
+                    = (@payment.updated_at + 90.days).to_date
+                  td
+                    = "#{t("currency.#{@booking.space.venue.currency.downcase}.symbol")} #{@payouts_to_user.first.amount}"
   .col-md-1

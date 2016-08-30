@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160530155154) do
+ActiveRecord::Schema.define(version: 20160829224521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20160530155154) do
     t.string   "main_guest_email"
     t.string   "main_guest_name"
     t.string   "confirmation_code"
+    t.boolean  "aig_claim_made",     default: false
   end
 
   add_index "bookings", ["owner_id", "owner_type"], name: "index_bookings_on_owner_id_and_owner_type", using: :btree
