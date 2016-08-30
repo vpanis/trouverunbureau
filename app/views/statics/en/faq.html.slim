@@ -12,11 +12,11 @@
     .menu-faq
       ul
         li
-          a.active href="javascript:void(0);" onclick="javascript:reset(this);" GENERAL
+          a.active href="javascript:void(0);" onclick="javascript:reset(this);" #{t('help.general.title')}
         li
-          a href="javascript:void(0);" onclick="javascript:reset(this);" GUESTS
+          a href="javascript:void(0);" onclick="javascript:reset(this);" #{t('help.guests.title')}
         li
-          a href="javascript:void(0);" onclick="javascript:reset(this);" HOSTS
+          a href="javascript:void(0);" onclick="javascript:reset(this);" #{t('help.host.title')}
     .row
       .col-md-3
         #sidebar-faq
@@ -24,674 +24,670 @@
             .col-md-12
               ul
                 li
-                  a href="javascript:void(0)" onclick="showSubMenu(this);" Getting Started
+                  a href="javascript:void(0)" onclick="showSubMenu(this);" = t('help.general.getting_started')
                   ul
                     li
-                      a href="javascript:void(0);" onclick="showContent('getting-started-1', this);" Why Use DeskSpotting?
+                      a href="javascript:void(0);" onclick="showContent('getting-started-1', this);" = t('help.general.why_use_deskspotting.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('getting-started-2', this);" Why Host?
+                      a href="javascript:void(0);" onclick="showContent('getting-started-2', this);" = t('help.general.why_host.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('getting-started-3', this);" What's a DeskSpotter?
+                      a href="javascript:void(0);" onclick="showContent('getting-started-3', this);" = t('help.general.whats_a_deskspotter.title')
                 li
-                  a href="javascript:void(0);" onclick="showSubMenu(this);" Countries
+                  a href="javascript:void(0);" onclick="showSubMenu(this);" = t('help.general.countries')
                   ul
                     li
-                      a href="javascript:void(0);" onclick="showContent('countries-1', this);" In which countries can I use DeskSpotting?
+                      a href="javascript:void(0);" onclick="showContent('countries-1', this);" = t('help.general.in_which_country.title')
                 li
-                  a href="javascript:void(0);" onclick="showSubMenu(this);" Workspaces
+                  a href="javascript:void(0);" onclick="showSubMenu(this);" = t('help.general.workspaces')
                   ul
                     li
-                      a href="javascript:void(0);" onclick="showContent('workspaces-1', this);" What is a Hot Desk?
+                      a href="javascript:void(0);" onclick="showContent('workspaces-1', this);" = t('help.general.what_is_a_hot_desk.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('workspaces-2', this);" What's Fixed Desk?
+                      a href="javascript:void(0);" onclick="showContent('workspaces-2', this);" = t('help.general.what_is_a_fixed_desk.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('workspaces-3', this);" What's Private Office?
+                      a href="javascript:void(0);" onclick="showContent('workspaces-3', this);" = t('help.general.what_is_a_private_office.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('workspaces-4', this);" What’s a Home Office?
+                      a href="javascript:void(0);" onclick="showContent('workspaces-4', this);" = t('help.general.what_is_a_home_office.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('workspaces-5', this);" What’s a Communal Space?
+                      a href="javascript:void(0);" onclick="showContent('workspaces-5', this);" = t('help.general.what_is_a_communal_space.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('workspaces-6', this);" What’s the difference between a Meeting Room and a Conference Room?
+                      a href="javascript:void(0);" onclick="showContent('workspaces-6', this);" = t('help.general.meeting_room_difference.title')
                 li
-                  a href="javascript:void(0);" onclick="showSubMenu(this);" Confidentiality
+                  a href="javascript:void(0);" onclick="showSubMenu(this);" = t('help.general.confidentiality')
                   ul
                     li
-                      a href="javascript:void(0);" onclick="showContent('confidentiality-1', this);" How does DeskSpotting handle my payment/payout details?
+                      a href="javascript:void(0);" onclick="showContent('confidentiality-1', this);" = t('help.general.deskspotting_handle_payout_details.title')
           .row.guests-content
             .col-md-12
               ul
                 li
-                  a href="javascript:void(0)" onclick="showSubMenu(this);" Account
+                  a href="javascript:void(0)" onclick="showSubMenu(this);" = t('help.guests.account')
                   ul
                     li
-                      a href="javascript:void(0);" onclick="showContent('account-1', this);" How do I Sign Up?
+                      a href="javascript:void(0);" onclick="showContent('account-1', this);" = t('help.guests.how_do_i_sign_up.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('account-2', this);" How do I edit my Profile?
+                      a href="javascript:void(0);" onclick="showContent('account-2', this);" = t('help.guests.how_do_i_edit_profile.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('account-3', this);" What do I do if I forgot my password to log in?
+                      a href="javascript:void(0);" onclick="showContent('account-3', this);" = t('help.guests.how_to_reset_password.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('account-4', this);" How do I invite friends to join me on DeskSpotting?
+                      a href="javascript:void(0);" onclick="showContent('account-4', this);" = t('help.guests.how_do_i_invite_friends.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('account-5', this);" How do I contact the DeskSpotting team?
+                      a href="javascript:void(0);" onclick="showContent('account-5', this);" = t('help.guests.how_do_i_contact.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('account-6', this);" What is an Organization?
+                      a href="javascript:void(0);" onclick="showContent('account-6', this);" = t('help.guests.what_is_an_organization.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('account-7', this);" How do I add Managers to my organization?
+                      a href="javascript:void(0);" onclick="showContent('account-7', this);" = t('help.guests.how_do_i_add_managers.title')
                 li
-                  a href="javascript:void(0);" onclick="showSubMenu(this);" Bookings
+                  a href="javascript:void(0);" onclick="showSubMenu(this);" = t('help.guests.bookings')
                   ul
                     li
-                      a href="javascript:void(0);" onclick="showContent('bookings-1', this);" How do I find a workspace?
+                      a href="javascript:void(0);" onclick="showContent('bookings-1', this);" = t('help.guests.how_do_i_find_workspace.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('bookings-2', this);" What type of Venues can I work in?
+                      a href="javascript:void(0);" onclick="showContent('bookings-2', this);" = t('help.guests.what_type_of_venues.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('bookings-3', this);" For what timeframes can I book a workspace?
+                      a href="javascript:void(0);" onclick="showContent('bookings-3', this);" = t('help.guests.timeframe_for_workspace.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('bookings-4', this);" How do I book a workspace?
+                      a href="javascript:void(0);" onclick="showContent('bookings-4', this);" = t('help.guests.how_do_i_book_a_workspace.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('bookings-5', this);" Does DeskSpotting charge booking fees to Guests?
+                      a href="javascript:void(0);" onclick="showContent('bookings-5', this);" = t('help.guests.booking_fees_to_guests.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('bookings-6', this);" On DeskSpotting, can I run search specifying the professions I would like to work with?
+                      a href="javascript:void(0);" onclick="showContent('bookings-6', this);" = t('help.guests.search_by_professions.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('bookings-7', this);" What are Month to Month bookings?
+                      a href="javascript:void(0);" onclick="showContent('bookings-7', this);" = t('help.guests.month_to_month_bookings.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('bookings-8', this);" How to stop a Month to Month booking?
+                      a href="javascript:void(0);" onclick="showContent('bookings-8', this);" = t('help.guests.how_to_stop_month_to_month.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('bookings-9', this);" For Monthly Bookings how many days does DeskSpotting count?
+                      a href="javascript:void(0);" onclick="showContent('bookings-9', this);" = t('help.guests.monthly_bookings_days.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('bookings-10', this);" How do I know if my booking is made?
+                      a href="javascript:void(0);" onclick="showContent('bookings-10', this);" = t('help.guests.how_do_i_know_booking_was_made.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('bookings-11', this);" Can I contact the Host before booking?
+                      a href="javascript:void(0);" onclick="showContent('bookings-11', this);" = t('help.guests.contact_host_before_booking.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('bookings-12', this);" Booking a Workspace on DeskSpotting is it subletting?
+                      a href="javascript:void(0);" onclick="showContent('bookings-12', this);" = t('help.guests.booking_a_workspace_is_subletting.title')
                 li
-                  a href="javascript:void(0);" onclick="showSubMenu(this);" Payments
+                  a href="javascript:void(0);" onclick="showSubMenu(this);" = t('help.guests.payments')
                   ul
                     li
-                      a href="javascript:void(0);" onclick="showContent('payments-1', this);" When am I charged?
+                      a href="javascript:void(0);" onclick="showContent('payments-1', this);" = t('help.guests.when_i_am_charged.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('payments-2', this);" What is an Escrow Account?
+                      a href="javascript:void(0);" onclick="showContent('payments-2', this);" = t('help.guests.what_is_escrow.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('payments-3', this);" How does DeskSpotting handle deposits?
+                      a href="javascript:void(0);" onclick="showContent('payments-3', this);" = t('help.guests.deskspotting_handle_deposits.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('payments-4', this);" Credit/Debit card information.
+                      a href="javascript:void(0);" onclick="showContent('payments-4', this);" = t('help.guests.card_information.title')
                 li
-                  a href="javascript:void(0);" onclick="showSubMenu(this);" Cancellations
+                  a href="javascript:void(0);" onclick="showSubMenu(this);" = t('help.guests.cancellations')
                   ul
                     li
-                      a href="javascript:void(0);" onclick="showContent('cancellations-1', this);" How do I cancel a reservation?
+                      a href="javascript:void(0);" onclick="showContent('cancellations-1', this);" = t('help.guests.how_do_i_cancel_reservations.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('cancellations-2', this);" Cancellation Policy
+                      a href="javascript:void(0);" onclick="showContent('cancellations-2', this);" = t('help.guests.cancellation_policy.title')
           .row.hosts-content
             .col-md-12
               ul
                 li
-                  a href="javascript:void(0)" onclick="showSubMenu(this);" Account
+                  a href="javascript:void(0)" onclick="showSubMenu(this);" = t('help.host.account')
                   ul
                     li
-                      a href="javascript:void(0);" onclick="showContent('account-1', this);" How do I Sign Up?
+                      a href="javascript:void(0);" onclick="showContent('account-1', this);" = t('help.host.how_do_i_sign_up.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('account-2', this);" How do I edit my Profile?
+                      a href="javascript:void(0);" onclick="showContent('account-2', this);" = t('help.host.how_do_i_edit_profile.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('account-3', this);" What do I do if I forgot my password to log in?
+                      a href="javascript:void(0);" onclick="showContent('account-3', this);" = t('help.host.how_to_reset_password.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('account-4', this);" How do I edit my payout details?
+                      a href="javascript:void(0);" onclick="showContent('account-4', this);" = t('help.host.how_do_i_edit_payout_details.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('account-5', this);" How do I contact the DeskSpotting team?
+                      a href="javascript:void(0);" onclick="showContent('account-5', this);" = t('help.host.how_do_i_contact.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('account-6', this);" Can more than one person manage a venue?
+                      a href="javascript:void(0);" onclick="showContent('account-6', this);" = t('help.host.can_more_than_one_person_manage.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('account-7', this);" How do I add a Manager to my Oganization?
+                      a href="javascript:void(0);" onclick="showContent('account-7', this);" = t('help.host.how_do_i_add_managers.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('account-8', this);" What is the difference between an Owner and an Admin as a manager of an Organization?
+                      a href="javascript:void(0);" onclick="showContent('account-8', this);" = t('help.host.difference_between_owner_and_admin.title')
                 li
-                  a href="javascript:void(0);" onclick="showSubMenu(this);" List your space
+                  a href="javascript:void(0);" onclick="showSubMenu(this);" = t('help.host.list_your_space')
                   ul
                     li
-                      a href="javascript:void(0);" onclick="showContent('list-space-1', this);" Booking a Workspace on DeskSpotting is it subletting?
+                      a href="javascript:void(0);" onclick="showContent('list-space-1', this);" = t('help.host.booking_a_workspace_is_subletting.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('list-space-2', this);" Tips on Listing your space on DeskSpotting
+                      a href="javascript:void(0);" onclick="showContent('list-space-2', this);" = t('help.host.tips_on_listing_your_space.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('list-space-3', this);" Can I inform my Facebook and Linkedin networks of the spaces that I have listed on DeskSpotting?
+                      a href="javascript:void(0);" onclick="showContent('list-space-3', this);" = t('help.host.inform_social_networks.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('list-space-4', this);" How do I get my workspaces featured on DeskSpotting?
+                      a href="javascript:void(0);" onclick="showContent('list-space-4', this);" = t('help.host.how_do_i_get_workspaces_featured.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('list-space-5', this);" What Workspaces are best suited for bookings and for what use?
+                      a href="javascript:void(0);" onclick="showContent('list-space-5', this);" = t('help.host.bestsuited_workspaces_for_bookings.title')
                 li
-                  a href="javascript:void(0);" onclick="showSubMenu(this);" Bookings
+                  a href="javascript:void(0);" onclick="showSubMenu(this);" = t('help.host.bookings')
                   ul
                     li
-                      a href="javascript:void(0);" onclick="showContent('bookings-1', this);" Before Accepting a Booking Inquiry.
+                      a href="javascript:void(0);" onclick="showContent('bookings-1', this);" = t('help.host.before_accepting_booking_inquiry.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('bookings-2', this);" How can I make a special offer to a Guest?
+                      a href="javascript:void(0);" onclick="showContent('bookings-2', this);" = t('help.host.special_offer_to_guest.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('bookings-3', this);" How to stop a Month to Month booking.
+                      a href="javascript:void(0);" onclick="showContent('bookings-3', this);" = t('help.host.how_to_stop_month_to_month.title')
                 li
-                  a href="javascript:void(0);" onclick="showSubMenu(this);" Payments
+                  a href="javascript:void(0);" onclick="showSubMenu(this);" = t('help.host.payments')
                   ul
                     li
-                      a href="javascript:void(0);" onclick="showContent('payments-1', this);" When and how is a Host Paid?
+                      a href="javascript:void(0);" onclick="showContent('payments-1', this);" = t('help.host.when_and_how_is_a_host_paid.title')
                 li
-                  a href="javascript:void(0);" onclick="showSubMenu(this);" Service Fees
+                  a href="javascript:void(0);" onclick="showSubMenu(this);" = t('help.host.insurance')
                   ul
                     li
-                      a href="javascript:void(0);" onclick="showContent('service-fees-1', this);" What are DeskSpotting’s Service Fees?
+                      a href="javascript:void(0);" onclick="showContent('insurance-1', this);" = t('help.host.insurance_coverage.title')
+                    li
+                      a href="javascript:void(0);" onclick="showContent('insurance-2', this);" = t('help.host.what_does_this_insurance_covers.title')
                 li
-                  a href="javascript:void(0);" onclick="showSubMenu(this);" Cancellations
+                  a href="javascript:void(0);" onclick="showSubMenu(this);" = t('help.host.service_fees')
                   ul
                     li
-                      a href="javascript:void(0);" onclick="showContent('cancellations-1', this);" How do I cancel a reservation?
-                    li
-                      a href="javascript:void(0);" onclick="showContent('cancellations-2', this);" What happens if I as a host cancel a reservation prior to a Guest’s Check-In?
+                      a href="javascript:void(0);" onclick="showContent('service-fees-1', this);" = t('help.host.deskspotting_fees.title')
                 li
-                  a href="javascript:void(0);" onclick="showSubMenu(this);" Referral program
+                  a href="javascript:void(0);" onclick="showSubMenu(this);" = t('help.host.cancellations')
                   ul
                     li
-                      a href="javascript:void(0);" onclick="showContent('referral-program-1', this);" Does DeskSpoting have a referral program?
+                      a href="javascript:void(0);" onclick="showContent('cancellations-1', this);" = t('help.host.how_do_i_cancel_reservations.title')
                     li
-                      a href="javascript:void(0);" onclick="showContent('referral-program-2', this);" How do I invite friends to join me on DeskSpotting?
+                      a href="javascript:void(0);" onclick="showContent('cancellations-2', this);" = t('help.host.if_hosts_cancel_reservation_prior_to_checkin.title')
+                li
+                  a href="javascript:void(0);" onclick="showSubMenu(this);" = t('help.host.referal_program')
+                  ul
+                    li
+                      a href="javascript:void(0);" onclick="showContent('referral-program-1', this);" = t('help.host.does_deskspotting_have_referal_program.title')
+                    li
+                      a href="javascript:void(0);" onclick="showContent('referral-program-2', this);" = t('help.host.how_do_i_invite_friends.title')
       .col-md-9
         .row.general-content
           .col-md-12
             .content-faq
-              h2.content-title Popular topics
+              h2.content-title = t('help.general.popular_topics')
               .row.general
                 .col-md-6
                   .item
                     i.fa.fa-flag
-                    h2 Getting Started
+                    h2 = t('help.general.getting_started')
                     ul
                       li
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('getting-started-1', this);" Why Use DeskSpotting?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('getting-started-1', this);" = t('help.general.why_use_deskspotting.title')
                       li
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('getting-started-2', this);" Why Host?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('getting-started-2', this);" = t('help.general.why_host.title')
                       li
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('getting-started-3', this);" What's a DeskSpotter?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('getting-started-3', this);" = t('help.general.whats_a_deskspotter.title')
 
                 .col-md-6
                   .item
                     i.fa.fa-globe
-                    h2 Countries
+                    h2 = t('help.general.countries')
                     ul
                       li
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('countries-1', this);" In which countries can I use DeskSpotting?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('countries-1', this);" = t('help.general.in_which_country.title')
               .row.general
                 .col-md-6
                   .item
                     i.fa.fa-desktop
-                    h2 Workspaces
+                    h2 = t('help.general.workspaces')
                     ul
                       li
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('workspaces-1', this);" What is a Hot Desk?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('workspaces-1', this);" = t('help.general.what_is_a_hot_desk.title')
                       li
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('workspaces-2', this);" What's Fixed Desk?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('workspaces-2', this);" = t('help.general.what_is_a_fixed_desk.title')
                       li
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('workspaces-3', this);" What's Private Office?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('workspaces-3', this);" = t('help.general.what_is_a_private_office.title')
                       li
-                        a.more href="javascript:void(0);" More
+                        a.more href="javascript:void(0);" = t('help.more')
                       li.more-content
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('workspaces-4', this);" What’s a Home Office?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('workspaces-4', this);" = t('help.general.what_is_a_home_office.title')
                       li.more-content
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('workspaces-5', this);" What’s a Communal Space?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('workspaces-5', this);" = t('help.general.what_is_a_communal_space.title')
                       li.more-content
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('workspaces-6', this);" What’s the difference between a Meeting Room and a Conference Room?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('workspaces-6', this);" = t('help.general.meeting_room_difference.title')
                 .col-md-6
                   .item
                     i.fa.fa-lock
-                    h2 Confidentiality
+                    h2 = t('help.general.confidentiality')
                     ul
                       li
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('confidentiality-1', this);" How does DeskSpotting handle my payment/payout details?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('confidentiality-1', this);" = t('help.general.deskspotting_handle_payout_details.title')
               .row.getting-started-1
                 .col-md-12
-                    h2.content-title Why use DeskSpoting?
-                    p It’s Easy: In one click book your workspace using your credit card or bank card. No more contract negotiations, wiring funds and paying deposits directly to landlords.
-                    p It’s Flexible: Wherever, whenever book workspaces for you or a team: private offices, meeting rooms…
-                    p You decide for how long: an hour, a day, a month or more...
-                    p No fees:  Find your workspace, book it and get on with your business. You have other things to think about than fees.
-                    p Networking: DeskSpotting helps you expand your professional network and find inspring workspaces based on your professional interests.
+                    h2.content-title = t('help.general.why_use_deskspotting.title')
+                    p = t('help.general.why_use_deskspotting.easy')
+                    p = t('help.general.why_use_deskspotting.flexible')
+                    p = t('help.general.why_use_deskspotting.how_long')
+                    p = t('help.general.why_use_deskspotting.no_fees')
+                    p = t('help.general.why_use_deskspotting.networking')
               .row.getting-started-2
                 .col-md-12
-                    h2.content-title Why Host?
-                    p Do you have excess office space? Would you like to earn money and meet other interesting professionals in your field or in general? List on DeskSpotting, it’s free, and let your excess space reduce your fixed costs, earn you money and create a more dynamic office environment for you and your co-workers. There is no cost to list and no obligation to accept any Booking Inquiry. You are in charge when and to whom you share your space with. This could be your opportunity to upgrade to a bigger office and to create an office ecosystem that benefits you and your business.
+                    h2.content-title = t('help.general.why_host.title')
+                    p = t('help.general.why_host.description')
               .row.getting-started-3
                 .col-md-12
-                    h2.content-title What's a DeskSpotter?
-                    p Someone who expects more from his workspace than a mere place to plug in his computer. Someone who wants to monetize her excess space and create a stimulating office ecosystem of like minded professionals. Someone who seeks a place to work that is inspiring, modern and adapted to his budget and professional needs. Someone who wants to be free to work where and when she wants. A DeskSpotter is someone who wants to get the most out of his worskpace.
+                    h2.content-title = t('help.general.whats_a_deskspotter.title')
+                    p = t('help.general.whats_a_deskspotter.description')
               .row.workspaces-1
                 .col-md-12
-                    h2.content-title What is a Hot Desk?
-                    p A “Hot Desk” is a Workspace that is not designated to one specific person. It is usually available “on a first come first served basis”. Once a person leaves the space another worker is free to work there.
+                    h2.content-title = t('help.general.what_is_a_hot_desk.title')
+                    p = t('help.general.what_is_a_hot_desk.description')
               .row.workspaces-2
                 .col-md-12
-                    h2.content-title What's a Fixed Desk?
-                    p This is a desk that is designated for a specific person and cannot be occupied by anyone else.
+                    h2.content-title = t('help.general.what_is_a_fixed_desk.title')
+                    p = t('help.general.what_is_a_fixed_desk.description')
               .row.workspaces-3
                 .col-md-12
-                    h2.content-title What's a Private Office?
-                    p A “Private Office” usually refers to an office that is closed and provides a degree of privacy. It can be occupied by one or more people. As these spaces offer privacy they are more expensive than the other spaces in an office.
+                    h2.content-title = t('help.general.what_is_a_private_office.title')
+                    p = t('help.general.what_is_a_private_office.description')
               .row.workspaces-4
                 .col-md-12
-                    h2.content-title What’s a Home Office?
-                    p A “Home Office” is an office located in someone’s home. Some Guests prefer to work from a more intimate and more serene environment and so choose this type of space when they are booking a workspace. Sometimes they prefer this type of space when they are traveling and just need a place to relax or take a shower for a couple of hours.
+                    h2.content-title = t('help.general.what_is_a_home_office.title')
+                    p = t('help.general.what_is_a_home_office_description')
               .row.workspaces-5
                 .col-md-12
-                    h2.content-title What’s a Communal Space?
-                    p “Communal Spaces” are often open spaces that can accommodate multiple people in a more laid back vibe couches or a big table. Some Guests like to work in a more chilled setting and prefer Communal Spaces when booking. Since they are “first come first served” and less private they are also generally more economical.
+                    h2.content-title = t('help.general.what_is_a_communal_space.title')
+                    p = t('help.general.what_is_a_communal_space.description')
               .row.workspaces-6
                 .col-md-12
-                    h2.content-title What’s the difference between a Meeting Room and a Conference Room?
-                    p A “Meeting Room” is generally used for meetings with a small size of co-workers getting together around a table. A “Conference Room” is generally used for seminars, conferences, large scale get-togethers… Usually, these rooms are much bigger than “Meeting Rooms” and have more amenities and optionality in terms of set up.
+                    h2.content-title = t('help.general.meeting_room_difference.title')
+                    p = t('help.general.meeting_room_difference.description')
               .row.countries-1
                 .col-md-12
-                    h2.content-title In which countries can I use DeskSpotting?
-                    p
-                      |For the time being we are in France, Germany, Spain, Belgium, Ireland and Portugal. As soon as we open other countries we will let you know via email or on
-                      a href="http://www.deskspotting.com"   www.DeskSpotting.com.
+                    h2.content-title = t('help.general.in_which_country.title')
+                    p = t('help.general.in_which_country.description')
               .row.confidentiality-1
                 .col-md-12
-                    h2.content-title How does DeskSpotting handle my payment/payout details?
-                    p It’s Easy: In one click book your workspace using your credit card or bank card. No more contract negotiations, wiring funds and paying deposits directly to landlords.
-                    p It’s Flexible: Wherever, whenever book workspaces for you or a team: private offices, meeting rooms…
-                    p You decide for how long: an hour, a day, a month or more...
-                    p No fees:  Find your workspace, book it and get on with your business. You have other things to think about than fees.
-                    p Networking: DeskSpotting helps you expand your professional network and find inspring workspaces based on your professional interests.
-
+                    h2.content-title = t('help.general.deskspotting_handle_payout_details.title')
+                    p = t('help.general.deskspotting_handle_payout_details.description')
         .row.guests-content
           .col-md-12
             .content-faq
-              h2.content-title Popular topics
+              h2.content-title = t('help.guests.popular_topics')
               .row.guests
                 .col-md-6
                   .item
                     i.fa.fa-user
-                    h2 Account
+                    h2 = t('help.guests.account')
                     ul
                       li
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('account-1', this);" How do I Sign Up?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('account-1', this);" = t('help.guests.how_do_i_sign_up.title')
                       li
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('account-2', this);" How do I edit my Profile?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('account-2', this);" = t('help.guests.how_do_i_edit_profile.title')
                       li
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('account-3', this);" What do I do if I forgot my password to log in?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('account-3', this);" = t('help.guests.how_to_reset_password.title')
                       li
-                        a.more href="javascript:void(0);" More
+                        a.more href="javascript:void(0);" = t('help.more')
                       li.more-content
-                        a href="javascript:void(0);" onclick="showContent('account-4', this);" How do I invite friends to join me on DeskSpotting?
+                        a href="javascript:void(0);" onclick="showContent('account-4', this);" = t('help.guests.how_do_i_invite_friends.title')
                       li.more-content
-                        a href="javascript:void(0);" onclick="showContent('account-5', this);" How do I contact the DeskSpotting team?
+                        a href="javascript:void(0);" onclick="showContent('account-5', this);" = t('help.guests.how_do_i_contact.title')
                       li.more-content
-                        a href="javascript:void(0);" onclick="showContent('account-6', this);" What is an Organization?
+                        a href="javascript:void(0);" onclick="showContent('account-6', this);" = t('help.guests.what_is_an_organization.title')
                       li.more-content
-                        a href="javascript:void(0);" onclick="showContent('account-7', this);" How do I add Managers to my organization?
+                        a href="javascript:void(0);" onclick="showContent('account-7', this);" = t('help.guests.how_do_i_add_managers.title')
                 .col-md-6
                   .item
                     i.fa.fa-calendar
-                    h2 Bookings
+                    h2 = t('help.guests.bookings')
                     ul
                       li
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('bookings-1', this);" Hoy do I find a workspace?li
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('bookings-1', this);" = t('help.guests.how_do_i_find_workspace.title')
                       li
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('bookings-2', this);" What type of Venues can I work in?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('bookings-2', this);" = t('help.guests.what_type_of_venues.title')
                       li
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('bookings-3', this);" For what timeframes can I book a workspace?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('bookings-3', this);" = t('help.guests.timeframe_for_workspace.title')
                       li
-                        a.more href="javascript:void(0);" More
+                        a.more href="javascript:void(0);" = t('help.more')
                       li.more-content
-                        a href="javascript:void(0);" onclick="showContent('bookings-4', this);" How do I book a workspace?
+                        a href="javascript:void(0);" onclick="showContent('bookings-4', this);" = t('help.guests.how_do_i_book_a_workspace.title')
                       li.more-content
-                        a href="javascript:void(0);" onclick="showContent('bookings-5', this);" Does DeskSpotting charge booking fees to Guests?
+                        a href="javascript:void(0);" onclick="showContent('bookings-5', this);" = t('help.guests.booking_fees_to_guests.title')
                       li.more-content
-                        a href="javascript:void(0);" onclick="showContent('bookings-6', this);" On DeskSpotting, can I run search specifying the professions I would like to work with?
+                        a href="javascript:void(0);" onclick="showContent('bookings-6', this);" = t('help.guests.search_by_professions.title')
                       li.more-content
-                        a href="javascript:void(0);" onclick="showContent('bookings-7', this);" What are Month to Month bookings?
+                        a href="javascript:void(0);" onclick="showContent('bookings-7', this);" = t('help.guests.month_to_month_bookings.title')
                       li.more-content
-                        a href="javascript:void(0);" onclick="showContent('bookings-8', this);" How to stop a Month to Month booking?
+                        a href="javascript:void(0);" onclick="showContent('bookings-8', this);" = t('help.guests.how_to_stop_month_to_month.title')
                       li.more-content
-                        a href="javascript:void(0);" onclick="showContent('bookings-9', this);" For Monthly Bookings how many days does DeskSpotting count?
+                        a href="javascript:void(0);" onclick="showContent('bookings-9', this);" = t('help.guests.monthly_bookings_days.title')
                       li.more-content
-                        a href="javascript:void(0);" onclick="showContent('bookings-10', this);" How do I know if my booking is made?
+                        a href="javascript:void(0);" onclick="showContent('bookings-10', this);" = t('help.guests.how_do_i_know_booking_was_made.title')
                       li.more-content
-                        a href="javascript:void(0);" onclick="showContent('bookings-11', this);" Can I contact the Host before booking?
+                        a href="javascript:void(0);" onclick="showContent('bookings-11', this);" = t('help.guests.contact_host_before_booking.title')
                       li.more-content
-                        a href="javascript:void(0);" onclick="showContent('bookings-12', this);" Booking a Workspace on DeskSpotting is it subletting?
+                        a href="javascript:void(0);" onclick="showContent('bookings-12', this);" = t('help.guests.booking_a_workspace_is_subletting.title')
               .row.guests
                 .col-md-6
                   .item
                     i.fa.fa-credit-card
-                    h2 Payments
+                    h2 = t('help.guests.payments')
                     ul
                       li
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('payments-1', this);" When am I charged?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('payments-1', this);" = t('help.guests.when_i_am_charged.title')
                       li
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('payments-2', this);" What is an Escrow Account?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('payments-2', this);" = t('help.guests.what_is_escrow.title')
                       li
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('payments-3', this);" How does DeskSpotting handle deposits?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('payments-3', this);" = t('help.guests.deskspotting_handle_deposits.title')
                       li
-                        a.more href="javascript:void(0);" More
+                        a.more href="javascript:void(0);" = t('help.more')
                       li.more-content
-                        a href="javascript:void(0);" onclick="showContent('payments-4', this);" Credit/Debit card information.
+                        a href="javascript:void(0);" onclick="showContent('payments-4', this);" = t('help.guests.card_information.title')
                 .col-md-6
                   .item
                     i.fa.fa-times-circle-o
-                    h2 Cancellations
+                    h2 = t('help.guests.cancellations')
                     ul
                       li
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('cancellations-1', this);" How do I cancel a reservation?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('cancellations-1', this);" = t('help.guests.how_do_i_cancel_reservations.title')
                       li
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('cancellations-2', this);" Cancellation Policy
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('cancellations-2', this);" = t('help.guests.cancellation_policy.title')
               .row.account-1
                 .col-md-12
-                  h2.content-title How do I Sign Up?
-                  p In a few clicks you can sign up using either Facebook or your email and a password of your choice. It’s easy and without commitments.
+                  h2.content-title = t('help.guests.how_do_i_sign_up.title')
+                  p = t('help.guests.how_do_i_sign_up.description')
               .row.account-2
                 .col-md-12
-                  h2.content-title How do I edit my Profile?
-                  p Click on your profile and select Edit Profile. Make sure to provide as much relevant information on yourself ex: your profession, interests, where your from etc… as this will help hosts understand better with whom they are dealing.
+                  h2.content-title = t('help.guests.how_do_i_edit_profile.title')
+                  p = t('help.guests.how_do_i_edit_profile.description')
               .row.account-3
                 .col-md-12
-                  h2.content-title What do I do if I forgot my password to log in?
-                  p No problem! Click on “Log In” and then on “forgot password”. Input your email and a temporary password will be sent to you. All good! Remember you need to provide a password that has at least 8 characters.
+                  h2.content-title = t('help.guests.how_to_reset_password.title')
+                  p = t('help.guests.how_to_reset_password.description')
               .row.account-4
                 .col-md-12
-                  h2.content-title How do I invite friends to join me on DeskSpotting?
-                  p To invite friends simply go to the drop down menu in your profile and select Invite. Now you can invite as many friends as you would like and help them find their inspiring workspaces. Start DeskSpotting with your friends!
+                  h2.content-title = t('help.guests.how_do_i_invite_friends.title')
+                  p = t('help.guests.how_do_i_invite_friends.description')
               .row.account-5
                 .col-md-12
-                  h2.content-title How do I contact the DeskSpotting team?
-                  p You can reach us at info@deskspotting.com or by clicking on Contact us. We are always interested in hearing your feedback and available to assist you if you need any help.
+                  h2.content-title = t('help.guests.how_do_i_contact.title')
+                  p = t('help.guests.how_do_i_contact.description')
               .row.account-6
                 .col-md-12
-                  h2.content-title What is an Organization?
-                  p DeskSpotting enables you in your profile to create an Organization account in addition to your personal account. This is particularly useful if you plan on managing listings with other colleagues or if you want to make bookings on behalf of a company. This account can be customized and edited at any time just like a personal DeskSpotting account.
+                  h2.content-title = t('help.guests.what_is_an_organization.title')
+                  p = t('help.guests.what_is_an_organization.description')
               .row.account-7
                 .col-md-12
-                  h2.content-title How do I add Managers to my organization?
-                  p In an Organization account you can add Managers to assist you with managing the account.
-                  p Be sure to have selected your organisation account in drop down menu under your username and avatar. Then Simply click on Edit Profile from the same drop down menu and you’ll be all set.
+                  h2.content-title = t('help.guests.how_do_i_add_managers.title')
+                  p = t('help.guests.how_do_i_add_managers.assist_you')
+                  p = t('help.guests.how_do_i_add_managers.description')
               .row.bookings-1
                 .col-md-12
-                  h2.content-title How do I find a workspace?
-                  p On the home page, enter the city and the type of space you are looking for. In the results page you will be able to refine your search with the help of filters in case you have something specific you are looking for.
+                  h2.content-title = t('help.guests.how_do_i_find_workspace.title')
+                  p = t('help.guests.how_do_i_find_workspace.description')
               .row.bookings-2
                 .col-md-12
-                  h2.content-title What type of Venues can I work in?
-                  p DeskSpotting offers a broad selection of workspaces and atmospheres to work in. From sharing space in an office, organizing a meeting in a hotel conference room, to working in a co-working space or using a member’s home to do work or meet with some partners. DeskSpotting has what you are looking for and for all time frames: 1 hour, a couple days, 1 month or more.
+                  h2.content-title = t('help.guests.what_type_of_venues.title')
+                  p = t('help.guests.what_type_of_venues.description')
               .row.bookings-3
                 .col-md-12
-                  h2.content-title For what timeframes can I book a workspace?
-                  p On DeskSpotting you can book your workspace by the Hour, by the Day, by the Month or on a rolling Month to Month basis. Our goal is to provide Guests and Hosts maximum flexibility. Nevertheless, it is the Host that decides what time frames she would like make any of her spaces available.
+                  h2.content-title = t('help.guests.timeframe_for_workspace.title')
+                  p = t('help.guests.timeframe_for_workspace.description')
               .row.bookings-4
                 .col-md-12
-                  h2.content-title How do I book a workspace?
-                  p It’s easy. Choose the workspace that you would like to book and then Click on “Booking Inquiry”. Enter your Check in/ Check out dates, the number of people coming with you and the number of spaces you need.
-                  p You can even send a message to your Host to get more information and tell him more about yourself. We advise you to include a message to give the Host more information on yourself and your plans. More information is always the best.
-                  p Once the Host confirms your inquiry you will receive a message in your Inbox informing you that you inquiry was accepted. It’s your turn to Book.
+                  h2.content-title = t('help.guests.how_do_i_book_a_workspace.title')
+                  p = t('help.guests.how_do_i_book_a_workspace.easy')
+                  p = t('help.guests.how_do_i_book_a_workspace.send_message')
+                  p = t('help.guests.how_do_i_book_a_workspace.accepted_inquiry')
               .row.bookings-5
                 .col-md-12
-                  h2.content-title Does DeskSpotting charge booking fees to Guests?
-                  p DeskSpotting does not charge any fees to Guests when making a booking. All you pay is the value of the booking set by the Host and potentially a deposit. That’s it. No hidden fees.
+                  h2.content-title = t('help.guests.booking_fees_to_guests.title')
+                  p = t('help.guests.booking_fees_to_guests.description')
               .row.bookings-6
                 .col-md-12
-                  h2.content-title On DeskSpotting, can I run search specifying the professions I would like to work with?
-                  p On DeskSpotting, you can customize your search with the help of filters. Choose the professions you would like to surround yourself with or with whom you would like to work: 16 categories are offered: Startups, Designers, Technology, Finance, Freelancers… You decide.
+                  h2.content-title = t('help.guests.search_by_professions.title')
+                  p = t('help.guests.search_by_professions.description')
               .row.bookings-7
                 .col-md-12
-                  h2.content-title What are Month to Month bookings?
-                  p We understand that you may need a workspace for a month or more but don’t know exactly for how long. DeskSpotting offers Month to Month bookings for this very reason. Often Hosts will require a minimum time frame prior to entering Month to Month bookings. This can range from 0 to maximum 3 months.
+                  h2.content-title = t('help.guests.month_to_month_bookings.title')
+                  p = t('help.guests.month_to_month_bookings.description')
               .row.bookings-8
                 .col-md-12
-                  h2.content-title How to stop a Month to Month booking?
-                  p To stop your Month to Month booking go to your profile, enter Bookings and choose “Your Bookings” then select the relevant booking and click on “Cancel”.
-                  p Remember you need to cancel at the latest 10 calendar days prior to your next payment.
+                  h2.content-title = t('help.guests.how_to_stop_month_to_month.title')
+                  p = t('help.guests.how_to_stop_month_to_month.steps')
+                  p = t('help.guests.how_to_stop_month_to_month.warning')
               .row.bookings-9
                 .col-md-12
-                  h2.content-title For Monthly Bookings how many days does DeskSpotting count?
-                  p For organizational purposes we consider a month to be 30 days.
+                  h2.content-title = t('help.guests.monthly_bookings_days.title')
+                  p = t('help.guests.monthly_bookings_days.description')
               .row.bookings-10
                 .col-md-12
-                  h2.content-title How do I know if my booking is made?
-                  p You will receive a confirmation receipt detailing:
+                  h2.content-title = t('help.guests.how_do_i_know_booking_was_made.title')
+                  p = t('help.guests.how_do_i_know_booking_was_made.description')
                   ul.answers
-                    li your confirmation number
-                    li the address of the Venue and type of workspace booked
-                    li your Check-In/ Check-Out dates
-                    li the date your payment was made
-                    li the method of payment (confirming type of card, last four digits of card number and expiration date).
-                    li the name of your Host and his/her phone number
+                    li = t('help.guests.how_do_i_know_booking_was_made.confirmation_number')
+                    li = t('help.guests.how_do_i_know_booking_was_made.address')
+                    li = t('help.guests.how_do_i_know_booking_was_made.dates')
+                    li = t('help.guests.how_do_i_know_booking_was_made.payment_date')
+                    li = t('help.guests.how_do_i_know_booking_was_made.payment_info')
+                    li = t('help.guests.how_do_i_know_booking_was_made.host_info')
               .row.bookings-11
                 .col-md-12
-                  h2.content-title Can I contact the Host before booking?
-                  p Of course! When making a Booking Inquiry you can communicate with your Host and ask him/her questions or even negotiate with the Host. This opens the communication channel with your Host and enables you to message freely.
+                  h2.content-title = t('help.guests.contact_host_before_booking.title')
+                  p = t('help.guests.contact_host_before_booking.description')
               .row.bookings-12
                 .col-md-12
-                  h2.content-title Booking a Workspace on DeskSpotting is it subletting?
-                  p All bookings on DeskSpotting are deemed Provision of Services offered by a Host and utilized by a Guest. It’s the provision on a short term basis of a fully equipped workspace - “plug and play”. Depending on the workspace, the price of the booking gives you access to different services such as internet, office furniture, a meeting room, receptionist, mail service etc...
+                  h2.content-title = t('help.guests.booking_a_workspace_is_subletting.title')
+                  p = t('help.guests.booking_a_workspace_is_subletting.description')
               .row.payments-1
                 .col-md-12
-                  h2.content-title When am I charged?
-                  p Once you have clicked on “Book” your credit/debit card is charged for the total of the reservation including deposit, if there is one required. The funds are kept in escrow for your security and payments are transferred to the Host only once you have checked in. If your booking is for more than one month, payments will be released to the Host every 30 days.
+                  h2.content-title = t('help.guests.when_i_am_charged.title')
+                  p = t('help.guests.when_i_am_charged.description')
               .row.payments-2
                 .col-md-12
-                  h2.content-title What is an Escrow Account?
-                  p It’s a security measure to ensure that a reservation between a Guest and a Host goes smoothly. Rather than paying a Host directly your payments are held in a neutral account and released according to the timing and conditions of the reservation agreed by both parties on DeskSpotting. This way, your Host knows that he will be paid on time and you know that your money is secure. Everyone is happy.
+                  h2.content-title = t('help.guests.what_is_escrow.title')
+                  p = t('help.guests.what_is_escrow.description')
               .row.payments-3
                 .col-md-12
-                  h2.content-title How does DeskSpotting handle deposits?
-                  p Deposits, if they are required by Hosts, are kept in escrow for the duration of your booking and will be returned to you within up to 72 hours after your check out of the workspace if the Host has not made any claims.
+                  h2.content-title = t('help.guests.deskspotting_handle_deposits.title')
+                  p = t('help.guests.deskspotting_handle_deposits.description')
               .row.payments-4
                 .col-md-12
-                  h2.content-title Credit/Debit card information.
-                  p DeskSpotting at no moment receives or stores your credit/debit card information. This information is processed and managed for your security and convenience by our payment processing partner MangoPay according to the Terms and Conditions and Privacy Policy
+                  h2.content-title = t('help.guests.card_information.title')
+                  p = t('help.guests.card_information.description')
               .row.cancellations-1
                 .col-md-12
-                  h2.content-title How do I cancel a reservation?
-                  p If you are a Guest, someone who has booked a workspace, click on your profile and select “Bookings” then choose “My Bookings”. There you will find all your bookings organized chronologically. Choose the booking you would like to cancel and click on “Cancel”. Remember to review the Cancellation policy prior to cancelling a reservation available in the Terms and Conditions and Privacy Policy
+                  h2.content-title = t('help.guests.how_do_i_cancel_reservations.title')
+                  p = t('help.guests.how_do_i_cancel_reservations.description')
               .row.cancellations-2
                 .col-md-12
-                  h2.content-title Cancellation Policy
-                  p For Bookings of less than 24 hours, it is possible to cancel a reservation 24 hours before the check in time without penalty and be reimbursed in full. Beyond this time frame, the guest can cancel but will forfeit his/her payment. If there is a deposit it will be returned in full.
-                  p For Bookings of 24 hours or more but less than a month, it is possible to cancel the booking without penalty if the cancellation is done 5 calendar days prior to the check in.
-                  p Beyond this time frame, the payment for the value of the booking will be forfeited to the Host and the deposit returned in full
-                  p For Bookings of 1 month or more, if the cancellation is done 10 calendar days prior to check in there is no penalty and the guest is reimbursed in full. Thereafter, the guest will only be able to receive 50% of his payment if he cancels. The deposit, however, is returned in full.
+                  h2.content-title = t('help.guests.cancellation_policy.title')
+                  p = t('help.guests.cancellation_policy.for_bookings_of_less_than_24hs')
+                  p = t('help.guests.cancellation_policy.for_bookings_of_more_than_24hs')
+                  p = t('help.guests.cancellation_policy.beyond_timeframe')
+                  p = t('help.guests.cancellation_policy.for_bookings_of_1month')
         .row.hosts-content
           .col-md-12
             .content-faq
-              h2.content-title Popular topics
+              h2.content-title = t('help.popular_topics')
               .row.hosts
                 .col-md-6
                   .item
                     i.fa.fa-user
-                    h2 Account
+                    h2 = t('help.account')
                     ul
                       li
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('account-1', this);" How do I Sign Up?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('account-1', this);" = t('help.host.how_do_i_sign_up.title')
                       li
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('account-2', this);" How do I edit my Profile?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('account-2', this);" = t('help.host.how_do_i_edit_profile.title')
                       li
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('account-3', this);" What do I do if I forgot my password to log in?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('account-3', this);" = t('help.host.how_to_reset_password.title')
                       li
-                        a.more href="javascript:void(0);" More
+                        a.more href="javascript:void(0);" = t('help.more')
                       li.more-content
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('account-4', this);" How do I edit my payout details?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('account-4', this);" = t('help.host.how_do_i_edit_payout_details.title')
                       li.more-content
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('account-5', this);" How do I contact the DeskSpotting team?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('account-5', this);" = t('help.host.how_do_i_contact.title')
                       li.more-content
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('account-6', this);" Can more than one person manage a venue?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('account-6', this);" = t('help.host.can_more_than_one_person_manage.title')
                       li.more-content
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('account-7', this);" How do I add a Manager to my Oganization?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('account-7', this);" = t('help.host.how_do_i_add_managers.title')
                       li.more-content
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('account-8', this);" What is the difference between an Owner and an Admin as a manager of an Organization?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('account-8', this);" = t('help.host.difference_between_owner_and_admin.title')
                 .col-md-6
                   .item
                     i.fa.fa-pencil
-                    h2 List your space
+                    h2 = t('help.host.list_your_space')
                     ul
                       li
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('list-space-1', this);" Booking a Workspace on DeskSpotting is it subletting?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('list-space-1', this);" = t('help.host.booking_a_workspace_is_subletting.title')
                       li
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('list-space-2', this);" Tips on listing your space on DeskSpotting
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('list-space-2', this);" = t('help.host.tips_on_listing_your_space.title')
                       li
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('list-space-3', this);" Can I inform my Facebook and Linkedin networks of the spaces that I have listed on DeskSpotting?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('list-space-3', this);" = t('help.host.inform_social_networks.title')
                       li
-                        a.more href="javascript:void(0);" More
+                        a.more href="javascript:void(0);" = t('help.more')
                       li.more-content
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('list-space-4', this);" How do i get my workspaces featured on DeskSpotting?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('list-space-4', this);" = t('help.host.how_do_i_get_workspaces_featured.title')
                       li.more-content
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('list-space-5', this);" What Workspaces are best suited for bookings and for what use?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('list-space-5', this);" = t('help.host.bestsuited_workspaces_for_bookings.title')
               .row.hosts
                 .col-md-6
                   .item
                     i.fa.fa-calendar
-                    h2 Bookings
+                    h2 = t('help.host.bookings')
                     ul
                       li
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('bookings-1', this);" Before Accepting a Booking Inquiry.
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('bookings-1', this);" = t('help.host.before_accepting_booking_inquiry.title')
                       li
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('bookings-2', this);" How can I make a special offer to a Guest?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('bookings-2', this);" = t('help.host.special_offer_to_guest.title')
                       li
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('bookings-3', this);" How to stop a Month to Month booking.
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('bookings-3', this);" = t('help.host.how_to_stop_month_to_month.title')
                       li
-                        a.more href="javascript:void(0);" More
+                        a.more href="javascript:void(0);" = t('help.more')
                       li.more-content
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('bookings-4', this);" For Monthly Bookings how many days does DeskSpotting count?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('bookings-4', this);" = t('help.host.monthly_bookings_days.title')
                       li.more-content
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('bookings-5', this);" As a Host do I have access to a Calendar on DeskSpotting?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('bookings-5', this);" = t('help.host.access_to_calendar.title')
                 .col-md-6
                   .item
                     i.fa.fa-credit-card
                     h2 Payments
                     ul
                       li
-                        a href="javascript:void(0);" onclick="findCallerOnSideBar('payments-1', this);" When and how is a Host Paid?
+                        a href="javascript:void(0);" onclick="findCallerOnSideBar('payments-1', this);" = t('help.host.when_and_how_is_a_host_paid.title')
               .row.account-1
                 .col-md-12
-                    h2.content-title How do I Sign Up?
-                    p In a few clicks you can sign up using either Facebook or your email and a password of your choice. It’s easy and without commitments.
+                    h2.content-title = t('help.host.how_do_i_sign_up.title')
+                    p = t('help.host.how_do_i_sign_up.description')
               .row.account-2
                 .col-md-12
-                    h2.content-title How do I edit my Profile?
-                    p Click on your profile and select Edit Profile. Make sure to provide as much relevant information on yourself ex: your profession, interests, where you’re from etc… as this will help Guests understand better with whom they are dealing.
+                    h2.content-title = t('help.host.how_do_i_edit_profile.title')
+                    p = t('help.host.how_do_i_edit_profile.description')
               .row.account-3
                 .col-md-12
-                    h2.content-title What do I do if I forgot my password to log in?
-                    p No problem! Click on “Log In” and then on “forgot password”. Input your email and a temporary password will be sent to you. All good! Remember you need to provide a password that has at least 8 characters.
+                    h2.content-title = t('help.host.how_to_reset_password.title')
+                    p = t('help.host.how_to_reset_password.description')
               .row.account-4
                 .col-md-12
-                    h2.content-title How do I edit my payout details?
-                    p Go to Manage your venues. Select Venues and then choose for which venue you would like to change the payout details for. Then select Payout details on the side menu. Enter your new Payout Details and click save and you are all set!
+                    h2.content-title = t('help.host.how_do_i_edit_payout_details.title')
+                    p = t('help.host.how_do_i_edit_payout_details.description')
               .row.account-5
                 .col-md-12
-                    h2.content-title How do I contact the DeskSpotting team?
-                    p You can reach us at info@deskspotting.com or by clicking on Contact us. We are always interested in hearing your feedback and available to assist you if you need any help.
+                    h2.content-title = t('help.host.how_do_i_contact.title')
+                    p = t('help.host.how_do_i_contact.description')
               .row.account-6
                 .col-md-12
-                    h2.content-title Can more than one person manage a venue?
-                    p If you have multiple people that would like to manage a venue with it is best to create an Organization. To do so just click on “Create an Organization” in the user profile drop down menu. Create an Organization name (your business name for instance) and register yourself. It’s very easy.
+                    h2.content-title = t('help.host.can_more_than_one_person_manage.title')
+                    p = t('help.host.can_more_than_one_person_manage.description')
               .row.account-7
                 .col-md-12
-                    h2.content-title How do I add a Manager to my Oganization?
-                    p In an Organization account you can add Managers to assist you with managing the account.
-                    p Be sure to have select your organisation account in drop down menu under your username and avatar. Then Simply click on Edit Profile from the same drop down menu and you’ll be all set.
+                    h2.content-title = t('help.host.how_do_i_add_managers.title')
+                    p = t('help.host.how_do_i_add_managers.assist_you')
+                    p = t('help.host.how_do_i_add_managers.description')
               .row.account-8
                 .col-md-12
-                    h2.content-title What is the difference between an Owner and an Admin as a manager of an Organization?
-                    p The difference is that the Owner cannot be removed from the organization.
+                    h2.content-title = t('help.host.difference_between_owner_and_admin.title')
+                    p = t('help.host.difference_between_owner_and_admin.description')
               .row.list-space-1
                 .col-md-12
-                    h2.content-title Booking a Workspace on DeskSpotting is it subletting?
-                    p All bookings on DeskSpotting are deemed Provision of Services offered by a Host and utilized by a Guest. It’s the provision on a short term basis of a fully equipped workspace - “plug and play”. Depending on the workspace, the price of the booking gives you access to different services such as internet, office furniture, a meeting room, receptionist, mail service etc...
-                    p
-                      | To read more about this please refer to the
-                      a href='/'
-                        |  Terms and Conditions
+                    h2.content-title = t('help.host.booking_a_workspace_is_subletting.title')
+                    p = t('help.host.booking_a_workspace_is_subletting.description')
               .row.list-space-2
                 .col-md-12
-                    h2.content-title Tips on Listing your space on DeskSpotting.
-                    p Be sure to accurately describe and regularly update the information on your Venue and workspaces and provide as much detail as necessary regarding the atmosphere.
-                    p Adding photos is essential to garner interest in your spaces. The more images and the higher the quality of the images you upload the more traffic you will generate for your venue.
-                    p Responding promptly to Booking Inquiries is also helpful to better your image vis à vis potential Guests and increase your likelihood of booking your spaces.
+                    h2.content-title = t('help.host.tips_on_listing_your_space.title')
+                    p = t('help.host.tips_on_listing_your_space.venue_information')
+                    p = t('help.host.tips_on_listing_your_space.images')
+                    p = t('help.host.tips_on_listing_your_space.booking_inquiries')
               .row.list-space-3
                 .col-md-12
-                    h2.content-title Can I inform my Facebook and Linkedin networks of the spaces that I have listed on DeskSpotting?
-                    p Of course you can! We understand that your preferred option for a guest maybe a friend of yours on Facebook or a professional contact on LinkedIn. For this reason we enable you to share your listings with these social networks when you are listing your space on DeskSpotting.. Simply select share your listing on Facebook and/or LinkedIn and we’ll take care of the rest.
+                    h2.content-title = t('help.host.inform_social_networks.title')
+                    p = t('help.host.inform_social_networks.description')
               .row.list-space-4
                 .col-md-12
-                    h2.content-title How do I get my workspaces featured on DeskSpotting?
-                    p We would love to feature your workspaces but to do so you need to make sure that you have a high quality offering. This is a combination of having detailed and accurate listing information, having a number of high quality photos and finally your overall rating by Guests you have Hosted in your Venue. Another way you can increase your visibility on DeskSpotting is via our referral program.
+                    h2.content-title = t('help.host.how_do_i_get_workspaces_featured.title')
+                    p = t('help.host.how_do_i_get_workspaces_featured.description')
               .row.list-space-5
                 .col-md-12
-                    h2.content-title What Workspaces are best suited for bookings and for what use?
-                    p There are no rules obliging you to market certain spaces in one way or another. DeskSpotting does provide the following guidelines to assist you in best positioning your workspaces.
+                    h2.content-title = t('help.host.bestsuited_workspaces_for_bookings.title')
+                    p = t('help.host.bestsuited_workspaces_for_bookings.rules')
                     br
-                    p For short term bookings: by the hour or day we recommend listing the following spaces on DeskSpotting:
+                    p = t('help.host.bestsuited_workspaces_for_bookings.short_term_bookings.title')
                     ul
-                      li.answers Meeting Rooms
-                      li.answers Hot Desks
-                      li.answers Conference Rooms
-                      li.answers Home Offices
-                      li.answers Communal Spaces
+                      li.answers = t('help.host.bestsuited_workspaces_for_bookings.short_term_bookings.meeting_rooms')
+                      li.answers = t('help.host.bestsuited_workspaces_for_bookings.short_term_bookings.hot_desks')
+                      li.answers = t('help.host.bestsuited_workspaces_for_bookings.short_term_bookings.conference_rooms')
+                      li.answers = t('help.host.bestsuited_workspaces_for_bookings.short_term_bookings.home_offices')
+                      li.answers = t('help.host.bestsuited_workspaces_for_bookings.short_term_bookings.communal_spaces')
                     br
-                    p For longer term bookings i.e. per month or month to month, we recommend listing the following workspaces:
+                    p = t('help.host.bestsuited_workspaces_for_bookings.long_term_bookings')
                     ul.answers
-                      li Private Offices
-                      li Fixed Desks
+                      li = t('help.host.bestsuited_workspaces_for_bookings.long_term_bookings.private_offices')
+                      li = t('help.host.bestsuited_workspaces_for_bookings.long_term_bookings.fixed_desks')
               .row.bookings-1
                 .col-md-12
-                    h2.content-title Before Accepting a Booking Inquiry.
-                    p Before accepting a booking Inquiry you can communicate with your Guest and learn more about her and her professional interests. You have access to her DeskSpotting profile and to reviews written by previous Hosts.
+                    h2.content-title = t('help.host.before_accepting_booking_inquiry.title')
+                    p = t('help.host.before_accepting_booking_inquiry.description')
               .row.bookings-2
                 .col-md-12
-                    h2.content-title How can I make a special offer to a Guest?
-                    p Super easy! When you receive a booking inquiry, at any moment you can click on “New Offer” and you can make an offer specific for the Guest you are chatting with. This gives you full flexibility to negotiate freely and reach an agreement with your guest.
+                    h2.content-title = t('help.host.special_offer_to_guest.title')
+                    p = t('help.host.special_offer_to_guest.description')
               .row.bookings-3
                 .col-md-12
-                    h2.content-title How to stop a Month to Month booking.
-                    p To stop your Month to Month booking go to your profile, enter Bookings and choose “Venue Bookings” then select the relevant booking and click on “Cancel”.
-                    p Remember you need to cancel at the latest 10 calendar days prior to your next payment.
+                    h2.content-title = t('help.host.how_to_stop_month_to_month.title')
+                    p = t('help.host.how_to_stop_month_to_month.steps')
+                    p = t('help.host.how_to_stop_month_to_month.warning')
               .row.bookings-4
                 .col-md-12
-                    h2.content-title For Monthly Bookings how many days does DeskSpotting count?
-                    p For organizational purposes we consider a month to be 30 days.
+                    h2.content-title = t('help.host.monthly_bookings_days.title')
+                    p = t('help.host.monthly_bookings_days.description')
               .row.bookings-5
                 .col-md-12
-                    h2.content-title As a Host do I have access to a Calendar on DeskSpotting?
-                    p Hosts have at their disposal an organizational calendar to manage bookings and availability. It is accessible via “Manage Your Bookings” and the “Venues” section.
+                    h2.content-title = t('help.host.access_to_calendar.title')
+                    p = t('help.host.access_to_calendar.description')
               .row.payments-1
                 .col-md-12
-                    h2.content-title When and how is a Host Paid?
-                    p For bookings of less than 1 month the Host is paid in full minus DeskSpotting’s service fee at the time of check in of the Guest. For Bookings of more than 1 month, the Host receives payment every 30 days as of the Check in. All payments will be made by transfer to the bank account provided by the Host to DeskSpotting.
+                    h2.content-title = t('help.host.when_and_how_is_a_host_paid.title')
+                    p = t('help.host.when_and_how_is_a_host_paid.description')
               .row.service-fees-1
                 .col-md-12
-                    h2.content-title What are DeskSpotting’s Service Fees?
-                    p All DeskSpotting’s Service Fees are deducted from the payments of the Guest to the Host. They are not extra charges for the Guest.
+                    h2.content-title = t('help.host.deskspotting_fees.title')
+                    p = t('help.host.deskspotting_fees.description')
                     ul
-                      li.answers For all bookings of a month or less the Service Fee is 20%
-                      li.answers For all bookings of more than 1 month the Service Fee is 20% for the first month and then 10% as of the second and any following months.
-                      li.answers For all month to month bookings DeskSpotting’s service fees on the guaranteed time period (which cannot exceed 4 months) is 20% for the first month 10% thereafter. Once the Guaranteed time frame has expired and the booking is effectively month to month DeskSpotting’s fee is 5% per month
+                      li.answers = t('help.host.deskspotting_fees.less_than_one_month')
+                      li.answers = t('help.host.deskspotting_fees.more_than_one_month')
+                      li.answers = t('help.host.deskspotting_fees.month_to_month')
               .row.cancellations-1
                 .col-md-12
-                    h2.content-title How do I cancel a reservation?
-                    p If you are a Host, click on “Manage your Venues” and then on “Bookings” to access all your bookings. Choose “Venue Bookings” and select the appropriate Venue if you have multiple. Then select the booking that you would like to cancel and click on “Cancel”.
+                    h2.content-title = t('help.host.how_do_i_cancel_reservations.title')
+                    p = t('help.host.how_do_i_cancel_reservations.description')
               .row.cancellations-2
                 .col-md-12
-                    h2.content-title What happens if I as a host cancel a reservation prior to a Guest’s Check-In?
-                    p We know things can come up so we make it possible for a Host to cancel a booking prior to the Check-In of a Guest. However we advise hosts to do so with as much advance notice as possible.
-                    p Here are some guidelines:
-                    p If the Guest’s booking is for less than 24 hours the Host should cancel more than 24 hours prior the Guest’s Check-In.
-                    p If the Guest’s booking is for more than 24 hours but less than 1 month the Host should cancel the booking more than 5 calendar days prior to the Guest’s Check-In
-                    p If the Guest’s booking is for more than 1 month the Host should cancel the booking more than 10 calendar days prior to the Guest’s Check-In.
-                    p If as a Host you repeatedly cancel Bookings within the 24 hour, 5 calendar day and 10 calendar day windows (listed above) prior to check in of the Guest, this could affect your rating and or potentially prompt your removal from DeskSpotting.
-                    p On DeskSpotting we value felxibility but also understand that there needs to be a certainty when a booking is made.
-                    p If you would like to learn more about the Cancellation Policy please refer to the Terms and Conditions
+                    h2.content-title = t('help.host.if_hosts_cancel_reservation_prior_to_checkin.title')
+                    p = t('help.host.if_hosts_cancel_reservation_prior_to_checkin.description')
+                    p = t('help.host.if_hosts_cancel_reservation_prior_to_checkin.guidelines')
+                    p = t('help.host.if_hosts_cancel_reservation_prior_to_checkin.booking_less_than_24hs')
+                    p = t('help.host.if_hosts_cancel_reservation_prior_to_checkin.booking_more_than_24hs')
+                    p = t('help.host.if_hosts_cancel_reservation_prior_to_checkin.booking_more_than_1month')
+                    p = t('help.host.if_hosts_cancel_reservation_prior_to_checkin.affect_rating')
+                    p O= t('help.host.if_hosts_cancel_reservation_prior_to_checkin.value_flexibility')
+                    p = t('help.host.if_hosts_cancel_reservation_prior_to_checkin.more_on_cancellation_policy')
               .row.referral-program-1
                 .col-md-12
-                    h2.content-title Does DeskSpoting have a referral program?
-                    p Yes we do! The more friends you invite and that join you on DeskSpotting the more you accumulate points that helps your Venue appear more prominently in search results and potentially appear in our Featured Spaces section.
-                    p Helping your friends find inspiring workspaces by joining DeskSpotting equals helping market your venues on DeskSpotting. Everybody wins.
+                    h2.content-title = t('help.host.does_deskspotting_have_referal_program.title')
+                    p = t('help.host.referal_program.description')
+                    p = t('help.host.referal_program.win_win')
               .row.referral-program-2
                 .col-md-12
-                    h2.content-title How do I invite friends to join me on DeskSpotting?
-                    p To invite friends simply go to the drop down menu in your profile and select Invite. Now you can invite as many friends as you would like and help them find their inspiring workspaces. Start DeskSpotting with your friends!
+                    h2.content-title = t('help.host.how_do_i_invite_friends.title')
+                    p = t('help.host.how_do_i_invite_friends.description')
 
 
 javascript:
