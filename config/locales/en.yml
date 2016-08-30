@@ -50,6 +50,8 @@ en:
     no_bookings: There are no bookings
     no_paid_cancelled: You have no paid or cancelled bookings.
     review: Leave a Review
+    make_claim: Make Claim
+    claim_received: Claim Received
     state:
       cancelled: Cancelled
       denied: Denied
@@ -1171,6 +1173,8 @@ en:
       loft: Loft
       restaurant: Restaurant
       startup_office: Startup office
+  aig_claim_email:
+    subject: New Claim for AIG
   welcome_email:
     button_1: Tell us more
     button_2: List your space

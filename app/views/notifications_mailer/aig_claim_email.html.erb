@@ -1,0 +1,364 @@
+<style>
+    @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,700,300,400);
+</style>
+<div style="min-width: 320px; margin: 0; padding: 20px 0; font-family: Open Sans, sans-serif;">
+  <div style="max-width: 720px; margin: 0 auto;">
+    <!-- body -->
+    <div class="body" style="color: #9f9f9f">
+      <div style="max-width: 650px; margin: 0 auto;">
+        <div style="padding: 20px 50px; border-bottom: 1px solid #ccc; text-align: center;">
+          <%= image_tag 'deskspotting-logo-login.svg' %>
+        </div>
+      </div>
+
+      <div style="max-width: 650px; margin: 0 auto;">
+        <!-- Content -->
+        <div class="customer-receipt" style="  display: block; margin-bottom: 50px; margin: 15px 0;">
+          <div class="title" style="text-transform: uppercase; font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; color: black; margin: 15px 0;">
+            <%= t('receipt.customer_title') %>
+          </div>
+          <div class="separator long" style="  background-color: #ffe111; height: 2px; "></div>
+          <div style="  display: block; text-align: center; margin-top: 15px;">
+            <div class="date" style="display: inline-block; text-align: center; margin-right: 20px; ">
+              <%= @payment.receipt.created_at.strftime("%d-%m-%Y") %>
+            </div>
+            <div class="bar" style=" display: inline-block; width: 2px; background-color: #efefef; height: 25px;"></div>
+            <div class="receipt-number" style="display: inline-block; margin: 0 20px; ">
+              <%= t('receipt.receipt_number') %>
+              <%= @payment.receipt.id %>
+            </div>
+            <div class="bar" style=" display: inline-block; width: 2px; background-color: #efefef; height: 25px;"></div>
+            <div class="contact" style="display: inline-block; margin-left: 20px; margin-top: 10px">
+              <a href='<%= contact_url %>'>www.deskspotting.com/contact</a>
+            </div>
+          </div>
+        </div>
+        <div class="host" style="margin-top: 30px;" >
+          <div class="title" style="text-transform: uppercase; font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; color: black; margin: 15px 0;">
+           <%= t('receipt.venue_host') %>
+          </div>
+          <div class="separator long" style="  background-color: #ffe111; height: 2px; "></div>
+          <div style="display: block; margin-top: 15px; font-size: 0">
+            <div style="display: inline-block; vertical-align: top; width: 50%; font-size: 14px">
+              <div class="venue-name">
+                <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184;">
+                  <%= t('receipt.venue_name') + ':' %>
+                </div>
+                <span><%= @booking.space.venue.name %></span>
+              </div>
+              <div class="street-adress">
+                <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184;">
+                  <%= t('receipt.street_address') + ':' %>
+                </div>
+                <span><%= @booking.space.venue.street %></span>
+              </div>
+              <div class="country">
+                <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184;">
+                  <%= t('receipt.country') + ':' %>
+                </div>
+                <span><%= Country.new(@booking.space.venue.country_code).name %></span>
+              </div>
+              <div class="city">
+                <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184;">
+                  <%= t('receipt.province') + ':' %>
+                </div>
+                <span><%= @booking.space.venue.town %></span>
+              </div>
+            </div>
+            <div style="display: inline-block; vertical-align: top; width: 50%; font-size: 14px">
+              <div class="zip-code">
+                <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184;">
+                  <%= t('receipt.zip_code') + ':' %>
+                </div>
+                <span><%= @booking.space.venue.postal_code %></span>
+              </div>
+              <div class="email">
+                <div class="subtitle"style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184;">
+                  <%= t('receipt.email') + ':' %>
+                </div>
+                <span><%= @booking.space.venue.email %></span>
+              </div>
+              <div class="phone">
+                <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184;">
+                  <%= t('receipt.phone_number') + ':' %>
+                </div>
+                <span><%= @booking.space.venue.phone %></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- space rental, deposit and total payout -->
+        <div class="header" style="  font-size: 0; height: 80px; margin: 15px 0;">
+          <div class="yellow-container" style="  display: inline-block; background-color: #ffe111; width: 75%; font-size: 14px; height: 100%; vertical-align: top; font-size: 14px;">
+            <div  class="space-rental "style=" display: inline-block; font-size: 14px; width: 47%; text-align: center; vertical-align: top;   padding: 15px 0; height: 50px;">
+              <%= image_tag 'ic_profile_info.png' %>
+              <p class="concept" style=" display: inline-block; margin: 0; color: black">
+                <%= t('receipt.space_rental') %>
+              </p>
+              <p class="value"  style="text-transform: uppercase; font-family: 'Open Sans', sans-serif;   font-size: 14px;   font-weight: bold; color: black; margin-right: 5px; display: inline-block; display: block"><%= "#{t("currency.#{@booking.space.venue.currency.downcase}.symbol")}#{@booking.price}" %></p>
+            </div>
+            <div class="plus" style=" display: inline-block; font-size: 14px; width: 2%; text-align: center; vertical-align: top; padding: 30px 0; height: 50px">
+              <p class="concept" style=" display: inline-block; margin: 0; weight: bold; color: black">+</p>
+            </div>
+            <div class="deposit" style=" display: inline-block; font-size: 14px; width: 47%; text-align: center; vertical-align: top; padding: 15px 0; height: 50px">
+              <%= image_tag 'ic_profile_info.png' %>
+              <p class="concept" style=" display: inline-block; margin: 0; color: black">
+                <%= t('receipt.deposit') %>
+              </p>
+              <p class="value"  style="text-transform: uppercase;   font-family: 'Open Sans', sans-serif;   font-size: 14px;   font-weight: bold; color: black;  margin-right: 5px; display: block"><%= "#{t("currency.#{@booking.space.venue.currency.downcase}.symbol")}#{@booking.deposit}" %></p>
+            </div>
+          </div>
+          <div class="total" style="  background-color: #efefef; display: inline-block; width: 25%;   font-size: 14px; text-align: center; vertical-align: top; padding: 15px 0; height: 50px; ">
+            <p class="concept" style=" display: ineline-block; margin: 0; color: black">
+              <%= t('receipt.total_booking') %>
+            </p>
+            <p class="value" style="text-transform: uppercase;   font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; color: black; margin-right: 5px; display: block;"><%= "#{t("currency.#{@booking.space.venue.currency.downcase}.symbol")}#{@booking.price + @booking.deposit }" %></p>
+          </div>
+        </div>
+        <!-- check in, check out -->
+        <div class="booking-info" style="display: block;">
+          <div style="display: inline-block; vertical-align: top; width: 48%; font-size: 14px">
+            <div class="space-type">
+              <div class="title"  style="text-transform: uppercase;   font-family: 'Open Sans', sans-serif;   font-size: 14px;   font-weight: bold; color: black; margin: 15px 0;  margin-right: 5px; display: inline-block;">
+                <%= t('receipt.space_type') + ':' %>
+              </div>
+              <span style=" display: inline-block; text-transform: uppercase;"><%= t("spaces.types.#{@booking.space.s_type}") %></span>
+            </div>
+            <div class="time-frame">
+              <div class="title" style="text-transform: uppercase; font-family: 'Open Sans', sans-serif;   font-size: 14px;   font-weight: bold; color: black; margin: 15px 0;  margin-right: 5px; display: inline-block;">
+                <%= t('receipt.time_frame') + ':' %>
+              </div>
+              <span style="display: inline-block; text-transform: uppercase;"><%= t("spaces.types.#{@booking.b_type}") %></span>
+            </div>
+          </div>
+          <div style="display: inline-block; vertical-align: top; width: 2%; font-size: 14px"></div>
+          <div style="display: inline-block; vertical-align: top; width: 48%; font-size: 14px">
+            <div class="capacity">
+              <div class="title" style="text-transform: uppercase; font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; color: black; margin: 15px 0; margin-right: 5px; display: inline-block;">
+                <%= t('receipt.capacity') + ':' %>
+              </div>
+              <div class="code" style="display: inline-block;">
+                <%= @booking.space.capacity.to_s + " PEOPLE" %>
+              </div>
+            </div>
+            <div class="confirmation">
+              <div class="title" style="text-transform: uppercase; font-family: 'Open Sans', sans-serif;   font-size: 14px;   font-weight: bold; color: black; margin: 15px 0; margin-right: 5px; display: inline-block;">
+                <%= t('receipt.confirmation_code') + ':' %>
+              </div>
+              <div class="code" style="display: inline-block;">
+                <%= @booking.confirmation_code %>
+              </div>
+            </div>
+          </div>
+
+          <div class="separator long" style="background-color: #ffe111; height: 2px;"></div>
+
+          <div class="check" style="text-align: center">
+            <div class="column" style=" display: inline-block; margin: 20px 10px; text-align: center;">
+              <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184; display: block; text-align: center;">
+                <%= @booking.from.to_s(format = (@booking.hour?)? :custom_only_hours : :custom_only_day) %>
+              </div>
+              <span style="display: block; text-align: center;"><%= t('receipt.check_in') %></span>
+            </div>
+            <div class="bar" style=" display: inline-block; width: 2px; background-color: #efefef; height: 25px;"></div>
+            <div class="column" style=" display: inline-block; margin: 20px 10px; text-align: center;">
+              <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184; display: block; text-align: center;">
+                <%= @booking.quantity %>
+              </div>
+              <span style="display: block; text-align: center;"><%= t('receipt.spaces') %></span>
+            </div>
+            <div class="bar" style=" display: inline-block; width: 2px; background-color: #efefef; height: 25px;"></div>
+            <div class="column" style=" display: inline-block; margin: 20px 10px; text-align: center;">
+              <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184; display: block; text-align: center;">
+                <%=
+                  if @booking.hour?
+                    @booking.to.to_s(format = :custom_only_day)
+                  elsif @booking.day?
+                    ((@booking.to - @booking.from) / 1.day).round
+                  elsif @booking.month?
+                    ((@booking.to - @booking.from) / 1.month).round
+                  elsif @booking.month_to_month?
+                    @booking.space.month_to_month_minimum_unity
+                  end
+                %>
+              </div>
+              <span style="display: block; text-align: center;">
+              <%=
+                if @booking.hour?
+                  t('receipt.date')
+                elsif @booking.day?
+                  t('receipt.days')
+                elsif @booking.month?
+                  t('receipt.months')
+                elsif @booking.month_to_month?
+                  t('receipt.month_to_month')
+                end
+              %>
+              </span>
+            </div>
+            <div class="bar" style=" display: inline-block; width: 2px; background-color: #efefef; height: 25px;"></div>
+            <div class="column" style=" display: inline-block; margin: 20px 10px; text-align: center;">
+              <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184; display: block; text-align: center;">
+                <%=
+                  if @booking.month_to_month?
+                    (@booking.from + @booking.space.month_to_month_as_of.days).to_s(format = :custom_only_day)
+                  else
+                    @booking.to.to_s(format = (@booking.hour?)? :custom_only_hours : :custom_only_day)
+                  end
+                %>
+              </div>
+              <span style="display: block; text-align: center;">
+                <%=
+                  if @booking.month_to_month?
+                    t('receipt.month_to_month_as_of')
+                  else
+                    t('receipt.check_out')
+                  end
+                %>
+              </span>
+            </div>
+          </div>
+        </div>
+        <!-- guest payment -->
+        <div class="guest-payment-container" style="font-size: 0">
+          <div class="guest" style="display: inline-block; width: 50%; vertical-align: top; font-size: 14px;">
+            <div class="title" style="text-transform: uppercase; font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; color: black; margin: 15px 0; padding-right: 10px">
+              <%= t('receipt.guest') %>
+            </div>
+            <div class="separator long" style="  background-color: #ffe111; height: 2px; "></div>
+            <div class="box" style="margin-top: 15px">
+              <div class="right-info">
+                <div>
+                  <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184;">
+                    <%= "#{(@payment.receipt.guest_last_name.present?) ? t('receipt.first_name') : t('receipt.name')} :" %>
+                  </div>
+                  <span><%= @payment.receipt.guest_first_name %></span>
+                </div>
+                <%- if @payment.receipt.guest_last_name.present? %>
+                  <div>
+                    <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184;">
+                      <%= t('receipt.last_name') + ':' %>
+                    </div>
+                    <span><%= @payment.receipt.guest_last_name %></span>
+                  </div>
+                <%- end %>
+                <%- if @payment.receipt.guest_location %>
+                  <div>
+                    <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184;">
+                      <%= t('receipt.street_address') + ':' %>
+                    </div>
+                    <span><%= @payment.receipt.guest_location %></span>
+                  </div>
+                <%- end %>
+                <div>
+                  <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184;">
+                    <%= t('receipt.email') + ':' %>
+                  </div>
+                  <span><%= @payment.receipt.guest_email %></span>
+                </div>
+                <div>
+                  <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184;">
+                    <%= t('receipt.phone_number') + ':' %>
+                  </div>
+                  <span><%= @payment.receipt.guest_phone %></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="payment" style="display: inline-block; width: 50%; vertical-align: top; font-size: 14px;">
+            <div class="title" style="text-transform: uppercase;   font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; color: black; margin: 15px 0;">
+              <%= t('receipt.payment_type') %>
+            </div>
+            <div class="separator long" style="  background-color: #ffe111; height: 2px; "></div>
+            <div class="box" style="margin-top: 15px">
+              <div class="right-info">
+                <div>
+                  <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184;">
+                    <%= t('receipt.card') + ':' %>
+                  </div>
+                  <span><%= "xxxx xxxx xxxx #{@payment.card_last_4}" %></span>
+                </div>
+                <div>
+                  <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184;">
+                    <%= t('receipt.expires') + ':' %>
+                  </div>
+                  <span><%= @payment.card_expiration_date %></span>
+                </div>
+                <div>
+                  <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184;">
+                    <%= t('receipt.first_name') + ':' %>
+                  </div>
+                  <span><%= @payment.user_paying.first_name %></span>
+                </div>
+                <div>
+                  <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184;">
+                    <%= t('receipt.last_name') + ':' %>
+                  </div>
+                  <span><%= @payment.user_paying.last_name %></span>
+                </div>
+              </div>
+            </div>
+            <%- unless @refunds.empty? %>
+              <br/>
+              <div class="separator long" style="  background-color: #ffe111; height: 2px; "></div>
+              <div class="title" style="text-transform: uppercase;   font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; color: black; margin: 15px 0;">
+                <%= t('receipt.refunds') %>
+              </div>
+              <%- @refunds.each do |refund| %>
+                <div class="separator long" style="  background-color: #ffe111; height: 2px; "></div>
+                <div class="box" style="margin-top: 15px">
+                  <div class="right-info">
+                    <div>
+                      <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184;">
+                        <%= t('receipt.date') + ':' %>
+                      </div>
+                      <span><%= refund.updated_at.to_date %></span>
+                    </div>
+                    <div>
+                      <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184;">
+                        <%= t('receipt.amount') + ':' %>
+                      </div>
+                      <span><%= "#{t("currency.#{@booking.space.venue.currency.downcase}.symbol")}" %> <%= refund.amount %></span>
+                    </div>
+                    <div>
+                      <div class="subtitle" style=" font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: bold; display: inline-block; margin: 5px 5px 5px 0px; color: #808184;">
+                        <%= t('receipt.receipt_number') %>
+                      </div>
+                      <span><%= refund.receipt.id %></span>
+                    </div>
+                  </div>
+                </div>
+              <%- end %>
+            <%- end %>
+          </div>
+        </div>
+
+      <!-- END CONTENT -->
+
+        <p style="line-height: 30px; padding: 25px 0;">
+          <%= t('host_cancellation_email.terms1') %>
+          <a href='<%= our_terms_url %>#cancellation' target="_blank" style="color: #ffe111; font-weight: bold; text-decoration: none;">
+            <%= " #{t('host_cancellation_email.cancellation_policy')} " %>
+          </a>
+          <%= t('host_cancellation_email.terms2') %>
+          <a href='<%= our_terms_url %>' target="_blank" style="color: #ffe111; font-weight: bold; text-decoration: none;">
+            <%= " #{t('host_cancellation_email.terms_of_service')}." %>
+          </a>
+        </p>
+      </div>
+
+      <div style="min-width: 650px; margin: 0 auto; display: table; border-bottom: 1px solid #ccc; padding-bottom: 15px;">
+        <p style="display: table-cell; vertical-align: middle; font-weight: 100;">
+          <%= t('new_message_email.team') %>
+        </p>
+        <div class="social-icons" style="min-width: 216px; display: table-cell; vertical-align: middle; text-align: right;">
+          <div class="twitter social-icon" style="width: 44px; height: 44px; display: inline-block; margin-right: 10px; background-image: url(<%= image_url('ic_twitter_line.png') %>);"></div>
+          <div class="facebook social-icon" style="width: 44px; height: 44px; display: inline-block; margin-right: 10px; background-image: url(<%= image_url('ic_facebook_line.png') %>);"></div>
+          <div class="linkedin social-icon" style="width: 44px; height: 44px; display: inline-block; margin-right: 10px; background-image: url(<%= image_url('ic_linkedin_line.png') %>);"></div>
+          <div class="instagram social-icon" style="width: 44px; height: 44px; display: inline-block; margin-right: 10px; background-image: url(<%= image_url('ic_instagram_line.png') %>);"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

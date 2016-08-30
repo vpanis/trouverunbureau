@@ -52,4 +52,9 @@ class MailPreview < MailView
                 .last.try(:booking).try(:id)
     NotificationsMailer.receipt_email_host(id)
   end
+
+  def aig_claim_email
+    id = Booking.last.try(:id)
+    NotificationsMailer.aig_claim_email(id)
+  end
 end

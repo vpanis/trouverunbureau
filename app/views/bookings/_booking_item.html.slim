@@ -1,12 +1,14 @@
 - booking.space = Space.new(name: 'Deleted Space') unless booking.space
 - booking.space.venue = Venue.new(name: 'Deleted Venue', country_code: 'FR') unless booking.space.venue
+= render 'shared/claim_modal', modal_id: 'claim-modal', title: 'Your claim has been received', image_link_id: 'logo-link', save_button_id: 'save-logo'
+
 .booking-item.clearfix
   .col-md-1.text-center.margin-top
     - if booking.state == "cancelled"
       p.state.cancelled = t("bookings.state.#{booking.state}")
     - else
       p.state = t("bookings.state.#{booking.state}")
-    p.price = "#{t("currency.#{booking.space.venue.currency.downcase}.symbol")} #{booking.price}"
+    p.price = "#{t("currency.#{booking.space.venue.currency.downcase}.symbol")} #{number_with_precision(booking.price, separator: '.', precision: (booking.price == booking.price.round) ? 0 : 2)}"
   .col-md-5
     .clearfix
       p.type.pull-left = booking.space.name
@@ -44,3 +46,8 @@
       a.delete href="#" = t('bookings.delete')
     - if can_claim_deposit?(booking)
       = link_to t('bookings.claim_deposit'), claim_deposit_booking_path(id: booking.id, from_bookings: params[:action]), method: :put, class: 'claim-deposit'
+
+    - if booking.aig_claim_made?
+      a.insurance-claim-disabled href="#" = t('bookings.claim_received')
+    - if !booking.aig_claim_made? && can_make_claim?(booking, own)
+      = link_to t('bookings.make_claim'), make_claim_booking_path(id: booking.id), { :method => 'put', :remote => false, :class => 'insurance-claim', 'data-toggle' => 'modal', 'data-target' => '#claim-modal' }
