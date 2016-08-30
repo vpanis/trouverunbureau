@@ -369,14 +369,20 @@
                     = t('receipt.amount')
                 tr
                   td 2nd
-                  td 12/23/15
-                  td £ 295,50
+                  td
+                    = (@payment.updated_at + 30.days).to_date
+                  td
+                    = "#{t("currency.#{@booking.space.venue.currency.downcase}.symbol")} #{@payouts_to_user.first.amount}"
                 tr
                   td 3rd
-                  td 12/23/15
-                  td £ 295,50
+                  td
+                    = (@payment.updated_at + 60.days).to_date
+                  td
+                    = "#{t("currency.#{@booking.space.venue.currency.downcase}.symbol")} #{@payouts_to_user.first.amount}"
                 tr
                   td 4th
-                  td 12/23/15
-                  td £ 295,50
+                  td
+                    = (@payment.updated_at + 90.days).to_date
+                  td
+                    = "#{t("currency.#{@booking.space.venue.currency.downcase}.symbol")} #{@payouts_to_user.first.amount}"
   .col-md-1

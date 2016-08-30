@@ -402,34 +402,34 @@
             <%- end %>
           </div>
         </div>
-        <%= if @booking.month_to_month? %>
+        <%- if @booking.month_to_month? %>
           <div class="mtm-payment-container">
             <div class="guest">
-              <div class="title">t('receipt.upcoming_payouts')</div>
+              <div class="title"><%= t('receipt.upcoming_payouts') %></div>
               <div class="separator long">
                 <div class="box">
                   <!-- TODO SANTI: Please update this values with real info, remove display none as well -->
-                  <table class="hidden">
+                  <table>
                     <tbody>
                       <tr>
-                        <td>t('receipt.payout')</td>
-                        <td>t('receipt.date')</td>
-                        <td>t('receipt.amount')</td>
+                        <td><%= t('receipt.payout') %></td>
+                        <td><%= t('receipt.date') %></td>
+                        <td><%= t('receipt.amount') %></td>
                       </tr>
                       <tr>
                         <td>2nd</td>
-                        <td>12/23/15</td>
-                        <td>£ 295,50</td>
+                        <td><%= (@payment.updated_at + 30.days).to_date %></td>
+                        <td><%= "#{t("currency.#{@booking.space.venue.currency.downcase}.symbol")}" %> <%= @payouts_to_user.first.amount %></td>
                       </tr>
                       <tr>
                         <td>3rd</td>
-                        <td>12/23/15</td>
-                        <td>£ 295,50</td>
+                        <td><%= p(@payment.updated_at + 60.days).to_date %></td>
+                        <td><%= "#{t("currency.#{@booking.space.venue.currency.downcase}.symbol")}" %> <%= @payouts_to_user.first.amount %></td>
                       </tr>
                       <tr>
                         <td>4th</td>
-                        <td>12/23/15</td>
-                        <td>£ 295,50</td>
+                        <td><%= (@payment.updated_at + 90.days).to_date %></td>
+                        <td><%= "#{t("currency.#{@booking.space.venue.currency.downcase}.symbol")}" %> <%= @payouts_to_user.first.amount %></td>
                       </tr>
                     </tbody>
                   </table>
@@ -437,7 +437,7 @@
               </div>
             </div>
           </div>
-        <%= end %>
+        <%- end %>
       <!-- END CONTENT -->
 
         <p style="line-height: 30px; padding: 25px 0;">
