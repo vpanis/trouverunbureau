@@ -5,9 +5,12 @@ de:
     check_out: Check-Out
     date: Datum
     day: Tag
+    days: Tage
     days_amount: Anzahl der Tage
     deposit: Kaution
-    deskspotting_fee: DeskSpotting-Gebühr
+    deskspotting_fee: DeskSpotting Gebühr
+    errors:
+      minimum_time: Sie müssen mindestens die Minimalzeit für diesen Arbeitsplatz reichen (%{minimum_time} %{b_type})
     feature_1: Keine Buchungsgebühren.
     feature_2: Die Kaution wurde hinterlegt.
     feature_3: Buchen Sie für den von Ihnen gewünschten Zeitraum.
@@ -15,21 +18,24 @@ de:
     feature_5: Sichere Zahlungen.
     feature_6: Flexible Stornierungsbedingungen.
     free: Kostenlos
-    guaranteed_months:
-    guaranteed_months_quantity:
+    guaranteed_months: garantierte Monate
+    guaranteed_months_quantity: Zahl von garantierten Monaten
     hour: Stunde
+    hours: Stunden
     hours_amount: Anzahl der Stunden
     message_placeholder: Erzählen Sie mehr über sich und Ihre beruflichen Interessen.
     month: Monat
     month_amount: Anzahl der Monate
-    month_to_month:
-    month_to_month_as_of:
+    month_to_month: Monat zu Monat
+    month_to_month_as_of: 'Monat zu Monat von '
+    months: Monate
     months_amount: Anzahl der Monate
     price_per: Preis pro
+    send_booking_inquiry: Buchungsanfrage absenden
     send_inquiry: Anfrage absenden
-    space_amount: Anzahl der Arbeitsräume
+    space_amount: Anzahl der Arbeitsplätze
     space_booking: Arbeitsraum-Reservierung
-    spaces_amount: Anzahl der Arbeitsräume
+    spaces_amount: Anzahl der Arbeitsplätze
     time_frame: Wählen Sie den Zeitraum aus
     total: Gesamtsumme
     your_message: Ihre Nachricht
@@ -40,6 +46,7 @@ de:
     claim_deposit: Kaution anfordern
     current: Aktuelle Buchungen
     delete: Löschen
+    make_a_claim: ein Anspruch nehmen
     no_bookings: Es liegen keine Buchungen vor
     no_paid_cancelled: Sie haben keine bezahlten oder stornierten Buchungen.
     review: Geben Sie eine Bewertung ab
@@ -58,17 +65,19 @@ de:
     view_receipt: Beleg Ansehen
     your_bookings: Ihre Buchungen
   calendar: TT-MM-JJjj
+  collition_errors: Diese Daten oder Zeiten sind nicht verfügbar. Bitte wählen Sie anderen.
   commons:
     add: Hinzufügen
     add_image: Foto hinzufügen
-    add_space: Einen neuen Arbeitsraum hinzufügen
+    add_space: Einen neuen Arbeitsplatz hinzufügen
     cancel: Abbrechen
     close: Schließen
     delete: Löschen
     open: "Öffnen"
     pay: Zahlen
     save: Speichern
-    save_continue: Speichern und Fortfahren
+    save_continue: Speichern und weitermachen
+    share: Teilen
     unknown: Unbekannt
     upload_file: Datei laden
   contact:
@@ -138,7 +147,7 @@ de:
     en: English
     es: Español
     fr: Français
-    pt:
+    pt: Português
   errors:
     email_taken: Dieser Benutzer existiert bereits
     messages:
@@ -153,19 +162,275 @@ de:
     payout: Gemäß den Stornierungsbedingungen werden Sie eine Zahlung von %{currency_sym} %{amount} erhalten
     refund: Gemäß den Stornierungsbedingungen werden Sie eine Rückzahlung von %{currency_sym} %{amount} erhalten
     sorry_cancel: 'Wir bedauern, dass Sie diese Buchung storniert haben: '
-    subject: 'Gast-Stornierung - Buchung #%{booking_id}'
+    subject: 'Besucher-Stornierung - Buchung #%{booking_id}'
     transferred: "Überwiesen auf"
-    unfortunately: 'Leider musste Ihr Gast, %{name}, seine Buchung bei Ihnen stornieren:'
+    unfortunately: 'Leider musste Ihr Besucher, %{name}, seine Buchung bei Ihnen stornieren:'
   guest_review_email:
     at: in
     check_in: Check-In
     check_out: Check-out
     checked_out: Sie haben ausgecheckt von
+    conversion_text: Wie würden Sie Ihren Aufenthalt bewerten
+    conversion_text2: Ihr Rückmeldung ist für uns und andere DeskSpotters sehr wichtig!
     date: Datum
     days: Tage
     hi: Hallo
     rate_stay: Bewerten Sie Ihren Aufenthalt
-    subject: 'Gast-Bewertung - %{type} #%{guest_id}'
+    subject: 'Besucher-Bewertung - %{type} #%{guest_id}'
+  help:
+    account: 
+    general:
+      confidentiality: 
+      countries: 
+      deskspotting_handle_payout_details:
+        description: 
+        title: 
+      getting_started: 
+      in_which_country:
+        description: 
+        title: 
+      meeting_room_difference:
+        description: 
+        title: 
+      popular_topics: 
+      title: 
+      what_is_a_communal_space:
+        description: 
+        title: 
+      what_is_a_communcal_space: 
+      what_is_a_fixed_desk:
+        description: 
+        title: 
+      what_is_a_home_office:
+        description: 
+        title: 
+      what_is_a_home_office_description: 
+      what_is_a_hot_desk:
+        description: 
+        title: 
+      what_is_a_private_office:
+        description: 
+        title: 
+      whats_a_deskspotter:
+        description: 
+        title: 
+      why_host:
+        description: 
+        title: 
+      why_host_reasons: 
+      why_use_deskspotting:
+        easy: 
+        flexible: 
+        how_long: 
+        networking: 
+        no_fees: 
+        title: 
+      workspaces: 
+    guests:
+      account: 
+      booking_a_workspace_is_subletting:
+        description: 
+        title: 
+      booking_fees_to_guests:
+        description: 
+        title: 
+      bookings: 
+      cancellation_policy:
+        beyond_timeframe: 
+        for_bookings_of_1month: 
+        for_bookings_of_less_than_24hs: 
+        for_bookings_of_more_than_24hs: 
+        title: 
+      cancellations: 
+      card_information:
+        description: 
+        title: 
+      contact_host_before_booking:
+        description: 
+        title: 
+      deskspotting_handle_deposits:
+        description: 
+        title: 
+      how_do_i_add_managers:
+        assist_you: 
+        description: 
+        title: 
+      how_do_i_book_a_workspace:
+        accepted_inquiry: 
+        easy: 
+        send_message: 
+        title: 
+      how_do_i_cancel_reservations:
+        description: 
+        title: 
+      how_do_i_contact:
+        description: 
+        title: 
+      how_do_i_edit_profile:
+        description: 
+        title: 
+      how_do_i_find_workspace:
+        description: 
+        title: 
+      how_do_i_invite_friends:
+        description: 
+        title: 
+      how_do_i_know_booking_was_made:
+        address: 
+        confirmation_number: 
+        dates: 
+        description: 
+        host_info: 
+        payment_date: 
+        payment_info: 
+        title: 
+      how_do_i_sign_up:
+        description: 
+        title: 
+      how_to_reset_password:
+        description: 
+        title: 
+      how_to_stop_month_to_month:
+        steps: 
+        title: 
+        warning: 
+      month_to_month_bookings:
+        description: 
+        title: 
+      monthly_bookings_days:
+        description: 
+        title: 
+      payments: 
+      popular_topics: 
+      search_by_professions:
+        description: 
+        title: 
+      timeframe_for_workspace:
+        description: 
+        title: 
+      title: 
+      what_is_an_organization:
+        description: 
+        title: 
+      what_is_escrow:
+        description: 
+        title: 
+      what_type_of_venues:
+        description: 
+        title: 
+      when_i_am_charged:
+        description: 
+        title: 
+    host:
+      access_to_calendar:
+        description: 
+        title: 
+      account: 
+      before_accepting_booking_inquiry:
+        description: 
+        title: 
+      bestsuited_workspaces_for_bookings:
+        long_term_bookings: 
+        rules: 
+        short_term_bookings: 
+        title: 
+      booking_a_workspace_is_subletting:
+        description: 
+        title: 
+      bookings: 
+      can_more_than_one_person_manage:
+        description: 
+        title: 
+      cancellations: 
+      deskspotting_fees:
+        description: 
+        less_than_one_month: 
+        month_to_month: 
+        more_than_one_month: 
+        title: 
+      difference_between_owner_and_admin:
+        description: 
+        title: 
+      does_deskspotting_have_referal_program:
+        description: 
+        title: 
+        win_win: 
+      how_do_i_add_managers:
+        assist_you: 
+        description: 
+        title: 
+      how_do_i_cancel_reservations:
+        description: 
+        title: 
+      how_do_i_contact:
+        description: 
+        title: 
+      how_do_i_edit_payout_details:
+        description: 
+        title: 
+      how_do_i_edit_profile:
+        description: 
+        title: 
+      how_do_i_get_workspaces_featured:
+        description: 
+        title: 
+      how_do_i_invite_friends:
+        description: 
+        title: 
+      how_do_i_sign_up:
+        description: 
+        title: 
+      how_to_reset_password:
+        description: 
+        title: 
+      how_to_stop_month_to_month:
+        steps: 
+        title: 
+        warning: 
+      if_hosts_cancel_reservation_prior_to_checkin:
+        affect_rating: 
+        booking_less_than_24hs: 
+        booking_more_than_1month: 
+        booking_more_than_24hs: 
+        description: 
+        guidelines: 
+        more_on_cancellation_policy: 
+        title: 
+        value_flexibility: 
+      inform_social_networks:
+        description: 
+        title: 
+      insurance: 
+      insurance_coverage:
+        description: 
+        title: 
+      list_your_space: 
+      monthly_bookings_days:
+        description: 
+        title: 
+      payments: 
+      referal_program: 
+      service fees: 
+      special_offer_to_guest:
+        description: 
+        title: 
+      tips_on_listing_your_space:
+        booking_inquiries: 
+        images: 
+        title: 
+        venue_information: 
+      title: 
+      what_does_this_insurance_covers:
+        description: 
+        title: 
+      when_and_how_is_a_host_paid:
+        description: 
+        title: 
+      which_listings_are_covered:
+        description: 
+        title: 
+    more: 
+    popular_topics: 
   home:
     features:
       easy:
@@ -175,8 +440,8 @@ de:
         text: Buchen Sie, wann und wo Sie wollen, einen individuellen Arbeitsraum, ein privates Büro oder Tagungsräume für einige Stunden, einen Tag, einen Monat oder länger.
         title: Flexibilität
       month_to_month:
-        text:
-        title:
+        text: Optimal Flexibilität für jene Leute, die einen Arbeitsraum gerade lieben aber nicht verpflichten können, wie lange sie bleiben werden.
+        title: Monat zu Monat Buchungen
       networking:
         text: DeskSpotting hilft Ihnen dabei, inspirierende Arbeitsräume entsprechend Ihren geschäftlichen Interessen zu finden.
         title: Networking
@@ -191,6 +456,7 @@ de:
       contact: Kontakt
       faq: Hilfe
       how_it_works: Räumlichkeiten anbieten
+      insurance: Versicherung
       join_us: Werden Sie Mitglied
       language:
         en: eng
@@ -232,7 +498,7 @@ de:
     check_out: Check-out
     date: Datum
     refund_guest: Gemäß den Stornierungsbedingungen werden Sie eine Rückzahlung von %{currency_sym} %{amount} erhalten
-    refund_host: Gemäß den Stornierungsbedingungen wird Ihr Gast eine Rückzahlung von %{currency_sym} %{amount} erhalten
+    refund_host: Gemäß den Stornierungsbedingungen wird Ihr Besucher eine Rückzahlung von %{currency_sym} %{amount} erhalten
     sorry_cancel: 'Wir bedauern, dass Sie diese Buchung storniert haben:'
     space: Arbeitsraum
     spaces: Arbeitsräume
@@ -240,11 +506,13 @@ de:
     terms1: Falls Sie Fragen haben zu unseren
     terms2: können Sie
     terms_of_service: unsere Nutzungsbedingungen lesen
-    unfortunately: 'Leider musste Ihr Gastgeber, %{name}, Ihre Buchung stornieren:'
+    unfortunately: 'Leider musste Ihr Besucher, %{name}, Ihre Buchung stornieren:'
   host_review_email:
     checked_in: hat eingecheckt am
-    rate_guest: Bewerten Sie Ihren Gast
-    subject: 'Bewertung Gastgeber - Ort #%{venue_id}'
+    conversion_text: Wie würden Sie Ihr Gast bewerten
+    conversion_text2: Ihr Rückmeldung ist für uns und andere DeskSpotters sehr wichtig!
+    rate_guest: Bewerten Sie Ihren Besucher
+    subject: 'Bewertung Besucher - Ort #%{venue_id}'
     your_guest: Ihr Gast
   inbox:
     approve: Annehmen
@@ -363,10 +631,80 @@ de:
     pending_authorization: Die Buchung muss vom Gastgeber bestätigt werden.
     pending_payment: Buchung akzeptiert. Bestätigung erforderlich. Diese Buchung wird 24 Stunden beibehalten. Sollten Sie sie in diesem Zeitraum nicht bestätigen, wird sie storniert.
     refunding: Der Betrag wurde rückerstattet.
+  meta:
+    contacts:
+      new:
+        description: Haben Sie Vorschläge oder Fragen? Oder daran interessiert, das DeskSpotting-Team beizutreten? Wir sind immer daran interessiert, von Ihnen zu hören.
+        title: Kontakt
+    landing:
+      index:
+        description: Buchen Sie einzigartige Arbeitsräume, wo und wann Sie sie benötigen. Listen Sie Ihre freien Raum und bauen Sie Ihre eigenen gemeinschaftliche Arbeitsumgebung, während Geld zu verdienen.
+        title: Viel mehr als nur ein Büro
+    spaces:
+      index:
+        description: Buchen Sie einzigartige Büros oder Tagungsräume, wo und wann Sie sie benötigen. Starten Sie die Vorteile der gemeinsamen Büro-Arbeitsumgebungen zu genießen.
+        title: Alle Arbeitsräume
+      search_mobile:
+        description: 
+        title: Mobile suchen
+      space_0:
+        description: Buchen Sie einzigartige Konferenzräume, wo und wann Sie sie benötigen. Starten Sie die Vorteile der gemeinsamen Büro-Arbeitsumgebungen zu genießen.
+        title: Konferenzraum
+      space_1:
+        description: Buchen Sie einzigartige Tagungsräume, wo und wann Sie sie benötigen. Starten Sie die Vorteile der gemeinsamen Büro-Arbeitsumgebungen zu genießen.
+        title: Tagungsraum
+      space_2:
+        description: Buchen Sie einzigartige privates Büros, wo und wann Sie sie benötigen. Starten Sie die Vorteile der gemeinsamen Büro-Arbeitsumgebungen zu genießen.
+        title: Privates Büro
+      space_3:
+        description: Buchen Sie einzigartige fester Arbeitsplätze, wo und wann Sie sie benötigen. Starten Sie die Vorteile der gemeinsamen Büro-Arbeitsumgebungen zu genießen.
+        title: Fester Arbeitsplatz
+      space_4:
+        description: Buchen Sie einzigartige Hot Desks, wo und wann Sie sie benötigen. Starten Sie die Vorteile der gemeinsamen Büro-Arbeitsumgebungen zu genießen.
+        title: Hot Desk
+      space_5:
+        description: Buchen Sie einzigartige Gemeinschaftsarbeitsräume, wo und wann Sie sie benötigen. Starten Sie die Vorteile der gemeinsamen Büro-Arbeitsumgebungen zu genießen.
+        title: Gemeinsamer Arbeitsraum
+      space_6:
+        description: Arbeiten Sie von zu Hause überall. Buchen Sie einzigartige Home Offices, wo und wann Sie sie benötigen.
+        title: Home Office
+    statics:
+      about_us:
+        description: DeskSpotting ist für alle Arten von Unternehmen von Start-ups bis auf reifen Unternehmen gesorgt, die von gemeinsamen Büro-Arbeitsumgebungen zu profitieren suchen.
+        title: "Über uns"
+      faq:
+        description: In welchen Ländern kann ich DeskSpotting benutzen? Warum DeskSpotting benutzen? Wie kann ich meine eigenen Coworking Umgebung aufzubauen? Erfahren Sie mehr über DeskSpotting.
+        title: FAQ
+      how_it_works:
+        description: Suchen Sie und listen Sie Arbeitsräume auf einer flexiblen Basis auf DeskSpotting ab. Starten Sie die Vorteile der gemeinsamen Büro-Arbeitsumgebungen zu genießen.
+        title: Wie es funktioniert
+      insurance:
+        description: DeskSpotting und AIG haben eine spezielle Versicherung für den Empfang von Besuchern für jede Arbeitsplätze Buchungen in Frankreich entwickelt.
+        title: Versicherung
+      privacy_policy:
+        description: Dieses Dokument legt der Datenschutzrichtlinie für Gastgeber und Besucher auf DeskSpotting in Bezug auf die Handhabung von Benutzerinformationen aus.
+        title: Datenschutzbestimmungen
+      terms_of_service:
+        description: Willkommen bei DeskSpotting. Lesen Sie sorgfältig diese Dienst Bedingungen, da sie wichtige Informationen über Ihre Rechte und Pflichten enthalten.
+        title: Unsere Geschäftsbedingungen
+    users:
+      password_new:
+        description: "Ändern Sie Ihr Passwort. Loggen Sie sich ein und starten Sie an erstaunlichen geteilten Arbeitsräume zu buchen, und beginnen Sie jetzt DeskSpotting!"
+        title: Neues Passwort
+      sign_in:
+        description: 'Tragen Sie sich ein und suchen Sie nach inspirierenden Arbeitsräume, dass Sie für eine Stunde, einen Tag, einen Monat oder mehr buchen können. Die Wahl liegt jetzt bei Ihnen auf DeskSpotting. '
+        title: Sich eintragen
+      sign_up:
+        description: Willkommen auf DeskSpotting. Registrieren Sie sich und starten erstaunlich gemeinsamen Büroräume zu buchen. Starten Sie jetzt DeskSpotting!
+        title: Sich anmelden.
+    venues:
+      index:
+        description: "%{name}. Amazing %{category} in %{location}. Buchen Sie Ihre inspirierenden Arbeitsraum Stunden-, Tages-, Monatsweise oder mehr."
+        title: "%{name} | %{category}"
   new_message_email:
     got_new_message: Neue Nachricht von
     hi: Hallo
-    on_date_connector: 'am'
+    on_date_connector: an
     reply: Oder antworten Sie direkt über diese E-Mail.
     subject: 'Sie haben eine neue Nachricht - Buchung #%{booking_id}'
     team: Das DeskSpotting-Team
@@ -379,13 +717,14 @@ de:
     add_manager: Manager hinzufügen
     add_manager_action: Manager hinzufügen
     change_picture: Foto ändern
-    confirm_identity: Confirm Identity
-    identity_confirmed: Identity Confirmed
+    confirm_identity: Identität bestätigen
+    confirming_identity: 
     create_profile: Unternehmen eingeben
     create_title: Titel hinzufügen
     edit_profile: Profil ändern
     email: E-Mail
     email_placeholder: manager@example.com
+    identity_confirmed: Identität bestätigt
     members: Manager
     members_subtitle: Manager Untertitel
     name: Name
@@ -407,6 +746,7 @@ de:
     expiration_month: Ablaufmonat (mm)
     expiration_year: Ablaufjahr (jj)
     hours: Stunden
+    info_cvx: Das ist der dreistelligen Code auf der Rückseite Ihrer Karte.
     invalid_card_number: Ungültiges Format für Kartennummer
     invalid_cvv: Ungültiges Format für CVV
     invalid_expiration_date: Ungültiges Format für Ablaufdatum
@@ -419,13 +759,14 @@ de:
     spaces: Arbeitsräume
     type: Art
     used_credit_card: Verwendete Kreditkarte
+    vat: 'Mehrwertsteuer '
     welcome: Hallo %{name}. Es ist Zeit zu zahlen!
   payment_methods:
     account_number: Kontonummer
     address: Adresse
     bank_country: Land der Bank
     bank_name: Name der Bank
-    bic_iban_tooltip:
+    bic_iban_tooltip: Um richtige Verarbeitung Ihrer Zahlungsdaten sicherzustellen, kopieren und einfügen Sie sie bitte nicht in diesem Bereich.
     branch_code: Branch-Code
     business: Unternehmen
     country_of_residence: Wohnsitzland
@@ -453,35 +794,35 @@ de:
     account_number: Kontonummer
     account_type: Kontoart
     amount: Betrag
-    amount_paid:
-    capacity:
+    amount_paid: Gezahlte Betrag
+    capacity: Personenanzahl
     card: Karte
     check_in: Check-In
     check_out: Check-out
     commission: Servicegebühren
     confirmation_code: Bestätigungscode
     country: Land
-    customer_title: Beleg Gast
+    customer_title: Beleg Besucher
     date: Datum
-    days:
+    days: Tage
     deposit: Kaution
     email: E-Mail
     expires: Gültig bis
     first_name: Vorname
     funds_trasferred_on: "Überweisung am"
-    guest: Gast
-    hours:
+    guest: Besucher
+    hours: Stunden
     iban: IBAN
     last_name: Nachname
-    month_to_month:
-    month_to_month_as_of:
-    months:
+    month_to_month: Guarantierte Monate
+    month_to_month_as_of: Monat zu Monat ab
+    months: Monate
     name: Name
     payment_type: Zahlungsart
-    payout:
+    payout: Ausschüttung
     payout_type: Auszahlungsart
-    people:
-    person:
+    people: Leute
+    person: Person
     phone_number: Telefonnummer
     province: Provinz
     receipt_number: 'Beleg #'
@@ -490,17 +831,17 @@ de:
     space_type: Art des Arbeitsraums
     spaces: Orte
     street_address: Adresse
-    time_frame:
-    total_payout:
+    time_frame: Zeitraum
+    total_payout: Gesamtausschüttung
     total_rental: Buchungssumme
-    upcoming_payouts:
-    venue_host: Gastgeber
+    upcoming_payouts: Anstehenden Ausschüttungen
+    venue_host: Besucher
     venue_name: Name des Ortes
-    venue_title: Beleg Gastgeber
+    venue_title: Beleg Besucher
     zip_code: Postleitzahl
   receipt_email:
-    subject_client: 'Beleg Gast - Buchung #%{booking_id}'
-    subject_host: 'Beleg Gastgeber - Buchung #%{booking_id}'
+    subject_client: 'Beleg Besucher - Buchung #%{booking_id}'
+    subject_host: 'Beleg Besucher - Buchung #%{booking_id}'
   referral:
     button: Einladen
     confirmation: Einladung Versendet!
@@ -517,9 +858,9 @@ de:
   reviews:
     check_in: Check-In
     check_out: Check-out
-    comment: Meinung (Ihre Bewertung werden nur andere Gastgeber sehen)
+    comment: Meinung (Ihre Bewertung werden nur andere Besucher sehen)
     date: Datum
-    guest_review: Bewertung Gast
+    guest_review: Bewertung Besucher
     rate_space: Bewerten Sie %{space} von %{venue}
     space_review: Bewertung Arbeitsraum
     spaces: Arbeitsräume
@@ -538,7 +879,7 @@ de:
     show_filters: Arbeitsräume anzeigen
     teams: Teams
     workspace: Arbeitsplatz
-  select_country:
+  select_country: Land wählen
   session:
     already_registered: Schon angemeldet?
     change_password: Passwort ändern
@@ -548,7 +889,7 @@ de:
     date_of_birth: Geburtsdatum
     email: E-Mail-Adresse
     fb_login: Anmeldung mit Facebook
-    fb_signup:
+    fb_signup: Anmeldung mit Facebook
     first_name: Vorname
     forgot_password: Passwort vergessen?
     full_name: Vor- und Nachname
@@ -569,31 +910,38 @@ de:
   spaces:
     capacity: Personenanzahl
     day_price: Preis pro Tag
+    delete_your_space: Löschen Sie Ihren Arbeitsplatz
     deposit: Kaution
     description: Beschreibung
     edit_your_space: "Ändern Sie Ihren Arbeitsraum"
     hour_price: Preis pro Stunde
     info_capacity: Wie viele Personen können an diesem Arbeitsplatz arbeiten?
-    info_deposit: Alle Kautionen werden zur Sicherheit des Gastes und des Gastgebers hinterlegt
-    info_description: Beschreiben Sie den Arbeitsplatz und sagen Sie potenziellen Gästen, weshalb das ein guter Arbeitsplatz ist
+    info_deposit: Alle Kautionen werden zur Sicherheit des Besuchers und des Gastgebers hinterlegt
+    info_description: Beschreiben Sie den Arbeitsplatz und sagen Sie potenziellen Besucher, weshalb das ein guter Arbeitsplatz ist
+    info_minimum_renting_period: Mindestbuchungszeit erlaubt
     info_photos: Je besser die Fotos sind, desto mehr Nutzer werden sich für Ihren Arbeitsraum interessieren. Teilen Sie Fotos, die die Gesamtatmosphäre Ihres Arbeitsraums vermitteln.
     info_pricing: Legen Sie den Preis fest, zu dem Sie Ihren Arbeitsraum bei verschiedenen Zeiträumen anbieten möchten. Der Preis kann jederzeit und von Fall zu Fall geändert werden.
     info_quantity: Anzahl dieser Arbeitsplätze, die Sie auf DeskSpotting anbieten möchten
-    info_minimum_renting_period: Mindestbuchungsdauer
-    info_renting_period: Buchungsdauer
+    info_renting_period: Buchungsdaten verfügbar
     minimum_renting_period: Mindestbuchungsdauer
     month_price: Preis pro Monat
-    month_to_month:
+    month_to_month: Monat zu Monat
     name: Name
     per_day: Pro Tag
     per_hour: Pro Stunde
     per_month: Pro Monat
     price: Preis
-    pricing: Preis (%{currency})
+    pricing: Preisermittlung (%{currency})
     pricing_in: Preis in %{currency}
     quantity: Anzahl der Arbeitsplätze
-    renting_period: Buchungsdauer
+    renting_period: Buchungsdaten
+    select_workspace: Wählen Sie alle Ihre Arbeitsplätze, um die Informationen zu bearbeiten
+    share_on: Teilen auf
+    share_text: Kommen Sie in meinem Arbeitsplatz zu arbeiten. Meiner %{space_type} kann auf @DeskSpotting gebucht werden
+    sharing_message: Um nun tatsächlich den %{space} und den %{venue} nutzen zu können, sollten Sie damit beginnen, diese in ihren sozialen Netzwerken zu teilen, damit jeder den Arbeitsplatz sehen kann, der Ihnen zur Verfügung steht.
     space_photos: Fotos vom Arbeitsplatz
+    thanks_for_registering: Vielen Dank für die Registrierung Ihren Arbeitsplatz!
+    thanks_for_updating: Vielen Dank für die Aktualisierung Ihrem Arbeitsplatz!
     type: Art des Arbeitsraums
     types:
       all: Alle Arbeitsräume
@@ -604,6 +952,7 @@ de:
       hot_desk: Hot Desk
       meeting_room: Tagungsraum
       private_office: Privates Büro
+      training_room: Training Room
   users:
     about_me: "Über mich"
     account:
@@ -616,13 +965,13 @@ de:
       you_can_disable: Sie können dies jederzeit deaktivieren.
     add_languages: Sprachen hinzufügen
     change_picture: Foto ändern
-    confirm_identity: Confirm Identity
-    identity_confirmed: Identity Confirmed
-    complete_profile: 'Venligst, udfyld din profil'
     company_name: Name des Unternehmens
+    complete_profile: Bitte den Profil ausfüllen
+    confirm_identity: Identität bestätigen
+    confirming_identity: 
     country_of_residence: Wohnsitzland
     date_of_birth: Geburtsdatum
-    edit_organization_profile:
+    edit_organization_profile: 'Organisation Profil bearbeiten. '
     edit_profile: Profil ändern
     email: E-Mail
     emergency_contact: Notfallkontakt
@@ -633,16 +982,17 @@ de:
     enter_languages: Geben Sie die Sprachen ein, die Sie sprechen
     first_name: Vorname
     gender: Geschlecht
-    gender_select:
+    gender_select: Bitte wählen Sie Ihren Geschlecht aus.
     genders:
       f: Weiblich
       m: Männlich
+    identity_confirmed: Identität bestätigt
     info_no_share: Wir werden diese Information an niemanden weitergeben
     info_password: Please input a 8 digit password
     info_share_email: Wir werden Ihre E-Mail-Adresse an niemanden weitergeben
-    info_share_emergency: Wir werden die Informationen Ihres Notfallkontakts nur an einen Gast weitergeben, wenn eine Buchung durchgeführt wurde
-    info_share_phone: Wir werden Ihre Telefonnummer nur an einen Gastgeber/Gast weitergeben, wenn eine Buchung durchgeführt wurde
-    info_share_street: Wie werden Ihre Adresse nur an einen Gast weitergeben, wenn eine Buchung durchgeführt wurde
+    info_share_emergency: Wir werden die Informationen Ihres Notfallkontakts nur an einen Besucher weitergeben, wenn eine Buchung durchgeführt wurde
+    info_share_phone: Wir werden Ihre Telefonnummer nur an einen Gastgeber/Besucher weitergeben, wenn eine Buchung durchgeführt wurde
+    info_share_street: Wie werden Ihre Adresse nur an einen Besucher weitergeben, wenn eine Buchung durchgeführt wurde
     interests: Mehr zu Ihrer Karriere und Ihrem Beruf
     language: Sprache
     last_name: Nachname
@@ -660,17 +1010,24 @@ de:
     amenities:
       air_conditioning: Klimatisierung
       cafe_restaurant: Café/Restaurant
+      catering_services: Cateringservice
       chill_area: Entspannungsbereich
       cleaning_service: Reinigungsdienst
+      coffee_station: Kaffeestation
       concierge: Hausmeister
       conference_rooms: Tagungsräume
+      dvd: DVD
       elevators: Aufzüge
       fax: Fax
+      first_aid: Erste Hilfe
       gym: Fitnessraum
       individual_bookings: Buchungen für Einzelpersonen
       info_team_bookings: Können Sie sich vorstellen, dass Teams von Berufstätigen Ihren Arbeitsraum buchen?
       kitchen: Küche
+      locker: Schließfach
       mail_service: Kurierdienst
+      microwave: Mikrowelle
+      nap_area: Schlafbereich
       outdoor_space: Außenbereich
       parking: Parken
       pets_allowed: Haustiere erlaubt
@@ -679,10 +1036,14 @@ de:
       printer_scanner: Drucker/Scanner
       projector: Beamer
       reception_service: Empfangsservice
+      refrigerator: Kühlschrank
       security: Sicherheitsdienst
       shower: Dusche
+      snacks: Snacks
+      storage: Lager
       team_bookings: Team-Buchungen
       tv: TV
+      videoconference: Videokonferenz
       water_fountain: Trinkbrunnen
       wheelchair_access: Rollstuhlzugang
       whiteboards: Whiteboards
@@ -725,7 +1086,7 @@ de:
       custom_times: Besondere Geschäftszeiten?
       description: Beschreibung
       email: Allgemeine E-Mail-Adresse
-      info_professions: Sagen Sie Gästen, welche Berufsgruppen an Ihrem Ort willkommen sind
+      info_professions: Sagen Sie Besucher, welche Berufsgruppen an Ihrem Ort willkommen sind
       invalid_street: Wählen Sie bitte eine Adresse aus der Drop-Down-Liste
       list_your_venue: Bieten Sie Ihren Ort an
       name: Name des Ortes
@@ -748,6 +1109,7 @@ de:
       advertising: Werbung
       all: Alle Berufe sind willkommen
       architect: Architekt
+      coach: Coach
       consultant: Berater
       design: Design
       entertainment: Entertainment
@@ -755,13 +1117,16 @@ de:
       fashion: Mode
       finance: Finanzen
       freelance: Freelance
+      headhunter: Abwerber
       journalist: Journalist
       lawyer: Anwalt
       media: Medien
       professor: Professor
+      psychologist: Psychologe
       public_relations: Public Relations
       startup: Start-up
       technology: Technik
+      therapist: Therapeut
     reported: Gemeldet
     show:
       about_venue: "Über den Ort"
@@ -770,7 +1135,7 @@ de:
       chosen_workspace: in der Suche ausgewählter Arbeitsplatz
       closed: Geschlossen
       location: Lage
-      month_to_month:
+      month_to_month: Monat zu Monat
       no_reviews: Keine Bewertungen
       opening_hours: "Öffnungszeiten"
       per_day: Pro Tag
@@ -804,25 +1169,25 @@ de:
       restaurant: Restaurant
       startup_office: Start-up-Büro
   welcome_email:
-    button_1:
-    button_2:
-    button_3:
-    description_1:
-    description_2:
-    description_3:
-    footer:
-    footer_disclaimer_1:
-    footer_disclaimer_2:
-    message:
-    message_2:
-    subject:
-    title_1:
-    title_2:
-    title_3:
+    button_1: Erzählen Sie uns mehr
+    button_2: Listen Sie Ihr Platz
+    button_3: Buchen Sie jetzt
+    description_1: Je mehr Informationen Sie über sich selbst und Ihre beruflichen Interessen zur Verfügung stellen, desto leichter wird es für DeskSpotting Sie mit Ihren idealen Arbeitsbereiche und Arbeitspartner zu verbinden.
+    description_2: Machen Sie Ihrem unbesetzte Bürofläche zu Geld, verdienen Sie Geld und treffen Sie interessante Profis, die Sie zusammen mitarbeiten können. Jeder gewinnt.
+    description_3: Suchen Sie nach Ihren idealen Arbeitsraum. Erinnern Sie sich dass, Sie sogar den Berufen suchen können, mit dem Sie arbeiten möchten.
+    footer: Viel mehr als nur ein Büro
+    footer_disclaimer_1: Gemeinsam mit der Liebe von unserem Headquarter.
+    footer_disclaimer_2: Copyright. DeskSpotting LIMITED. 2016
+    message: Entdecken Sie einzigartigen Arbeitsräume für Sie oder Ihr Team, und nutzen Sie den gemeinsamen Arbeitsumgebung.
+    message_2: 'Bevor Sie DeskSpotting starten. '
+    subject: Wilkommen zu Deskspotting!
+    title_1: 'Ausfüllen Ihr Profil. '
+    title_2: 'Gastgeber werden. '
+    title_3: DeskSpotting starten!
   wishlist:
     day: Tag
     hour: Stunde
     month: Monat
-    month_to_month:
+    month_to_month: Monat zu Monat
     no_favourites: Sie haben keine Wish List-Arbeitsräume
     week: Woche

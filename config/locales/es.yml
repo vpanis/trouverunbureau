@@ -1,13 +1,16 @@
-es:
+es-ES:
   booking_inquiry:
     back: Volver a atrás
     check_in: Check-In
     check_out: Check-Out
     date: Fecha
     day: Día
+    days: Dias
     days_amount: Número de días
     deposit: Fianza
     deskspotting_fee: Tarifas de DeskSpotting
+    errors:
+      minimum_time: Debes seleccionar por lo menos el tiempo mínimo establecido por los propietarios (%{minimum_time} %{b_type})
     feature_1: Sin gastos de reserva.
     feature_2: Fianzas bloqueadas en cuenta de depósito en garantía.
     feature_3: Reserva el tiempo que necesites.
@@ -18,14 +21,17 @@ es:
     guaranteed_months: Meses Garantizados
     guaranteed_months_quantity: Meses guarantizados
     hour: Hora
+    hours: Horas
     hours_amount: Número de horas
     message_placeholder: Cuéntale al anfitrión algo más sobre ti y tus intereses profesionales.
     month: Mes
     month_amount: Número de meses
     month_to_month: Mes al Mes
     month_to_month_as_of: Mes al Mes a partir de
+    months: Meses
     months_amount: Número de meses
     price_per: Precio por
+    send_booking_inquiry: Enviar solicitud
     send_inquiry: Enviar solicitud
     space_amount: Número de espacios
     space_booking: Reserva de espacio
@@ -40,6 +46,7 @@ es:
     claim_deposit: Reclamar la fianza
     current: Reservas actuales
     delete: Suprimir
+    make_a_claim: haz un reclamo
     no_bookings: No hay reservas
     no_paid_cancelled: No tienes reservas pagadas o canceladas.
     review: Escribir una evaluación
@@ -58,6 +65,7 @@ es:
     view_receipt: Ver recibo
     your_bookings: Tus reservas
   calendar: dd-mm-aaaa
+  collition_errors: Las fecha seleccionada no está disponible. Por favor seleccione otra fecha.
   commons:
     add: Añadir
     add_image: Añadir foto
@@ -69,6 +77,7 @@ es:
     pay: Pagar
     save: Guardar
     save_continue: Guardar y continuar
+    share: Compartir
     unknown: Desconocido
     upload_file: Subir archivo
   contact:
@@ -161,11 +170,267 @@ es:
     check_in: Check-In
     check_out: Check-Out
     checked_out: Hiciste check-out de
+    conversion_text: cómo calificarías tu estadía en
+    conversion_text2: Tu opinión es muy importante para nosotros y para otros DeskSpotters!
     date: Fecha
     days: Días
     hi: Hola
     rate_stay: Evalúa tu estancia
     subject: 'Evaluación del huésped - %{type} #%{guest_id}'
+  help:
+    account: 
+    general:
+      confidentiality: 
+      countries: 
+      deskspotting_handle_payout_details:
+        description: 
+        title: 
+      getting_started: 
+      in_which_country:
+        description: 
+        title: 
+      meeting_room_difference:
+        description: 
+        title: 
+      popular_topics: 
+      title: 
+      what_is_a_communal_space:
+        description: 
+        title: 
+      what_is_a_communcal_space: 
+      what_is_a_fixed_desk:
+        description: 
+        title: 
+      what_is_a_home_office:
+        description: 
+        title: 
+      what_is_a_home_office_description: 
+      what_is_a_hot_desk:
+        description: 
+        title: 
+      what_is_a_private_office:
+        description: 
+        title: 
+      whats_a_deskspotter:
+        description: 
+        title: 
+      why_host:
+        description: 
+        title: 
+      why_host_reasons: 
+      why_use_deskspotting:
+        easy: 
+        flexible: 
+        how_long: 
+        networking: 
+        no_fees: 
+        title: 
+      workspaces: 
+    guests:
+      account: 
+      booking_a_workspace_is_subletting:
+        description: 
+        title: 
+      booking_fees_to_guests:
+        description: 
+        title: 
+      bookings: 
+      cancellation_policy:
+        beyond_timeframe: 
+        for_bookings_of_1month: 
+        for_bookings_of_less_than_24hs: 
+        for_bookings_of_more_than_24hs: 
+        title: 
+      cancellations: 
+      card_information:
+        description: 
+        title: 
+      contact_host_before_booking:
+        description: 
+        title: 
+      deskspotting_handle_deposits:
+        description: 
+        title: 
+      how_do_i_add_managers:
+        assist_you: 
+        description: 
+        title: 
+      how_do_i_book_a_workspace:
+        accepted_inquiry: 
+        easy: 
+        send_message: 
+        title: 
+      how_do_i_cancel_reservations:
+        description: 
+        title: 
+      how_do_i_contact:
+        description: 
+        title: 
+      how_do_i_edit_profile:
+        description: 
+        title: 
+      how_do_i_find_workspace:
+        description: 
+        title: 
+      how_do_i_invite_friends:
+        description: 
+        title: 
+      how_do_i_know_booking_was_made:
+        address: 
+        confirmation_number: 
+        dates: 
+        description: 
+        host_info: 
+        payment_date: 
+        payment_info: 
+        title: 
+      how_do_i_sign_up:
+        description: 
+        title: 
+      how_to_reset_password:
+        description: 
+        title: 
+      how_to_stop_month_to_month:
+        steps: 
+        title: 
+        warning: 
+      month_to_month_bookings:
+        description: 
+        title: 
+      monthly_bookings_days:
+        description: 
+        title: 
+      payments: 
+      popular_topics: 
+      search_by_professions:
+        description: 
+        title: 
+      timeframe_for_workspace:
+        description: 
+        title: 
+      title: 
+      what_is_an_organization:
+        description: 
+        title: 
+      what_is_escrow:
+        description: 
+        title: 
+      what_type_of_venues:
+        description: 
+        title: 
+      when_i_am_charged:
+        description: 
+        title: 
+    host:
+      access_to_calendar:
+        description: 
+        title: 
+      account: 
+      before_accepting_booking_inquiry:
+        description: 
+        title: 
+      bestsuited_workspaces_for_bookings:
+        long_term_bookings: 
+        rules: 
+        short_term_bookings: 
+        title: 
+      booking_a_workspace_is_subletting:
+        description: 
+        title: 
+      bookings: 
+      can_more_than_one_person_manage:
+        description: 
+        title: 
+      cancellations: 
+      deskspotting_fees:
+        description: 
+        less_than_one_month: 
+        month_to_month: 
+        more_than_one_month: 
+        title: 
+      difference_between_owner_and_admin:
+        description: 
+        title: 
+      does_deskspotting_have_referal_program:
+        description: 
+        title: 
+        win_win: 
+      how_do_i_add_managers:
+        assist_you: 
+        description: 
+        title: 
+      how_do_i_cancel_reservations:
+        description: 
+        title: 
+      how_do_i_contact:
+        description: 
+        title: 
+      how_do_i_edit_payout_details:
+        description: 
+        title: 
+      how_do_i_edit_profile:
+        description: 
+        title: 
+      how_do_i_get_workspaces_featured:
+        description: 
+        title: 
+      how_do_i_invite_friends:
+        description: 
+        title: 
+      how_do_i_sign_up:
+        description: 
+        title: 
+      how_to_reset_password:
+        description: 
+        title: 
+      how_to_stop_month_to_month:
+        steps: 
+        title: 
+        warning: 
+      if_hosts_cancel_reservation_prior_to_checkin:
+        affect_rating: 
+        booking_less_than_24hs: 
+        booking_more_than_1month: 
+        booking_more_than_24hs: 
+        description: 
+        guidelines: 
+        more_on_cancellation_policy: 
+        title: 
+        value_flexibility: 
+      inform_social_networks:
+        description: 
+        title: 
+      insurance: 
+      insurance_coverage:
+        description: 
+        title: 
+      list_your_space: 
+      monthly_bookings_days:
+        description: 
+        title: 
+      payments: 
+      referal_program: 
+      service fees: 
+      special_offer_to_guest:
+        description: 
+        title: 
+      tips_on_listing_your_space:
+        booking_inquiries: 
+        images: 
+        title: 
+        venue_information: 
+      title: 
+      what_does_this_insurance_covers:
+        description: 
+        title: 
+      when_and_how_is_a_host_paid:
+        description: 
+        title: 
+      which_listings_are_covered:
+        description: 
+        title: 
+    more: 
+    popular_topics: 
   home:
     features:
       easy:
@@ -191,6 +456,7 @@ es:
       contact: Contacto
       faq: Ayuda
       how_it_works: Conviértete en anfitrión
+      insurance: Seguro
       join_us: "Únete a nosotros"
       language:
         en: eng
@@ -243,6 +509,8 @@ es:
     unfortunately: Desgraciadamente tu anfitrión, %{name}, ha tenido que cancelar la reserva de
   host_review_email:
     checked_in: hizo el Check-In a
+    conversion_text: cómo calificarías a tu huésped
+    conversion_text2: Tu opinión es muy importante para nosotros y para otros DeskSpotters!
     rate_guest: Evalúa a tu huésped
     subject: 'Evaluación del anfitrión - Local #%{venue_id}'
     your_guest: Tu huésped
@@ -363,10 +631,80 @@ es:
     pending_authorization: La reserva debe ser confirmada por el anfitrión.
     pending_payment: La reserva ha sido aprobada. Esperando confirmación. Esta reserva será guardada durante 24 horas. Si no realizas la confirmación en ese plazo, será cancelada.
     refunding: El importe ha sido reembolsado.
+  meta:
+    contacts:
+      new:
+        description: Tienes alguna sugerencia o duda. Estás interesado en incorporarte al Equipo de DeskSpotting. Siempre estamos interesados en saber acerca de ti.
+        title: Contacto
+    landing:
+      index:
+        description: Reserva espacios de trabajo únicos donde y cuando lo necesites. Incluí tu espacio y construí tu propio entorno de trabajo colaborativo al mismo tiempo que ganas dinero.
+        title: Mucha más que una oficina
+    spaces:
+      index:
+        description: Reserva oficinas únicas o salas de reuniones, donde y cuando lo necesites. Comienza a disfrutar de los beneficios de los entornos de trabajo compartidos.
+        title: Todos los espacios
+      search_mobile:
+        description: 
+        title: Búsqueda en Dispositivo Móvil
+      space_0:
+        description: Reserva Salas de Conferencias únicas donde y cuando los necesites. Comienza a disfrutar de los beneficios de los entornos de trabajo compartidos.
+        title: Sala de conferencias
+      space_1:
+        description: Reserva Salas de Reuniones únicas donde y cuando lo necesites. Comienza a disfrutar de los beneficios de los entornos de trabajo compartidos.
+        title: Sala de reunión
+      space_2:
+        description: Reserva Oficinas Privadas únicas donde y cuando lo necesites. Comienza a disfrutar de los beneficios de los entornos de trabajo compartidos.
+        title: Despacho privado
+      space_3:
+        description: Reserva Escritorios Fijos únicas donde y cuando lo necesites. Comienza a disfrutar de los beneficios de los entornos de trabajo compartidos.
+        title: Puesto Fijo
+      space_4:
+        description: Reserva Escritorios Populares únicas donde y cuando lo necesites. Comienza a disfrutar de los beneficios de los entornos de trabajo compartidos.
+        title: Hot Desk
+      space_5:
+        description: Reserva Espacios de Trabajo Comunes únicas donde y cuando lo necesites. Comienza a disfrutar de los beneficios de los entornos de trabajo compartidos.
+        title: Espacio compartido
+      space_6:
+        description: Trabaja desde casa en todas partes. Reserva Oficinas en Casa únicas donde y cuando las necesites.
+        title: Despacho en casa
+    statics:
+      about_us:
+        description: DeskSpotting está hecho para todo tipo de empresas, desde startups, hasta empresas maduras que buscan beneficiarse de los entornos de trabajo compartidos.
+        title: Sobre nosotros
+      faq:
+        description: "¿En qué países puedo utilizar DeskSpotting? ¿Por qué utilizar DeskSpotting? ¿Cómo puedo construir mi propio entorno de coworking? Más información acerca de DeskSpotting."
+        title: Ayuda
+      how_it_works:
+        description: Busca y lista espacios de trabajo de manera flexible en DeskSpotting. Comienza a disfrutar de los beneficios de los entornos de trabajo compartidos.
+        title: Cómo Funciona
+      insurance:
+        description: DeskSpotting y AIG, han desarrollado un seguro específico para la recepción de los visitantes sobre cualquier reserva efectuada en un espacio de trabajo en Francia.
+        title: Seguro
+      privacy_policy:
+        description: Este documento establece nuestra política de privacidad para los anfitriones e invitados en DeskSpotting respecto al manejo de la información del usuario.
+        title: Politica de Privacidad
+      terms_of_service:
+        description: Bienvenido a DeskSpotting. Lea atentamente estas condiciones de servicio, ya que contienen información importante sobre tus derechos y obligaciones legales.
+        title: Nuestros términos
+    users:
+      password_new:
+        description: Cambia tu contraseña. Inicia la sesión y empieza a reservar sorprendentes espacios de trabajo compartidos y comienza a usar DeskSpotting ahora!
+        title: Nueva Contraseña
+      sign_in:
+        description: Inicia sesión y busca espacios de trabajo inspiradores que puedes reservar por una hora, un día, un mes o más. La elección es tuya en DeskSpotting.
+        title: 'Iniciar sesión '
+      sign_up:
+        description: Bienvenido a DeskSpotting. Regístrate y empieza a reservar sorprendentes espacios de oficina compartidos. Comienza a usar DeskSpotting ahora!
+        title: 'Registrate '
+    venues:
+      index:
+        description: "%{name}. Increíble %{category} en %{location}. Reserve su espacio de trabajo inspirador por hora, día mes o más."
+        title: "%{name} | %{category}"
   new_message_email:
     got_new_message: Tienes un nuevo mensaje de
     hi: Hola
-    on_date_connector: 'del'
+    on_date_connector: el
     reply: O contesta directamente a este correo electrónico.
     subject: 'Tienes un nuevo mensaje - Reserva #%{booking_id}'
     team: El equipo DeskSpotting
@@ -380,13 +718,13 @@ es:
     add_manager_action: Añadir gestor
     change_picture: Cambiar foto
     confirm_identity: Confirmar Identidad
-    identity_confirmed: Identidad Confirmada
-    complete_profile: 'Por favor, complete su perfil'
+    confirming_identity: 
     create_profile: 'Crear una organización '
     create_title: Añadir título
     edit_profile: Editar perfil
     email: Correo electrónico
     email_placeholder: gestor@ejemplo.com
+    identity_confirmed: Identidad Confirmada
     members: Gestores
     members_subtitle: Designación de los gestores
     name: Nombre
@@ -408,6 +746,7 @@ es:
     expiration_month: Mes de expiración (mm)
     expiration_year: Año de expiración (aa)
     hours: Horas
+    info_cvx: Este es el número de tres dígitos en el dorso de su tarjeta.
     invalid_card_number: Formato inválido de número de tarjeta
     invalid_cvv: Formato inválido de CVV
     invalid_expiration_date: Formato inválido de fecha de expiración
@@ -420,6 +759,7 @@ es:
     spaces: Espacios
     type: Tipo
     used_credit_card: tarjeta de crédito utilizada
+    vat: IVA
     welcome: Hola, %{name}. ¡Ha llegado la hora de pagar!
   payment_methods:
     account_number: Número de cuenta
@@ -570,6 +910,7 @@ es:
   spaces:
     capacity: Número de personas
     day_price: Precio por día
+    delete_your_space: Elimina tu espacio
     deposit: Fianza
     description: Descripción
     edit_your_space: 'Modifica tu espacio '
@@ -577,11 +918,11 @@ es:
     info_capacity: "¿Cuántas personas pueden trabajar en este espacio?"
     info_deposit: Todas las fianzas se depositan en una cuenta de depósito en garantía para garantizar la seguridad del huésped y del anfitrión
     info_description: Describe el espacio de trabajo y explica a tus huéspedes potenciales por qué es un buen espacio para trabajar
+    info_minimum_renting_period: Periodo mínimo de reserva
     info_photos: Cuanto mejores sean las fotos, más se interesarán por tu espacio. Comparte fotos que reflejen bien el ambiente general de tu espacio.
     info_pricing: Establece el precio al que deseas alquilar tu espacio durante distintos periodos de tiempo. Podrás modificarlo en cualquier momento según las circunstancias.
     info_quantity: "¿Cuántos de estos espacios deseas anunciar en DeskSpotting?"
-    info_minimum_renting_period: Tiempo mínimo de reserva
-    info_renting_period: Tiempos de reserva
+    info_renting_period: Horarios de reserva disponibles
     minimum_renting_period: Tiempo mínimo de reserva
     month_price: Precio por mes
     month_to_month: mes al mes
@@ -590,11 +931,17 @@ es:
     per_hour: Por hora
     per_month: Por mes
     price: Precio
-    pricing: Precios (%{currency})
+    pricing: Precio (%{currency})
     pricing_in: Precios en %{currency}
     quantity: Número de espacios
-    renting_period: Tiempos de reserva
+    renting_period: Periodos de reserva
+    select_workspace: Seleccione cualquiera de sus espacios de trabajo para editar su información
+    share_on: 'Compártelo en:'
+    share_text: Ven a trabajar a mi espacio. Este %{space_type} puede ser reservado en @DeskSpotting
+    sharing_message: Ahora, con el fin de poder aprovechar realmente el %{space} y %{venue} debes comenzar por compartirlo en tus redes sociales para que cualquiera puede ver el área de trabajo que tiene disponible.
     space_photos: Fotos del espacio
+    thanks_for_registering: Muchas gracias por registrar tu espacio de trabajo!
+    thanks_for_updating: Muchas gracias por actualizar tu espacio de trabajo!
     type: Tipo de espacio de trabajo
     types:
       all: Todos los espacios
@@ -605,6 +952,7 @@ es:
       hot_desk: Hot Desk
       meeting_room: Sala de reuniones
       private_office: Despacho privado
+      training_room: Espacio de Entrenamiento
   users:
     about_me: Sobre mí
     account:
@@ -617,9 +965,10 @@ es:
       you_can_disable: Puedes inhabilitar esto en cualquier momento.
     add_languages: Añadir idiomas
     change_picture: Cambiar foto
-    confirm_identity: Confirmar Identidad
-    identity_confirmed: Identidad Confirmada
     company_name: Nombre de la empresa
+    complete_profile: Por favor complete su perfil
+    confirm_identity: Confirmar Identidad
+    confirming_identity: 
     country_of_residence: País de residencia
     date_of_birth: Fecha de nacimiento
     edit_organization_profile: 'Editar Perfil de Organización '
@@ -637,6 +986,7 @@ es:
     genders:
       f: Mujer
       m: Hombre
+    identity_confirmed: Identidad Confirmada
     info_no_share: No compartiremos esta información con nadie
     info_password: Please input a 8 digit password
     info_share_email: No compartiremos esta información con nadie
@@ -660,17 +1010,24 @@ es:
     amenities:
       air_conditioning: Aire acondicionado
       cafe_restaurant: Cafetería/restaurante
+      catering_services: Servicios de Catering
       chill_area: "Área de relajación"
       cleaning_service: Servicio de limpieza
+      coffee_station: estación de café
       concierge: Conserje
       conference_rooms: Salas de conferencias
+      dvd: dvd
       elevators: Ascensor
       fax: Fax
+      first_aid: primeros auxilios
       gym: Gimnasio
       individual_bookings: Reservas individuales
       info_team_bookings: "¿Aceptarías que un equipo reservara tu local?"
       kitchen: Cocina
+      locker: locker
       mail_service: Servicio de correos
+      microwave: microondas
+      nap_area: zona de siesta
       outdoor_space: Espacio exterior
       parking: Aparcamiento
       pets_allowed: Se admiten mascotas
@@ -679,10 +1036,14 @@ es:
       printer_scanner: Impresora/escáner
       projector: Proyector
       reception_service: Servicio de recepción
+      refrigerator: heladera
       security: Seguridad
       shower: Ducha
+      snacks: snacks
+      storage: almacenamiento
       team_bookings: Reservas de equipo
       tv: TV
+      videoconference: video conferencia
       water_fountain: Fuente de agua
       wheelchair_access: Acceso para sillas de ruedas
       whiteboards: Pizarras
@@ -748,6 +1109,7 @@ es:
       advertising: publicidad
       all: Se admiten todas las profesiones
       architect: Arquitecto/a
+      coach: entrenador
       consultant: Consultor/a
       design: Diseño
       entertainment: Ocio
@@ -755,13 +1117,16 @@ es:
       fashion: Moda
       finance: Sector financiero
       freelance: Autónomo/a
+      headhunter: cazatalentos
       journalist: Periodista
       lawyer: Abogado/a
       media: Medios de comunicación
       professor: Profesor/a o catedrático/a
+      psychologist: psicólogo
       public_relations: Relaciones públicas
       startup: Startup
       technology: Tecnología
+      therapist: terapeuta
     reported: Denunciado
     show:
       about_venue: Sobre el local
