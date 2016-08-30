@@ -35,7 +35,7 @@ CarrierWave.configure do |config|
     config.storage = :file
     config.enable_processing = false
     config.root = "#{Rails.root}/public"
-    config.asset_host = 'http://beta.deskspotting.com'
+    config.asset_host = ENV['DESKSPOTTING_BASE_URL']
   else
     amazons3 = AppConfiguration.for(:amazons3)
     config.fog_credentials = {
