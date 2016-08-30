@@ -9,6 +9,7 @@ angular.module('deskSpotting.inbox', []).controller "InboxCtrl", [
     $scope.selected_booking = {}
     $scope.messages = []
     $scope.message_text = ''
+    $scope.identity_confirmed = $('.inbox')[0].dataset.identityConfirmed
     $scope.user_id = $('.inbox')[0].dataset.userId
     $scope.organization_id = $('.inbox')[0].dataset.organizationId
     $scope.defaultAvatar = $('.inbox')[0].dataset.avatar
@@ -130,6 +131,10 @@ angular.module('deskSpotting.inbox', []).controller "InboxCtrl", [
           return
 
     $scope.payBoooking = (selected_booking) ->
+      if $scope.identity_confirmed == 'false'
+        $('#verify-identity-modal').modal()
+        return
+
       h = {}
       h['ID'] = selected_booking.id
       h['Venue City'] = selected_booking.space.city

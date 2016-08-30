@@ -47,6 +47,15 @@ class UsersController < ApplicationController
     redirect_to account_user_path(current_user)
   end
 
+  def confirm_identity
+    return render_forbidden unless current_user.admin?
+
+    @user = User.find(params[:id])
+    @user.update_attributes!(identity_confirmed: true)
+
+    redirect_to admin_users_path
+  end
+
   private
 
   def settings_params

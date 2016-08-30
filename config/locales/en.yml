@@ -515,6 +515,9 @@ en:
     subject: '%{host_id}, rate your guest %{guest_id}"'
     your_guest: Your Guest
   inbox:
+    confirm_identity_modal:
+      title: 'Verify Your Identity First'
+      button: 'Go to User Profile'
     approve: Approve
     book_it: Book It
     decline: Decline
