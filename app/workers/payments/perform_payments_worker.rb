@@ -46,10 +46,19 @@ module Payments
 
     def calculate_amount(booking, future_payout_at)
       return booking.payment.price_amount_in_wallet if booking.to <= future_payout_at
-      # In more than one variable to clarify things
-      days_left_to_pay = (booking.to - booking.payment.next_payout_at) / 1.day
-      days_in_this_payout = (future_payout_at - booking.payment.next_payout_at) / 1.day
-      floor_2d(days_in_this_payout / days_left_to_pay * booking.payment.price_amount_in_wallet)
+
+      if booking.month_to_month?
+        # we consider all months as 30 days long
+        days_left_to_pay = (booking.to.month - booking.payment.next_payout_at.month) * 30
+        days_in_this_payout = 30
+      else
+        days_left_to_pay = (booking.to - booking.payment.next_payout_at) / 1.day
+        days_in_this_payout = (future_payout_at - booking.payment.next_payout_at) / 1.day
+      end
+
+      amount = floor_2d((days_in_this_payout / days_left_to_pay) * booking.payment.price_amount_in_wallet)
+
+      amount
     end
 
     def calculate_fee(price, booking)
