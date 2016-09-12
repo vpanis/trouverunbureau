@@ -1,5 +1,12 @@
 # for travis
 if Rails.env.test?
+  aig = OpenStruct.new(
+    insurance_enabled?: true,
+    mangopay_wallet_id: 1,
+    mangopay_account_id: 1,
+    fee_less_than_1_month: 0.35,
+    fee_more_than_1_month: 1.98
+  )
   braintree = OpenStruct.new(
     merchant_account: "yzj3y44bqwpcdym9",
     minutes_to_poll_for_escrow_status: 0.01,
@@ -23,6 +30,7 @@ if Rails.env.test?
     base_url: "https://api.sandbox.mangopay.com"
   )
 else
+  aig = AppConfiguration.for(:aig)
   braintree = AppConfiguration.for(:braintree)
   deskspotting = AppConfiguration.for(:deskspotting)
   mangopay = AppConfiguration.for(:mangopay)
@@ -32,6 +40,13 @@ Deskspotting::Application.configure do
   config.hours_from_check_in_out_for_rate = deskspotting.hours_from_check_in_out_for_rate.to_i
   config.base_url = deskspotting.base_url
   config.payment = OpenStruct.new(
+    aig: OpenStruct.new(
+      insurance_enabled?: aig.insurance_enabled == 'true',
+      mangopay_wallet_id: aig.mangopay_wallet_id.try(:to_i),
+      mangopay_account_id: aig.mangopay_account_id.try(:to_i),
+      fee_less_than_1_month: aig.fee_less_than_1_month.try(:to_f) || 0.35,
+      fee_more_than_1_month: aig.fee_more_than_1_month.try(:to_f) || 1.98
+    ),
     deskspotting_fee: deskspotting.fee.try(:to_f) || 0.2,
     deskspotting_fee2: deskspotting.fee2.try(:to_f) || 0.1,
     deskspotting_fee3: deskspotting.fee3.try(:to_f) || 0.05,
@@ -59,4 +74,3 @@ Deskspotting::Application.configure do
 end
 
 PayConf = Rails.configuration.payment
-
