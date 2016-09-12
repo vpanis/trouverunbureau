@@ -39,8 +39,22 @@ module Payments
       future_payout_at = booking.to if booking.to <= future_payout_at && booking.month?
 
       amount = calculate_amount(booking, future_payout_at)
+      fee = calculate_fee(amount, booking)
+      aig_fee = 0
+
+      if PayConf.aig.insurance_enabled?
+        aig_fee_percentage = if (%w(month month_to_month).include? booking.b_type)
+                    PayConf.aig.fee_more_than_1_month
+                  else
+                    PayConf.aig.fee_less_than_1_month
+                  end
+        aig_fee = floor_2d((amount * aig_fee_percentage) / 100)
+        fee -= aig_fee
+      end
+
       [{ amount: amount,
-         fee: calculate_fee(amount, booking),
+         aig_fee: aig_fee,
+         fee: fee,
          user_id: booking.payment.user_paying_id,
          represented: booking.owner,
          p_type: MangopayPayout.p_types[:payout_to_user] },

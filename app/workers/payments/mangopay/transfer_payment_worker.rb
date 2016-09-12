@@ -46,6 +46,7 @@ module Payments
       def transfer_payment
         currency = @venue.currency.upcase
         # The fee will be charged in the payout
+        # Also the AIG fee (aig_fee)
         MangoPay::Transfer.create(
           AuthorId: @booking.owner.mangopay_payment_account.mangopay_user_id,
           CreditedUserId: @venue.collection_account.mangopay_user_id,

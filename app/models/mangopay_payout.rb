@@ -16,10 +16,11 @@ class MangopayPayout < ActiveRecord::Base
 
   # Validations
   validates :transaction_status, inclusion: { in: TRANSACTION_STATUSES }
-  validates :amount, :fee, presence: true
+  validates :amount, :fee, :aig_fee, presence: true
 
   acts_as_decimal :amount, decimals: 2
   acts_as_decimal :fee, decimals: 2
+  acts_as_decimal :aig_fee, decimals: 2
 
   def transfer_succeeded?
     transaction_status == 'TRANSFER_SUCCEEDED'
@@ -47,5 +48,6 @@ class MangopayPayout < ActiveRecord::Base
 
   def initialize_fields
     self.transaction_status ||= 'EXPECTING_RESPONSE'
+    self.aig_fee ||= 0
   end
 end
