@@ -178,259 +178,364 @@ fr:
     rate_stay: Notez l'espace?
     subject: 'Donnez votre avis - %{type} #%{guest_id}'
   help:
-    account: 
+    account: Compte
     general:
-      confidentiality: 
-      countries: 
+      confidentiality: Confidentialité de l'information
+      countries: Pays
       deskspotting_handle_payout_details:
-        description: 
-        title: 
-      getting_started: 
+        description: L’ensemble des informations sensibles (coordonnées bancaire ou de carte de crédit) sont requises pour pouvoir conclure toute transaction sur DeskSpotting. Conformément aux Conditions d'Utilisation de DeskSpotting, ces informations seront traitées seulement par notre partenaire de paiements en ligne, MangoPay et ne seront jamais divulguées.
+        title: |2-
+
+          Comment DeskSpotting gère mes paiements ?
+      getting_started: Démarrez sur DeskSpotting
       in_which_country:
-        description: 
-        title: 
+        description: Actuellement nous sommes présents en France, Allemagne, Espagne, Belgique, Irlande et en Portugal. Dès que nous ouvrirons un autre pays, nous vous en informerons via email ou sur www.DeskSpotting.com.
+        title: Dans quels pays est-ce que je peux utiliser DeskSpotting ?
       meeting_room_difference:
-        description: 
-        title: 
-      popular_topics: 
-      title: 
+        description: Une salle de réunion est conçue pour des réunions entre collaborateurs autour d’une table de réunion, tandis qu’une salle de conférence est adaptée pour des séminaires, colloques etc… En général, la surface d’une salle de conférence est plus grande et sont équipement est plus flexible.
+        title: |
+          Quelle est la différence entre une Salle de Réunion et une Salle de Conférence ?
+      popular_topics: Les questions les plus posés
+      title: Général
       what_is_a_communal_space:
-        description: 
-        title: 
-      what_is_a_communcal_space: 
+        description: |2-
+
+          Comme son nom l’indique, ce sont des espaces ouverts, des lieux de passage où l’on se pose à sa convenance, canapé, table de travail ouverte à tous. Certains DeskSpotters les affectionnent car ils sont plus décontractés et comme ils sont occupés selon la règle « first come first served », ces espaces sont aussi généralement plus économes.
+        title: Qu’est-ce qu’un Espace Commun ?
+      what_is_a_communcal_space: |
+        Comme son nom l’indique, ce sont des espaces ouverts, des lieux de passage où l’on se pose à sa convenance, canapé, table de travail ouverte à tous. Certains DeskSpotters les affectionnent car ils sont plus décontractés et comme ils sont occupés selon la règle « first come first served », ces espaces sont aussi généralement plus économes.
       what_is_a_fixed_desk:
-        description: 
-        title: 
+        description: |2-
+
+          C’est le contraire du bureau de passage. Le poste est dédié à une personne clairement identifiée.
+        title: |
+          Qu’est-ce qu’un Poste Fixe ?
       what_is_a_home_office:
-        description: 
-        title: 
-      what_is_a_home_office_description: 
+        description: Cette pratique de “Home Office” est déjà fortement répandue dans les pays Anglo-saxons. Comme son nom l’indique, c’est la mise à disposition de votre domicile à des travailleurs nomades. Plus original qu’un espace de travail classique et plus intime. Certains DeskSpotters préfèrent ces lieux pour se réunir avec des collaborateurs ou simplement pour se détendre quelques heures et prendre une douche lors d’un voyage.
+        title: Qu’est-ce qu’un “Home Office” ?
+      what_is_a_home_office_description: Cette pratique de “Home Office” est déjà fortement répandue dans les pays Anglo-saxons. Comme son nom l’indique, c’est la mise à disposition de votre domicile à des travailleurs nomades. Plus original qu’un espace de travail classique et plus intime. Certains DeskSpotters préfèrent ces lieux pour se réunir avec des collaborateurs ou simplement pour se détendre quelques heures et prendre une douche lors d’un voyage.
       what_is_a_hot_desk:
-        description: 
-        title: 
+        description: |2-
+
+          Comme son nom l’indique, c’est un Poste de Travail qui n’est pas dédié à un collaborateur en particulier. Chacun peut, s’il est libre, l’occuper le temps nécessaire. Cet espace est généralement plus économe qu’un poste fixe.
+        title: Qu'est-ce qu'un Bureau de Passage ?
       what_is_a_private_office:
-        description: 
-        title: 
+        description: Privé signifie cloisonné. Du à l’aspect privé de cet espace de travail, il est généralement plus cher que les autres espaces.
+        title: Qu’est-ce qu’un Bureau Privé ?
       whats_a_deskspotter:
-        description: 
-        title: 
+        description: C’est quelqu’un qui exige plus de son espace de travail, qu’un simple endroit où brancher son ordinateur. C’est quelqu’un qui recherche un lieu inspirant, moderne, adapté à son budget et à ses attentes professionnelles. Quelqu’un qui veut être libre de travailler où et quand il veut. Quelqu’un qui veut travailler dans un environnement stimulant, qu’il aura choisi. Être un DeskSpotter, c’est rechercher et réserver son espace de travail en toute sécurité et en un clic. Un DeskSpotter c’est quelqu’un qui profite pleinement de son bureau.
+        title: Qu’est-ce qu’un DeskSpotter ?
       why_host:
-        description: 
-        title: 
-      why_host_reasons: 
+        description: Vous avez des espaces que vous n’utilisez pas toujours ? Vous souhaitez pouvoir en tirer profit tout en partageant avec des personnes qui vous ressemblent, avec qui pouvez tisser des liens professionnels et personnels. DeskSpotting est fait pour vous ! Publiez votre espace. C’est gratuit. Optimisez vos surfaces en réduisant vos coûts; créez votre propre communauté; choisissez votre entourage. C’est vous qui décidez quand et avec qui vous les partagez. Offrez vous de nouvelles perspectives professionnelles en créant votre environnement de travail, sur mesure. C’est sans engagement.
+        title: Pourquoi devenir un Hôte ?
+      why_host_reasons: Vous avez des espaces que vous n’utilisez pas toujours ? Vous souhaitez pouvoir en tirer profit tout en partageant avec des personnes qui vous ressemblent, avec qui pouvez tisser des liens professionnels et personnels. DeskSpotting est fait pour vous ! Publiez votre espace. C’est gratuit. Optimisez vos surfaces en réduisant vos coûts; créez votre propre communauté; choisissez votre entourage. C’est vous qui décidez quand et avec qui vous les partagez. Offrez vous de nouvelles perspectives professionnelles en créant votre environnement de travail, sur mesure. C’est sans engagement.
       why_use_deskspotting:
-        easy: 
-        flexible: 
-        how_long: 
-        networking: 
-        no_fees: 
-        title: 
-      workspaces: 
+        easy: 'C’est facile : Réservez en un clic votre Poste de Travail avec une carte de crédit ou une Carte Bancaire. Plus de négociation contractuelle. Virements de fonds et paiement de la caution directement aux Hôtes.'
+        flexible: 'C’est flexible : Où et quand vous voulez, réservez votre Poste de Travail, pour vous ou votre équipe… '
+        how_long: 'Vous décidez combien de temps vous reste ex: pour une heure, un jour, un mois ou plus..'
+        networking: |
+          C’est collaboratif : DeskSpotting c’est vous donner l’opportunité d’étoffer votre réseau en trouvant des espaces de travail qui correspondent à vos intérêts professionnels.
+        no_fees: |
+          C’est sans frais : Sur DeskSpotting trouvez un Poste de Travail qui vous ressemble et réservez-le. Vous avez d’autres choses plus importantes à faire que de vous préoccuper des frais de transactions.
+        title: Pourquoi utiliser DeskSpotting ?
+      workspaces: Les postes de travail
     guests:
-      account: 
+      account: Compte
       booking_a_workspace_is_subletting:
-        description: 
-        title: 
+        description: "Toute réservation effectuée sur DeskSpotting est une prestation de service proposée par un Hôte vis à vis du Visiteur; c’est la mise à disposition sur une courte durée d’un espace de travail équipé « plug&play ». Le prix de la réservation vous donne accès à différentes prestations selon l’espace de travail concerné : connexion Internet, mobilier, salle de réunion, réceptionniste, service courrier, etc…Pour en savoir plus veuillez lire Nos Conditions \n"
+        title: Réserver un espace de travail sur DeskSpotting est-ce sous-louer ?
       booking_fees_to_guests:
-        description: 
-        title: 
-      bookings: 
+        description: Non, DeskSpotting ne facture pas de frais de réservation aux visiteurs lors de la réservation. Tout ce que vous payez est le montant de la réservation fixé par l'hôte et potentiellement une caution si nécessaire. C'est tout. Pas de frais cachés.
+        title: |
+          Est-ce que les frais de réservation de DeskSpotting sont à la charge du visiteur ?
+      bookings: Réservations
       cancellation_policy:
-        beyond_timeframe: 
-        for_bookings_of_1month: 
-        for_bookings_of_less_than_24hs: 
-        for_bookings_of_more_than_24hs: 
-        title: 
-      cancellations: 
+        beyond_timeframe: Au delà de ce délais, aucun remboursement ne pourra être exigé; seule la caution sera retournée.
+        for_bookings_of_1month: "Pour les réservations équivalentes à un mois ou plus, le délais d’annulation sans pénalité est jusqu'à 10 jours avant l’entrée dans les lieux. Toute annulation faite moins de dix jours avant l'entrée dans les lieux aura une pénalité de 50% des sommes dues (à l’exception de la caution). Pour en savoir plus consultez la Politique d’Annulation dans Nos Conditions \n"
+        for_bookings_of_less_than_24hs: Pour les réservations de moins de 24h, il est possible d’annuler sa réservation 24h avant l’entrée dans l’espace sans pénalité. Au delà de ce délais, aucun remboursement ne pourra être exigé; seule la caution sera retournée.
+        for_bookings_of_more_than_24hs: Pour les réservations comprises entre 24h et un mois maximum, il est possible d’annuler sans pénalité jusqu’à 5 jours avant l’entrée dans les lieux. Au delà de ce délais, 100% des sommes dues seront débitées; à l’exception de la caution.
+        title: Conditions d’annulation
+      cancellations: Annulations
       card_information:
-        description: 
-        title: 
+        description: DeskSpotting ne garde ou ne reçoît en aucun cas vos données de carte de crédit ou de carte bancaire. Celles-ci sont traitées exclusivement par notre partenaire de paiements en ligne MangoPay pour votre sécurité et selon les Termes et Conditions et politique de confidentialité.
+        title: Comment DeskSpotting traite vos données bancaires ?
       contact_host_before_booking:
-        description: 
-        title: 
+        description: Bien sûr ! En faisant une « Demande de Réservation » vous communiquez directement avec l’Hôte et vous pouvez lui poser toutes vos questions. Dès réception, celui-ci vous répondra directement, en toute liberté.
+        title: Est-ce que je peux contacter un Hôte avant de réserver ?
       deskspotting_handle_deposits:
-        description: 
-        title: 
+        description: |2-
+
+          La caution, si elle est demandée par le gestionnaire de l’espace, est transmise sur un compte séquestre pendant toute la durée de la réservation. Elle sera retourné au Visiteur 72 heures après sa sortie, sous réserve que l’Hôte n’engage aucune réclamation.
+        title: |
+          Comment DeskSpotting gère la caution ?
       how_do_i_add_managers:
-        assist_you: 
-        description: 
-        title: 
+        assist_you: Dans un compte Organisation vous pouvez ajouter des gestionnaires pour vous aider à la gestion du compte.
+        description: |
+          Dans un compte Organisation vous pouvez ajouter des gestionnaires pour vous aider à la gestion du compte.
+          Soyez sûrs d'avoir sélectionné votre compte d'organisation situé dans le menu déroulant, sous votre nom d'utilisateur et votre avatar. Puis cliquez sur « Modifier le profil » dans le même menu déroulant et vous serez tous ensemble.
+        title: Comment puis-je ajouter un administrateur à mon compte Organisation ?
       how_do_i_book_a_workspace:
-        accepted_inquiry: 
-        easy: 
-        send_message: 
-        title: 
+        accepted_inquiry: |
+          Puis, nous lui envoyons votre demande pour confirmation. Enfin, vous recevrez un message sur DeskSpotting dans votre « Messagerie » vous informant que votre demande a été acceptée. C’est à vous d’effectuer la réservation en cliquant sur « Réserver ».
+        easy: Une fois que vous avez fait votre choix, c’est facile. Cliquez sur « Envoyer une demande », entrez vos dates d’arrivée et de départ, la quantité de Postes de Travail dont vous avez besoin ainsi que le nombre de personnes qui vous accompagneront.
+        send_message: 'Vous pouvez même envoyer un message à votre Hôte pour plus d’information. Nous vous conseillons de lui communiquer le maximum d’informations sur vous et vos attentes pour plus d’efficacité dans vos échanges. '
+        title: Comment réserver un poste de travail ?
       how_do_i_cancel_reservations:
-        description: 
-        title: 
+        description: "\nCliquez sur votre profil et sélectionnez « Réservations » puis « Mes réservations ». Vous accéderez à l’ensemble de vos réservations triées chronologiquement; vous n’avez plus qu’à choisir celle que vous souhaitez annuler en cliquant sur « Annuler ». Pensez à lire la politique d'annulation disponible dans les « Conditions Générales de Service » et « Politique de Confidentialité » avant d'annuler une réservation disponible. "
+        title: Comment annuler une réservation si je suis un visiteur ?
       how_do_i_contact:
-        description: 
-        title: 
+        description: "Écrivez nous à info@deskspotting.com ou en cliquant sur « Contactez-nous ». Nous sommes toujours intéressés par votre « Feedback » et sommes à votre disposition si vous avez besoin d’aide."
+        title: Comment contacter l’équipe de DeskSpotting ?
       how_do_i_edit_profile:
-        description: 
-        title: 
+        description: 'Rendez vous sur « Mon Compte » et puis choisir « Modifier profil ». Assurez-vous de fournir toutes les informations vous concernant : profession, centres d’intérêts. Autant d’éléments qui permettront à vos hôtes de mieux vous connaître. '
+        title: |
+          Comment modifier mon Profil ?
       how_do_i_find_workspace:
-        description: 
-        title: 
+        description: 'Rendez vous sur « Mon Compte » et puis choisir « Modifier profil ». Assurez-vous de fournir toutes les informations vous concernant : profession, centres d’intérêts. Autant d’éléments qui permettront à vos hôtes de mieux vous connaître. '
+        title: Comment trouver un espace pour travailler ?
       how_do_i_invite_friends:
-        description: 
-        title: 
+        description: |2-
+
+          Pour inviter des amis c’est très simple : allez dans le menu déroulant de votre profil, puis sélectionnez « Inviter ». Voila, vous pouvez maintenant inviter autant d'amis que vous le souhaitez; aidez les à trouver leurs espaces de travail inspirants. Vivez l’expérience DeskSpotting avec vos amis !
+        title: |2-
+
+          Comment puis-je inviter des amis à se joindre à moi sur DeskSpotting ?
       how_do_i_know_booking_was_made:
-        address: 
-        confirmation_number: 
-        dates: 
-        description: 
-        host_info: 
-        payment_date: 
-        payment_info: 
-        title: 
+        address: |
+          l’adresse du lieu et le détail de l’espace réservé
+        confirmation_number: votre numéro de confirmation
+        dates: votre date d’entrée et de sortie
+        description: |2
+
+          Vous recevrez un reçu dans votre messagerie détaillant :
+        host_info: |2
+
+          le nom de votre Hôte ainsi que son numéro de téléphone
+        payment_date: la date de votre paiement
+        payment_info: le mode de paiement (confirmant le type de carte, les 4 derniers chiffres de votre carte et la date d’expiration)
+        title: Comment s’assurer que ma réservation est faite ?
       how_do_i_sign_up:
-        description: 
-        title: 
+        description: En quelques clics, vous pouvez vous connecter directement via Facebook ou grâce à votre adresse email et le mot passe de votre choix. C’est simple, rapide et sans engagement.
+        title: Comment m’inscrire ?
       how_to_reset_password:
-        description: 
-        title: 
+        description: |2-
+
+          Pas de problème ! Cliquez sur la rubrique « se connecter » puis « mot de passe oublié ». Entrez votre email et un mot de passe temporaire vous sera envoyé. N’oubliez pas de renseigner un mot de passe comprenant au moins 8 caractères.
+        title: Que faire pour me connecter si j’ai oublié mon mot de passe ?
       how_to_stop_month_to_month:
-        steps: 
-        title: 
-        warning: 
+        steps: Rendez-vous sur votre « Profil », cliquez sur « Réservations » puis « Vos Réservations » et sélectionnez « Annulation ».
+        title: |2-
+
+          Comment stopper une réservation de mois en mois ?
+        warning: Vous avez au plus tard 10 jours calendaires pour annuler avant votre prochaine échéance.
       month_to_month_bookings:
-        description: 
-        title: 
+        description: |2-
+
+          Nous comprenons que vous ayez besoin de réserver pour un mois ou plus mais que vous ne savez pas précisément le temps qu’il vous faut. Avec DeskSpotting prenez l’option « de mois en mois ». Seul l’Hôte fixe, s’il le souhaite, une durée minimum comprise entre 1 et 3 mois maximum.
+        title: Qu’est-ce qu’une réservation de mois en mois ?
       monthly_bookings_days:
-        description: 
-        title: 
-      payments: 
-      popular_topics: 
+        description: |2-
+
+          DeskSpotting estime qu’un mois correspond à 30 jours calendaires.
+        title: A combien de jours correspond une réservation mensuelle sur DeskSpotting ?
+      payments: Paiements
+      popular_topics: Les questions les plus posés
       search_by_professions:
-        description: 
-        title: 
+        description: 'Sur DeskSpotting, vous pouvez personnaliser votre recherche grâce aux filtres à votre disposition. Choisissez votre entourage en ciblant les professions qui vous intéressent, ou avec lesquelles vous souhaitez éventuellement travailler; 16 catégories de métiers y sont référencées : Startups, Design, Technologie, Finance, Freelancers… à vous de décider.'
+        title: Est-ce que je peux effectuer ma recherche en ciblant les professions que je souhaite fréquenter ?
       timeframe_for_workspace:
-        description: 
-        title: 
-      title: 
+        description: Sur DeskSpotting, vous pouvez réserver votre espace de travail à l'heure, à la journée ou de mois en mois. Notre objectif est de fournir un maximum de flexibilité aux hôtes et aux visiteurs. Néanmoins, c’est l’hôte qui fixe au préalable les horaires et les disponibilités de ses espaces.
+        title: Pour quels durées puis-je réserver un espace de travail ?
+      title: Visiteurs
       what_is_an_organization:
-        description: 
-        title: 
+        description: DeskSpotting met à votre disposition une section « Créez une Organisation » en complément de votre compte personnel. Ainsi, vous pourrez gérer vos réservations ou la gestion de vos espaces que ce soit pour vos besoins personnels ou pour le compte d’une société par exemple. Une « Organisation » peut être personnalisée et modifiable à tout moment tout comme votre compte personnel.
+        title: |2-
+
+          Que signifie la section « Créez une Organisation » ?
       what_is_escrow:
-        description: 
-        title: 
+        description: |2-
+
+          C’est une sécurité pour qu’une réservation entre un Visiteur et un Hôte se fasse sereinement. Plutôt que de payer directement un Hôte, vos paiements seront gardés sur un compte neutre puis libérés selon les délais et conditions de réservation acceptés par les deux parties sur DeskSpotting. Ainsi Votre Hôte sait qu’il sera payé dans les temps, et vous savez que votre argent sera gardé en toute sécurité. Tout le monde est content.
+        title: Qu’est-ce qu’un compte séquestre ?
       what_type_of_venues:
-        description: 
-        title: 
+        description: |2-
+
+          DeskSpotting, c’est une large sélection de lieux et d’ambiances pour travailler en toute sérénité. Vous pouvez partager vos bureaux, organiser une réunion dans un hôtel, rejoindre un espace collaboratif ou vous laisser tenter par le concept du « Home Office » (bureau comme à la maison). Il y en a pour toutes les envies et toutes les durées - une heure, quelques jours, un mois ou plus.
+        title: |
+          Quels types de « Poste de Travail » sont référencés sur DeskSpotting ?
       when_i_am_charged:
-        description: 
-        title: 
+        description: |2-
+
+          Dès que vous cliquez sur « Réserver », vous êtes débités sur votre carte de crédit ou carte bancaire pour la totalité de votre réservation, incluant la caution le cas échéant. Les fonds seront transférés pour votre sécurité sur un compte séquestre et les paiements seront transférés à votre Hôte seulement lors de votre entrée dans les lieux. Si votre réservation excède un mois, le transfert des règlements se fera tous les 30 jours.
+        title: Quand et comment s’effectue le paiement ?
     host:
       access_to_calendar:
-        description: 
-        title: 
-      account: 
+        description: |2-
+
+          Un calendrier de gestion des réservations et des disponibilités en cours est à la disposition de tous les Hôtes. Cliquez sur « Gérez vos Espaces » puis sélectionnez la rubrique « Espaces ».
+        title: En tant qu’Hôte, est-ce que je dispose d’un Calendrier sur DeskSpotting ?
+      account: Compte
       before_accepting_booking_inquiry:
-        description: 
-        title: 
+        description: |2-
+
+          Avant d’accepter une réservation, vous pouvez échanger avec votre visiteur; N’hésitez pas à en apprendre plus sur lui et son activité professionnelle. Consultez son profil ainsi que les commentaires le concernant.
+        title: Peut-on discuter avant d’accepter une réservation ?
       bestsuited_workspaces_for_bookings:
-        long_term_bookings: 
-        rules: 
-        short_term_bookings: 
-        title: 
+        long_term_bookings: |
+          Pour des durées plus longues (un mois ou de mois en mois), nous vous suggérons :
+          Bureau privé
+          Poste fixe
+        rules: |2-
+
+          Il n’y a pas de règles écrites qui vous obligent. Néanmoins, il y a une consommation spécifique selon les Postes de Travail que vous publiez. Pour plus d'efficacité, nous vous suggérons le guide pratique ci-dessous :
+        short_term_bookings: |
+          Pour des durées très courtes, à l’heure ou à la journée, privilégiez les Postes de Travail suivants :
+          Salle de réunion
+          Bureaux de passage
+          Salle de conférence
+          Home office ou bureau à domicile
+          Espace Commun
+        title: |
+          Quels espaces sont dédiées au partage et pour quelle consommation ?
       booking_a_workspace_is_subletting:
-        description: 
-        title: 
-      bookings: 
+        description: 'Toute réservation effectuée sur DeskSpotting est une prestation de service proposée par un Hôte vis à vis du Visiteur; c’est la mise à disposition sur une courte durée d’un espace de travail équipé « plug&play ». Le prix de la réservation vous donne accès à différentes prestations selon l’espace de travail concerné : connexion Internet, mobilier, salle de réunion, réceptionniste, service courrier, etc…Pour en savoir plus veuillez lire Nos Conditions'
+        title: |
+          Réserver un espace de travail sur DeskSpotting est-ce sous-louer ?
+      bookings: Réservations
       can_more_than_one_person_manage:
-        description: 
-        title: 
-      cancellations: 
+        description: Si vous avez plusieurs personnes qui souhaitent gérer un lieu, il est préférable de créer une Organisation. Pour ce faire il suffit de cliquer sur le menu « Créer une Organisation » dans le profil de l'utilisateur. Créez un nom pour votre organisation (le nom de votre entreprise par exemple) et inscrivez-vous. C'est très facile.
+        title: Plusieurs personnes peuvent-elles gérer un lieu ?
+      cancellations: Annulations
       deskspotting_fees:
-        description: 
-        less_than_one_month: 
-        month_to_month: 
-        more_than_one_month: 
-        title: 
+        description: Tous les Frais de Service de DeskSpotting sont déduits des paiements des Visiteurs aux Hôtes. Ce ne sont pas des frais extra pour les Visiteurs.
+        less_than_one_month: |2
+
+          Pour toutes les réservations d'un mois ou moins, les frais de service sont de 20%.
+        month_to_month: Pour les réservations de « mois en mois », les frais de service de DeskSpotting sur la période de temps garanti (qui ne peut excéder 4 mois) sont de 20% pour le premier mois, 10% par la suite. Une fois le délai de garantie expiré, la réservation peut se poursuivre. DeskSpotting prélèvera 5% par mois.
+        more_than_one_month: Pour toutes les réservations de plus d'un mois, les frais de service sont de 20% pour le premier mois, puis 10% à compter du deuxième et des éventuels mois suivants.
+        title: Frais de service
       difference_between_owner_and_admin:
-        description: 
-        title: 
+        description: |
+          La différence c’est que l’administrateur peut être supprimé du compte organisation.
+        title: |2
+
+          Quelle est la différence entre un propriétaire et un administrateur dans la gestion d'une organisation ?
       does_deskspotting_have_referal_program:
-        description: 
-        title: 
-        win_win: 
+        description: Bien sûr ! Vous pouvez accumuler des points qui augmenteront votre visibilité dans les résultats de recherche quand les contacts, que vous avez invité sur DeskSpotting, acceptent de vous rejoindre. Vous pourrez potentiellement apparaître dans notre section « Coups de coeur ».
+        title: |
+          Y-a-t-il un programme de référencement sur DeskSpotting ?
+        win_win: Aidez vos amis à trouver des espaces de travail inspirants en rejoignant DeskSpotting, c’est aussi vous aider à commercialiser vos espaces. Tout le monde y gagne.
       how_do_i_add_managers:
-        assist_you: 
-        description: 
-        title: 
+        assist_you: Dans un compte Organisation vous pouvez ajouter des gestionnaires pour vous aider à la gestion du compte.
+        description: |
+          Soyez sûrs d'avoir sélectionné votre compte d'organisation situé dans le menu déroulant, sous votre nom d'utilisateur et votre avatar. Puis cliquez sur « Modifier le profil » dans le même menu déroulant et vous serez tous ensemble.
+        title: Comment puis-je ajouter un administrateur à mon compte Organisation ?
       how_do_i_cancel_reservations:
-        description: 
-        title: 
+        description: Si vous êtes un hôte, cliquez sur « Gérez vos Espaces » et puis sur l’onglet « Réservations » et enfin « Mes Espaces ». Si vous avez plusieurs Espaces choisissez celui concerné. Là vous y trouverez la liste de toutes les réservations. Il suffit de cliquer sur le bouton « Annuler ».
+        title: |2-
+
+          Comment annuler une réservation ?
       how_do_i_contact:
-        description: 
-        title: 
+        description: "Écrivez nous à info@deskspotting.com ou en cliquant sur « Contact us ». Nous sommes toujours intéressés par votre « feedback » et sommes à votre disposition si vous avez besoin d’aide."
+        title: Comment contacter l’équipe de DeskSpotting ?
       how_do_i_edit_payout_details:
-        description: 
-        title: 
+        description: |2-
+
+          Se rendre dans la section « Gérez mes espaces » puis choisir l’espace concerné. Séléctionnez « Méthode de paiement » dans le menu. Entrez vos coordonnées bancaires modifiées, sauvegardez, c’est fait !
+        title: Comment modifier mes informations bancaires ?
       how_do_i_edit_profile:
-        description: 
-        title: 
+        description: 'Rendez vous sur « Mon Compte » et puis choisir « Modifier profil ». Assurez-vous de fournir toutes les informations vous concernant : profession, centres d’intérêts. Autant d’éléments qui permettront à vos hôtes de mieux vous connaître'
+        title: Comment modifier mon Profil ?
       how_do_i_get_workspaces_featured:
-        description: 
-        title: 
+        description: |2-
+
+          DeskSpotting met en lumière les lieux les plus attractifs. Nos critères d’exigence sont : l’authenticité et la qualité. Renseignez précisément votre annonce, mettez la à jour régulièrement, publiez de belles photos et obtenez les meilleurs notes possibles de vos visiteurs; vous augmenterez ainsi vos chances d'apparaître dans la rubrique Espaces « Coup de Coeur » de DeskSpotting.
+        title: Comment apparaître dans la rubrique d’Espaces Sélectionnés de DeskSpotting ?
       how_do_i_invite_friends:
-        description: 
-        title: 
+        description: |2-
+
+          Pour inviter des amis c’est très simple : allez dans le menu déroulant de votre profil, puis sélectionnez « Inviter ». Voila, vous pouvez maintenant inviter autant d'amis que vous le souhaitez; aidez les à trouver leurs espaces de travail inspirants. Vivez l’expérience DeskSpotting avec vos amis !
+        title: |2-
+
+          Comment puis-je inviter des amis à se joindre à moi sur DeskSpotting ?
       how_do_i_sign_up:
-        description: 
-        title: 
+        description: En quelques clics, vous pouvez vous connecter directement via Facebook ou grâce à votre adresse email et le mot passe de votre choix. C’est simple, rapide et sans engagement
+        title: Comment m’inscrire ?
       how_to_reset_password:
-        description: 
-        title: 
+        description: Pas de problème ! Cliquez sur la rubrique « se connecter » puis « mot de passe oublié ». Entrez votre email et un mot de passe temporaire vous sera envoyé. N’oubliez pas de renseigner un mot de passe comprenant au moins 8 caractères.
+        title: |2-
+
+          Que faire pour me connecter si j’ai oublié mon mot de passe ?
       how_to_stop_month_to_month:
-        steps: 
-        title: 
-        warning: 
+        steps: Rendez-vous sur votre « Profil », cliquez sur « Réservations » puis « Réservation d’Espace » et sélectionnez « Annulation ».
+        title: |2-
+
+          Comment stopper une réservation de mois en mois ?
+        warning: |+
+          Vous avez au plus tard 10 jours calendaires pour annuler avant votre prochaine échéance.
+
       if_hosts_cancel_reservation_prior_to_checkin:
-        affect_rating: 
-        booking_less_than_24hs: 
-        booking_more_than_1month: 
-        booking_more_than_24hs: 
-        description: 
-        guidelines: 
-        more_on_cancellation_policy: 
-        title: 
-        value_flexibility: 
+        affect_rating: Si comme Hôte, vous avez des annulations à répétition, même dans les délais impartis, vous risquez d’être pénalisé et/ou radié de DeskSpotting.
+        booking_less_than_24hs: Si la réservation du client est inférieure à 24 heures, l'hôte doit annuler plus de 24 heures avant l'arrivée du visiteur.
+        booking_more_than_1month: |2-
+
+          Si la réservation du client est de plus d’un mois, l'hôte devra annuler la réservation au moins 10 jours calendaires avant le check-in du visiteur.
+        booking_more_than_24hs: |2-
+
+          Si la réservation est de plus de 24 heures, mais moins d’un mois, l'hôte devra annuler la réservation au moins 5 jours calendaires avant le check-in du visiteur.
+        description: Nous savons que vos disponibilités peuvent évoluer, c’est pourquoi nous permettons aux Hôtes d’annuler une réservation avant le check-in d’un visiteur. Cependant, nous conseillons aux hôtes de le faire le plus tôt possible.
+        guidelines: 'Pour plus d’information :'
+        more_on_cancellation_policy: Si vous souhaitez en savoir plus sur la politique d'annulation, merci de vous référer aux « Termes et Conditions ».
+        title: Comment faire si un hôte doit annuler une réservation avant le check-in d'un visiteur ?
+        value_flexibility: Sur DeskSpotting, nous apprécions la flexibilité mais nous attachons aussi une grande importance aux engagements qui sont faits lors des réservations.
       inform_social_networks:
-        description: 
-        title: 
-      insurance: 
+        description: 'Bien sûr! Parce que pour partager votre bureau avec un ami ou une relation professionnelle peut être préférable, DeskSpotting vous permet d’informer vos amis de Facebook ou contacts de LinkedIn de la création de vos Postes De Travail DeskSpotting. Lors de la dernière étape de création, cochez les cases dédiées : Facebook et/ou LinkedIn.'
+        title: |
+          Est-ce que je peux publier mes offres DeskSpotting sur mes comptes Facebook ou Linkedin ?
+      insurance: Assurance
       insurance_coverage:
-        description: 
-        title: 
-      list_your_space: 
+        description: 'Nous avons mis en place, avec notre partenaire AIG, une couverture assurance pour toutes réservations effectuées en France Métropolitaine. '
+        title: 'Y a-t-il un service assurance sur DeskSpotting? '
+      list_your_space: Publiez votre annonce
       monthly_bookings_days:
-        description: 
-        title: 
-      payments: 
-      referal_program: 
-      service fees: 
+        description: |2-
+
+          DeskSpotting estime qu’un mois correspond à 30 jours calendaires.
+        title: A combien de jours correspond une réservation mensuelle sur DeskSpotting ?
+      payments: Paeiments
+      referal_program: Programme de Référencement
+      service fees: Frais de service
       special_offer_to_guest:
-        description: 
-        title: 
+        description: |2-
+
+          Sur DeskSpotting, vous être libre de personnaliser vos offres en cliquant sur l’onglet « Nouvelle Offre ». Négociez directement entre vous, adaptez vos tarifs et trouvez le « deal » qui vous convient.
+        title: Comment proposer des Offres Spéciales aux visiteurs ?
       tips_on_listing_your_space:
-        booking_inquiries: 
-        images: 
-        title: 
-        venue_information: 
-      title: 
+        booking_inquiries: |2-
+
+          Soyez réactif ! Répondre rapidement à une demande de réservation, c’est prouver votre motivation et votre sens de l’hospitalité.
+        images: |2
+
+          Ajoutez de belles photos, c’est essentiel. Plus elles seront de qualités, et plus de réservations vous effectuerez. Si vous prenez des photos de vos espaces avec un “smartphone”, nous vous recommandons de charger des photos à leurs tailles réelles pour obtenir les meilleurs résultats.
+        title: Quels conseils pour publier efficacement votre espace ?
+        venue_information: Soyez précis dans votre description. Rentrez dans le détail. N’hésitez pas à actualiser l’information sur votre espace régulièrement. Partagez avec vos visiteurs potentiels l’ambiance de travail en quelques mots.
+      title: Hôtes
       what_does_this_insurance_covers:
-        description: 
-        title: 
+        description: |-
+          a) La responsabilité civile du Visiteur : Jusqu'à 100 000€ en cas d'incendie, de dégât des eaux, de vol avec effraction.
+
+          b) Les biens ou équipements confiés aux Visiteurs à hauteur de 2 000€.
+        title: Que couvre cette assurance?
       when_and_how_is_a_host_paid:
-        description: 
-        title: 
+        description: |2-
+
+          Pour une réservation de moins d’un mois, l’Hôte est payé (moins les frais de service de DeskSpotting) dès l’entrée du visiteur dans les lieux. Pour les réservations de plus d’un mois, l’hôte est payé tous les 30 jours après la date d’entrée du visiteur. Tous les paiements seront transférés sur le compte bancaire renseigné par l’Hôte.
+        title: Quand et comment un Hôte est il payé ?
       which_listings_are_covered:
-        description: 
-        title: 
-    more: 
-    popular_topics: 
+        description: Cette assurance s'applique automatiquement pour toutes les annonces situées en France Métropolitaine. L'hôte est alors couvert sur toute la durée du séjour payé via DeskSpotting.
+        title: Quelles sont les annonces couvertes par cette assurance?
+    more: Plus
+    popular_topics: Les questions les plus posés
   home:
     features:
       easy:
@@ -645,7 +750,6 @@ fr:
         description: Réservez des bureaux uniques ou des salles de réunion, où et quand vous en avez besoin. Commencez à profiter des avantages des environnements de travail avec bureaux partagés.
         title: Tous les postes
       search_mobile:
-        description: 
         title: Recherche mobile
       space_0:
         description: Réservez des salles de conférence uniques, où et quand vous en avez besoin. Commencez à profiter des avantages des environnements de travail avec bureaux partagés.
@@ -720,7 +824,7 @@ fr:
     add_manager_action: Ajouter un Gérant
     change_picture: Changez de photo
     confirm_identity: Confirmez votre identité
-    confirming_identity: 
+    confirming_identity: Identification en cours
     create_profile: Créez une organisation
     create_title: Créez un titre
     edit_profile: Modifiez profil
@@ -971,7 +1075,7 @@ fr:
     company_name: Nom d'entreprise
     complete_profile: 'Merci de compléter votre profil. '
     confirm_identity: Confirmez votre identité
-    confirming_identity: 
+    confirming_identity: Identification en cours
     country_of_residence: Pays de résidence
     date_of_birth: Date de naissance
     edit_organization_profile: Modifier Profile Organisation
