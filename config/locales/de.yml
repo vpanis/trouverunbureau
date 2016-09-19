@@ -47,6 +47,7 @@ de:
     current: Aktuelle Buchungen
     delete: Löschen
     make_a_claim: ein Anspruch nehmen
+    claim_received: Anspruch empfangen
     no_bookings: Es liegen keine Buchungen vor
     no_paid_cancelled: Sie haben keine bezahlten oder stornierten Buchungen.
     review: Geben Sie eine Bewertung ab

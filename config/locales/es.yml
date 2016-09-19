@@ -46,7 +46,8 @@ es:
     claim_deposit: Reclamar la fianza
     current: Reservas actuales
     delete: Suprimir
-    make_a_claim: haz un reclamo
+    make_a_claim: Haz un reclamo
+    claim_received: Reclamo Recibido
     no_bookings: No hay reservas
     no_paid_cancelled: No tienes reservas pagadas o canceladas.
     review: Escribir una evaluación

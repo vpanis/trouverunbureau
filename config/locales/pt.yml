@@ -47,6 +47,7 @@ pt:
     current: Reservas em curso
     delete: Apagar
     make_a_claim: faça uma reclamação
+    claim_received: Reivindicação recebida
     no_bookings: Não há reservas
     no_paid_cancelled: Não tem reservas pagas ou canceladas.
     review: Deixe um Comentário

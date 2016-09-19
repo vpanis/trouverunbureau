@@ -488,6 +488,8 @@ it:
     view_receipt: View Receipt
     cancel: Cancel
     delete: Delete
+    make_a_claim: Fare un reclamo
+    claim_received: Rivendica ricevuto
     all_venues: All Venues
     current: Current bookings
     cancelled: Cancelled bookings
