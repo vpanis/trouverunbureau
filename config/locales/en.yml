@@ -46,7 +46,8 @@ en:
     claim_deposit: Claim deposit
     current: Current bookings
     delete: Delete
-    make_a_claim: make a claim
+    make_a_claim: Make a claim
+    claim_received: Claim received
     no_bookings: There are no bookings
     no_paid_cancelled: You have no paid or cancelled bookings.
     review: Leave a Review
