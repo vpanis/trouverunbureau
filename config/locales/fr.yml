@@ -47,6 +47,7 @@ fr:
     current: Réservation en cours
     delete: Effacer
     make_a_claim: déclarer un sinistre
+    claim_received: Réclamation reçue
     no_bookings: Il n'y a pas de réservation
     no_paid_cancelled: Vous n'avez pas de réservation payée ou annulée.
     review: Laissez un Commentaire
