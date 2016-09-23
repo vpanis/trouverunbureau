@@ -457,3 +457,52 @@
     }
   }
 }
+
+
+@media screen and (max-width: 1000px){
+  .inbox{
+    .left-panel {
+      width: 100%;
+    }
+  }
+  .booking-list {
+    height: 252px;
+  }
+  .right-panel {
+    width: calc(100% - 30px);
+    .row {
+      text-align: center;
+    }
+  }
+  .header .title {
+    text-align: center;
+    width: 100%;
+    margin: 20px 10px;
+    &:after{
+      display:none;
+    }
+  }
+  .header .detail .col-md-2.plus{
+    margin-top: 40px;
+  }
+  .header .detail .plus:after{
+    position: relative;
+    top: -86px;
+    left: 10px
+  }
+  .header .detail .col-md-4.minus{
+    margin-top: -70px;
+  }
+  .header .detail .minus:after{
+    position: relative;
+    top: -90px;
+    left: 10px;
+  }
+  .staging-alert{
+    height: 38px;
+    padding-top: 6px;
+  }
+  .header .total{
+    padding-left: 30px;
+  }
+}
