@@ -52,7 +52,7 @@ module BookingsHelper
   end
 
   def aig_claim_enabled_by_date?(booking)
-    !booking.payment.nil? &&
+    booking.payment.present? &&
     booking.payment.updated_at > (Date.strptime(ENV["AIG_CAN_MAKE_CLAIM_FROM_DATE"], '%Y-%m-%d') rescue Date.new(2016,9,1)) &&
     Time.current >= booking.space.venue.time_zone.from_zone_to_utc(booking.from)
   end
