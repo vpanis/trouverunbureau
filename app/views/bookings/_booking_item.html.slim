@@ -50,4 +50,4 @@
     - if booking.aig_claim_made?
       a.insurance-claim-disabled href="#" = t('bookings.claim_received')
     - if !booking.aig_claim_made? && can_make_claim?(booking, own)
-      = link_to t('bookings.make_a_claim'), make_claim_booking_path(id: booking.id), { :method => 'put', :remote => false, :class => 'insurance-claim', 'data-toggle' => 'modal', 'data-target' => '#claim-modal' }
+      = link_to t('bookings.make_a_claim'), make_claim_booking_path(id: booking.id), { :method => 'put', :remote => true, :class => 'insurance-claim', 'data-toggle' => 'modal', 'data-target' => '#claim-modal' }
