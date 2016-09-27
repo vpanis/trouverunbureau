@@ -2,7 +2,7 @@
   .modal-dialog
     .modal-content
       .modal-header
-        button.close aria-label="#{t('commons.close')}" data-dismiss="modal" type="button"
+        button.close aria-label="#{t('commons.close')}" data-dismiss="modal" id="#{modal_id}-btn-close" type="button"
           span aria-hidden="true"  &times;
         h4.modal-title id="#{modal_id}Label" = title
       .modal-body
@@ -16,5 +16,5 @@
 			|	.
         br
         br
-        button.rounded-btn.default.width-100.bold.uppercase data-dismiss="modal" type="button"
+        button.rounded-btn.default.width-100.bold.uppercase data-dismiss="modal" id="#{modal_id}-btn-ok" type="button"
         	= 'OK, Got it'

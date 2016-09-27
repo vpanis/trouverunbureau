@@ -9,6 +9,8 @@ on_load = ->
     initialize_listeners = ->
       $('#venue_id').change ->
         $('#venue_selector').submit()
+      $("button[id^='claim-modal-btn']").click ->
+        location.reload()
       return
 
     initialize_selects()
