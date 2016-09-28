@@ -20,41 +20,41 @@
       ul.nav.navbar-nav.hidden-large-navbar.mobile-menu-items
         = render 'shared/mobile_menu'
       - if current_represented.present?
-      ul.nav.navbar-nav.navbar-right.hidden-collapse
+        ul.nav.navbar-nav.navbar-right.hidden-collapse
       - else
-      ul.nav.navbar-nav.navbar-right.hidden-collapse.offline
-        - if current_represented.present?
+        ul.nav.navbar-nav.navbar-right.hidden-collapse.offline
+          - if current_represented.present?
+            li
+              dropdown
+                .btn.btn-default.dropdown-toggle type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"
+                  a.user-visible href=user_path(current_represented)
+                    .avatar
+                      - if current_represented.kind_of?(User)
+                        - if current_represented.avatar.present?
+                          = image_tag(current_represented.avatar.url)
+                        - else
+                          = image_tag('default-avatar.png')
+                      - elsif current_represented.kind_of?(Organization)
+                        - if current_represented.logo.present?
+                          = image_tag(current_represented.logo.url)
+                        - else
+                          = image_tag('venue-default.png')
+                    .name
+                      p = current_represented.name
+                = render 'shared/menu_dropdown'
+            li
+              = link_to inbox_user_path(current_represented) do
+                .messages
+                  - if new_messages > 0
+                    p = new_messages
+          - else
+            li
+              a href=new_user_session_path
+                p.sign-in-text #{t('home.sign_in')}
           li
-            dropdown
-              .btn.btn-default.dropdown-toggle type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true"
-                a.user-visible href=user_path(current_represented)
-                  .avatar
-                    - if current_represented.kind_of?(User)
-                      - if current_represented.avatar.present?
-                        = image_tag(current_represented.avatar.url)
-                      - else
-                        = image_tag('default-avatar.png')
-                    - elsif current_represented.kind_of?(Organization)
-                      - if current_represented.logo.present?
-                        = image_tag(current_represented.logo.url)
-                      - else
-                        = image_tag('venue-default.png')
-                  .name
-                    p = current_represented.name
-              = render 'shared/menu_dropdown'
-          li
-            = link_to inbox_user_path(current_represented) do
-              .messages
-                - if new_messages > 0
-                  p = new_messages
-        - else
-          li
-            a href=new_user_session_path
-              p.sign-in-text #{t('home.sign_in')}
-        li
-          = link_to venues_path(), class: 'list-space'
-            - if user_signed_in? && !current_user.venues.empty?
-              p #{t('home.manage_your_venues')}
-            - else
-              p #{t('home.list_your_space')}
+            = link_to venues_path(), class: 'list-space'
+              - if user_signed_in? && !current_user.venues.empty?
+                p #{t('home.manage_your_venues')}
+              - else
+                p #{t('home.list_your_space')}
 .after-menu
