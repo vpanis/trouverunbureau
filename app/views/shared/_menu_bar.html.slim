@@ -19,7 +19,10 @@
                   = submit_tag 'search', class: 'hidden'
       ul.nav.navbar-nav.hidden-large-navbar.mobile-menu-items
         = render 'shared/mobile_menu'
+      - if current_represented.present?
       ul.nav.navbar-nav.navbar-right.hidden-collapse
+      - else
+      ul.nav.navbar-nav.navbar-right.hidden-collapse.offline
         - if current_represented.present?
           li
             dropdown

@@ -477,8 +477,11 @@
           display: none!important;
         }
       }
+      &.offline{
+        display: none!important;
+      }
     }
-    .inbox{
+    .main-container{
       .left-panel {
         width: 100%;
       }
