@@ -460,7 +460,7 @@
 
 
 @media screen and (max-width: 1000px){
-  body[data-action='inbox']{
+  body[ng-app="deskSpotting"]{
     ul.nav.navbar-nav.navbar-right {
       display: block!important;
       margin: 0;
