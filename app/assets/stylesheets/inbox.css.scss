@@ -11,7 +11,7 @@
     width: 25%;
   }
   .right-panel {
-    width: calc(100% - 30px);
+    width: 70%;
     padding: 15px 15px 0;
   }
   .booking-list{
@@ -512,11 +512,19 @@
           display:none;
         }
       }
-      .header .detail .col-md-2.plus{
+      .header .detail .col-md-2.plus,
+      .header .detail .col-md-3.plus{
         margin-top: 40px;
       }
-      .col-md-2.plus.invisible {
+      .col-md-2.plus.invisible,
+      .col-md-3.plus.invisible {
         margin-top: 0!important;
+      }
+      .booking-item-wrapper .wrapper .bottom-content.status-preview {
+        display: block;
+      }
+      .booking-item-wrapper .wrapper .bottom-content.quantity_pad {
+        display: none;
       }
       .header .detail .plus:after{
         position: relative!important;
