@@ -11,9 +11,11 @@ module Payments
         payout_attributes, next_payout_at = payout_attributes_and_next_payout(booking)
         payout = booking.payment.mangopay_payouts.create(payout_attributes)
         fill_receipt(payout, booking)
+
+        new_price_amount_in_wallet = booking.payment.price_amount_in_wallet - payout.amount
         booking.payment.update_attributes(
           next_payout_at: next_payout_at,
-          price_amount_in_wallet: booking.payment.price_amount_in_wallet - payout.amount)
+          price_amount_in_wallet: new_price_amount_in_wallet)
         Payments::Mangopay::TransferPaymentWorker.perform_async(payout.id)
       end
     end
@@ -34,10 +36,25 @@ module Payments
 
     def payout_attributes_and_next_payout(booking)
       future_payout_at = booking.payment.next_payout_at.advance(months: 1)
-      future_payout_at = booking.to if booking.to <= future_payout_at
+      future_payout_at = booking.to if booking.to <= future_payout_at && booking.month?
+
       amount = calculate_amount(booking, future_payout_at)
+      fee = calculate_fee(amount, booking)
+      aig_fee = 0
+
+      if PayConf.aig.insurance_enabled?
+        aig_fee_percentage = if (%w(month month_to_month).include? booking.b_type)
+                    PayConf.aig.fee_more_than_1_month
+                  else
+                    PayConf.aig.fee_less_than_1_month
+                  end
+        aig_fee = floor_2d((amount * aig_fee_percentage) / 100)
+        fee -= aig_fee
+      end
+
       [{ amount: amount,
-         fee: calculate_fee(amount, booking),
+         aig_fee: aig_fee,
+         fee: fee,
          user_id: booking.payment.user_paying_id,
          represented: booking.owner,
          p_type: MangopayPayout.p_types[:payout_to_user] },
@@ -46,10 +63,19 @@ module Payments
 
     def calculate_amount(booking, future_payout_at)
       return booking.payment.price_amount_in_wallet if booking.to <= future_payout_at
-      # In more than one variable to clarify things
-      days_left_to_pay = (booking.to - booking.payment.next_payout_at) / 1.day
-      days_in_this_payout = (future_payout_at - booking.payment.next_payout_at) / 1.day
-      floor_2d(days_in_this_payout / days_left_to_pay * booking.payment.price_amount_in_wallet)
+
+      if booking.month_to_month?
+        # we consider all months as 30 days long
+        days_left_to_pay = (booking.to.month - booking.payment.next_payout_at.month) * 30
+        days_in_this_payout = 30.0
+      else
+        days_left_to_pay = (booking.to - booking.payment.next_payout_at) / 1.day
+        days_in_this_payout = (future_payout_at - booking.payment.next_payout_at) / 1.day
+      end
+
+      amount = floor_2d((days_in_this_payout.to_f / days_left_to_pay.to_f) * booking.payment.price_amount_in_wallet)
+
+      amount
     end
 
     def calculate_fee(price, booking)
@@ -67,7 +93,7 @@ module Payments
         fee_rate =  if next_payout_at == booking.from
                       # first payout
                       PayConf.deskspotting_fee
-                    elsif next_payout_at <= booking.from.advance(months: m2mmu)
+                    elsif next_payout_at < booking.from.advance(months: m2mmu)
                       PayConf.deskspotting_fee2
                     else
                       PayConf.deskspotting_fee3

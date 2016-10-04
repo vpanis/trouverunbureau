@@ -5,9 +5,12 @@ pt:
     check_out: Check-Out
     date: Data
     day: Dia
+    days: dias
     days_amount: Número de Dias
     deposit: Caução
     deskspotting_fee: Taxa do DeskSpotting
+    errors:
+      minimum_time: 
     feature_1: Sem taxas de reserva.
     feature_2: Cauções guardadas numa conta-garantia.
     feature_3: Reserve o tempo que precisar.
@@ -16,16 +19,19 @@ pt:
     feature_6: Cancelamentos flexíveis.
     free: Gratuito
     guaranteed_months: Meses adiantados
-    guaranteed_months_quantity:
+    guaranteed_months_quantity: Número de Meses Adiantados
     hour: Hora
+    hours: horas
     hours_amount: Número de Horas
     message_placeholder: Fale ao hóspede mais sobre si e os seus interesses profissionais.
     month: Mês
     month_amount: Número de meses
-    month_to_month:
-    month_to_month_as_of: Mes a Mes a partir de
+    month_to_month: Mês a Mês
+    month_to_month_as_of: Mês a Mês a partir de
+    months: meses
     months_amount: Número de Meses
     price_per: Preço por
+    send_booking_inquiry: enviar_
     send_inquiry: Enviar pedido
     space_amount: Número de Espaços
     space_booking: Reserva de Espaço
@@ -40,6 +46,8 @@ pt:
     claim_deposit: Reclamar caução
     current: Reservas em curso
     delete: Apagar
+    make_a_claim: faça uma reclamação
+    claim_received: Reivindicação recebida
     no_bookings: Não há reservas
     no_paid_cancelled: Não tem reservas pagas ou canceladas.
     review: Deixe um Comentário
@@ -58,6 +66,7 @@ pt:
     view_receipt: Ver Recibo
     your_bookings: As Suas Reservas
   calendar: dd-mm-aaaa
+  collition_errors: Estas datas ou horários não estão disponíveis. Tente outros, por favor.
   commons:
     add: Adicionar
     add_image: Adicionar foto
@@ -69,6 +78,7 @@ pt:
     pay: Pagar
     save: Guardar
     save_continue: Guardar e continuar
+    share: Partilhar
     unknown: Desconhecido
     upload_file: Carregar ficheiro
   contact:
@@ -138,7 +148,7 @@ pt:
     en: English
     es: Español
     fr: Français
-    pt:
+    pt: Português
   errors:
     email_taken: Utilizador já existente
     messages:
@@ -161,11 +171,296 @@ pt:
     check_in: Check-In
     check_out: Check-Out
     checked_out: Fez check-out de
+    conversion_text: como avalia a sua estada em
+    conversion_text2: O seu feedback é muito importante para nós e outros Deskspotters!
     date: Data
     days: Dias
     hi: Olá
     rate_stay: Avalie a sua hospedagem
     subject: 'Comentário do hóspede - %{type} #%{guest_id}'
+  help:
+    account: Conta
+    general:
+      confidentiality: Confidencialidade
+      countries: Países
+      deskspotting_handle_payout_details:
+        description: 'Toda a informação sensível dos Anfitriões (dados bancários, de cartão de débito/crédito) ou '
+        title: Como trata o Deskspotting os meus detalhes de pagamento/recebimento?
+      getting_started: Começar
+      in_which_country:
+        description: Por agora estamos em França, Alemanha, Espanha, Bélgica, Irlanda e Portugal. Assim que iniciarmos atividade em outros países, avisamo-lo via email ou em www.DeskSpotting.com.
+        title: Em que países posso utilizar o DeskSpotting?
+      meeting_room_difference:
+        description: Uma “Sala de Reuniões” é geralmente usada para encontros de um pequeno número de colegas à volta de uma mesa. Uma “Sala de Conferências” serve para acolher seminários, conferências, reuniões em larga escala… De um modo geral, é bem maior do que as “Salas de Reuniões”, tendo mais equipamentos por defeito e opções de montagem de outros.
+        title: Qual a diferença entre uma Sala de Reuniões e uma Sala de Conferências?
+      popular_topics: Tópicos populares
+      title: Geral
+      what_is_a_communal_space:
+        description: "“Espaços Comuns” são, geralmente, áreas abertas que podem albergar diversas pessoas num ambiente mais informal, com sofás ou uma mesa grande. Alguns Hóspedes gostam de trabalhar num cenário mais descontraído, preferindo assim estes espaços. Uma vez que são ocupados por ordem de chegada e oferecem menos privacidade, são geralmente mais económicos."
+        title: O que é um Espaço Comum?
+      what_is_a_communcal_space: "“Espaços Comuns” são, geralmente, áreas abertas que podem albergar diversas pessoas num ambiente mais informal, com sofás ou uma mesa grande. Alguns Hóspedes gostam de trabalhar num cenário mais descontraído, preferindo assim estes espaços. Uma vez que são ocupados por ordem de chegada e oferecem menos privacidade, são geralmente mais económicos."
+      what_is_a_fixed_desk:
+        description: Trata-se de uma secretária destinada a uma pessoa específica e que não pode ser ocupada por mais ninguém.
+        title: O que é uma Secretária Dedicada?
+      what_is_a_home_office:
+        description: Um “Escritório Doméstico” é um espaço em casa de alguém. Alguns Hóspedes preferem trabalhar num ambiente mais intimista e sereno, escolhendo assim este tipo de espaço aquando da reserva. Por vezes, fazem-no também quando estão em viagem e precisam apenas de um sítio para tomar um duche e descansar por algumas horas.
+        title: O que é um Escritório Doméstico?
+      what_is_a_home_office_description: Um “Escritório Doméstico” é um espaço em casa de alguém. Alguns Hóspedes preferem trabalhar num ambiente mais intimista e sereno, escolhendo assim este tipo de espaço aquando da reserva. Por vezes, fazem-no também quando estão em viagem e precisam apenas de um sítio para tomar um duche e descansar por algumas horas.
+      what_is_a_hot_desk:
+        description: Uma “Hot Desk” é um espaço de trabalho que não foi pensado para uma pessoa específica, logo a sua ocupação depende da ordem de chegada. Assim que uma pessoa o deixar, este poderá ser utilizado por outra.
+        title: O que é uma Hot Desk?
+      what_is_a_private_office:
+        description: "“Gabinete Privado” refere-se, geralmente, a uma sala fechada que permite um certo grau de privacidade. Pode ser ocupada por uma ou mais pessoas. A privacidade oferecida faz com que tenha um custo mais elevado do que outros espaços do escritório."
+        title: O que é um Gabinete Privado?
+      whats_a_deskspotter:
+        description: Alguém que quer que o seu espaço de trabalho seja mais do que um mero local para ligar o computador. Alguém que quer rentabilizar o seu espaço excedente e transformar o seu escritório num ecossistema estimulante de profissionais que partilham as suas ideias. Alguém que busca um sítio inspirador para trabalhar, que seja moderno e ao alcance do seu orçamento e necessidades profissionais. Alguém que queira a liberdade de trabalhar onde e quando quiser. Um DeskSpotter é alguém que quer tirar o maior partido do seu espaço de trabalho.
+        title: O que é um DeskSpotter?
+      why_host:
+        description: Tem espaço excedente? Gostaria de ganhar dinheiro e conhecer outros profissionais interessantes? Publique o seu espaço no DeskSpotting. Não paga nada, reduz os custos fixos, aumenta os rendimentos e cria um ambiente de trabalho mais dinâmico para você e sua equipe. O registo do espaço é gratuito e ficará ao seu critério aceitar ou não os Pedidos de Reservas. É você que decide quando e para quem alugar[???]. Esta pode ser a oportunidade de se mudar para um escritório maior e dar origem a um ecossistema de trabalho com benefícios a você e ao seu negócio.
+        title: Porquê ser Anfitrião?
+      why_host_reasons: Tem espaço excedente? Gostaria de ganhar dinheiro e conhecer outros profissionais interessantes? Publique o seu espaço no DeskSpotting. Não paga nada, reduz os custos fixos, aumenta os rendimentos e cria um ambiente de trabalho mais dinâmico para você e sua equipe. O registo do espaço é gratuito e ficará ao seu critério aceitar ou não os Pedidos de Reservas. É você que decide quando e para quem alugar[???]. Esta pode ser a oportunidade de se mudar para um escritório maior e dar origem a um ecossistema de trabalho com benefícios a você e ao seu negócio.
+      why_use_deskspotting:
+        easy: "É Simples: Basta um clique e usar o cartão de crédito ou débito para fazer a reserva do seu espaço de trabalho. Acabam-se as negociações contratuais, o envio de dinheiro e os depósitos na conta do proprietário."
+        flexible: "É Flexível. Reserve, onde e quando quiser, espaços de trabalho para si e a sua equipa; gabinetes privados, salas de reuniões..."
+        how_long: 'Você decide por quanto tempo: uma hora, um dia, um mês ou mais...'
+        networking: 'Networking: o DeskSpotting ajuda-o a expandir a sua rede profissional e a encontrar espaços de trabalho com base nos seus interesses profissionais.'
+        no_fees: Sem taxas; Encontre o seu espaço de trabalho, reserve e siga com o seu negócio. Esqueça as taxas, afinal tem outras coisas em que pensar.
+        title: Porquê usar o DeskSpotting?
+      workspaces: Espaços de Trabalho
+    guests:
+      account: Conta
+      booking_a_workspace_is_subletting:
+        description: Todas as reservas feitas no DeskSpotting são consideradas Prestação de Serviços fornecidos por um Anfitrião e utilizados por um Hóspede. Trata-se de permitir o uso, durante um curto período, de um espaço de trabalho totalmente equipado, pronto a usar. Dependendo do espaço, o preço da reserva dá-lhe acesso a diferentes serviços, como internet, mobiliário de escritório, sala de reuniões, rececionista, serviço de correio, etc. Para mais informações sobre esta questão, consulte Termos e Condições.
+        title: |+
+          Ao reservar um Espaço de Trabalho no DeskSpotting estou a fazer um subarrendamento?
+
+      booking_fees_to_guests:
+        description: O DeskSpotting não cobra quaisquer taxas ao Hóspede, aquando da reserva. Tudo o que paga é o valor desta estipulado pelo Anfitrião e, possivelmente, uma caução. É tudo. Nada de taxas encobertas.
+        title: O DeskSpotting cobra taxas de reserva aos Hóspedes?
+      bookings: Reservas
+      cancellation_policy:
+        beyond_timeframe: 'Para lá deste período de tempo, o pagamento do valor da reserva será '
+        for_bookings_of_1month: Para Reservas de 1 mês ou mais, e se o cancelamento for feito 10 dias antes do check-in, não sofre penalizações e é reembolsado na totalidade. Depois desse prazo, o hóspede que cancelar só irá receber 50% do pagamento feito. A caução, no entanto, é devolvida na totalidade.
+        for_bookings_of_less_than_24hs: Para Reservas de menos de 1 dia, o cancelamento é possível 24 horas antes da hora do check-in, sem penalizações e com direito a reembolso da totalidade do pagamento.
+        for_bookings_of_more_than_24hs: Para Reservas de mais de 24 horas mas menos de um mês, o hóspede pode cancelar, mas perde o montante pago. No caso de existir caução, esta será devolvida na totalidade.
+        title: Política de Cancelamento
+      cancellations: Cancelamentos
+      card_information:
+        description: O DeskSpotting em momento algum recebe ou armazena dados do seu cartão de crédito/débito. Esta informação é processada e gerida, para sua segurança e conveniência, pelo nosso parceiro de processamento de pagamentos, a MangoPay www.MangoPay.com de acordo com os Termos e Condições e a Política de Privacidade.
+        title: Dados do Cartão de Crédito/Débito
+      contact_host_before_booking:
+        description: Claro que sim! Ao fazer o Pedido de Reserva pode entrar em contacto com o seu Anfitrião, fazer-lhe perguntas e até negociar. Tem assim um canal de comunicação com o mesmo, sendo-lhe permitido enviar mensagens, à sua vontade.
+        title: Posso contactar o Anfitrião antes de fazer a reserva?
+      deskspotting_handle_deposits:
+        description: As cauções, se exigidas pelos Anfitriões, são mantidas numa conta-garantia durante o período da reserva e devolvidas até 72 horas após o check-out do espaço de trabalho, isto se o Anfitrião não tiver feito quaisquer queixas.
+        title: Como trata o DeskSpotting as cauções?
+      how_do_i_add_managers:
+        assist_you: Uma conta de Organização permite-lhe adicionar Administradores para o ajudarem a geri-la.
+        description: Selecione a conta Organização no menu suspenso debaixo do nome de utilizador e avatar. Clique em Editar Perfil no mesmo menu e já está.
+        title: Como adiciono administradores à minha organização?
+      how_do_i_book_a_workspace:
+        accepted_inquiry: |
+          Assim que o Anfitrião confirmar o seu pedido, receberá uma mensagem na Caixa de Entrada, informando que o pedido foi aceite. Depois é só fazer a Reserva
+        easy: "É simples. Escolha o espaço de trabalho que quer reservar e clique em “Pedido de Reserva”. Introduza as datas de Check in/Check out, o número de pessoas que leva consigo e o de espaços de que precisa. \n"
+        send_message: Pode até enviar uma mensagem para o seu Anfitrião de modo a obter informações adicionais e para falar um pouco mais de si e dos seus planos. Quanto mais informação, melhor.
+        title: Como reservo um espaço de trabalho?
+      how_do_i_cancel_reservations:
+        description: Se é Hóspede, clique no seu perfil, selecione “Reservas” e depois “As Minhas Reservas”. Encontrará aí todas as suas reservas organizadas cronologicamente. Selecione a reserva pretendida e clique em “Cancelar”. Não se esquecer de rever a Política de Cancelamento, em Termos e Condições e Política de Privacidade, antes de cancelar uma reserva.
+        title: Como cancelo uma reserva?
+      how_do_i_contact:
+        description: Pode chegar até nós através de info@deskspotting.com ou clicando em Contacte-nos.  Estamos sempre interessados na sua opinião e disponíveis para ajudar no que for preciso.
+        title: Como contacto a equipa do DeskSpotting?
+      how_do_i_edit_profile:
+        description: Clique no seu perfil e selecione Editar Perfil. Certifique-se de que providencia toda a informação possível relevante sobre si, como profissão, interesses, o local de nascimento, etc… Desta forma está a ajudar os anfitriões a perceber melhor com quem estão a lidar.
+        title: Como edito o meu Perfil?
+      how_do_i_find_workspace:
+        description: Insira na página inicial a cidade e o tipo de espaço que procura. Poderá estreitar a sua pesquisa na página de resultados, recorrendo aos filtros, caso tenha algo específico em mente.
+        title: Como encontro um espaço de trabalho?
+      how_do_i_invite_friends:
+        description: Para convidar amigos basta ir ao menu suspenso no seu perfil e selecionar Convidar. Pode convidar todos os amigos que quiser e ajudá-los a encontrar os seus espaços de trabalho inspiradores. Comece a usufruir do DeskSpotting em boa companhia!
+        title: Como convido amigos para se juntarem a mim no DeskSpotting?
+      how_do_i_know_booking_was_made:
+        address: a morada do Lugar e o tipo de espaço de trabalho reservado
+        confirmation_number: o seu código de confirmação
+        dates: as datas de Check-In/Check-Out
+        description: 'Irá receber um recibo de confirmação com os seguintes detalhes:'
+        host_info: o nome do Anfitrião e respetivo número de telefone
+        payment_date: a data em que foi feito o pagamento
+        payment_info: o método de pagamento (confirmando o tipo de cartão, últimos quatro dígitos e data de expiração do mesmo)
+        title: Como sei se a reserva foi feita?
+      how_do_i_sign_up:
+        description: |
+          Com apenas alguns cliques pode registar-se com o Facebook ou usando o seu email e uma palavra-chave à escolha. É simples e sem compromisso.
+        title: Como me registo?
+      how_to_reset_password:
+        description: Não há qualquer problema! Clique em “Iniciar Sessão” e depois em “esqueci-me da palavra-passe”. Insira o seu email e ser-lhe-á enviada uma palavra-passe temporária. Tudo bem! Lembre-se que a palavra-passe terá de ter o mínimo de 8 carateres.
+        title: Que faço se me esquecer da palavra-passe para iniciar sessão?
+      how_to_stop_month_to_month:
+        steps: |
+          Para suspender a sua reserva Mês a Mês vá até ao seu perfil, selecione “Reservas” e depois “As Suas Reservas”. Escolha a reserva pretendida e clique em “Cancelar”.
+        title: Como se suspende uma reserva Mês a Mês?
+        warning: Lembre-se que o cancelamento tem de ser feito até 10 dias antes do pagamento seguinte.
+      month_to_month_bookings:
+        description: |
+          Entendemos que pode precisar de um espaço de trabalho durante um mês ou mais, mas não sabe exatamente por quanto tempo. O DeskSpotting oferece reservas Mês a Mês por essa precisa razão. Os Anfitriões podem exigir um período de tempo mínimo neste tipo de reserva, que pode ir de 0 ao máximo de três meses.
+        title: O que são Reservas Mês a Mês?
+      monthly_bookings_days:
+        description: Por razões organizacionais, consideramos um mês de 30 dias.
+        title: Quantos dias considera o DeskSpotting para as Reservas Mensais?
+      payments: Pagamentos
+      popular_topics: Tópicos Populares
+      search_by_professions:
+        description: 'O DeskSpotting dá-lhe a possibilidade de estreitar a sua busca, recorrendo a fitros. Selecione os profissionais com quem gostaria de trabalhar ou conviver. Tem à espera 16 categorias: Startups, Designers, Tecnologia, Finanças, Freelancers… A escolha é sua.'
+        title: |+
+          O DeskSpotting permite-me pesquisar profissionais de determinada área com quem gostaria de trabalhar?
+
+      timeframe_for_workspace:
+        description: |2
+
+          No DeskSpotting pode reservar o seu espaço de trabalho à Hora, ao Dia, ao Mês, ou na base de um acordo mensal automaticamente renovável. O nosso objetivo é oferecer a Hóspedes e Anfitriões a máxima flexibilidade. Apesar disso, é o último que escolhe os períodos de tempo durante os quais quer disponibilizar os seus espaços.
+        title: |+
+          Por que períodos de tempo posso reservar um espaço de trabalho?
+
+      title: Hóspedes
+      what_is_an_organization:
+        description: O DeskSpotting permite-lhe criar no seu perfil não apenas uma conta pessoal, mas também uma de Organização. É particularmente útil se pretende gerir as suas publicações com outros colegas ou se quiser fazer reservas em nome de uma empresa. Tal como a pessoal, esta conta pode ser personalizada e editada em qualquer altura.
+        title: O que é uma Organização?
+      what_is_escrow:
+        description: "É uma medida de segurança, que assegura o bom funcionamento da reserva entre o Anfitrião e o Hóspede. Em vez de entregues diretamente ao Anfitrião, os seus pagamentos são mantidos numa terceira conta e disponibilizados de acordo com a altura e condições da reserva estipuladas por ambas as partes no DeskSpotting. Desta forma, o Anfitrião sabe que será pago no prazo acordado e você que o seu dinheiro está seguro. Ficam todos felizes."
+        title: O que é uma Conta-Garantia?
+      what_type_of_venues:
+        description: 'O DeskSpotting oferece uma vasta de seleção de espaços e atmosferas de trabalho. Desde um espaço partilhado num escritório, uma sala de conferências de um hotel para uma reunião, a coworking ou à própria casa do membro para trabalhar ou falar com parceiros. O DeskSpotting tem o que procura e para qualquer período de tempo: 1 hora, uns dias, 1 mês ou mais.'
+        title: Em que tipo de Lugares posso trabalhar?
+      when_i_am_charged:
+        description: |
+          Assim que clica em “Reservar”, a cobrança do total da reserva – incluindo caução, se exigida – é feita no seu cartão de crédito/débito. Os montantes são mantidos numa conta-garantia para sua segurança e transferidos para o Anfitrião apenas na altura do check-in. Se a sua reserva for superior a um mês, os pagamentos ao Anfitrião a cada 30 dias.
+        title: Quando me é feita a cobrança?
+    host:
+      access_to_calendar:
+        description: Os Anfitriões têm à disposição um calendário organizacional para gerirem as reservas e a disponibilidade. Está acessível em “Gerir Reservas” e na secção “Lugares”
+        title: Tenho acesso, enquanto Anfitrião, a um Calendário no DeskSpotting?
+      account: Conta
+      before_accepting_booking_inquiry:
+        description: Antes de aceitar um Pedido de Reserva pode contactar o seu Hóspede e ficar a saber mais sobre os seus interesses profissionais. Terá acesso ao seu perfil no DeskSpotting e a críticas escritas pelos seus Anfitriões anteriores.
+        title: Antes de Aceitar um Pedido de Reserva
+      bestsuited_workspaces_for_bookings:
+        long_term_bookings: 'Para reservas mais prolongadas, de por exemplo um mês ou mês a mês, recomendamos que publique os seguintes espaços de trabalho: Gabinetes Privados, Secretárias Dedicadas'
+        rules: Não existem regras quanto ao tipo de espaços e utilizações a que se destinam. O DeskSpotting fornece, no entanto, as seguintes diretrizes para que os posicione melhor.
+        short_term_bookings: |-
+          No que toca às reservas de curta duração: à hora ou dia, recomendamos a publicação dos seguintes espaços de trabalho no DeskSpotting:
+          Salas de Reuniões, Hot Desks, Salas de Conferências, Escritórios Domésticos, Espaços Comuns.
+        title: Quais os espaços de trabalho mais adequados para reservas e para que utilização?
+      booking_a_workspace_is_subletting:
+        description: |2-
+
+          Todas as reservas feitas no DeskSpotting são consideradas Prestação de Serviços fornecidos por um Anfitrião e utilizados por um Hóspede. Trata-se de permitir o uso, durante um curto período, de um espaço de trabalho totalmente equipado, pronto a usar. Dependendo do espaço, o preço da reserva dá-lhe acesso a diferentes serviços, como internet, mobiliário de escritório, sala de reuniões, rececionista, serviço de correio, etc. Para mais informações sobre esta questão, consulte Termos e Condições.
+        title: Ao reservar um Espaço de Trabalho no DeskSpotting estou a fazer um subarrendamento?
+      bookings: Reservas
+      can_more_than_one_person_manage:
+        description: Se pretende partilhar a administração de um lugar, será melhor criar uma Organização. Para o fazer, clique em “Criar Organização” no menu suspenso do perfil de utilizador. Dê um nome à Organização (o do seu negócio, por exemplo) e registe-se. É muito simples.
+        title: Um lugar pode ser administrado por mais do que uma pessoa?
+      cancellations: Cancelamentos
+      deskspotting_fees:
+        description: Todas as Taxas de Serviço do DeskSpotting são deduzidas dos pagamentos do Hóspede ao Anfitrião, não representam um custo extra para o primeiro.
+        less_than_one_month: Para todas as reservas de um mês ou menos, a Taxa de Serviço é de 20%
+        month_to_month: Para todas as reservas mês a mês, a Taxa de Serviço do DeskSpotting durante o período de tempo mínimo (que não pode exceder 4 meses) é de 20% no primeiro mês e 10% nos seguintes. Assim que este período expirar e a reserva for efetivamente mês a mês, a taxa do DeskSpotting passa a ser de 5% por mês.
+        more_than_one_month: Para todas as reservas de mais de um mês, a Taxa de Serviço é de 20% no primeiro mês e de 10% a partir do segundo.
+        title: Quais são as Taxas de Serviço do DeskSpotting?
+      difference_between_owner_and_admin:
+        description: A diferença reside no facto de o Proprietário não poder ser removido da Organização.
+        title: |+
+          Qual a diferença entre um Proprietário e um Administrador de uma Organização?
+
+      does_deskspotting_have_referal_program:
+        description: 'Temos, sim! Quantos mais amigos convidar, e se juntarem a si no DeskSpotting, mais pontos acumulará. Desta forma, está a ajudar à visibilidade do seu Lugar nos resultados da pesquisa e a ser potencialmente apresentado na nossa secção de Destaques. '
+        title: O DeskSpotting tem um programa de recomendação?
+        win_win: Ao ajudar os seus amigos a encontrar espaços de trabalho inspiradores, convidando-os para o DeskSpotting, está a impulsionar o sucesso dos seus próprios lugares. Todos saem a ganhar.
+      how_do_i_add_managers:
+        assist_you: Uma conta de Organização permite-lhe adicionar Administradores para o ajudarem a geri-la.
+        description: Selecione a conta Organização no menu suspenso debaixo do nome de utilizador e avatar. Clique em Editar Perfil no mesmo menu e já está.
+        title: Como adiciono administradores à minha organização?
+      how_do_i_cancel_reservations:
+        description: 'Se é Hóspede, clique no seu perfil, selecione “Reservas” e depois “As Minhas Reservas”. Encontrará aí todas as suas reservas organizadas cronologicamente. Selecione a reserva pretendida e clique em “Cancelar”. '
+        title: Como cancelo uma reserva?
+      how_do_i_contact:
+        description: Pode chegar até nós através de info@deskspotting.com ou clicando em Contacte-nos.  Estamos sempre interessados na sua opinião e disponíveis para ajudar no que for preciso.
+        title: Como contacto a equipa do DeskSpotting?
+      how_do_i_edit_payout_details:
+        description: Vá a Gerir lugares e selecione Lugares. Escolha aquele cujos detalhes de recebimento quer alterar. Em seguida, selecione Detalhes de Recebimento no menu lateral. Insira os novos Detalhes de Recebimento, clique em Guardar e já está.
+        title: Como edito os meus detalhes de recebimento?
+      how_do_i_edit_profile:
+        description: |
+          Clique no seu perfil e selecione Editar Perfil. Certifique-se de que providencia toda a informação possível relevante sobre si, como profissão, interesses, o local de nascimento, etc… Desta forma está a ajudar os hóspedes a perceberem melhor com quem estão a lidar.
+        title: Como edito o meu Perfil?
+      how_do_i_get_workspaces_featured:
+        description: 'Gostaríamos muito de destacar os seus espaços, mas para isso precisa certificar-se de que a sua oferta é de alta qualidade. Falamos da combinação de diversos critérios: dados detalhados e precisos do(s) espaço(s), um bom número de fotos de alta qualidade e, por fim, a média das avaliações dos Hóspedes que passaram pelo seu lugar. Outra forma de aumentar a sua visibilidade no DeskSpotting é através do nosso programa de recomendação.'
+        title: Como posso ter os meus espaços nos Destaques do DeskSpotting?
+      how_do_i_invite_friends:
+        description: Para convidar amigos basta ir ao menu suspenso no seu perfil e selecionar Convidar. Pode convidar todos os amigos que quiser e ajudá-los a encontrar os seus espaços de trabalho inspiradores. Comece a usufruir do DeskSpotting em boa companhia!
+        title: |+
+          Como convido amigos para se juntarem a mim no DeskSpotting?
+
+      how_do_i_sign_up:
+        description: Com apenas alguns cliques pode registar-se com o Facebook ou usando o seu email e uma palavra-chave à escolha. É simples e sem compromisso.
+        title: Como me registo?
+      how_to_reset_password:
+        description: Não há qualquer problema! Clique em “Iniciar Sessão” e depois em “esqueci-me da palavra-passe”. Insira o seu email e ser-lhe-á enviada uma palavra-passe temporária. Tudo bem! Lembre-se que a palavra-passe terá de ter o mínimo de 8 carateres.
+        title: Que faço se me esquecer da palavra-passe para iniciar sessão?
+      how_to_stop_month_to_month:
+        steps: |2-
+
+          Para suspender a sua reserva Mês a Mês vá até ao seu perfil, selecione “Reservas” e depois “As Suas Reservas”. Escolha a reserva pretendida e clique em “Cancelar”
+        title: Como se suspende uma reserva Mês a Mês?
+        warning: Lembre-se que o cancelamento tem de ser feito até 10 dias antes do pagamento seguinte.
+      if_hosts_cancel_reservation_prior_to_checkin:
+        affect_rating: Caso um Anfitrião cancele repetidamente Reservas dentro das janelas temporais de 24 horas, 5 e 10 dias (apresentadas acima) anteriores ao check-in do Hóspede, corre o risco de ver a sua classificação afectada e, potencialmente, desencadear a sua remoção do DeskSpotting.
+        booking_less_than_24hs: Se a reserva for de menos de 24 horas, o Anfitrião deve cancelá-la com uma antecedência superior a 24 horas em relação ao Check-In do Hóspede.
+        booking_more_than_1month: Se a reserva for de mais de 1 mês, o Anfitrião deve cancelá-la com uma antecedência superior a 10 dias em relação ao Check-In do Hóspede
+        booking_more_than_24hs: Se a reserva for de entre mais de 24 horas e 1 mês, o Anfitrião deve cancelá-la com uma antecedência superior a 5 dias em relação ao Check-In do Hóspede
+        description: Sabemos que imprevistos acontecem, por isso permitimos que o Anfitrião cancele a reserva antes do Check-In do Hóspede. No entanto, aconselhamos os Anfitriões a informar os Hóspedes com a maior antecedência possível.
+        guidelines: 'Eis algumas diretrizes:'
+        more_on_cancellation_policy: Para saber mais sobre a Política de Cancelamento consulte Termos e Condições.
+        title: Que acontece se um Anfitrião cancelar a reserva antes do Check-In do Hóspede?
+        value_flexibility: No DeskSpotting valorizamos a flexibilidade, mas entendemos também que é preciso ter certeza quando se aceita uma reserva.
+      inform_social_networks:
+        description: Claro que sim! Entendemos que preferia um amigo do Facebook ou um contato profissional do LinkedIn como hóspede. Por isso, oferecemos-lhe a possibilidade de partilhar os seus espaços com essas redes sociais, quando os publica no DeskSpotting. Basta selecionar a partilha a sua lista no Facebook e/ou LinkedIn, que nós tratamos do resto.
+        title: Posso partilhar no Facebook e no LinkedIn os espaços que tenho inseridos no DeskSpotting?
+      insurance: Seguro
+      insurance_coverage:
+        description: Cobertura de seguro está incluída, para conveniência de todos os Hóspedes, em reservas efetuadas na região metropolitana de França.
+        title: As reservas no DeskSpotting estão cobertas por seguro?
+      list_your_space: Publique o seu espaço
+      monthly_bookings_days:
+        description: Por razões organizacionais, consideramos um mês de 30 dias.
+        title: Quantos dias considera o DeskSpotting para as Reservas Mensais?
+      payments: Pagamentos
+      referal_program: Programa de Recomendação
+      service fees: Taxas de Serviço
+      special_offer_to_guest:
+        description: |2-
+
+          Super-simples! Depois de receber um pedido de reserva pode, quando quiser, clicar em “Nova Oferta” e apresentar uma proposta específica ao Hóspede, com quem está em conversação. Tem, desta forma, total flexibilidade para negociar livremente e chegar a acordo com o seu hóspede.
+        title: Como faço uma oferta especial a um Hóspede?
+      tips_on_listing_your_space:
+        booking_inquiries: Responder prontamente a Pedidos de Reserva também é uma ajuda preciosa para melhorar a sua imagem junto dos potenciais Hóspedes e aumentar a probabilidade de reserva dos espaços.
+        images: Adicionar fotos é essencial para despertar o interesse nos seus espaços. Quanto mais e de melhor qualidade carregar, maior o tráfego gerado para o seu lugar. Se usar o smartphone, recomendamos que carregue as imagens no tamanho real para melhores resultados.
+        title: Dicas para publicação do seu espaço no DeskSpotting
+        venue_information: Certifique-se de que descreve com precisão e atualiza regularmente a informação do seu Lugar e espaços de trabalho, providenciando o máximo de detalhes sobre a respetiva atmosfera.
+      title: Anfitriões
+      what_does_this_insurance_covers:
+        description: |-
+          a. Seguro de responsabilidade: Cobre até 100 000€ em danos causados por fogo, água ou furto.
+          b. Até €2000 em danos de bens e equipamentos causados pelos Hóspedes.
+        title: O que cobre o seguro?
+      when_and_how_is_a_host_paid:
+        description: |
+          Para reservas de menos de 1 mês, o Anfitrião é pago na totalidade (excluindo a taxa de serviço do DeskSpotting) aquando do check-in do Hóspede. Para reservas de mais de 1 mês, o pagamento é feito a cada 30 dias, a partir do check-in. Todos os pagamentos são feitos através de transferência para a conta bancária fornecida pelo Anfitrião ao DeskSpotting.
+        title: Como e quando é o Anfitrião pago?
+      which_listings_are_covered:
+        description: Este seguro abrange automaticamente todas as publicações de espaços na França metropolitana, durante o tempo da reserva feita através do DeskSpotting.
+        title: Que publicações de espaços estão cobertas por este seguro?
+    more: Mais
+    popular_topics: Tópicos Populares
   home:
     features:
       easy:
@@ -191,6 +486,7 @@ pt:
       contact: Contacto
       faq: Ajuda
       how_it_works: Acolhimento
+      insurance: Seguro
       join_us: Junte-se a nós
       language:
         en: ing
@@ -243,6 +539,8 @@ pt:
     unfortunately: Infelizmente, o seu anfitrião, %{name}, teve de cancelar a sua reserva do
   host_review_email:
     checked_in: fez Check-In em
+    conversion_text: como avalia o seu hóspede
+    conversion_text2: O seu feedback é muito importante para nós e outros DeskSpotters!
     rate_guest: Classificar o seu hóspede
     subject: 'Comentário do Anfitrião - Lugar #%{venue_id}'
     your_guest: O Seu Hóspede
@@ -364,10 +662,81 @@ pt:
     pending_authorization: A reserva aguarda confirmação do Anfitrião.
     pending_payment: Reserva aprovada. Confirmação pendente. A reserva será mantida por 24 horas. Se não confirmar nesse período de tempo, será cancelada.
     refunding: O montante foi reembolsado.
+  meta:
+    contacts:
+      new:
+        description: Tem sugestões ou perguntas? Ou está interessado em juntar-se à Equipa DeskSpotting? Estamos sempre interessados em notícias suas.
+        title: Contacto
+    landing:
+      index:
+        description: Reserve espaços únicos onde e quando precisar. Publique o seu espaço disponível e crie o seu próprio ambiente de trabalho colaborativo, enquanto ganha dinheiro.
+        title: Muito mais do que um escritório
+    spaces:
+      index:
+        description: Reserve gabinetes ou salas de reuniões únicas onde e quando precisar. Comece a desfrutar das vantagens de um ambiente de trabalho partilhado.
+        title: Todos os Espaços de Trabalho
+      search_mobile:
+        title: Pesquisar Telemóvel
+      space_0:
+        description: Reserve Salas de Conferências únicas onde e quando precisar. Comece a desfrutar das vantagens de um ambiente de trabalho partilhado.
+        title: Sala de Conferências
+      space_1:
+        description: Reserve Salas de Reuniões únicas onde e quando precisar. Comece a desfrutar das vantagens de um ambiente de trabalho partilhado.
+        title: Sala de Reuniões
+      space_2:
+        description: Reserve Gabinetes Privados únicos onde e quando precisar. Comece a desfrutar das vantagens de ambientes de trabalho partilhados.
+        title: Gabinete Privado
+      space_3:
+        description: Reserve Secretárias Dedicadas únicas onde e quando precisar. Comece a desfrutar das vantagens de ambientes de trabalho partilhados.
+        title: Secretária Dedicada
+      space_4:
+        description: Reserve Hot Desks únicas onde e quando precisar. Comece a desfrutar das vantagens de ambientes de trabalho partilhados.
+        title: Hot Desk
+      space_5:
+        description: Reserve Espaços Comuns únicos onde e quando precisar. Comece a desfrutar das vantagens de ambientes de trabalho partilhados.
+        title: Espaço Comum
+      space_6:
+        description: Trabalhe a partir de casa, em todo o lado. Reserve Escritórios Domésticos únicos onde e quando precisar.
+        title: Escritório Doméstico
+    statics:
+      about_us:
+        description: O DeskSpotting destina-se a todos os tipos de negócios, de startups a empresas consolidadas, que busquem as vantagens de um ambiente de trabalho partilhado.
+        title: Sobre nós
+      faq:
+        description: Em que países posso usar o DeskSpotting? Porquê usar o DeskSpotting? Como posso criar o meu próprio ambiente de coworking? Saiba mais sobre o DeskSpotting.
+        title: FAQ
+      how_it_works:
+        description: Encontre e publique espaços de trabalho numa base flexível no DeskSpotting. Comece a desfrutar das vantagens de ambientes de trabalho partilhados.
+        title: |
+          Como Funciona
+      insurance:
+        description: O DeskSpotting e a AIG desenvolveram um seguro específico para a receção de visitantes em qualquer reserva feita num espaço de trabalho em França.
+        title: Seguro
+      privacy_policy:
+        description: Este documento expressa a nossa Política de Privacidade para anfitriões e hóspedes no DeskSpotting, no que respeita o tratamento dos dados do utilizador.
+        title: |
+          Política de Privacidade
+      terms_of_service:
+        description: Bem-vindo ao DeskSpotting. Leia atentamente estas condições do serviço, uma vez que contêm informação importante sobre os seus direitos e obrigações legais.
+        title: Os Nossos Termos
+    users:
+      password_new:
+        description: Altere a sua palavra-passe. Inicie sessão e comece a reservar fantásticos espaços de trabalho partilhados, comece o seu DeskSpotting!
+        title: Nova palavra-passe
+      sign_in:
+        description: Inicie sessão e pesquise espaços de trabalho inspiradores, que pode reservar por uma hora, um dia, um mês ou mais. No DeskSpotting a escolha é sua.
+        title: Iniciar sessão
+      sign_up:
+        description: Bem-vindo ao DeskSpotting. Registe-se e comece a reservar fantásticos espaços de trabalho partilhados. Comece o seu DeskSpotting já!
+        title: Registar
+    venues:
+      index:
+        description: 
+        title: 
   new_message_email:
-    got_new_message: Tem uma nova mensagem de
+    got_new_message: Você tem uma nova mensagem de
     hi: Olá
-    on_date_connector: 'em'
+    on_date_connector: em
     reply: Ou responda diretamente neste email
     subject: 'Tem uma mensagem nova - Reserva #%{booking_id}'
     team: A Equipa do DeskSpotting
@@ -380,13 +749,14 @@ pt:
     add_manager: Adicionar Gestor
     add_manager_action: Adicionar Gestor
     change_picture: Alterar imagem
-    confirm_identity: Confirm Identity
-    identity_confirmed: Identity Confirmed
+    confirm_identity: Confirmar identidade
+    confirming_identity: A Confirmar Identidade
     create_profile: Criar organização
     create_title: Adicionar título
     edit_profile: Editar perfil
     email: Email
     email_placeholder: administrador@exemplo.com
+    identity_confirmed: Identidade Confirmada
     members: Gestores
     members_subtitle: Subtítulo dos administradores
     name: Nome
@@ -408,6 +778,7 @@ pt:
     expiration_month: Mês de expiração (mm)
     expiration_year: Ano de expiração (aa)
     hours: Horas
+    info_cvx: "É o código de três dígitos na parte de trás do seu cartão."
     invalid_card_number: Número de Cartão de Crédito Inválido
     invalid_cvv: CVV inválido
     invalid_expiration_date: Data de Expiração Inválida
@@ -420,6 +791,7 @@ pt:
     spaces: Espaços
     type: Tipo
     used_credit_card: cartão de crédito usado
+    vat: IVA
     welcome: Olá, %{name}. Está na hora de pagar!
   payment_methods:
     account_number: Número de conta
@@ -454,8 +826,8 @@ pt:
     account_number: Número de Conta
     account_type: Tipo de Conta
     amount: Montante
-    amount_paid:
-    capacity:
+    amount_paid: Quantia Paga
+    capacity: Capacidade
     card: Cartão
     check_in: Check-In
     check_out: Check-Out
@@ -464,25 +836,25 @@ pt:
     country: País
     customer_title: Recibo do Hóspede
     date: Data
-    days:
+    days: Dias
     deposit: Caução
     email: Email
     expires: Expira
     first_name: Nome Próprio
     funds_trasferred_on: Fundos Transferidos em
     guest: Hóspede
-    hours:
+    hours: Horas
     iban: IBAN
     last_name: Apelido
-    month_to_month:
-    month_to_month_as_of:
-    months:
+    month_to_month: Meses adiantados
+    month_to_month_as_of: Mês a mês a partir de
+    months: Meses
     name: Nome
     payment_type: Tipo de Pagamento
-    payout:
+    payout: Recebimento
     payout_type: Tipo de Recebimento
-    people:
-    person:
+    people: Pessoas
+    person: Pessoa
     phone_number: Número de Telefone
     province: Distrito
     receipt_number: 'Recibo #'
@@ -491,10 +863,10 @@ pt:
     space_type: Tipo de Espaço
     spaces: Espaços
     street_address: Morada
-    time_frame:
-    total_payout:
+    time_frame: Período de Tempo
+    total_payout: Total de recebimentos
     total_rental: Montante Total da Reserva
-    upcoming_payouts:
+    upcoming_payouts: Recebimentos futuros
     venue_host: Anfitrião
     venue_name: Nome do Lugar
     venue_title: Recibo do Anfitrião
@@ -570,6 +942,7 @@ pt:
   spaces:
     capacity: Número de pessoas
     day_price: Preço por dia
+    delete_your_space: Apague o seu espaço
     deposit: Caução
     description: Descrição
     edit_your_space: Edite o seu espaço
@@ -577,11 +950,11 @@ pt:
     info_capacity: Quantas pessoas podem trabalhar neste espaço?
     info_deposit: Todas as cauções são mantidas numa conta-garantia para segurança do Anfitrião e do Hóspede
     info_description: Descreva o seu espaço e explique aos potenciais hóspedes porque é um bom local para trabalhar
+    info_minimum_renting_period: Tempo mínimo de reserva permitido
     info_photos: Quanto melhores as fotos, mais interesse despertará no seu espaço. Partilhe fotos que reflitam bem a atmosfera geral deste.
     info_pricing: Defina o preço a que pretende que o seu espaço seja negociado, consoante diferentes períodos de tempo. Este pode ser alterado, a qualquer altura e caso a caso.
     info_quantity: Número destes espaços que quer publicar no DeskSpotting
-    info_minimum_renting_period: Tempo mínimo de reserva permitido
-    info_renting_period: Períodos de tempo disponíveis
+    info_renting_period: Tempos de reserva disponíveis
     minimum_renting_period: Tempo mínimo de reserva
     month_price: Preço mensal
     month_to_month: mês a mês
@@ -590,11 +963,17 @@ pt:
     per_hour: Por hora
     per_month: Por mês
     price: Preço
-    pricing: Preço (%{currency})
+    pricing: 
     pricing_in: Preço em %{currency}
     quantity: Número de espaços
-    renting_period: Período de tempo
+    renting_period: Tempo de reserva
+    select_workspace: Selecione qualquer um dos seus espaços de trabalho para editar a respetiva informação
+    share_on: 'Partilhar no:'
+    share_text: 
+    sharing_message: 
     space_photos: Fotos do espaço
+    thanks_for_registering: Obrigado por registar o seu espaço de trabalho!
+    thanks_for_updating: Obrigado por atualizar o seu espaço de trabalho!
     type: Tipo de espaço de trabalho
     types:
       all: Todos os espaços de trabalho
@@ -605,6 +984,7 @@ pt:
       hot_desk: Hot Desk
       meeting_room: Sala de reuniões
       private_office: Gabinete privado
+      training_room: Sala de Formação
   users:
     about_me: Sobre mim
     account:
@@ -617,10 +997,10 @@ pt:
       you_can_disable: Pode desativar em qualquer altura.
     add_languages: Adicionar línguas
     change_picture: Alterar imagem
-    confirm_identity: Confirm Identity
-    identity_confirmed: Identity Confirmed
-    complete_profile: 'Por favor, complete seu perfil'
     company_name: Nome da empresa
+    complete_profile: Por favor, complete o seu perfil
+    confirm_identity: Confirmar Identidade
+    confirming_identity: A Confirmar Identidade
     country_of_residence: País de residência
     date_of_birth: Data de nascimento
     edit_organization_profile: Editar Perfil da Organização
@@ -634,10 +1014,11 @@ pt:
     enter_languages: Introduza as línguas que fala
     first_name: Nome próprio
     gender: Género
-    gender_select:
+    gender_select: Selecione o género, por favor
     genders:
       f: Feminino
       m: Masculino
+    identity_confirmed: Identidade Confirmada
     info_no_share: Esta informação nunca será partilhada com ninguém
     info_password: Please input a 8 digit password
     info_share_email: O seu email não será partilhado com ninguém
@@ -661,17 +1042,24 @@ pt:
     amenities:
       air_conditioning: ar condicionado
       cafe_restaurant: café/restaurante
+      catering_services: Serviços de Catering
       chill_area: "área de descanso"
       cleaning_service: serviço de limpeza
+      coffee_station: Máquina de café
       concierge: portaria
       conference_rooms: salas de conferências
+      dvd: dvd
       elevators: elevador
       fax: fax
+      first_aid: primeiros socorros
       gym: ginásio
       individual_bookings: reservas individuais
       info_team_bookings: Tem interesse em reservar o seu lugar a equipas?
       kitchen: cozinha
+      locker: cofre
       mail_service: serviço de correio
+      microwave: micro-ondas
+      nap_area: "área de repouso"
       outdoor_space: espaço exterior
       parking: estacionamento
       pets_allowed: animações de estimação permitidos
@@ -680,10 +1068,14 @@ pt:
       printer_scanner: impressoras/scanner
       projector: projetor
       reception_service: serviço de receção
+      refrigerator: frigorífico
       security: segurança
       shower: duche
+      snacks: aperitivos
+      storage: arrumação
       team_bookings: reservas de equipa
       tv: televisão
+      videoconference: videoconferência
       water_fountain: dispensador de água
       wheelchair_access: acesso a pessoas com mobilidade reduzida
       whiteboards: telas de projeção
@@ -749,6 +1141,7 @@ pt:
       advertising: anunciar
       all: Todas as profissões são bem-vindas
       architect: arquiteto
+      coach: sofá
       consultant: consultor
       design: design
       entertainment: entertenimento
@@ -756,13 +1149,16 @@ pt:
       fashion: moda
       finance: finanças
       freelance: freelance
+      headhunter: headhunter
       journalist: jornalista
       lawyer: advogado
       media: media
       professor: professor
+      psychologist: psicológo
       public_relations: relações públicas
       startup: startup
       technology: tecnologia
+      therapist: terapeuta
     reported: Denunciado
     show:
       about_venue: Sobre o lugar
@@ -771,7 +1167,7 @@ pt:
       chosen_workspace: espaço de trabalho escolhido na pesquisa
       closed: Encerrado
       location: Localização
-      month_to_month:
+      month_to_month: Mês a Mês
       no_reviews: Sem comentários
       opening_hours: Hora de abertura
       per_day: Por dia
@@ -805,21 +1201,21 @@ pt:
       restaurant: Restaurante
       startup_office: Escritório de startup
   welcome_email:
-    button_1:
-    button_2:
-    button_3:
-    description_1:
-    description_2:
-    description_3:
-    footer:
-    footer_disclaimer_1:
-    footer_disclaimer_2:
-    message:
-    message_2:
-    subject:
-    title_1:
-    title_2:
-    title_3:
+    button_1: Diga-nos mais
+    button_2: Publique o seu espaço
+    button_3: Reserve agora
+    description_1: Quanto mais informação fornecer sobre si e os seus interesses profissionais, mais fácil será para o DeskSpotting o conectar aos espaços de trabalho e parceiros de trabalho ideais.
+    description_2: Rentabilize o espaço livre do seu escritório, ganhe dinheiro e conheça profissionais interessantes com quem pode colaborar. Saem todos a ganhar.
+    description_3: Procure o seu espaço de trabalho ideal. Lembre-se que pode até pesquisar por profissionais com quem gostaria de trabalhar.
+    footer: Muito mais do que um escritório.
+    footer_disclaimer_1: Partilhado com carinho a partir da nossa sede.
+    footer_disclaimer_2: Copyright. DeskSpotting LIMITED. 2016.
+    message: Encontre espaços de trabalho únicos para si e a sua equipa, e tire partido de um ambiente de trabalho partilhado
+    message_2: Antes de se iniciar no DeskSpotting
+    subject: Bem-vindo ao DeskSpotting!
+    title_1: Complete o seu Perfil
+    title_2: Torne-se um Anfitrião
+    title_3: Inicie-se no DeskSpotting!
   wishlist:
     day: dia
     hour: hora

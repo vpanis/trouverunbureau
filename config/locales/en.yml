@@ -46,12 +46,11 @@ en:
     claim_deposit: Claim deposit
     current: Current bookings
     delete: Delete
-    make_a_claim: make a claim
+    make_a_claim: Make a claim
+    claim_received: Claim received
     no_bookings: There are no bookings
     no_paid_cancelled: You have no paid or cancelled bookings.
     review: Leave a Review
-    make_claim: Make Claim
-    claim_received: Claim Received
     state:
       cancelled: Cancelled
       denied: Denied
@@ -182,7 +181,7 @@ en:
   help:
     account: Account
     general:
-      confidentiality: Confidentiality
+      confidentiality: 'Confidentiality '
       countries: Countries
       deskspotting_handle_payout_details:
         description: All sensitive information of Hosts (banking, credit/debit card information) or guests is purely for transactional purposes and will only be handled by our payment processing partner MangoPay as per the Terms and Conditions and Privacy Policy. This information with never be divulged.
@@ -199,7 +198,7 @@ en:
       what_is_a_communal_space:
         description: "“Communal Spaces” are often open spaces that can accommodate multiple people in a more laid back vibe couches or a big table. Some Guests like to work in a more chilled setting and prefer Communal Spaces when booking. Since they are “first come first served” and less private they are also generally more economical."
         title: What's a Communal Space?
-      what_is_a_communcal_space: "“Communal Spaces” are often open spaces that can accommodate multiple people in a more laid back vibe couches or a big table. Some Guests like to work in a more chilled setting and prefer Communal Spaces when booking. Since they are “first come first served” and less private they are also generally more economical."
+      what_is_a_communcal_space: "\"Communal Spaces” are often open spaces that can accommodate multiple people in a more laid back vibe couches or a big table. Some Guests like to work in a more chilled setting and prefer Communal Spaces when booking. Since they are “first come first served” and less private they are also generally more economical."
       what_is_a_fixed_desk:
         description: This is a desk that is designated for a specific person and cannot be occupied by anyone else.
         title: What's Fixed Desk?
@@ -231,7 +230,7 @@ en:
     guests:
       account: Account
       booking_a_workspace_is_subletting:
-        description: All bookings on DeskSpotting are deemed Provision of Services offered by a Host and utilized by a Guest. It’s the provision on a short term basis of a fully equipped workspace - “plug and play”. Depending on the workspace, the price of the booking gives you access to different services such as internet, office furniture, a meeting room, receptionist, mail service etc...
+        description: All bookings on DeskSpotting are deemed Provision of Services offered by a Host and utilized by a Guest. It’s the provision on a short term basis of a fully equipped workspace - “plug and play”. Depending on the workspace, the price of the booking gives you access to different services such as internet, office furniture, a meeting room, receptionist, mail service etc...To read more about this please refer to our Terms of Service
         title: Booking a Workspace on DeskSpotting is it subletting?
       booking_fees_to_guests:
         description: DeskSpotting does not charge any fees to Guests when making a booking. All you pay is the value of the booking set by the Host and potentially a deposit. That’s it. No hidden fees.
@@ -239,7 +238,7 @@ en:
       bookings: Bookings
       cancellation_policy:
         beyond_timeframe: Beyond this time frame, the payment for the value of the booking will be forfeited to the Host and the deposit returned in full
-        for_bookings_of_1month: For Bookings of 1 month or more, if the cancellation is done 10 calendar days prior to check in there is no penalty and the guest is reimbursed in full. Thereafter, the guest will only be able to receive 50% of his payment if he cancels. The deposit, however, is returned in full.
+        for_bookings_of_1month: For Bookings of 1 month or more, if the cancellation is done 10 calendar days prior to check in there is no penalty and the guest is reimbursed in full. Thereafter, the guest will only be able to receive 50% of his payment if he cancels. The deposit, however, is returned in full. To learn more about our Cancellation Policy please refer to our Terms and Conditions.
         for_bookings_of_less_than_24hs: For Bookings of less than 24 hours, it is possible to cancel a reservation 24 hours before the check in time without penalty and be reimbursed in full. Beyond this time frame, the guest can cancel but will forfeit his/her payment. If there is a deposit it will be returned in full.
         for_bookings_of_more_than_24hs: For Bookings of 24 hours or more but less than a month, it is possible to cancel the booking without penalty if the cancellation is done 5 calendar days prior to the check in.
         title: Cancellation Policy
@@ -281,7 +280,7 @@ en:
         address: the address of the Venue and type of workspace booked
         confirmation_number: your confirmation number
         dates: your Check-In/ Check-Out dates
-        description: You will receive a confirmation receipt detailing,
+        description: 'You will receive a confirmation receipt detailing:'
         host_info: the name of your Host and his/her phone number
         payment_date: the date your payment was made
         payment_info: the method of payment (confirming type of card, last four digits of card number and expiration date).
@@ -337,7 +336,7 @@ en:
         short_term_bookings: For short term bookings, by the hour or day we recommend listing the following spaces on DeskSpotting; Meeting Rooms, Hot Desks, Conference Rooms, Home Offices, Communal Spaces.
         title: What Workspaces are best suited for bookings and for what use?
       booking_a_workspace_is_subletting:
-        description: All bookings on DeskSpotting are deemed Provision of Services offered by a Host and utilized by a Guest. It’s the provision on a short term basis of a fully equipped workspace - “plug and play”. Depending on the workspace, the price of the booking gives you access to different services such as internet, office furniture, a meeting room, receptionist, mail service etc...
+        description: All bookings on DeskSpotting are deemed Provision of Services offered by a Host and utilized by a Guest. It’s the provision on a short term basis of a fully equipped workspace - “plug and play”. Depending on the workspace, the price of the booking gives you access to different services such as internet, office furniture, a meeting room, receptionist, mail service etc...To learn more about this please refer to our Terms and Conditions
         title: Booking a Workspace on DeskSpotting is it subletting?
       bookings: Bookings
       can_more_than_one_person_manage:
@@ -359,7 +358,7 @@ en:
         win_win: Helping your friends find inspiring workspaces by joining DeskSpotting equals helping market your venues on DeskSpotting. Everybody wins.
       how_do_i_add_managers:
         assist_you: In an Organization account you can add Managers to assist you with managing the account.
-        description: Be sure to have select your organisation account in drop down menu under your username and avatar. Then Simply click on Edit Profile from the same drop down menu and you’ll be all set.
+        description: Be sure to have selected your organisation account in drop down menu under your username and avatar. Then Simply click on Edit Profile from the same drop down menu and you’ll be all set.
         title: How do I add a Manager to my Oganization?
       how_do_i_cancel_reservations:
         description: If you are a Host, click on “Manage your Venues” and then on “Bookings” to access all your bookings. Choose “Venue Bookings” and select the appropriate Venue if you have multiple. Then select the booking that you would like to cancel and click on “Cancel”.
@@ -390,15 +389,15 @@ en:
         title: How to stop a Month to Month booking.
         warning: Remember you need to cancel at the latest 10 calendar days prior to your next payment.
       if_hosts_cancel_reservation_prior_to_checkin:
-        affect_rating: If as a Hos For all bookings done in Metropolitan France insurance coverage, provided by AIG, is included for the convenience of all Guests.t you repeatedly cancel Bookings within the 24 hour, 5 calendar day and 10 calendar day windows (listed above) prior to check in of the Guest, this could affect your rating and or potentially prompt your removal from DeskSpotting.
+        affect_rating: 'If as a Host you repeatedly cancel Bookings within the 24 hour, 5 calendar day and 10 calendar day windows (listed above) prior to check in of the Guest, this could affect your rating and or potentially prompt your removal from DeskSpotting. '
         booking_less_than_24hs: If the Guest’s booking is for less than 24 hours the Host should cancel more than 24 hours prior the Guest’s Check-In.
         booking_more_than_1month: If the Guest’s booking is for more than 1 month the Host should cancel the booking more than 10 calendar days prior to the Guest’s Check-In.
         booking_more_than_24hs: If the Guest’s booking is for more than 24 hours but less than 1 month the Host should cancel the booking more than 5 calendar days prior to the Guest’s Check-In.
         description: We know things can come up so we make it possible for a Host to cancel a booking prior to the Check-In of a Guest. However we advise hosts to do so with as much advance notice as possible.
-        guidelines: Here are some guidelines
+        guidelines: 'Here are some guidelines:'
         more_on_cancellation_policy: If you would like to learn more about the Cancellation Policy please refer to the Terms and Conditions
         title: What happens if I as a host cancel a reservation prior to a Guest’s Check-In?
-        value_flexibility: On DeskSpotting we value felxibility but also understand that there needs to be a certainty when a booking is made.
+        value_flexibility: On DeskSpotting we value flexibility but also understand that there needs to be a certainty when a booking is made.
       inform_social_networks:
         description: Of course you can! We understand that your preferred option for a guest maybe a friend of yours on Facebook or a professional contact on LinkedIn. For this reason we enable you to share your listings with these social networks when you are listing your space on DeskSpotting.. Simply select share your listing on Facebook and/or LinkedIn and we’ll take care of the rest.
         title: Can I inform my Facebook and Linkedin networks of the spaces that I have listed on DeskSpotting?
@@ -418,12 +417,15 @@ en:
         title: How can I make a special offer to a Guest?
       tips_on_listing_your_space:
         booking_inquiries: Responding promptly to Booking Inquiries is also helpful to better your image vis à vis potential Guests and increase your likelihood of booking your spaces.
-        images: Adding photos is essential to garner interest in your spaces. The more images and the higher the quality of the images you upload the more traffic you will generate for your venue.
+        images: |
+          Adding photos is essential to garner interest in your spaces. The more images and the higher the quality of the images you upload the more traffic you will generate for your venue. If you are taking pictures with your smartphone we recommend loading pictures in their actual size to get the best results.
         title: Tips on Listing your space on DeskSpotting
         venue_information: Be sure to accurately describe and regularly update the information on your Venue and workspaces and provide as much detail as necessary regarding the atmosphere.
       title: Hosts
       what_does_this_insurance_covers:
-        description: Liability insurance; For up to 100 000€ in damages caused by fire, water or burglary. It also covers up to €2000 of damages to goods or equipment made available to Guests.
+        description: |-
+          a. Liability insurance: Covering up to 100 000€ in damages caused by fire, water and burglary.
+          b. Up to €2000 of damages to goods or equipment made available to Guests.
         title: What does this insurance cover?
       when_and_how_is_a_host_paid:
         description: For bookings of less than 1 month the Host is paid in full minus DeskSpotting’s service fee at the time of check in of the Guest. For Bookings of more than 1 month, the Host receives payment every 30 days as of the Check in. All payments will be made by transfer to the bank account provided by the Host to DeskSpotting.
@@ -517,9 +519,6 @@ en:
     subject: '%{host_id}, rate your guest %{guest_id}"'
     your_guest: Your Guest
   inbox:
-    confirm_identity_modal:
-      title: 'Verify Your Identity First'
-      button: 'Go to User Profile'
     approve: Approve
     book_it: Book It
     decline: Decline
@@ -650,7 +649,6 @@ en:
         description: Book unique offices or meeting rooms where and when you need them. Start enjoying the benefits of shared office work environments.
         title: All Workspaces
       search_mobile:
-        description: 
         title: Search Mobile
       space_0:
         description: Book unique Conference Rooms where and when you need them. Start enjoying the benefits of shared office work environments.
@@ -1173,8 +1171,6 @@ en:
       loft: Loft
       restaurant: Restaurant
       startup_office: Startup office
-  aig_claim_email:
-    subject: New Claim for AIG
   welcome_email:
     button_1: Tell us more
     button_2: List your space

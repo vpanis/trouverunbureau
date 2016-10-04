@@ -36,10 +36,7 @@ class BookingsController < ApplicationController
 
     Payments::MakeAigClaimWorker.perform_async(@booking.id)
 
-    return redirect_to :venue_paid_bookings_bookings if
-      params[:from_bookings] == 'venue_paid_bookings'
-
-    redirect_to :paid_bookings_bookings
+    return render json: nil, status: :ok
   end
 
   def cancel_paid_booking

@@ -239,13 +239,13 @@
           td VAT
           td
             = "#{t("currency.#{@space.venue.currency.downcase}.symbol")}"
-            | {{calculate_vat()}}
+            | {{calculate_vat() | number : 2}}
         tr
           td
             = t('booking_inquiry.total')
           td
             = "#{t("currency.#{@space.venue.currency.downcase}.symbol")}"
-            | {{calculate_space_total()}}
+            | {{calculate_space_total() | number : 2}}
     .booking-reasons-wrapper
       h2
         = t('venues.show.why_deskspotting.title')

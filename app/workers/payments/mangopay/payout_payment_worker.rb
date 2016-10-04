@@ -52,6 +52,17 @@ module Payments
           Fees: { Currency: currency, Amount: @payout.fee  * 100 },
           DebitedWalletID: @venue.collection_account.wallet_id,
           BankAccountId: @venue.collection_account.bank_account_id)
+
+        if PayConf.aig.insurance_enabled? && @payout.aig_fee > 0
+          MangoPay::Transfer.create(
+            AuthorId: @venue.collection_account.mangopay_user_id,
+            CreditedUserId: PayConf.aig.mangopay_account_id,
+            DebitedFunds: {
+              Currency: currency, Amount: @payout.aig_fee * 100 },
+            Fees: { Currency: currency, Amount: 0 },
+            DebitedWalletID: @venue.collection_account.wallet_id,
+            CreditedWalletID: PayConf.aig.mangopay_wallet_id)
+        end
       end
 
       def persist_data(transaction)

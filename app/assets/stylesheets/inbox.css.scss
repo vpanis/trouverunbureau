@@ -11,7 +11,7 @@
     width: 25%;
   }
   .right-panel {
-    width: calc(75% - 30px);
+    width: calc(100% - 30px);
     padding: 15px 15px 0;
   }
   .booking-list{
@@ -454,6 +454,90 @@
       color: $black;
       font-size: 12px;
       font-weight: 700;
+    }
+  }
+}
+
+
+@media screen and (max-width: 1000px){
+  body[ng-app="deskSpotting"]{
+    ul.nav.navbar-nav.navbar-right {
+      display: block!important;
+      margin: 0;
+      li{
+        a{
+          padding: 7px;
+          .messages{
+            margin: 0 auto;
+            position: relative;
+            left: 5px;
+          }
+        }
+        &:nth-child(1), &:nth-child(3){
+          display: none!important;
+        }
+      }
+      &.offline{
+        display: none!important;
+      }
+    }
+    .main-container{
+      .left-panel {
+        width: 100%;
+      }
+      .navbar-collapse {
+        background: white;
+      }
+      .booking-list {
+        height: 304px!important;
+      }
+      .col-md-9.detail .icon.info.icon-black.pointer {
+        display: none!important;
+      }
+      .col-md-9.detail p.value.ng-binding {
+        position: relative;
+        left: -10px;
+      }
+      .right-panel {
+        width: calc(100% - 30px);
+        .row {
+          text-align: center;
+        }
+      }
+      .header .title {
+        text-align: center;
+        width: 100%;
+        margin: 20px 10px;
+        &:after{
+          display:none;
+        }
+      }
+      .header .detail .col-md-2.plus{
+        margin-top: 40px;
+      }
+      .col-md-2.plus.invisible {
+        margin-top: 0!important;
+      }
+      .header .detail .plus:after{
+        position: relative!important;
+        top: -86px!important;
+        left: 0!important;
+      }
+      .header .detail .col-md-4.minus{
+        margin-top: -70px;
+      }
+      .header .detail .minus:after{
+        position: relative!important;
+        top: -90px!important;
+        left: 0!important;
+      }
+      .staging-alert{
+        height: 38px;
+        padding-top: 6px;
+      }
+      .header .total{
+        padding-left: 30px;
+      }
     }
   }
 }

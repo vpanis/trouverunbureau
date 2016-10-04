@@ -54,3 +54,5 @@ dump.rdb
 .env
 .beta_env
 .prod_env
+
+stellar.yaml

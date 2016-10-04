@@ -5,9 +5,12 @@ de:
     check_out: Check-Out
     date: Datum
     day: Tag
+    days: Tage
     days_amount: Anzahl der Tage
     deposit: Kaution
-    deskspotting_fee: DeskSpotting-Gebühr
+    deskspotting_fee: DeskSpotting Gebühr
+    errors:
+      minimum_time: Sie müssen mindestens die Minimalzeit für diesen Arbeitsplatz reichen (%{minimum_time} %{b_type})
     feature_1: Keine Buchungsgebühren.
     feature_2: Die Kaution wurde hinterlegt.
     feature_3: Buchen Sie für den von Ihnen gewünschten Zeitraum.
@@ -15,21 +18,24 @@ de:
     feature_5: Sichere Zahlungen.
     feature_6: Flexible Stornierungsbedingungen.
     free: Kostenlos
-    guaranteed_months:
-    guaranteed_months_quantity:
+    guaranteed_months: garantierte Monate
+    guaranteed_months_quantity: Zahl von garantierten Monaten
     hour: Stunde
+    hours: Stunden
     hours_amount: Anzahl der Stunden
     message_placeholder: Erzählen Sie mehr über sich und Ihre beruflichen Interessen.
     month: Monat
     month_amount: Anzahl der Monate
-    month_to_month:
-    month_to_month_as_of:
+    month_to_month: Monat zu Monat
+    month_to_month_as_of: 'Monat zu Monat von '
+    months: Monate
     months_amount: Anzahl der Monate
     price_per: Preis pro
+    send_booking_inquiry: Buchungsanfrage absenden
     send_inquiry: Anfrage absenden
-    space_amount: Anzahl der Arbeitsräume
+    space_amount: Anzahl der Arbeitsplätze
     space_booking: Arbeitsraum-Reservierung
-    spaces_amount: Anzahl der Arbeitsräume
+    spaces_amount: Anzahl der Arbeitsplätze
     time_frame: Wählen Sie den Zeitraum aus
     total: Gesamtsumme
     your_message: Ihre Nachricht
@@ -40,6 +46,8 @@ de:
     claim_deposit: Kaution anfordern
     current: Aktuelle Buchungen
     delete: Löschen
+    make_a_claim: ein Anspruch nehmen
+    claim_received: Anspruch empfangen
     no_bookings: Es liegen keine Buchungen vor
     no_paid_cancelled: Sie haben keine bezahlten oder stornierten Buchungen.
     review: Geben Sie eine Bewertung ab
@@ -58,17 +66,19 @@ de:
     view_receipt: Beleg Ansehen
     your_bookings: Ihre Buchungen
   calendar: TT-MM-JJjj
+  collition_errors: Diese Daten oder Zeiten sind nicht verfügbar. Bitte wählen Sie anderen.
   commons:
     add: Hinzufügen
     add_image: Foto hinzufügen
-    add_space: Einen neuen Arbeitsraum hinzufügen
+    add_space: Einen neuen Arbeitsplatz hinzufügen
     cancel: Abbrechen
     close: Schließen
     delete: Löschen
     open: "Öffnen"
     pay: Zahlen
     save: Speichern
-    save_continue: Speichern und Fortfahren
+    save_continue: Speichern und weitermachen
+    share: Teilen
     unknown: Unbekannt
     upload_file: Datei laden
   contact:
@@ -138,7 +148,7 @@ de:
     en: English
     es: Español
     fr: Français
-    pt:
+    pt: Português
   errors:
     email_taken: Dieser Benutzer existiert bereits
     messages:
@@ -153,19 +163,283 @@ de:
     payout: Gemäß den Stornierungsbedingungen werden Sie eine Zahlung von %{currency_sym} %{amount} erhalten
     refund: Gemäß den Stornierungsbedingungen werden Sie eine Rückzahlung von %{currency_sym} %{amount} erhalten
     sorry_cancel: 'Wir bedauern, dass Sie diese Buchung storniert haben: '
-    subject: 'Gast-Stornierung - Buchung #%{booking_id}'
+    subject: 'Besucher-Stornierung - Buchung #%{booking_id}'
     transferred: "Überwiesen auf"
-    unfortunately: 'Leider musste Ihr Gast, %{name}, seine Buchung bei Ihnen stornieren:'
+    unfortunately: 'Leider musste Ihr Besucher, %{name}, seine Buchung bei Ihnen stornieren:'
   guest_review_email:
     at: in
     check_in: Check-In
     check_out: Check-out
     checked_out: Sie haben ausgecheckt von
+    conversion_text: Wie würden Sie Ihren Aufenthalt bewerten
+    conversion_text2: Ihr Rückmeldung ist für uns und andere DeskSpotters sehr wichtig!
     date: Datum
     days: Tage
     hi: Hallo
     rate_stay: Bewerten Sie Ihren Aufenthalt
-    subject: 'Gast-Bewertung - %{type} #%{guest_id}'
+    subject: 'Besucher-Bewertung - %{type} #%{guest_id}'
+  help:
+    account: Konto
+    general:
+      confidentiality: Vertraulichkeit
+      countries: Länder
+      deskspotting_handle_payout_details:
+        description: Alle sensiblen Daten von Gastgebern (Bankdaten, Kreditkarten-/Bankkontodaten) oder Gästen werden ausschließlich für Überweisungen und nur von unserem für die Zahlungsabwicklung zuständigen Partner MangoPay verwendet, wie es in den Geschäftsbedingungen und Datenschutzbestimmungen vorgesehen ist. Diese Daten werden nicht weitergegeben.
+        title: Wie geht DeskSpotting mit meinen Zahlungs-/Auszahlungsdaten um?
+      getting_started: Zu Beginn
+      in_which_country:
+        description: Zurzeit gibt es DeskSpotting in Frankreich, Deutschland, Spanien, Belgien, Irland und Portugal. Sobald wir in anderen Ländern aktiv sind, informieren wir Sie per E-Mail oder auf www.DeskSpotting.com.
+        title: In welchen Ländern kann ich DeskSpotting nutzen?
+      meeting_room_difference:
+        description: "„Tagungsräume” werden normalerweise für Treffen mit einigen wenigen Mitarbeitern genutzt, die sich um einen Tisch versammeln. „Konferenzräume” werden normalerweise für Seminare, Konferenzen oder größere Versammlungen genutzt... In der Regel sind diese Räume viel größer als „Tagungsräume” und bieten mehr Ausstattung und Einrichtungsoptionen."
+        title: Was ist der Unterschied zwischen einem Tagungsraum und einem Konferenzraum?
+      popular_topics: Populäre Inhalte
+      title: Allgemeines
+      what_is_a_communal_space:
+        description: "„Gemeinsame Arbeitsräume” sind oft offene Räume, die Platz für mehrere Personen und eine entspannte Atmosphäre mit Sofas oder einem großen Tisch bieten. Manche Gäste arbeiten gerne in einer entspannten Umgebung und ziehen beim Buchen Gemeinsame Arbeitsräume vor. Da sie nach dem „Wer zuerst kommt, mahlt zuerst”-Prinzip funktionieren und weniger Privatsphäre bieten, sind sie normalerweise günstiger."
+        title: Was ist ein Gemeinsamer Arbeitsraum?
+      what_is_a_communcal_space: "„Gemeinsame Arbeitsräume” sind oft offene Räume, die Platz für mehrere Personen und eine entspannte Atmosphäre mit Sofas oder einem großen Tisch bieten. Manche Gäste arbeiten gerne in einer entspannten Umgebung und ziehen beim Buchen Gemeinsame Arbeitsräume vor. Da sie nach dem „Wer zuerst kommt, mahlt zuerst”-Prinzip funktionieren und weniger Privatsphäre bieten, sind sie normalerweise günstiger."
+      what_is_a_fixed_desk:
+        description: Das ist ein Schreibtisch, der einer bestimmten Person zugeordnet ist und von niemand anderem besetzt werden kann.
+        title: Was ist ein Fester Arbeitsplatz?
+      what_is_a_home_office:
+        description: Ein „Homeoffice” ist ein Büro im eigenen Wohnhaus. Manche Gäste ziehen es vor, in einem gemütlicheren und ruhigeren Umfeld zu arbeiten und wählen daher bei der Buchung eines Arbeitsraums diese Art von Räumlichkeit. Manchmal ziehen Sie diese Art von Räumlichkeit vor, wenn sie reisen und einfach einen Ort brauchen, an dem sie einige Stunden entspannen und sich duschen können.
+        title: |
+          Was ist ein Homeoffice?
+      what_is_a_home_office_description: Ein „Homeoffice” ist ein Büro im eigenen Wohnhaus. Manche Gäste ziehen es vor, in einem gemütlicheren und ruhigeren Umfeld zu arbeiten und wählen daher bei der Buchung eines Arbeitsraums diese Art von Räumlichkeit. Manchmal ziehen Sie diese Art von Räumlichkeit vor, wenn sie reisen und einfach einen Ort brauchen, an dem sie einige Stunden entspannen und sich duschen können.
+      what_is_a_hot_desk:
+        description: Ein „Hot Desk” ist ein Arbeitsplatz, der keiner bestimmten Person zugeordnet ist. Er ist nach dem „Wer zuerst kommt, mahlt zuerst”-Prinzip verfügbar. Sobald eine Person den Platz verlässt, kann jede andere Person an ihm arbeiten.
+        title: Was ist ein Hot Desk?
+      what_is_a_private_office:
+        description: Ein „Privates Büro” beschreibt normalerweise ein geschlossenes Büro, das ein gewisses Maß an Privatsphäre ermöglicht. In ihm können eine oder mehrere Personen arbeiten. Da diese Arbeitsräume mehr Privatsphäre bieten, sind sie teurer als andere Arbeitsplätze.
+        title: Was ist ein Privates Büro?
+      whats_a_deskspotter:
+        description: Jemand, der von seinem Arbeitsplatz mehr erwartet als nur einen Ort, an dem er seinen Computer anschließen kann. Jemand, der seinen freistehenden Raum vermieten und eine inspirierende Arbeitsumgebung für gleichgesinnte Berufstätige und Fachleute schaffen möchte. Jemand, der einen inspirierenden und modernen Arbeitsplatz sucht, der seinem Budget und seinen geschäftlichen Anforderungen entspricht. Jemand, der frei sein möchte, zu arbeiten, wo und wann er/sie es möchte. Ein DeskSpotter ist jemand, der das Beste aus seinem Arbeitsplatz herausholen möchte.
+        title: Was ist ein DeskSpotter?
+      why_host:
+        description: Haben Sie freistehenden Arbeitsraum? Möchten Sie Geld verdienen und andere Berufstätige und Fachleute aus Ihrem Bereich oder einem anderen kennenlernen? Bieten Sie Ihren Raum auf DeskSpotting kostenlos an und reduzieren Sie mithilfe Ihres freistehenden Raums Ihre Fixkosten; verdienen Sie Geld und schaffen Sie ein dynamischeres Arbeitsumfeld für sich und Ihre Mitarbeiter. Das Hochladen von Angeboten ist kostenlos und Sie sind nicht verpflichtet, Buchungsanfragen zu akzeptieren. Sie entscheiden, wann und mit wem Sie Ihre Räumlichkeiten teilen.  Das ist vielleicht die Gelegenheit für ein größeres Büro und den Umzug in eine Arbeitsumgebung, die Ihnen und Ihrem Geschäft zugutekommt.
+        title: Wieso Gastgeber sein?
+      why_host_reasons: Haben Sie freistehenden Arbeitsraum? Möchten Sie Geld verdienen und andere Berufstätige und Fachleute aus Ihrem Bereich oder einem anderen kennenlernen? Bieten Sie Ihren Raum auf DeskSpotting kostenlos an und reduzieren Sie mithilfe Ihres freistehenden Raums Ihre Fixkosten; verdienen Sie Geld und schaffen Sie ein dynamischeres Arbeitsumfeld für sich und Ihre Mitarbeiter. Das Hochladen von Angeboten ist kostenlos und Sie sind nicht verpflichtet, Buchungsanfragen zu akzeptieren. Sie entscheiden, wann und mit wem Sie Ihre Räumlichkeiten teilen.  Das ist vielleicht die Gelegenheit für ein größeres Büro und den Umzug in eine Arbeitsumgebung, die Ihnen und Ihrem Geschäft zugutekommt.
+      why_use_deskspotting:
+        easy: 'Es ist einfach: Buchen Sie Ihren Arbeitsraum mithilfe Ihrer Kreditkarte oder Bankkarte mit nur einem Klick. Schluss mit Vertragsverhandlungen, Überweisungen und Anzahlungen direkt an den Vermieter.'
+        flexible: 'Flexibilität: Buchen Sie, wann und wo Sie wollen, Arbeitsraum für Sie oder Ihr Team:  private Büros, Tagungsräume... '
+        how_long: 'Sie entscheiden, für wie lange: eine Stunde, einen Tag, einen Monat oder länger...'
+        networking: 'Networking: DeskSpotting hilft Ihnen dabei, Ihr berufliches Netzwerk zu erweitern und inspirierende Arbeitsräume entsprechend Ihrer geschäftlichen Interessen zu finden.'
+        no_fees: 'Keine Gebühren:  Finden Sie Ihren Arbeitsraum, buchen Sie ihn und treiben Sie Ihr Geschäft voran. Sie haben an anderes zu denken als an Gebühren.'
+        title: Wieso sollte ich DeskSpotting nutzen?
+      workspaces: Arbeitsräume
+    guests:
+      account: Konto
+      booking_a_workspace_is_subletting:
+        description: Alle Buchungen auf DeskSpotting werden als Dienstleistungen angesehen, die von einem Gastgeber angeboten und von einem Gast genutzt werden. Es werden kurzzeitig voll ausgestattete Arbeitsräume zur Verfügung gestellt – „Plug and Play”. Je nach Arbeitsraum ermöglicht Ihnen der Buchungspreis Zugang zu verschiedenen Leistungen wie Internet, Büromöbel, Tagungsraum, Empfangsservice, Postservice usw.
+        title: Entspricht das Buchen einer Räumlichkeit auf DeskSpotting einer Untervermietung?
+      booking_fees_to_guests:
+        description: DeskSpotting stellt Gästen keine Gebühren in Rechnung, wenn Sie eine Buchung machen. Alles, was Sie bezahlen, ist die Buchungssumme, die vom Gastgeber festgelegt wird, und gegebenenfalls eine Kaution. Das ist alles. Keine versteckten Gebühren.
+        title: Stellt DeskSpotting Gästen Buchungsgebühren in Rechnung?
+      bookings: Buchungen
+      cancellation_policy:
+        beyond_timeframe: Nach diesem Zeitpunkt wird die Buchungssumme an den Gastgeber überwiesen und die Kaution in voller Höhe zurückerstattet.
+        for_bookings_of_1month: Bei Buchungen von 1 Monat oder mehr kann der Gast gebührenfrei stornieren, sofern er dies 10 Kalendertage vor dem Check-in tut, und erhält den Betrag in voller Höhe zurück. Nach diesem Zeitpunkt erhält der Gast bei einer Stornierung nur 50 % seiner Zahlung zurück. Die Kaution wird jedoch in voller Höhe zurückerstattet.
+        for_bookings_of_less_than_24hs: Bei Buchungen von weniger als 24 Stunden ist es möglich, bis 24 Stunden vor dem Check-in gebührenfrei zu stornieren und die Buchungssumme in voller Höhe zurückzuerhalten. Nach diesem Zeitpunkt kann der Gast zwar stornieren, die Summe wird aber nicht zurückerstattet. Wurde eine Kaution gezahlt, wird diese in voller Höhe zurückgezahlt.
+        for_bookings_of_more_than_24hs: Bei Buchungen von 24 Stunden oder mehr, aber weniger als einem Monat, ist es möglich, gebührenfrei zu stornieren, sofern die Stornierung 5 Kalendertage vor dem Check-in vorgenommen wird.
+        title: Stornierungsbedingungen
+      cancellations: Stornierungen
+      card_information:
+        description: |
+          Ihre Kreditkarten-/Bankkontodaten werden zu keinem Zeitpunkt von DeskSpotting empfangen oder gespeichert. Diese Informationen werden zu Ihrer Sicherheit und Ihrem Komfort von unserem für die Zahlungsabwicklung zuständigen Partner MangoPay verarbeitet und verwaltet, gemäß den Geschäftsbedingungen und Datenschutzbestimmungen.
+        title: Kreditkarten-/Bankkontodaten
+      contact_host_before_booking:
+        description: Selbstverständlich! Sie können während Ihrer Buchungsanfrage mit Ihrem Gastgeber kommunizieren und ihm Fragen stellen oder sogar mit ihm verhandeln. So wird ein Kommunikationskanal für ein Gespräch mit Ihrem Gastgeber geöffnet, durch den Sie frei miteinander reden können.
+        title: Kann ich den Gastgeber vor der Buchung kontaktieren?
+      deskspotting_handle_deposits:
+        description: Falls eine Kaution vom Gastgeber verlangt wird, wird sie für die Dauer Ihrer Buchung hinterlegt und innerhalb von 72 Stunden, nachdem Sie aus der Räumlichkeit ausgecheckt haben, an Sie zurückgezahlt, sofern der Gastgeber keine Ansprüche geltend gemacht hat.
+        title: Wie geht DeskSpotting mit Kautionen um?
+      how_do_i_add_managers:
+        assist_you: In einem Unternehmenskonto können Sie Manager hinzufügen, die Ihnen mit der Verwaltung des Kontos helfen.
+        description: Achten Sie darauf, dass Sie im Drop-down-Menü unter Ihrem Benutzernamen und Avatar Ihr Unternehmenskonto ausgesucht haben. Klicken Sie dann einfach im selben Drop-down-Menü auf Profil Bearbeiten und es kann losgehen.
+        title: Wie füge ich in meinem Unternehmenskonto Manager hinzu?
+      how_do_i_book_a_workspace:
+        accepted_inquiry: Sobald der Gastgeber Ihre Anfrage angenommen hat, erhalten Sie eine E-Mail mit der Bestätigung, dass Ihre Anfrage akzeptiert wurde. Jetzt müssen Sie nur noch buchen.
+        easy: Es ist ganz einfach. Wählen Sie die Räumlichkeit aus, die Sie buchen möchten, und klicken Sie auf „Buchungsanfrage”. Geben Sie die Check-in-/Check-out-Daten, die Anzahl der Personen, die mit Ihnen kommen, und die benötigte Anzahl von Arbeitsplätzen ein.
+        send_message: Sie können Ihrem Gastgeber außerdem eine Nachricht senden, um weitere Informationen zu erhalten und ihm mehr über sich selbst zu erzählen. Wir raten Ihnen, eine Nachricht beizufügen, um dem Gastgeber mehr von sich selbst und Ihren Plänen zu erzählen. Es ist immer besser, mehr Informationen zu liefern.
+        title: Wie buche ich eine Räumlichkeit?
+      how_do_i_cancel_reservations:
+        description: Wenn Sie Gast sind, also jemand, der einen Arbeitsraum gebucht hat, klicken Sie auf Ihr Profil und gehen Sie auf „Buchungen” und dann „Meine Buchungen”. Sie finden hier alle Ihre Buchungen chronologisch geordnet. Wählen Sie die Buchung aus, die Sie stornieren möchten, und klicken Sie auf „Stornieren”. Denken Sie daran, vor der Stornierung einer Buchung die Stornierungsbedingungen zu lesen, die in den Geschäftsbedingungen und Datenschutzbestimmungen enthalten sind.
+        title: Wie storniere ich eine Buchung?
+      how_do_i_contact:
+        description: Sie können uns über info@deskspotting.com erreichen oder indem Sie auf Kontaktieren Sie uns klicken. Wir freuen uns über Ihr Feedback und sind für Sie da, falls Sie Hilfe brauchen.
+        title: Wie kann ich das DeskSpotting-Team kontaktieren?
+      how_do_i_edit_profile:
+        description: 'Klicken Sie auf Ihr Profil und gehen Sie auf „Profil Bearbeiten“. Geben Sie möglichst viele relevante Informationen zu sich selbst an: Ihr Beruf, Interessen, woher Sie kommen, etc. So können Gäste besser sehen, mit wem sie es zu tun haben.'
+        title: Wie bearbeite ich mein Profil?
+      how_do_i_find_workspace:
+        description: Geben Sie auf der Homepage die Stadt und die Art der Räumlichkeit ein, die sie suchen. Auf der Ergebnis-Seite können Sie Ihre Suche, falls Sie etwas Bestimmtes suchen, mithilfe von Filtern verfeinern.
+        title: Wie finde ich einen Arbeitsraum?
+      how_do_i_invite_friends:
+        description: Um Freunde einzuladen, gehen Sie auf Ihrem Profil in das Drop-down-Menü und wählen Sie Einladen. Sie können jetzt so viele Freunde einladen, wie Sie möchten, und ihnen dabei helfen, inspirierende Arbeitsräume zu finden. Nutzen Sie DeskSpotting jetzt mit Ihren Freunden!
+        title: Wie lade ich Freunde auf DeskSpotting ein?
+      how_do_i_know_booking_was_made:
+        address: der Adresse der Räumlichkeit und der Art des gebuchten Arbeitsraums
+        confirmation_number: Ihrer Bestätigungsnummer
+        dates: Ihren Check-in-/Check-out-Daten
+        description: 'Sie erhalten eine Buchungsbestätigung mit:'
+        host_info: dem Namen Ihres Gastgebers und seiner Telefonnummer
+        payment_date: dem Datum, an dem die Zahlung getätigt wurde
+        payment_info: der Zahlungsmethode (mit einer Bestätigung des Kartentyps, der letzten vier Ziffern der Kartennummer und des Gültigkeitsdatums).
+        title: Wie weiß ich, dass meine Buchung abgeschlossen ist?
+      how_do_i_sign_up:
+        description: Mit wenigen Klicks können Sie sich entweder über Facebook oder mit Ihrer E-Mail-Adresse und einem Passwort Ihrer Wahl anmelden. Es ist einfach und ohne Verpflichtungen.
+        title: Wie melde ich mich an?
+      how_to_reset_password:
+        description: Kein Problem! Klicken Sie auf „Anmelden” und dann auf „Passwort vergessen”. Geben Sie Ihre E-Mail-Adresse ein, damit Ihnen ein vorläufiges Passwort zugesendet wird. Fertig! Denken Sie daran, ein Passwort zu wählen, das mindestens 8 Zeichen hat.
+        title: Was tue ich, wenn ich mein Passwort für die Anmeldung vergessen habe?
+      how_to_stop_month_to_month:
+        steps: |
+          Um Ihre Buchung von Monat zu Monat einzustellen, gehen Sie auf Ihr Profil und auf Buchungen, gehen Sie auf „Ihre Buchungen”, wählen Sie die zutreffende Buchung aus und klicken Sie auf „Stornieren”.
+        title: Wie kann ich eine Buchung von Monat zu Monat einstellen?
+        warning: Denken Sie daran, dass Sie spätestens 10 Kalendertage vor Ihrer nächsten Zahlung stornieren müssen.
+      month_to_month_bookings:
+        description: Wir können verstehen, dass Sie Arbeitsraum für einen Monat oder länger brauchen, aber nicht genau sagen können, für wie lange.  Aus genau diesem Grund bietet DeskSpotting Buchungen von Monat zu Monat an. Oft werden Gastgeber eine Mindestdauer verlangen, bevor Buchungen von Monat zu Monat möglich werden. Diese kann zwischen 0 und 3 Monaten betragen.
+        title: Was sind Buchungen von Monat zu Monat?
+      monthly_bookings_days:
+        description: Aus organisatorischen Gründen zählt ein Monat bei uns 30 Tage.
+        title: Wie viele Tage beinhalten Monatsbuchungen bei DeskSpotting?
+      payments: Zahlungen
+      popular_topics: Populäre Inhalte
+      search_by_professions:
+        description: 'Sie können Ihre Suche auf DeskSpotting mithilfe von Filtern anpassen. Wählen Sie die Berufe der Personen aus, die Sie in Ihrer Umgebung wünschen oder mit denen Sie arbeiten möchten: Es gibt 16 Kategorien: Start-ups, Designer, Technologie, Finanzen, Freelancer... Sie haben die Wahl.'
+        title: Kann ich auf DeskSpotting eine Suche nach Berufen machen, denen die Personen, mit denen ich zusammenarbeiten möchte, nachgehen?
+      timeframe_for_workspace:
+        description: Auf DeskSpotting können Sie Ihren Arbeitsraum pro Stunde, pro Tag, pro Monat oder von Monat zu Monat buchen. Unser Ziel ist es, dass Gäste und Gastgeber so flexibel wie möglich sind. Nichtsdestotrotz entscheidet der Gastgeber über die Zeiträume, für die die Räumlichkeit verfügbar sein soll.
+        title: Für welche Zeiträume kann ich eine Räumlichkeit buchen?
+      title: Gäste
+      what_is_an_organization:
+        description: Mit DeskSpotting können Sie auf Ihrem Profil zusätzlich zu Ihrem persönlichen Konto ein Unternehmenskonto erstellen. Das ist besonders nützlich, wenn Sie vorhaben, Angebote mit anderen Kollegen zu verwalten oder wenn Sie Buchungen für ein Unternehmen machen möchten. Dieses Konto kann wie ein persönliches DeskSpotting-Konto angepasst und jederzeit bearbeitet werden.
+        title: Was ist ein Unternehmen?
+      what_is_escrow:
+        description: Es handelt sich hierbei um eine Sicherheitsmaßnahme, mit der ein reibungsloser Verlauf der Buchung zwischen Gast und Gastgeber gewährleistet wird. Statt einer direkten Überweisung an den Gastgeber werden Ihre Zahlungen auf einem neutralen Konto hinterlegt und gemäß den von beiden Parteien auf DeskSpotting vereinbarten Fristen und Buchungsbedingungen ausgezahlt. Auf diese Weise weiß der Gastgeber, dass er sein Geld fristgerecht erhält, und Sie wissen, dass Ihr Geld sicher ist. Beide Seiten sind zufrieden.
+        title: Was ist ein Treuhandkonto?
+      what_type_of_venues:
+        description: DeskSpotting bietet eine große Auswahl an Arbeitsräumen und Umgebungen für Ihre Arbeit. Von gemeinsamem Raum in einem Büro über Konferenzräume in Hotels bis hin zu geteilten Arbeitsräumen oder dem Zuhause eines Mitglieds, wo man arbeiten oder sich mit Geschäftspartnern treffen kann.
+        title: Welche Arten von Räumlichkeiten, in denen ich arbeiten kann, gibt es?
+      when_i_am_charged:
+        description: Sobald Sie auf „Buchen” geklickt haben, wird die gesamte Buchungssumme einschließlich Kaution, sofern eine verlangt wird, von Ihrer Kreditkarte/Ihrem Bankkonto abgezogen. Der Betrag wird zu Ihrer Sicherheit hinterlegt und erst an den Gastgeber überwiesen, wenn Sie eingecheckt haben. Sollten Sie für einen Zeitraum buchen, der länger als ein Monat ist, erhält der Gastgeber die Zahlungen alle 30 Tage.
+        title: Wann muss ich zahlen?
+    host:
+      access_to_calendar:
+        description: Gastgebern steht ein Kalender zur Verfügung, mit dem Sie Buchungen und Verfügbarkeiten verwalten können. Sie können über „Meine Buchungen verwalten” und dann „Räumlichkeiten” auf den Kalender zugreifen.
+        title: Habe ich als Gastgeber Zugang zu einem Kalender auf DeskSpotting?
+      account: Konto
+      before_accepting_booking_inquiry:
+        description: Bevor Sie eine Buchungsanfrage akzeptieren, können Sie mit dem Gast kommunizieren und mehr über ihn/sie und seine/ihre beruflichen Interessen erfahren. Sie haben Zugang zu seinem/ihrem DeskSpotting-Profil und zu Bewertungen früherer Gastgeber.
+        title: Bevor Sie eine Buchungsanfrage akzeptieren.
+      bestsuited_workspaces_for_bookings:
+        long_term_bookings: 'Für Buchungen über längere Zeiträume, z. B. für einen Monat oder von Monat zu Monat, empfehlen wir, folgende Räumlichkeiten anzubieten:'
+        rules: Es gibt keine Regeln dafür, wie Sie bestimmte Räumlichkeiten anbieten sollten. DeskSpotting schlägt aber folgende Leitlinien vor, damit Sie Ihre Räumlichkeiten bestmöglich positionieren können.
+        short_term_bookings: Für Buchungen über kurze Zeiträume, pro Stunde oder pro Tag, empfehlen wir, folgende Räumlichkeiten auf DeskSpotting anzubieten:Tagungsräume, Hot Desks, Konferenzräume, Homeoffices, Gemeinsame Arbeitsräume.
+        title: Welche Arbeitsräume sind für welche Buchungen und welche Nutzung geeignet?
+      booking_a_workspace_is_subletting:
+        description: Alle Buchungen auf DeskSpotting werden als Dienstleistungen angesehen, die von einem Gastgeber angeboten und von einem Gast genutzt werden. Es werden kurzzeitig voll ausgestattete Arbeitsräume zur Verfügung gestellt – „Plug and Play”. Je nach Arbeitsraum ermöglicht Ihnen der Buchungspreis Zugang zu verschiedenen Leistungen wie Internet, Büromöbel, Tagungsraum, Empfangsservice, Postservice usw. Weitere Informationen hierzu finden Sie in den Geschäftsbedingungen.
+        title: Entspricht das Buchen einer Räumlichkeit auf DeskSpotting einer Untervermietung?
+      bookings: Buchungen
+      can_more_than_one_person_manage:
+        description: Wenn mehrere Personen Ihre Räumlichkeit mitverwalten möchten, ist es am besten, ein Unternehmen zu erstellen. Klicken Sie dafür im Drop-down-Menü Ihres Benutzerprofils auf „Ein Unternehmen erstellen”. Legen Sie einen Namen für das Unternehmen fest (der Name Ihres Unternehmens zum Beispiel) und registrieren Sie sich. Es ist ganz einfach.
+        title: Können mehrere Personen eine Räumlichkeit verwalten?
+      cancellations: Stornierungen
+      deskspotting_fees:
+        description: Alle DeskSpotting-Service-Gebühren werden von der Zahlung vom Gast an den Gastgeber abgezogen. Sie stellen keine zusätzlichen Kosten für den Gast dar.
+        less_than_one_month: Für alle Buchungen für einen Monat oder weniger betragen die Service-Gebühren 20%
+        month_to_month: Für alle Buchungen von Monat zu Monat betragen die DeskSpotting-Service-Gebühren während der zugesicherten Mietdauer (die nicht länger als 4 Monate sein darf) 20% für den ersten Monat und 10% für jeden folgenden. Sobald die zugesicherte Mietdauer abgelaufen ist und es sich tatsächlich um eine Buchung von Monat zu Monat handelt, betragen die DeskSpotting-Gebühren 5% pro Monat.
+        more_than_one_month: Für alle Buchungen für mehr als 1 Monat betragen die Service-Gebühren 20% für den ersten Monat und 10% für den zweiten und jeden danach folgenden Monat.
+        title: Wie hoch sind DeskSpotting-Service-Gebühren?
+      difference_between_owner_and_admin:
+        description: Der Unterschied besteht darin, dass der Besitzer nicht aus dem Unternehmenskonto entfernt werden kann.
+        title: Was ist der Unterschied zwischen einem Besitzer und einem Admin als Manager eines Unternehmenskontos?
+      does_deskspotting_have_referal_program:
+        description: Ja, haben wir! Je mehr Freunde Sie einladen und je mehr von ihnen sich wie Sie auf DeskSpotting anmelden, desto mehr Punkte sammeln Sie, wodurch Ihre Räumlichkeit unter den Suchergebnissen und in unserem Bereich für Empfohlene Arbeitsräume weiter oben angezeigt werden könnte.
+        title: Hat DeskSpotting ein Empfehlungssystem?
+        win_win: Ihren Freunden dabei zu helfen, als Mitglieder von DeskSpotting inspirierende Arbeitsräume zu finden, bedeutet auch, dass Ihre Räumlichkeiten auf DeskSpotting gefördert werden. Alle profitieren davon.
+      how_do_i_add_managers:
+        assist_you: In einem Unternehmenskonto können Sie Manager hinzufügen, die Ihnen mit der Verwaltung des Kontos helfen.
+        description: |
+          Achten Sie darauf, dass Sie im Drop-down-Menü unter Ihrem Benutzernamen und Avatar Ihr Unternehmenskonto ausgesucht haben. Klicken Sie dann einfach im selben Drop-down-Menü auf Profil Bearbeiten und es kann losgehen.
+        title: Wie füge ich in meinem Unternehmenskonto Manager hinzu?
+      how_do_i_cancel_reservations:
+        description: Wenn Sie Gastgeber sind, klicken Sie auf „Ihre Räumlichkeiten Verwalten” und dann auf „Buchungen”, um auf alle Ihre Buchungen zuzugreifen. Gehen Sie auf „Buchungen von Räumlichkeiten” und wählen Sie, falls Sie mehrere haben, die zutreffende Räumlichkeit aus. Wählen Sie dann die Buchung, die Sie stornieren möchten, aus und klicken Sie auf „Stornieren”.
+        title: Wie storniere ich eine Buchung?
+      how_do_i_contact:
+        description: Sie können uns über info@deskspotting.com erreichen oder indem Sie auf Kontaktieren Sie uns klicken. Wir freuen uns über Ihr Feedback und sind für Sie da, falls Sie Hilfe brauchen.
+        title: Wie kann ich das DeskSpotting-Team kontaktieren?
+      how_do_i_edit_payout_details:
+        description: Gehen Sie auf Ihre Räumlichkeiten Verwalten. Gehen Sie auf Räumlichkeiten und wählen Sie dann, für welche Räumlichkeit Sie die Auszahlungsdetails ändern möchten. Dann gehen Sie im Seitenmenü auf Auszahlungsdaten. Geben Sie Ihre neuen Auszahlungsdaten ein, klicken Sie auf Speichern, und fertig!
+        title: Wie bearbeite ich meine Auszahlungsdaten?
+      how_do_i_edit_profile:
+        description: 'Klicken Sie auf Ihr Profil und gehen Sie auf „Profil Bearbeiten“. Geben Sie möglichst viele relevante Informationen zu sich selbst an: Ihr Beruf, Interessen, woher Sie kommen, etc... So können Gastgeber besser sehen, mit wem sie es zu tun haben.'
+        title: Wie bearbeite ich mein Profil?
+      how_do_i_get_workspaces_featured:
+        description: Wir möchten Ihre Arbeitsräume wirklich gerne empfehlen; dafür müssen Sie aber sicherstellen, dass Ihre Angebote hochwertig sind. Das schließt ein, dass die Informationen zu Ihren Angeboten detailliert und korrekt sind, dass Sie hochwertige Fotos zur Verfügung stellen, und schließlich spielt auch die Gesamtbewertung der Gäste, die Ihre Räumlichkeiten gebucht haben eine Rolle. Eine weitere Möglichkeit, Ihre Sichtbarkeit auf DeskSpotting zu verbessern, ist unser Empfehlungssystem.
+        title: Wie erreiche ich, dass meine Arbeitsräume von DeskSpotting empfohlen werden?
+      how_do_i_invite_friends:
+        description: Um Freunde einzuladen, gehen Sie auf Ihrem Profil in das Drop-down-Menü und wählen Sie Einladen. Sie können jetzt so viele Freunde einladen, wie Sie möchten, und ihnen dabei helfen, inspirierende Arbeitsräume zu finden. Nutzen Sie DeskSpotting jetzt mit Ihren Freunden!
+        title: Wie lade ich Freunde auf DeskSpotting ein?
+      how_do_i_sign_up:
+        description: Mit wenigen Klicks können Sie sich entweder über Facebook oder mit Ihrer E-Mail-Adresse und einem Passwort Ihrer Wahl anmelden. Es ist einfach und ohne Verpflichtungen.
+        title: Wie melde ich mich an?
+      how_to_reset_password:
+        description: Kein Problem! Klicken Sie auf „Anmelden” und dann auf „Passwort vergessen”. Geben Sie Ihre E-Mail-Adresse ein, damit Ihnen ein vorläufiges Passwort zugesendet wird. Fertig! Denken Sie daran, ein Passwort zu wählen, das mindestens 8 Zeichen hat.
+        title: Was tue ich, wenn ich mein Passwort für die Anmeldung vergessen habe?
+      how_to_stop_month_to_month:
+        steps: Um eine Buchung von Monat zu Monat einzustellen, gehen Sie auf Ihr Profil und auf Buchungen, gehen Sie auf „Gebuchte Räumlichkeiten”, wählen Sie die zutreffende Buchung aus und klicken Sie auf „Stornieren”.
+        title: Wie kann ich eine Buchung von Monat zu Monat einstellen?
+        warning: Denken Sie daran, dass Sie spätestens 10 Kalendertage vor der nächsten Zahlung des Gastes stornieren müssen.
+      if_hosts_cancel_reservation_prior_to_checkin:
+        affect_rating: Wenn Sie als Gastgeber Buchungen wiederholt innerhalb der (oben genannten) Zeitfenster von 24 Stunden, 5 Kalendertagen und 10 Kalendertagen vor dem Check-in des Gasts stornieren, könnte dies sich negativ auf Ihre Bewertung auswirken und/oder zur Schließung Ihres DeskSpotting-Kontos führen.
+        booking_less_than_24hs: Wenn der Gast für weniger als 24 Stunden gebucht hat, sollte der Gastgeber die Buchung mehr als 24 Stunden vor dem Check-in des Gasts stornieren.
+        booking_more_than_1month: Wenn der Gast für mehr als 1 Monat gebucht hat, sollte der Gastgeber die Buchung mehr als 10 Kalendertage vor dem Check-in des Gasts stornieren.
+        booking_more_than_24hs: Wenn der Gast für mehr als 24 Stunden, aber weniger als 1 Monat gebucht hat, sollte der Gastgeber die Buchung mehr als 5 Kalendertage vor dem Check-in des Gasts stornieren.
+        description: Wir wissen, dass Dinge dazwischen kommen können, und möchten Gastgebern die Möglichkeit geben, eine Buchung vor dem Check-in des Gasts zu stornieren. Wir raten Gastgebern aber, dies so früh wie möglich zu tun.
+        guidelines: 'Hier sind einige Richtlinien:'
+        more_on_cancellation_policy: Weitere Informationen zu den Stornierungsbedingungen finden Sie in den Geschäftsbedingungen
+        title: Was passiert, wenn ich als Gastgeber eine Buchung vor dem Check-in des Gasts storniere?
+        value_flexibility: Wir schätzen Flexibilität auf DeskSpotting sehr, wissen aber auch, dass eine gewisse Sicherheit bei einer Buchung notwendig ist.
+      inform_social_networks:
+        description: Natürlich können Sie das! Wir können nachvollziehen, dass Ihre bevorzugte Wahl für einen Gast einer Ihrer Freunde auf Facebook oder ein Geschäftspartner auf LinkedIn ist. Aus diesem Grund ermöglichen wir es Ihnen, die Räumlichkeiten, die Sie auf DeskSpotting anbieten, auf diesen sozialen Netzwerken zu teilen. Wählen Sie einfach die Option, mit der Sie das Angebot auf Facebook und/oder LinkedIn teilen können. Wir kümmern uns um den Rest.
+        title: Kann ich mein Facebook und mein LinkedIn-Netzwerk über die Räumlichkeiten informieren, die ich auf DeskSpotting anbiete?
+      insurance: Versicherung
+      insurance_coverage:
+        description: Wir stellen gemeinsam mit unserem Partner AIG einen Versicherungsschutz für alle Buchungen zur Verfügung, der in ganz Frankreich gültig ist.
+        title: Gibt es einen Versicherungsdienst bei DeskSpotting?
+      list_your_space: Bieten Sie Ihre Räumlichkeit an
+      monthly_bookings_days:
+        description: Aus organisatorischen Gründen zählt ein Monat bei uns 30 Tage.
+        title: |
+          Wie viele Tage beinhalten Monatsbuchungen bei DeskSpotting?
+      payments: Zahlungen
+      referal_program: Empfehlungssystem
+      service fees: Service-Gebühren
+      special_offer_to_guest:
+        description: Nichts leichter als das! Wenn Sie ein Buchungsangebot erhalten, können Sie jederzeit auf „Neues Angebot” klicken und dem Gast, mit dem Sie schreiben, ein besonderes Angebot unterbreiten. Auf diese Weise haben Sie bei Ihren Verhandlungen vollen Spielraum und kommen mit Ihrem Gast flexibel zu einer Einigung.
+        title: Wie kann ich einem Gast ein Sonderangebot machen?
+      tips_on_listing_your_space:
+        booking_inquiries: Das schnelle Beantworten von Buchungsanfragen kann sich ebenfalls positiv auf den Eindruck, den potentielle Gäste von Ihnen haben, auswirken und die Buchungswahrscheinlichkeit Ihrer Räumlichkeiten erhöhen.
+        images: |
+          Das Hinzufügen von Fotos ist besonders wichtig, um größeres Interesse an Ihren Räumlichkeiten zu wecken. Je mehr Fotos und je besser die Qualität der hochgeladenen Fotos, desto mehr Klicks erzielen Sie für Ihre Räumlichkeit. Wenn Sie Bilder mit Ihrem Handy nehmen, empfehlen wir das Laden von Bildern in ihrer tatsächlichen Größe, um die besten Ergebnisse zu erzielen.
+        title: Tipps zum Hochladen Ihrer Räumlichkeiten auf DeskSpotting.
+        venue_information: Stellen Sie sicher, dass Sie Ihre Räumlichkeiten und Arbeitsplätze korrekt beschreiben und die Informationen regelmäßig aktualisieren, und geben Sie so viele Details wie möglich in Bezug auf das Arbeitsklima.
+      title: Gastgeber
+      what_does_this_insurance_covers:
+        description: |
+          Die Haftpflicht der Besucher: Bis zu 100.000 € im Falle von Feuer, Wasserschäden, Einbruch mit Diebstahl. Oder die Ausstattung und Güter in Höhe von bis zu 2000 €, die den Besuchern anvertraut wurden.
+        title: "Was deckt diese Versicherung ab? \n"
+      when_and_how_is_a_host_paid:
+        description: 'Bei Buchungen für einen Zeitraum von weniger als 1 Monat erhält der Gastgeber die Gesamtsumme abzüglich der DeskSpotting-Service-Gebühren beim Check-in des Gastes. Bei Buchungen für mehr als 1 Monat erhält der Gastgeber die Zahlung alle 30 Tage ab dem Check-in. Alle Zahlungen werden auf das Bankkonto überwiesen, das der Gastgeber bei DeskSpotting angegeben hat. '
+        title: Wann und wie erhält der Gastgeber die Zahlung?
+      which_listings_are_covered:
+        description: |
+          Diese Versicherung gilt automatisch für alle Anzeigen in Frankreich. Der Gast ist dann über die Dauer des Aufenthalts, der über DeskSpotting bezahlt wurde, versichert.
+        title: Welche Anzeigen sind bei dieser Versicherung abgedeckt?
+    more: Mehr
+    popular_topics: Populäre Inhalte
   home:
     features:
       easy:
@@ -175,8 +449,8 @@ de:
         text: Buchen Sie, wann und wo Sie wollen, einen individuellen Arbeitsraum, ein privates Büro oder Tagungsräume für einige Stunden, einen Tag, einen Monat oder länger.
         title: Flexibilität
       month_to_month:
-        text:
-        title:
+        text: Optimal Flexibilität für jene Leute, die einen Arbeitsraum gerade lieben aber nicht verpflichten können, wie lange sie bleiben werden.
+        title: Monat zu Monat Buchungen
       networking:
         text: DeskSpotting hilft Ihnen dabei, inspirierende Arbeitsräume entsprechend Ihren geschäftlichen Interessen zu finden.
         title: Networking
@@ -191,6 +465,7 @@ de:
       contact: Kontakt
       faq: Hilfe
       how_it_works: Räumlichkeiten anbieten
+      insurance: Versicherung
       join_us: Werden Sie Mitglied
       language:
         en: eng
@@ -232,7 +507,7 @@ de:
     check_out: Check-out
     date: Datum
     refund_guest: Gemäß den Stornierungsbedingungen werden Sie eine Rückzahlung von %{currency_sym} %{amount} erhalten
-    refund_host: Gemäß den Stornierungsbedingungen wird Ihr Gast eine Rückzahlung von %{currency_sym} %{amount} erhalten
+    refund_host: Gemäß den Stornierungsbedingungen wird Ihr Besucher eine Rückzahlung von %{currency_sym} %{amount} erhalten
     sorry_cancel: 'Wir bedauern, dass Sie diese Buchung storniert haben:'
     space: Arbeitsraum
     spaces: Arbeitsräume
@@ -240,11 +515,13 @@ de:
     terms1: Falls Sie Fragen haben zu unseren
     terms2: können Sie
     terms_of_service: unsere Nutzungsbedingungen lesen
-    unfortunately: 'Leider musste Ihr Gastgeber, %{name}, Ihre Buchung stornieren:'
+    unfortunately: 'Leider musste Ihr Besucher, %{name}, Ihre Buchung stornieren:'
   host_review_email:
     checked_in: hat eingecheckt am
-    rate_guest: Bewerten Sie Ihren Gast
-    subject: 'Bewertung Gastgeber - Ort #%{venue_id}'
+    conversion_text: Wie würden Sie Ihr Gast bewerten
+    conversion_text2: Ihr Rückmeldung ist für uns und andere DeskSpotters sehr wichtig!
+    rate_guest: Bewerten Sie Ihren Besucher
+    subject: 'Bewertung Besucher - Ort #%{venue_id}'
     your_guest: Ihr Gast
   inbox:
     approve: Annehmen
@@ -363,10 +640,79 @@ de:
     pending_authorization: Die Buchung muss vom Gastgeber bestätigt werden.
     pending_payment: Buchung akzeptiert. Bestätigung erforderlich. Diese Buchung wird 24 Stunden beibehalten. Sollten Sie sie in diesem Zeitraum nicht bestätigen, wird sie storniert.
     refunding: Der Betrag wurde rückerstattet.
+  meta:
+    contacts:
+      new:
+        description: Haben Sie Vorschläge oder Fragen? Oder daran interessiert, das DeskSpotting-Team beizutreten? Wir sind immer daran interessiert, von Ihnen zu hören.
+        title: Kontakt
+    landing:
+      index:
+        description: Buchen Sie einzigartige Arbeitsräume, wo und wann Sie sie benötigen. Listen Sie Ihre freien Raum und bauen Sie Ihre eigenen gemeinschaftliche Arbeitsumgebung, während Geld zu verdienen.
+        title: Viel mehr als nur ein Büro
+    spaces:
+      index:
+        description: Buchen Sie einzigartige Büros oder Tagungsräume, wo und wann Sie sie benötigen. Starten Sie die Vorteile der gemeinsamen Büro-Arbeitsumgebungen zu genießen.
+        title: Alle Arbeitsräume
+      search_mobile:
+        title: Mobile suchen
+      space_0:
+        description: Buchen Sie einzigartige Konferenzräume, wo und wann Sie sie benötigen. Starten Sie die Vorteile der gemeinsamen Büro-Arbeitsumgebungen zu genießen.
+        title: Konferenzraum
+      space_1:
+        description: Buchen Sie einzigartige Tagungsräume, wo und wann Sie sie benötigen. Starten Sie die Vorteile der gemeinsamen Büro-Arbeitsumgebungen zu genießen.
+        title: Tagungsraum
+      space_2:
+        description: Buchen Sie einzigartige privates Büros, wo und wann Sie sie benötigen. Starten Sie die Vorteile der gemeinsamen Büro-Arbeitsumgebungen zu genießen.
+        title: Privates Büro
+      space_3:
+        description: Buchen Sie einzigartige fester Arbeitsplätze, wo und wann Sie sie benötigen. Starten Sie die Vorteile der gemeinsamen Büro-Arbeitsumgebungen zu genießen.
+        title: Fester Arbeitsplatz
+      space_4:
+        description: Buchen Sie einzigartige Hot Desks, wo und wann Sie sie benötigen. Starten Sie die Vorteile der gemeinsamen Büro-Arbeitsumgebungen zu genießen.
+        title: Hot Desk
+      space_5:
+        description: Buchen Sie einzigartige Gemeinschaftsarbeitsräume, wo und wann Sie sie benötigen. Starten Sie die Vorteile der gemeinsamen Büro-Arbeitsumgebungen zu genießen.
+        title: Gemeinsamer Arbeitsraum
+      space_6:
+        description: Arbeiten Sie von zu Hause überall. Buchen Sie einzigartige Home Offices, wo und wann Sie sie benötigen.
+        title: Home Office
+    statics:
+      about_us:
+        description: DeskSpotting ist für alle Arten von Unternehmen von Start-ups bis auf reifen Unternehmen gesorgt, die von gemeinsamen Büro-Arbeitsumgebungen zu profitieren suchen.
+        title: "Über uns"
+      faq:
+        description: In welchen Ländern kann ich DeskSpotting benutzen? Warum DeskSpotting benutzen? Wie kann ich meine eigenen Coworking Umgebung aufzubauen? Erfahren Sie mehr über DeskSpotting.
+        title: FAQ
+      how_it_works:
+        description: Suchen Sie und listen Sie Arbeitsräume auf einer flexiblen Basis auf DeskSpotting ab. Starten Sie die Vorteile der gemeinsamen Büro-Arbeitsumgebungen zu genießen.
+        title: Wie es funktioniert
+      insurance:
+        description: DeskSpotting und AIG haben eine spezielle Versicherung für den Empfang von Besuchern für jede Arbeitsplätze Buchungen in Frankreich entwickelt.
+        title: Versicherung
+      privacy_policy:
+        description: Dieses Dokument legt der Datenschutzrichtlinie für Gastgeber und Besucher auf DeskSpotting in Bezug auf die Handhabung von Benutzerinformationen aus.
+        title: Datenschutzbestimmungen
+      terms_of_service:
+        description: Willkommen bei DeskSpotting. Lesen Sie sorgfältig diese Dienst Bedingungen, da sie wichtige Informationen über Ihre Rechte und Pflichten enthalten.
+        title: Unsere Geschäftsbedingungen
+    users:
+      password_new:
+        description: "Ändern Sie Ihr Passwort. Loggen Sie sich ein und starten Sie an erstaunlichen geteilten Arbeitsräume zu buchen, und beginnen Sie jetzt DeskSpotting!"
+        title: Neues Passwort
+      sign_in:
+        description: 'Tragen Sie sich ein und suchen Sie nach inspirierenden Arbeitsräume, dass Sie für eine Stunde, einen Tag, einen Monat oder mehr buchen können. Die Wahl liegt jetzt bei Ihnen auf DeskSpotting. '
+        title: Sich eintragen
+      sign_up:
+        description: Willkommen auf DeskSpotting. Registrieren Sie sich und starten erstaunlich gemeinsamen Büroräume zu buchen. Starten Sie jetzt DeskSpotting!
+        title: Sich anmelden.
+    venues:
+      index:
+        description: "%{name}. Amazing %{category} in %{location}. Buchen Sie Ihre inspirierenden Arbeitsraum Stunden-, Tages-, Monatsweise oder mehr."
+        title: "%{name} | %{category}"
   new_message_email:
     got_new_message: Neue Nachricht von
     hi: Hallo
-    on_date_connector: 'am'
+    on_date_connector: an
     reply: Oder antworten Sie direkt über diese E-Mail.
     subject: 'Sie haben eine neue Nachricht - Buchung #%{booking_id}'
     team: Das DeskSpotting-Team
@@ -379,13 +725,14 @@ de:
     add_manager: Manager hinzufügen
     add_manager_action: Manager hinzufügen
     change_picture: Foto ändern
-    confirm_identity: Confirm Identity
-    identity_confirmed: Identity Confirmed
+    confirm_identity: Identität bestätigung
+    confirming_identity: Identität Bestätigung
     create_profile: Unternehmen eingeben
     create_title: Titel hinzufügen
     edit_profile: Profil ändern
     email: E-Mail
     email_placeholder: manager@example.com
+    identity_confirmed: Identität Bestätigung
     members: Manager
     members_subtitle: Manager Untertitel
     name: Name
@@ -407,6 +754,7 @@ de:
     expiration_month: Ablaufmonat (mm)
     expiration_year: Ablaufjahr (jj)
     hours: Stunden
+    info_cvx: Das ist der dreistelligen Code auf der Rückseite Ihrer Karte.
     invalid_card_number: Ungültiges Format für Kartennummer
     invalid_cvv: Ungültiges Format für CVV
     invalid_expiration_date: Ungültiges Format für Ablaufdatum
@@ -419,13 +767,14 @@ de:
     spaces: Arbeitsräume
     type: Art
     used_credit_card: Verwendete Kreditkarte
+    vat: 'Mehrwertsteuer '
     welcome: Hallo %{name}. Es ist Zeit zu zahlen!
   payment_methods:
     account_number: Kontonummer
     address: Adresse
     bank_country: Land der Bank
     bank_name: Name der Bank
-    bic_iban_tooltip:
+    bic_iban_tooltip: Um richtige Verarbeitung Ihrer Zahlungsdaten sicherzustellen, kopieren und einfügen Sie sie bitte nicht in diesem Bereich.
     branch_code: Branch-Code
     business: Unternehmen
     country_of_residence: Wohnsitzland
@@ -453,35 +802,35 @@ de:
     account_number: Kontonummer
     account_type: Kontoart
     amount: Betrag
-    amount_paid:
-    capacity:
+    amount_paid: Gezahlte Betrag
+    capacity: Personenanzahl
     card: Karte
     check_in: Check-In
     check_out: Check-out
     commission: Servicegebühren
     confirmation_code: Bestätigungscode
     country: Land
-    customer_title: Beleg Gast
+    customer_title: Beleg Besucher
     date: Datum
-    days:
+    days: Tage
     deposit: Kaution
     email: E-Mail
     expires: Gültig bis
     first_name: Vorname
     funds_trasferred_on: "Überweisung am"
-    guest: Gast
-    hours:
+    guest: Besucher
+    hours: Stunden
     iban: IBAN
     last_name: Nachname
-    month_to_month:
-    month_to_month_as_of:
-    months:
+    month_to_month: Guarantierte Monate
+    month_to_month_as_of: Monat zu Monat ab
+    months: Monate
     name: Name
     payment_type: Zahlungsart
-    payout:
+    payout: Ausschüttung
     payout_type: Auszahlungsart
-    people:
-    person:
+    people: Leute
+    person: Person
     phone_number: Telefonnummer
     province: Provinz
     receipt_number: 'Beleg #'
@@ -490,17 +839,17 @@ de:
     space_type: Art des Arbeitsraums
     spaces: Orte
     street_address: Adresse
-    time_frame:
-    total_payout:
+    time_frame: Zeitraum
+    total_payout: Gesamtausschüttung
     total_rental: Buchungssumme
-    upcoming_payouts:
-    venue_host: Gastgeber
+    upcoming_payouts: Anstehenden Ausschüttungen
+    venue_host: Besucher
     venue_name: Name des Ortes
-    venue_title: Beleg Gastgeber
+    venue_title: Beleg Besucher
     zip_code: Postleitzahl
   receipt_email:
-    subject_client: 'Beleg Gast - Buchung #%{booking_id}'
-    subject_host: 'Beleg Gastgeber - Buchung #%{booking_id}'
+    subject_client: 'Beleg Besucher - Buchung #%{booking_id}'
+    subject_host: 'Beleg Besucher - Buchung #%{booking_id}'
   referral:
     button: Einladen
     confirmation: Einladung Versendet!
@@ -517,9 +866,9 @@ de:
   reviews:
     check_in: Check-In
     check_out: Check-out
-    comment: Meinung (Ihre Bewertung werden nur andere Gastgeber sehen)
+    comment: Meinung (Ihre Bewertung werden nur andere Besucher sehen)
     date: Datum
-    guest_review: Bewertung Gast
+    guest_review: Bewertung Besucher
     rate_space: Bewerten Sie %{space} von %{venue}
     space_review: Bewertung Arbeitsraum
     spaces: Arbeitsräume
@@ -538,7 +887,7 @@ de:
     show_filters: Arbeitsräume anzeigen
     teams: Teams
     workspace: Arbeitsplatz
-  select_country:
+  select_country: Land wählen
   session:
     already_registered: Schon angemeldet?
     change_password: Passwort ändern
@@ -548,7 +897,7 @@ de:
     date_of_birth: Geburtsdatum
     email: E-Mail-Adresse
     fb_login: Anmeldung mit Facebook
-    fb_signup:
+    fb_signup: Anmeldung mit Facebook
     first_name: Vorname
     forgot_password: Passwort vergessen?
     full_name: Vor- und Nachname
@@ -569,31 +918,38 @@ de:
   spaces:
     capacity: Personenanzahl
     day_price: Preis pro Tag
+    delete_your_space: Löschen Sie Ihren Arbeitsplatz
     deposit: Kaution
     description: Beschreibung
     edit_your_space: "Ändern Sie Ihren Arbeitsraum"
     hour_price: Preis pro Stunde
     info_capacity: Wie viele Personen können an diesem Arbeitsplatz arbeiten?
-    info_deposit: Alle Kautionen werden zur Sicherheit des Gastes und des Gastgebers hinterlegt
-    info_description: Beschreiben Sie den Arbeitsplatz und sagen Sie potenziellen Gästen, weshalb das ein guter Arbeitsplatz ist
+    info_deposit: Alle Kautionen werden zur Sicherheit des Besuchers und des Gastgebers hinterlegt
+    info_description: Beschreiben Sie den Arbeitsplatz und sagen Sie potenziellen Besucher, weshalb das ein guter Arbeitsplatz ist
+    info_minimum_renting_period: Mindestbuchungszeit erlaubt
     info_photos: Je besser die Fotos sind, desto mehr Nutzer werden sich für Ihren Arbeitsraum interessieren. Teilen Sie Fotos, die die Gesamtatmosphäre Ihres Arbeitsraums vermitteln.
     info_pricing: Legen Sie den Preis fest, zu dem Sie Ihren Arbeitsraum bei verschiedenen Zeiträumen anbieten möchten. Der Preis kann jederzeit und von Fall zu Fall geändert werden.
     info_quantity: Anzahl dieser Arbeitsplätze, die Sie auf DeskSpotting anbieten möchten
-    info_minimum_renting_period: Mindestbuchungsdauer
-    info_renting_period: Buchungsdauer
+    info_renting_period: Buchungsdaten verfügbar
     minimum_renting_period: Mindestbuchungsdauer
     month_price: Preis pro Monat
-    month_to_month:
+    month_to_month: Monat zu Monat
     name: Name
     per_day: Pro Tag
     per_hour: Pro Stunde
     per_month: Pro Monat
     price: Preis
-    pricing: Preis (%{currency})
+    pricing: Preisermittlung (%{currency})
     pricing_in: Preis in %{currency}
     quantity: Anzahl der Arbeitsplätze
-    renting_period: Buchungsdauer
+    renting_period: Buchungsdaten
+    select_workspace: Wählen Sie alle Ihre Arbeitsplätze, um die Informationen zu bearbeiten
+    share_on: Teilen auf
+    share_text: Kommen Sie in meinem Arbeitsplatz zu arbeiten. Meiner %{space_type} kann auf @DeskSpotting gebucht werden
+    sharing_message: Um nun tatsächlich den %{space} und den %{venue} nutzen zu können, sollten Sie damit beginnen, diese in ihren sozialen Netzwerken zu teilen, damit jeder den Arbeitsplatz sehen kann, der Ihnen zur Verfügung steht.
     space_photos: Fotos vom Arbeitsplatz
+    thanks_for_registering: Vielen Dank für die Registrierung Ihren Arbeitsplatz!
+    thanks_for_updating: Vielen Dank für die Aktualisierung Ihrem Arbeitsplatz!
     type: Art des Arbeitsraums
     types:
       all: Alle Arbeitsräume
@@ -604,6 +960,7 @@ de:
       hot_desk: Hot Desk
       meeting_room: Tagungsraum
       private_office: Privates Büro
+      training_room: Training Room
   users:
     about_me: "Über mich"
     account:
@@ -616,13 +973,13 @@ de:
       you_can_disable: Sie können dies jederzeit deaktivieren.
     add_languages: Sprachen hinzufügen
     change_picture: Foto ändern
-    confirm_identity: Confirm Identity
-    identity_confirmed: Identity Confirmed
-    complete_profile: 'Venligst, udfyld din profil'
     company_name: Name des Unternehmens
+    complete_profile: Bitte den Profil ausfüllen
+    confirm_identity: Identität zu bestätigen
+    confirming_identity: Identität Bestätigung
     country_of_residence: Wohnsitzland
     date_of_birth: Geburtsdatum
-    edit_organization_profile:
+    edit_organization_profile: 'Organisation Profil bearbeiten. '
     edit_profile: Profil ändern
     email: E-Mail
     emergency_contact: Notfallkontakt
@@ -633,16 +990,17 @@ de:
     enter_languages: Geben Sie die Sprachen ein, die Sie sprechen
     first_name: Vorname
     gender: Geschlecht
-    gender_select:
+    gender_select: Bitte wählen Sie Ihren Geschlecht aus.
     genders:
       f: Weiblich
       m: Männlich
+    identity_confirmed: Identität bestätigt
     info_no_share: Wir werden diese Information an niemanden weitergeben
     info_password: Please input a 8 digit password
     info_share_email: Wir werden Ihre E-Mail-Adresse an niemanden weitergeben
-    info_share_emergency: Wir werden die Informationen Ihres Notfallkontakts nur an einen Gast weitergeben, wenn eine Buchung durchgeführt wurde
-    info_share_phone: Wir werden Ihre Telefonnummer nur an einen Gastgeber/Gast weitergeben, wenn eine Buchung durchgeführt wurde
-    info_share_street: Wie werden Ihre Adresse nur an einen Gast weitergeben, wenn eine Buchung durchgeführt wurde
+    info_share_emergency: Wir werden die Informationen Ihres Notfallkontakts nur an einen Besucher weitergeben, wenn eine Buchung durchgeführt wurde
+    info_share_phone: Wir werden Ihre Telefonnummer nur an einen Gastgeber/Besucher weitergeben, wenn eine Buchung durchgeführt wurde
+    info_share_street: Wie werden Ihre Adresse nur an einen Besucher weitergeben, wenn eine Buchung durchgeführt wurde
     interests: Mehr zu Ihrer Karriere und Ihrem Beruf
     language: Sprache
     last_name: Nachname
@@ -660,17 +1018,24 @@ de:
     amenities:
       air_conditioning: Klimatisierung
       cafe_restaurant: Café/Restaurant
+      catering_services: Cateringservice
       chill_area: Entspannungsbereich
       cleaning_service: Reinigungsdienst
+      coffee_station: Kaffeestation
       concierge: Hausmeister
       conference_rooms: Tagungsräume
+      dvd: DVD
       elevators: Aufzüge
       fax: Fax
+      first_aid: Erste Hilfe
       gym: Fitnessraum
       individual_bookings: Buchungen für Einzelpersonen
       info_team_bookings: Können Sie sich vorstellen, dass Teams von Berufstätigen Ihren Arbeitsraum buchen?
       kitchen: Küche
+      locker: Schließfach
       mail_service: Kurierdienst
+      microwave: Mikrowelle
+      nap_area: Schlafbereich
       outdoor_space: Außenbereich
       parking: Parken
       pets_allowed: Haustiere erlaubt
@@ -679,10 +1044,14 @@ de:
       printer_scanner: Drucker/Scanner
       projector: Beamer
       reception_service: Empfangsservice
+      refrigerator: Kühlschrank
       security: Sicherheitsdienst
       shower: Dusche
+      snacks: Snacks
+      storage: Lager
       team_bookings: Team-Buchungen
       tv: TV
+      videoconference: Videokonferenz
       water_fountain: Trinkbrunnen
       wheelchair_access: Rollstuhlzugang
       whiteboards: Whiteboards
@@ -725,7 +1094,7 @@ de:
       custom_times: Besondere Geschäftszeiten?
       description: Beschreibung
       email: Allgemeine E-Mail-Adresse
-      info_professions: Sagen Sie Gästen, welche Berufsgruppen an Ihrem Ort willkommen sind
+      info_professions: Sagen Sie Besucher, welche Berufsgruppen an Ihrem Ort willkommen sind
       invalid_street: Wählen Sie bitte eine Adresse aus der Drop-Down-Liste
       list_your_venue: Bieten Sie Ihren Ort an
       name: Name des Ortes
@@ -748,6 +1117,7 @@ de:
       advertising: Werbung
       all: Alle Berufe sind willkommen
       architect: Architekt
+      coach: Coach
       consultant: Berater
       design: Design
       entertainment: Entertainment
@@ -755,13 +1125,16 @@ de:
       fashion: Mode
       finance: Finanzen
       freelance: Freelance
+      headhunter: Abwerber
       journalist: Journalist
       lawyer: Anwalt
       media: Medien
       professor: Professor
+      psychologist: Psychologe
       public_relations: Public Relations
       startup: Start-up
       technology: Technik
+      therapist: Therapeut
     reported: Gemeldet
     show:
       about_venue: "Über den Ort"
@@ -770,7 +1143,7 @@ de:
       chosen_workspace: in der Suche ausgewählter Arbeitsplatz
       closed: Geschlossen
       location: Lage
-      month_to_month:
+      month_to_month: Monat zu Monat
       no_reviews: Keine Bewertungen
       opening_hours: "Öffnungszeiten"
       per_day: Pro Tag
@@ -804,25 +1177,25 @@ de:
       restaurant: Restaurant
       startup_office: Start-up-Büro
   welcome_email:
-    button_1:
-    button_2:
-    button_3:
-    description_1:
-    description_2:
-    description_3:
-    footer:
-    footer_disclaimer_1:
-    footer_disclaimer_2:
-    message:
-    message_2:
-    subject:
-    title_1:
-    title_2:
-    title_3:
+    button_1: Erzählen Sie uns mehr
+    button_2: Listen Sie Ihr Platz
+    button_3: Buchen Sie jetzt
+    description_1: Je mehr Informationen Sie über sich selbst und Ihre beruflichen Interessen zur Verfügung stellen, desto leichter wird es für DeskSpotting Sie mit Ihren idealen Arbeitsbereiche und Arbeitspartner zu verbinden.
+    description_2: Machen Sie Ihrem unbesetzte Bürofläche zu Geld, verdienen Sie Geld und treffen Sie interessante Profis, die Sie zusammen mitarbeiten können. Jeder gewinnt.
+    description_3: Suchen Sie nach Ihren idealen Arbeitsraum. Erinnern Sie sich dass, Sie sogar den Berufen suchen können, mit dem Sie arbeiten möchten.
+    footer: Viel mehr als nur ein Büro
+    footer_disclaimer_1: Gemeinsam mit der Liebe von unserem Headquarter.
+    footer_disclaimer_2: Copyright. DeskSpotting LIMITED. 2016
+    message: Entdecken Sie einzigartigen Arbeitsräume für Sie oder Ihr Team, und nutzen Sie den gemeinsamen Arbeitsumgebung.
+    message_2: 'Bevor Sie DeskSpotting starten. '
+    subject: Wilkommen zu Deskspotting!
+    title_1: 'Ausfüllen Ihr Profil. '
+    title_2: 'Gastgeber werden. '
+    title_3: DeskSpotting starten!
   wishlist:
     day: Tag
     hour: Stunde
     month: Monat
-    month_to_month:
+    month_to_month: Monat zu Monat
     no_favourites: Sie haben keine Wish List-Arbeitsräume
     week: Woche
