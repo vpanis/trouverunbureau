@@ -79,7 +79,7 @@ Deskspotting::Application.routes.draw do
   get :our_terms, to: 'statics#our_terms'
   get :how_it_works, to: 'statics#how_it_works'
   get :insurance, to: 'statics#insurance'
-  get :faq, to: 'help#faq'
+  get :faq, to: 'statics#faq'
   get :terms_of_service, to: 'statics#terms_of_service'
   get :privacy_policy, to: 'statics#privacy_policy'
 
