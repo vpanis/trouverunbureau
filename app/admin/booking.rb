@@ -40,10 +40,10 @@ ActiveAdmin.register Booking do
     column :deposit
     column :price
     column :guest_email do |b|
-      b.owner.email
+      b.try(:owner).try(:email)
     end
     column :host_email do |b|
-      b.space.venue.owner.email
+      b.try(:space).try(:venue).try(:owner).try(:email)
     end
     column :state
     column 'Actions', class: 'actions-col' do |b|
