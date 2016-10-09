@@ -98,6 +98,11 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def is_identity_confirmed?
+    return identity_confirmed? if ENV['DESKSPOTTING_CHECK_KYC'] == 'true'
+    true
+  end
+
   def email_required?
     provider.nil?
   end
