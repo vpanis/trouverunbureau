@@ -35,7 +35,7 @@ class PaymentsController < ApplicationController
   private
 
   def check_user_identity
-    unless current_represented.identity_confirmed?
+    unless current_represented.is_identity_confirmed?
       flash[:alert] = 'You MUST confirm your identity before Booking a workspace.'
       return redirect_to inbox_user_path(@current_represented)
     end
