@@ -235,11 +235,11 @@
             = t('booking_inquiry.deskspotting_fee')
           td
             = t('booking_inquiry.free')
-        tr
-          td VAT
-          td
-            = "#{t("currency.#{@space.venue.currency.downcase}.symbol")}"
-            | {{calculate_vat() | number : 2}}
+        //- tr
+        //-  td VAT
+        //-  td
+        //-    = "#{t("currency.#{@space.venue.currency.downcase}.symbol")}"
+        //-    | {{calculate_vat() | number : 2}}
         tr
           td
             = t('booking_inquiry.total')

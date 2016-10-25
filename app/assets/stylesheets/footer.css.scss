@@ -54,7 +54,7 @@ html [data-action="wishlist"], html [data-controller="referrals"]{
       color: $yellow;
     }
   }
-  .company, .find-us{
+  .company, .find-us, .contact-us{
     h4{
       color: $yellow;
       text-transform: uppercase;
@@ -66,6 +66,12 @@ html [data-action="wishlist"], html [data-controller="referrals"]{
     .separator{
       width: 50px;
       margin: 11px 0px;
+    }
+    .contact-us {
+      margin-left: 14px;
+      .separator {
+        margin: 0 0 11px 0 !important;
+      }
     }
   }
   .find-us{

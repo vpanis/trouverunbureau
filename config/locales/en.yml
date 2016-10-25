@@ -346,7 +346,7 @@ en:
       deskspotting_fees:
         description: All DeskSpotting’s Service Fees are deducted from the payments of the Guest to the Host. They are not extra charges for the Guest.
         less_than_one_month: For all bookings of a month or less the Service Fee is 20%
-        month_to_month: For all month to month bookings DeskSpotting’s service fees on the guaranteed time period (which cannot exceed 4 months) is 20% for the first month 10% thereafter. Once the Guaranteed time frame has expired and the booking is effectively month to month DeskSpotting’s fee is 5% per month
+        month_to_month: For all month to month bookings DeskSpotting’s service fees on the guaranteed time period (which cannot exceed 4 months) is 20% for the first month 10% thereafter. Once the Guaranteed time frame has expired and the booking is effectively month to month DeskSpotting’s fee is 7% per month
         more_than_one_month: For all bookings of more than 1 month the Service Fee is 20% for the first month and then 10% as of the second and any following months.
         title: What are DeskSpotting's Service Fees?
       difference_between_owner_and_admin:
@@ -529,7 +529,7 @@ en:
     info_client_deposit: It will be held in escrow account and then reimbursed to you 72 hours after check-out
     info_client_space_rental: The amount of the space booking will be held in an escrow account until check-in
     info_deposit: It will be held in an escrow until 72 hours after the guest's check-out
-    info_fee: For all bookings of a month or less the Service Fee is 20%. For all bookings of more than 1 month the Service Fee is 10% as of the second month. For all month to month bookings, the service fee is 5% as of when the minimum time frame required by the host has past (cannot exceed 4 months).
+    info_fee: For all bookings of a month or less the Service Fee is 20%. For all bookings of more than 1 month the Service Fee is 10% as of the second month. For all month to month bookings, the service fee is 7% as of when the minimum time frame required by the host has past (cannot exceed 4 months).
     info_space_rental: The amounts paid by the Guest are held in an escrow until check-in. Up to 24 hours later the relevant amounts are transferred to your account
     inquiry: Inquiry
     messages: Messages

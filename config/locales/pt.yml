@@ -363,7 +363,7 @@ pt:
       deskspotting_fees:
         description: Todas as Taxas de Serviço do DeskSpotting são deduzidas dos pagamentos do Hóspede ao Anfitrião, não representam um custo extra para o primeiro.
         less_than_one_month: Para todas as reservas de um mês ou menos, a Taxa de Serviço é de 20%
-        month_to_month: Para todas as reservas mês a mês, a Taxa de Serviço do DeskSpotting durante o período de tempo mínimo (que não pode exceder 4 meses) é de 20% no primeiro mês e 10% nos seguintes. Assim que este período expirar e a reserva for efetivamente mês a mês, a taxa do DeskSpotting passa a ser de 5% por mês.
+        month_to_month: Para todas as reservas mês a mês, a Taxa de Serviço do DeskSpotting durante o período de tempo mínimo (que não pode exceder 4 meses) é de 20% no primeiro mês e 10% nos seguintes. Assim que este período expirar e a reserva for efetivamente mês a mês, a taxa do DeskSpotting passa a ser de 7% por mês.
         more_than_one_month: Para todas as reservas de mais de um mês, a Taxa de Serviço é de 20% no primeiro mês e de 10% a partir do segundo.
         title: Quais são as Taxas de Serviço do DeskSpotting?
       difference_between_owner_and_admin:
@@ -555,7 +555,7 @@ pt:
     info_client_deposit: Será mantida numa conta-garantia e reembolsado 72 horas após o seu check-out
     info_client_space_rental: O montante da reserva do espaço será mantido numa conta-garantia até ao check-in
     info_deposit: Será mantida numa conta-garantia até 72 horas após o check-out do hóspede
-    info_fee: Todas as reservas de até um mês estão sujeitos a uma Taxa de Serviço de 20%. As que ultrapassarem este tempo têm uma Taxa de Serviço de 10% a partir do segundo mês. Para todas  as reservas mês a mês, a taxa é de 5% a partir do final do período de tempo requerido pelo anfitrião (não pode exceder os 4 meses).
+    info_fee: Todas as reservas de até um mês estão sujeitos a uma Taxa de Serviço de 20%. As que ultrapassarem este tempo têm uma Taxa de Serviço de 10% a partir do segundo mês. Para todas  as reservas mês a mês, a taxa é de 7% a partir do final do período de tempo requerido pelo anfitrião (não pode exceder os 4 meses).
     info_space_rental: Os montantes pagos pelo Hóspede são mantidos numa conta-garantia até ao check-in. Até 24 horas depois, os montantes relevantes são transferidos para a sua conta
     inquiry: Pedido
     messages: Mensagens

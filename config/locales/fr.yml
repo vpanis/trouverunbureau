@@ -412,7 +412,7 @@ fr:
         less_than_one_month: |2
 
           Pour toutes les réservations d'un mois ou moins, les frais de service sont de 20%.
-        month_to_month: Pour les réservations de « mois en mois », les frais de service de DeskSpotting sur la période de temps garanti (qui ne peut excéder 4 mois) sont de 20% pour le premier mois, 10% par la suite. Une fois le délai de garantie expiré, la réservation peut se poursuivre. DeskSpotting prélèvera 5% par mois.
+        month_to_month: Pour les réservations de « mois en mois », les frais de service de DeskSpotting sur la période de temps garanti (qui ne peut excéder 4 mois) sont de 20% pour le premier mois, 10% par la suite. Une fois le délai de garantie expiré, la réservation peut se poursuivre. DeskSpotting prélèvera 7% par mois.
         more_than_one_month: Pour toutes les réservations de plus d'un mois, les frais de service sont de 20% pour le premier mois, puis 10% à compter du deuxième et des éventuels mois suivants.
         title: Frais de service
       difference_between_owner_and_admin:
@@ -631,7 +631,7 @@ fr:
     info_client_deposit: La caution est gardée sous séquestre et sera remboursée 72 heures après votre check-out.
     info_client_space_rental: Le montant de la réservation est gardé sous séquestre jusqu'à l'heure du check-in.
     info_deposit: La caution sera gardée 72 heures après le check-out du visiteur.
-    info_fee: 20% pour toute réservation d'un mois ou moins. 10% pour toute réservation au delà d'un mois après le premier mois. 10% pour toute réservation de mois en mois après le premier mois. Pour toute réservation de mois en mois, les frais de service sont de 5% une fois que le temps minimum garanti exigé par l'hôte est passé.
+    info_fee: 20% pour toute réservation d'un mois ou moins. 10% pour toute réservation au delà d'un mois après le premier mois. 10% pour toute réservation de mois en mois après le premier mois. Pour toute réservation de mois en mois, les frais de service sont de 7% une fois que le temps minimum garanti exigé par l'hôte est passé.
     info_space_rental: Les paiements de vos visiteurs sont gardés sous séquestre jusqu'à 24 heures après le check-in.
     inquiry: Demande
     messages: Messages
