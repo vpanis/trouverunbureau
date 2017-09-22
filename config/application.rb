@@ -39,8 +39,8 @@ module TrouverUnBureau
 
     # Enable escaping HTML in JSON.
     config.active_support.escape_html_entities_in_json = true
-    config.assets.compile = true
-    config.assets.precompile += [/^[a-z0-9]\w+.(css|js)$/]
+    # config.assets.compile = true
+    # config.assets.precompile += [/^[a-z0-9]\w+.(css|js)$/]
     # Use SQL instead of Active Record's schema dumper when creating the database.
     # This is necessary if your schema can't be completely dumped by the schema dumper,
     # like if you have constraints or database-specific column types
@@ -53,13 +53,13 @@ module TrouverUnBureau
     # config.active_record.whitelist_attributes = true
 
     # Enable the asset pipeline
-    config.assets.enabled = true
+    # config.assets.enabled = true
 
     # Version of your assets, change this if you want to expire all your assets
-    config.assets.version = '1.0'
+    # config.assets.version = '1.0'
 
     # For Heroku deployments
-    config.assets.initialize_on_precompile = false
+    # config.assets.initialize_on_precompile = false
 
     config.autoload_paths += %W(#{config.root}/lib)
     config.to_prepare do
@@ -98,7 +98,7 @@ module TrouverUnBureau
     }
     config.action_mailer.asset_host = deskspotting.base_url
     config.action_controller.asset_host = deskspotting.base_url
-    config.serve_static_assets = true
+    # config.serve_static_assets = true
 
     #config.middleware.use ExceptionNotification::Rack, email: {
     #  email_prefix: "[DESKSPOTTING - #{Rails.env}] ",
