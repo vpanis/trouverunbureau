@@ -56,3 +56,5 @@ dump.rdb
 .prod_env
 
 stellar.yaml
+
+config/application.yml

@@ -36,7 +36,7 @@ else
   mangopay = AppConfiguration.for(:mangopay)
 end
 
-Deskspotting::Application.configure do
+TrouverUnBureau::Application.configure do
   config.hours_from_check_in_out_for_rate = deskspotting.hours_from_check_in_out_for_rate.to_i
   config.base_url = deskspotting.base_url
   config.payment = OpenStruct.new(

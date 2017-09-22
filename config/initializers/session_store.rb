@@ -1,3 +1,3 @@
 # Be sure to restart your server when you modify this file.
 
-Deskspotting::Application.config.session_store :cookie_store, key: '_deskspotting_session'
+TrouverUnBureau::Application.config.session_store :cookie_store, key: '_deskspotting_session'

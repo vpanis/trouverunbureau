@@ -3,5 +3,5 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Deskspotting::Application.load_tasks
+TrouverUnBureau::Application.load_tasks
 
