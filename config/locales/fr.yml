@@ -8,7 +8,7 @@ fr:
     days: Jours
     days_amount: Nombre de Jours
     deposit: Caution
-    deskspotting_fee: Frais Deskspotting
+    trouverunbureau_fee: Frais TrouverUnBureau
     errors:
       minimum_time: Vous devez au moins atteindre la durée minimum pour cet espace de travail. (%{minimum_time} %{b_type})
     feature_1: Sans frais.
@@ -87,7 +87,7 @@ fr:
     message: Message
     name: Nom
     send: Envoyer
-    subject: Contacter DeskSpotting
+    subject: Contacter TrouverUnBureau
     subtitle: Vous avez des questions ou suggestions n'hésitez pas à nous contacter.
     success: Merci pour votre message!
     title: Contactez-Nous
@@ -183,15 +183,15 @@ fr:
     general:
       confidentiality: Confidentialité de l'information
       countries: Pays
-      deskspotting_handle_payout_details:
-        description: L’ensemble des informations sensibles (coordonnées bancaire ou de carte de crédit) sont requises pour pouvoir conclure toute transaction sur DeskSpotting. Conformément aux Conditions d'Utilisation de DeskSpotting, ces informations seront traitées seulement par notre partenaire de paiements en ligne, MangoPay et ne seront jamais divulguées.
+      trouverunbureau_handle_payout_details:
+        description: L’ensemble des informations sensibles (coordonnées bancaire ou de carte de crédit) sont requises pour pouvoir conclure toute transaction sur TrouverUnBureau. Conformément aux Conditions d'Utilisation de TrouverUnBureau, ces informations seront traitées seulement par notre partenaire de paiements en ligne, MangoPay et ne seront jamais divulguées.
         title: |2-
 
-          Comment DeskSpotting gère mes paiements ?
-      getting_started: Démarrez sur DeskSpotting
+          Comment TrouverUnBureau gère mes paiements ?
+      getting_started: Démarrez sur TrouverUnBureau
       in_which_country:
-        description: Actuellement nous sommes présents en France, Allemagne, Espagne, Belgique, Irlande et en Portugal. Dès que nous ouvrirons un autre pays, nous vous en informerons via email ou sur www.DeskSpotting.com.
-        title: Dans quels pays est-ce que je peux utiliser DeskSpotting ?
+        description: Actuellement nous sommes présents en France, Allemagne, Espagne, Belgique, Irlande et en Portugal. Dès que nous ouvrirons un autre pays, nous vous en informerons via email ou sur www.TrouverUnBureau.com.
+        title: Dans quels pays est-ce que je peux utiliser TrouverUnBureau ?
       meeting_room_difference:
         description: Une salle de réunion est conçue pour des réunions entre collaborateurs autour d’une table de réunion, tandis qu’une salle de conférence est adaptée pour des séminaires, colloques etc… En général, la surface d’une salle de conférence est plus grande et sont équipement est plus flexible.
         title: |
@@ -227,28 +227,28 @@ fr:
         description: C’est quelqu’un qui exige plus de son espace de travail, qu’un simple endroit où brancher son ordinateur. C’est quelqu’un qui recherche un lieu inspirant, moderne, adapté à son budget et à ses attentes professionnelles. Quelqu’un qui veut être libre de travailler où et quand il veut. Quelqu’un qui veut travailler dans un environnement stimulant, qu’il aura choisi. Être un DeskSpotter, c’est rechercher et réserver son espace de travail en toute sécurité et en un clic. Un DeskSpotter c’est quelqu’un qui profite pleinement de son bureau.
         title: Qu’est-ce qu’un DeskSpotter ?
       why_host:
-        description: Vous avez des espaces que vous n’utilisez pas toujours ? Vous souhaitez pouvoir en tirer profit tout en partageant avec des personnes qui vous ressemblent, avec qui pouvez tisser des liens professionnels et personnels. DeskSpotting est fait pour vous ! Publiez votre espace. C’est gratuit. Optimisez vos surfaces en réduisant vos coûts; créez votre propre communauté; choisissez votre entourage. C’est vous qui décidez quand et avec qui vous les partagez. Offrez vous de nouvelles perspectives professionnelles en créant votre environnement de travail, sur mesure. C’est sans engagement.
+        description: Vous avez des espaces que vous n’utilisez pas toujours ? Vous souhaitez pouvoir en tirer profit tout en partageant avec des personnes qui vous ressemblent, avec qui pouvez tisser des liens professionnels et personnels. TrouverUnBureau est fait pour vous ! Publiez votre espace. C’est gratuit. Optimisez vos surfaces en réduisant vos coûts; créez votre propre communauté; choisissez votre entourage. C’est vous qui décidez quand et avec qui vous les partagez. Offrez vous de nouvelles perspectives professionnelles en créant votre environnement de travail, sur mesure. C’est sans engagement.
         title: Pourquoi devenir un Hôte ?
-      why_host_reasons: Vous avez des espaces que vous n’utilisez pas toujours ? Vous souhaitez pouvoir en tirer profit tout en partageant avec des personnes qui vous ressemblent, avec qui pouvez tisser des liens professionnels et personnels. DeskSpotting est fait pour vous ! Publiez votre espace. C’est gratuit. Optimisez vos surfaces en réduisant vos coûts; créez votre propre communauté; choisissez votre entourage. C’est vous qui décidez quand et avec qui vous les partagez. Offrez vous de nouvelles perspectives professionnelles en créant votre environnement de travail, sur mesure. C’est sans engagement.
-      why_use_deskspotting:
+      why_host_reasons: Vous avez des espaces que vous n’utilisez pas toujours ? Vous souhaitez pouvoir en tirer profit tout en partageant avec des personnes qui vous ressemblent, avec qui pouvez tisser des liens professionnels et personnels. TrouverUnBureau est fait pour vous ! Publiez votre espace. C’est gratuit. Optimisez vos surfaces en réduisant vos coûts; créez votre propre communauté; choisissez votre entourage. C’est vous qui décidez quand et avec qui vous les partagez. Offrez vous de nouvelles perspectives professionnelles en créant votre environnement de travail, sur mesure. C’est sans engagement.
+      why_use_TrouverUnBureau:
         easy: 'C’est facile : Réservez en un clic votre Poste de Travail avec une carte de crédit ou une Carte Bancaire. Plus de négociation contractuelle. Virements de fonds et paiement de la caution directement aux Hôtes.'
         flexible: 'C’est flexible : Où et quand vous voulez, réservez votre Poste de Travail, pour vous ou votre équipe… '
         how_long: 'Vous décidez combien de temps vous reste ex: pour une heure, un jour, un mois ou plus..'
         networking: |
-          C’est collaboratif : DeskSpotting c’est vous donner l’opportunité d’étoffer votre réseau en trouvant des espaces de travail qui correspondent à vos intérêts professionnels.
+          C’est collaboratif : TrouverUnBureau c’est vous donner l’opportunité d’étoffer votre réseau en trouvant des espaces de travail qui correspondent à vos intérêts professionnels.
         no_fees: |
-          C’est sans frais : Sur DeskSpotting trouvez un Poste de Travail qui vous ressemble et réservez-le. Vous avez d’autres choses plus importantes à faire que de vous préoccuper des frais de transactions.
-        title: Pourquoi utiliser DeskSpotting ?
+          C’est sans frais : Sur TrouverUnBureau trouvez un Poste de Travail qui vous ressemble et réservez-le. Vous avez d’autres choses plus importantes à faire que de vous préoccuper des frais de transactions.
+        title: Pourquoi utiliser TrouverUnBureau ?
       workspaces: Les postes de travail
     guests:
       account: Compte
       booking_a_workspace_is_subletting:
-        description: "Toute réservation effectuée sur DeskSpotting est une prestation de service proposée par un Hôte vis à vis du Visiteur; c’est la mise à disposition sur une courte durée d’un espace de travail équipé « plug&play ». Le prix de la réservation vous donne accès à différentes prestations selon l’espace de travail concerné : connexion Internet, mobilier, salle de réunion, réceptionniste, service courrier, etc…Pour en savoir plus veuillez lire Nos Conditions \n"
-        title: Réserver un espace de travail sur DeskSpotting est-ce sous-louer ?
+        description: "Toute réservation effectuée sur TrouverUnBureau est une prestation de service proposée par un Hôte vis à vis du Visiteur; c’est la mise à disposition sur une courte durée d’un espace de travail équipé « plug&play ». Le prix de la réservation vous donne accès à différentes prestations selon l’espace de travail concerné : connexion Internet, mobilier, salle de réunion, réceptionniste, service courrier, etc…Pour en savoir plus veuillez lire Nos Conditions \n"
+        title: Réserver un espace de travail sur TrouverUnBureau est-ce sous-louer ?
       booking_fees_to_guests:
-        description: Non, DeskSpotting ne facture pas de frais de réservation aux visiteurs lors de la réservation. Tout ce que vous payez est le montant de la réservation fixé par l'hôte et potentiellement une caution si nécessaire. C'est tout. Pas de frais cachés.
+        description: Non, TrouverUnBureau ne facture pas de frais de réservation aux visiteurs lors de la réservation. Tout ce que vous payez est le montant de la réservation fixé par l'hôte et potentiellement une caution si nécessaire. C'est tout. Pas de frais cachés.
         title: |
-          Est-ce que les frais de réservation de DeskSpotting sont à la charge du visiteur ?
+          Est-ce que les frais de réservation de TrouverUnBureau sont à la charge du visiteur ?
       bookings: Réservations
       cancellation_policy:
         beyond_timeframe: Au delà de ce délais, aucun remboursement ne pourra être exigé; seule la caution sera retournée.
@@ -258,17 +258,17 @@ fr:
         title: Conditions d’annulation
       cancellations: Annulations
       card_information:
-        description: DeskSpotting ne garde ou ne reçoît en aucun cas vos données de carte de crédit ou de carte bancaire. Celles-ci sont traitées exclusivement par notre partenaire de paiements en ligne MangoPay pour votre sécurité et selon les Termes et Conditions et politique de confidentialité.
-        title: Comment DeskSpotting traite vos données bancaires ?
+        description: TrouverUnBureau ne garde ou ne reçoît en aucun cas vos données de carte de crédit ou de carte bancaire. Celles-ci sont traitées exclusivement par notre partenaire de paiements en ligne MangoPay pour votre sécurité et selon les Termes et Conditions et politique de confidentialité.
+        title: Comment TrouverUnBureau traite vos données bancaires ?
       contact_host_before_booking:
         description: Bien sûr ! En faisant une « Demande de Réservation » vous communiquez directement avec l’Hôte et vous pouvez lui poser toutes vos questions. Dès réception, celui-ci vous répondra directement, en toute liberté.
         title: Est-ce que je peux contacter un Hôte avant de réserver ?
-      deskspotting_handle_deposits:
+      trouverunbureau_handle_deposits:
         description: |2-
 
           La caution, si elle est demandée par le gestionnaire de l’espace, est transmise sur un compte séquestre pendant toute la durée de la réservation. Elle sera retourné au Visiteur 72 heures après sa sortie, sous réserve que l’Hôte n’engage aucune réclamation.
         title: |
-          Comment DeskSpotting gère la caution ?
+          Comment TrouverUnBureau gère la caution ?
       how_do_i_add_managers:
         assist_you: Dans un compte Organisation vous pouvez ajouter des gestionnaires pour vous aider à la gestion du compte.
         description: |
@@ -277,7 +277,7 @@ fr:
         title: Comment puis-je ajouter un administrateur à mon compte Organisation ?
       how_do_i_book_a_workspace:
         accepted_inquiry: |
-          Puis, nous lui envoyons votre demande pour confirmation. Enfin, vous recevrez un message sur DeskSpotting dans votre « Messagerie » vous informant que votre demande a été acceptée. C’est à vous d’effectuer la réservation en cliquant sur « Réserver ».
+          Puis, nous lui envoyons votre demande pour confirmation. Enfin, vous recevrez un message sur TrouverUnBureau dans votre « Messagerie » vous informant que votre demande a été acceptée. C’est à vous d’effectuer la réservation en cliquant sur « Réserver ».
         easy: Une fois que vous avez fait votre choix, c’est facile. Cliquez sur « Envoyer une demande », entrez vos dates d’arrivée et de départ, la quantité de Postes de Travail dont vous avez besoin ainsi que le nombre de personnes qui vous accompagneront.
         send_message: 'Vous pouvez même envoyer un message à votre Hôte pour plus d’information. Nous vous conseillons de lui communiquer le maximum d’informations sur vous et vos attentes pour plus d’efficacité dans vos échanges. '
         title: Comment réserver un poste de travail ?
@@ -285,8 +285,8 @@ fr:
         description: "\nCliquez sur votre profil et sélectionnez « Réservations » puis « Mes réservations ». Vous accéderez à l’ensemble de vos réservations triées chronologiquement; vous n’avez plus qu’à choisir celle que vous souhaitez annuler en cliquant sur « Annuler ». Pensez à lire la politique d'annulation disponible dans les « Conditions Générales de Service » et « Politique de Confidentialité » avant d'annuler une réservation disponible. "
         title: Comment annuler une réservation si je suis un visiteur ?
       how_do_i_contact:
-        description: "Écrivez nous à info@deskspotting.com ou en cliquant sur « Contactez-nous ». Nous sommes toujours intéressés par votre « Feedback » et sommes à votre disposition si vous avez besoin d’aide."
-        title: Comment contacter l’équipe de DeskSpotting ?
+        description: "Écrivez nous à info@TrouverUnBureau.com ou en cliquant sur « Contactez-nous ». Nous sommes toujours intéressés par votre « Feedback » et sommes à votre disposition si vous avez besoin d’aide."
+        title: Comment contacter l’équipe de TrouverUnBureau ?
       how_do_i_edit_profile:
         description: 'Rendez vous sur « Mon Compte » et puis choisir « Modifier profil ». Assurez-vous de fournir toutes les informations vous concernant : profession, centres d’intérêts. Autant d’éléments qui permettront à vos hôtes de mieux vous connaître. '
         title: |
@@ -297,10 +297,10 @@ fr:
       how_do_i_invite_friends:
         description: |2-
 
-          Pour inviter des amis c’est très simple : allez dans le menu déroulant de votre profil, puis sélectionnez « Inviter ». Voila, vous pouvez maintenant inviter autant d'amis que vous le souhaitez; aidez les à trouver leurs espaces de travail inspirants. Vivez l’expérience DeskSpotting avec vos amis !
+          Pour inviter des amis c’est très simple : allez dans le menu déroulant de votre profil, puis sélectionnez « Inviter ». Voila, vous pouvez maintenant inviter autant d'amis que vous le souhaitez; aidez les à trouver leurs espaces de travail inspirants. Vivez l’expérience TrouverUnBureau avec vos amis !
         title: |2-
 
-          Comment puis-je inviter des amis à se joindre à moi sur DeskSpotting ?
+          Comment puis-je inviter des amis à se joindre à moi sur TrouverUnBureau ?
       how_do_i_know_booking_was_made:
         address: |
           l’adresse du lieu et le détail de l’espace réservé
@@ -332,38 +332,38 @@ fr:
       month_to_month_bookings:
         description: |2-
 
-          Nous comprenons que vous ayez besoin de réserver pour un mois ou plus mais que vous ne savez pas précisément le temps qu’il vous faut. Avec DeskSpotting prenez l’option « de mois en mois ». Seul l’Hôte fixe, s’il le souhaite, une durée minimum comprise entre 1 et 3 mois maximum.
+          Nous comprenons que vous ayez besoin de réserver pour un mois ou plus mais que vous ne savez pas précisément le temps qu’il vous faut. Avec TrouverUnBureau prenez l’option « de mois en mois ». Seul l’Hôte fixe, s’il le souhaite, une durée minimum comprise entre 1 et 3 mois maximum.
         title: Qu’est-ce qu’une réservation de mois en mois ?
       monthly_bookings_days:
         description: |2-
 
-          DeskSpotting estime qu’un mois correspond à 30 jours calendaires.
-        title: A combien de jours correspond une réservation mensuelle sur DeskSpotting ?
+          TrouverUnBureau estime qu’un mois correspond à 30 jours calendaires.
+        title: A combien de jours correspond une réservation mensuelle sur TrouverUnBureau ?
       payments: Paiements
       popular_topics: Les questions les plus posés
       search_by_professions:
-        description: 'Sur DeskSpotting, vous pouvez personnaliser votre recherche grâce aux filtres à votre disposition. Choisissez votre entourage en ciblant les professions qui vous intéressent, ou avec lesquelles vous souhaitez éventuellement travailler; 16 catégories de métiers y sont référencées : Startups, Design, Technologie, Finance, Freelancers… à vous de décider.'
+        description: 'Sur TrouverUnBureau, vous pouvez personnaliser votre recherche grâce aux filtres à votre disposition. Choisissez votre entourage en ciblant les professions qui vous intéressent, ou avec lesquelles vous souhaitez éventuellement travailler; 16 catégories de métiers y sont référencées : Startups, Design, Technologie, Finance, Freelancers… à vous de décider.'
         title: Est-ce que je peux effectuer ma recherche en ciblant les professions que je souhaite fréquenter ?
       timeframe_for_workspace:
-        description: Sur DeskSpotting, vous pouvez réserver votre espace de travail à l'heure, à la journée ou de mois en mois. Notre objectif est de fournir un maximum de flexibilité aux hôtes et aux visiteurs. Néanmoins, c’est l’hôte qui fixe au préalable les horaires et les disponibilités de ses espaces.
+        description: Sur TrouverUnBureau, vous pouvez réserver votre espace de travail à l'heure, à la journée ou de mois en mois. Notre objectif est de fournir un maximum de flexibilité aux hôtes et aux visiteurs. Néanmoins, c’est l’hôte qui fixe au préalable les horaires et les disponibilités de ses espaces.
         title: Pour quels durées puis-je réserver un espace de travail ?
       title: Visiteurs
       what_is_an_organization:
-        description: DeskSpotting met à votre disposition une section « Créez une Organisation » en complément de votre compte personnel. Ainsi, vous pourrez gérer vos réservations ou la gestion de vos espaces que ce soit pour vos besoins personnels ou pour le compte d’une société par exemple. Une « Organisation » peut être personnalisée et modifiable à tout moment tout comme votre compte personnel.
+        description: TrouverUnBureau met à votre disposition une section « Créez une Organisation » en complément de votre compte personnel. Ainsi, vous pourrez gérer vos réservations ou la gestion de vos espaces que ce soit pour vos besoins personnels ou pour le compte d’une société par exemple. Une « Organisation » peut être personnalisée et modifiable à tout moment tout comme votre compte personnel.
         title: |2-
 
           Que signifie la section « Créez une Organisation » ?
       what_is_escrow:
         description: |2-
 
-          C’est une sécurité pour qu’une réservation entre un Visiteur et un Hôte se fasse sereinement. Plutôt que de payer directement un Hôte, vos paiements seront gardés sur un compte neutre puis libérés selon les délais et conditions de réservation acceptés par les deux parties sur DeskSpotting. Ainsi Votre Hôte sait qu’il sera payé dans les temps, et vous savez que votre argent sera gardé en toute sécurité. Tout le monde est content.
+          C’est une sécurité pour qu’une réservation entre un Visiteur et un Hôte se fasse sereinement. Plutôt que de payer directement un Hôte, vos paiements seront gardés sur un compte neutre puis libérés selon les délais et conditions de réservation acceptés par les deux parties sur TrouverUnBureau. Ainsi Votre Hôte sait qu’il sera payé dans les temps, et vous savez que votre argent sera gardé en toute sécurité. Tout le monde est content.
         title: Qu’est-ce qu’un compte séquestre ?
       what_type_of_venues:
         description: |2-
 
-          DeskSpotting, c’est une large sélection de lieux et d’ambiances pour travailler en toute sérénité. Vous pouvez partager vos bureaux, organiser une réunion dans un hôtel, rejoindre un espace collaboratif ou vous laisser tenter par le concept du « Home Office » (bureau comme à la maison). Il y en a pour toutes les envies et toutes les durées - une heure, quelques jours, un mois ou plus.
+          TrouverUnBureau, c’est une large sélection de lieux et d’ambiances pour travailler en toute sérénité. Vous pouvez partager vos bureaux, organiser une réunion dans un hôtel, rejoindre un espace collaboratif ou vous laisser tenter par le concept du « Home Office » (bureau comme à la maison). Il y en a pour toutes les envies et toutes les durées - une heure, quelques jours, un mois ou plus.
         title: |
-          Quels types de « Poste de Travail » sont référencés sur DeskSpotting ?
+          Quels types de « Poste de Travail » sont référencés sur TrouverUnBureau ?
       when_i_am_charged:
         description: |2-
 
@@ -374,7 +374,7 @@ fr:
         description: |2-
 
           Un calendrier de gestion des réservations et des disponibilités en cours est à la disposition de tous les Hôtes. Cliquez sur « Gérez vos Espaces » puis sélectionnez la rubrique « Espaces ».
-        title: En tant qu’Hôte, est-ce que je dispose d’un Calendrier sur DeskSpotting ?
+        title: En tant qu’Hôte, est-ce que je dispose d’un Calendrier sur TrouverUnBureau ?
       account: Compte
       before_accepting_booking_inquiry:
         description: |2-
@@ -399,20 +399,20 @@ fr:
         title: |
           Quels espaces sont dédiées au partage et pour quelle consommation ?
       booking_a_workspace_is_subletting:
-        description: 'Toute réservation effectuée sur DeskSpotting est une prestation de service proposée par un Hôte vis à vis du Visiteur; c’est la mise à disposition sur une courte durée d’un espace de travail équipé « plug&play ». Le prix de la réservation vous donne accès à différentes prestations selon l’espace de travail concerné : connexion Internet, mobilier, salle de réunion, réceptionniste, service courrier, etc…Pour en savoir plus veuillez lire Nos Conditions'
+        description: 'Toute réservation effectuée sur TrouverUnBureau est une prestation de service proposée par un Hôte vis à vis du Visiteur; c’est la mise à disposition sur une courte durée d’un espace de travail équipé « plug&play ». Le prix de la réservation vous donne accès à différentes prestations selon l’espace de travail concerné : connexion Internet, mobilier, salle de réunion, réceptionniste, service courrier, etc…Pour en savoir plus veuillez lire Nos Conditions'
         title: |
-          Réserver un espace de travail sur DeskSpotting est-ce sous-louer ?
+          Réserver un espace de travail sur TrouverUnBureau est-ce sous-louer ?
       bookings: Réservations
       can_more_than_one_person_manage:
         description: Si vous avez plusieurs personnes qui souhaitent gérer un lieu, il est préférable de créer une Organisation. Pour ce faire il suffit de cliquer sur le menu « Créer une Organisation » dans le profil de l'utilisateur. Créez un nom pour votre organisation (le nom de votre entreprise par exemple) et inscrivez-vous. C'est très facile.
         title: Plusieurs personnes peuvent-elles gérer un lieu ?
       cancellations: Annulations
-      deskspotting_fees:
-        description: Tous les Frais de Service de DeskSpotting sont déduits des paiements des Visiteurs aux Hôtes. Ce ne sont pas des frais extra pour les Visiteurs.
+      trouverunbureau_fees:
+        description: Tous les Frais de Service de TrouverUnBureau sont déduits des paiements des Visiteurs aux Hôtes. Ce ne sont pas des frais extra pour les Visiteurs.
         less_than_one_month: |2
 
           Pour toutes les réservations d'un mois ou moins, les frais de service sont de 20%.
-        month_to_month: Pour les réservations de « mois en mois », les frais de service de DeskSpotting sur la période de temps garanti (qui ne peut excéder 4 mois) sont de 20% pour le premier mois, 10% par la suite. Une fois le délai de garantie expiré, la réservation peut se poursuivre. DeskSpotting prélèvera 5% par mois.
+        month_to_month: Pour les réservations de « mois en mois », les frais de service de TrouverUnBureau sur la période de temps garanti (qui ne peut excéder 4 mois) sont de 20% pour le premier mois, 10% par la suite. Une fois le délai de garantie expiré, la réservation peut se poursuivre. TrouverUnBureau prélèvera 5% par mois.
         more_than_one_month: Pour toutes les réservations de plus d'un mois, les frais de service sont de 20% pour le premier mois, puis 10% à compter du deuxième et des éventuels mois suivants.
         title: Frais de service
       difference_between_owner_and_admin:
@@ -421,11 +421,11 @@ fr:
         title: |2
 
           Quelle est la différence entre un propriétaire et un administrateur dans la gestion d'une organisation ?
-      does_deskspotting_have_referal_program:
-        description: Bien sûr ! Vous pouvez accumuler des points qui augmenteront votre visibilité dans les résultats de recherche quand les contacts, que vous avez invité sur DeskSpotting, acceptent de vous rejoindre. Vous pourrez potentiellement apparaître dans notre section « Coups de coeur ».
+      does_trouverunbureau_have_referal_program:
+        description: Bien sûr ! Vous pouvez accumuler des points qui augmenteront votre visibilité dans les résultats de recherche quand les contacts, que vous avez invité sur TrouverUnBureau, acceptent de vous rejoindre. Vous pourrez potentiellement apparaître dans notre section « Coups de coeur ».
         title: |
-          Y-a-t-il un programme de référencement sur DeskSpotting ?
-        win_win: Aidez vos amis à trouver des espaces de travail inspirants en rejoignant DeskSpotting, c’est aussi vous aider à commercialiser vos espaces. Tout le monde y gagne.
+          Y-a-t-il un programme de référencement sur TrouverUnBureau ?
+        win_win: Aidez vos amis à trouver des espaces de travail inspirants en rejoignant TrouverUnBureau, c’est aussi vous aider à commercialiser vos espaces. Tout le monde y gagne.
       how_do_i_add_managers:
         assist_you: Dans un compte Organisation vous pouvez ajouter des gestionnaires pour vous aider à la gestion du compte.
         description: |
@@ -437,8 +437,8 @@ fr:
 
           Comment annuler une réservation ?
       how_do_i_contact:
-        description: "Écrivez nous à info@deskspotting.com ou en cliquant sur « Contact us ». Nous sommes toujours intéressés par votre « feedback » et sommes à votre disposition si vous avez besoin d’aide."
-        title: Comment contacter l’équipe de DeskSpotting ?
+        description: "Écrivez nous à info@TrouverUnBureau.com ou en cliquant sur « Contact us ». Nous sommes toujours intéressés par votre « feedback » et sommes à votre disposition si vous avez besoin d’aide."
+        title: Comment contacter l’équipe de TrouverUnBureau ?
       how_do_i_edit_payout_details:
         description: |2-
 
@@ -450,15 +450,15 @@ fr:
       how_do_i_get_workspaces_featured:
         description: |2-
 
-          DeskSpotting met en lumière les lieux les plus attractifs. Nos critères d’exigence sont : l’authenticité et la qualité. Renseignez précisément votre annonce, mettez la à jour régulièrement, publiez de belles photos et obtenez les meilleurs notes possibles de vos visiteurs; vous augmenterez ainsi vos chances d'apparaître dans la rubrique Espaces « Coup de Coeur » de DeskSpotting.
-        title: Comment apparaître dans la rubrique d’Espaces Sélectionnés de DeskSpotting ?
+          TrouverUnBureau met en lumière les lieux les plus attractifs. Nos critères d’exigence sont : l’authenticité et la qualité. Renseignez précisément votre annonce, mettez la à jour régulièrement, publiez de belles photos et obtenez les meilleurs notes possibles de vos visiteurs; vous augmenterez ainsi vos chances d'apparaître dans la rubrique Espaces « Coup de Coeur » de TrouverUnBureau.
+        title: Comment apparaître dans la rubrique d’Espaces Sélectionnés de TrouverUnBureau ?
       how_do_i_invite_friends:
         description: |2-
 
-          Pour inviter des amis c’est très simple : allez dans le menu déroulant de votre profil, puis sélectionnez « Inviter ». Voila, vous pouvez maintenant inviter autant d'amis que vous le souhaitez; aidez les à trouver leurs espaces de travail inspirants. Vivez l’expérience DeskSpotting avec vos amis !
+          Pour inviter des amis c’est très simple : allez dans le menu déroulant de votre profil, puis sélectionnez « Inviter ». Voila, vous pouvez maintenant inviter autant d'amis que vous le souhaitez; aidez les à trouver leurs espaces de travail inspirants. Vivez l’expérience TrouverUnBureau avec vos amis !
         title: |2-
 
-          Comment puis-je inviter des amis à se joindre à moi sur DeskSpotting ?
+          Comment puis-je inviter des amis à se joindre à moi sur TrouverUnBureau ?
       how_do_i_sign_up:
         description: En quelques clics, vous pouvez vous connecter directement via Facebook ou grâce à votre adresse email et le mot passe de votre choix. C’est simple, rapide et sans engagement
         title: Comment m’inscrire ?
@@ -476,7 +476,7 @@ fr:
           Vous avez au plus tard 10 jours calendaires pour annuler avant votre prochaine échéance.
 
       if_hosts_cancel_reservation_prior_to_checkin:
-        affect_rating: Si comme Hôte, vous avez des annulations à répétition, même dans les délais impartis, vous risquez d’être pénalisé et/ou radié de DeskSpotting.
+        affect_rating: Si comme Hôte, vous avez des annulations à répétition, même dans les délais impartis, vous risquez d’être pénalisé et/ou radié de TrouverUnBureau.
         booking_less_than_24hs: Si la réservation du client est inférieure à 24 heures, l'hôte doit annuler plus de 24 heures avant l'arrivée du visiteur.
         booking_more_than_1month: |2-
 
@@ -488,28 +488,28 @@ fr:
         guidelines: 'Pour plus d’information :'
         more_on_cancellation_policy: Si vous souhaitez en savoir plus sur la politique d'annulation, merci de vous référer aux « Termes et Conditions ».
         title: Comment faire si un hôte doit annuler une réservation avant le check-in d'un visiteur ?
-        value_flexibility: Sur DeskSpotting, nous apprécions la flexibilité mais nous attachons aussi une grande importance aux engagements qui sont faits lors des réservations.
+        value_flexibility: Sur TrouverUnBureau, nous apprécions la flexibilité mais nous attachons aussi une grande importance aux engagements qui sont faits lors des réservations.
       inform_social_networks:
-        description: 'Bien sûr! Parce que pour partager votre bureau avec un ami ou une relation professionnelle peut être préférable, DeskSpotting vous permet d’informer vos amis de Facebook ou contacts de LinkedIn de la création de vos Postes De Travail DeskSpotting. Lors de la dernière étape de création, cochez les cases dédiées : Facebook et/ou LinkedIn.'
+        description: 'Bien sûr! Parce que pour partager votre bureau avec un ami ou une relation professionnelle peut être préférable, TrouverUnBureau vous permet d’informer vos amis de Facebook ou contacts de LinkedIn de la création de vos Postes De Travail TrouverUnBureau. Lors de la dernière étape de création, cochez les cases dédiées : Facebook et/ou LinkedIn.'
         title: |
-          Est-ce que je peux publier mes offres DeskSpotting sur mes comptes Facebook ou Linkedin ?
+          Est-ce que je peux publier mes offres TrouverUnBureau sur mes comptes Facebook ou Linkedin ?
       insurance: Assurance
       insurance_coverage:
         description: 'Nous avons mis en place, avec notre partenaire AIG, une couverture assurance pour toutes réservations effectuées en France Métropolitaine. '
-        title: 'Y a-t-il un service assurance sur DeskSpotting? '
+        title: 'Y a-t-il un service assurance sur TrouverUnBureau? '
       list_your_space: Publiez votre annonce
       monthly_bookings_days:
         description: |2-
 
-          DeskSpotting estime qu’un mois correspond à 30 jours calendaires.
-        title: A combien de jours correspond une réservation mensuelle sur DeskSpotting ?
+          TrouverUnBureau estime qu’un mois correspond à 30 jours calendaires.
+        title: A combien de jours correspond une réservation mensuelle sur TrouverUnBureau ?
       payments: Paeiments
       referal_program: Programme de Référencement
       service fees: Frais de service
       special_offer_to_guest:
         description: |2-
 
-          Sur DeskSpotting, vous être libre de personnaliser vos offres en cliquant sur l’onglet « Nouvelle Offre ». Négociez directement entre vous, adaptez vos tarifs et trouvez le « deal » qui vous convient.
+          Sur TrouverUnBureau, vous être libre de personnaliser vos offres en cliquant sur l’onglet « Nouvelle Offre ». Négociez directement entre vous, adaptez vos tarifs et trouvez le « deal » qui vous convient.
         title: Comment proposer des Offres Spéciales aux visiteurs ?
       tips_on_listing_your_space:
         booking_inquiries: |2-
@@ -530,10 +530,10 @@ fr:
       when_and_how_is_a_host_paid:
         description: |2-
 
-          Pour une réservation de moins d’un mois, l’Hôte est payé (moins les frais de service de DeskSpotting) dès l’entrée du visiteur dans les lieux. Pour les réservations de plus d’un mois, l’hôte est payé tous les 30 jours après la date d’entrée du visiteur. Tous les paiements seront transférés sur le compte bancaire renseigné par l’Hôte.
+          Pour une réservation de moins d’un mois, l’Hôte est payé (moins les frais de service de TrouverUnBureau) dès l’entrée du visiteur dans les lieux. Pour les réservations de plus d’un mois, l’hôte est payé tous les 30 jours après la date d’entrée du visiteur. Tous les paiements seront transférés sur le compte bancaire renseigné par l’Hôte.
         title: Quand et comment un Hôte est il payé ?
       which_listings_are_covered:
-        description: Cette assurance s'applique automatiquement pour toutes les annonces situées en France Métropolitaine. L'hôte est alors couvert sur toute la durée du séjour payé via DeskSpotting.
+        description: Cette assurance s'applique automatiquement pour toutes les annonces situées en France Métropolitaine. L'hôte est alors couvert sur toute la durée du séjour payé via TrouverUnBureau.
         title: Quelles sont les annonces couvertes par cette assurance?
     more: Plus
     popular_topics: Les questions les plus posés
@@ -543,23 +543,24 @@ fr:
         text: Fini la paperasse et les contrats. Réservez en un clic et payez en toute sécurité avec votre carte de crédit.
         title: Simplicité
       flexibility:
-        text: Réservez votre poste sur Deskpotting c'est choisir de travailler où et quand vous voulez.
+        text: Réservez votre poste sur TrouverUnBureau c'est choisir de travailler où et quand vous voulez.
         title: Flexibilité
       month_to_month:
         text: La meilleure option pour ceux qui aiment un espace de travail mais ne savent pas combien de temps ils vont y rester.
         title: Réservations de mois en mois
       networking:
-        text: Avec DeskSpotting trouvez un espace qui vous ressemble, et enrichissez votre réseau professionnel.
+        text: Avec TrouverUnBureau trouvez un espace qui vous ressemble, et enrichissez votre réseau professionnel.
         title: Networking
       no_fees:
-        text: Avec Deskpotting vous ne payez que votre réservation, sans frais supplémentaire.
+        text: Avec TrouverUnBureau vous ne payez que votre réservation, sans frais supplémentaire.
         title: Sans frais
-      subtitle: Pourquoi DeskSpotting?
+      subtitle: Pourquoi TrouverUnBureau?
       title: Particularités
     footer:
-      about_us: "À propos"
+      about_us: À propos
       company: Société
       contact: Contact
+      blog: Blog
       faq: Aide
       how_it_works: Devenez hôte
       insurance: Assurance
@@ -568,16 +569,16 @@ fr:
         en: eng
       more: plus
       our_terms: Nos Conditions
-      privacy_policy: Politique de confidentialité
-      reserved_rights: " 2015 DeskSpotting Ltd Tous Droits Réservés."
-      terms_of_service: Conditions générales
+      privacy_policy: Politique de Confidentialité
+      reserved_rights: " 2017 TrouverUnBureau Tous Droits Réservés."
+      terms_of_service: Conditions Générales de Services
     header:
       find: Trouver
       search_text: Où voulez-vous travailler?
       subtitle: Choisissez de travailler où et quand vous voulez. A vous de décider.
       title: Bien plus qu'un bureau
     list_space:
-      content: Avec DeskSpotting, gagnez de l’argent avec vos espaces libres tout en créant un environnement de travail stimulant; Réduisez vos coûts, décidez où, quand et avec qui vous partagez votre espace, sans engagement, sans frais d'annonce.
+      content: Avec TrouverUnBureau, gagnez de l’argent avec vos espaces libres tout en créant un environnement de travail stimulant; Réduisez vos coûts, décidez où, quand et avec qui vous partagez votre espace, sans engagement, sans frais d'annonce.
       learn_more: En savoir plus
       title: Publiez votre annonce
     list_your_space: Publiez votre annonce
@@ -589,7 +590,7 @@ fr:
       title: Avis D'utilisateurs
     sign_in: Se connecter
     your_space:
-      description: Vous cherchez dans votre ville un endroit confortable pour travailler, seul ou en équipe? Vous avez besoin d’un bureau pour recevoir vos clients? Deskspotting vous trouvera les espaces qu’il vous faut.
+      description: Vous cherchez dans votre ville un endroit confortable pour travailler, seul ou en équipe? Vous avez besoin d’un bureau pour recevoir vos clients? TrouverUnBureau vous trouvera les espaces qu’il vous faut.
       see_all: Tout voir
       subtitle: Tout le monde a le droit à un bureau qui lui ressemble
       tabs:
@@ -718,7 +719,7 @@ fr:
   menu:
     account: Compte
     bookings: Réservations
-    change_user: 'Utilisez DeskSpotting en tant que:'
+    change_user: 'Utilisez TrouverUnBureau en tant que:'
     create_organization: Créez une organisation
     inbox: Messagerie
     messages: Messagerie
@@ -740,7 +741,7 @@ fr:
   meta:
     contacts:
       new:
-        description: Si vous avez des suggestions ou des questions. Ou si vous voulez rejoindre l'équipe DeskSpotting. N'hésitez pas à nous contacter.
+        description: Si vous avez des suggestions ou des questions. Ou si vous voulez rejoindre l'équipe TrouverUnBureau. N'hésitez pas à nous contacter.
         title: Contact
     landing:
       index:
@@ -775,32 +776,32 @@ fr:
         title: Home Office
     statics:
       about_us:
-        description: DeskSpotting est fait pour tous les types d'entreprises; des start-ups aux entreprises établies qui cherchent à profiter des environnements de travail avec bureaux partagés.
+        description: TrouverUnBureau est fait pour tous les types d'entreprises; des start-ups aux entreprises établies qui cherchent à profiter des environnements de travail avec bureaux partagés.
         title: "À propos"
       faq:
-        description: Dans quels pays puis-je utiliser DeskSpotting ? Pourquoi utiliser DeskSpotting ? Comment puis-je construire mon propre espace de coworking ? En savoir plus sur DeskSpotting.
+        description: Dans quels pays puis-je utiliser TrouverUnBureau ? Pourquoi utiliser TrouverUnBureau ? Comment puis-je construire mon propre espace de coworking ? En savoir plus sur TrouverUnBureau.
         title: FAQ
       how_it_works:
-        description: Trouvez et listez des espaces de travail avec une base flexible sur DeskSpotting. Commencez à profiter des avantages des environnements de travail avec bureaux partagés.
+        description: Trouvez et listez des espaces de travail avec une base flexible sur TrouverUnBureau. Commencez à profiter des avantages des environnements de travail avec bureaux partagés.
         title: Comment ça marche.
       insurance:
-        description: 'DeskSpotting et AIG ont développé une assurance particulière pour l''accueil de visiteurs, pour toute réservation d''un espace de travail en France. '
+        description: 'TrouverUnBureau et AIG ont développé une assurance particulière pour l''accueil de visiteurs, pour toute réservation d''un espace de travail en France. '
         title: Assurance
       privacy_policy:
-        description: Ce document expose notre politique de confidentialité pour les hôtes et les clients sur DeskSpotting concernant le traitement des informations utilisateur.
+        description: Ce document expose notre politique de confidentialité pour les hôtes et les clients sur TrouverUnBureau concernant le traitement des informations utilisateur.
         title: Politique de confidentialité
       terms_of_service:
-        description: Bienvenue sur DeskSpotting. Merci de lire attentivement les présentes conditions générales de services, car elles contiennent des informations importantes concernant vos droits et obligations juridiques.
+        description: Bienvenue sur TrouverUnBureau. Merci de lire attentivement les présentes conditions générales de services, car elles contiennent des informations importantes concernant vos droits et obligations juridiques.
         title: Nos conditions
     users:
       password_new:
-        description: Modifier votre mot de passe. Inscris toi et commence à réserver d'incroyables espaces de travail communs. Rejoins DeskSpotting maintenant !
+        description: Modifier votre mot de passe. Inscris toi et commence à réserver d'incroyables espaces de travail communs. Rejoins TrouverUnBureau maintenant !
         title: Nouveau mot de passe.
       sign_in:
-        description: Connecte toi et cherche des espaces inspirants que tu peux louer à l'heure, à la journée, au mois ou plus. Le choix te revient sur DeskSpotting.
+        description: Connecte toi et cherche des espaces inspirants que tu peux louer à l'heure, à la journée, au mois ou plus. Le choix te revient sur TrouverUnBureau.
         title: Inscrivez-vous
       sign_up:
-        description: Bienvenue sur DeskSpotting. Inscris toi et commence à réserver d'incroyables espaces de travail communs. Rejoins DeskSpotting maintenant !
+        description: Bienvenue sur TrouverUnBureau. Inscris toi et commence à réserver d'incroyables espaces de travail communs. Rejoins TrouverUnBureau maintenant !
         title: S'inscrire.
     venues:
       index:
@@ -814,8 +815,8 @@ fr:
     on_date_connector: le
     reply: Ou répondez directement via email
     subject: Vous avez un nouveau message - Réservation %{booking_id}
-    team: L'Équipe DeskSpotting
-    view_on_deskspotting: Visualisez sur DeskSpotting
+    team: L'Équipe TrouverUnBureau
+    view_on_TrouverUnBureau: Visualisez sur TrouverUnBureau
   new_space:
     list_new_space: Publiez un nouveau poste
     save_to_add_photos: Sauvegardez votre poste pour ajouter des photos
@@ -953,8 +954,8 @@ fr:
     button: Invitez
     confirmation: L'invitation a été envoyée à
     invite_friends: Invitez vos amis
-    join: Invitez vos amis à vous rejoindre sur DeskSpotting.
-    text: Plus vos amis acceptent de vous rejoindre sur DeskSpotting, plus vous augmentez la visibilité de vos espaces. Tout le monde gagne!
+    join: Invitez vos amis à vous rejoindre sur TrouverUnBureau.
+    text: Plus vos amis acceptent de vous rejoindre sur TrouverUnBureau, plus vous augmentez la visibilité de vos espaces. Tout le monde gagne!
   reset_password_email:
     dont_worry: Ne vous inquiétiez pas ça nous arrive aussi.
     forgot_password: Il semble que vous avez oublié votre mot de passe.
@@ -1028,7 +1029,7 @@ fr:
     info_minimum_renting_period: 'Minimum de durée de réservation autorisé '
     info_photos: En choisissant des photos de qualité vous susciterez l'intérêt. Partagez des photos qui reflètent précisément l'atmosphère de votre espace.
     info_pricing: Fixez le prix que vous souhaitez en fonction des durées que vous proposez. Le prix peut être modifier à tout moment et au cas par cas.
-    info_quantity: Combien de postes souhaitez-vous publier sur DeskSpotting
+    info_quantity: Combien de postes souhaitez-vous publier sur TrouverUnBureau
     info_renting_period: Durées de réservation disponibles
     minimum_renting_period: Durée minimale
     month_price: Prix par mois
@@ -1044,7 +1045,7 @@ fr:
     renting_period: Durée de réservation
     select_workspace: Sélectionnez un de vos espaces pour modifier les informations
     share_on: Partager sur
-    share_text: Venez travailler dans mon espace. Mon %{space_type} peut être réservé sur @DeskSpotting
+    share_text: Venez travailler dans mon espace. Mon %{space_type} peut être réservé sur @TrouverUnBureau
     sharing_message: 'Maintenant, afin de tirer parti de votre %{space} et de votre %{venue}, vous devriez commencer par les poster sur les réseaux sociaux afin que tout le monde puisse voir vos espaces disponibles. '
     space_photos: Photos
     thanks_for_registering: Merci d'avoir posté votre espace de travail !
@@ -1255,13 +1256,13 @@ fr:
       reviews: Commentaires
       share: Partagez
       venue: Espace
-      why_deskspotting:
+      why_TrouverUnBureau:
         booking_time: Réservez le temps qui vous convient
         desposit_held: Caution détenue sous séquestre
         flexible_cancellations: Conditions d'annulation flexibles
         no_booking_fees: Sans frais de réservation.
         secure_payments: Paiements sécurisés
-        title: Pourquoi réserver avec DeskSpotting?
+        title: Pourquoi réserver avec TrouverUnBureau?
         verified_venues: Tous les bureaux sont vérifiés
       workspaces: Postes de Travail
     types:
@@ -1280,20 +1281,20 @@ fr:
     button_1: Dites nous en plus
     button_2: Publiez votre espace
     button_3: Réservez maintenant
-    description_1: Plus vous partagerez d'informations sur vous et vos intérêts professionnels, plus il sera facile sur DeskSpotting de vous connecter à des espaces et des travailleurs qui vous ressemblent.
+    description_1: Plus vous partagerez d'informations sur vous et vos intérêts professionnels, plus il sera facile sur TrouverUnBureau de vous connecter à des espaces et des travailleurs qui vous ressemblent.
     description_2: Monétisez vos espaces de travail vacants, gagnez de l'argent et rencontrez des professionnels avec qui pourriez peut être collaborer. Tout le monde y gagne.
     description_3: Recherchez votre espace de travail idéal. Rappelez-vous que vous pouvez même rechercher par professions avec qui vous pourriez travailler.
     footer: Bien plus qu'un bureau.
     footer_disclaimer_1: Partagez avec nous votre amour pour vos bureaux.
     footer_disclaimer_2: |2
 
-      Copyright. DeskSpotting LIMITED. 2016.
+      Copyright. TrouverUnBureau LIMITED. 2016.
     message: Découvrez des espaces de travail uniques pour vous ou votre équipe, et découvrez les avantages des bureaux partagés.
-    message_2: Avant de commencer DeskSpotting
-    subject: Bienvenue sur DeskSpotting
+    message_2: Avant de commencer TrouverUnBureau
+    subject: Bienvenue sur TrouverUnBureau
     title_1: Complétez votre profil
     title_2: Devenir un Hôte
-    title_3: Démarrez sur DeskSpotting!
+    title_3: Démarrez sur TrouverUnBureau!
   wishlist:
     day: jour
     hour: heure
