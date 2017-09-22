@@ -1,7 +1,7 @@
 require 'mina/bundler'
 require 'mina/rails'
 require 'mina/git'
-require 'mina/rvm'
+require 'mina/rbenv'
 require 'mina/dotenv'
 
 task :deploy_prod => :environment do
@@ -44,7 +44,7 @@ set :shared_paths, (shared_dirs + shared_files)
 set :forward_agent, true
 
 task :environment do
-  invoke :"rvm:use[ruby-2.1.8@default]"
+  invoke :'rbenv:load'
 end
 
 task :log_prod do

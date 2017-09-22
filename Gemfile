@@ -47,7 +47,7 @@ gem 'select2-rails'
 gem 'fog', '~>1.36.0'
 gem 'carrierwave', '~>0.10.0'
 
-gem 'rmagick', git: 'git://github.com/gemhome/rmagick.git'
+gem 'rmagick', require: false
 
 gem 'turbolinks', '~>2.3.0'
 
@@ -115,6 +115,7 @@ gem 'language_list'
 gem 'http_accept_language'
 
 gem 'newrelic_rpm'
+gem 'rails_12factor', group: :production
 
 group :development do
   gem 'better_errors', '~>2.0.0'
@@ -167,7 +168,7 @@ group :test do
   gem 'shoulda-matchers', '~> 3.1'
 end
 
-gem 'dotenv-rails'
+gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'intercom-rails'
 gem 'meta-tags'
 gem 'non-stupid-digest-assets'
