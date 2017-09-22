@@ -47,7 +47,7 @@ gem 'select2-rails'
 gem 'fog', '~>1.36.0'
 gem 'carrierwave', '~>0.10.0'
 
-gem 'rmagick', git: 'git://github.com/gemhome/rmagick.git'
+gem 'rmagick', require: false
 
 gem 'turbolinks', '~>2.3.0'
 
@@ -115,6 +115,7 @@ gem 'language_list'
 gem 'http_accept_language'
 
 gem 'newrelic_rpm'
+gem 'rails_12factor'
 
 group :development do
   gem 'better_errors', '~>2.0.0'
