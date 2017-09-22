@@ -1,7 +1,7 @@
 mangopay = AppConfiguration.for(:mangopay)
 
 MangoPay.configure do |config|
-  config.preproduction = mangopay.preproduction != 'false'
-  config.client_id = mangopay.client_id
-  config.client_passphrase = mangopay.passphrase
+  config.preproduction = ENV["MANGOPAY_PREPRODUCTION"] != 'false'
+  config.client_id = ENV["MANGOPAY_CLIENT_ID"]
+  config.client_passphrase = ENV["MANGOPAY_PASSPHRASE"]
 end

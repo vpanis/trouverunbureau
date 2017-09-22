@@ -72,10 +72,10 @@ module TrouverUnBureau
     mail = AppConfiguration.for(:mail)
     deskspotting = AppConfiguration.for(:deskspotting)
     config.action_mailer.default_url_options = {
-      host: deskspotting.base_url,
+      host: ENV["DESKSPOTTING_BASE_URL"],
       only_path: false
     }
-    config.action_mailer.asset_host = mail.host
+    config.action_mailer.asset_host = ENV["MAIL_HOST"]
     # ActionMailer Config
     # Setup for production - deliveries, no errors raised
     config.action_mailer.delivery_method = :smtp
@@ -84,20 +84,20 @@ module TrouverUnBureau
     config.action_mailer.default(charset: "utf-8")
     config.action_mailer.smtp_settings = {
       enable_starttls_auto: true,
-      address: mail.address,
-      port: mail.port,
-      domain: mail.host,
-      user_name: mail.username,
-      password: mail.password,
-      authentication: mail.authentication
+      address: ENV["MAIL_ADDRESS"],
+      port: ENV["MAIL_PORT"],
+      domain: ENV["MAIL_HOST"],
+      user_name: ENV["MAIL_USER_NAME"],
+      password: ENV["MAIL_PASSWORD"],
+      authentication: ENV["MAIL_AUTHENTICATION"]
     }
 
     Rails.application.routes.default_url_options = {
-      host: deskspotting.base_url,
+      host: ENV["DESKSPOTTING_BASE_URL"],
       only_path: false
     }
-    config.action_mailer.asset_host = deskspotting.base_url
-    config.action_controller.asset_host = deskspotting.base_url
+    config.action_mailer.asset_host = ENV["DESKSPOTTING_BASE_URL"]
+    config.action_controller.asset_host = ENV["DESKSPOTTING_BASE_URL"]
     # config.serve_static_assets = true
 
     #config.middleware.use ExceptionNotification::Rack, email: {

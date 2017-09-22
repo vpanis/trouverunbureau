@@ -164,7 +164,9 @@ TrouverUnBureau::Application.routes.draw do
     end
   end # api/v1
 
-  require 'sidekiq/web'
-  mount Sidekiq::Web => '/sidekiq'
+  require "sidekiq/web"
+  authenticate :user, lambda { |u| u.admin } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
 end

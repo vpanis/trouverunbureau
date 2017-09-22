@@ -24,6 +24,6 @@ end
 
 sidekiq = AppConfiguration.for(:sidekiq)
 
-Sidekiq::Web.use Rack::Auth::Basic do |username, password|
-  username == sidekiq.user && password == sidekiq.password
-end
+# Sidekiq::Web.use Rack::Auth::Basic do |username, password|
+#   username == ENV[""] && password == sidekiq.password
+# end
