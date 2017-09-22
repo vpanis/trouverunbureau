@@ -39,6 +39,8 @@ module TrouverUnBureau
 
     # Enable escaping HTML in JSON.
     config.active_support.escape_html_entities_in_json = true
+    config.assets.compile = true
+    config.assets.precompile =  ['*.js', '*.css', '*.css.erb']
     config.assets.precompile += %w[admin/active_admin.js admin/active_admin.css]
     # Use SQL instead of Active Record's schema dumper when creating the database.
     # This is necessary if your schema can't be completely dumped by the schema dumper,
