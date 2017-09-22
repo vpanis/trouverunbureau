@@ -45,7 +45,7 @@ gem 'angularjs-rails'
 gem 'select2-rails'
 
 gem 'fog', '~>1.36.0'
-gem 'carrierwave', '~>0.10.0'
+gem 'carrierwave', '~>0.11.2'
 
 gem 'rmagick', require: false
 
