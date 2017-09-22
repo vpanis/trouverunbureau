@@ -97,6 +97,7 @@ module TrouverUnBureau
     }
     config.action_mailer.asset_host = deskspotting.base_url
     config.action_controller.asset_host = deskspotting.base_url
+    config.serve_static_assets = true
 
     #config.middleware.use ExceptionNotification::Rack, email: {
     #  email_prefix: "[DESKSPOTTING - #{Rails.env}] ",

@@ -167,7 +167,7 @@ group :test do
   gem 'shoulda-matchers', '~> 3.1'
 end
 
-gem 'dotenv-rails'
+gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'intercom-rails'
 gem 'meta-tags'
 gem 'non-stupid-digest-assets'
