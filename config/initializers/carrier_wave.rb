@@ -48,7 +48,7 @@ CarrierWave.configure do |config|
     config.storage = :fog
     config.fog_use_ssl_for_aws = false
     config.fog_directory = ENV['AMAZONS3_BUCKET_NAME']
-    config.fog_public = true
+    config.fog_public = false
     config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}
   end
 

@@ -86,7 +86,7 @@ module TrouverUnBureau
       enable_starttls_auto: true,
       address: ENV["MAIL_ADDRESS"],
       port: ENV["MAIL_PORT"],
-      domain: ENV["MAIL_HOST"],
+      domain: ENV["MAIL_DOMAIN"],
       user_name: ENV["MAIL_USER_NAME"],
       password: ENV["MAIL_PASSWORD"],
       authentication: ENV["MAIL_AUTHENTICATION"]
