@@ -40,9 +40,9 @@ CarrierWave.configure do |config|
     amazons3 = AppConfiguration.for(:amazons3)
     config.fog_credentials = {
       provider: 'AWS',
-      aws_access_key_id: amazons3.key,
-      aws_secret_access_key: amazons3.secret,
-      region: amazons3.region,
+      aws_access_key_id: ENV['AMAZONS3_KEY'],
+      aws_secret_access_key: ENV['AMAZONS3_SECRET'],
+      region: ENV['AMAZONS3_REGION'],
       path_style: true
     }
     config.storage = :fog
