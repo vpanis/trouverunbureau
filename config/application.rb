@@ -40,8 +40,7 @@ module TrouverUnBureau
     # Enable escaping HTML in JSON.
     config.active_support.escape_html_entities_in_json = true
     config.assets.compile = true
-    config.assets.precompile =  ['*.js', '*.css', '*.css.erb']
-    config.assets.precompile += %w[admin/active_admin.js admin/active_admin.css]
+    config.assets.precompile += [/^[a-z0-9]\w+.(css|js)$/]
     # Use SQL instead of Active Record's schema dumper when creating the database.
     # This is necessary if your schema can't be completely dumped by the schema dumper,
     # like if you have constraints or database-specific column types
@@ -60,7 +59,7 @@ module TrouverUnBureau
     config.assets.version = '1.0'
 
     # For Heroku deployments
-    config.assets.initialize_on_precompile = true
+    config.assets.initialize_on_precompile = false
 
     config.autoload_paths += %W(#{config.root}/lib)
     config.to_prepare do
