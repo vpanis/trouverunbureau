@@ -115,7 +115,7 @@ gem 'language_list'
 gem 'http_accept_language'
 
 gem 'newrelic_rpm'
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 
 group :development do
   gem 'better_errors', '~>2.0.0'
