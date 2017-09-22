@@ -557,9 +557,10 @@ fr:
       subtitle: Pourquoi DeskSpotting?
       title: Particularités
     footer:
-      about_us: "À propos"
+      about_us: À propos
       company: Société
       contact: Contact
+      blog: Blog
       faq: Aide
       how_it_works: Devenez hôte
       insurance: Assurance
@@ -568,9 +569,9 @@ fr:
         en: eng
       more: plus
       our_terms: Nos Conditions
-      privacy_policy: Politique de confidentialité
-      reserved_rights: " 2015 DeskSpotting Ltd Tous Droits Réservés."
-      terms_of_service: Conditions générales
+      privacy_policy: Politique de Confidentialité
+      reserved_rights: " 2017 TrouverUnBureau Tous Droits Réservés."
+      terms_of_service: Conditions Générales de Services
     header:
       find: Trouver
       search_text: Où voulez-vous travailler?

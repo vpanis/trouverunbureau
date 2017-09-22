@@ -11,22 +11,25 @@ section#footer
         .separator
         = link_to(t('home.footer.about_us'), about_us_path)
         = link_to(t('home.footer.our_terms'), our_terms_path)
-        = link_to(t('home.footer.how_it_works'), "faq#learn-more")
-        = link_to(t('home.footer.faq'), faq_path)
+        = link_to(t('home.footer.privacy_policy'), privacy_policy_path)
+        /= link_to(t('home.footer.how_it_works'), "faq#learn-more")
+        /= link_to(t('home.footer.faq'), faq_path)
         = link_to(t('home.footer.contact'), contact_path)
-        #= link_to(t('home.footer.insurance'), insurance_path)
+        a href='http://blog.trouverunbureau.com'
+          = t('home.footer.blog')
+        /= link_to(t('home.footer.insurance'), insurance_path)
     .col-xs-12.col-sm-6.col-md-4.col-lg-4
       .find-us
         h4 #{t('home.footer.join_us')}
         .separator
         .social-icons
-          = link_to 'https://twitter.com/deskspotting', target: '_blank'
+          = link_to 'https://twitter.com/TrouverUnBureau', target: '_blank'
             .twitter.social-icon
-          = link_to 'https://facebook.com/deskspotting', target: '_blank'
+          = link_to 'https://facebook.com/TrouverUnBureau', target: '_blank'
             .facebook.social-icon
-          = link_to 'https://linkedin.com/company/deskspotting', target: '_blank'
+          = link_to 'https://www.linkedin.com/company/11273772/', target: '_blank'
             .linkedin.social-icon
-          = link_to 'https://instagram.com/deskspotting/', target: '_blank'
+          = link_to 'https://instagram.com/trouverunbureau/', target: '_blank'
             .instagram.social-icon
         .language
           = form_tag(change_language_path , :method => :put, :remote => true, id: 'change_language')
