@@ -1,5 +1,5 @@
 class NotificationsMailer < ActionMailer::Base
-  default from: ENV['MAIL_FROM_NAME'] + " <" + ENV['MAIL_FROM_ADDRESS'] + ">" || 'No Reply <from@test.com>'
+  default from: "#{ENV['MAIL_FROM_NAME']} <#{ENV['MAIL_FROM_ADDRESS']}>" || 'No Reply <from@test.com>'
 
   def new_message_email(message_id, for_type)
     @for_type = for_type
