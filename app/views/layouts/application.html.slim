@@ -6,7 +6,7 @@ html
     = favicon_link_tag 'favicon.ico'
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
-    = javascript_include_tag "https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=false&libraries=places&language=#{I18n.locale}"
+    = javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_BROWSER_API_KEY']}&v=3.exp&signed_in=false&libraries=places&language=#{I18n.locale}"
     = csrf_meta_tags
     javascript:
       !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
