@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 
-ruby '2.1.8'
+ruby '2.3.4'
 
-gem 'rails', '~> 4.1.0'
+gem 'rails', '~> 4.1.16'
 
 gem 'google-webfonts-rails', '~>0.0.4'
 
@@ -44,7 +44,7 @@ gem 'angularjs-rails'
 
 gem 'select2-rails'
 
-gem 'fog'
+gem 'fog', '~>1.36.0'
 gem 'carrierwave', '~>0.10.0'
 
 gem 'rmagick', git: 'git://github.com/gemhome/rmagick.git'
@@ -137,7 +137,6 @@ group :debugging, :development, :test do
   gem 'pry'
   gem 'byebug'
   gem 'pry-byebug'
-  gem 'pry-nav'
   gem 'pry-stack_explorer'
 end
 
@@ -174,3 +173,4 @@ gem 'meta-tags'
 gem 'non-stupid-digest-assets'
 gem 'mixpanel-ruby'
 gem 'table_print'
+gem 'awesome_print', '~> 1.8'
