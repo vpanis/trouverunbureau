@@ -24,10 +24,10 @@ TrouverUnBureau::Application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = true
+  # config.assets.compile = true
 
   # Generate digests for assets URLs.
-  config.assets.digest = true
+  # config.assets.digest = true
 
   # Version of your assets, change this if you want to expire all your assets.
   config.assets.version = '1.0'
@@ -77,10 +77,10 @@ TrouverUnBureau::Application.configure do
 
   # We are using sidekiq auth because this will not be a feature and this auth
   # and the sidekiq auth were in conflict.
-  sidekiq = AppConfiguration.for(:sidekiq)
-  if sidekiq.use_for_all_page_auth == 'true'
-    config.middleware.use Rack::Auth::Basic do |username, password|
-      username == sidekiq.user && password == sidekiq.password
-    end
-  end
+  # sidekiq = AppConfiguration.for(:sidekiq)
+  # if sidekiq.use_for_all_page_auth == 'true'
+  #   config.middleware.use Rack::Auth::Basic do |username, password|
+  #     username == sidekiq.user && password == sidekiq.password
+  #   end
+  # end
 end

@@ -11,7 +11,7 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   mail = AppConfiguration.for(:mail)
-  config.mailer_sender = mail.user_name
+  config.mailer_sender = ENV["MAIL_USER_NAME"]
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -278,11 +278,18 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  facebook = AppConfiguration.for(:facebook)
-  config.omniauth :facebook, facebook.app_id, facebook.app_secret, scope: 'email, user_birthday, user_location',
+  # facebook = AppConfiguration.for(:facebook)
+  config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"], scope: 'email, user_birthday, user_location',
     info_fields: 'email, name, first_name, last_name, birthday, location',
     secure_image_url: true,
-    image_size: 'large'
+    image_size: 'large',
+    client_options: {
+      site: "https://graph.facebook.com/v2.10",
+      authorize_url: "https://www.facebook.com/v2.10/dialog/oauth"
+    },
+    token_params: {
+        parse: :json
+    }
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

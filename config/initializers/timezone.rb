@@ -1,3 +1,3 @@
 Timezone::Configure.begin do |c|
-  c.username = AppConfiguration.for(:timezone).geonames_username
+  c.username = ENV["TIMEZONE_GEONAMES_USERNAME"]
 end

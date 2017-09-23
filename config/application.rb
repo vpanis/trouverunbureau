@@ -39,8 +39,8 @@ module TrouverUnBureau
 
     # Enable escaping HTML in JSON.
     config.active_support.escape_html_entities_in_json = true
-    config.assets.compile = true
-    config.assets.precompile += [/^[a-z0-9]\w+.(css|js)$/]
+    # config.assets.compile = true
+    # config.assets.precompile += [/^[a-z0-9]\w+.(css|js)$/]
     # Use SQL instead of Active Record's schema dumper when creating the database.
     # This is necessary if your schema can't be completely dumped by the schema dumper,
     # like if you have constraints or database-specific column types
@@ -53,13 +53,13 @@ module TrouverUnBureau
     # config.active_record.whitelist_attributes = true
 
     # Enable the asset pipeline
-    config.assets.enabled = true
+    # config.assets.enabled = true
 
     # Version of your assets, change this if you want to expire all your assets
-    config.assets.version = '1.0'
+    # config.assets.version = '1.0'
 
     # For Heroku deployments
-    config.assets.initialize_on_precompile = false
+    # config.assets.initialize_on_precompile = false
 
     config.autoload_paths += %W(#{config.root}/lib)
     config.to_prepare do
@@ -72,10 +72,10 @@ module TrouverUnBureau
     mail = AppConfiguration.for(:mail)
     deskspotting = AppConfiguration.for(:deskspotting)
     config.action_mailer.default_url_options = {
-      host: deskspotting.base_url,
+      host: ENV["DESKSPOTTING_BASE_URL"],
       only_path: false
     }
-    config.action_mailer.asset_host = mail.host
+    config.action_mailer.asset_host = ENV["MAIL_HOST"]
     # ActionMailer Config
     # Setup for production - deliveries, no errors raised
     config.action_mailer.delivery_method = :smtp
@@ -84,21 +84,21 @@ module TrouverUnBureau
     config.action_mailer.default(charset: "utf-8")
     config.action_mailer.smtp_settings = {
       enable_starttls_auto: true,
-      address: mail.address,
-      port: mail.port,
-      domain: mail.host,
-      user_name: mail.username,
-      password: mail.password,
-      authentication: mail.authentication
+      address: ENV["MAIL_ADDRESS"],
+      port: ENV["MAIL_PORT"],
+      domain: ENV["MAIL_DOMAIN"],
+      user_name: ENV["MAIL_USER_NAME"],
+      password: ENV["MAIL_PASSWORD"],
+      authentication: ENV["MAIL_AUTHENTICATION"]
     }
 
     Rails.application.routes.default_url_options = {
-      host: deskspotting.base_url,
+      host: ENV["DESKSPOTTING_BASE_URL"],
       only_path: false
     }
-    config.action_mailer.asset_host = deskspotting.base_url
-    config.action_controller.asset_host = deskspotting.base_url
-    config.serve_static_assets = true
+    config.action_mailer.asset_host = ENV["DESKSPOTTING_BASE_URL"]
+    config.action_controller.asset_host = ENV["DESKSPOTTING_BASE_URL"]
+    # config.serve_static_assets = true
 
     #config.middleware.use ExceptionNotification::Rack, email: {
     #  email_prefix: "[DESKSPOTTING - #{Rails.env}] ",

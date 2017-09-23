@@ -45,7 +45,7 @@ gem 'angularjs-rails'
 gem 'select2-rails'
 
 gem 'fog', '~>1.36.0'
-gem 'carrierwave', '~>0.10.0'
+gem 'carrierwave', '~>0.11.2'
 
 gem 'rmagick', require: false
 
@@ -115,7 +115,6 @@ gem 'language_list'
 gem 'http_accept_language'
 
 gem 'newrelic_rpm'
-gem 'rails_12factor', group: :production
 
 group :development do
   gem 'better_errors', '~>2.0.0'
@@ -130,8 +129,10 @@ group :development do
   gem 'rack-livereload'
   gem 'rb-fsevent',              require: false
 
+  gem 'rollbar'
   # Lints
   gem 'rubocop', '~>0.26.1'
+  gem 'font_assets'
 end
 
 group :debugging, :development, :test do
@@ -166,6 +167,10 @@ group :test do
   gem 'rspec-sidekiq'
   gem 'shoulda-callback-matchers', '~> 1.1.4'
   gem 'shoulda-matchers', '~> 3.1'
+end
+
+group :production do
+  gem 'rails_12factor'
 end
 
 gem 'figaro', '~> 1.1', '>= 1.1.1'
