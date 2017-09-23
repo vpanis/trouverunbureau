@@ -679,7 +679,7 @@ DEPENDENCIES
   ransack (~> 1.4.1)
   rb-fsevent
   rmagick
-  rollbar (~> 2.14, >= 2.14.1)
+  rollbar (~> 2.15.4, >= 2.15.4)
   rspec-rails
   rspec-sidekiq
   rubocop (~> 0.26.1)
