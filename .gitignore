@@ -57,5 +57,6 @@ dump.rdb
 
 stellar.yaml
 
+
 # Ignore application configuration
 /config/application.yml
