@@ -129,7 +129,7 @@ group :development do
   gem 'rack-livereload'
   gem 'rb-fsevent',              require: false
 
-  gem 'rollbar'
+  gem 'rollbar' , '~> 2.14', '>= 2.14.1'
   # Lints
   gem 'rubocop', '~>0.26.1'
   gem 'font_assets'
