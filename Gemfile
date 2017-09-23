@@ -115,7 +115,6 @@ gem 'language_list'
 gem 'http_accept_language'
 
 gem 'newrelic_rpm'
-gem 'rails_12factor', group: :production
 
 group :development do
   gem 'better_errors', '~>2.0.0'
@@ -166,6 +165,11 @@ group :test do
   gem 'rspec-sidekiq'
   gem 'shoulda-callback-matchers', '~> 1.1.4'
   gem 'shoulda-matchers', '~> 3.1'
+end
+
+group :production do
+  gem 'rollbar'
+  gem 'rails_12factor'
 end
 
 gem 'figaro', '~> 1.1', '>= 1.1.1'
