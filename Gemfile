@@ -129,8 +129,10 @@ group :development do
   gem 'rack-livereload'
   gem 'rb-fsevent',              require: false
 
+  gem 'rollbar'
   # Lints
   gem 'rubocop', '~>0.26.1'
+  gem 'font_assets'
 end
 
 group :debugging, :development, :test do
@@ -168,7 +170,6 @@ group :test do
 end
 
 group :production do
-  gem 'rollbar'
   gem 'rails_12factor'
 end
 
