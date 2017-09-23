@@ -114,6 +114,7 @@ gem 'acts_as_decimal'
 gem 'language_list'
 gem 'http_accept_language'
 
+gem 'rollbar'
 gem 'newrelic_rpm'
 
 group :development do
@@ -129,7 +130,6 @@ group :development do
   gem 'rack-livereload'
   gem 'rb-fsevent',              require: false
 
-  gem 'rollbar' , '~> 2.15.4', '>= 2.15.4'
   # Lints
   gem 'rubocop', '~>0.26.1'
   gem 'font_assets'
