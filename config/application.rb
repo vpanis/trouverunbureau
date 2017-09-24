@@ -97,7 +97,7 @@ module TrouverUnBureau
       only_path: false
     }
     config.action_mailer.asset_host = ENV["DESKSPOTTING_BASE_URL"]
-    config.action_controller.asset_host = ENV["DESKSPOTTING_BASE_URL"]
+
     # config.serve_static_assets = true
 
     #config.middleware.use ExceptionNotification::Rack, email: {
