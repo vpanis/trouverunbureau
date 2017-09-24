@@ -221,13 +221,17 @@
     box-shadow: 0px 0px 0px 0px transparent;
     background-color: transparent;
     .navbar-brand {
+      margin-left: -5px;
+      margin-top: -5px;
       img{
         display: none;
       }
-      background-image: image-url('deskspotting-logo.svg');
+      background-image: image-url('tub_full_blanc.png');
       background-repeat: no-repeat;
       background-position: center;
-      width: 232px;
+      background-size: cover;
+      height: 40px;
+      width: 305px;
     }
     li .search{
       display: none;
