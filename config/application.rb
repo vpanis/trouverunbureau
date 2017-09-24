@@ -99,6 +99,7 @@ module TrouverUnBureau
     config.action_mailer.asset_host = ENV["DESKSPOTTING_BASE_URL"]
 
     # config.serve_static_assets = true
+    config.font_assets.origin = '*'
 
     #config.middleware.use ExceptionNotification::Rack, email: {
     #  email_prefix: "[DESKSPOTTING - #{Rails.env}] ",

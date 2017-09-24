@@ -5,6 +5,7 @@ ruby '2.3.4'
 gem 'rails', '~> 4.1.16'
 
 gem 'google-webfonts-rails', '~>0.0.4'
+gem 'font_assets'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~>0.18'
