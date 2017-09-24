@@ -1,7 +1,7 @@
 module ApplicationHelper
   def default_meta_tags
     {
-      site: 'Deskspotting',
+      site: 'TrouverUnBureau',
       reverse: true
       # title: 'Deskspotting',
       # description: 'Member login page.'
