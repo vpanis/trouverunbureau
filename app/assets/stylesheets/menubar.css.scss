@@ -100,7 +100,7 @@
     font-size: 14px;
     @include transition(background-color);
     margin-top: 10px;
-    margin-right: 15px;
+    margin-right: 10px;
     p {
       margin-bottom: 0;
       line-height: 1;
@@ -237,7 +237,7 @@
       p {
         margin-bottom: 0;
         line-height: 1;
-        font-weight: 300 !important;
+        font-weight: 400 !important;
         color: white !important;
       }
     }

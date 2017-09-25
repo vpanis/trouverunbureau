@@ -7,8 +7,6 @@
         span.icon-bar
       a.navbar-brand href="/"
         = image_tag('tub_full_gris.png', width: '205px', height: '26px')
-      a.phone_number.hidden-xs.hidden-sm href="#"
-        p #{t('home.phone_number')}
     #mobile-navbar.collapse.navbar-collapse
       - unless current_page?(root_url)
         ul.nav.navbar-nav.hidden-collapse
@@ -23,6 +21,9 @@
         = render 'shared/mobile_menu'
       - if current_represented.present?
         ul.nav.navbar-nav.navbar-right.hidden-collapse
+          li
+            = link_to contact_path, class: 'list-space'
+              p #{t('home.phone_number')}
           - if current_represented.present?
             li
               dropdown
@@ -59,6 +60,9 @@
                 p #{t('home.list_your_space')}
       - else
         ul.nav.navbar-nav.navbar-right.hidden-collapse.offline
+          li
+            = link_to contact_path, class: 'list-space'
+              p #{t('home.phone_number')}
           - if current_represented.present?
             li
               dropdown
