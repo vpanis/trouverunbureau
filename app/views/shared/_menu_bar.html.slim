@@ -21,9 +21,6 @@
         = render 'shared/mobile_menu'
       - if current_represented.present?
         ul.nav.navbar-nav.navbar-right.hidden-collapse
-          li
-            = link_to contact_path, class: 'list-space phone-number'
-              p #{t('home.phone_number')}
           - if current_represented.present?
             li
               dropdown
@@ -58,11 +55,11 @@
                 p #{t('home.manage_your_venues')}
               - else
                 p #{t('home.list_your_space')}
-      - else
-        ul.nav.navbar-nav.navbar-right.hidden-collapse.offline
           li
             = link_to contact_path, class: 'list-space phone-number'
               p #{t('home.phone_number')}
+      - else
+        ul.nav.navbar-nav.navbar-right.hidden-collapse.offline
           - if current_represented.present?
             li
               dropdown
@@ -96,5 +93,8 @@
               - if user_signed_in? && !current_user.venues.empty?
                 p #{t('home.manage_your_venues')}
               - else
+          li
+            = link_to contact_path, class: 'list-space phone-number'
+              p #{t('home.phone_number')}
                 p #{t('home.list_your_space')}
 .after-menu
