@@ -7,7 +7,7 @@
         span.icon-bar
       a.navbar-brand href="/"
         = image_tag('tub_full_gris.png', width: '205px', height: '26px')
-      a.phone_number href="#"
+      a.phone_number.hidden-xs.hidden-sm href="#"
         p #{t('home.phone_number')}
     #mobile-navbar.collapse.navbar-collapse
       - unless current_page?(root_url)
