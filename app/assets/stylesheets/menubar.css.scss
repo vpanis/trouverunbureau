@@ -220,27 +220,6 @@
     -moz-box-shadow: 0px 0px 0px 0px transparent;
     box-shadow: 0px 0px 0px 0px transparent;
     background-color: transparent;
-    a.phone_number {
-      @include border-radius(2em);
-      border: 2px solid $yellow;
-      display: inline-block;
-      font-family: "Open Sans", sans-serif;
-      letter-spacing: 0.08rem;
-      text-align: center;
-      background-color: transparent;
-      cursor: pointer;
-      padding: 10px 30px;
-      font-size: 13px;
-      @include transition(background-color);
-      margin-top: 10px;
-      margin-left: 15px;
-      p {
-        margin-bottom: 0;
-        line-height: 1;
-        font-weight: 400 !important;
-        color: white !important;
-      }
-    }
     .navbar-brand {
       margin-left: -5px;
       margin-top: 9px;
@@ -260,8 +239,9 @@
     li a.list-space p{
       color: white;
     }
-    li .sign-in-text{
+    li a.sign-in-text{
       color: white;
+      margin-left: 0;
     }
     ul.nav.mobile-menu-items li{
       background-color: white;
