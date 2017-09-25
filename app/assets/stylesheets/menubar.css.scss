@@ -100,7 +100,7 @@
     font-size: 14px;
     @include transition(background-color);
     margin-top: 10px;
-    margin-right: 10px;
+    margin-right: 0px;
     p {
       margin-bottom: 0;
       line-height: 1;
@@ -242,9 +242,6 @@
     li .sign-in-text{
       color: white;
       padding-left: 0;
-    }
-    li a.list-space.phone-number {
-      margin-right: 0px;
     }
     ul.nav.mobile-menu-items li{
       background-color: white;
