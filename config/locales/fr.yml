@@ -88,7 +88,7 @@ fr:
     name: Nom
     send: Envoyer
     subject: Contacter TrouverUnBureau
-    subtitle: Vous avez des questions ou suggestions n'hésitez pas à nous contacter via ce formulaire ou directement par téléphone au +33 6 07 78 49 10.
+    subtitle: Vous avez des questions ou suggestions n'hésitez pas à nous contacter via ce formulaire ou directement par téléphone au 06 07 78 49 10.
     success: Merci pour votre message!
     title: Contactez-Nous
   currency:
@@ -582,7 +582,7 @@ fr:
       learn_more: En savoir plus
       title: Publiez votre annonce
     list_your_space: Publiez votre annonce
-    phone_number: 'Contact : +33 6 07 78 49 10'
+    phone_number: 'Contact : 06 07 78 49 10'
     manage_your_venues: Gérez vos espaces
     profile: Profil
     quotes:

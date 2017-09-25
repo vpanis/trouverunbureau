@@ -243,6 +243,9 @@
       color: white;
       padding-left: 0;
     }
+    li a {
+      margin-right: 10px;
+    }
     ul.nav.mobile-menu-items li{
       background-color: white;
       &:hover{
