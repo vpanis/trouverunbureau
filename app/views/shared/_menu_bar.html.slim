@@ -93,8 +93,8 @@
               - if user_signed_in? && !current_user.venues.empty?
                 p #{t('home.manage_your_venues')}
               - else
+                p #{t('home.list_your_space')}
           li
             = link_to contact_path, class: 'list-space phone-number'
               p #{t('home.phone_number')}
-                p #{t('home.list_your_space')}
 .after-menu
