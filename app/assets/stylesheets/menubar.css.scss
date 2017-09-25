@@ -226,7 +226,6 @@
       display: inline-block;
       font-family: "Open Sans", sans-serif;
       letter-spacing: 0.08rem;
-      color: white !important;
       text-align: center;
       background-color: transparent;
       cursor: pointer;
@@ -238,7 +237,8 @@
       p {
         margin-bottom: 0;
         line-height: 1;
-        font-weight: 700 !important;
+        font-weight: 300 !important;
+        color: white !important;
       }
     }
     .navbar-brand {
