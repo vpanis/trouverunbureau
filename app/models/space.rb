@@ -1,4 +1,6 @@
 class Space < ActiveRecord::Base
+  attr_accessor :hour_minimum_unity, :day_minimum_unity, :week_minimum_unity, :month_minimum_unity, :month_to_month_minimum_unity
+
   # Relations
   belongs_to :venue
 
@@ -77,11 +79,11 @@ class Space < ActiveRecord::Base
   end
 
   def initialize_fields
-    self.hour_deposit ||= 0
-    self.day_deposit ||= 0
-    self.week_deposit ||= 0
-    self.month_deposit ||= 0
-    self.month_to_month_deposit ||= 0
+    #self.hour_deposit ||= 0
+    #self.day_deposit ||= 0
+    #self.week_deposit ||= 0
+    #self.month_deposit ||= 0
+    #self.month_to_month_deposit ||= 0
 
     self.hour_minimum_unity ||= 1
     self.day_minimum_unity ||= 1

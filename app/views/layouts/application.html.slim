@@ -2,12 +2,15 @@ doctype html
 html
   head
     = display_meta_tags(default_meta_tags)
-    meta content="width=device-width, initial-scale=1.0" name="viewport" /
+    /meta content="width=device-width, initial-scale=1.0" name="viewport" /
+    meta name="google-site-verification" content="2ft5j7PM-HUvq4dhm2mI4jPbpQ9HOCsudPKn_R5iyMY"
     = favicon_link_tag 'favicon.ico'
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_BROWSER_API_KEY']}&libraries=places&language=#{I18n.locale}"
     = csrf_meta_tags
+    script type="text/javascript"
+      window.$crisp=[];window.CRISP_WEBSITE_ID="ENV['CRISP_WEBSITE_ID']";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
     javascript:
       !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
       n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;

@@ -92,10 +92,10 @@ module TrouverUnBureau
       authentication: ENV["MAIL_AUTHENTICATION"]
     }
 
-    Rails.application.routes.default_url_options = {
-      host: ENV["DESKSPOTTING_BASE_URL"],
-      only_path: false
-    }
+    # Rails.application.routes.default_url_options = {
+    #   host: ENV["DESKSPOTTING_BASE_URL"],
+    #  only_path: false
+    # }
     config.action_mailer.asset_host = ENV["DESKSPOTTING_BASE_URL"]
 
     # config.serve_static_assets = true

@@ -1,4 +1,6 @@
 li
+  = link_to(t('contact.title'), contact_path())
+li
   = link_to(t('menu.search'), search_mobile_spaces_path())
 - if current_user.present?
   li

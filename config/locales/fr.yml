@@ -88,7 +88,7 @@ fr:
     name: Nom
     send: Envoyer
     subject: Contacter TrouverUnBureau
-    subtitle: Vous avez des questions ou suggestions n'hésitez pas à nous contacter via ce formulaire ou directement par téléphone au 06 07 78 49 10.
+    subtitle: Vous avez des questions ou suggestions ? N'hésitez pas à nous contacter via ce formulaire ou directement par téléphone au 06 07 78 49 10.
     success: Merci pour votre message!
     title: Contactez-Nous
   currency:

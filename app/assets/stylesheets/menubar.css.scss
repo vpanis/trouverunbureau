@@ -100,7 +100,7 @@
     font-size: 14px;
     @include transition(background-color);
     margin-top: 10px;
-    margin-right: 0px;
+    margin-right: 10px;
     p {
       margin-bottom: 0;
       line-height: 1;
@@ -230,8 +230,8 @@
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
-      height: 26px;
-      width: 205px;
+      height: 28px;
+      width: 225px;
     }
     li .search{
       display: none;
@@ -241,7 +241,6 @@
     }
     li .sign-in-text{
       color: white;
-      padding-left: 0;
     }
     ul.nav.mobile-menu-items li{
       background-color: white;
