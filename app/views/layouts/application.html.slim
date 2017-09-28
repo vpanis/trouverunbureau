@@ -9,7 +9,7 @@ html
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_BROWSER_API_KEY']}&libraries=places&language=#{I18n.locale}"
     = csrf_meta_tags
-    script type="text/javascript"
+    javascript:
       window.$crisp=[];window.CRISP_WEBSITE_ID="#{ENV['CRISP_WEBSITE_ID']}";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
     javascript:
       !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
